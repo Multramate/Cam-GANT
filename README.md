@@ -14,10 +14,10 @@ This is my third year at lecture scribing, so errors and typos are definitely pr
 
 ### Michaelmas (October 2020 to December 2020)
 
-[Local Fields](https://github.com/Multramate/Cam-GANT/raw/master/LF/LF.pdf)
+[Local Fields](https://github.com/Multramate/Cam-GANT/raw/master/Local%20Fields/LF.pdf)
 
-[Algebraic Geometry](https://github.com/Multramate/Cam-GANT/raw/master/AG/AG.pdf)
+[Algebraic Geometry](https://github.com/Multramate/Cam-GANT/raw/master/Algebraic%20Geometry/AG.pdf)
 
-[Algebraic Topology](https://github.com/Multramate/Cam-GANT/raw/master/AT/AT.pdf)
+[Algebraic Topology](https://github.com/Multramate/Cam-GANT/raw/master/Algebraic%20Topology/AT.pdf)
 
-[Elliptic Curves](https://github.com/Multramate/Cam-GANT/raw/master/EC/EC.pdf)
+[Elliptic Curves](https://github.com/Multramate/Cam-GANT/raw/master/Elliptic%20Curves/EC.pdf)
