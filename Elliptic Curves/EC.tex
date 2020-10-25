@@ -1,0 +1,806 @@
+\def\module{Elliptic Curves}
+\def\lecturer{Prof Tom Fisher}
+\def\term{Michaelmas 2020}
+\def\cover{}
+\def\syllabus{}
+\def\thm{section}
+
+\input{../style/header}
+
+% Macros
+\newcommand{\rational}[5][]{
+  \ifx &#1&
+    \begin{array}{rcl}
+      #2 & \dashrightarrow & #3 \\
+      #4 & \longmapsto     & #5
+    \end{array}
+  \else
+    \begin{array}{ccrcl}
+      #1 & : & #2 & \dashrightarrow & #3 \\
+         &   & #4 & \longmapsto     & #5
+    \end{array}
+  \fi
+}
+
+\begin{document}
+
+\input{../style/cover}
+
+\setcounter{section}{0}
+
+\section{Fermat's method of infinite descent}
+
+\lecture{1}{Friday}{09/10/20}
+
+The following are the books.
+\begin{itemize}
+\item J H Silverman, The arithmetic of elliptic curves, 1986
+\item J W S Cassels, Lectures on elliptic curves, 1991
+\item J H Silverman and J Tate, Rational points on elliptic curves, 1992
+\item J S Milne, Elliptic curves, 2006
+\end{itemize}
+
+\subsection{Primitive triangles}
+
+\begin{definition*}
+Let $ \Delta = \Delta\br{a, b, c} $ be a right triangle
+$$
+\begin{tikzpicture}
+\draw (0, 0) to node[below]{$ a $} (-1, 0);
+\draw (0, 0) to node[right]{$ b $} (0, 1);
+\draw (-1, 0) to node[above left]{$ c $} (0, 1);
+\end{tikzpicture},
+$$
+so $ a^2 + b^2 = c^2 $ and the area of $ \Delta $ is $ \tfrac{1}{2}ab $. Then $ \Delta $ is \textbf{rational} if $ a, b, c \in \QQ $, and $ \Delta $ is \textbf{primitive} if $ a, b, c \in \ZZ $ are coprime.
+\end{definition*}
+
+\begin{lemma}
+\label{lem:1.1}
+Every primitive triangle is of the form $ \Delta\br{u^2 - v^2, 2uv, u^2 + v^2} $ for some $ u, v \in \ZZ $ such that $ u > v > 0 $.
+\end{lemma}
+
+\begin{proof}
+Without loss of generality $ a $ is odd, $ b $ is even, and $ c $ is odd, so $ \br{b / 2}^2 = \br{\br{c + a} / 2}\br{\br{c - a} / 2} $ is a product of coprime positive integers. By unique prime factorisation in $ \ZZ $,
+$$ \dfrac{c + a}{2} = u^2, \qquad \dfrac{c - a}{2} = v^2, \qquad u, v \in \ZZ, $$
+so $ a = u^2 - v^2 $, $ b = 2uv $, and $ c = u^2 + v^2 $.
+\end{proof}
+
+\begin{definition*}
+$ D \in \QQ_{> 0} $ is a \textbf{congruent number} if there exists a rational triangle $ \Delta $ with area $ D $.
+\end{definition*}
+
+Note that it suffices to consider $ D \in \ZZ_{> 0} $ squarefree.
+
+\begin{example*}
+$ D = 5, 6 $ are congruent numbers.
+\end{example*}
+
+\begin{lemma}
+\label{lem:1.2}
+$ D \in \QQ_{> 0} $ is congruent if and only if $ Dy^2 = x^3 - x $ for some $ x, y \in \QQ $ such that $ y \ne 0 $.
+\end{lemma}
+
+\begin{proof}
+Lemma \ref{lem:1.1} shows $ D $ is congruent if and only if $ Dw^2 = uv\br{u^2 - v^2} $ for some $ u, v, w \in \QQ $ such that $ w \ne 0 $. Put $ x = u / v $ and $ y = w / v^2 $.
+\end{proof}
+
+Fermat showed that $ 1 $ is not a congruent number.
+
+\begin{theorem}
+\label{thm:1.3}
+There is no solution to
+\begin{equation}
+\label{eq:1}
+w^2 = uv\br{u + v}\br{u - v}, \qquad u, v, w \in \ZZ, \qquad w \ne 0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Without loss of generality $ u $ and $ v $ are coprime, and $ u > 0 $ and $ w > 0 $. If $ v < 0 $ then replace $ \br{u, v, w} $ by $ \br{-v, u, w} $. If $ u \equiv v \mod 2 $ then replace $ \br{u, v, w} $ by $ \br{\br{u + v} / 2, \br{u - v} / 2, w / 2} $. Then $ u, v, u + v, u - v $ are pairwise coprime positive integers whose product is a square. By unique factorisation in $ \ZZ $,
+$$ u = a^2, \qquad v = b^2, \qquad u + v = c^2, \qquad u - v = d^2, \qquad a, b, c, d \in \ZZ_{> 0}. $$
+Since $ u \not\equiv v \mod 2 $ both $ c $ and $ d $ are odd. Then $ \br{\br{c + d} / 2}^2 + \br{\br{c - d} / 2}^2 = \br{c^2 + d^2} / 2 = u = a^2 $, so $ \Delta\br{\br{c + d} / 2, \br{c - d} / 2, a} $ is a primitive triangle. Its area is $ \br{c^2 - d^2} / 8 = v / 4 = \br{b / 2}^2 $. Let $ w_1 = b / 2 $. By Lemma \ref{lem:1.1}, $ w_1^2 = u_1v_1\br{u_1^2 - v_1^2} $ for some $ u_1, v_1 \in \ZZ $, that is we have a new solution to $ \br{\ref{eq:1}} $. But $ 4w_1^2 = b^2 = v \mid w^2 $, so $ w_1 \le w / 2 $. So by Fermat's method of infinite descent, there is no solution to $ \br{\ref{eq:1}} $.
+\end{proof}
+
+\subsection{A variant for polynomials}
+
+In this section, $ K $ is a field with $ \ch K \ne 2 $, with algebraic closure $ \overline{K} $.
+
+\begin{lemma}
+\label{lem:1.4}
+Let $ u, v \in K\sbr{t} $ be coprime. If $ \alpha u + \beta v $ is a square for four distinct $ \br{\alpha : \beta} \in \PP^1 $ then $ u, v \in K $.
+\end{lemma}
+
+\begin{proof}
+Without loss of generality $ K = \overline{K} $. Changing coordinates on $ \PP^1 $ we may assume the ratios $ \br{\alpha : \beta} $ are $ \br{1 : 0}, \br{0 : 1}, \br{1 : -1}, \br{1 : -\lambda} $ for some $ \lambda \in K \setminus \cbr{0, 1} $. Then $ u = a^2 $ and $ v = b^2 $ for some $ a, b \in K\sbr{t} $, so $ u - v = \br{a + b}\br{a - b} $ and $ u - \lambda v = \br{a + \mu b}\br{a - \mu b} $ for $ \mu = \sqrt{\lambda} $. By unique factorisation in $ K\sbr{t} $, $ a + b, a - b, a + \mu b, a - \mu b $ are squares. But $ \max\br{\deg a, \deg b} \le \tfrac{1}{2}\max\br{\deg u, \deg v} $. So by Fermat's method of infinite descent $ u, v \in K $.
+\end{proof}
+
+\begin{definition}
+\label{def:1.5}
+\hfill
+\begin{itemize}
+\item An \textbf{elliptic curve} $ E / K $ is the projective closure of the plane affine curve $ y^2 = f\br{x} $ where $ f \in K\sbr{x} $ is a monic cubic polynomial with distinct roots in $ \overline{K} $.
+\item For $ L / K $ any field extension
+$$ E\br{L} = \cbr{\br{x, y} \in L^2 \st y^2 = f\br{x}} \cup \cbr{\OOO}, $$
+where $ \OOO $ is the \textbf{point at infinity}.
+\end{itemize}
+\end{definition}
+
+\begin{fact*}
+$ E\br{L} $ is naturally an abelian group.
+\end{fact*}
+
+In this course we study $ E\br{L} $ for $ L $ a finite field, a local field $ \sbr{L : \QQ_p} < \infty $, or a number field $ \sbr{L : \QQ} < \infty $. By Lemma \ref{lem:1.2} and Theorem \ref{thm:1.3}, if $ E $ is $ y^2 = x^3 - x $ then $ E\br{\QQ} = \cbr{\OOO, \br{0, 0}, \br{\pm 1, 0}} $.
+
+\begin{corollary}
+\label{cor:1.6}
+Let $ E / K $ be an elliptic curve. Then $ E\br{K\br{t}} = E\br{K} $.
+\end{corollary}
+
+\begin{proof}
+Without loss of generality $ K = \overline{K} $. By a change of coordinates we may assume $ E $ is
+$$ y^2 = x\br{x - 1}\br{x - \lambda}, \qquad \lambda \in K \setminus \cbr{0, 1}. $$
+Suppose $ \br{x, y} \in E\br{K\br{t}} $. Write $ x = u / v $ for $ u, v \in K\sbr{t} $ coprime. Then $ w^2 = uv\br{u - v}\br{u - \lambda v} $ for some $ w \in K\sbr{t} $. By unique factorisation in $ K\sbr{t} $, $ u, v, u - v, u - \lambda v $ are all squares. By Lemma \ref{lem:1.4}, $ u, v \in K $, so $ x, y \in K $.
+\end{proof}
+
+\pagebreak
+
+\section{Some remarks on algebraic curves}
+
+\lecture{2}{Monday}{12/10/20}
+
+Work over $ K = \overline{K} $.
+
+\subsection{Rational curves}
+
+\begin{definition}
+\label{def:2.1}
+A plane algebraic curve $ C = \cbr{f\br{x, y} = 0} \subset \AA^2 $ for an irreducible polynomial $ f $ is \textbf{rational} if it has a rational parameterisation, that is there exists $ \phi, \psi \in K\br{t} $ such that
+$$ \function{\AA^1}{\AA^2}{t}{\br{\phi\br{t}, \psi\br{t}}} $$
+is injective on $ \AA^1 $ minus a finite set, and $ f\br{\phi\br{t}, \psi\br{t}} = 0 $.
+\end{definition}
+
+\begin{example}
+\hfill
+\begin{itemize}
+\item Any nonsingular plane conic is rational. For example, let $ x^2 + y^2 = 1 $. The line of slope $ t $ at $ \br{-1, 0} $ is $ y = t\br{x + 1} $. Their intersection is $ x^2 + t^2\br{x + 1}^2 = 1 $, so $ \br{x + 1}\br{x - 1 + t^2\br{x + 1}} = 0 $. Thus $ x = -1 $ or $ x = \br{1 - t^2} / \br{1 + t^2} $. The rational parameterisation is
+$$ \br{x, y} = \br{\dfrac{1 - t^2}{1 + t^2}, \dfrac{2t}{1 + t^2}}. $$
+\item Any singular plane cubic is rational. For example, let $ y^2 = x^3 $. The line of slope $ t $ at $ \br{0, 0} $ is $ y = tx $. The rational parameterisation is
+$$ \br{x, y} = \br{t^2, t^3}. $$
+\item Corollary \ref{cor:1.6} shows that elliptic curves are not rational.
+\end{itemize}
+\end{example}
+
+\begin{remark}
+\label{rem:2.3}
+The genus $ \g\br{C} \in \ZZ_{\ge 0} $ is an invariant of a smooth projective curve $ C $.
+\begin{itemize}
+\item If $ K = \CC $ then $ \g\br{C} $ is the genus of a Riemann surface.
+\item A smooth plane curve $ C \subset \PP^2 $ of degree $ d $ has genus $ \g\br{C} = \br{d - 1}\br{d - 2} / 2 $.
+\end{itemize}
+\end{remark}
+
+\begin{proposition}
+Still assuming $ K = \overline{K} $, let $ C $ be a smooth projective curve.
+\begin{enumerate}
+\item $ C $ is rational as in Definition \ref{def:2.1} if and only if $ \g\br{C} = 0 $.
+\item $ C $ is an elliptic curve as in Definition \ref{def:1.5} if and only if $ \g\br{C} = 1 $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Omitted.
+\item For $ \implies $, use Remark \ref{rem:2.3}. For $ \impliedby $, see later Theorem \ref{thm:3.1}.
+\end{enumerate}
+\end{proof}
+
+\subsection{Order of vanishing}
+
+Let $ C $ be an algebraic curve, with function field $ K\br{C} $. Let $ P \in C $ be a smooth point. Write $ \ord_P f $ for the order of vanishing of $ f \in K\br{C} $ at $ P $, which is negative if $ f $ has a pole.
+
+\begin{fact*}
+$ \ord_P : K\br{C}^* \to \ZZ $ is a discrete valuation, that is
+$$ \ord_P \br{f_1f_2} = \ord_P f_1 + \ord_P f_2, \qquad \ord_P \br{f_1 + f_2} = \min\br{\ord_P f_1, \ord_P f_2}. $$
+\end{fact*}
+
+\begin{definition*}
+$ t \in K\br{C}^* $ is a \textbf{uniformiser} at the point $ P $ if $ \ord_P t = 1 $.
+\end{definition*}
+
+\pagebreak
+
+\begin{example}
+Let $ C = \cbr{g = 0} \subset \AA^2 $ for $ g \in K\sbr{x, y} $ irreducible, so $ K\br{C} = \Frac \br{K\sbr{x, y} / \abr{g}} $ for $ g = g_0 + g_1\br{x, y} + \dots $ where $ g_i $ is homogeneous of degree $ i $. Suppose $ P = \br{0, 0} \in C $ is a smooth point, that is $ g_0 = 0 $ and $ g_1\br{x, y} = \alpha x + \beta y $ such that $ \alpha $ and $ \beta $ are not both zero. Let $ \gamma, \delta \in K $. A fact is that
+$$ \gamma x + \delta y \in K\br{C} \ \text{is a uniformiser at} \ p \qquad \iff \qquad \alpha\delta - \beta\gamma \ne 0. $$
+\end{example}
+
+\begin{example}
+\label{eg:2.6}
+The projective closure of $ \cbr{y^2 = x\br{x - 1}\br{x - \lambda}} \subset \AA^2 $ for $ \lambda \ne 0, 1 $ is
+$$ \cbr{Y^2Z = X\br{X - Z}\br{X - \lambda Z}} \subset \PP^2, $$
+where $ x = X / Z $ and $ y = Y / Z $. Let $ P = \br{0 : 1 : 0} $. We compute $ \ord_P x $ and $ \ord_P y $. Put $ t = X / Y $ and $ w = Z / Y $. Then
+\begin{equation}
+\label{eq:2}
+w = t\br{t - w}\br{t - \lambda w}.
+\end{equation}
+Now $ P $ is the point $ \br{t, w} = \br{0, 0} $. This is a smooth point and $ \ord_P t = \ord_P \br{t - w} = \ord_P \br{t - \lambda w} = 1 $. By $ \br{\ref{eq:2}} $, $ \ord_P w = 3 $, so
+$$ \ord_P x = \ord_P \dfrac{X}{Z} = \ord_P \dfrac{t}{w} = 1 - 3 = -2, \qquad \ord_P y = \ord_P \dfrac{Y}{Z} = \ord_P \dfrac{1}{w} = -3. $$
+Remark that the line $ \cbr{w = 0} $ meets $ E $ with multiplicity three at $ P $, so $ P $ is a point of inflection.
+\end{example}
+
+\subsection{Riemann Roch spaces}
+
+\begin{definition*}
+Let $ C $ be a smooth projective curve. A \textbf{divisor} is a formal sum of points on $ C $, say
+$$ D = \sum_{P \in C} n_P\br{P}, \qquad n_P \in \ZZ, $$
+with $ n_P = 0 $ for all but finitely many $ P \in C $. The \textbf{degree} of $ D $ is
+$$ \deg D = \sum_{P \in C} n_P. $$
+Then $ D $ is \textbf{effective}, written $ D \ge 0 $, if $ n_P \ge 0 $ for all $ P \in C $. If $ f \in K\br{C}^* $ then the \textbf{divisor of $ f $} is
+$$ \div f = \sum_{P \in C} \br{\ord_P f}\br{P}. $$
+The \textbf{Riemann Roch space} of $ D \in \Div C $ is
+$$ \LLL\br{D} = \cbr{f \in K\br{C}^* \st \div f + D \ge 0} \cup \cbr{0}, $$
+that is the $ K $-vector space of rational functions on $ C $ with poles no worse than specified by $ D $.
+\end{definition*}
+
+\textbf{Riemann Roch for genus one} states that
+$$ \dim \LLL\br{D} =
+\begin{cases}
+0 & \deg D < 0 \\
+0 \ \text{or} \ 1 & \deg D = 0 \\
+\deg D & \deg D > 0
+\end{cases}.
+$$
+
+\begin{example*}
+Revisiting Example \ref{eg:2.6}, let $ P $ be the point at infinity of $ \cbr{y^2 = x\br{x - 1}\br{x - \lambda}} \subset \AA^2 $. Then $ \ord_P x = -2 $ and $ \ord_P y = -3 $. We deduce
+$$ \LLL\br{2\br{P}} = \abr{1, x}, \qquad \LLL\br{3\br{P}} = \abr{1, x, y}. $$
+This motivates the proof of Theorem \ref{thm:3.1}.
+\end{example*}
+
+\pagebreak
+
+\lecture{3}{Wednesday}{14/10/20}
+
+Assume $ K = \overline{K} $ and $ \ch K \ne 2 $.
+
+\begin{proposition}
+\label{prop:2.7}
+Let $ C \subset \PP^2 $ be a smooth plane cubic and $ P \in C $ a point of inflection. Then we may change coordinates such that $ C $ is
+$$ Y^2 = X\br{X - Z}\br{X - \lambda Z}, \qquad \lambda \ne 0, 1, $$
+and $ P = \br{0 : 1 : 0} $.
+\end{proposition}
+
+\begin{proof}
+We change coordinates such that $ P = \br{0 : 1 : 0} $ and $ \T_PC = \cbr{Z = 0} $. Let $ C = \cbr{F\br{X, Y, Z} = 0} $. Since $ P \in C $ is a point of inflection, $ F\br{t, 1, 0} $ is a constant times $ t^3 $, that is no terms $ X^2Y, XY^2, Y^3 $, so
+$$ F \in \abr{Y^2Z, XYZ, YZ^2, X^3, X^2Z, XZ^2, Z^3}. $$
+The coefficient of $ Y^2Z $ is nonzero otherwise $ P \in C $ is singular. The coefficient of $ X^3 $ is nonzero otherwise $ \cbr{Z = 0} \subset C $. We are free to rescale $ X, Y, Z, F $. Without loss of generality $ C $ is defined by
+$$ Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3, $$
+the \textbf{Weierstrass form}. Substituting $ Y $ by $ Y - \tfrac{1}{2}a_1X - \tfrac{1}{2}a_3Z $ we may assume $ a_1 = a_3 = 0 $. Now $ C $ is $ Y^2Z = Z^3f\br{X / Z} $ for $ f $ a monic cubic polynomial. Since $ C $ is smooth, $ f $ has distinct roots, without loss of generality $ 0, 1, \lambda $. Thus $ C $ is
+$$ Y^2 = X\br{X - Z}\br{X - \lambda Z}, $$
+the \textbf{Legendre form}.
+\end{proof}
+
+\begin{remark*}
+It may be shown that the points of inflection on $ C = \cbr{F = 0} \subset \PP^2 $ in coordinates $ \br{X_1 : X_2 : X_3} $ are given by $ F = \det H = 0 $, where $ H = \br{\tmd{F}{2}{X_i}{}{X_j}{}} $ is a $ 3 \times 3 $ matrix.
+\end{remark*}
+
+\subsection{The degree of a morphism}
+
+\begin{definition*}
+Let $ \phi : C_1 \to C_2 $ be a nonconstant morphism of smooth projective curves. Let
+$$ \function[\phi^*]{K\br{C_2}}{K\br{C_1}}{f}{f \circ \phi}. $$
+\begin{itemize}
+\item The \textbf{degree} of $ \phi $ is
+$$ \deg \phi = \sbr{K\br{C_1} : \phi^*K\br{C_2}}. $$
+\item $ \phi $ is \textbf{separable} if $ K\br{C_1} / \phi^*K\br{C_2} $ is a separable field extension, which is automatic if $ \ch K = 0 $.
+\item Suppose $ P \in C_1 $ and $ Q \in C_2 $ such that $ \phi : P \mapsto Q $. Let $ t \in K\br{C_2} $ be a uniformiser at $ Q $. The \textbf{ramification index} of $ \phi $ at $ P $ is
+$$ \e_\phi\br{P} = \ord_P \phi^*t, $$
+which is always at least one, and independent of $ t $.
+\end{itemize}
+\end{definition*}
+
+\begin{theorem}
+\label{thm:2.8}
+Let $ \phi : C_1 \to C_2 $ be a nonconstant morphism of smooth projective curves. Then
+$$ \sum_{P \in \phi^{-1}\br{Q}} \e_\phi\br{P} = \deg \phi, \qquad Q \in C_2. $$
+Moreover if $ \phi $ is separable then $ \e_\phi\br{P} = 1 $ for all but finitely many $ P \in C_1 $. In particular
+\begin{itemize}
+\item $ \phi $ is surjective, noting that $ K = \overline{K} $, and
+\item $ \#\phi^{-1}\br{Q} \le \deg \phi $, with equality for all but finitely many $ Q $, assuming $ \phi $ is separable.
+\end{itemize}
+\end{theorem}
+
+\begin{remark}
+\label{rem:2.9}
+Let $ C $ be an algebraic curve. A rational map is given by
+$$ \rational[\phi]{C}{\PP^n}{P}{\br{f_0\br{P} : \dots : f_n\br{P}}}, $$
+where $ f_0, \dots, f_n \in K\br{C} $ not all zero. A fact is if $ C $ is smooth then $ \phi $ is a morphism.
+\end{remark}
+
+\pagebreak
+
+\section{Weierstrass equations}
+
+In this section $ K $ is a perfect field, with algebraic closure $ \overline{K} $.
+
+\begin{definition*}
+An \textbf{elliptic curve} $ E $ over $ K $ is a smooth projective curve of genus one defined over $ K $ with a specified $ K $-rational point $ \OOO_E $.
+\end{definition*}
+
+\begin{example*}
+$ \cbr{X^3 + pY^3 + p^2Z^3 = 0} \subset \PP^2 $ for $ p $ prime is not an elliptic curve over $ \QQ $, since it has no $ \QQ $-points.
+\end{example*}
+
+\subsection{The Weierstrass form}
+
+\begin{theorem}
+\label{thm:3.1}
+Every elliptic curve $ E $ is isomorphic over $ K $ to a curve in Weierstrass form, via an isomorphism taking $ \OOO_E $ to $ \br{0 : 1 : 0} $.
+\end{theorem}
+
+\begin{remark*}
+Proposition \ref{prop:2.7} treated the special case where $ E $ is a smooth plane cubic and $ \OOO_E $ is a point of inflection.
+\end{remark*}
+
+\begin{fact*}
+If $ D \in \Div E $ is defined over $ K $, that is fixed by $ \Gal\br{\overline{K} / K} $, then $ \LLL\br{D} $ has a basis in $ K\br{E} $, not just in $ \overline{K}\br{E} $.
+\end{fact*}
+
+\begin{proof}
+Pick bases $ \abr{1, x} = \LLL\br{2\br{\OOO_E}} \subset \LLL\br{3\br{\OOO_E}} = \abr{1, x, y} $. Then $ \ord_{\OOO_E} x = -2 $ and $ \ord_{\OOO_E} y = -3 $. The seven elements $ 1, x, y, x^2, xy, x^3, y^2 $ in the six-dimensional vector space $ \LLL\br{6\br{\OOO_E}} $ must satisfy a dependence relation. Leaving out $ x^3 $ or $ y^2 $ gives a basis for $ \LLL\br{6\br{\OOO_E}} $ since each term has a different order pole at $ \OOO_E $, so the coefficients of $ x^3 $ and $ y^2 $ are nonzero. Rescaling $ x $ and $ y $ we get
+$$ y^2 + a_1xy + a_3y = x^3 + a_2x^2 + a_4x + a_6, \qquad a_i \in K. $$
+Let $ E' $ be the curve defined by this equation, or rather its projective closure. There is a morphism
+$$ \functions[\phi]{E}{E' \subset \PP^2}{P}{\br{x\br{P} : y\br{P} : 1} = \br{\dfrac{x}{y}\br{P} : 1 : \dfrac{1}{y}\br{P}}}{\OOO_E}{\br{0 : 1 : 0}}. $$
+Then
+$$ \sbr{K\br{E} : K\br{x}} = \deg \br{x : E \to \PP^1} = \ord_{\OOO_E} \dfrac{1}{x} = 2, \qquad \sbr{K\br{E} : K\br{y}} = \deg \br{y : E \to \PP^1} = \ord_{\OOO_E} \dfrac{1}{y} = 3, $$
+so
+$$
+\begin{tikzcd}
+& K\br{E} \arrow[dash]{d} \arrow[dash]{ddl}[swap]{2} \arrow[dash]{ddr}{3} & \\
+& K\br{x, y} \arrow[dash]{dl} \arrow[dash]{dr} & \\
+K\br{x} & & K\br{y}
+\end{tikzcd}.
+$$
+By the tower law, $ \sbr{K\br{E} : K\br{x, y}} = 1 $, so $ \deg \br{\phi : E \to E'} = 1 $, so $ \phi $ is birational. If $ E' $ is singular then $ E $ and $ E' $ are rational, a contradiction. So $ E' $ is smooth and we may apply Remark \ref{rem:2.9} to $ \phi^{-1} $ to see that $ \phi^{-1} $ is a morphism, so $ \phi $ is an isomorphism.
+\end{proof}
+
+\lecture{4}{Friday}{16/10/20}
+
+\begin{proposition}
+\label{prop:3.2}
+Let $ E $ and $ E' $ be elliptic curves over $ K $ in Weierstrass form. Then $ E \cong E' $ over $ K $ if and only if the Weierstrass equations are related by a change of variables
+$$ x = u^2x' + r, \qquad y = u^3y' + u^2sx' + t, \qquad u, r, s, t \in K, \qquad u \ne 0. $$
+\end{proposition}
+
+\begin{proof}
+Let $ \abr{1, x} = \LLL\br{2\br{\OOO_E}} = \abr{1, x'} $ and $ \abr{1, x, y} = \LLL\br{3\br{\OOO_E}} = \abr{1, x', y'} $. Then
+$$ x = \lambda x' + r, \qquad y = \mu y' + \sigma x' + t, \qquad \lambda, r, \mu, \sigma, t \in K, \qquad \lambda, \mu \ne 0. $$
+Looking at coefficients of $ x^3 $ and $ y^2 $, $ \lambda^3 = \mu^2 $, so $ \br{\lambda, \mu} = \br{u^2, u^3} $ for some $ u \in K^* $. Put $ s = \sigma / u^2 $.
+\end{proof}
+
+\pagebreak
+
+A Weierstrass equation defines an elliptic curve if and only if it defines a smooth curve, if and only if $ \Delta\br{a_1, \dots, a_6} \ne 0 $ where $ \Delta \in \ZZ\sbr{a_1, \dots, a_6} $ is a certain polynomial. If $ \ch K \ne 2, 3 $ then we can reduce to the case $ E $ is
+$$ y^2 = x^3 + ax + b, $$
+with \textbf{discriminant}
+$$ \Delta = -16\br{4a^3 + 27b^2}. $$
+
+\begin{corollary}
+Assume $ \ch K \ne 2, 3 $. Elliptic curves $ E = \cbr{y^2 = x^3 + ax + b} $ and $ E' = \cbr{y^2 = x^3 + a'x + b'} $ are isomorphic over $ K $ if and only if $ a' = u^4a $ and $ b' = u^6b $ for some $ u \in K^* $.
+\end{corollary}
+
+\begin{proof}
+$ E $ and $ E' $ are related as in Proposition \ref{prop:3.2} with $ r = s = t = 0 $.
+\end{proof}
+
+\begin{definition*}
+The \textbf{$ \j $-invariant} is
+$$ \j\br{E} = \dfrac{1728\br{4a^3}}{4a^3 + 27b^2}. $$
+\end{definition*}
+
+\begin{corollary}
+If $ E \cong E' $, then $ \j\br{E} = \j\br{E'} $, and the converse holds if $ K = \overline{K} $.
+\end{corollary}
+
+\begin{proof}
+$$ E \cong E' \quad \iff \quad \exists u \in K^*, \
+\begin{cases}
+a' = u^4a \\
+b' = u^6b
+\end{cases}
+\quad \implies \quad \br{a^3 : b^2} = \br{a'^3 : b'^2} \quad \iff \quad \j\br{E} = \j\br{E'}, $$
+and the converse holds if $ K = \overline{K} $.
+\end{proof}
+
+\pagebreak
+
+\section{Group law}
+
+Let $ E = E\br{\overline{K}} \subset \PP^2 $ be a smooth plane cubic, and let $ \OOO_E \in E\br{K} $. Then $ E $ meets each line in three points counted with multiplicity.
+
+\subsection{The Picard group law}
+
+Let $ P, Q \in E $, let $ S $ be the third point of intersection of $ PQ $ and $ E $, and let $ R $ be the third point of intersection of $ \OOO_ES $ and $ E $. We define
+$$ P \oplus Q = R. $$
+If $ P = Q $ then take $ \T_PE $ instead, etc. This is the \textbf{chord and tangent process}.
+
+\begin{theorem}
+\label{thm:4.1}
+$ \br{E, \oplus} $ is an abelian group.
+\end{theorem}
+
+Associativity is hard.
+
+\begin{definition*}
+$ D_1, D_2 \in \Div E $ are \textbf{linearly equivalent}, written $ D_1 \sim D_2 $, if there exists $ f \in \overline{K}\br{E}^* $ such that
+$$ \div f = D_1 - D_2. $$
+Let
+$$ \sbr{D} = \cbr{D' \st D' \sim D}. $$
+The \textbf{Picard group} is
+$$ \Pic E = \Div E / \sim. $$
+If
+$$ \Div^0 E = \ker \br{\deg : \Div E \to \ZZ} $$
+is the degree zero divisors on $ E $, let
+$$ \Pic^0 E = \Div^0 E / \sim. $$
+\end{definition*}
+
+Note that $ \div fg = \div f + \div g $.
+
+\begin{proposition}
+\label{prop:4.2}
+Let
+$$ \function[\psi]{E}{\Pic^0 E}{P}{\sbr{\br{P} - \br{\OOO_E}}}. $$
+Then
+\begin{enumerate}
+\item $ \psi\br{P \oplus Q} = \psi\br{P} + \psi\br{Q} $, and
+\item $ \psi $ is a bijection.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ P, Q \in E $, let $ S $ be the third point of intersection of $ PQ $ and $ E $, and let $ R $ be the third point of intersection of $ \OOO_ES $ and $ E $. Let $ l = 0 $ be the line $ PQ $ and let $ m = 0 $ be the line $ \OOO_ES $. Then
+$$ \div \dfrac{l}{m} = \br{P} + \br{S} + \br{Q} - \br{R} - \br{S} - \br{\OOO_E} = \br{P} + \br{Q} - \br{\OOO_E} - \br{P \oplus Q}, $$
+so $ \br{P \oplus Q} + \br{\OOO_E} \sim \br{P} + \br{Q} $. Thus $ \br{P \oplus Q} - \br{\OOO_E} \sim \br{P} - \br{\OOO_E} + \br{Q} - \br{\OOO_E} $, so $ \psi\br{P \oplus Q} = \psi\br{P} + \psi\br{Q} $.
+\item For injectivity, suppose $ \psi\br{P} = \psi\br{Q} $ for $ P \ne Q $. Then there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f = P - Q $, and $ \deg \br{f : E \to \PP^1} = \ord_P f = 1 $, so $ E \cong \PP^1 $, a contradiction. For surjectivity, let $ \sbr{D} \in \Pic^0 E $. Then $ D + \br{\OOO_E} $ has degree one. By Riemann Roch, $ \dim \LLL\br{D + \br{\OOO_E}} = 1 $, so there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f + D + \br{\OOO_E} \ge 0 $. Since $ \div f + D + \br{\OOO_E} $ has degree one, $ \div f + D + \br{\OOO_E} = \br{P} $ for some $ P \in E $, so $ \br{P} - \br{\OOO_E} \sim D $. Thus $ \psi\br{P} = \sbr{D} $.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of Theorem \ref{thm:4.1}]
+\hfill
+\begin{itemize}
+\item $ P \oplus Q = Q \oplus P $ is clear.
+\item $ \OOO_E $ is the identity. Let $ S $ be the third point of intersection of $ \OOO_EP $ and $ E $. Then $ P $ is the third point of intersection of $ \OOO_ES $ and $ E $, so $ \OOO_E \oplus P = P $.
+\item Inverses. Let $ S $ be the third point of intersection of $ \T_{\OOO_E}E $ and $ E $, and let $ Q $ be the third point of intersection of $ PS $ and $ E $. Then $ S $ is the third point of intersection of $ PQ $ and $ E $, and $ \OOO_E $ is the third point of intersection of $ \OOO_ES $ and $ E $, so $ P \oplus Q = \OOO_E $.
+\item By Proposition \ref{prop:4.2},
+$$ \psi\br{\br{P \oplus Q} \oplus R} = \psi\br{P \oplus Q} + \psi\br{R} = \psi\br{P} + \psi\br{Q} + \psi\br{R} = \psi\br{P} + \psi\br{Q \oplus R} = \psi\br{P \oplus \br{Q \oplus R}}. $$
+Since $ \psi $ is injective, $ \br{P \oplus Q} \oplus R = P \oplus \br{Q \oplus R} $. We deduce that $ \oplus $ is associative, and
+$$ \psi : \br{E, \oplus} \xrightarrow{\sim} \br{\Pic^0 E, +} $$
+is an isomorphism of groups. Note that we did not need $ \psi $ surjective for the proof that $ \oplus $ is associative.
+\end{itemize}
+\end{proof}
+
+\subsection{Explicit formulae for the group law}
+
+\lecture{5}{Monday}{19/10/20}
+
+We consider $ E $ in Weierstrass form
+\begin{equation}
+\label{eq:3}
+y^2 + a_1xy + a_3y = x^3 + a_2x^2 + a_4x + a_6,
+\end{equation}
+and $ \OOO_E $ is the point at infinity.
+
+\begin{remark*}
+$ \OOO_E $ is a point of inflection. So now $ P_1 \oplus P_2 \oplus P_3 = \OOO_E $ if and only if $ P_1, P_2, P_3 $ are collinear.
+\end{remark*}
+
+Let $ P_1 = \br{x_1, y_1} $ and $ P_2 = \br{x_3, y_3} $, let $ P' = \br{x', y'} $ be the third point of intersection of $ P_1P_2 = \cbr{y = \lambda x + \nu} $ and $ E $, and let $ P_3 = \br{x_3, y_3} $ be the second point of intersection between $ x = x' $ and $ E $, so $ P_3 = P_1 \oplus P_2 = \ominus P' $. Thus
+$$ \ominus P_1 = \br{x_1, -\br{a_1x_1 + a_3} - y_1}. $$
+Substituting $ y = \lambda x + \nu $ into $ \br{\ref{eq:3}} $ and looking at the coefficient of $ x^2 $ gives $ \lambda^2 + a_1\lambda - a_2 = x_1 + x_2 + x' $, so
+$$ x_3 = \lambda^2 + a_1\lambda - a_2 - x_1 - x_2, \qquad y_3 = -\br{a_1x' + a_3} - y' = -\br{a_1x' + a_3} - \br{\lambda x' + \nu} = -\br{\lambda + a_1}x_3 - \nu - a_3. $$
+It remains to find formulae for $ \lambda $ and $ \nu $.
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item $ x_1 = x_2 $ and $ P_1 \ne P_2 $. Then $ P_1 \oplus P_2 = \OOO_E $.
+\item $ x_1 \ne x_2 $. Then
+$$ \lambda = \dfrac{y_2 - y_1}{x_2 - x_1}, \qquad \nu = y_1 - \lambda x_1 = \dfrac{y_1\br{x_2 - x_1} - \br{y_2 - y_1}x_1}{x_2 - x_1} = \dfrac{y_1x_2 - y_2x_1}{x_2 - x_1}. $$
+\item $ x_1 = x_2 $ and $ P_1 = P_2 $. Then
+$$ \lambda = \dfrac{3x_1^2 + 2a_2x_1 + a_4 - a_1y_1}{2y_1 + a_1x_1 + a_3}, \qquad \nu = \dfrac{-x_1^3 + a_4x_1 + 2a_6 - a_3y_1}{2y_1 + a_1x_1 + a_3}. $$
+\end{enumerate}
+
+\begin{corollary}
+$ E\br{K} $ is an abelian group.
+\end{corollary}
+
+\begin{proof}
+It is a subgroup of $ E = E\br{\overline{K}} $.
+\begin{itemize}
+\item Identity is $ \OOO_E \in E\br{K} $ by definition.
+\item Closure and inverses are by the formulae above.
+\item Associativity and commutativity are inherited.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\subsection{Maps on an elliptic curve}
+
+\begin{theorem}
+\label{thm:4.4}
+Elliptic curves are group varieties. That is,
+$$ \function[\sbr{-1}]{E}{E}{P}{-P}, \qquad \function[+]{E \times E}{E}{\br{P, Q}}{P + Q} $$
+are morphisms of algebraic varieties.
+\end{theorem}
+
+\begin{proof}
+The above formulae show $ \sbr{-1} $ and $ + $ are rational maps. By Remark \ref{rem:2.9}, $ \sbr{-1} : E \to E $ is a morphism. The formulae also show, by case $ 2 $, that $ + $ is regular on
+$$ U = \cbr{\br{P, Q} \in E \times E \st P, Q, P + Q, P - Q \ne \OOO_E}. $$
+For $ P \in E $ let translation by $ P $ be
+$$ \function[\tau_P]{E}{E}{X}{P + X}, $$
+which is a rational map and therefore a morphism. Let $ A, B \in E $. We factor $ + $ as
+$$ E \times E \xrightarrow{\tau_{-A} \times \tau_{-B}} E \times E \xrightarrow{+} E \xrightarrow{\tau_{A + B}} E. $$
+Thus $ + $ is regular on $ \br{\tau_A \times \tau_B}\br{U} $ for all $ A, B \in E $, so $ + $ is regular on $ E \times E $.
+\end{proof}
+
+\begin{definition*}
+For $ n \in \ZZ $ let
+$$ \function[\sbr{n}]{E}{E}{P}{\underbrace{P + \dots + P}_n}, $$
+and $ \sbr{-n} = \sbr{-1} \circ \sbr{n} $. The \textbf{$ n $-torsion subgroup} of $ E $ is
+$$ E\sbr{n} = \ker \br{\sbr{n} : E \to E}. $$
+\end{definition*}
+
+\begin{lemma}
+\label{lem:4.5}
+Assume $ \ch K \ne 2 $. Let $ E $ be
+$$ y^2 = \br{x - e_1}\br{x - e_2}\br{x - e_3}, $$
+for $ e_1, e_2, e_3 \in \overline{K} $ distinct. Then
+$$ E\sbr{2} = \cbr{\OOO, \br{e_1, 0}, \br{e_2, 0}, \br{e_3, 0}} \cong \br{\ZZ / 2\ZZ}^2. $$
+\end{lemma}
+
+\begin{proof}
+Let $ P = \br{x, y} \in E $. Then $ \sbr{2}P = 0 $ if and only if $ P = -P $, if and only if $ \br{x, y} = \br{x, -y} $, if and only if $ y = 0 $.
+\end{proof}
+
+\subsection{Elliptic curves over \texorpdfstring{$ \CC $}{C}}
+
+Let $ \Lambda = \cbr{a\omega_1 + b\omega_2 \st a, b \in \ZZ} $ for $ \omega_1 $ and $ \omega_2 $ a basis for $ \CC $ as an $ \RR $-vector space. Then
+$$ \correspondence{\text{meromorphic functions on} \\ \text{Riemann surface} \ \CC / \Lambda}{\text{$ \Lambda $-invariant meromorphic} \\ \text{functions on} \ \CC}. $$
+This field is generated by $ \wp\br{z} $ and $ \wp'\br{z} $ where
+$$ \wp\br{z} = \dfrac{1}{z^2} + \sum_{0 \ne \lambda \in \Lambda} \br{\dfrac{1}{\br{z - \lambda}^2} - \dfrac{1}{\lambda^2}}. $$
+They satisfy
+$$ \wp'\br{z}^2 = 4\wp\br{z}^3 - g_2\wp\br{z} - g_3 $$
+for some $ g_2, g_3 \in \CC $ depending on $ \Lambda $. One shows that
+$$ \CC / \Lambda \cong E\br{\CC} $$
+is an isomorphism as Riemann surfaces and as groups, where $ E $ is the elliptic curve
+$$ y^2 = 4x^3 - g_2x - g_3. $$
+
+\pagebreak
+
+\begin{theorem}[Uniformisation theorem]
+Every elliptic curve over $ \CC $ arises in this way.
+\end{theorem}
+
+For elliptic curves $ E / \CC $ we have
+\begin{enumerate}
+\item $ E\sbr{n} \cong \br{\ZZ / n\ZZ}^2 $, and
+\item $ \deg \sbr{n} = n^2 $.
+\end{enumerate}
+We show $ 2 $ holds over any field $ K $ and $ 1 $ holds if $ \ch K \nmid n $.
+
+\subsection{Group structure over other fields}
+
+The following will be a summary of the results.
+\begin{enumerate}
+\item If $ K = \CC $, then
+$$ E\br{\CC} \cong \CC / \Lambda \cong \RR / \ZZ \times \RR / \ZZ. $$
+\item If $ K = \RR $, then
+$$ E\br{\RR} \cong
+\begin{cases}
+\ZZ / 2\ZZ \times \RR / \ZZ & \Delta > 0 \\
+\RR / \ZZ & \Delta < 0
+\end{cases}.
+$$
+\item If $ K = \FF_q $, then Hasse's theorem states that
+$$ \abs{\#E\br{\FF_q} - \br{q + 1}} \le 2\sqrt{q}. $$
+\item If $ \sbr{K : \QQ_p} < \infty $ with ring of integers $ \OOO_K $, then $ E\br{K} $ has a subgroup of finite index isomorphic to $ \br{\OOO_K, +} $.
+\item If $ \sbr{K : \QQ} < \infty $, then the Mordell-Weil theorem states that $ E\br{K} $ is a finitely generated abelian group.
+\end{enumerate}
+Note that the isomorphisms in $ 1 $, $ 2 $, and $ 4 $ respect the relevant topologies.
+
+\pagebreak
+
+\section{Isogenies}
+
+\lecture{6}{Wednesday}{21/10/20}
+
+\begin{definition*}
+Let $ E_1 $ and $ E_2 $ be elliptic curves.
+\begin{itemize}
+\item An \textbf{isogeny} $ \phi : E_1 \to E_2 $ is a nonconstant morphism with $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $, which is if and only if it is surjective on $ \overline{K} $-points, by Theorem \ref{thm:2.8}. We say $ E_1 $ and $ E_2 $ are \textbf{isogenous}.
+\item Let
+$$ \Hom\br{E_1, E_2} = \cbr{\text{isogenies} \ E_1 \to E_2} \cup \cbr{0}. $$
+This is a group under $ \br{\phi + \psi}\br{P} = \phi\br{P} + \psi\br{P} $. If $ \phi : E_1 \to E_2 $ and $ \psi : E_2 \to E_3 $ are isogenies then $ \psi \circ \phi $ is an isogeny. By the tower law, $ \deg \br{\psi \circ \phi}  = \deg \phi\deg \psi $.
+\end{itemize}
+\end{definition*}
+
+\begin{lemma}
+If $ 0 \ne n \in \ZZ $ then $ \sbr{n} : E \to E $ is an isogeny.
+\end{lemma}
+
+\begin{proof}
+By Theorem \ref{thm:4.4}, $ \sbr{n} $ is a morphism. We must show $ \sbr{n} \ne 0 $. Assume $ \ch K \ne 2 $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ n = 2 $.] By Lemma \ref{lem:4.5}, $ \#E\sbr{2} = 4 $, so $ \sbr{2} \ne 0 $.
+\item[$ n $ odd.] By Lemma \ref{lem:4.5}, there exists $ 0 \ne T \in E\sbr{2} $. Then $ nT = T \ne 0 $, so $ \sbr{n} \ne 0 $.
+\end{itemize}
+Now use $ \sbr{mn} = \sbr{m} \circ \sbr{n} $. If $ \ch K = 2 $ then replace Lemma \ref{lem:4.5} with a lemma computing $ E\sbr{3} $.
+\end{proof}
+
+A corollary is that $ \Hom\br{E_1, E_2} $ is torsion-free as a $ \ZZ $-module.
+
+\subsection{Basic properties}
+
+\begin{lemma}
+Let $ \phi : E_1 \to E_2 $ be an isogeny. Then
+$$ \phi\br{P + Q} = \phi\br{P} + \phi\br{Q}, \qquad P, Q \in E_1. $$
+\end{lemma}
+
+\begin{proof}
+$ \phi $ induces a map
+$$ \function[\phi_*]{\Div^0 E_1}{\Div^0 E_2}{\displaystyle\sum_{P \in E} n_P\br{P}}{\displaystyle\sum_{P \in E} n_P\br{\phi\br{P}}}. $$
+Recall $ \phi^* : K\br{E_2} \hookrightarrow K\br{E_1} $. A fact is that
+$$ \div \br{\N_{K\br{E_1} / K\br{E_2}} f} = \phi_*\br{\div f}, \qquad f \in K\br{E_1}^*. $$
+So $ \phi_* $ takes principal divisors to principal divisors. Since $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $ the diagram
+$$
+\begin{tikzcd}
+E_1 \arrow{r}{\phi} \arrow{d}{\sim}[swap]{P \mapsto \sbr{\br{P} - \br{\OOO_{E_1}}}} & E_2 \arrow{d}{Q \mapsto \sbr{\br{Q} - \br{\OOO_{E_2}}}}[swap]{\sim} \\
+\Pic^0 E_1 \arrow{r}[swap]{\phi_*} & \Pic^0 E_2
+\end{tikzcd}
+$$
+commutes. Since $ \phi_* $ is a group homomorphism, $ \phi $ is group homomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lem:5.3}
+Let $ \phi : E_1 \to E_2 $ be an isogeny. Then there exists a morphism $ \xi $ making the diagram
+$$
+\begin{tikzcd}
+E_1 \arrow{r}{\phi} \arrow{d}[swap]{x_1} & E_2 \arrow{d}{x_2} \\
+\PP^1 \arrow{r}[swap]{\xi} & \PP^1
+\end{tikzcd}
+$$
+commute, where $ x_i $ is the $ x $-coordinate on a Weierstrass equation for $ E_i $. Moreover if $ \xi\br{t} = r\br{t} / s\br{t} $ for $ r, s \in K\sbr{t} $ coprime then $ \deg \phi = \deg \xi = \max\br{\deg r, \deg s} $.
+\end{lemma}
+
+\pagebreak
+
+\begin{proof}
+For $ i = 1, 2 $, $ K\br{E_i} / K\br{x_i} $ is a degree two Galois extension with Galois group generated by $ \sbr{-1}^* $. Since $ \phi $ is a group homomorphism we have $ \phi \circ \sbr{-1} = \sbr{-1} \circ \phi $. If $ f \in K\br{x_2} $ then $ \sbr{-1}^*f = f $ and $ \sbr{-1}^*\br{\phi^*f} = \phi^*\br{\sbr{-1}^*f} = \phi^*f $, so $ \phi^*f \in K\br{x_1} $. Taking $ f = x_2 $ gives $ \phi^*x_2 = \xi\br{x_1} $ for some rational function $ \xi $, so
+$$
+\begin{tikzcd}
+& K\br{E_1} \arrow[dash]{dl}[swap]{2} \arrow[dash]{dd}{\deg \phi} \\
+K\br{x_1} \arrow[dash]{dd}[swap]{\deg \xi} & \\
+& K\br{E_2} \arrow[dash]{dl}{2} \\
+K\br{x_2} &
+\end{tikzcd}.
+$$
+By the tower law, $ 2\deg \phi = 2\deg \xi $. Now
+$$ \function[\phi^*]{K\br{x_2}}{K\br{x_1}}{x_2}{\xi\br{x_1} = \dfrac{r\br{x_1}}{s\br{x_1}}}, $$
+for $ r, s \in K\sbr{t} $ coprime. Claim that the minimal polynomial of $ x_1 $ over $ K\br{x_2} $ is
+$$ f\br{t} = r\br{t} - s\br{t}x_2 \in K\br{x_2}\sbr{t}. $$
+Check that $ f\br{x_1} = 0 $ and $ f $ is irreducible in $ K\sbr{x_2, t} $, since $ r $ and $ s $ are coprime. By Gauss' lemma, $ f $ is irreducible in $ K\br{x_2}\sbr{t} $. Thus
+$$ \deg \phi = \deg \xi = \sbr{K\br{x_1} : K\br{x_2}} = \deg f = \max\br{\deg r, \deg s}. $$
+\end{proof}
+
+\begin{lemma}
+$ \deg \sbr{2} = 4 $.
+\end{lemma}
+
+\begin{proof}
+Assuming $ \ch K \ne 2, 3 $, let $ E $ be $ y^2 = f\br{x} = x^3 + ax + b $. If $ P = \br{x, y} $ then
+$$ x\br{2P} = \br{\dfrac{3x^2 + a}{2y}}^2 - 2x = \dfrac{\br{3x^2 + a}^2 - 8xf\br{x}}{4f\br{x}} = \dfrac{x^4 + \dots}{4f\br{x}}. $$
+The numerator and denominator are coprime. Indeed otherwise there exists $ \theta \in \overline{K} $ with $ f\br{\theta} = f'\br{\theta} = 0 $, so $ f $ has a multiple root, a contradiction. By Lemma \ref{lem:5.3}, $ \deg \sbr{2} = \max\br{4, 3} = 4 $.
+\end{proof}
+
+\subsection{The degree quadratic form}
+
+\lecture{7}{Friday}{23/10/20}
+
+\begin{definition*}
+Let $ A $ be an abelian group. Then $ q : A \to \ZZ $ is a \textbf{quadratic form} if
+\begin{enumerate}
+\item $ q\br{nx} = n^2q\br{x} $ for all $ n \in \ZZ $ and all $ x \in A $, and
+\item $ \br{x, y} \mapsto q\br{x + y} - q\br{x} - q\br{y} $ is $ \ZZ $-bilinear.
+\end{enumerate}
+\end{definition*}
+
+\begin{lemma}
+$ q : A \to \ZZ $ is a quadratic form if and only if it satisfies the \textbf{parallelogram law}
+$$ q\br{x + y} + q\br{x - y} = 2q\br{x} + 2q\br{y}, \qquad x, y \in A. $$
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item[$ \implies $] Let $ \abr{x, y} = q\br{x + y} - q\br{x} - q\br{y} $. Then $ \abr{x, x} = q\br{2x} - 2q\br{x} = 2q\br{x} $ by $ 1 $ with $ n = 2 $. But by $ 2 $,
+$$ q\br{x + y} + q\br{x - y} = \tfrac{1}{2}\abr{x + y, x + y} + \tfrac{1}{2}\abr{x - y, x - y} = \abr{x, x} + \abr{y, y} = 2q\br{x} + 2q\br{y}. $$
+\item[$ \impliedby $] On example sheet $ 2 $.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\begin{theorem}
+\label{thm:5.6}
+$ \deg : \Hom\br{E_1, E_2} \to \ZZ $ is a quadratic form.
+\end{theorem}
+
+Note that $ \deg 0 = 0 $. For the proof we assume $ \ch K \ne 2, 3 $. We write $ E_2 $ as $ y^2 = x^3 + ax + b $. Let $ P, Q \in E_2 $ with $ P, Q, P + Q, P - Q \ne 0 $. Let $ x_1, \dots, x_4 $ be the $ x $-coordinates of these four points.
+
+\begin{lemma}
+\label{lem:5.7}
+There exist $ w_0, w_1, w_2 \in \ZZ\sbr{a, b}\sbr{x_1, x_2} $ of degree at most two in $ x_1 $ and degree at most two in $ x_2 $ such that $ \br{1 : x_3 + x_4 : x_3x_4} = \br{w_0 : w_1 : w_2} $.
+\end{lemma}
+
+\begin{proof}
+By direct calculation,
+$$ w_0 = \br{x_1 - x_2}^2, \qquad w_1 = 2\br{x_1x_2 + a}\br{x_1 + x_2} + 4b, \qquad w_2 = x_1^2x_2^2 - 2ax_1x_2 - 4b\br{x_1 + x_2} + a^2. $$
+Alternatively, let $ y = \lambda x + \nu $ be the line through $ P $ and $ Q $. Then
+$$ x^3 + ax + b - \br{\lambda x + \nu}^2 = \br{x - x_1}\br{x - x_2}\br{x - x_3} = x^3 - s_1x^2 + s_2x - s_3, $$
+where $ s_i $ is the $ i $-th symmetric polynomial in $ x_1, x_2, x_3 $. Comparing coefficients gives $ \lambda^2 = s_1 $, $ -2\lambda\nu = s_2 - a $, and $ \nu^2 = s_3 + b $. Eliminating $ \lambda $ and $ \nu $ gives
+$$ F\br{x_1, x_2, x_3} = \br{s_2 - a}^2 - 4s_1\br{s_3 + b} = 0, $$
+which has degree at most two in each $ x_i $. Then $ x_3 $ is a root of the quadratic polynomial $ w\br{t} = F\br{x_1, x_2, t} $. Repeating for the line through $ P $ and $ -Q $ shows that $ x_4 $ is the other root. Thus $ w_0\br{t - x_3}\br{t - x_4} = w\br{t} = w_0t^2 - w_1t + w_2 $, so $ \br{1 : x_3 + x_4 : x_3x_4} = \br{w_0 : w_1 : w_2} $.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:5.6}]
+We show that if $ \phi, \psi \in \Hom\br{E_1, E_2} $ then
+$$ \deg \br{\phi + \psi} + \deg \br{\phi - \psi} \le 2\deg \phi + 2\deg \psi. $$
+We may assume $ \phi, \psi, \phi + \psi, \phi - \psi \ne 0 $, otherwise trivial, or use $ \deg \sbr{2} = 4 $. Let
+$$ \phi : \br{x, y} \mapsto \br{\xi_1\br{x}, \dots}, \qquad \psi : \br{x, y} \mapsto \br{\xi_2\br{x}, \dots}, $$
+$$ \phi + \psi : \br{x, y} \mapsto \br{\xi_3\br{x}, \dots}, \qquad \phi - \psi : \br{x, y} \mapsto \br{\xi_4\br{x}, \dots}. $$
+By Lemma \ref{lem:5.7},
+$$ \br{1 : \xi_3\br{x} + \xi_4\br{x} : \xi_3\br{x}\xi_4\br{x}} = \br{w_0 : w_1 : w_2}, $$
+where $ w_0, w_1, w_2 $ are in terms of $ \xi_1\br{x} $ and $ \xi_2\br{x} $. Put $ \xi_i = r_i / s_i $ for $ r_i / s_i \in K\sbr{x} $ coprime. Then
+$$ \br{s_3\br{x}s_4\br{x} : r_3\br{x}s_4\br{x} + r_4\br{x}s_3\br{x} : r_3\br{x}r_4\br{x}} = \br{w_0 : w_1 : w_2}, $$
+where $ w_0, w_1, w_2 $ are in terms of $ r_1\br{x}, s_1\br{x}, r_2\br{x}, s_2\br{x} $, so
+\begin{align*}
+\deg \br{\phi + \psi} + \deg \br{\phi - \psi}
+& = \max\br{\deg r_3\br{x}, \deg s_3\br{x}} + \max\br{\deg r_4\br{x}, \deg s_4\br{x}} \\
+& = \max\br{\deg s_3\br{x}s_4\br{x}, \deg \br{r_3\br{x}s_4\br{x} + r_4\br{x}s_3\br{x}}, \deg r_3\br{x}r_4\br{x}} \\
+& \le 2\max\br{\deg r_1\br{x}, \deg s_1\br{x}} + 2\max\br{\deg r_2\br{x}, \deg s_2\br{x}} \\
+& = 2\deg \phi + 2\deg \psi,
+\end{align*}
+since $ s_3\br{x}s_4\br{x}, r_3\br{x}s_4\br{x} + r_4\br{x}s_3\br{x}, r_3\br{x}r_4\br{x} $ are coprime. Now replace $ \phi $ and $ \psi $ by $ \phi + \psi $ and $ \phi - \psi $ to get
+$$ \deg 2\phi + \deg 2\psi \le 2\deg \br{\phi + \psi} + 2\deg \br{\phi - \psi}. $$
+Since $ \deg \sbr{2} = 4 $ we get
+$$ 2\deg \phi + 2\deg \psi \le \deg \br{\phi + \psi} + \deg \br{\phi - \psi}. $$
+Thus $ \deg $ satisfies the parallelogram law, so $ \deg $ is a quadratic form.
+\end{proof}
+
+\begin{corollary}
+$ \deg n\phi = n^2\deg \phi $ for all $ n \in \ZZ $ and $ \phi \in \Hom\br{E_1, E_2} $. In particular $ \deg \sbr{n} = n^2 $.
+\end{corollary}
+
+\pagebreak
+
+\begin{example}
+Let $ E / K $ be an elliptic curve, and let $ 0 \ne T \in E\br{K}\sbr{2} $. Suppose $ \ch K \ne 2 $. Without loss of generality $ E $ is
+$$ y^2 = x\br{x^2 + ax + b}, \qquad a, b \in K, \qquad b\br{a^2 - 4b} \ne 0, $$
+and $ T = \br{0, 0} $. If $ P = \br{x, y} $ and $ P' = P + T = \br{x', y'} $, then
+$$ x' = \br{\dfrac{y}{x}}^2 - x - a = \dfrac{x^2 + ax + b}{x} - x - a = \dfrac{b}{x}, \qquad y' = -\br{\dfrac{y}{x}}x' = -\dfrac{by}{x^2}. $$
+Let
+$$ \xi = x + x' + a = \dfrac{x^2 + ax + b}{x} = \br{\dfrac{y}{x}}^2, \qquad \eta = y + y' = \br{\dfrac{y}{x}}\br{x - \dfrac{b}{x}}. $$
+Then
+$$ \eta^2 = \br{\dfrac{y}{x}}^2\br{\br{x + \dfrac{b}{x}}^2 - 4b} = \xi\br{\br{\xi - a}^2 - 4b} = \xi\br{\xi^2 - 2a\xi + a^2 - 4b}. $$
+Let $ E' $ be
+$$ y^2 = x\br{x^2 + a'x + b'}, \qquad a' = -2a, \qquad b' = a^2 - 4b. $$
+There is an isogeny
+$$ \functions[\phi]{E}{E'}{\br{x, y}}{\br{\br{\dfrac{y}{x}}^2 : \dfrac{y\br{x^2 - b}}{x^2} : 1}}{\OOO_E}{\br{0 : 1 : 0}}. $$
+Then $ \br{y / x}^2 = \br{x^2 + ax + b} / x $, which are coprime since $ b \ne 0 $. By Lemma \ref{lem:5.3}, $ \deg \phi = 2 $. We say $ \phi $ is a \textbf{$ 2 $-isogeny}.
+\end{example}
+
+\end{document}
