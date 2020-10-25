@@ -1,0 +1,932 @@
+\def\module{Local Fields}
+\def\lecturer{Dr Rong Zhou}
+\def\term{Michaelmas 2020}
+\def\cover{}
+\def\syllabus{}
+\def\thm{subsection}
+
+\input{../style/header}
+
+\begin{document}
+
+\input{../style/cover}
+
+\setcounter{section}{0}
+
+\section{Basic theory}
+
+\lecture{1}{Friday}{09/10/20}
+
+How can we find solutions to Diophantine equations? Let $ f\br{x_1, \dots, x_r} \in \ZZ\sbr{x_1, \dots, x_r} $ be a polynomial with integer coefficients. What are integer or rational solutions to $ f\br{x_1, \dots, x_r} = 0 $? Finding solutions to Diophantine equations in general is a very difficult problem. Consider a related but much simpler problem of solving the congruences
+$$ f\br{x_1, \dots, x_r} \equiv 0 \mod p, \qquad \dots, \qquad f\br{x_1, \dots, x_r} \equiv 0 \mod p^n, \qquad \dots. $$
+Now this is just a finite computation, since modulo primes there are only finitely many choices for solutions, so this is a much easier problem. Local fields give a way to package all this information together.
+
+\subsection{Absolute values}
+
+\begin{definition}
+Let $ K $ be a field. An \textbf{absolute value} on $ K $ is a function $ \abs{\cdot} : K \to \RR_{\ge 0} $ such that,
+\begin{enumerate}
+\item $ \abs{x} = 0 $ if and only if $ x = 0 $,
+\item $ \abs{xy} = \abs{x}\abs{y} $ for all $ x, y \in K $, and
+\item the triangle inequality $ \abs{x + y} \le \abs{x} + \abs{y} $ for all $ x, y \in K $.
+\end{enumerate}
+We say $ \br{K, \abs{\cdot}} $ is a \textbf{valued field}.
+\end{definition}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Let $ K = \RR, \CC $ with the usual absolute value. Write $ \abs{\cdot}_\infty $ for this absolute value.
+\item Let $ K $ be any field. The \textbf{trivial absolute value} on $ K $ is defined by
+$$ \abs{x} =
+\begin{cases}
+0 & x = 0 \\
+1 & x \ne 0
+\end{cases}.
+$$
+Ignore this case in this course.
+\item Let $ K = \QQ $ and $ p $ a prime. For $ 0 \ne x \in \QQ $, write $ x = p^n\br{a / b} $, where $ a, b \in \ZZ $ such that $ \br{a, p} = 1 $ and $ \br{b, p} = 1 $. The \textbf{p-adic absolute value} is defined to be
+$$ \abs{x}_p =
+\begin{cases}
+0 & x = 0 \\
+p^{-n} & x = p^n\dfrac{a}{b}
+\end{cases}.
+$$
+Axiom $ 1 $ is clear. Write $ y = p^m\br{c / d} $. Axiom $ 2 $ is
+$$ \abs{xy}_p = \abs{p^{m + n}\dfrac{ac}{bd}}_p = p^{-m - n} = \abs{x}_p\abs{y}_p. $$
+Without loss of generality $ m \ge n $. Axiom $ 3 $ is
+$$ \abs{x + y}_p = \abs{p^n\dfrac{ad + p^{m - n}bc}{bd}}_p = \abs{p^n}_p\abs{\dfrac{ad + p^{m - n}bc}{bd}}_p \le p^{-n} = \max\br{\abs{x}_p, \abs{y}_p}. $$
+\end{itemize}
+\end{example*}
+
+An absolute value on $ K $ induces a metric $ \d\br{x, y} = \abs{x - y} $ on $ K $, hence induces a topology on $ K $.
+
+\begin{exercise*}
+$ + $ and $ \cdot $ are continuous.
+\end{exercise*}
+
+\begin{definition}
+Let $ \abs{\cdot} $ and $ \abs{\cdot}' $ be absolute values on a field $ K $. We say $ \abs{\cdot} $ and $ \abs{\cdot}' $ are \textbf{equivalent} if they induce the same topology. An equivalence class of absolute values is called a \textbf{place}.
+\end{definition}
+
+\pagebreak
+
+\begin{proposition}
+Let $ \abs{\cdot} $ and $ \abs{\cdot}' $ be non-trivial absolute values on $ K $. The following are equivalent.
+\begin{enumerate}
+\item $ \abs{\cdot} $ and $ \abs{\cdot}' $ are equivalent.
+\item $ \abs{x} < 1 $ if and only if $ \abs{x}' < 1 $ for all $ x \in K $.
+\item There exists $ c \in \RR_{> 0} $ such that $ \abs{x}^c = \abs{x}' $ for all $ x \in K $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}[leftmargin=0.5in]
+\item[$ 1 \implies 2 $.] $ \abs{x} < 1 $ if and only if $ x^n \to 0 $ with respect to $ \abs{\cdot} $, if and only if $ x^n \to 0 $ with respect to $ \abs{\cdot}' $, if and only if $ \abs{x}' < 1 $.
+\item[$ 2 \implies 3 $.] Let $ a \in K^\times $ such that $ \abs{a} < 1 $, which exists since $ \abs{\cdot} $ is non-trivial. We need to show that
+$$ \dfrac{\log \abs{x}}{\log \abs{a}} = \dfrac{\log \abs{x}'}{\log \abs{a}'}, \qquad x \in K^\times. $$
+Assume $ \log \abs{x} / \log \abs{a} < \log \abs{x}' / \log \abs{a}' $. Choose $ m, n \in \ZZ $ such that
+$$ \dfrac{\log \abs{x}}{\log \abs{a}} < \dfrac{m}{n} < \dfrac{\log \abs{x}'}{\log \abs{a}'}. $$
+Then we have $ n\log \abs{x} < m\log \abs{a} $ and $ n\log \abs{x}' > m\log \abs{a}' $, so $ \abs{x^n / a^m} < 1 $ and $ \abs{x^n / a^m}' > 1 $, a contradiction. Similarly for $ \log \abs{x} / \log \abs{a} > \log \abs{x}' / \log \abs{a}' $.
+\item[$ 3 \implies 1 $.] Clear.
+\end{itemize}
+\end{proof}
+
+This course is mainly interested in the following types of absolute values.
+
+\begin{definition}
+An absolute value $ \abs{\cdot} $ on $ K $ is said to be \textbf{non-archimedean} if it satisfies the \textbf{ultrametric inequality}
+$$ \abs{x + y} \le \max\br{\abs{x}, \abs{y}}. $$
+If $ \abs{\cdot} $ is not non-archimedean, then it is \textbf{archimedean}.
+\end{definition}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \abs{\cdot}_\infty $ on $ \RR $ is archimedean.
+\item $ \abs{\cdot}_p $ is a non-archimedean absolute value on $ \QQ $.
+\end{itemize}
+\end{example*}
+
+\begin{lemma}[All triangles are isosceles]
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ x, y \in K $. If $ \abs{x} < \abs{y} $, then $ \abs{x - y} = \abs{y} $.
+\end{lemma}
+
+\begin{fact*}
+\hfill
+\begin{itemize}
+\item $ \abs{1} = \abs{-1} = 1 $.
+\item $ \abs{-y} = \abs{y} $.
+\end{itemize}
+\end{fact*}
+
+\begin{proof}
+$ \abs{x - y} \le \max\br{\abs{x}, \abs{y}} = \abs{y} $, and $ \abs{y} \le \max\br{\abs{x}, \abs{x - y}} $, so $ \abs{y} \le \abs{x - y} $.
+\end{proof}
+
+Convergence is easier for non-archimedean $ \abs{\cdot} $.
+
+\begin{proposition}
+Let $ \br{K, \abs{\cdot}} $ be non-archimedean and $ \br{x_n}_{n = 1}^\infty $ a sequence in $ K $. If $ \abs{x_n - x_{n + 1}} \to 0 $, then $ \br{x_n}_{n = 1}^\infty $ is Cauchy. In particular, if $ K $ is in addition complete, then $ \br{x_n}_{n = 1}^\infty $ converges.
+\end{proposition}
+
+\begin{proof}
+For $ \epsilon > 0 $, choose $ N $ such that $ \abs{x_n - x_{n + 1}} < \epsilon $ for all $ n > N $. Then for $ N < n < m $,
+$$ \abs{x_n - x_m} = \abs{\br{x_n - x_{n + 1}} + \dots + \br{x_{m - 1} - x_m}} < \epsilon, $$
+so $ \br{x_n}_{n = 1}^\infty $ is Cauchy.
+\end{proof}
+
+\pagebreak
+
+\begin{example*}
+Let $ p = 5 $. Construct a sequence $ \br{x_n}_{n = 1}^\infty $ such that
+\begin{enumerate}
+\item $ x_n^2 + 1 \equiv 0 \mod 5^n $, and
+\item $ x_n \equiv x_{n + 1} \mod 5^n $,
+\end{enumerate}
+as follows. Take $ x_1 = 2 $. Suppose have constructed $ x_n $. Let $ x_n^2 + 1 = a5^n $ and set $ x_{n + 1} = x_n + b5^n $. Then
+$$ x_{n + 1}^2 + 1 = x_n^2 + 2bx_n5^n + b^25^{2n} + 1 = a5^n + 2x_nb5^n + b^25^{2n} \equiv \br{a + 2x_nb}5^n \mod 5^{n + 1}. $$
+We choose $ b $ such that $ a + 2x_nb \equiv 0 \mod 5 $. Then we have $ x_{n + 1}^2 + 1 \equiv 0 \mod 5^{n + 1} $ as desired. By $ 2 $, $ \br{x_n}_{n = 1}^\infty $ is Cauchy. Suppose $ x_n \to L \in \QQ $. Then $ x_n^2 \to L^2 $. But by $ 1 $, $ x_n^2 \to -1 $, so $ L^2 = -1 $, a contradiction. Thus $ \br{\QQ, \abs{\cdot}_5} $ is not complete.
+\end{example*}
+
+\begin{definition}
+The \textbf{$ p $-adic numbers} $ \QQ_p $ is the completion of $ \QQ $ with respect to $ \abs{\cdot}_p $.
+\end{definition}
+
+\begin{remark*}
+By analogy, $ \RR $ is the completion of $ \QQ $ with respect to $ \abs{\cdot}_\infty $.
+\end{remark*}
+
+\lecture{2}{Monday}{12/10/20}
+
+Let $ K $ be a non-archimedean valued field. For $ x \in K $ and $ r \in \RR_{> 0} $, define
+$$ \B\br{x, r} = \cbr{y \in K \st \abs{x - y} < r}, \qquad \overline{\B}\br{x, r} = \cbr{y \in K \st \abs{x - y} \le r}. $$
+
+\begin{lemma}
+Let $ \br{K, \abs{\cdot}} $ be non-archimedean.
+\begin{enumerate}
+\item If $ z \in \B\br{x, r} $, then $ \B\br{z, r} = \B\br{x, r} $, so open balls do not have centres.
+\item If $ z \in \overline{\B}\br{x, r} $, then $ \overline{\B}\br{z, r} = \overline{\B}\br{x, r} $.
+\item $ \B\br{x, r} $ is closed.
+\item $ \overline{\B}\br{x, r} $ is open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ y \in \B\br{x, r} $. Then $ \abs{x - y} < r $, so $ \abs{z - y} = \abs{\br{z - x} + \br{x - y}} \le \max\br{\abs{z - x}, \abs{x - y}} < r $. Thus $ \B\br{x, r} \subseteq \B\br{z, r} $. The reverse inclusion follows by symmetry.
+\item Same as $ 1 $.
+\item Let $ y \notin \B\br{x, r} $. If $ z \in \B\br{x, r} \cap \B\br{y, r} $, then $ \B\br{x, r} = \B\br{z, r} = \B\br{y, r} $, so $ y \in \B\br{x, r} $, a contradiction. Thus $ \B\br{x, r} \cap \B\br{y, r} = \emptyset $.
+\item If $ z \in \overline{\B}\br{x, r} $, then $ \B\br{z, r} \subseteq \overline{\B}\br{z, r} = \overline{\B}\br{x, r} $, by $ 2 $.
+\end{enumerate}
+\end{proof}
+
+\subsection{Valuation rings}
+
+\begin{definition}
+Let $ K $ be a field. A \textbf{valuation} on $ K $ is a function $ v : K^\times \to \RR $ such that
+\begin{itemize}
+\item $ v\br{xy} = v\br{x} + v\br{y} $, and
+\item $ v\br{x + y} \ge \min\br{v\br{x}, v\br{y}} $.
+\end{itemize}
+\end{definition}
+
+Fix $ 0 < \alpha < 1 $. If $ v $ is a valuation on $ K $, then
+$$ \abs{x} =
+\begin{cases}
+\alpha^{v\br{x}} & x \ne 0 \\
+0 & x = 0
+\end{cases}
+$$
+determines a non-archimedean absolute value. Conversely, a non-archimedean absolute value determines a valuation $ v\br{x} = \log_a \abs{x} $.
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item We ignore the trivial valuation $ v\br{x} = 0 $ for all $ x \in K^\times $, which corresponds to the trivial absolute value.
+\item Say $ v_1 $ and $ v_2 $ are \textbf{equivalent} if there exists $ c \in \RR_{> 0} $ such that $ v_1\br{x} = cv_2\br{x} $ for all $ x \in K^\times $.
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Let $ K = \QQ $. Then $ \v_p\br{x} = -\log_p \abs{x}_p $ is the \textbf{$ p $-adic valuation}.
+\item Let $ k $ be a field, and let $ K = k\br{t} = \Frac k\sbr{t} $ be the \textbf{rational function field}. Then
+$$ v\br{t^n\dfrac{f\br{t}}{g\br{t}}} = n, \qquad f, g \in k\sbr{t}, \qquad f\br{0}, g\br{0} \ne 0 $$
+is the \textbf{$ t $-adic valuation}.
+\item Let $ K = k\br{\br{t}} = \Frac k\sbr{\sbr{t}} = \cbr{\sum_{i = n}^\infty a_it^i \st a_i \in k, \ n \in \ZZ} $ be the \textbf{field of formal Laurent series} over $ k $. Then
+$$ v\br{\sum_i a_it^i} = \min \cbr{i \st a_i \ne 0} $$
+is the $ t $-adic valuation on $ K $.
+\end{itemize}
+\end{example*}
+
+\begin{definition}
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field. The \textbf{valuation ring} of $ K $ is defined to be
+$$ \OOO_K = \overline{\B}\br{0, 1} = \cbr{x \in K \st \abs{x} \le 1} = \cbr{x \in K^\times \st v\br{x} \ge 0} \cup \cbr{0}. $$
+\end{definition}
+
+\begin{proposition}
+\hfill
+\begin{enumerate}
+\item $ \OOO_K $ is an open subring of $ K $.
+\item The subsets $ \cbr{x \in K \st \abs{x} \le r} $ and $ \cbr{x \in K \st \abs{x} < r} $ for $ r \le 1 $ are open ideals in $ \OOO_K $.
+\item $ \OOO_K^\times = \cbr{x \in K \st \abs{x} = 1} $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item By last lecture, $ \abs{1} = 1 $, so $ 1 \in \OOO_K $. Since $ \abs{0} = 0 $, $ 0 \in \OOO_K $. Since $ \abs{-1} = 1 $, $ \abs{-x} = \abs{x} $. Thus if $ x \in \OOO_K $, then $ -x \in \OOO_K $. If $ x, y \in \OOO_K $, then $ \abs{x + y} \le \max\br{\abs{x}, \abs{y}} \le 1 $, so $ x + y \in \OOO_K $. If $ x, y \in \OOO_K $, then $ \abs{xy} = \abs{x}\abs{y} \le 1 $, so $ xy \in \OOO_K $. Thus $ \OOO_K $ is a ring. Since $ \OOO_K = \overline{\B}\br{0, 1} $ it is open.
+\item Similar to $ 1 $.
+\item Note that $ \abs{x}\abs{x^{-1}} = \abs{xx^{-1}} = 1 $. Thus $ \abs{x} = 1 $ if and only if $ \abs{x^{-1}} = 1 $, if and only if $ x, x^{-1} \in \OOO_K $, if and only if $ x \in \OOO_K^\times $.
+\end{enumerate}
+\end{proof}
+
+\begin{notation*}
+\hfill
+\begin{itemize}
+\item $ \mmm = \cbr{x \in \OOO_K \st \abs{x} < 1} $ is a maximal ideal of $ \OOO_K $.
+\item $ k = \OOO_K / \mmm $ is the \textbf{residue field}.
+\end{itemize}
+\end{notation*}
+
+A ring is \textbf{local} if it has a unique maximal ideal.
+
+\begin{exercise*}
+$ R $ is local if and only if $ R \setminus R^\times $ is an ideal.
+\end{exercise*}
+
+\begin{corollary}
+$ \OOO_K $ is a local ring with unique maximal ideal $ \mmm $.
+\end{corollary}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Let $ K = k\br{\br{t}} $. Then $ \OOO_K = k\sbr{\sbr{t}} $, $ \mmm = \abr{t} $, and the residue field is $ k $.
+\item Let $ K = \QQ $ with $ \abs{\cdot}_p $. Then $ \OOO_K = \ZZ_{\abr{p}} $, $ \mmm = p\ZZ_{\abr{p}} $, and $ k = \FF_p $.
+\end{itemize}
+\end{example*}
+
+\begin{definition}
+Let $ v : K^\times \to \RR $ be a valuation. If $ v\br{K^\times} \cong \ZZ $, we say $ v $ is a \textbf{discrete valuation}, and $ K $ is said to be a \textbf{discretely valued field}. An element $ \pi \in \OOO_K $ is a \textbf{uniformiser} if $ v\br{\pi} > 0 $ and $ v\br{\pi} $ generates $ v\br{K^\times} $.
+\end{definition}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ K = \QQ $ with the $ p $-adic valuation.
+\item $ K = k\br{t} $ with the $ t $-adic valuation.
+\end{itemize}
+\end{example*}
+
+\pagebreak
+
+\begin{remark*}
+If $ v $ is a discrete valuation, we can replace it with an equivalent one such that $ v\br{K^\times} = \ZZ \subseteq \RR $. Such $ v $ are called \textbf{normalised valuations}. Then $ v\br{\pi} = 1 $ for $ \pi $ a uniformiser.
+\end{remark*}
+
+\begin{lemma}
+\label{lem:2.6}
+Let $ v $ be a valuation on $ K $. The following are equivalent.
+\begin{enumerate}
+\item $ v $ is discrete.
+\item $ \OOO_K $ is a PID.
+\item $ \OOO_K $ is Noetherian.
+\item $ \mmm $ is principal.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{itemize}[leftmargin=0.5in]
+\item[$ 1 \implies 2 $.] Let $ I \subseteq \OOO_K $ be a non-zero ideal. Let $ x \in I $ such that $ v\br{x} = \min \cbr{v\br{a} \st a \in I} $ which exists since $ v $ is discrete. Then $ x\OOO_K = \cbr{a \in \OOO_K \st v\br{a} \ge v\br{x}} \subseteq I $, and hence $ x\OOO_K = I $ by definition of $ x $.
+\item[$ 2 \implies 3 $.] Clear.
+\item[$ 3 \implies 4 $.] Write $ \mmm = \OOO_Kx_1 + \dots + \OOO_Kx_n $. Without loss of generality $ v\br{x_1} \le \dots \le v\br{x_n} $. Then $ \mmm = \OOO_Kx_1 $.
+\item[$ 4 \implies 1 $.] Let $ \mmm = \OOO_K\pi $ for some $ \pi \in \OOO_K $ and let $ c = v\br{\pi} $. Then if $ v\br{x} > 0 $, $ x \in \mmm $ and hence $ v\br{x} \ge c $. Thus $ v\br{K^\times} \cap \br{0, c} = \emptyset $. Since $ v\br{K^\times} $ is a subgroup of $ \br{\RR, +} $, we have $ v\br{K^\times} = c\ZZ $.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}
+Let $ v $ be a discrete valuation on $ K $ and $ \pi \in \OOO_K $ a uniformiser. For all $ x \in K^\times $, there exist $ n \in \ZZ $ and $ u \in \OOO_K^\times $ such that $ x = \pi^nu $. In particular $ K = \OOO_K\sbr{1 / x} $ for any $ x \in \mmm $ and hence $ K = \Frac \OOO_K $.
+\end{lemma}
+
+\begin{proof}
+For $ x \in K^\times $, let $ n $ such that $ v\br{x} = nv\br{\pi} = v\br{\pi^n} $, then $ v\br{x\pi^{-n}} = 0 $, so $ u = x\pi^{-n} \in \OOO_K^\times $.
+\end{proof}
+
+\begin{definition}
+A ring $ R $ is called a \textbf{discrete valuation ring (DVR)} if it is a PID with exactly one non-zero prime ideal, necessarily maximal.
+\end{definition}
+
+\begin{lemma}
+\hfill
+\begin{enumerate}
+\item Let $ v $ be a discrete valuation on $ K $. Then $ \OOO_K $ is a DVR.
+\item Let $ R $ be a DVR. Then there exists a valuation $ v $ on $ K = \Frac R $ such that $ R = \OOO_K $.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item $ \OOO_K $ is a PID by Lemma \ref{lem:2.6}. Let $ 0 \ne I \subseteq \OOO_K $ be an ideal, then $ I = \abr{x} $. If $ x = \pi^nu $ for $ \pi $ a uniformiser, then $ \abr{x} $ is prime if and only if $ n = 1 $ and $ I = \abr{\pi} = \mmm $.
+\item Let $ R $ be a DVR with maximal ideal $ \mmm $. Then $ \mmm = \abr{\pi} $ for some $ \pi \in R $. By unique factorisation of PIDs, we may write any $ x \in R \setminus \cbr{0} $ uniquely as $ \pi^nu $ for $ n \ge 0 $ and $ u \in R^\times $. Then any $ y \in K \setminus \cbr{0} $ can be written uniquely as $ \pi^mu $ for $ u \in R^\times $ and $ m \in \ZZ $. Define $ v\br{\pi^mu} = m $. It is easy to check $ v $ is a valuation and $ \OOO_K = R $.
+\end{enumerate}
+\end{proof}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \ZZ_{\abr{p}} $ is a DVR, the valuation ring of $ \abs{\cdot}_p $ on $ \QQ $.
+\item The ring of formal power series $ k\sbr{\sbr{t}} = \cbr{\sum_{n \ge 0} a_nt^n \st a_n \in k} $ is a DVR, the valuation ring for the $ t $-adic absolute value on $ k\br{\br{t}} $.
+\item Non-example. Let $ K = k\br{t} $ be the rational function field, and let $ K' = K\br{t^{1 / 2}, t^{1 / 4}, \dots} $. Then the $ t $-adic valuation extends to $ K' $, and $ v\br{t^{1 / 2^n}} = 1 / 2^n $ is not discrete.
+\end{itemize}
+\end{example*}
+
+\pagebreak
+
+\subsection{The \texorpdfstring{$ p $}{p}-adic numbers}
+
+\lecture{3}{Wednesday}{14/10/20}
+
+Recall that $ \QQ_p $ is defined to be the completion of $ \QQ $ with respect to the metric induced by $ \abs{\cdot}_p $. By example sheet $ 1 $, $ \QQ_p $ is a field, $ \abs{\cdot}_p $ extends to $ \QQ_p $, and the associated valuation is discrete, so $ \QQ_p $ is a discretely valued field.
+
+\begin{definition}
+The ring of \textbf{$ p $-adic integers} $ \ZZ_p $ is the valuation ring
+$$ \ZZ_p = \cbr{x \in \QQ_p \st \abs{x}_p \le 1}. $$
+\end{definition}
+
+\begin{fact*}
+\hfill
+\begin{itemize}
+\item $ \ZZ_p $ is a DVR with maximal ideal $ p\ZZ_p $.
+\item The non-zero ideals in $ \ZZ_p $ are $ p^n\ZZ_p $ for $ n \in \NN $.
+\end{itemize}
+\end{fact*}
+
+\begin{proposition}
+$ \ZZ_p $ is the closure of $ \ZZ $ inside $ \QQ_p $. In particular $ \ZZ_p $ is the completion of $ \ZZ $ with respect to $ \abs{\cdot}_p $.
+\end{proposition}
+
+\begin{proof}
+Need to show $ \ZZ $ is dense in $ \ZZ_p $. Since $ \QQ $ is dense in $ \QQ_p $ and $ \ZZ_p \subseteq \QQ_p $ is open, $ \ZZ_p \cap \QQ $ is dense in $ \ZZ_p $. Then
+$$ \ZZ_p \cap \QQ = \cbr{x \in \QQ \st \abs{x}_p \le 1} = \cbr{\dfrac{a}{b} \in \QQ \st p \nmid b} = \ZZ_{\abr{p}}, $$
+the localisation at $ \abr{p} $. Thus it suffices to show $ \ZZ $ is dense in $ \ZZ_{\abr{p}} $. Let $ a / b \in \ZZ_{\abr{p}} $ for $ a, b \in \ZZ $ and $ p \nmid b $. For $ n \in \NN $, choose $ y_n \in \ZZ $ such that $ by_n \equiv a \mod p^n $. Then $ y_n \to a / b $ as $ n \to \infty $. In particular, $ \ZZ $ is dense in $ \ZZ_p $, which is complete.
+\end{proof}
+
+Let $ \br{A_n}_{n = 1}^\infty $ be a sequence of sets or groups or rings together with homomorphisms $ \phi_n : A_{n + 1} \to A_n $, the \textbf{transition maps}. The \textbf{inverse limit} of $ \br{A_n}_{n = 1}^\infty $ is the set or group or ring
+$$ \varprojlim_n A_n = \cbr{\br{a_n}_{n = 1}^\infty \in \prod_{n = 1}^\infty A_n \st \phi_n\br{a_{n + 1}} = a_n}, $$
+so
+$$
+\begin{array}{ccccc}
+A_{n + 1} & \xrightarrow{\phi_n} & A_n & \xrightarrow{\phi_{n - 1}} & A_{n - 1} \\
+a_{n + 1} & \longmapsto & a_n & \longmapsto & a_{n - 1}
+\end{array}.
+$$
+
+\begin{fact*}
+If $ A_n $ is a group or ring, then $ \varprojlim_n A_n $ is a group or ring.
+\end{fact*}
+
+Let $ \theta_m : \varprojlim_n A_n \to A_m $ denote the natural projection. The inverse limit satisfies the following universal property.
+
+\begin{proposition}
+Let $ \br{\br{A_n}_{n = 1}^\infty, \br{\phi_n}_{n = 1}^\infty} $ as above. Then for any set or group or ring $ B $ together with homomorphisms $ \psi_n : B \to A_n $ such that
+$$
+\begin{tikzcd}
+B \arrow{r}{\psi_{n + 1}} \arrow{dr}[swap]{\psi_n} & A_{n + 1} \arrow{d}{\phi_n} \\
+& A_n
+\end{tikzcd}
+$$
+commutes for all $ n $, there is a unique homomorphism $ \psi : B \to \varprojlim_n A_n $ such that $ \theta_n \circ \psi = \psi_n $.
+\end{proposition}
+
+\begin{proof}
+Define
+$$ \function[\psi]{B}{\displaystyle\prod_{n = 1}^\infty A_n}{b}{\displaystyle\prod_{n = 1}^\infty \psi_n\br{b}}. $$
+Then $ \psi_n = \phi_n \circ \psi_{n + 1} $ implies that $ \psi\br{b} \in \varprojlim_n A_n $. The map is clearly unique, determined by $ \psi_n = \phi_n \circ \psi_{n + 1} $, and is a homomorphism of rings.
+\end{proof}
+
+\pagebreak
+
+\begin{definition}
+Let $ R $ be a ring and $ I \subseteq R $ an ideal. The \textbf{$ I $-adic completion} of $ R $ is the ring
+$$ \widehat{R} = \varprojlim_n R / I^n, $$
+where $ \phi_n : R / I^{n + 1} \to R / I^n $ is the natural projection. Note there is a natural map $ \iota : R \to \widehat{R} $ by the universal property. We say that $ R $ is \textbf{$ I $-adically complete} if $ \iota $ is an isomorphism.
+\end{definition}
+
+\begin{fact*}
+$ \ker \br{\iota : R \to \widehat{R}} = \bigcap_{n = 1}^\infty I^n $.
+\end{fact*}
+
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ \pi \in \OOO_K $ such that $ \abs{\pi} < 1 $.
+
+\begin{proposition}
+\label{prop:3.5}
+Assume $ K $ is complete.
+\begin{enumerate}
+\item Then $ \OOO_K \cong \varprojlim_n \OOO_K / \pi^n\OOO_K $, so $ \OOO_K $ is $ \pi $-adically complete.
+\item If in addition $ K $ is discretely valued and $ \pi $ is a uniformiser, then every $ x \in \OOO_K $ can be written uniquely as $ x = \sum_{i = 0}^\infty a_i\pi^i $ for $ a_i \in A $, where $ A $ is a set of coset representatives for $ k = \OOO_K / \pi\OOO_K $. Moreover, any series $ \sum_{i = 0}^\infty a_i\pi^i $ converges to an element in $ \OOO_K $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ \iota : \OOO_K \to \varprojlim_n \OOO_K / \pi^n\OOO_K $. Since $ \bigcap_{n = 1}^\infty \pi^n\OOO_K = \cbr{0} $, $ \iota $ is injective. Let $ \br{x_n}_{n = 1}^\infty \in \varprojlim_n \OOO_K / \pi^n\OOO_K $ and for each $ n $, choose $ y_n \in \OOO_K $ a lift of $ x_n \in \OOO_K / \pi^n\OOO_K $. Let $ v $ be the valuation on $ K $ normalised such that $ v\br{\pi} = 1 $, then $ v\br{y_n - y_{n + 1}} \ge n $, since $ y_n - y_{n + 1} \in \pi^n\OOO_K $, so $ \br{y_n}_{n = 1}^\infty $ is a Cauchy sequence in $ \OOO_K $. But $ \OOO_K $ is complete, since $ \OOO_K \subseteq K $ is closed, so $ y_n \to y $, and $ y $ maps to $ \br{x_n}_{n = 1}^\infty $. Thus $ \iota $ is surjective.
+\item Let $ x \in \OOO_K $. Choose $ a_i $ inductively. Choose $ a_0 \in A $ such that $ a_0 \equiv x \mod \pi $. Suppose have chosen $ a_0, \dots, a_k $ such that $ \sum_{i = 0}^k a_i\pi^i \equiv x \mod \pi^{k + 1} $. Then $ \sum_{i = 0}^k a_i\pi^i - x = c\pi^{k + 1} $ for $ c \in \OOO_K $. Choose $ a_{k + 1} \equiv -c \mod \pi $. Then $ \sum_{i = 0}^{k + 1} a_i\pi^i \equiv x \mod \pi^{k + 2} $, so $ \sum_{i = 0}^\infty a_i\pi^i = x $. For uniqueness, assume $ \sum_{i = 0}^\infty a_i\pi^i = \sum_{i = 0}^\infty b_i\pi^i \in \OOO_K $. Then let $ n $ be minimal such that $ a_n \ne b_n $. Then $ \sum_{i = 0}^\infty a_i\pi^i \not\equiv \sum_{i = 0}^\infty b_i\pi^i \mod \pi^{n + 1} $, a contradiction.
+\end{enumerate}
+\end{proof}
+
+A warning is if $ \br{K, \abs{\cdot}} $ is not discretely valued, $ \OOO_K $ is not necessarily $ \mmm $-adically complete.
+
+\begin{corollary}
+\label{cor:3.6}
+If $ K $ is as in Proposition \ref{prop:3.5}.$ 2 $, then every $ x \in K $ can be written uniquely as $ \sum_{i = n}^\infty a_i\pi^i $ for $ a_i \in A $. Conversely any such expression defines an element of $ K $.
+\end{corollary}
+
+\begin{proof}
+Use $ K = \OOO_K\sbr{1 / \pi} $.
+\end{proof}
+
+\begin{corollary}
+\hfill
+\begin{enumerate}
+\item $ \ZZ_p \cong \varprojlim_n \ZZ / p^n\ZZ $.
+\item Every element of $ \QQ_p $ can be written uniquely as $ \sum_{i = n}^\infty a_ip^i $ for $ a_i \in \cbr{0, \dots, p - 1} $.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item By Proposition \ref{prop:3.5}, it suffices to show that $ \ZZ_p / p^n\ZZ_p \cong \ZZ / p^n\ZZ $. Let $ f_n : \ZZ \to \ZZ_p / p^n\ZZ_p $ be the natural map. We have $ \ker f_n = \cbr{x \in \ZZ \st \abs{x}_p \le p^{-n}} = p^n\ZZ $, so $ \ZZ / p^n\ZZ \to \ZZ_p / p^n\ZZ_p $ is injective. Let $ \overline{c} \in \ZZ_p / p^n\ZZ_p $, and $ c \in \ZZ_p $ a lift. Since $ \ZZ $ is dense in $ \ZZ_p $, can choose $ x \in \ZZ $ such that $ x \in c + p^n\ZZ_p $, which is open in $ \ZZ_p $, so $ f_n\br{x} = \overline{c} $. Thus $ \ZZ / p^n\ZZ \to \ZZ_p / p^n\ZZ_p $ is surjective.
+\item Follows from Corollary \ref{cor:3.6} noting that $ \ZZ_p / p\ZZ_p \cong \FF_p $.
+\end{enumerate}
+\end{proof}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ 1 / \br{1 - p} = 1 + p + \dots \in \QQ_p $.
+\item Let $ K = k\br{\br{t}} $ with the $ t $-adic valuation. Then $ \OOO_K = k\sbr{\sbr{t}} = \varprojlim_n k\sbr{\sbr{t}} / \abr{t^n} $. Moreover $ \OOO_K $ is the $ t $-adic completion of $ k\sbr{t} $.
+\end{itemize}
+\end{example*}
+
+\pagebreak
+
+\section{Complete valued fields}
+
+\subsection{Hensel's lemma}
+
+\lecture{4}{Friday}{16/10/20}
+
+For complete valued fields, there is a nice way to produce solutions in $ \OOO_K $ to certain equations from solutions modulo $ \mmm $.
+
+\begin{theorem}[Hensel's lemma version $ 1 $]
+\label{thm:4.1}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. Let $ f\br{X} \in \OOO_K\sbr{X} $ and assume there exists $ a \in \OOO_K $ such that $ \abs{f\br{a}} < \abs{f'\br{a}}^2 $, where $ f'\br{a} $ is the \textbf{formal derivative} such that if $ f\br{X} = X^n $ then $ f'\br{X} = nX^{n - 1} $. Then there exists a unique $ x \in \OOO_K $ such that $ f\br{x} = 0 $ and $ \abs{x - a} < \abs{f'\br{a}} $.
+\end{theorem}
+
+\begin{proof}
+Let $ \pi \in \OOO_K $ be a uniformiser and let $ r = v\br{f'\br{a}} $. We construct a sequence $ \br{x_n}_{n = 1}^\infty $ in $ \OOO_K $ such that
+\begin{enumerate}
+\item $ f\br{x_n} \equiv 0 \mod \pi^{n + 2r} $, and
+\item $ x_{n + 1} \equiv x_n \mod \pi^{n + r} $.
+\end{enumerate}
+Take $ x_1 = a $, then $ f\br{x_1} \equiv 0 \mod \pi^{1 + 2r} $. Suppose have constructed $ x_1, \dots, x_n $ satisfying $ 1 $ and $ 2 $. Define
+$$ x_{n + 1} = x_n - \dfrac{f\br{x_n}}{f'\br{x_n}}. $$
+\begin{itemize}
+\item[$ 2 $.] Since $ x_n \equiv x_1 \mod \pi^{1 + r} $, $ v\br{f'\br{x_n}} = r $ and hence $ f\br{x_n} / f'\br{x_n} \equiv 0 \mod \pi^{n + r} $ by $ 1 $. It follows that $ x_{n + 1} \equiv x_n \mod \pi^{n + r} $ so $ 2 $ holds.
+\item[$ 1 $.] Note that for $ X $ and $ Y $ indeterminates,
+$$ f\br{X + Y} = f_0\br{X} + f_1\br{X}Y + \dots, \qquad f_i\br{X} \in \OOO_K\sbr{X}, \qquad f_0\br{X} = f\br{X}, \qquad f_1\br{X} = f'\br{X}. $$
+Thus
+$$ f\br{x_{n + 1}} = f\br{x_n} + f'\br{x_n}c + \dots, \qquad c = -\dfrac{f\br{x_n}}{f'\br{x_n}}. $$
+Since $ c \equiv 0 \mod \pi^{n + r} $ and $ v\br{f_i\br{x_n}} \ge 0 $, we have $ f\br{x_{n + 1}} \equiv f\br{x_n} + f'\br{x_n}c \equiv 0 \mod \pi^{n + 2r + 1} $, so $ 1 $ holds.
+\end{itemize}
+This gives the construction of $ \br{x_n}_{n = 1}^\infty $.
+\begin{itemize}
+\item By property $ 2 $, $ \br{x_n}_{n = 1}^\infty $ is Cauchy, so let $ x \in \OOO_K $ such that $ x_n \to x $. Then $ f\br{x} = \lim_{n \to \infty} f\br{x_n} = 0 $ by $ 1 $. Moreover $ 2 $ implies $ a = x_1 \equiv x_n \mod \pi^{1 + r} $ for all $ n $, so $ a \equiv x \mod \pi^{1 + r} $, so $ \abs{x - a} < \abs{f'\br{a}} $. This proves existence.
+\item For uniqueness, suppose $ x' $ also satisfies $ f\br{x'} = 0 $ and $ \abs{x' - a} < \abs{f'\br{a}} $. Set $ \delta = x' - x \ne 0 $. Then $ \abs{x' - a} < \abs{f'\br{a}} $, $ \abs{x - a} < \abs{f'\br{a}} $, and the ultrametric inequality implies $ \abs{\delta} = \abs{x - x'} < \abs{f'\br{a}} = \abs{f'\br{x}} $. But
+$$ 0 = f\br{x'} = f\br{x + \delta} = \underbrace{f\br{x}}_{= 0} + f'\br{x}\delta + \underbrace{\dots}_{\abs{\cdot} \le \abs{\delta}^2}. $$
+Hence $ \abs{f'\br{x}\delta} \le \abs{\delta}^2 $, so $ \abs{f'\br{x}} \le \abs{\delta} $, a contradiction.
+\end{itemize}
+\end{proof}
+
+\begin{corollary}
+\label{cor:4.2}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. Let $ f\br{X} \in \OOO_K\sbr{X} $ and $ \overline{c} \in k = \OOO_K / \mmm $ a simple root of $ \overline{f}\br{X} = f\br{X} \mod \mmm \in k\sbr{X} $. Then there exists a unique $ x \in \OOO_K $ such that $ f\br{x} = 0 $ and $ x \equiv \overline{c} \mod \mmm $.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem \ref{thm:4.1} to a lift $ c \in \OOO_K $ of $ \overline{c} $. Then $ \abs{f\br{c}} < \abs{f'\br{c}}^2 = 1 $ since $ \overline{c} $ is a simple root.
+\end{proof}
+
+\begin{example*}
+$ f\br{X} = X^2 - 2 $ has a simple root modulo seven. Thus $ \sqrt{2} \in \ZZ_7 \subseteq \QQ_7 $.
+\end{example*}
+
+\pagebreak
+
+\begin{corollary}
+$$ \QQ_p^\times / \br{\QQ_p^\times}^2 \cong
+\begin{cases}
+\br{\ZZ / 2\ZZ}^2 & p > 2 \\
+\br{\ZZ / 2\ZZ}^3 & p = 2
+\end{cases}.
+$$
+\end{corollary}
+
+\begin{proof}
+\hfill
+\begin{itemize}[leftmargin=0.5in]
+\item[$ p > 2 $.] Let $ b \in \ZZ_p^\times $. Applying Corollary \ref{cor:4.2} to $ f\br{X} = X^2 - b $, we find that $ b \in \br{\ZZ_p^\times}^2 $ if and only if $ b \in \br{\FF_p^\times}^2 $. Thus $ \ZZ_p^\times / \br{\ZZ_p^\times}^2 \cong \FF_p^\times / \br{\FF_p^\times}^2 \cong \ZZ / 2\ZZ $ since $ \FF_p^\times \cong \ZZ / \br{p - 1}\ZZ $. We have an isomorphism $ \QQ_p^\times \cong \ZZ_p^\times \times \ZZ $ given by $ \br{u, n} \mapsto up^n $. Thus $ \QQ_p^\times / \br{\QQ_p^\times}^2 \cong \br{\ZZ / 2\ZZ}^2 $.
+\item[$ p = 2 $.] Let $ b \in \ZZ_2^\times $. Consider $ f\br{X} = X^2 - b $. Then $ f'\br{X} = 2X \equiv 0 \mod 2 $. Let $ b \equiv 1 \mod 8 $. Then $ \abs{f\br{1}}_2 \le 2^{-3} < \abs{f'\br{1}}_2^2 = 2^{-2} $. By Hensel's lemma, $ f\br{X} $ has a root in $ \ZZ_2 $, so $ b \in \br{\ZZ_2^\times}^2 $ if and only if $ b \equiv 1 \mod 8 $. Thus $ \ZZ_2^\times / \br{\ZZ_2^\times}^2 \cong \br{\ZZ / 8\ZZ}^\times \cong \br{\ZZ / 2\ZZ}^2 $. Again using $ \QQ_2^\times \cong \ZZ_2^\times \times \ZZ $, we find that $ \QQ_2^\times / \br{\QQ_2^\times}^2 \cong \br{\ZZ / 2\ZZ}^3 $.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+The proof of Hensel's lemma uses the iteration $ x_{n + 1} = x_n - f\br{x_n} / f'\br{x_n} $, the non-archimedean analogue of the Newton-Raphson method.
+\end{remark*}
+
+For later applications, we need the following version of Hensel's lemma.
+
+\begin{theorem}[Hensel's lemma version $ 2 $]
+\label{thm:4.4}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field and $ f\br{X} \in \OOO_K\sbr{X} $. Suppose $ \overline{f}\br{X} = f\br{X} \mod \mmm \in k\sbr{X} $ factorises as $ \overline{f}\br{X} = \overline{g}\br{X}\overline{h}\br{X} $ in $ k\sbr{X} $, with $ \overline{g}\br{X} $ and $ \overline{h}\br{X} $ coprime. Then there is a factorisation $ f\br{X} = g\br{X}h\br{X} $ in $ \OOO_K\sbr{X} $, with $ \overline{g}\br{X} = g\br{X} \mod \mmm $, $ \overline{h}\br{X} = h\br{X} \mod \mmm $, and $ \deg \overline{g} = \deg g $.
+\end{theorem}
+
+\begin{proof}
+Example sheet $ 1 $.
+\end{proof}
+
+\begin{corollary}
+\label{cor:4.5}
+Let $ f\br{X} = a_nX^n + \dots + a_0 \in K\sbr{X} $ with $ a_0, a_n \ne 0 $. If $ f\br{X} $ is irreducible, then $ \abs{a_i} \le \max\br{\abs{a_0}, \abs{a_n}} $ for all $ i $.
+\end{corollary}
+
+\begin{proof}
+Upon scaling, we may assume $ f\br{X} \in \OOO_K\sbr{X} $ with $ \max_i\br{\abs{a_i}} = 1 $. Thus we need to show that $ \max\br{\abs{a_0}, \abs{a_n}} = 1 $. If not, let $ r $ be minimal such that $ \abs{a_r} = 1 $, then $ 0 < r < n $. Thus we have $ \overline{f}\br{X} = X^r\br{a_r + \dots + a_nX^{n - r}} \mod \mmm $. Then Theorem \ref{thm:4.4} implies $ f\br{X} = g\br{X}h\br{X} $ and $ 0 < \deg g < n $.
+\end{proof}
+
+\subsection{Teichm\"uller lifts}
+
+\lecture{5}{Monday}{19/10/20}
+
+Recall that in lecture $ 3 $ every element of $ x \in \QQ_p $ can be written as $ x = \sum_{i = n}^\infty a_ip^i $ for $ a_i \in A = \cbr{0, \dots, p - 1} $, but $ \FF_p \to A \subseteq \ZZ_p $ does not respect any algebraic structure. It turns out there is a natural choice of coset representatives in many cases which does respect some algebraic structure.
+
+\begin{definition}
+A ring $ R $ of characteristic $ p $ is a \textbf{perfect ring} if the Frobenius $ x \mapsto x^p $ is an automorphism of $ R $. A field of characteristic $ p $ is a \textbf{perfect field} if it is perfect as a ring.
+\end{definition}
+
+\begin{remark*}
+Since $ \ch R = p $, $ \br{x + y}^p = x^p + y^p $, so Frobenius is a ring homomorphism.
+\end{remark*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \FF_{p^n} $ and $ \overline{\FF_p} $ are perfect fields.
+\item $ \FF_p\sbr{t} $ is not perfect, since $ t $ is not in the image of Frobenius.
+\item $ \FF_p\br{t^{1 / p^\infty}} = \FF_p\br{t, t^{1 / p}, \dots} $ is a perfect field, the \textbf{perfection} of $ \FF_p\br{t} $. The $ t $-adic absolute value extends to $ \FF_p\br{t^{1 / p^\infty}} $, and the completion of $ \FF_p\br{t^{1 / p^\infty}} $ is a \textbf{perfectoid field}.
+\end{itemize}
+\end{example*}
+
+\begin{fact*}
+A field $ k $ is perfect if and only if any finite extension of $ k $ is separable.
+\end{fact*}
+
+\pagebreak
+
+\begin{theorem}
+\label{thm:5.2}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ k = \OOO_K / \mmm $ is a perfect field of characteristic $ p $. Then there exists a unique map $ \sbr{\cdot} : k \to \OOO_K $ such that
+\begin{enumerate}
+\item $ a \equiv \sbr{a} \mod \mmm $ for all $ a \in k $, and
+\item $ \sbr{ab} \equiv \sbr{a}\sbr{b} \mod \mmm $ for all $ a, b \in k $.
+\end{enumerate}
+Moreover if $ \ch \OOO_K = p $, $ \sbr{\cdot} $ is a ring homomorphism.
+\end{theorem}
+
+\begin{definition}
+The element $ \sbr{a} \in \OOO_K $ constructed in Theorem \ref{thm:5.2} is called the \textbf{Teichm\"uller lift} of $ a $.
+\end{definition}
+
+The following is the idea of the proof. Let $ \alpha \in \OOO_K $ be any lift of $ a \in k $. Then $ \alpha $ is well-defined up to $ \pi\OOO_K $. Let $ \beta \in \OOO_K $ be a lift of $ a^{1 / p} $. We claim that $ \beta $ is a better lift. Why? Let $ \beta' \in \OOO_K $ be another lift of $ a^{1 / p} $, then $ \beta = \beta' + \pi u $ for $ u \in \OOO_K $, so
+$$ \beta^p = \br{\beta' + \pi u}^p = \beta'^p + \underbrace{\sum_{i = 1}^p \binom{p}{i}\beta'^{p - i}\br{\pi u}^i}_{\in \pi^2\OOO_K}, $$
+by using $ p \in \abr{\pi} $, so $ \beta^p $ is well-defined up to $ \pi^2\OOO_K $. Repeat this process to get better and better lifts.
+
+\begin{lemma}
+\label{lem:5.4}
+Let $ \br{K, \abs{\cdot}} $ be as in Theorem \ref{thm:5.2}, and fix $ \pi \in \OOO_K $ a uniformiser. Let $ x, y \in \OOO_K $ such that $ x \equiv y \mod \pi^k $ for $ k \ge 1 $. Then $ x^p \equiv y^p \mod \pi^{k + 1} $.
+\end{lemma}
+
+\begin{proof}
+Let $ x = y + u\pi^k $ for $ u \in \OOO_K $. Then
+$$ x^p = \sum_{i = 0}^p \binom{p}{i}\br{u\pi^k}^iy^{p - i} = y^p + pu\pi^ky^{p - 1} + \sum_{i = 2}^p \binom{p}{i}\br{u\pi^k}^iy^{p - i}. $$
+Since $ \OOO_K / \pi\OOO_K $ has characteristic $ p $, we have $ p \in \abr{\pi} $. Thus $ pu\pi^ky^{p - 1} \in \pi^{k + 1}\OOO_K $. For $ i \ge 2 $, $ \br{u\pi^k}^i \in \pi^{k + 1}\OOO_K $, so $ x^p \equiv y^p \mod \pi^{k + 1} $.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:5.2}]
+Let $ a \in k $. For each $ i \ge 0 $ we choose a lift $ y_i \in \OOO_K $ of $ a^{1 / p^i} $, and we define
+$$ x_i = y_i^{p^i}. $$
+Then $ x_i \equiv y_i^{p^i} \equiv \br{a^{1 / p^i}}^{p^i} \equiv a \mod \pi $. We claim that $ \br{x_i}_{i = 1}^\infty $ is a Cauchy sequence, and its limit $ x_i \to x $ is independent of the choice of $ y_i $.
+\begin{itemize}
+\item By construction $ y_i \equiv y_{i + 1}^p \mod \pi $. By Lemma \ref{lem:5.4} and induction on $ k $, we have $ y_i^{p^k} \equiv y_{i + 1}^{p^{k + 1}} \mod \pi^{k + 1} $, and hence $ x_i \equiv x_{i + 1} \mod \pi^{i + 1} $, by taking $ k = i $, so $ \abs{x_i - x_{i + 1}} \to 0 $. Then $ \br{x_i}_{i = 1}^\infty $ is Cauchy, so $ x_i \to x \in \OOO_K $.
+\item Suppose $ \br{x_i'}_{i = 1}^\infty $ arises from another choice of $ y_i' $ lifting $ a^{1 / p^i} $. Then $ x_i' $ is Cauchy, and $ x_i' \to x' \in \OOO_K $. Let
+$$ x_i'' =
+\begin{cases}
+x_i & i \ \text{even} \\
+x_i' & i \ \text{odd}
+\end{cases}.
+$$
+Then $ x_i'' $ arises from lifting
+$$ y_i'' =
+\begin{cases}
+y_i & i \ \text{even} \\
+y_i' & i \ \text{odd}
+\end{cases}.
+$$
+Then $ \br{x_i''}_{i = 1}^\infty $ is Cauchy and $ x_i'' \to x $ and $ x_i'' \to x' $, so $ x = x' $, hence $ x $ is independent of $ y_i $.
+\end{itemize}
+We define $ \sbr{a} = x $.
+\begin{enumerate}
+\item $ x \equiv a \mod \pi $, so $ 1 $ is satisfied.
+\item We let $ b \in k $ and we choose $ u_i \in \OOO_K $ a lift of $ b^{1 / p^i} $, and let $ z_i = u_i^{p^i} $. Then $ \lim_{i \to \infty} z_i = \sbr{b} $. Now $ u_iy_i $ is a lift of $ \br{ab}^{1 / p^i} $, hence
+$$ \sbr{ab} = \lim_{i \to \infty} x_iz_i = \lim_{i \to \infty} x_i\lim_{i \to \infty} z_i = \sbr{a}\sbr{b}, $$
+so $ 2 $ is satisfied.
+\end{enumerate}
+
+\pagebreak
+
+If $ \ch \OOO_K = p $, $ y_i + u_i $ is a lift of $ a^{1 / p^i} + b^{1 / p^i} = \br{a + b}^{1 / p^i} $. Then
+$$ \sbr{a + b} = \lim_{i \to \infty} \br{y_i + u_i}^{p^i} = \lim_{i \to \infty} \br{y_i^{p^i} + u_i^{p^i}} = \lim_{i \to \infty} \br{x_i + z_i} = \sbr{a} + \sbr{b}. $$
+It is easy to check that $ \sbr{0} = 0 $ and $ \sbr{1} = 1 $, so $ \sbr{\cdot} $ is a ring homomorphism. For uniqueness, let $ \phi : k \to \OOO_K $ be another such map. Then for $ a \in k $, $ \phi\br{a^{1 / p^i}} $ is a lift of $ a^{1 / p^i} $, it follows that
+$$ \sbr{a} = \lim_{i \to \infty} \phi\br{a^{1 / p^i}}^{p^i} = \lim_{i \to \infty} \phi\br{a} = \phi\br{a}. $$
+\end{proof}
+
+\begin{example}
+Let $ K = \QQ_p $, and let $ \sbr{\cdot} : \FF_p \to \ZZ_p $. If $ a \in \FF_p^\times $, then $ \sbr{a}^{p - 1} = \sbr{a^{p - 1}} = \sbr{1} = 1 $, so $ \sbr{a} $ is a $ \br{p - 1} $-th root of unity.
+\end{example}
+
+More generally is the following.
+
+\begin{lemma}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. If $ k = \OOO_K / \mmm \subseteq \overline{\FF_p} $, $ \sbr{a} \in \OOO_K^\times $ is a root of unity.
+\end{lemma}
+
+\begin{proof}
+If $ a \in k $, then $ a \in \FF_{p^n} $ for some $ n $, so $ \sbr{a}^{p^n - 1} = \sbr{a^{p^n - 1}} = \sbr{1} = 1 $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:5.7}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ k $ is perfect with $ \ch k = p > 0 $. Then $ K \cong k\br{\br{t}} $.
+\end{theorem}
+
+\begin{proof}
+Since $ K = \Frac \OOO_K $, it suffices to show $ \OOO_K \cong k\sbr{\sbr{t}} $. Fix $ \pi \in \OOO_K $ a uniformiser, let $ \sbr{\cdot} : k \to \OOO_K $ be the Teichm\"uller map, and define
+$$ \function[\phi]{k\sbr{\sbr{t}}}{\OOO_K}{\displaystyle\sum_{i = 0}^\infty a_it^i}{\displaystyle\sum_{i = 0}^\infty \sbr{a_i}\pi^i}. $$
+Then $ \phi $ is a ring homomorphism since $ \sbr{\cdot} $ is a ring homomorphism and it is a bijection by Proposition \ref{prop:3.5}.$ 2 $.
+\end{proof}
+
+\subsection{Extensions of complete valued fields}
+
+\lecture{6}{Wednesday}{21/10/20}
+
+\begin{theorem}
+\label{thm:6.1}
+Let $ \br{K, \abs{\cdot}} $ be a complete non-archimedean discretely valued field and $ L / K $ a finite extension of degree $ n $.
+\begin{enumerate}
+\item $ \abs{\cdot} $ extends uniquely to an absolute value $ \abs{\cdot}_L $ on $ L $ defined by
+$$ \abs{y}_L = \abs{\N_{L / K}\br{y}}^{\tfrac{1}{n}}, \qquad y \in L. $$
+\item $ L $ is complete with respect to $ \abs{\cdot}_L $.
+\end{enumerate}
+\end{theorem}
+
+Recall that if $ L / K $ is finite,
+$$ \function[\N_{L / K}]{L}{K}{y}{\det_K \br{\cdot y}}, $$
+where $ \cdot y : L \to L $ is the $ K $-linear map induced by multiplication by $ y $.
+
+\begin{fact*}
+\hfill
+\begin{itemize}
+\item $ \N_{L / K}\br{xy} = \N_{L / K}\br{x}\N_{L / K}\br{y} $.
+\item Let $ X^n + a_{n - 1}X^{n - 1} + \dots + a_0 \in K\sbr{X} $ be the minimal polynomial of $ y \in L $. Then $ \N_{L / K}\br{y} = \pm a_0^m $ for $ m \ge 1 $.
+\end{itemize}
+\end{fact*}
+
+\pagebreak
+
+\begin{definition}
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ V $ a vector space over $ K $. $ A $ \textbf{norm} on $ V $ is a function $ \norm{\cdot} : V \to \RR_{\ge 0} $ satisfying
+\begin{itemize}
+\item $ \norm{x} = 0 $ if and only if $ x = 0 $,
+\item $ \norm{\lambda x} = \abs{\lambda}\norm{x} $ for all $ \lambda \in K $ and $ x \in V $, and
+\item $ \norm{x + y} \le \max\br{\norm{x}, \norm{y}} $ for all $ x, y \in V $.
+\end{itemize}
+\end{definition}
+
+\begin{example*}
+If $ V $ is finite dimensional and $ e_1, \dots, e_n $ is a basis of $ V $, the \textbf{sup norm} on $ V $ is defined by
+$$ \norm{x}_{\sup} = \max_i \abs{x_i}, \qquad x = \sum_{i = 1}^n x_ie_i. $$
+\end{example*}
+
+\begin{exercise*}
+$ \norm{\cdot}_{\sup} $ is a norm.
+\end{exercise*}
+
+\begin{definition}
+Two norms $ \norm{\cdot}_1 $ and $ \norm{\cdot}_2 $ on $ V $ are \textbf{equivalent} if there exists $ C, D > 0 $ such that
+$$ C\norm{x}_1 \le \norm{x}_2 \le D\norm{x}_1, \qquad x \in V. $$
+\end{definition}
+
+\begin{fact*}
+A norm defines a topology on $ V $, and equivalent norms induce the same topology.
+\end{fact*}
+
+\begin{proposition}
+Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite dimensional vector space over $ K $. Then $ V $ is complete with respect to $ \norm{\cdot}_{\sup} $.
+\end{proposition}
+
+\begin{proof}
+Let $ \br{v_i}_{i = 1}^\infty $ be a Cauchy sequence in $ V $ and $ e_1, \dots, e_n $ a basis for $ V $. Write $ v_i = \sum_{j = 1}^n x_j^ie_j $. Then $ \br{x_j^i}_{i = 0}^\infty $ is a Cauchy sequence in $ K $. Let $ x_j^i \to x_j \in K $, then $ v_i \to v = \sum_{j = 1}^n x_je_j $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:6.5}
+Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite dimensional vector space over $ K $. Then any two norms on $ V $ are equivalent. In particular $ V $ is complete with respect to any norm.
+\end{theorem}
+
+\begin{proof}
+Since equivalence defines an equivalence relation on the set of norms, it suffices to show any norm $ \norm{\cdot} $ is equivalent to $ \norm{\cdot}_{\sup} $. Let $ e_1, \dots, e_n $ be a basis for $ V $, and set $ D = \max_i \norm{e_i} $. Then for $ x = \sum_{i = 1}^n x_ie_i $, we have
+$$ \norm{x} \le \max_i \norm{x_ie_i} = \max_i \abs{x_i}\norm{e_i} \le D\max_i \abs{x_i} = D\norm{x}_{\sup}. $$
+To find $ C $ such that $ C\norm{\cdot}_{\sup} \le \norm{\cdot} $, we induct on $ n = \dim V $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ n = 1 $.] $ \norm{x} = \norm{x_1e_1} = \abs{x_1}\norm{e_1} $ so take $ C = \norm{e_1} $, since $ \abs{x_1} = \norm{x}_{\sup} $.
+\item[$ n > 1 $.] Set $ V_i = \abr{e_1, \dots, e_{i - 1}, e_{i + 1}, \dots, e_n} $. By induction, $ V_i $ is complete with respect to $ \norm{\cdot} $, hence closed. Then $ e_i + V_i $ is closed for all $ i $, and hence $ S = \bigcup_{i = 1}^n \br{e_i + V_i} $ is a closed subset not containing zero. Thus there exists $ C > 0 $ such that $ \B\br{0, C} \cap S = \emptyset $ where $ \B\br{0, C} = \cbr{x \in V \st \norm{x} < C} $. Let $ x = \sum_{i = 1}^n x_ie_i $ and suppose $ \abs{x_j} = \max_i \abs{x_i} $. Then $ \norm{x}_{\sup} = \abs{x_j} $, and $ \br{1 / x_j}x \in S $. Thus $ \norm{\br{1 / x_j}x} \ge C $, so $ \norm{x} \ge C\abs{x_j} = C\norm{x}_{\sup} $.
+\end{itemize}
+The completeness of $ V $ follows since $ V $ is complete with respect to $ \norm{\cdot}_{\sup} $.
+\end{proof}
+
+\begin{definition}
+Let $ R \subseteq S $ be rings.
+\begin{itemize}
+\item We say $ s \in S $ is \textbf{integral} over $ R $ if there exists a monic polynomial $ f\br{X} \in R\sbr{X} $ such that $ f\br{s} = 0 $.
+\item The \textbf{integral closure} $ R^{\Int S} $ of $ R $ inside $ S $ is defined to be
+$$ R^{\Int S} = \cbr{s \in S \st s \ \text{is integral over} \ R}. $$
+\item We say $ R $ is \textbf{integrally closed} in $ S $ if $ R^{\Int S} = R $.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+$ R^{\Int S} $ is a subring of $ S $. Moreover $ R^{\Int S} $ is integrally closed in $ S $.
+\end{proposition}
+
+\begin{proof}
+Example sheet $ 2 $.
+\end{proof}
+
+\begin{lemma}
+\label{lem:6.8}
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field. Then $ \OOO_K $ is integrally closed in $ K $.
+\end{lemma}
+
+\begin{proof}
+Let $ x \in K $ be integral over $ \OOO_K $, and without loss of generality $ x \ne 0 $. Let $ f\br{X} = X^n + a_{n - 1}X^{n - 1} + \dots + a_0 \in \OOO_K\sbr{X} $ such that $ f\br{x} = 0 $. Then $ x = -a_{n - 1} - \dots - a_0 / x^{n - 1} $. If $ \abs{x} > 1 $, we have $ \abs{-a_{n - 1} - \dots - a_0 / x^{n - 1}} \le 1 $, a contradiction. Thus $ \abs{x} \le 1 $, so $ x \in \OOO_K $.
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of Theorem \ref{thm:6.1}]
+\hfill
+\begin{enumerate}
+\item We show $ \abs{\cdot}_L = \abs{\N_{L / K}\br{\cdot}} $ satisfies the three axioms in the definition of absolute values.
+\begin{enumerate}[label=\arabic*.]
+\item $ \abs{y}_L = 0 $ if and only if $ \abs{\N_{L / K}\br{y}} = 0 $, if and only if $ \N_{L / K}\br{y} = 0 $, if and only if $ y = 0 $, by property of $ \N_{L / K} $.
+\item $ \abs{y_1y_2}_L = \abs{\N_{L / K}\br{y_1y_2}} = \abs{\N_{L / K}\br{y_1}\N_{L / K}\br{y_2}} = \abs{\N_{L / K}\br{y_1}}\abs{\N_{L / K}\br{y_2}} = \abs{y_1}_L\abs{y_2}_L $.
+\item Set $ \OOO_L = \cbr{y \in L \st \abs{y}_L \le 1} $. Claim that $ \OOO_L $ is the integral closure of $ \OOO_K $ inside $ L $.
+\begin{itemize}
+\item Let $ 0 \ne y \in \OOO_L $ and let $ f\br{X} = X^n + a_{n - 1}X^{n - 1} + \dots + a_0 \in K\sbr{X} $ be the minimal polynomial of $ y $. By property of $ \N_{L / K} $, there exists $ m \ge 1 $ such that $ \N_{L / K}\br{y} = \pm a_0^m $. By Corollary \ref{cor:4.5}, we have $ \abs{a_i} \le \max\br{\abs{\N_{L / K}\br{y}}^{1 / m}, 1} = 1 $, since $ \abs{\N_{L / K}\br{y}} \le 1 $. Thus $ a_i \in \OOO_K $ for all $ i $, so $ f \in \OOO_K\sbr{X} $, so $ y $ is integral over $ \OOO_K $.
+\item Conversely let $ y \in L $ be integral over $ \OOO_K $. Again by property of $ \N_{L / K} $, we have
+$$ \N_{L / K}\br{y} = \br{\prod_{\sigma : L \to \overline{K}} \sigma\br{y}}^d, \qquad d \ge 1, $$
+where $ \overline{K} $ is an algebraic closure of $ K $ and $ \sigma $ runs over $ K $-algebra homomorphisms. For all such $ \sigma : L \to \overline{K} $, $ \sigma\br{y} $ is integral over $ \OOO_K $. Thus $ \N_{L / K}\br{y} \in K $ is integral over $ \OOO_K $. By Lemma \ref{lem:6.8}, $ \N_{L / K}\br{y} \in \OOO_K $, so $ \abs{\N_{L / K}\br{y}} \le 1 $, so $ y \in \OOO_L $.
+\end{itemize}
+Thus $ \OOO_K^{\Int L} = \OOO_L $ and proves the claim. Now we prove $ 3 $. Let $ x, y \in L $. Without loss of generality assume $ \abs{x}_L \le \abs{y}_L $, then $ \abs{x / y}_L \le 1 $, so $ x / y \in \OOO_L $. Since $ 1 \in \OOO_L = \OOO_K^{\Int L} $, we have $ 1 + x / y \in \OOO_L $ and hence $ \abs{1 + x / y}_L \le 1 $, so $ \abs{x + y}_L \le \abs{y}_L = \max\br{\abs{y}_L, \abs{x}_L} $. Thus $ 3 $ is satisfied. If $ \abs{\cdot}_L' $ is another absolute value on $ L $ extending $ \abs{\cdot} $, then note that $ \abs{\cdot}_L $ and $ \abs{\cdot}_L' $ are norms on $ L $. By Theorem \ref{thm:6.5}, $ \abs{\cdot}_L' $ and $ \abs{\cdot}_L $ induce the same topology on $ L $, so $ \abs{\cdot}_L' = \abs{\cdot}_L^c $ for some $ c > 0 $. Since $ \abs{\cdot}_L' $ extends $ \abs{\cdot} $, we have $ c = 1 $.
+\end{enumerate}
+\item Since $ \abs{\cdot}_L $ defines a norm on $ K $, Theorem \ref{thm:6.5} implies $ L $ is complete with respect to $ \abs{\cdot}_L $.
+\end{enumerate}
+\end{proof}
+
+\lecture{7}{Friday}{23/10/20}
+
+\begin{corollary}
+Let $ \br{K, \abs{\cdot}} $ be a complete non-archimedean discretely valued field and $ L / K $ a finite extension. Then
+\begin{enumerate}
+\item $ L $ is discretely valued with respect to $ \abs{\cdot}_L $, and
+\item $ \OOO_L $ is the integral closure of $ \OOO_K $ in $ L $.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ v $ be a valuation on $ K $, and let $ v_L $ be a valuation on $ L $ such that $ v_L $ extends $ v $. If $ y \in L^\times $, then $ \abs{y}_L = \abs{\N_{L / K}\br{y}}^{1 / n} $ for $ n = \sbr{L : K} $, so $ v_L\br{y} = \br{1 / n}v\br{\N_{L / K}\br{y}} $. Thus $ v_L\br{L^\times} \subseteq \br{1 / n}v\br{K^\times} $, so $ v_L $ is discrete.
+\item Proved in in the last lecture.
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Let $ \br{K, \abs{\cdot}} $ be a complete non-archimedean discretely valued field and $ \overline{K} / K $ an algebraic closure. Then $ \abs{\cdot} $ extends to a unique absolute value $ \abs{\cdot}_{\overline{K}} $ on $ \overline{K} $.
+\end{corollary}
+
+\begin{proof}
+If $ x \in \overline{K} $, then $ x \in L $ for some $ L / K $ finite. Define $ \abs{x}_{\overline{K}} = \abs{x}_L $. Well-defined, that is independent of $ L $, by the uniqueness in Theorem \ref{thm:6.1}. The axioms for $ \abs{\cdot}_{\overline{K}} $ to be an absolute value can be checked over finite extensions. Uniqueness is clear.
+\end{proof}
+
+\begin{remark*}
+$ \abs{\cdot}_{\overline{K}} $ on $ \overline{K} $ is never discrete. For example, if $ K = \QQ_p $, then $ \sqrt[n]{p} \in \overline{\QQ_p} $ for all $ n \in \NN_{> 0} $, so $ \v_p\br{\sqrt[n]{p}} = \br{1 / n}\v_p\br{p} = 1 / n $. Then $ \overline{\QQ_p} $ is not complete with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $. By example sheet $ 2 $, if $ \CC_p $ is the completion of $ \overline{\QQ_p} $ with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $, then $ \CC_p $ is algebraically closed.
+\end{remark*}
+
+\pagebreak
+
+\section{Local fields}
+
+\subsection{Local fields}
+
+\begin{definition}
+Let $ \br{K, \abs{\cdot}} $ be a valued field. Then $ K $ is a \textbf{local field} if it is complete and locally compact.
+\end{definition}
+
+\begin{example*}
+$ \RR $ and $ \CC $ are local fields.
+\end{example*}
+
+\begin{proposition}
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean complete valued field. The following are equivalent.
+\begin{enumerate}
+\item $ K $ is locally compact.
+\item $ \OOO_K $ is compact.
+\item $ v $ is discrete and $ k = \OOO_K / \mmm $ is finite.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}[leftmargin=0.5in]
+\item[$ 1 \implies 2 $.] Let $ U \ni 0 $ be a compact neighbourhood of zero. Then there exists $ x \in \OOO_K $ such that $ x\OOO_K \subseteq U $. Since $ x\OOO_K $ is closed, $ x\OOO_K $ is compact, so $ \OOO_K $ is compact, since $ x^{-1} : x\OOO_K \to \OOO_K $ is homeomorphism.
+\item[$ 2 \implies 1 $.] If $ \OOO_K $ is compact, then $ a + \OOO_K $ compact for all $ a \in K $, so $ K $ is locally compact.
+\item[$ 2 \implies 3 $.] Let $ x \in \mmm $, and $ A_x \subseteq \OOO_K $ be a set of coset representatives for $ \OOO_K / x\OOO_K $. Then
+$$ \OOO_K = \bigcup_{y \in A_x} \br{y + x\OOO_K} $$
+is a disjoint open cover, so $ A_x $ is finite by compactness of $ \OOO_K $, so $ \OOO_K / x\OOO_K $ is finite, so $ \OOO_K / \mmm $ is finite. Suppose $ v $ is not discrete. Let $ x = x_1, x_2, \dots $ such that $ v\br{x_1} > v\br{x_2} > \dots > 0 $. Then $ x_1\OOO_K \subsetneq x_2\OOO_K \subsetneq \dots \subsetneq \OOO_K $. But $ \OOO_K / x\OOO_K $ is finite so can only have finitely many subgroups, a contradiction.
+\item[$ 3 \implies 2 $.] Since $ \OOO_K $ is a metric space, it suffices to show $ \OOO_K $ is sequentially compact. Let $ \br{x_n}_{n = 1}^\infty $ be a sequence in $ \OOO_K $ and fix $ \pi \in \OOO_K $ a uniformiser in $ \OOO_K $. Since $ \pi^i\OOO_K / \pi^{i + 1}\OOO_K \cong k $, $ \OOO_K / \pi^i\OOO_K $ is finite for all $ i $, since $ \OOO_K \supseteq \dots \supseteq \pi^i\OOO_K $. Since $ \OOO_K / \pi\OOO_K $ is finite, there exists $ a_1 \in \OOO_K / \pi\OOO_K $ and a subsequence $ \br{x_{1, n}}_{n = 1}^\infty $ such that $ x_{1, n} \equiv a_1 \mod \pi $. We define $ y_1 = x_{1, 1} $. Since $ \OOO_K / \pi^2\OOO_K $ is finite, there exists $ a_2 \in \OOO_K / \pi^2\OOO_K $ and a subsequence $ \br{x_{2, n}}_{n = 1}^\infty $ of $ \br{x_{1, n}}_{n = 1}^\infty $ such that $ x_{2, n} \equiv a_2 \mod \pi^2 $. Define $ y_2 = x_{2, 2} $. Continuing in this fashion, we obtain sequences $ \br{x_{i, n}}_{n = 1}^\infty $ for $ i = 1, 2, \dots $ such that
+\begin{itemize}
+\item $ \br{x_{i + 1, n}}_{n = 1}^\infty $ is a subsequence of $ \br{x_{i, n}}_{n = 1}^\infty $, and
+\item for any $ i $, there exists $ a_i \in \OOO_K / \pi^i\OOO_K $ such that $ x_{i, n} \equiv a_i \mod \pi^i $ for all $ n $.
+\end{itemize}
+Then necessarily $ a_i \equiv a_{i + 1} \mod \pi^i $ for all $ i $. Now choose $ y_i = x_{ii} $. This defines a subsequence $ \br{y_n}_{n = 1}^\infty $. Moreover $ y_i \equiv a_i \equiv a_{i + 1} \equiv y_{i + 1} \mod \pi^i $. Thus $ y_i $ is Cauchy, hence converges by completeness.
+\end{itemize}
+\end{proof}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \QQ_p $ is a local field.
+\item $ \FF_p\br{\br{t}} $ is a local field.
+\end{itemize}
+\end{example*}
+
+Let $ \br{A_n}_{n = 1}^\infty $ be a sequence of sets or groups or rings and $ \phi_n : A_{n + 1} \to A_n $ homomorphisms.
+
+\begin{definition}
+Assume $ A_n $ is finite. The \textbf{profinite topology} on $ A = \varprojlim_n A_n $ is the weakest topology on $ A $ such that $ A \to A_n $ is continuous for all $ n $, where $ A_n $ are equipped with the discrete topology.
+\end{definition}
+
+\begin{fact*}
+$ A = \varprojlim_n A_n $ with profinite topology is compact, totally disconnected, and Hausdorff.
+\end{fact*}
+
+\pagebreak
+
+\begin{proposition}
+Let $ K $ be a local field. Under the isomorphism $ \OOO_K \cong \varprojlim_n \OOO_K / \pi^n\OOO_K $ for $ \pi \in \OOO_K $ a uniformiser, the topology on $ \OOO_K $ coincides with the profinite topology.
+\end{proposition}
+
+\begin{proof}
+One checks that the sets
+$$ B = \cbr{a + \pi^n\OOO_K \st n \in \NN_{\ge 1}, \ a \in A_{\pi^n}}, $$
+where $ A_{\pi^n} $ is a set of coset representatives for $ \OOO_K / \pi^n\OOO_K $, is a basis of open sets in both topologies. For $ \abs{\cdot} $, this is clear. For the profinite topology, $ \OOO_K \to \OOO_K / \pi^n\OOO_K $ is continuous if and only if $ a + \pi^n\OOO_K $ is open for all $ a \in A_{\pi^n} $. Thus $ B $ is a basis for the profinite topology.
+\end{proof}
+
+\begin{remark*}
+This gives another proof that $ \OOO_K $ is compact.
+\end{remark*}
+
+\end{document}
