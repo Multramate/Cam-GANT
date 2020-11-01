@@ -7,6 +7,10 @@
 
 \input{../style/header}
 
+% Macros
+\newcommand{\Sch}{\textbf{Sch}}
+\newcommand{\Set}{\textbf{Set}}
+
 \begin{document}
 
 \input{../style/cover}
@@ -623,9 +627,267 @@ An \textbf{affine scheme} is a locally ringed space isomorphic, in the category 
 \end{definition*}
 
 \begin{example*}
-Let $ k $ be a field. Then $ \Spec k = \br{\cbr{0}, k} $. What does giving a morphism $ f : \Spec k \to X $ to a scheme mean? First, this selects a point $ x \in X $, the image of $ f $. Second, we get a local ring homomorphism $ f_x^\# : \OOO_{X, x} \to \OOO_{\Spec k, 0} = k $, that is $ \br{f_x^\#}^{-1}\br{0} = \mmm_x \subseteq \OOO_{X, x} $, the maximal ideal of $ \OOO_{X, x} $. Thus we get a factorisation $ f_x^\# : \OOO_{X, x} \to \OOO_{X, x} / \mmm_x \to k $, where $ \OOO_{X, x} / \mmm_x $ is a field, written as $ \kappa\br{x} $, called the \textbf{residue field} of $ X $ at $ x $. Thus $ f $ induces an inclusion $ \kappa\br{x} \hookrightarrow k $. Conversely, given such an inclusion $ \iota : \kappa\br{x} \hookrightarrow k $ of fields, we get a scheme morphism by defining $ f\br{0} = x $, and
+Let $ k $ be a field. Then $ \Spec k = \br{\cbr{0}, k} $.
+\begin{itemize}
+\item What does giving a morphism $ f : \Spec k \to X $ to a scheme mean? First, this selects a point $ x \in X $, the image of $ f $. Second, we get a local ring homomorphism $ f_x^\# : \OOO_{X, x} \to \OOO_{\Spec k, 0} = k $, that is $ \br{f_x^\#}^{-1}\br{0} = \mmm_x \subseteq \OOO_{X, x} $, the maximal ideal of $ \OOO_{X, x} $. Thus we get a factorisation $ f_x^\# : \OOO_{X, x} \to \OOO_{X, x} / \mmm_x \to k $, where $ \OOO_{X, x} / \mmm_x $ is a field, written as $ \kappa\br{x} $, called the \textbf{residue field} of $ X $ at $ x $. Thus $ f $ induces an inclusion $ \kappa\br{x} \hookrightarrow k $. Conversely, given such an inclusion $ \iota : \kappa\br{x} \hookrightarrow k $ of fields, we get a scheme morphism by defining $ f\br{0} = x $, and
 $$ \function[f^\#]{\OOO_X}{f_*k}{s}{\iota\br{s\br{x}}}, \qquad s\br{x} \in \OOO_{X, x}. $$
 The moral is that giving a morphism $ f : \Spec k \to X $ is equivalent to giving a point $ x \in X $ and an inclusion $ \iota : \kappa\br{x} \to k $. Note that if $ X = \Spec A $, giving $ \Spec k \to \Spec A $ is equivalent to giving a homomorphism $ A \to k $, which we viewed at the beginning of the course as a $ k $-valued point on $ \Spec A $.
+
+\lecture{8}{Monday}{26/10/20}
+
+\item What does giving $ X \to \Spec k $ mean? No information in the continuous map, but need also a map $ f^\# : k \to f_*\OOO_X $, that is a map $ k \to \Gamma\br{\Spec k, f_*\OOO_X} = \Gamma\br{X, \OOO_X} $. That is, $ \Gamma\br{X, \OOO_X} $ carries a $ k $-algebra structure. Note this induces $ k $-algebra structures on $ \OOO_X\br{U} $ for all $ U $ via the composition $ k \to \OOO_X\br{X} \to \OOO_X\br{U} $ and similarly all stalks $ \OOO_{X, p} $ are also $ k $-algebras. We say $ X $ is a \textbf{scheme defined over $ k $}. For example, in affine varieties, consider $ A = k\sbr{X_1, \dots, X_n} / I $ with $ I = \sqrt{I} $. Then $ \Spec A $ is our replacement for $ \VV\br{I} \subseteq \AA_k^n $, viewing $ \Spec A $ as a scheme over $ k $. If $ k \subseteq k' $ is a field extension, a \textbf{$ k' $-valued point} of $ X / k $ is a commutative diagram
+$$
+\begin{tikzcd}
+\Spec k' \arrow{rr} \arrow{dr} & & X \arrow{dl} \\
+& \Spec k &
+\end{tikzcd}.
+$$
+We write $ X\br{k'} $ for the set of such morphisms.
+\end{itemize}
+\end{example*}
+
+\begin{remark*}
+It is rare in algebraic geometry to work with schemes alone, but rather always working over a base scheme.
+\end{remark*}
+
+Fix a base scheme $ S $. Define $ \Sch / S $ to be the category whose objects are morphisms $ T \to S $ and morphisms are commutative diagrams
+$$
+\begin{tikzcd}
+T \arrow{rr} \arrow{dr} & & T' \arrow{dl} \\
+& S &
+\end{tikzcd}.
+$$
+We will frequently work with $ \Sch / k = \Sch / \Spec k $. Given $ T \to S $ and $ X \to S $ objects in $ \Sch / S $, a \textbf{$ T $-valued point} of $ X \to S $ is a morphism $ T \to X $ over $ S $, so
+$$
+\begin{tikzcd}
+T \arrow{rr} \arrow{dr} & & X \arrow{dl} \\
+& S &
+\end{tikzcd},
+$$
+and we write $ X\br{T} $ for the set of $ T $-valued points. The \textbf{Yoneda philosophy} is that $ X\br{T} $ for all $ T $ determines $ X $.
+
+\pagebreak
+
+\begin{example*}
+Fix a field $ k $, and let $ D = \Spec k\sbr{t} / \abr{t^2} = \br{\cbr{\abr{t}}, k\sbr{t} / \abr{t^2}} $. Then $ t $ does not make sense as $ k $-valued function anymore, as $ t^2 = 0 $. Let $ X $ be any scheme over $ k $. What is $ X\br{D} $? Given $ f : D \to X $ a morphism of schemes over $ k $, we get a point $ x \in X $ as the image of $ f $ and a local homomorphism
+$$ \function[f_x^\#]{\OOO_{X, x}}{k\sbr{t} / \abr{t^2}}{\mmm_x}{\abr{t}}. $$
+Note that $ \mmm_x^2 $ maps to zero, hence we get a $ k $-linear map $ \mmm_x / \mmm_x^2 \to \abr{t} \cong k $ as a $ k $-vector space. We also have a composed surjective $ k $-algebra homomorphism $ \OOO_{X, x} \to k\sbr{t} / \abr{t} \cong k $ with kernel $ \mmm_x $, and hence we have $ \kappa\br{x} = \OOO_{X, x} / \mmm_x \cong k $. So we get
+\begin{itemize}
+\item a $ k $-valued point $ x $ with residue field $ k $, and
+\item a $ k $-vector space map $ \mmm_x / \mmm_x^2 \to k $, that is an element of $ \br{\mmm_x / \mmm_x^2}^* $, the dual vector space.
+\end{itemize}
+Then $ \br{\mmm_x / \mmm_x^2}^* $ is called the \textbf{Zariski tangent space} to $ X $ at $ x $. Think of $ D $ as a point plus an arrow.
+\end{example*}
+
+\begin{example*}
+\textbf{Glued schemes} are a special case of a question on example sheet $ 1 $. Suppose given two schemes $ X_1 $ and $ X_2 $ and open subsets $ U_i \subseteq X_i $. Recall $ U_i $ is also a locally ringed space $ \br{U_i, \eval{\OOO_{X_i}}_{U_i}} $, and in fact $ U_i $ is then a scheme. Given an isomorphism $ f : U_1 \xrightarrow{\sim} U_2 $, can glue $ X_1 $ and $ X_2 $ along $ U_1 $ and $ U_2 $ to get a scheme $ X $ with an open cover $ \cbr{X_1, X_2} $, so $ X = X_1 \sqcup X_2 / \sim $ such that $ x_1 \in U_1 \sim x_2 \in U_2 $ if $ f\br{x_1} = x_2 $, and need to define $ \OOO_X $. Now take $ \AA_k^n = \Spec k\sbr{X_1, \dots, X_n} $, so $ \AA_k^1 = \Spec k\sbr{X} $. Take $ X_1 = X_2 = \AA_k^1 $.
+\begin{itemize}
+\item Glue $ U_1 = \AA^1 \setminus \cbr{0} = \DD\br{X} \subseteq X_1 $ and $ U_2 = \AA^1 \setminus \cbr{0} = \DD\br{X} \subseteq X_2 $ via the identity map. This is the affine line with doubled origin.
+\item Could instead glue $ U_1 $ and $ U_2 $ via the map given by $ X \mapsto X^{-1} $, where $ U_1 = \Spec k\sbr{X}_X = U_2 $ and
+$$ \function{k\sbr{X}_X}{k\sbr{X}_X}{X}{X^{-1}} $$
+induces an isomorphism $ U_1 \to U_2 $. When we glue, we get the projective line over $ k $, $ \PP_k^1 $.
+\end{itemize}
+\end{example*}
+
+\subsection{Projective schemes}
+
+Let $ S $ be a graded ring, that is
+$$ S = \bigoplus_{d \ge 0} S_d, $$
+with $ S_d $ an abelian group, and product law satisfies $ S_d \cdot S_{d'} \subseteq S_{d + d'} $.
+
+\begin{example*}
+$ S = k\sbr{X_0, \dots, X_n} $, and $ S_d $ is the space of polynomials which are homogeneous of degree $ d $, that is spanned by monomials of degree $ d $.
+\end{example*}
+
+We write
+$$ S_+ = \bigoplus_{d \ge 1} S_d, $$
+which we call the \textbf{irrelevant ideal}.
+
+\begin{definition*}
+$ I \subseteq S $ is a \textbf{homogeneous ideal} if $ I $ is generated by its homogeneous elements, that is elements in $ S_d $ for various $ d $.
+\end{definition*}
+
+\begin{definition*}
+Let
+$$ \Proj S = \cbr{\ppp \in \Spec S \st \ppp \ \text{is homogeneous}, \ \ppp \not\supseteq S_+}. $$
+For $ I \subseteq S $ a homogeneous ideal, set
+$$ \VV\br{I} = \cbr{\ppp \in \Proj S \st \ppp \supseteq I}. $$
+\end{definition*}
+
+\begin{exercise*}
+Check the $ \VV\br{I} $ form the closed sets of a topology on $ \Proj S $.
+\end{exercise*}
+
+\pagebreak
+
+\lecture{9}{Wednesday}{28/10/20}
+
+\begin{notation*}
+For $ \ppp \in \Proj S $, let
+$$ T = \cbr{f \in S \setminus \ppp \st f \ \text{is homogeneous}}. $$
+Then $ T $ is a multiplicatively closed subset of $ S $, and let $ S_{\br{\ppp}} \subseteq T^{-1}S $ be the subring of elements of degree zero, that is written in the form $ s / s' $ with $ s \in S $ homogeneous and $ s' \in T $ with $ \deg s = \deg s' $. For $ f \in S $ homogeneous, we write $ S_{\br{f}} \subseteq S_f $ for the subset of elements of degree zero.
+\end{notation*}
+
+Can now define a sheaf $ \OOO $ on $ \Proj S $. For $ U \subseteq \Proj S $ open, set
+$$ \OOO\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} S_{\br{\ppp}} \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in S_{\br{\ppp}} \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists a, f \in S, \ \forall \qqq \in V, \ f \notin \qqq, \ s\br{\qqq} = \dfrac{a}{f} \in S_{\br{\qqq}} \end{array}}, $$
+where $ a $ and $ f $ are homogeneous of the same degree. As before, $ \OOO_\ppp = S_{\br{\ppp}} $. \footnote{Exercise: check} Is the locally ringed space $ \br{\Proj S, \OOO} $ a scheme?
+
+\begin{notation*}
+If $ f \in S $ is homogeneous, then we write
+$$ \DD_+\br{f} = \cbr{\ppp \in \Proj S \st f \notin \ppp}, $$
+which is an open set and $ \DD_+\br{f} = \Proj S \setminus \VV\br{f} $.
+\end{notation*}
+
+\begin{proposition}
+$ \br{\DD_+\br{f}, \eval{\OOO}_{\DD_+\br{f}}} \cong \Spec S_{\br{f}} $ as locally ringed spaces. Further, the open sets $ \DD_+\br{f} $ for $ f \in S_+ $ cover $ \Proj S $. Hence $ \br{\Proj S, \OOO} $ is a scheme.
+\end{proposition}
+
+\begin{proof}
+Will be on example sheet $ 2 $.
+\end{proof}
+
+\begin{definition*}
+If $ A $ is a ring, define
+$$ \PP_A^n = \Proj A\sbr{X_0, \dots, X_n}. $$
+\end{definition*}
+
+\begin{example*}
+If $ k $ is an algebraically closed field, consider $ \PP_k^1 = \Proj k\sbr{X_0, X_1} $. The closed points, that is points $ \ppp $ such that $ \cbr{\ppp} $ is closed, correspond to maximal elements of $ \Proj S $. \footnote{Exercise: check} These maximal elements are ideals of the form $ \abr{aX_0 - bX_1} $. The only maximal homogeneous ideal of $ k\sbr{X_0, X_1} $ is $ \abr{X_0, X_1} = S_+ $, since any maximal ideal is of the form $ \abr{X_0 - a_0, X_1 - a_1} $. The other prime ideals of $ k\sbr{X_0, X_1} $ are principal, that is of the form $ \abr{f} $ with $ f $ irreducible or $ f = 0 $. For $ \abr{f} $ to be homogeneous, $ f $ must be homogeneous. Any such polynomial splits into linear factors, all homogeneous, so in order for $ f $ to be irreducible it must be linear. Note we have a one-to-one correspondence between
+$$ \function{\cbr{\abr{aX_0 - bX_1} \st a, b \in K, \ a, b \ \text{not both zero}}}{\br{k^2 \setminus \cbr{\br{0, 0}}} / k^*}{\abr{aX_0 - bX_1}}{\br{b : a}}, $$
+where $ k^* $ acts by $ \br{a, b} \mapsto \br{\lambda a, \lambda b} $ for $ \lambda \in k^* $. The conclusion is that the closed points of $ \PP_k^1 $ are in one-to-one correspondence with points of $ \br{k^2 \setminus \cbr{\br{0, 0}}} / k^* $. More generally, the closed points of $ \PP_k^n $ are in one-to-one correspondence with points of $ \br{k^{n + 1} \setminus \cbr{0}} / k^* $. Can see this by making use of the open cover $ \cbr{\DD_+\br{X_i} \st 0 \le i \le n} $, \footnote{Exercise: good exercise} which is an open cover since $ \ppp \notin \DD_+\br{X_i} $ for any $ i $ implies that $ X_i \in \ppp $ for all $ i $, so $ S_+ \subseteq \ppp $ and so $ \ppp \notin \Proj S $.
+\end{example*}
+
+\begin{example*}
+Let $ S = k\sbr{X_0, \dots, X_n} $, but grade by $ \deg X_i = w_i $, where $ w_0, \dots, w_n $ are positive integers. Define $ \W\PP^n\br{w_0, \dots, w_n} = \Proj S $, the \textbf{weighted projective space}. For example, $ \W\PP^2\br{1, 1, 2} $ has an open cover $ \cbr{\DD_+\br{X_i} \st 0 \le i \le 2} $. Consider $ \DD_+\br{X_2} = \Spec S_{\br{X_2}} $. Note
+$$ S_{\br{X_2}} = k\sbr{\dfrac{X_0^2}{X_2}, \dfrac{X_0X_1}{X_2}, \dfrac{X_1^2}{X_2}} \cong k\sbr{U, V, W} / \abr{UW - V^2} \subseteq S_{X_2}, $$
+so $ \Spec S_{\br{X_2}} $ is a quadric cone with a singular point. Similarly, $ \DD_+\br{X_0} $ and $ \DD_+\br{X_1} $ are both isomorphic to $ \AA_k^2 $.
+\end{example*}
+
+\pagebreak
+
+\begin{example*}
+Let $ M = \ZZ^n $ and $ M_\RR = M \otimes_\ZZ \RR = \RR^n $. Let $ \Delta \subseteq M_\RR $ be a compact convex lattice polytope. That is, there exists a finite set $ V \subseteq M $ such that $ \Delta $ is the convex hull of $ V $, that is the smallest convex set containing $ V $. Let
+$$ \C\br{\Delta} = \cbr{\br{m, r} \in M_\RR \oplus \RR \st m \in r\Delta, \ r \ge 0} \subseteq M_\RR \oplus \RR. $$
+Here $ r\Delta = \cbr{rm \st m \in \Delta} $. This is the \textbf{cone over $ \Delta $}. Let
+$$ S = k\sbr{\C\br{\Delta} \cap \br{M \oplus \ZZ}} = \bigoplus_{P \in \C\br{\Delta} \cap \br{M \oplus \ZZ}} kZ^P, $$
+with multiplication given by $ Z^PZ^{P'} = Z^{P + P'} $, since $ \C\br{\Delta} \cap \br{M \oplus \ZZ} $ is a monoid, that is it is closed under addition and contains zero. This makes $ S $ into a ring, and it is graded by $ \deg Z^{\br{m, r}} = r $. Define $ \PP_\Delta = \Proj S $. This is called a \textbf{projective toric variety}.
+\begin{itemize}
+\item Let $ \Delta $ be the convex hull of $ \cbr{0, e_1, \dots, e_n} $ with $ e_1, \dots, e_n $ the standard basis of $ M = \ZZ^n $. Check that $ S = k\sbr{X_0, \dots, X_n} $ with standard grading $ X_0 = Z^{\br{0, 1}} $ and $ X_i = Z^{\br{e_i, 1}} $. \footnote{Exercise} So $ \PP_\Delta = \PP_k^n $.
+\item Let $ n = 2 $, and let $ \Delta $ be the convex hull of $ \cbr{\br{0, 0}, \br{1, 0}, \br{0, 1}, \br{1, 1}} $. In $ S $, the degree $ d $ monomials are $ \cbr{Z^{\br{a, b, d}} \st 0 \le a \le d, \ 0 \le b \le d} $. Any of these can be written as a product of monomials of degree one, that is the monomials $ X = Z^{\br{0, 0, 1}} $, $ Y = Z^{\br{1, 0, 1}} $, $ W = Z^{\br{0, 1, 1}} $, and $ T = Z^{\br{1, 1, 1}} $. Thus $ S = k\sbr{X, Y, W, T} / \abr{XT - YW} $. So $ \Proj S $ can be thought of as a quadric surface in $ \PP_k^3 $.
+\end{itemize}
+\end{example*}
+
+\subsection{Open and closed subschemes}
+
+\lecture{10}{Friday}{30/10/20}
+
+\begin{definition*}
+An \textbf{open subscheme} of a scheme $ X $ is a scheme $ \br{U, \eval{\OOO_X}_U} $ for $ U \subseteq X $ an open subset. Note that this is a scheme because from question $ 1 $ and question $ 11 $ on the first example sheet, open affine subsets of $ X $ form a basis for the topology on $ X $. An \textbf{open immersion} is a morphism $ f : X \to Y $ which induces a isomorphism of $ X $ with an open subscheme of $ Y $. A \textbf{closed immersion} $ f : X \to Y $ is a morphism which is a homeomorphism onto a closed subset of $ Y $, and the induced morphism $ f^\# : \OOO_Y \to f_*\OOO_X $ is surjective. A \textbf{closed subscheme} of $ Y $ is an equivalence class of closed immersions, where
+$$
+\begin{tikzcd}
+X \arrow[dashed]{rr}{i} \arrow{dr} & & X' \arrow{dl} \\
+& Y &
+\end{tikzcd}
+$$
+are equivalent if there exists an isomorphism $ i $ making the diagram commute.
+\end{definition*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Let $ Y = \Spec A $, let $ I \subseteq A $ be an ideal, and let $ X = \Spec A / I $. Note the map of schemes induced by the quotient map $ A \to A / I $ identifies $ \Spec A / I $ with $ \VV\br{I} \subseteq \Spec A $. Thus $ f : X \to Y $, induced by $ A \to A / I $, satisfies the first condition of being a closed immersion. Note that $ \OOO_Y \to f_*\OOO_X $ is surjective on stalks. For $ \ppp \in \VV\br{I} $, $ \OOO_{Y, \ppp} = A_\ppp $ and $ \br{f_*\OOO_X}_\ppp = \OOO_{X, \ppp} $ since all open sets in $ X $ are of the form $ U \cap X $ for $ U $ an open set of $ Y $ and $ \OOO_{X, \ppp} = \br{A / I}_{\ppp / I} $. Certainly $ A_\ppp \to \br{A / I}_{\ppp / I} $ is surjective.
+\item Let $ \Spec k\sbr{X, Y} / \abr{X} \to \Spec k\sbr{X, Y} = \AA^2 $. This gives a closed subscheme structure to the set $ \VV\br{X} $. Note $ \VV\br{X^2, XY} = \VV\br{X} $. This gives a closed immersion $ \Spec k\sbr{X, Y} / \abr{X^2, XY} \to \AA^2 $. This gives a different closed subscheme structure on $ \VV\br{X} $. Note these two subschemes are isomorphic away from the origin, which we can see by looking at $ \DD\br{Y} \subseteq \Spec k\sbr{X, Y} / \abr{X} $, where
+$$ \DD\br{Y} \cong \Spec \br{k\sbr{X, Y} / \abr{X}}_Y = \Spec k\sbr{Y}_Y. $$
+Looking at $ \DD\br{Y} \subseteq \Spec k\sbr{X, Y} / \abr{X^2, XY} $,
+$$ \DD\br{Y} \cong \Spec \br{k\sbr{X, Y} / \abr{X^2, XY}}_Y \cong \Spec \br{k\sbr{X, Y}_Y / \abr{X}} \cong \Spec k\sbr{Y}_Y. $$
+\end{itemize}
+\end{example*}
+
+\pagebreak
+
+\subsection{Fibre products}
+
+Let $ \CCC $ be a category and
+$$
+\begin{tikzcd}
+& Y \arrow{d}{g} \\
+X \arrow{r}[swap]{f} & Z
+\end{tikzcd}
+$$
+be a diagram in $ \CCC $. Then the \textbf{fibre product}, if it exists, is an object $ W $ equipped with morphisms $ p : W \to X $ and $ q : W \to Y $ such that $ f \circ p = g \circ q $ satisfying the following universal property. For any $ W' $ equipped with maps $ p' : W' \to X $ and $ q' : W' \to Y $ such that $ f \circ p' = g \circ q' $, there exists a unique morphism $ h : W' \to W $ making the diagram
+$$
+\begin{tikzcd}
+W' \arrow[dashed]{dr}{\exists !h} \arrow[bend left=30]{drr}{q'} \arrow[bend right=30]{ddr}[swap]{p'} & & \\
+& W \arrow{r}{q} \arrow{d}[swap]{p} & Y \arrow{d}{g} \\
+& X \arrow{r}[swap]{f} & Z
+\end{tikzcd}
+$$
+commute, that is $ p \circ h = p' $ and $ q \circ h = q' $. Note that if the fibre product exists, it is unique up to unique isomorphism.
+
+\begin{example*}
+Let $ \CCC $ be the category of sets. Then
+$$ X \times_Z Y = \cbr{\br{x, y} \in X \times Y \st f\br{x} = g\br{y}}. $$
+\end{example*}
+
+It will be helpful to think about the fibre product, and more generally other universal properties, via the Yoneda lemma.
+
+\begin{definition*}
+Let $ \CCC $ be a category. Write $ \h_X $ for the contravariant functor
+$$ \functions[\h_X]{\CCC}{\Set}{Y}{\Hom\br{Y, X}}{f : Y \to Z}{\br{\phi \in \Hom\br{Z, X} \mapsto \phi \circ f \in \Hom\br{Y, X}}}. $$
+\end{definition*}
+
+Recall that a \textbf{natural transformation} between contravariant functors $ F, G : \CCC \to \DDD $, written as $ T : \CCC \to \DDD $, consists of the data $ T\br{X} : F\br{X} \to G\br{X} $ for all $ X \in \Ob \CCC $ such that for all $ f : X \to Y $ in $ \CCC $
+$$
+\begin{tikzcd}
+F\br{X} \arrow{d}[swap]{T\br{X}} & F\br{Y} \arrow{l}[swap]{F\br{f}} \arrow{d}{T\br{Y}} \\
+G\br{X} & G\br{Y} \arrow{l}{G\br{f}}
+\end{tikzcd}
+$$
+is commutative.
+
+\begin{lemma}[Yoneda's lemma]
+The set of natural transformations between $ \h_X : \CCC \to \Set $ and $ G : \CCC \to \Set $ is $ G\br{X} $.
+\end{lemma}
+
+\begin{proof}
+Given $ \eta \in G\br{X} $, we need to define a map
+$$ \function{\h_X\br{Y} = \Hom\br{Y, X}}{G\br{Y}}{f}{G\br{f}\br{\eta}}, $$
+for all objects $ Y \in \CCC $. Check that this defines a natural transformation $ \h_X \to G $. \footnote{Exercise} Conversely, given $ T : \h_X \to G $ a natural transformation, take $ \eta = T\br{X}\br{\id_X} $. Check that these two maps are inverse to each other. \footnote{Exercise}
+\end{proof}
+
+\begin{corollary}
+The set of natural transformations $ \h_X \to \h_Y $ is $ \h_Y\br{X} = \Hom\br{X, Y} $.
+\end{corollary}
+
+\pagebreak
+
+\begin{definition*}
+A contravariant functor $ F : \CCC \to \Set $ is said to be \textbf{representable} if $ F \cong \h_X $ for some $ X \in \Ob \CCC $.
+\end{definition*}
+
+Lots of questions in algebraic geometry are about representability of functors. Redefining, the fibre product in a category $ \CCC $ is an object which represents the functor
+$$ T \mapsto \Hom\br{T, X} \times_{\Hom\br{T, Z}} \Hom\br{T, Y}, $$
+since an element of the set $ \Hom\br{T, X} \times_{\Hom\br{T, Z}} \Hom\br{T, Y} $ is a commutative diagram
+$$
+\begin{tikzcd}
+T \arrow[dashed]{dr} \arrow[bend left=30]{drr}{q} \arrow[bend right=30]{ddr}[swap]{p} & & \\
+& W \arrow[dashed]{r} \arrow[dashed]{d} & Y \arrow{d}{g} \\
+& X \arrow{r}[swap]{f} & Z
+\end{tikzcd}.
+$$
+The advantage of using Yoneda is that we can check identities using fibre products using identities of the products of sets.
+
+\begin{example*}
+In $ \Set $,
+$$ \bijection{\br{A \times_B B} \times_C D}{A \times_B D}{\br{\br{a, c}, d}}{\br{a, d}}{\br{\br{a, f\br{d}}, d}}{\br{a, d}}, \qquad f : D \to C. $$
+Then we have two functors
+$$
+\begin{tikzcd}
+T \arrow{r} \arrow{dr} & \h_A\br{T} \times_{\h_B\br{T}} \h_C\br{T} \times_{\h_C\br{T}} \h_D\br{T} \arrow{d}{\sim} \\
+& \h_A\br{T} \times_{\h_B\br{T}} \h_D\br{T}
+\end{tikzcd},
+$$
+and natural transformations showing those functors are isomorphic, and hence represent isomorphic objects.
 \end{example*}
 
 \end{document}
