@@ -60,7 +60,7 @@ $ \RR^2 $ is simply-connected, and $ \RR^2 \setminus \cbr{0} $ is not. From comp
 \item if $ \gamma_n\br{t} = e^{2\pi int} $ then $ \deg \gamma_n = n $, and
 \item $ \deg \gamma_1 = \deg \gamma_2 $ if $ \gamma_1 \simeq \gamma_2 $.
 \end{itemize}
-For differentiable $ \gamma $, $ \deg \gamma = \intd{\gamma}{}{\tfrac{1}{z}}{z} $.
+For differentiable $ \gamma $, $ \deg \gamma = \tfrac{1}{2\pi i}\intd{\gamma}{}{\tfrac{1}{z}}{z} $.
 \end{example*}
 
 \begin{corollary}[Fundamental theorem of algebra]
@@ -133,7 +133,7 @@ This is a well-defined operation on the \textbf{fundamental group}
 $$ \pi_1\br{X, x_0} = \cbr{\text{maps} \ \gamma : \S^1 \to X \st \gamma\br{0} = x_0 \ \text{fixed}} / \br{\simeq \ \text{preserving} \ x_0}. $$
 Similarly, the \textbf{$ n $-th homotopy group} is
 $$ \pi_n\br{X, x_0} = \cbr{\text{based maps} \ \S^n \to X \ \text{at} \ x_0} / \simeq. $$
-The issue is that they are very hard to compute, such as $ \pi_n\br{\S^2, x_0} $ not known for all $ n $. There is no simply-connected \textbf{manifold}, a space $ X $ locally homeomorphic to $ \RR^n $, of dimension greater than zero, with $ \pi_n\br{X} $ known for all $ n $. So we will do something else, homology and cohomology. It is algebraically harder to set up, but the computational gain is worth it. Note that computing cohomology of harder spaces, such as the space of diffeomorphisms of some manifold or the space of embeddings of one manifold into another, is still very hard.
+The issue is that they are very hard to compute, such as $ \pi_n\br{\S^2, x_0} $ not known for all $ n $. There is no simply-connected \textbf{manifold}, a Hausdorff second countable space $ X $ locally homeomorphic to $ \RR^n $, of dimension greater than zero, with $ \pi_n\br{X} $ known for all $ n $. So we will do something else, homology and cohomology. It is algebraically harder to set up, but the computational gain is worth it. Note that computing cohomology of harder spaces, such as the space of diffeomorphisms of some manifold or the space of embeddings of one manifold into another, is still very hard.
 
 \begin{remark*}
 \hfill
@@ -145,7 +145,7 @@ The issue is that they are very hard to compute, such as $ \pi_n\br{\S^2, x_0} $
 
 \pagebreak
 
-\section{Definition and examples}
+\section{Singular homology and cohomology}
 
 \lecture{2}{Monday}{12/10/20}
 
@@ -160,14 +160,14 @@ We will define invariants of spaces in two stages.
 \begin{definition*}
 A \textbf{chain complex} $ \br{C_\bullet, \da} $ is a sequence of abelian groups and homomorphisms
 $$ \dots \to C_{n + 1} \xrightarrow{\da_{n + 1}} C_n \xrightarrow{\da_n} C_{n - 1} \to \dots, $$
-such that $ \da_n \circ \da_{n + 1} = 0 $ for all $ n $. We write $ \da^2 = 0 $, and $ \da $ is the \textbf{differential} or \textbf{boundary map}. The \textbf{homology groups} $ \H\br{C_\bullet, \da} $ are the graded groups
+such that $ \da_n \circ \da_{n + 1} = 0 $ for all $ n $. We write $ \da^2 = 0 $, and $ \da $ is the \textbf{differential} or \textbf{boundary map}. The \textbf{homology groups} $ \H_\bullet\br{C_\bullet, \da} $ are the graded groups
 $$ \H_n\br{C_\bullet} = \ker \da_n / \im \da_{n + 1}. $$
 \end{definition*}
 
 \begin{definition*}
 A \textbf{cochain complex} $ \br{C^\bullet, \da} $ is a sequence of abelian groups and homomorphisms
 $$ \dots \to C^{n - 1} \xrightarrow{\da^{n - 1}} C^n \xrightarrow{\da^n} C^{n + 1} \to \dots, $$
-such that $ \da^n \circ \da^{n - 1} = 0 $ for all $ n $. We write $ \da^2 = 0 $, and $ \da $ is still the \textbf{differential} or \textbf{boundary map}. The \textbf{cohomology groups} $ \H\br{C^\bullet, \da} $ are
+such that $ \da^n \circ \da^{n - 1} = 0 $ for all $ n $. We write $ \da^2 = 0 $, and $ \da $ is still the \textbf{differential} or \textbf{boundary map}. The \textbf{cohomology groups} $ \H^\bullet\br{C^\bullet, \da} $ are
 $$ \H^n\br{C^\bullet} = \ker \da^n / \im \da^{n - 1}. $$
 \end{definition*}
 
@@ -257,7 +257,7 @@ Exchange $ i $ and $ j $ and the two terms cancel.
 
 \begin{definition*}
 The \textbf{singular homology} of $ X $ is
-$$ \H_\bullet\br{X} = \H_\bullet\br{X; \ZZ} = \H\br{\C_\bullet\br{X}, \da}. $$
+$$ \H_\bullet\br{X} = \H_\bullet\br{X; \ZZ} = \H_\bullet\br{\C_\bullet\br{X}, \da}. $$
 \end{definition*}
 
 Trivially this is a homeomorphism invariant of $ X $, since we only used the notion of continuous maps to $ X $ to define it.
@@ -274,7 +274,7 @@ Then $ \da^*\br{\da^*\br{\psi}}\br{\sigma} = \da^*\br{\psi}\br{\da\br{\sigma}} =
 
 \begin{definition*}
 The \textbf{singular cohomology} of $ X $ is
-$$ \H^\bullet\br{X; \ZZ} = \H\br{\C^\bullet\br{X}, \da^*}. $$
+$$ \H^\bullet\br{X; \ZZ} = \H^\bullet\br{\C^\bullet\br{X}, \da^*}. $$
 \end{definition*}
 
 The following is the rough idea.
@@ -383,7 +383,7 @@ Then $ \da\br{\sum_i n_i\tau_i} = \sum_i n_i\sigma_i - \br{\sum_i n_i}p = \sum_i
 
 \subsection{Structural theorems}
 
-The following is an informal picture. Let $ X $ be an annulus, and let $ \sigma : \Delta^1 \to X $ be a $ 1 $-simplex, which happens to be a closed loop $ \sbr{0, 1} \to X $ going around the inner circle. Recall that $ \sigma $ has $ \da\br{\sigma} = \sigma\br{1} - \sigma\br{0} = 0 $, so $ \sigma $ defines $ \sbr{\sigma} \in \H_1\br{X} $. We would hope this is non-zero, as we cannot see a way to fill in $ \sigma $ with $ 2 $-simplices, in contrast to a $ 1 $-simplex $ \tau : \Delta^1 \cong \sbr{0, 1} \to X $ away from the inner circle. But $ \C_i\br{X} $ is uncountably generated for all $ i $ and very hard to control. A question is how do we rule out all configurations of $ 2 $-simplices, or other representatives for $ \sbr{\sigma} \in \H_i\br{X} $? Informally, in the realm of nice spaces, there is nothing else you can compute from the definition. Homology and cohomology is rendered useful by a collection of structural theorems. We will state these, and see how to use them, and then return to prove them later.
+The following is an informal picture. Let $ X $ be an annulus, and let $ \sigma : \Delta^1 \to X $ be a $ 1 $-simplex, which happens to be a closed loop $ \sbr{0, 1} \to X $ going around the inner circle. Recall that $ \sigma $ has $ \da\br{\sigma} = \sigma\br{1} - \sigma\br{0} = 0 $, so $ \sigma $ defines $ \sbr{\sigma} \in \H_1\br{X} $. We would hope this is non-zero, as we cannot see a way to fill in $ \sigma $ with $ 2 $-simplices, in contrast to a $ 1 $-simplex $ \tau : \Delta^1 \cong \sbr{0, 1} \to X $ away from the inner circle. But $ \C_i\br{X} $ is uncountably generated for all $ i $ and very hard to control. A question is how do we rule out all configurations of $ 2 $-simplices, or other representatives for $ \sbr{\sigma} \in \H_i\br{X} $? Informally, in the realm of nice spaces, there is nothing else you can compute from the definition. Homology and cohomology are rendered useful by a collection of structural theorems. We will state these, and see how to use them, and then return to prove them later.
 
 \begin{theorem}[Homotopy invariance]
 If $ f : X \to Y $ and $ g : X \to Y $ are homotopic, then
@@ -398,7 +398,7 @@ If $ X \simeq Y $ then $ \H_\bullet\br{X} \cong \H_\bullet\br{Y} $ and $ \H^\bul
 There exist $ f : X \to Y $ and $ g : Y \to X $ such that $ g \circ f \simeq \id_X $ and $ f \circ g \simeq \id_Y $, so $ \br{f_*}^{-1} = g_* $ are isomorphisms.
 \end{proof}
 
-Thus cohomology is insensitive to inessential deformations of a space.
+Thus homology and cohomology are insensitive to inessential deformations of a space.
 
 \begin{corollary}
 For every $ n $,
@@ -611,7 +611,7 @@ $$ \function[f]{\S^n}{\S^n}{x}{p} $$
 factorises as $ \S^n \to \cbr{\text{point}} \to \S^n $, so
 $$
 \begin{tikzcd}[row sep=tiny]
-\H_n\br{\S^n} \arrow{r} \arrow{r} \arrow[cong]{d} & \H_n\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \H_n\br{\S^n} \arrow[cong]{d} \\
+\H_n\br{\S^n} \arrow{r} \arrow[cong]{d} & \H_n\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \H_n\br{\S^n} \arrow[cong]{d} \\
 \ZZ \arrow[dashed]{r} & 0 \arrow[dashed]{r} & \ZZ
 \end{tikzcd}
 $$
@@ -1038,7 +1038,7 @@ We will prove excision and Mayer-Vietoris together next time. For now, let us se
 Naturality under maps, homotopy invariance, the relative homology long exact sequence, and excision are the key tools of homology and cohomology. Much of what we will do will be built from these.
 \end{remark*}
 
-\begin{lemma}[Five lemma]
+\begin{lemma}[$ 5 $-lemma]
 Suppose
 $$
 \begin{tikzcd}
@@ -1060,7 +1060,7 @@ are isomorphisms, then so is the third.
 \end{corollary}
 
 \begin{proof}
-Apply the five lemma to
+Apply the $ 5 $-lemma to
 $$
 \begin{tikzcd}
 \dots \arrow{r} & \H_i\br{A} \arrow{r} \arrow{d} & \H_i\br{X} \arrow{r} \arrow{d} & \H_i\br{X, A} \arrow{r} \arrow{d} & \H_{i - 1}\br{A} \arrow{r} \arrow{d} & \H_{i - 1}\br{X} \arrow{r} \arrow{d} & \dots \\
@@ -1101,15 +1101,15 @@ $$ \H_\bullet\br{X, A} \xrightarrow{\sim} \widetilde{\H_\bullet}\br{X / A}. $$
 \end{proposition}
 
 \begin{proof}
-Note that homotopy invariance and the five lemma show inclusion defines isomorphisms
+Note that homotopy invariance and the $ 5 $-lemma show inclusion defines isomorphisms
 $$ \H_\bullet\br{A} \xrightarrow{\sim} \H_\bullet\br{U}, \qquad \H_\bullet\br{X, A} \xrightarrow{\sim} \H_\bullet\br{X, U}. $$
 The inclusion $ A / A = \cbr{\text{point}} \hookrightarrow U / A $ is a deformation retract and in particular a homotopy equivalence, so
 $$ \H_\bullet\br{X / A, A / A} \xrightarrow{\sim} \H_\bullet\br{X / A, U / A} $$
-is also an isomorphism by the five lemma. Consider
+is also an isomorphism by the $ 5 $-lemma. Consider
 $$
 \begin{tikzcd}
-\H_\bullet\br{X, A} \arrow{r}{\sim}[swap]{\text{Homotopy}} \arrow{d} & \H_\bullet\br{X, U} & \H_\bullet\br{X \setminus A, U \setminus A} \arrow{l}{\text{Excision}}[swap]{\sim} \arrow{d} \\
-\H_\bullet\br{X / A, A / A} \arrow{r}{\text{Homotopy}}[swap]{\sim} & \H_\bullet\br{X / A, U / A} & \H_\bullet\br{\br{X / A} \setminus \br{A / A}, \br{U / A} \setminus \br{A / A}} \arrow{l}{\sim}[swap]{\text{Excision}}
+\H_\bullet\br{X, A} \arrow{r}{\text{Homotopy}}[swap]{\sim} \arrow{d} & \H_\bullet\br{X, U} & \H_\bullet\br{X \setminus A, U \setminus A} \arrow{l}{\sim}[swap]{\text{Excision}} \arrow{d} \\
+\H_\bullet\br{X / A, A / A} \arrow{r}{\sim}[swap]{\text{Homotopy}} & \H_\bullet\br{X / A, U / A} & \H_\bullet\br{\br{X / A} \setminus \br{A / A}, \br{U / A} \setminus \br{A / A}} \arrow{l}{\text{Excision}}[swap]{\sim}
 \end{tikzcd},
 $$
 where the vertical maps collapse $ A $. Then the right vertical map is a homeomorphism of pairs, since $ X \setminus A \cong \br{X / A} \setminus \br{A / A} $. So the right vertical map is an isomorphism and hence the left vertical map is an isomorphism.
@@ -1203,14 +1203,14 @@ $$
 and the natural map of short exact sequences give a map of long exact sequences
 $$
 \begin{tikzcd}[column sep=small]
-\dots \arrow{r} & \H_i\br{A} \arrow{r} \arrow{d}{=} & \H_i\br{\C_\bullet^\UUU\br{X}} \arrow{r} \arrow{d}{\text{small simplices}}[swap]{\sim} & \H_i\br{\C_\bullet^\UUU\br{X} / \C_\bullet\br{A}} \arrow{r} \arrow{d}{\phi} & \H_{i - 1}\br{A} \arrow{r} \arrow{d}{\text{small simplices}}[swap]{\sim} & \H_{i - 1}\br{\C_\bullet^\UUU\br{X}} \arrow{r} \arrow{d}{=} & \dots \\
+\dots \arrow{r} & \H_i\br{A} \arrow{r} \arrow{d}{=} & \H_i\br{\C_\bullet^\UUU\br{X}} \arrow{r} \arrow{d}{\text{SS}}[swap]{\sim} & \H_i\br{\C_\bullet^\UUU\br{X} / \C_\bullet\br{A}} \arrow{r} \arrow{d}{\phi} & \H_{i - 1}\br{A} \arrow{r} \arrow{d}{\text{SS}}[swap]{\sim} & \H_{i - 1}\br{\C_\bullet^\UUU\br{X}} \arrow{r} \arrow{d}{=} & \dots \\
 \dots \arrow{r} & \H_i\br{A} \arrow{r} & \H_i\br{X} \arrow{r} & \H_i\br{X, A} \arrow{r} & \H_{i - 1}\br{A} \arrow{r} & \H_{i - 1}\br{X} \arrow{r} & \dots
 \end{tikzcd}.
 $$
 
 \pagebreak
 
-So by the five lemma, $ \phi $ is an isomorphism, so
+So by the $ 5 $-lemma, $ \phi $ is an isomorphism, so
 $$ \C_\bullet^\UUU\br{X} / \C_\bullet\br{A} \hookrightarrow \C_\bullet\br{X} / \C_\bullet\br{A} $$
 is an isomorphism on homology. So
 \begin{align*}
@@ -1327,11 +1327,519 @@ If $ \sbr{v_0, \dots, v_n} \subseteq \RR^{n + 1} $ is a simplex, then each simpl
 \begin{proof}[Proof of Proposition \ref{prop:smallsimplices}]
 Let $ U : \H_\bullet\br{\C_\bullet^\UUU\br{X}} \to \H_\bullet\br{X} $ be the natural map.
 \begin{itemize}
-\item If $ \sbr{c} \in \H_n\br{X} $, there exists $ k $ such that $ \br{\phi_n^\times}^k\br{c} \in \C_n^\UUU\br{X} $. Since $ \phi^X \simeq \id $, $ \br{\phi^X}^k \simeq \id $, so there exists $ F $ such that $ \da \circ F + F \circ \da = \br{\phi^X}^k - \id $. Then $ \br{\phi^X}^k\br{c} = c + \im \da $, so $ U $ is onto.
+\item If $ \sbr{c} \in \H_n\br{X} $, there exists $ k $ such that $ \br{\phi_n^X}^k\br{c} \in \C_n^\UUU\br{X} $. Since $ \phi^X \simeq \id $, $ \br{\phi^X}^k \simeq \id $, so there exists $ F $ such that $ \da \circ F + F \circ \da = \br{\phi^X}^k - \id $. Then $ \br{\phi^X}^k\br{c} = c + \im \da $, so $ U $ is onto.
 \item If $ U\br{\sbr{c}} = 0 $ for $ \sbr{c} \in \H_n\br{\C_\bullet^\UUU\br{X}} $ and $ z \in \C_{n + 1}\br{X} $ has $ \da\br{z} = c $, there exists $ k $ such that $ \br{\phi_{n + 1}^X}^k\br{z} \in \C_{n + 1}^\UUU\br{X} $ and $ \br{\phi_{n + 1}^X}^k\br{z} - z = \br{\da \circ F + F \circ \da}\br{z} $, so
 $$ c = \da\br{z} = \da\br{\br{\phi_{n + 1}^X}^k\br{z}} - \da\br{F\br{\da\br{z}}} \in \C_{n + 1}^\UUU\br{X}, $$
 since $ \da\br{z} \in \C_n^\UUU\br{X} $ and $ F $ is natural. Then $ c \in \im \br{\da : \C_{n + 1}^\UUU\br{X} \to \C_n^\UUU\br{X}} $, so $ \sbr{c} = 0 $ and $ U $ is one-to-one.
 \end{itemize}
 \end{proof}
+
+\pagebreak
+
+\section{Cellular homology and cohomology}
+
+\lecture{8}{Monday}{26/10/20}
+
+Singular homology and cohomology are defined for all topological spaces, but we are mostly interested in nice spaces. In particular, we have seen $ \H_\bullet\br{\S^n} $, $ \H_\bullet\br{\text{Klein}} $, $ \H_\bullet\br{\Sigma_g} $, and $ \H^\bullet\br{\CC\PP^n} $ are all finite rank, even though $ \C_\bullet\br{X} $ is vast in each case. Our next goal is to develop a computational shortcut which makes this manifest.
+
+\subsection{Cell complexes}
+
+\begin{definition*}
+A \textbf{cell complex}, or \textbf{CW complex}, is a space obtained inductively as follows.
+\begin{itemize}
+\item $ X_0 $ is a discrete set, such as a finite set.
+\item Given $ X_{k - 1} $,
+$$ X_k = X_{k - 1} \cup \bigcup_{i \in I_k} \D_i^k, $$
+for $ I_k $ an indexing set and $ \D_i^k = \cbr{x \in \RR^k \st \norm{x} \le 1} $ a closed disc, called \textbf{$ k $-cells}, attached via $ \da\D_i^k = \S^{k - 1} \to X_{k - 1} $, so $ X_{k - 1} \sqcup \bigsqcup_{i \in I_k} \D_i^k \twoheadrightarrow X_k $ is the quotient map identifying $ \da\D_i^k $ and its image.
+\item $ X = \bigcup_{k \ge 0} X_k $ with the \textbf{weak} topology, where $ U \subseteq X $ is open if and only if $ U \cap X_k $ is open in $ X_k $ for all $ k $.
+\end{itemize}
+\end{definition*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \S^n = \cbr{\text{point}} \cup \D^n $ attached via the constant map $ \da\D^n \to \cbr{\text{point}} $.
+\item $ \S^n = \cbr{\text{point}} \cup \cbr{\text{point}} \cup \D_{\alpha_1}^1 \cup \D_{\alpha_2}^1 \cup \D_{\beta_1}^2 \cup \D_{\beta_2}^2 $.
+\item $ \T^2 $ has one $ 0 $-cell, two $ 1 $-cells, and one $ 2 $-cell.
+\item $ \Sigma_2 $ has one $ 0 $-cell, four $ 1 $-cells, and one $ 2 $-cell.
+\item The \textbf{wedge product}. If $ X $ and $ Y $ are cell complexes, $ X \vee Y = \abr{X \sqcup Y} / x_0 \sim y_0 $ where $ x_0 \in X_0 $ and $ y_0 \in Y_0 $.
+\end{itemize}
+\end{example*}
+
+\begin{notation*}
+Let $ X $ be a cell complex. The $ \D_i^k $ are $ k $-cells.
+\begin{itemize}
+\item $ X_k $ is the \textbf{$ k $-skeleton} of $ X $.
+\item If there exists $ N $ such that $ X = X_N $, $ X $ is a \textbf{finite-dimensional} cell complex.
+\item If $ X = X_N $ and $ I_j < \infty $ for all $ j $, $ X $ is a \textbf{finite} cell complex. Then $ X $ is compact.
+\item $ X = \bigsqcup_{k \ge 0} \mathring{\D_\alpha^k} $ is the disjoint union of its open cells $ \C_\alpha^k $ as attaching maps take $ \da\D_\alpha^k $ to $ X_{k - 1} $.
+\item A \textbf{subcomplex} $ A \subseteq X $ is a closed subspace which is a union of cells of $ X $. Note that given a cell complex $ X $, you cannot throw out a random bunch of cells to get a subcomplex. There may be later cells that try to attach to things you are throwing out.
+\end{itemize}
+\end{notation*}
+
+\subsection{Point-set digression}
+
+Let $ X = \bigcup_{n \ge 0} X_n $ be a cell complex.
+
+\begin{exercise*}
+$ A \subseteq X $ is open, or closed, if and only if $ \br{\phi_\alpha^n}^{-1}\br{A} \subseteq \D_\alpha^n $ is open, or closed, for all $ \alpha $, where
+$$ \phi_\alpha^n : \D_\alpha^n \hookrightarrow X_{n - 1} \sqcup \bigsqcup_\alpha \D_\alpha^n \twoheadrightarrow X_n \hookrightarrow X $$
+is the \textbf{characteristic} map of the cell, so $ \eval{\phi_\alpha^n}_{\da\D_\alpha^n} $ is the attaching map.
+\end{exercise*}
+
+\pagebreak
+
+Let $ A \subseteq X $. We build an open neighbourhood $ \N_\epsilon\br{A} $ of $ A $ inductively. Let $ \N_\epsilon^0\br{A} = A \cap X_0 $. Given $ \N_\epsilon^n\br{A} \subseteq X_n $ an open neighbourhood of $ A \cap X_n $, define $ \N_\epsilon^{n + 1}\br{A} $ by specifying
+\begin{align*}
+\br{\phi_\alpha^{n + 1}}^{-1}\br{\N_\epsilon^{n + 1}\br{A}}
+= & \br{\text{open $ \epsilon $-neighbourhood of} \ \br{\phi_\alpha^n}^{-1}\br{A} \setminus \da\D_\alpha^{n + 1} \subseteq \D_\alpha^{n + 1} \setminus \da\D_\alpha^{n + 1}} \\
+& \cup \br{\intoc{1 - \epsilon, 1} \times \br{\phi_\alpha^n}^{-1}\br{\N_\epsilon^n\br{A}}},
+\end{align*}
+where $ \epsilon $ depends on $ \alpha $, and $ \intoc{1 - \epsilon, 1} $ is the radial spherical coordinate on $ \D_\alpha^{n + 1} $ and $ \br{\phi_\alpha^n}^{-1}\br{\N_\epsilon^n\br{A}} $ is the angular coordinate on $ \da\D_\alpha^{n + 1} $. Then $ \N_\epsilon\br{A} = \bigcup_{n \ge 0} \N_\epsilon^n\br{A} $ is open, as it is open in every cell.
+
+\begin{proposition}
+Cell complexes are Hausdorff and locally contractible. So connected if and only if path-connected.
+\end{proposition}
+
+\begin{proof}
+For a proof, see Hatcher, appendix A.
+\end{proof}
+
+\begin{fact*}
+A compact smooth manifold, perhaps with boundary, is homotopy equivalent to a finite cell complex. And given $ N \subseteq M $ a properly embedded submanifold, there exists a cell structure on $ M $ making $ N $ a subcomplex. Can drop smoothness, but there are nice proofs using Morse theory if you have it.
+\end{fact*}
+
+\begin{lemma}
+If $ X $ is a cell complex and $ A \subseteq X $ is a subcomplex, then $ \br{X, A} $ is a good pair.
+\end{lemma}
+
+\begin{proof}
+See Hatcher. Again, point-set rather than algebraic topology.
+\end{proof}
+
+\begin{corollary}
+$ \H_\bullet\br{X, A} \cong \widetilde{\H_\bullet}\br{X / A} $.
+\end{corollary}
+
+\begin{corollary}
+If $ X = \bigcup_{k \ge 0} X_k $ is a cell complex,
+$$ \H_i\br{X_k, X_{k - 1}} =
+\begin{cases}
+\bigoplus_{\alpha \in I_k} \ZZ & i = k \\
+0 & \text{otherwise}
+\end{cases}
+$$
+is free abelian on the set of $ k $-cells in $ X $.
+\end{corollary}
+
+\begin{proof}
+$ X_{k - 1} \subseteq X_k $ is a subcomplex, so
+$$ \H_\bullet\br{X_k, X_{k - 1}} \cong \widetilde{\H_\bullet}\br{X_k / X_{k - 1}} \cong \widetilde{\H_\bullet}\br{\bigvee_{\alpha \in I_k} \S_\alpha^k}, $$
+as $ \da\D_\alpha^k \to X_{k - 1} $ for all $ k $-cells and $ X_{k - 1} $ is collapsed to a point. Choose $ x_\alpha \in \S_\alpha^k $ for all $ \alpha $. Then $ \br{\bigsqcup_\alpha \S_\alpha^k, \bigsqcup_\alpha \cbr{x_\alpha}} $ is a good pair and $ \bigsqcup_\alpha \S_\alpha^k / \bigsqcup_\alpha \cbr{x_\alpha} = \bigvee_\alpha \S_\alpha^k $, so
+$$ \H_\bullet\br{X_k, X_{k - 1}} \cong \H_\bullet\br{\bigsqcup_\alpha \S_\alpha^k, \bigsqcup_\alpha \cbr{x_\alpha}} = \bigoplus_\alpha \H_\bullet\br{\S_\alpha^k, \cbr{x_\alpha}} = \bigoplus \widetilde{\H_\bullet}\br{\S_\alpha^k}. $$
+\end{proof}
+
+\begin{proposition}
+If $ Z \subseteq X $ is compact, there exists $ N $ such that $ Z \subseteq X_N $.
+\end{proposition}
+
+\begin{proof}
+We will show $ Z $ meets only finitely many cells of $ X $. Suppose for contradiction there exists $ S = \cbr{x_0, x_1, \dots} \subseteq Z $ such that $ x_i \in e_i $ and the cells $ \cbr{e_i} $ are pairwise distinct. Claim that $ S $ is closed in $ X $. Well, $ S \cap X_0 $ is closed in $ X_0 $, a discrete space. Inductively, if $ S \cap X_{n - 1} $ is closed in $ X_{n - 1} $ and $ \phi_\alpha^n : \D_\alpha^n \to X_n $ is an $ n $-cell, $ \br{\eval{\phi_\alpha^n}_{\da\D_\alpha^n}}^{-1}\br{S} \subseteq \S_\alpha^{n - 1} $ is closed. Then
+$$ \br{\phi_\alpha^n}^{-1}\br{S} = \br{\eval{\phi_\alpha^n}_{\da\D_\alpha^n}}^{-1}\br{S} \cup \cbr{\text{at most one point}} \subseteq \D_\alpha^n $$
+is closed, since $ X $ is the disjoint union of interiors of cells, so $ S $ meets each cell of $ X_n $ in a closed set, so $ S \subseteq X_n $ is closed. Same for $ S' \subseteq S $, so $ S $ is discrete. Thus $ S $ is finite.
+\end{proof}
+
+\pagebreak
+
+\begin{proposition}
+Let $ X = \bigcup_{k \ge 0} X_k $ be a cell complex.
+\begin{enumerate}
+\item $ \H_k\br{X_n} = 0 $ for all $ k > n $.
+\item The inclusion $ X_n \hookrightarrow X $ induces an isomorphism $ \H_j\br{X_n} \xrightarrow{\sim} \H_j\br{X} $ for all $ j < n $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item If $ k > n $, the long exact sequence of a pair $ \br{X_n, X_{n - 1}} $ gives
+$$
+\begin{tikzcd}[row sep=tiny]
+\H_{k + 1}\br{X_n, X_{n - 1}} \arrow{r} \arrow[cong]{d} & \H_k\br{X_{n - 1}} \arrow{r} & \H_k\br{X_n} \arrow{r} & \H_k\br{X_n, X_{n - 1}} \arrow[cong]{d} \\
+0 & & & 0
+\end{tikzcd},
+$$
+so $ \H_k\br{X_n} \cong \dots \cong \H_k\br{X_0} = 0 $, since $ X_0 $ is a discrete set.
+\item The same sequence as before
+$$ \H_{k + 1}\br{X_n, X_{n - 1}} \to \H_k\br{X_{n - 1}} \to \H_k\br{X_n} \to \H_k\br{X_n, X_{n - 1}} $$
+with $ k < n - 1 $ shows $ \H_k\br{X_{n - 1}} \cong \dots \cong \H_k\br{X_N} $ for all $ N > n - 1 $. If $ X $ is finite-dimensional, we are done. In general, if $ \alpha \in \H_k\br{X} $, $ \alpha $ is represented by a finite union of simplices, which is compact. If $ Z \subseteq X $ is compact, there exists $ N $ such that $ Z \subseteq X_N $. So $ \alpha \in \im \br{\phi_N : \H_k\br{X_N} \to \H_k\br{X}} $ for all $ N \gg 0 $. Similarly, if a cycle $ \alpha = \sum_i a_i\sigma_i \in \H_k\br{X} $ bounds a $ \br{k + 1} $-chain in $ X $, that $ \br{k + 1} $-chain lives in some $ X_{N'} $ for $ N' \gg 0 $, so $ \sbr{\alpha} = 0 \in \H_k\br{X_{N'}} $, that is $ \phi_N $ is one-to-one for $ N \gg 0 $.
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Let $ X $ be a finite-dimensional cell complex of dimension $ n $. Then
+$$ \H_j\br{X} = 0, \qquad j > n. $$
+\end{corollary}
+
+\subsection{Cellular homology}
+
+\lecture{9}{Wednesday}{28/10/20}
+
+We are still computing from the huge chain groups $ \C_\bullet\br{X} $. The goal is to describe a model for $ \H_\bullet\br{X} $ starting from a much smaller chain complex.
+
+\begin{definition*}
+Let $ X = \bigcup_{n \ge 0} X_n $ be a cell complex. Let
+$$ \C_k^{\cell}\br{X} = \H_k\br{X_k, X_{k - 1}}. $$
+\end{definition*}
+
+This is free abelian on the $ k $-cells. Then
+$$
+\begin{tikzcd}[column sep=small]
+& \dots \arrow{dr} & & \dots & & & \\
+& & \H_k\br{X_k} \arrow{ur} \arrow{dr}{\text{LES of} \ \br{X_k, X_{k - 1}}} & & & & \dots \\
+\dots \arrow{r} & \H_{k + 1}\br{X_{k + 1}, X_k} \arrow{ur}{\text{LES of} \ \br{X_{k + 1}, X_k}} \arrow{rr}[swap]{\da_{k + 1}^{\cell}} & & \H_k\br{X_k, X_{k - 1}} \arrow{rr}{\da_k^{\cell}} \arrow{dr}[swap]{\text{LES of} \ \br{X_k, X_{k - 1}}} & & \H_{k - 1}\br{X_{k - 1}, X_{k - 2}} \arrow{ur} \arrow{r} & \dots \\
+\dots \arrow{ur} & & & & \H_{k - 1}\br{X_{k - 1}} \arrow{ur}[swap]{\text{LES of} \ \br{X_{k - 1}, X_{k - 2}}} \arrow{dr} & & \\
+& & & \dots \arrow{ur} & & \dots &
+\end{tikzcd}.
+$$
+Observe that $ \da_k^{\cell} \circ \da_{k + 1}^{\cell} = 0 $ since we have two consecutive maps from one long exact sequence. This is the \textbf{cellular chain complex} of $ X = \bigcup_{n \ge 0} X_n $. Note that it depends on the chosen cell structure. Write $ \H_\bullet^{\cell}\br{X} $ for $ \H_\bullet\br{\C_\bullet^{\cell}\br{X}, \da^{\cell}} $.
+
+\pagebreak
+
+\begin{proposition}
+$$ \H_\bullet^{\cell}\br{X} \cong \H_\bullet\br{X}. $$
+\end{proposition}
+
+\begin{proof}
+Recall that $ \H_j\br{X_k} = 0 $ if $ j > k $ and $ X_k \hookrightarrow X $ is an isomorphism on homology for $ j < k $. Then
+$$
+\begin{tikzcd}[column sep=small]
+& & & \H_k\br{X_{k + 1}, X_k} = 0 & \\
+0 = \H_k\br{X_{k - 1}} \arrow{dr} & & \H_k\br{X_{k + 1}} \cong \H_k\br{X} \arrow{ur} & & \\
+& \H_k\br{X_k} \arrow{ur} \arrow{dr}{\br{i_k}_*} & & & \\
+\H_{k + 1}\br{X_{k + 1}, X_k} \arrow{ur}{\da_{k + 1}} \arrow{rr}[swap]{\da_{k + 1}^{\cell}} & & \H_k\br{X_k, X_{k - 1}} \arrow{rr}{\da_k^{\cell}} \arrow{dr}[swap]{\da_k} & & \H_{k - 1}\br{X_{k - 1}, X_{k - 2}} \\
+& & & \H_{k - 1}\br{X_{k - 1}} \arrow{ur}[swap]{\br{i_{k - 1}}_*} & \\
+& & 0 = \H_{k - 1}\br{X_{k - 2}} \arrow{ur} & &
+\end{tikzcd},
+$$
+so
+\begin{align*}
+\H_k\br{X}
+& \cong \H_k\br{X_{k + 1}}
+\cong \H_k\br{X_k} / \im \da_{k + 1}
+\cong \im \br{i_k}_* / \im \br{\br{i_k}_* \circ \da_{k + 1}} & \text{since} \ \br{i_k}_* \ \text{is injective} \\
+& \cong \ker \da_k / \im \da_{k + 1}^{\cell}
+\cong \ker \br{\br{i_{k - 1}}_* \circ \da_k} / \im \da_{k + 1}^{\cell} & \text{since} \ \br{i_{k - 1}}_* \ \text{is injective} \\
+& = \ker \da_k^{\cell} / \im \da_{k + 1}^{\cell}
+= \H_k^{\cell}\br{X}.
+\end{align*}
+\end{proof}
+
+\begin{remark*}
+If $ X $ and $ Y $ are cell complexes and $ f : X \to Y $ is a map, in general $ f $ does not induce maps $ \C_\bullet^{\cell}\br{X} \to \C_\bullet^{\cell}\br{Y} $. Ok if $ f $ is \textbf{cellular}, so $ f $ takes a $ k $-skeleton $ X_k $ into a $ k $-skeleton $ Y_k $, for all $ k $.
+\end{remark*}
+
+The following are immediate.
+
+\begin{corollary}
+Let $ X $ be a finite cell complex.
+\begin{itemize}
+\item $ \H_k\br{X} $ is a finitely generated abelian group of rank at most $ n_k $, the number of $ k $-cells.
+\item If $ \H_k\br{X} \ne 0 $, every cell structure on $ X $ must have at least $ \rk \H_k\br{X} $ distinct $ k $-cells.
+\item If $ X $ admits a cell structure with only even-dimensional cells, $ \H_\bullet\br{X} \cong \C_\bullet^{\cell}\br{X} $ for this cell structure.
+\item $ \H_\bullet\br{X; \FF} $ is a finite-dimensional vector space over the field $ \FF $, such as $ \QQ $.
+\end{itemize}
+\end{corollary}
+
+\begin{example*}
+Let
+\begin{align*}
+\CC\PP^n
+& = \cbr{\text{lines in} \ \CC^{n + 1}}
+= \br{\CC^{n + 1} \setminus \cbr{0}} / \CC^*
+= \S^{2n + 1} / \S^1 \\
+& = \cbr{\sbr{z_0 : \dots : z_n} \st \br{z_0, \dots, z_n} \in \CC^{n + 1} \setminus \cbr{0}, \ \forall \lambda \in \CC^*, \ \br{z_0, \dots, z_n} \sim \br{\lambda z_0, \dots, \lambda z_n}} \\
+& = \cbr{z_0 = 0} \cup \cbr{\sbr{1 : z_1 : \dots : z_n} \st \br{z_1, \dots, z_n} \in \CC^n}
+\cong \CC\PP^{n - 1} \cup \CC^n,
+\end{align*}
+where $ \S^{2n + 1} \subseteq \CC^{n + 1} $ is the unit sphere and $ \S^1 : \br{z_1, \dots, z_{n + 1}} \mapsto \br{\lambda z, \dots, \lambda z_{n + 1}} $ for $ \lambda \in \S^1 $. The attaching map is
+$$ \function{\S^{2n + 1}}{\CC\PP^n}{\br{z_1, \dots, z_{n + 1}}}{\sbr{z_1 : \dots : z_{n + 1}}}. $$
+So, inductively in $ n $, $ \CC\PP^n $ has a cell structure with one $ 2n $-cell for all $ n $, so
+$$ \H_\bullet\br{\CC\PP^n} \cong
+\begin{cases}
+\ZZ & \bullet = 0, 2, \dots, 2n - 2, 2n \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+See example sheet $ 1 $.
+\end{example*}
+
+\pagebreak
+
+\begin{remark*}
+\textbf{Grassmannians}
+$$ \Gr\br{k; \CC^n} = \cbr{\text{$ k $-dimensional linear subspaces of} \ \CC^n} $$
+also have cell structures with only even-dimensional cells.
+\end{remark*}
+
+\begin{exercise*}
+$ \RR\PP^n = \S^n \setminus \cbr{\pm 1} = \RR\PP^{n - 1} \cup \D^n $ has a cell structure with one cell in each degree $ 0 \le i \le n $.
+\end{exercise*}
+
+\subsection{Degrees}
+
+How do we compute $ \da_n^{\cell} : \bigoplus_{\alpha \in I_n} \ZZ \to \bigoplus_{\beta \in I_{n - 1}} \ZZ $? That is, want values $ d_{\alpha\beta} \in \ZZ $ such that
+$$ \da_n^{\cell}\br{e_\alpha^n} = \sum_\beta d_{\alpha\beta}e_\beta^{n - 1}. $$
+Note we have an attaching map $ \phi_\alpha^n : \da\br{e_\alpha^n} = \S^{n - 1} \to X_{n - 1} $.
+
+\begin{lemma}
+$ d_{\alpha\beta} $ is the degree of
+$$ f_{\alpha\beta} : \S_\alpha^{n - 1} \xrightarrow{\phi_\alpha^n} X_{n - 1} \twoheadrightarrow X_{n - 1} / X_{n - 2} \cong \bigvee_{I_{n - 1}} \S^{n - 1} \xrightarrow{\text{collapse}} \S_\beta^{n - 1}. $$
+\end{lemma}
+
+\begin{remark*}
+For this degree to be well-defined, not just up to sign, need generators for $ \H_{n - 1}\br{\S_\alpha^{n - 1}} $ and $ \H_{n - 1}\br{\S_\beta^{n - 1}} $, such as identifying $ \S^{n - 1} = \da\D^n \subseteq \RR^n $.
+\end{remark*}
+
+\begin{proof}
+By chasing,
+$$
+\begin{tikzcd}[column sep=small]
+\H_n\br{\D_\alpha^n, \da\D_\alpha^n} \arrow{r}{\text{LES}}[swap]{\sim} \arrow{d}[swap]{\br{\phi_\alpha^n}_*} & \H_{n - 1}\br{\da\D_\alpha^n} \arrow{r}{\deg f_{\alpha\beta}} \arrow{d}{\br{\eval{\phi_\alpha^n}_{\da\D_\alpha}}_*} & \widetilde{\H_{n - 1}}\br{\S_\beta^{n - 1}} \\
+\H_n\br{X_n, X_{n - 1}} \arrow{r}{\da_n} \arrow{dr}[swap]{\da_n^{\cell}} & \H_{n - 1}\br{X_{n - 1}} \arrow{d}{\br{i_{n - 1}}_*} & \widetilde{\H_{n - 1}}\br{\bigvee_\gamma \S_\gamma^{n - 1}} \arrow{u}[swap]{\text{collapse}} \arrow[cong]{d} \\
+& \H_{n - 1}\br{X_{n - 1}, X_{n - 2}} \arrow{r}{\sim}[swap]{\text{Excision}} & \widetilde{\H_{n - 1}}\br{X_{n - 1} / X_{n - 2}}
+\end{tikzcd},
+\qquad
+\begin{tikzcd}[column sep=small]
+1 \arrow{r} \arrow{d} & 1 \arrow{r} & d_{\alpha\beta} \\
+e_\alpha \arrow{dr} & & \\
+& \sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{r} & \sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{uu}
+\end{tikzcd},
+$$
+so $ d_{\alpha\beta} = \deg f_{\alpha\beta} $ as claimed.
+\end{proof}
+
+For this to be useful, we need to be able to compute degrees. Let $ f : \S^n \to \S^n $. Assume that there exists $ y \in \S^n $ such that $ f^{-1}\br{y} = \cbr{x_1, \dots, x_m} $ is finite. Pick neighbourhoods $ x_i \in U_i $ and $ y \in V $ homeomorphic to $ \RR^n $ such that $ U_i \cap U_j = \emptyset $ if $ i \ne j $ and $ \eval{f}_{U_i} : U_i \to V \subseteq \S^n $.
+
+\begin{definition*}
+The \textbf{local degree} is
+$$ \deg_{x_i} f = \H_n\br{U_i, U_i \setminus \cbr{x_i}} \cong \ZZ \to \H_n\br{V, V \setminus \cbr{y}} \cong \ZZ. $$
+\end{definition*}
+
+Note that by excision and the long exact sequence,
+$$ \H_n\br{U_i, U_i \setminus \cbr{x_i}} \cong \H_n\br{\S^n, \S^n \setminus \cbr{x_i}} \cong \H_n\br{\S^n} \cong \ZZ. $$
+By fixing this, $ \deg_{x_i} f $ is well-defined.
+
+\begin{lemma}
+Under the assumption,
+$$ \deg f = \sum_{i = 1}^m \deg_{x_i} f. $$
+\end{lemma}
+
+\begin{remark*}
+If $ f : \S^n \to \S^n $ is smooth, $ f^{-1}\br{y} $ is finite if $ y $ is a regular value for $ f $, and by Sard's theorem, almost all values, in particular a dense set, are regular.
+\end{remark*}
+
+\pagebreak
+
+\begin{proof}
+$$
+\begin{tikzcd}[column sep=small]
+\H_n\br{\S^n} \arrow{r}{\deg f} \arrow{d}{\sim}[swap]{\text{LES}} & \H_n\br{\S^n} \arrow{d}{\text{LES}}[swap]{\sim} \\
+\H_n\br{\S^n, \S^n \setminus \cbr{x_1, \dots, x_m}} \arrow{r}{f_*} & \H_n\br{\S^n, \S^n \setminus \cbr{y}} \\
+\H_n\br{\bigsqcup_i U_i, \bigsqcup_i U_i \setminus \cbr{x_i}} \cong \bigoplus_{i = 1}^m \H_n\br{U_i, U_i \setminus \cbr{x_i}} \arrow{u}{\text{Excision}}[swap]{\sim} \arrow{r}{\br{\eval{f}_{U_i}}_*} & \H_n\br{V, V \setminus \cbr{y}} \arrow{u}{\sim}[swap]{\text{Excision}}
+\end{tikzcd},
+\qquad
+\begin{tikzcd}[column sep=small]
+1 \arrow{r} \arrow{dd} & \deg f \arrow{dd} \\
+& \\
+\br{1, \dots, 1} \arrow{r} & \sum_i \deg_{x_i} f
+\end{tikzcd},
+$$
+which implies the result.
+\end{proof}
+
+\begin{example*}
+Let $ p\br{z} = z^k + a_{k - 1}z^{k - 1} + \dots + a_0 $ be a complex polynomial. Then $ p $ extends to a map $ \widehat{p} : \CC \cup \cbr{\infty} = \S^2 \to \S^2 $ of degree $ \deg \widehat{p} = k $. As in lecture $ 1 $, show $ \widehat{p} \simeq \br{q : z \mapsto z^k} $. Now $ q^{-1}\br{1} = \cbr{\zeta_1, \dots, \zeta_k} $ and near each $ \zeta_i $, $ q $ is a local homeomorphism. And the different local homeomorphisms differ by rotation, so the local degrees at $ \zeta_i $ are all equal.
+\end{example*}
+
+\begin{exercise*}
+The Klein bottle $ K $ has
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & \C_2^{\cell}\br{K} \arrow{r} \arrow[cong]{d} & \C_1^{\cell}\br{K} \arrow{r} \arrow[cong]{d} & \C_0^{\cell}\br{K} \arrow{r} \arrow[cong]{d} & 0 \\
+& \ZZ \arrow[dashed]{r}[swap]{1 \mapsto \br{0, 2}} & \ZZ \oplus \ZZ \arrow[dashed]{r}[swap]{0} & \ZZ &
+\end{tikzcd},
+$$
+so $ \H_1\br{K; \ZZ} \cong \ZZ \oplus \ZZ / 2 $ and $ \H_2\br{K; \ZZ} = 0 $, again.
+\end{exercise*}
+
+\begin{example*}
+The real projective space $ \RR\PP^n = \D^n \cup \RR\PP^{n - 1} = \D^n \cup \dots \cup \D^1 \cup \cbr{\text{point}} $ has one cell of each degree $ 0 \le i \le n $, so
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & \C_n^{\cell}\br{\RR\PP^n} \arrow{r} \arrow[cong]{d} & \dots \arrow{r} & \C_0^{\cell}\br{\RR\PP^n} \arrow{r} \arrow[cong]{d} & 0 \\
+& \ZZ \arrow[dashed]{r} & \dots \arrow[dashed]{r} & \ZZ &
+\end{tikzcd}.
+$$
+Then
+$$ \eta : \da\D^k \xrightarrow{\phi} \RR\PP^{k - 1} \twoheadrightarrow \RR\PP^{k - 1} / \RR\PP^{k - 2} \cong \S^{k - 1} $$
+is two-to-one and the local maps differ by the antipodal map, so $ \da_k^{\cell} = 1 + \br{-1}^k $. Thus
+$$ \C_\bullet^{\cell}\br{\RR\PP^n} =
+\begin{cases}
+\ZZ \xrightarrow{2} \ZZ \xrightarrow{0} \ZZ \to \dots \to \ZZ \xrightarrow{2} \ZZ \xrightarrow{0} \ZZ & n \ \text{even} \\
+\ZZ \xrightarrow{0} \ZZ \xrightarrow{2} \ZZ \to \dots \to \ZZ \xrightarrow{0} \ZZ \xrightarrow{2} \ZZ & n \ \text{odd}
+\end{cases},
+$$
+so
+$$ \H_\bullet\br{\RR\PP^n; \ZZ} =
+\begin{cases}
+\ZZ & \bullet = 0 \\
+\ZZ / 2 & 0 < \bullet < n, \ \bullet \ \text{odd} \\
+\ZZ & \bullet = n, \ n \ \text{odd} \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+\end{example*}
+
+\begin{exercise*}
+Let $ \Sigma_g $ be a $ 4g $-gon with edge identifications $ a_1b_1a_1^{-1}b_1^{-1} \dots a_gb_ga_g^{-1}b_g^{-1} $. Then
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & \C_2^{\cell}\br{\Sigma_g} \arrow{r} \arrow[cong]{d} & \C_1^{\cell}\br{\Sigma_g} \arrow{r} \arrow[cong]{d} & \C_0^{\cell}\br{\Sigma_g} \arrow{r} \arrow[cong]{d} & 0 \\
+& \ZZ \arrow[dashed]{r}[swap]{0} & \ZZ^{2g} \arrow[dashed]{r}[swap]{0} & \ZZ &
+\end{tikzcd},
+$$
+which vanishes as for Klein and as $ \H_0\br{\Sigma_g} = \ZZ $.
+\end{exercise*}
+
+\subsection{Cellular cohomology}
+
+\lecture{10}{Friday}{30/10/20}
+
+There is also \textbf{cellular cohomology}
+$$ \C_{\cell}^i\br{X} = \H^i\br{X_i, X_{i - 1}}, \qquad \da_{\cell}^* : \H^i\br{X_i, X_{i - 1}} \to \H^{i + 1}\br{X_{i + 1}, X_i}, $$
+and $ \H_{\cell}^\bullet\br{X} \cong \H_{\cell}\br{X} $ by the exactly analogous argument as for homology.
+
+\pagebreak
+
+\begin{lemma}
+$ \C_{\cell}^\bullet\br{X} = \Hom\br{\C_\bullet^{\cell}\br{X}, \ZZ} $ and $ \da_{\cell}^* $ is the adjoint of $ \da^{\cell} $.
+\end{lemma}
+
+See question sheet $ 2 $ for related results, in particular the existence of the $ h $-maps.
+
+\begin{proof}
+If $ \br{\cdot}^\vee $ is the linear dual, then
+$$
+\begin{tikzcd}
+\H^i\br{X_i, X_{i - 1}} \arrow{r}{i^*} \arrow[bend left=15, dashed]{rr}{\da_{\cell}^*} \arrow{d}{h}[swap]{\sim} & \H^i\br{X_i} \arrow{r}{\da^*} \arrow{d}{h} & \H^{i + 1}\br{X_{i + 1}, X_i} \arrow{d}{h}[swap]{\sim} \\
+\Hom\br{\H_i\br{X_i, X_{i - 1}}, \ZZ} \arrow{r}[swap]{i_*^\vee} \arrow[bend right=15, dashed]{rr}[swap]{\da_{\cell}^\vee} & \Hom\br{\H_i\br{X_i}, \ZZ} \arrow{r}[swap]{\da^\vee} & \Hom\br{\H_{i + 1}\br{X_{i + 1}, X_i}, \ZZ}
+\end{tikzcd}.
+$$
+A direct check shows the outer $ h $ maps are isomorphisms, so just need the diagram to commute. The left hand square commutes by naturality of $ h $ and the right hand square commutes by naturality of homology and cohomology long exact sequences.
+\end{proof}
+
+\begin{proposition}
+Let $ X $ be a finite cell complex. Then
+$$ \H^i\br{X; \ZZ} \cong \br{\H_i\br{X; \ZZ} / \Tors} \oplus \Tors \H_{i - 1}\br{X; \ZZ}. $$
+\end{proposition}
+
+Note that for an abelian group $ G $,
+$$ \Tors G = \cbr{\text{elements of finite order}} = \cbr{\text{all $ \ZZ / k $-summands} \st k \ge 2} \le G. $$
+
+\begin{proof}
+This is now just algebra. Let $ C_\bullet $ be a chain complex of free finitely generated abelian groups, and $ C^\bullet = \Hom\br{C_\bullet, \ZZ} $ the dual complex. Then
+$$ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \Tors} \oplus \Tors \H_{i - 1}\br{C_\bullet}. $$
+The key idea is to break $ C_\bullet $ into a collection of short exact sequences
+$$ 0 \to Z_n \to C_n \to B_{n - 1} \to 0, \qquad 0 \to B_n \to Z_n \to \H_n\br{C_\bullet} \to 0, $$
+where $ Z_i = \ker \br{\da_i : C_i \to C_{i - 1}} $ and $ B_i = \im \br{\da_{i + 1} : C_{i + 1} \to C_i} $. In the former sequence, all the terms are free finitely generated abelian groups, so we can non-canonically split these and write $ C_n \cong Z_n \oplus B_{n - 1} $ for all $ n $, so there exists $ \alpha_n : B_{n - 1} \to C_n $ such that $ \da_n \circ \alpha_n = \id $. Then $ C_\bullet $ becomes
+\begin{equation}
+\label{eq:2}
+\dots \to Z_{n + 1} \oplus B_n \xrightarrow{B_n \to Z_n} Z_n \oplus B_{n - 1} \xrightarrow{B_{n - 1} \to Z_{n - 1}} Z_{n - 1} \oplus B_{n - 2} \to \dots,
+\end{equation}
+that is $ C_\bullet $ breaks into a sum of complexes of the form
+$$ 0 \to B_n \xrightarrow{A_n} Z_n \to 0. $$
+By the Smith normal form, there exists a $ \ZZ $-linear change of basis such that $ A_n $ has matrix
+$$
+\begin{pmatrix}
+d_1 & & & & & \\
+& \ddots & & & & \\
+& & d_k & & & \\
+& & & 0 & & \\
+& & & & \ddots & \\
+& & & & & 0
+\end{pmatrix},
+\qquad
+\begin{cases}
+d_1 \mid d_2 \\
+\vdots \\
+d_{k - 1} \mid d_k
+\end{cases},
+$$
+so $ \br{\ref{eq:2}} $ breaks into a direct sum of complexes of the form
+$$ 0 \to \ZZ \xrightarrow{0} \ZZ \to 0, \qquad 0 \to \ZZ \xrightarrow{d_i} \ZZ \to 0. $$
+Now the relation $ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \Tors} \oplus \Tors \H_{i - 1}\br{C_\bullet} $ is obvious, by just checking in these two examples.
+\end{proof}
+
+\pagebreak
+
+\begin{remark*}
+For abelian groups $ H $ and $ G $ set
+$$ \Ext^1\br{H, G} = \cbr{\text{short exact sequences} \ 0 \to G \to J \to H \to 0} / \sim, $$
+where two are equivalent if the obvious thing happens. That is, there exists $ \phi $ making the diagram
+$$
+\begin{tikzcd}
+0 \arrow{r} & G \arrow{r} \arrow[cong]{d} & J_1 \arrow{r} \arrow[dashed]{d}{\exists \phi} & H \arrow{r} \arrow[cong]{d} & 0 \\
+0 \arrow{r} & G \arrow{r} & J_2 \arrow{r} & H \arrow{r} & 0
+\end{tikzcd}
+$$
+commute, so $ \phi $ is an isomorphism by the $ 5 $-lemma. The \textbf{universal coefficient theorem} says there are split exact sequences
+$$ 0 \to \Ext^1\br{\H_{n - 1}\br{X; \ZZ}, G} \to \H^n\br{X; G} \to \Hom\br{\H_n\br{X; \ZZ}, G} \to 0. $$
+We will not prove this.
+\end{remark*}
+
+\subsection{Euler characteristic}
+
+Recall that if $ X $ is a finite cell complex, we saw $ \H_i\br{X} $ is finitely generated for all $ i $, and $ \H_i\br{X} = 0 $ if $ i > \dim X $. So $ \bigoplus_i \H_i\br{X; \QQ} $ is a finite-dimensional graded $ \QQ $-vector space.
+
+\begin{definition*}
+The \textbf{Euler characteristic} of a finite cell complex $ X $ is
+$$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^k\rk_\ZZ \H_k\br{X; \ZZ}. $$
+\end{definition*}
+
+\begin{lemma}
+$$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^kN_k, $$
+where $ N_k $ is the number of $ k $-cells in $ X $.
+\end{lemma}
+
+\begin{proof}
+$ N_k $ is the rank of $ \C_k^{\cell}\br{X} $ and we just observed we have short exact sequences
+$$ 0 \to B_k \to Z_k \to \H_k\br{X} \to 0, \qquad 0 \to Z_k \to C_k \to B_{k - 1} \to 0. $$
+Then
+$$ \rk \H_k\br{X} = \rk Z_k - \rk B_k = z_k - b_k, \qquad \rk C_k = \rk Z_k + \rk B_{k - 1} = z_k + b_{k - 1}, $$
+so
+\begin{align*}
+\sum_{k \ge 0} \br{-1}^k\rk_\ZZ \H_k\br{X; \ZZ}
+& = \sum_{k \ge 0} \br{-1}^k\br{z_k - b_k}
+= \sum_{k \ge 1} \br{-1}^k\br{z_k - \br{N_{k + 1} - z_{k + 1}}} \\
+& = \sum_{k \ge 0} \br{-1}^kN_{k + 1} + z_0
+= \sum_{k \ge 0} \br{-1}^kN_k.
+\end{align*}
+\end{proof}
+
+\begin{remark*}
+If $ \FF $ is a field,
+$$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^k\dim_\FF \H_k\br{X; \FF}. $$
+\end{remark*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \S^4 \ncong \CC\PP^2 $ as $ \chi\br{\S^4} = 2 $ and $ \chi\br{\CC\PP^2} = 3 $, since $ \S^4 $ has one $ 0 $-cell and one $ 4 $-cell and $ \CC\PP^2 $ has one $ 4 $-cell, one $ 2 $-cell, and one $ 0 $-cell.
+\item $ \chi\br{\Sigma_g} = 2 - 2g $, since $ \Sigma_g $ has one $ 0 $-cell, $ 2g $ distinct $ 1 $-cells, and one $ 2 $-cell.
+\item If $ A $ and $ B $ are finite cell complexes, $ A \times B $ has a product cell structure such that the open $ i $-cells are of the form $ \br{\text{$ j $-cell in} \ A} \times \br{\text{$ \br{i - j} $-cell in} \ B} $, so $ \chi\br{A \times B} = \chi\br{A}\chi\br{B} $.
+\item If $ X = A \cup B $ is a union of two subcomplexes, $ \chi\br{X} = \chi\br{A} + \chi\br{B} - \chi\br{A \cap B} $.
+\end{itemize}
+\end{example*}
 
 \end{document}
