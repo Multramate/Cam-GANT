@@ -621,7 +621,7 @@ The element $ \sbr{a} \in \OOO_K $ constructed in Theorem \ref{thm:5.2} is calle
 
 The following is the idea of the proof. Let $ \alpha \in \OOO_K $ be any lift of $ a \in k $. Then $ \alpha $ is well-defined up to $ \pi\OOO_K $. Let $ \beta \in \OOO_K $ be a lift of $ a^{1 / p} $. We claim that $ \beta $ is a better lift. Why? Let $ \beta' \in \OOO_K $ be another lift of $ a^{1 / p} $, then $ \beta = \beta' + \pi u $ for $ u \in \OOO_K $, so
 $$ \beta^p = \br{\beta' + \pi u}^p = \beta'^p + \underbrace{\sum_{i = 1}^p \binom{p}{i}\beta'^{p - i}\br{\pi u}^i}_{\in \pi^2\OOO_K}, $$
-by using $ p \in \abr{\pi} $, so $ \beta^p $ is well-defined up to $ \pi^2\OOO_K $. Repeat this process to get better and better lifts.
+using $ p \in \abr{\pi} $, so $ \beta^p $ is well-defined up to $ \pi^2\OOO_K $. Repeat this process to get better and better lifts.
 
 \begin{lemma}
 \label{lem:5.4}
@@ -859,8 +859,6 @@ $ \abs{\cdot}_{\overline{K}} $ on $ \overline{K} $ is never discrete. For exampl
 
 \section{Local fields}
 
-\subsection{Local fields}
-
 \begin{definition}
 Let $ \br{K, \abs{\cdot}} $ be a valued field. Then $ K $ is a \textbf{local field} if it is complete and locally compact.
 \end{definition}
@@ -868,6 +866,8 @@ Let $ \br{K, \abs{\cdot}} $ be a valued field. Then $ K $ is a \textbf{local fie
 \begin{example*}
 $ \RR $ and $ \CC $ are local fields.
 \end{example*}
+
+\subsection{Non-archimedean local fields}
 
 \begin{proposition}
 Let $ \br{K, \abs{\cdot}} $ be a non-archimedean complete valued field. The following are equivalent.
@@ -928,5 +928,391 @@ where $ A_{\pi^n} $ is a set of coset representatives for $ \OOO_K / \pi^n\OOO_K
 \begin{remark*}
 This gives another proof that $ \OOO_K $ is compact.
 \end{remark*}
+
+\lecture{8}{Monday}{26/10/20}
+
+\begin{lemma}
+Let $ K $ be a non-archimedean local field and $ L / K $ a finite extension. Then $ L $ is a local field.
+\end{lemma}
+
+\begin{proof}
+By Theorem \ref{thm:6.1}, $ L $ is complete and discretely valued. It suffices to show $ k_L = \OOO_L / \mmm_L $ is finite. Let $ \alpha_1, \dots, \alpha_n $ be a basis for $ L $ as a $ K $-vector space. The sup norm $ \norm{\cdot}_{\sup} $ is equivalent to $ \abs{\cdot}_L $ implies there exists $ r > 0 $ such that $ \OOO_L \subseteq \cbr{x \in L \st \norm{x}_{\sup} \le r} $. Take $ a \in K $ such that $ \abs{a} \ge r $, then $ \OOO_L \subseteq \bigoplus_{i = 1}^n a\alpha_i\OOO_K $, so $ \OOO_L $ is finitely generated as a module over $ \OOO_K $. Thus $ k_L $ is finitely generated over $ k $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:8.2}
+Let $ K $ be a local field. Then either
+\begin{itemize}
+\item $ K \cong \RR $ or $ K \cong \CC $,
+\item $ K $ is a finite extension of $ \QQ_p $, or
+\item $ K \cong \FF_{p^n}\br{\br{t}} $ for $ p $ prime and $ n \ge 1 $.
+\end{itemize}
+\end{theorem}
+
+\begin{definition}
+A discretely valued field $ \br{K, \abs{\cdot}} $ has \textbf{equal characteristic} if $ \ch K = \ch k $. Otherwise it has \textbf{mixed characteristic}.
+\end{definition}
+
+\begin{example*}
+$ \ch \QQ_p = 0 $ and $ \ch \FF_p = p $, so $ \QQ_p $ has mixed characteristic.
+\end{example*}
+
+Note that if $ K $ is a non-archimedean local field, $ \ch k = p > 0 $ and hence $ K $ has equal characteristic if $ \ch K = p $, or mixed characteristic if $ \ch K = 0 $.
+
+\begin{theorem}
+\label{thm:8.4}
+Let $ K $ be a non-archimedean local field of equal characteristic $ p > 0 $. Then $ K \cong \FF_{p^n}\br{\br{t}} $ for some $ n \ge 1 $.
+\end{theorem}
+
+\begin{proof}
+$ K $ is complete discretely valued and $ \ch K > 0 $. Moreover $ k \cong \FF_{p^n} $ is finite, hence perfect. By Theorem \ref{thm:5.7}, $ K \cong \FF_{p^n}\br{\br{t}} $.
+\end{proof}
+
+\subsection{Witt vectors*}
+
+For motivation, consider $ \ZZ_p $. Let $ x = \sum_{i = 0}^\infty \sbr{x_i}p^i \in \ZZ_p $ and $ y = \sum_{i = 0}^\infty \sbr{y_i}p^i \in \ZZ_p $ for $ x_i, y_i \in \FF_p $. Suppose $ x + y = s = \sum_{i = 0}^\infty \sbr{s_i}p^i $. Can we write $ s_i $ in terms of $ x_j $ and $ y_j $? Reducing modulo $ p $ we obtain
+$$ x_0 + y_0 = s_0 \in \FF_p, $$
+so $ s_0 $ is determined by $ x_0 $ and $ y_0 $. What about $ s_1 $? Reducing modulo $ p^2 $, $ \sbr{x_0} + \sbr{y_0} + p\sbr{x_1} + p\sbr{y_1} \equiv \sbr{s_0} + p\sbr{s_1} \mod p^2 $, so
+$$ p\sbr{s_1} \equiv \sbr{x_0} + \sbr{y_0} - \sbr{s_0} + p\sbr{x_1} + p\sbr{y_1} \mod p^2, $$
+and $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} \in p\ZZ_p $. So we need $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} $ modulo $ p^2 $. Note $ \sbr{x_0^{1 / p}} + \sbr{y_0^{1 / p}} \equiv \sbr{s_0^{1 / p}} \mod p $, so by Lemma \ref{lem:5.4}
+$$ \sbr{s_0} \equiv \br{\sbr{x_0^{\tfrac{1}{p}}} + \sbr{y_0^{\tfrac{1}{p}}}}^p \equiv \sbr{x_0} + \sbr{y_0} + \sum_{d = 1}^{p - 1} \binom{p}{d}\sbr{x_0^{\tfrac{d}{p}}}\sbr{y_0^{\tfrac{p - d}{p}}} \mod p^2. $$
+Thus
+$$ s_1 = x_1 + y_1 - \sum_{d = 1}^{p - 1} \dfrac{1}{p}\binom{p}{d}\sbr{x_0^{\tfrac{d}{p}}}\sbr{y_0^{\tfrac{p - d}{p}}}. $$
+Can find similar expressions for $ s_2, s_3, \dots $. Witt noticed the general pattern.
+
+\pagebreak
+
+\begin{definition}
+The \textbf{$ n $-th Witt polynomial} $ \w_n $ is defined by
+$$ \w_n\br{X_0, \dots, X_n} = \sum_{i = 0}^n p^iX_i^{p^{n - i}} \in \ZZ\sbr{X_0, \dots, X_n}. $$
+\end{definition}
+
+Define $ \S_n \in \QQ\sbr{X_0, Y_0, \dots, X_n, Y_n} $ inductively by the equation
+$$ \w_n\br{\S_0, \dots, \S_n} = \w_n\br{X_0, \dots, X_n} + \w_n\br{Y_0, \dots, Y_n}, $$
+where the only term containing $ \S_n $ is $ p^n\S_n $.
+
+\begin{fact*}[Witt]
+$ \S_n \in \ZZ\sbr{X_0, Y_0, \dots, X_n, Y_n} $.
+\end{fact*}
+
+\begin{example*}
+$ \S_0 = X_0 + Y_0 $ and
+$$ \S_1 = X_1 + Y_1 + \sum_{d = 1}^{p - 1} \dfrac{1}{p}\binom{p}{d}X_0^dY_0^{p - d}. $$
+\end{example*}
+
+\begin{theorem}
+Suppose that
+$$ \sum_{i = 0}^\infty \sbr{x_i}p^i + \sum_{i = 0}^\infty \sbr{y_i}p^i = \sum_{i = 0}^\infty \sbr{s_i}p^i \in \ZZ_p. $$
+Then we have
+$$ s_n = \S_n\br{x_0^{\tfrac{1}{p^n}}, y_0^{\tfrac{1}{p^n}}, \dots, x_n, y_n}. $$
+\end{theorem}
+
+\begin{proof}
+Example sheet $ 2 $. A hint is Lemma \ref{lem:5.4}.
+\end{proof}
+
+Similarly, defines $ \Z_n \in \QQ\sbr{X_0, Y_0, \dots, X_n, Y_n} $ by
+$$ \w_n\br{\Z_0, \dots, \Z_n} = \w_n\br{X_0, \dots, X_n}\w_n\br{Y_0, \dots, Y_n}, $$
+
+\begin{fact*}[Witt]
+$ \Z_n \in \ZZ\sbr{X_0, Y_0, \dots, X_n, Y_n} $.
+\end{fact*}
+
+We have
+$$ \sum_{i = 0}^\infty \sbr{x_i}p^i\sum_{i = 0}^\infty \sbr{y_i}p^i = \sum_{i = 0}^\infty \sbr{z_i}p^i, $$
+where
+$$ z_n = \Z_n\br{x_0^{\tfrac{1}{p^n}}, y_0^{\tfrac{1}{p^n}}, \dots, x_n, y_n}. $$
+The conclusion is that the ring structure on $ \ZZ_p $ can be reconstructed from the arithmetic of $ \FF_p $.
+
+\begin{definition}
+A ring $ A $ is a \textbf{strict $ p $-ring} if it is $ p $-adically complete, $ p $ is not a zero divisor in $ A $, and $ A / pA $ is a perfect ring of characteristic $ p $.
+\end{definition}
+
+\begin{theorem}[Existence of Witt vectors]
+Let $ R $ be a perfect ring of characteristic $ p $.
+\begin{enumerate}
+\item There exists a strict $ p $-ring $ \W\br{R} $, called the \textbf{Witt vectors} of $ R $, such that $ \W\br{R} / p\W\br{R} \cong R $ which is unique up to isomorphism.
+\item If $ R' $ is another perfect ring and $ f : R \to R' $ is a ring homomorphism. Then there exists a unique ring homomorphism $ F : \W\br{R} \to \W\br{R'} $ such that the diagram
+$$
+\begin{tikzcd}
+\W\br{R} \arrow{r}{F} \arrow{d} & \W\br{R'} \arrow{d} \\
+R \arrow{r}[swap]{f} & R'
+\end{tikzcd}
+$$
+commutes, so $ \W\br{R} $ is the mixed characteristic analogue of $ R\sbr{\sbr{t}} $.
+\end{enumerate}
+\end{theorem}
+
+\pagebreak
+
+\begin{proof}
+See Rabinoff's The theory of Witt vectors.
+\begin{enumerate}
+\item Define
+$$ \W\br{R} = \cbr{\br{a_n}_{n = 0}^\infty \st a_n \in R}. $$
+Define addition and multiplication by $ \br{a_n}_{n = 0}^\infty + \br{b_n}_{n = 0}^\infty = \br{s_n}_{n = 0}^\infty $ and $ \br{a_n}_{n = 0}^\infty\br{b_n}_{n = 0}^\infty = \br{z_n}_{n = 0}^\infty $ where
+$$ s_n = \S_n\br{a_0, b_0, \dots, a_n, b_n}, \qquad z_n = \Z_n\br{a_0, b_0, \dots, a_n, b_n}. $$
+Check this defines a ring structure. For $ a = \br{a_0, a_1, \dots} \in \W\br{R} $, we compute
+$$ pa = \br{0, a_0^p, a_1^p, \dots}, $$
+so $ p $ is not a zero divisor. Moreover
+$$ \W\br{R} / p^i\W\br{R} = \cbr{\br{a_n}_{n = 0}^{i - 1} \st a_n \in R}. $$
+Compute explicitly
+$$ \W\br{R} \cong \varprojlim_i \W\br{R} / p^i\W\br{R}. $$
+\item For $ f : R \to R' $, define
+$$ \function[F]{\W\br{R}}{\W\br{R'}}{\br{a_0, a_1, \dots}}{\br{f\br{a_0}, f\br{a_1}, \dots}}. $$
+\end{enumerate}
+\end{proof}
+
+\begin{remark*}
+If $ R = \FF_p $, then $ \W\br{\FF_p} \cong \ZZ_p $. The isomorphism is given by
+$$ \br{a_0, a_1, \dots} \mapsto \sum_{i = 0}^\infty \sbr{a_i^{\tfrac{1}{p^i}}}p^i. $$
+\end{remark*}
+
+\begin{proposition}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ p \in \OOO_K $ is a uniformiser and $ k = \OOO_K / \mmm $ is perfect. Then $ \OOO_K \cong \W\br{k} $.
+\end{proposition}
+
+\begin{proof}
+By uniqueness of $ \W\br{k} $, it suffices to check that $ \OOO_K $ is a strict $ p $-ring. This is clear from properties of $ \OOO_K $.
+\end{proof}
+
+\lecture{9}{Wednesday}{28/10/20}
+
+\begin{remark*}
+Let $ k $ be a perfect field. If $ K = \Frac \W\br{k} $, then $ K $ is a complete discretely valued field with $ \OOO_K \cong \W\br{k} $ and $ p = \ch k \in \OOO_K $ is a uniformiser.
+\end{remark*}
+
+\begin{proposition}
+\label{prop:9.1}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field with $ k = \OOO_K / \mmm $ perfect of characteristic $ p $, then $ \OOO_K $ is finite over $ \W\br{k} $.
+\end{proposition}
+
+\begin{proof}
+Consider the subset $ R \subseteq \OOO_K $ defined by
+$$ R = \cbr{\sum_{i = 0}^\infty \sbr{a_i}p^i \st a_i \in k}. $$
+Calculating as in the example of $ \ZZ_p $ shows that $ R \cong \W\br{k} $. Let $ \pi $ be a uniformiser in $ \OOO_K $ and let $ e \in \NN $ such that $ ev\br{\pi} = v\br{p} $. Let
+$$ M = \bigoplus_{i = 0}^{e - 1} \pi^iR \subseteq \OOO_K, $$
+an $ R $-submodule. Since $ \sum_{n = 0}^\infty \sbr{x_n}\pi^n \equiv \sum_{n = 0}^{e - 1} \sbr{x_n}\pi^n \mod p $, $ M $ generates $ \OOO_K / p\OOO_K $ as an $ R $-module, so $ \OOO_K = M + p\OOO_K $. Iterating, $ \OOO_K = M + \dots + p^{m - 1}M + p^m\OOO_K = M + p^m\OOO_K $, so $ M \to \OOO_K / p^m\OOO_K $ is surjective for all $ m $. Then since $ M \cong \varprojlim_n M / p^nM $, we have $ M \to \OOO_K \cong \varprojlim_n \OOO_K / p^n\OOO_K $ is surjective. Thus $ M = \OOO_K $.
+\end{proof}
+
+\pagebreak
+
+\begin{theorem}
+\label{thm:9.2}
+Let $ K $ be a non-archimedean local field of mixed characteristic. Then $ K $ is a finite extension of $ \QQ_p $.
+\end{theorem}
+
+\begin{proof}
+Let $ k = \FF_{p^n} $ for some prime $ p $. Then by Proposition \ref{prop:9.1}, $ K $ is a finite extension of $ \Frac \W\br{\FF_{p^n}} $. It suffices to show that $ \W\br{\FF_{p^n}} $ is finite over $ \ZZ_p $. Let $ e_1, \dots, e_n \in \FF_{p^n} $ be a basis of $ \FF_{p^n} $ as an $ \FF_p $-vector space, and we write
+$$ M = \bigoplus_{i = 1}^n \W\br{\FF_p}\sbr{e_i} \subseteq \W\br{\FF_{p^n}}, $$
+a $ \W\br{\FF_p} $-submodule. For $ x = \sum_{i = 0}^\infty \sbr{x_i}p^i \in \W\br{\FF_{p^n}} $, let $ x_0 = \sum_{i = 1}^n \lambda_ie_i $ for $ \lambda_i \in \FF_p $. Then $ x - \sum_{i = 1}^n \sbr{\lambda_i}\sbr{e_i} \in p\W\br{\FF_{p^n}} $, since $ \sbr{\lambda_i} \in \W\br{\FF_p} $ by commutativity of
+$$
+\begin{tikzcd}
+\FF_p \arrow{r}{\sbr{\cdot}} \arrow{d} & \W\br{\FF_p} \arrow{d} \\
+\FF_{p^n} \arrow{r}[swap]{\sbr{\cdot}} & \W\br{\FF_{p^n}}
+\end{tikzcd},
+$$
+so $ \W\br{\FF_{p^n}} = M + p\W\br{\FF_{p^n}} $. Arguing as in Proposition \ref{prop:9.1} shows $ M = \W\br{\FF_{p^n}} $.
+\end{proof}
+
+\subsection{Classification of local fields}
+
+We consider the archimedean case.
+
+\begin{lemma}
+\label{lem:9.3}
+An absolute value $ \abs{\cdot} $ on a field is non-archimedean if and only if $ \abs{n} $ is bounded for all $ n \in \ZZ $.
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item[$ \implies $] Since $ \abs{-1} = 1 $, $ \abs{-n} = \abs{n} $, thus it suffices to show that $ \abs{n} $ is bounded for $ n \ge 1 $. Then $ \abs{n} = \abs{1 + \dots + 1} \le 1 $.
+\item[$ \impliedby $] Suppose $ \abs{n} \le B $ for all $ n \in \ZZ $. Let $ x, y \in K $ with $ \abs{x} \le \abs{y} $. Then we have
+$$ \abs{x + y}^m = \abs{\sum_{i = 0}^m \binom{m}{i}x^iy^{m - i}} \le \sum_{i = 0}^m \abs{\binom{m}{i}x^iy^{m - i}} \le \abs{y}^m\br{m + 1}B. $$
+Taking $ m $-th roots gives
+$$ \abs{x + y} \le \abs{y}\abs{\br{m + 1}B}^{\tfrac{1}{m}}, $$
+and $ \abs{\br{m + 1}B}^{1 / m} \to 1 $ as $ m \to \infty $. Thus $ \abs{x + y} \le \abs{y} = \max\br{\abs{x}, \abs{y}} $.
+\end{itemize}
+\end{proof}
+
+\begin{corollary}
+\label{cor:9.4}
+If $ \br{K, \abs{\cdot}} $ is a valued field with $ \ch K > 0 $, then $ K $ is non-archimedean.
+\end{corollary}
+
+\begin{theorem}[Ostrowski's theorem]
+Any non-trivial absolute value on $ \QQ $ is equivalent to either the usual absolute value $ \abs{\cdot}_\infty $ or the $ p $-adic absolute value $ \abs{\cdot}_p $ for some prime $ p $.
+\end{theorem}
+
+\begin{proof}
+\hfill
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item $ \abs{\cdot} $ is archimedean. We fix $ b > 1 $ an integer such that $ \abs{b} > 1 $, which exists by Lemma \ref{lem:9.3}. Let $ a > 1 $ be an integer and write $ b^n $ in base $ a $, so $ b^n = c_ma^m + \dots + c_0 $ for $ 0 \le c_i < a $. Let $ B = \max_{0 \le c < a} \abs{c} $, then we have $ \abs{b^n} \le \br{m + 1}B\max\br{\abs{a}^m, 1} $, so
+$$ \abs{b} \le \br{\br{n\log_a b + 1}B}^{\tfrac{1}{n}}\max\br{\abs{a}^{\log_a b}, 1}, $$
+and $ \br{\br{n\log_a b + 1}B}^{1 / n} \to 1 $ as $ n \to \infty $, so $ \abs{b} \le \max\br{\abs{a}^{\log_a b}, 1} $. Then $ \abs{a} > 1 $ and
+\begin{equation}
+\label{eq:1}
+\abs{b} \le \abs{a}^{\log_a b}.
+\end{equation}
+
+\pagebreak
+
+Switching the roles of $ a $ and $ b $, we obtain
+\begin{equation}
+\label{eq:2}
+\abs{a} \le \abs{b}^{\log_b a}.
+\end{equation}
+By $ \br{\ref{eq:1}} $ and $ \br{\ref{eq:2}} $,
+$$ \dfrac{\log \abs{a}}{\log a} = \dfrac{\log \abs{b}}{\log b} = \lambda \in \RR_{> 0}, $$
+using $ \log_a b = \log b / \log a $, so $ \abs{a} = a^\lambda $ for all $ a \in \ZZ $ such that $ a > 1 $, so $ \abs{x} = \abs{x}_\infty^\lambda $ for all $ x \in \QQ $. Hence $ \abs{\cdot} $ is equivalent to $ \abs{\cdot}_\infty $.
+\item $ \abs{\cdot} $ is non-archimedean. As in Lemma \ref{lem:9.3}, we have $ \abs{n} \le 1 $ for all $ n \in \ZZ $. Since $ \abs{\cdot} $ is non-trivial, there exists $ n \in \ZZ_{> 1} $ such that $ \abs{n} < 1 $. Write $ n = p_1^{e_1} \dots p_r^{e_r} $, a decomposition into prime factors. Then $ \abs{p} < 1 $ for some $ p \in \cbr{p_1, \dots, p_r} $. Suppose $ \abs{q} < 1 $ for some prime $ q $ such that $ q \ne p $. Write $ 1 = rp + sq $ for $ r, s \in \ZZ $. Then $ 1 = \abs{rp + sq} \le \max\br{\abs{rp}, \abs{sq}} < 1 $, a contradiction. Thus $ \abs{p} = \alpha < 1 $ and $ \abs{q} = 1 $ for all primes $ q \ne p $, so $ \abs{\cdot} $ is equivalent to $ \abs{\cdot}_p $.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+\label{thm:9.6}
+Let $ \br{K, \abs{\cdot}} $ be an archimedean local field. Then $ K = \RR $ or $ K = \CC $ and $ \abs{\cdot} $ is equivalent to the usual absolute value $ \abs{\cdot}_\infty $.
+\end{theorem}
+
+\begin{proof}
+If $ \ch K > 0 $, then $ K $ is non-archimedean by Corollary \ref{cor:9.4}. Therefore $ \ch K = 0 $, and hence $ \QQ \subseteq K $. Since $ \abs{\cdot} $ is archimedean, $ \eval{\abs{\cdot}}_\QQ $ is equivalent to $ \abs{\cdot}_\infty $ by Ostrowski. Therefore, since $ K $ is complete, we have $ \RR \subseteq K $.
+\begin{itemize}
+\item We first consider the case $ \CC \subseteq K $. Then by uniqueness of extensions of absolute values, $ \eval{\abs{\cdot}}_\CC $ is equivalent to $ \abs{\cdot}_\infty $. Suppose $ \alpha \in K \setminus \CC $. Then $ f\br{x} = \abs{x - \alpha} $ is a continuous function on $ \CC $, hence attains a lower bound at $ b \in \CC $ say, since $ \CC \subseteq K $ is closed. Set $ \beta = \alpha - b $ and we let $ c \in \CC $ such that $ 0 < \abs{c} < \abs{\beta} $. We have $ \abs{\beta - a} \ge \abs{\beta} $ for all $ a \in \CC $. Hence
+$$ \dfrac{\abs{\beta - c}}{\abs{\beta}} \le \dfrac{\abs{\beta - c}}{\abs{\beta}}\prod_{\zeta^n = 1, \ \zeta \ne 1} \dfrac{\abs{\beta - \zeta c}}{\abs{\beta}} = \dfrac{\abs{\beta^n - c^n}}{\abs{\beta}^n} = \abs{1 - \br{\dfrac{c}{\beta}}^n} \to 1, $$
+as $ n \to \infty $, since $ \abs{c / \beta} < 1 $ implies that $ \br{c / \beta}^n \to 0 $. Then $ \abs{\beta - c} \le \abs{\beta} $, so $ \abs{\beta - c} = \abs{\beta} $. Replacing $ \beta $ by $ \beta - c $ and iterating, we obtain $ \abs{\beta - mc} = \abs{\beta} $ for all $ m \in \NN $, so
+$$ \abs{m}\abs{c} = \abs{mc} \le \abs{\beta - mc} + \abs{\beta} = 2\abs{\beta}. $$
+This contradicts Lemma \ref{lem:9.3}, hence $ K = \CC $.
+\item Now suppose $ K $ does not contain $ \CC $. Define $ L = K\br{i} $ where $ i^2 = -1 $. Can extend $ \abs{\cdot} $ to an absolute value $ \abs{\cdot}_L $ on $ L $ given by
+$$ \abs{a + ib}_L = \sqrt{\abs{a}^2 + \abs{b}^2}, \qquad a, b \in K. $$
+Applying the above argument gives $ K\br{i} = L = \CC $, hence $ K = \RR $.
+\end{itemize}
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:8.2}]
+\hfill
+\begin{itemize}
+\item $ \abs{\cdot} $ archimedean is Theorem \ref{thm:9.6}.
+\item $ \abs{\cdot} $ non-archimedean and $ \ch K = 0 $ is Theorem \ref{thm:9.2}.
+\item $ \abs{\cdot} $ non-archimedean and $ \ch K > 0 $ is Theorem \ref{thm:8.4}.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\subsection{Global fields}
+
+\lecture{10}{Friday}{30/10/20}
+
+\begin{definition}
+A \textbf{global field} is a field which is either
+\begin{itemize}
+\item an algebraic number field, or
+\item a \textbf{global function field}, the rational function field of an algebraic curve over a finite field, or equivalently a finite extension of $ \FF_p\br{t} $.
+\end{itemize}
+\end{definition}
+
+We mainly focus on the number field. We show that local fields are completions of global fields.
+
+\begin{lemma}
+\label{lem:10.2}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field and $ L / K $ a Galois extension and $ \abs{\cdot}_L $ the unique extension of $ \abs{\cdot} $ to $ L $. Then for $ x \in L $ and $ \sigma \in \Gal\br{L / K} $, we have $ \abs{\sigma\br{x}}_L = \abs{x}_L $.
+\end{lemma}
+
+\begin{proof}
+Since $ x \mapsto \abs{\sigma\br{x}}_L $ is also another absolute value on $ L $ extending $ \abs{\cdot} $ on $ K $, Lemma \ref{lem:10.2} follows from uniqueness of $ \abs{\cdot}_L $.
+\end{proof}
+
+\begin{lemma}[Krasner's lemma]
+Let $ \br{K, \abs{\cdot}} $ a complete discretely valued field. Let $ f\br{X} \in K\sbr{X} $ be a separable irreducible polynomial with roots $ \alpha_1, \dots, \alpha_n \in \overline{K} $, the separable closure of $ K $. Suppose $ \beta \in \overline{K} $ with $ \abs{\beta - \alpha_1} < \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $. Then $ \alpha_1 \in K\br{\beta} $.
+\end{lemma}
+
+\begin{proof}
+Let $ L = K\br{\beta} $ and $ L' = L\br{\alpha_1, \dots, \alpha_n} $. Then $ L' / L $ is a Galois extension. Let $ \sigma \in \Gal\br{L' / L} $. We have $ \abs{\beta - \sigma\br{\alpha_1}} = \abs{\sigma\br{\beta - \alpha_1}} = \abs{\beta - \alpha_1} $, by Lemma \ref{lem:10.2}. Thus $ \sigma\br{\alpha_1} = \alpha_1 $, so $ \alpha_1 \in K\br{\beta} $.
+\end{proof}
+
+\begin{proposition}[Nearby polynomials define the same extension]
+\label{prop:10.4}
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field and $ f\br{X} = \sum_{i = 0}^n a_iX^i \in \OOO_K\sbr{X} $ be a separable irreducible monic polynomial. Let $ \alpha \in \overline{K} $ be a root of $ f $. Then there exists $ \epsilon > 0 $ such that for any $ g\br{X} = \sum_{i = 0}^n b_iX^i \in \OOO_K\sbr{X} $ monic with $ \abs{a_i - b_i} < \epsilon $, there exists a root $ \beta $ of $ g\br{X} $ such that $ K\br{\alpha} = K\br{\beta} $.
+\end{proposition}
+
+\begin{proof}
+Let $ \alpha = \alpha_1, \dots, \alpha_n \in \overline{K} $ be the roots of $ f $ which are necessarily distinct. Then $ f'\br{\alpha} \ne 0 $. We choose $ \epsilon $ sufficiently small such that $ \abs{g\br{\alpha_1}} < \abs{f'\br{\alpha_1}}^2 $ and $ \abs{f'\br{\alpha_1} - g'\br{\alpha_1}} < \abs{f'\br{\alpha_1}} $. Then we have $ \abs{g\br{\alpha_1}} < \abs{f'\br{\alpha_1}}^2 = \abs{g'\br{\alpha_1}}^2 $. By Hensel's lemma applied to the field $ K\br{\alpha_1} $, there exists $ \beta \in K\br{\alpha_1} $ such that $ g\br{\beta} = 0 $ and $ \abs{\beta - \alpha_1} < \abs{g'\br{\alpha_1}} $. Then
+$$ \abs{g'\br{\alpha_1}} = \abs{f'\br{\alpha_1}} = \prod_{i = 2}^n \abs{\alpha_1 - \alpha_i} \le \abs{\alpha_1 - \alpha_i}, \qquad i = 2, \dots, n, $$
+using $ \abs{\alpha_1 - \alpha_i} \le 1 $. Since $ \abs{\beta - \alpha_1} < \abs{g'\br{\alpha_1}} = \abs{f'\br{\alpha_1}} \le \abs{\alpha_1 - \alpha_i} = \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $, by Krasner's lemma, $ \alpha \in K\br{\beta} $, so $ K\br{\alpha} = K\br{\beta} $.
+\end{proof}
+
+\begin{theorem}
+Let $ K $ be a local field, then $ K $ is the completion of a global field.
+\end{theorem}
+
+\begin{proof}
+\hfill
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item $ \abs{\cdot} $ is archimedean. Then $ \RR $ is the completion of $ \QQ $ with respect to $ \abs{\cdot}_\infty $ and $ \CC $ is the completion of $ \QQ\br{i} $ with respect to $ \abs{\cdot}_\infty $.
+\item $ \abs{\cdot} $ is non-archimedean of equal characteristic. Then $ K \cong \FF_q\br{\br{t}} $, so $ K $ is the completion of $ \FF_q\br{t} $ with respect to the $ t $-adic absolute value.
+\item $ \abs{\cdot} $ is non-archimedean of mixed characteristic. Then $ K \cong \QQ_p\br{\alpha} $ for $ \alpha $ a root of a monic irreducible polynomial $ f\br{X} \in \ZZ_p\sbr{X} $. Since $ \ZZ $ is dense in $ \ZZ_p $, we choose $ g\br{X} \in \ZZ\sbr{X} $ as in Proposition \ref{prop:10.4}. Then $ K = \QQ_p\br{\beta} $ for $ \beta $ a root of $ g\br{X} $. Since $ \beta \in \overline{\QQ} $, we have $ \QQ\br{\beta} \subseteq \QQ_p\br{\beta} = K $, so $ K $ is the completion of $ \QQ\br{\beta} $.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\section{Dedekind domains}
+
+The global analogue of a DVR is a Dedekind domain.
+
+\subsection{Dedekind domains}
+
+\begin{definition}
+A \textbf{Dedekind domain} is a ring $ R $ such that
+\begin{itemize}
+\item $ R $ is a Noetherian integral domain,
+\item $ R $ is integrally closed in $ \Frac R $, and
+\item Every non-zero prime ideal is maximal.
+\end{itemize}
+\end{definition}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item The ring of integers in a number field is a Dedekind domain.
+\item Any PID, hence DVR, is a Dedekind domain.
+\end{itemize}
+\end{example*}
+
+\begin{theorem}
+\label{thm:10.7}
+A ring $ R $ is a DVR if and only if $ R $ is a Dedekind domain with exactly one non-zero prime ideal.
+\end{theorem}
+
+\begin{lemma}
+\label{lem:10.8}
+Let $ R $ be a Noetherian ring and $ I \subseteq R $ a non-zero ideal. Then there exist non-zero prime ideals $ \ppp_1, \dots, \ppp_r \subseteq R $ such that $ \ppp_1 \dots \ppp_r \subseteq I $.
+\end{lemma}
+
+\begin{proof}
+Suppose not. Since $ R $ is Noetherian, we may choose $ I $ maximal without this property. Then $ I $ is not prime, so there exists $ x, y \in R \setminus I $ such that $ xy \in I $. Let $ I_1 = I + \abr{x} $ and $ I_2 = I + \abr{y} $. Then by maximality of $ I $, there exists $ \ppp_1, \dots, \ppp_r $ and $ \qqq_1, \dots, \qqq_s $ prime ideals such that $ \ppp_1 \dots \ppp_r \subseteq I_1 $ and $ \qqq_1 \dots \qqq_s \subseteq I_2 $, so $ \ppp_1 \dots \ppp_r\qqq_1 \dots \qqq_s \subseteq I_1I_2 \subseteq I $, a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lem:10.9}
+Let $ R $ be an integral domain which is integrally closed in $ K = \Frac R $. Let $ I \subseteq R $ be a non-zero finitely generated ideal and $ x \in K $. Then if $ xI \subseteq I $, we have $ x \in R $.
+\end{lemma}
+
+\begin{proof}
+Let $ I = \abr{c_1, \dots, c_n} $. We write $ xc_i = \sum_{i = 1}^n a_{ij}c_i $ for some $ a_{ij} \in R $. Let $ A $ be the matrix $ A = \br{a_{ij}}_{1 \le i, j \le n} $ and set $ B = x\I_n - A \in \Mat_{n \times n} K $. Then $ B\onebythree{c_1}{\dots}{c_n}^\intercal = 0 $ in $ K^n $. Multiplying by the adjugate matrix for $ B $, $ \br{\det B}\I_n\onebythree{c_1}{\dots}{c_n}^\intercal = 0 $, so $ \det B = 0 $. But $ \det B $ is a monic polynomial in $ x $ with coefficients in $ R $. Thus $ x $ is integral over $ R $, so $ x \in R $.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:10.7}]
+\hfill
+\begin{itemize}
+\item[$ \implies $] Clear.
+\item[$ \impliedby $] We need to show $ R $ is a PID. The assumption implies $ R $ is a local ring with unique maximal ideal $ \mmm $.
+\begin{enumerate}[leftmargin=0.5in, label=Step \arabic*.]
+\item $ \mmm $ is principal. Let $ 0 \ne x \in \mmm $. By Lemma \ref{lem:10.8}, $ \abr{x} \supseteq \mmm^n $ for some $ n \ge 1 $. Let $ n $ be minimal such that $ \abr{x} \supseteq \mmm^n $, then we may choose $ y \in \mmm^{n - 1} \setminus \abr{x} $. Set $ \pi = x / y $. Then we have $ y\mmm \subseteq \mmm^n \subseteq \abr{x} $, so $ \pi^{-1}\mmm \subseteq R $. If $ \pi^{-1}\mmm \subseteq \mmm $, then $ \pi^{-1} \in R $ by Lemma \ref{lem:10.9} and $ y \in \abr{x} $, a contradiction. Hence $ \pi^{-1}\mmm = R $, so $ \mmm = \pi R $ is principal.
+\item $ R $ is a PID. Let $ I \subseteq R $ be a non-zero ideal. Consider the sequence of ideals $ I \subseteq \pi^{-1}I \subseteq \dots $ in $ K $. Then $ \pi^{-k}I \ne \pi^{-\br{k + 1}}I $ for all $ k $ by Lemma \ref{lem:10.9}. Therefore since $ R $ is Noetherian, we may choose $ n $ maximal such that $ \pi^{-n}I \subseteq R $. If $ \pi^{-n}I \subseteq \mmm = \abr{\pi} $, then $ \pi^{-\br{n + 1}}I \subseteq R $, a contradiction. Thus $ \pi^{-n}I = R $, so $ I = \abr{\pi^n} $.
+\end{enumerate}
+\end{itemize}
+\end{proof}
 
 \end{document}
