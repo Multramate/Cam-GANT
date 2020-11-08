@@ -7,6 +7,9 @@
 
 \input{../style/header}
 
+% Macros
+\newcommand{\pp}{\mathfrak{P}}
+
 \begin{document}
 
 \input{../style/cover}
@@ -24,7 +27,7 @@ Now this is just a finite computation, since modulo primes there are only finite
 \subsection{Absolute values}
 
 \begin{definition}
-Let $ K $ be a field. An \textbf{absolute value} on $ K $ is a function $ \abs{\cdot} : K \to \RR_{\ge 0} $ such that,
+Let $ K $ be a field. An \textbf{absolute value} on $ K $ is a function $ \abs{\cdot} : K \to \RR_{\ge 0} $ such that
 \begin{enumerate}
 \item $ \abs{x} = 0 $ if and only if $ x = 0 $,
 \item $ \abs{xy} = \abs{x}\abs{y} $ for all $ x, y \in K $, and
@@ -215,11 +218,11 @@ determines a non-archimedean absolute value. Conversely, a non-archimedean absol
 \begin{example*}
 \hfill
 \begin{itemize}
-\item Let $ K = \QQ $. Then $ \v_p\br{x} = -\log_p \abs{x}_p $ is the \textbf{$ p $-adic valuation}.
-\item Let $ k $ be a field, and let $ K = k\br{t} = \Frac k\sbr{t} $ be the \textbf{rational function field}. Then
+\item If $ K = \QQ $, then $ \v_p\br{x} = -\log_p \abs{x}_p $ is the \textbf{$ p $-adic valuation}.
+\item If $ k $ is a field and $ K = k\br{t} = \Frac k\sbr{t} $ is the \textbf{rational function field}, then
 $$ v\br{t^n\dfrac{f\br{t}}{g\br{t}}} = n, \qquad f, g \in k\sbr{t}, \qquad f\br{0}, g\br{0} \ne 0 $$
 is the \textbf{$ t $-adic valuation}.
-\item Let $ K = k\br{\br{t}} = \Frac k\sbr{\sbr{t}} = \cbr{\sum_{i = n}^\infty a_it^i \st a_i \in k, \ n \in \ZZ} $ be the \textbf{field of formal Laurent series} over $ k $. Then
+\item If $ K = k\br{\br{t}} = \Frac k\sbr{\sbr{t}} = \cbr{\sum_{i = n}^\infty a_it^i \st a_i \in k, \ n \in \ZZ} $ is the \textbf{field of formal Laurent series} over $ k $, then
 $$ v\br{\sum_i a_it^i} = \min \cbr{i \st a_i \ne 0} $$
 is the $ t $-adic valuation on $ K $.
 \end{itemize}
@@ -269,8 +272,8 @@ $ \OOO_K $ is a local ring with unique maximal ideal $ \mmm $.
 \begin{example*}
 \hfill
 \begin{itemize}
-\item Let $ K = k\br{\br{t}} $. Then $ \OOO_K = k\sbr{\sbr{t}} $, $ \mmm = \abr{t} $, and the residue field is $ k $.
-\item Let $ K = \QQ $ with $ \abs{\cdot}_p $. Then $ \OOO_K = \ZZ_{\abr{p}} $, $ \mmm = p\ZZ_{\abr{p}} $, and $ k = \FF_p $.
+\item If $ K = k\br{\br{t}} $, then $ \OOO_K = k\sbr{\sbr{t}} $, $ \mmm = \abr{t} $, and the residue field is $ k $.
+\item If $ K = \QQ $ with $ \abs{\cdot}_p $, then $ \OOO_K = \ZZ_{\br{\abr{p}}} $, $ \mmm = p\ZZ_{\br{\abr{p}}} $, and $ k = \FF_p $.
 \end{itemize}
 \end{example*}
 
@@ -344,9 +347,9 @@ A ring $ R $ is called a \textbf{discrete valuation ring (DVR)} if it is a PID w
 \begin{example*}
 \hfill
 \begin{itemize}
-\item $ \ZZ_{\abr{p}} $ is a DVR, the valuation ring of $ \abs{\cdot}_p $ on $ \QQ $.
+\item $ \ZZ_{\br{\abr{p}}} $ is a DVR, the valuation ring of $ \abs{\cdot}_p $ on $ \QQ $.
 \item The ring of formal power series $ k\sbr{\sbr{t}} = \cbr{\sum_{n \ge 0} a_nt^n \st a_n \in k} $ is a DVR, the valuation ring for the $ t $-adic absolute value on $ k\br{\br{t}} $.
-\item Non-example. Let $ K = k\br{t} $ be the rational function field, and let $ K' = K\br{t^{1 / 2}, t^{1 / 4}, \dots} $. Then the $ t $-adic valuation extends to $ K' $, and $ v\br{t^{1 / 2^n}} = 1 / 2^n $ is not discrete.
+\item Non-example. If $ K = k\br{t} $ is the rational function field and $ K' = K\br{t^{1 / 2}, t^{1 / 4}, \dots} $, then the $ t $-adic valuation extends to $ K' $, and $ v\br{t^{1 / 2^n}} = 1 / 2^n $ is not discrete.
 \end{itemize}
 \end{example*}
 
@@ -377,8 +380,8 @@ $ \ZZ_p $ is the closure of $ \ZZ $ inside $ \QQ_p $. In particular $ \ZZ_p $ is
 
 \begin{proof}
 Need to show $ \ZZ $ is dense in $ \ZZ_p $. Since $ \QQ $ is dense in $ \QQ_p $ and $ \ZZ_p \subseteq \QQ_p $ is open, $ \ZZ_p \cap \QQ $ is dense in $ \ZZ_p $. Then
-$$ \ZZ_p \cap \QQ = \cbr{x \in \QQ \st \abs{x}_p \le 1} = \cbr{\dfrac{a}{b} \in \QQ \st p \nmid b} = \ZZ_{\abr{p}}, $$
-the localisation at $ \abr{p} $. Thus it suffices to show $ \ZZ $ is dense in $ \ZZ_{\abr{p}} $. Let $ a / b \in \ZZ_{\abr{p}} $ for $ a, b \in \ZZ $ and $ p \nmid b $. For $ n \in \NN $, choose $ y_n \in \ZZ $ such that $ by_n \equiv a \mod p^n $. Then $ y_n \to a / b $ as $ n \to \infty $. In particular, $ \ZZ $ is dense in $ \ZZ_p $, which is complete.
+$$ \ZZ_p \cap \QQ = \cbr{x \in \QQ \st \abs{x}_p \le 1} = \cbr{\dfrac{a}{b} \in \QQ \st p \nmid b} = \ZZ_{\br{\abr{p}}}, $$
+the localisation at $ \abr{p} $. Thus it suffices to show $ \ZZ $ is dense in $ \ZZ_{\br{\abr{p}}} $. Let $ a / b \in \ZZ_{\br{\abr{p}}} $ for $ a, b \in \ZZ $ and $ p \nmid b $. For $ n \in \NN $, choose $ y_n \in \ZZ $ such that $ by_n \equiv a \mod p^n $. Then $ y_n \to a / b $ as $ n \to \infty $. In particular, $ \ZZ $ is dense in $ \ZZ_p $, which is complete.
 \end{proof}
 
 Let $ \br{A_n}_{n = 1}^\infty $ be a sequence of sets or groups or rings together with homomorphisms $ \phi_n : A_{n + 1} \to A_n $, the \textbf{transition maps}. The \textbf{inverse limit} of $ \br{A_n}_{n = 1}^\infty $ is the set or group or ring
@@ -1261,14 +1264,14 @@ Let $ K $ be a local field, then $ K $ is the completion of a global field.
 
 The global analogue of a DVR is a Dedekind domain.
 
-\subsection{Dedekind domains}
+\subsection{Dedekind domains and DVRs}
 
 \begin{definition}
 A \textbf{Dedekind domain} is a ring $ R $ such that
 \begin{itemize}
 \item $ R $ is a Noetherian integral domain,
 \item $ R $ is integrally closed in $ \Frac R $, and
-\item Every non-zero prime ideal is maximal.
+\item every non-zero prime ideal is maximal.
 \end{itemize}
 \end{definition}
 
@@ -1313,6 +1316,371 @@ Let $ I = \abr{c_1, \dots, c_n} $. We write $ xc_i = \sum_{i = 1}^n a_{ij}c_i $ 
 \item $ R $ is a PID. Let $ I \subseteq R $ be a non-zero ideal. Consider the sequence of ideals $ I \subseteq \pi^{-1}I \subseteq \dots $ in $ K $. Then $ \pi^{-k}I \ne \pi^{-\br{k + 1}}I $ for all $ k $ by Lemma \ref{lem:10.9}. Therefore since $ R $ is Noetherian, we may choose $ n $ maximal such that $ \pi^{-n}I \subseteq R $. If $ \pi^{-n}I \subseteq \mmm = \abr{\pi} $, then $ \pi^{-\br{n + 1}}I \subseteq R $, a contradiction. Thus $ \pi^{-n}I = R $, so $ I = \abr{\pi^n} $.
 \end{enumerate}
 \end{itemize}
+\end{proof}
+
+\lecture{11}{Monday}{02/11/20}
+
+Let $ R $ be an integral domain and $ S \subseteq R $ a multiplicatively closed subset, so if $ x, y \in S $ then $ xy \in S $. The \textbf{localisation} $ S^{-1}R $ of $ R $ with respect to $ S $ is the ring
+$$ S^{-1}R = \cbr{\dfrac{r}{s} \st r \in R, \ s \in S} \subseteq \Frac R. $$
+If $ \ppp $ is a prime ideal in $ R $, we write $ R_{\br{\ppp}} $ for the localisation with respect to $ S = R \setminus \ppp $.
+
+\pagebreak
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item If $ \ppp = 0 $, then $ R_{\br{\ppp}} = \Frac R $.
+\item If $ R = \ZZ $, then $ \ZZ_{\br{\abr{p}}} = \cbr{a / p^n \st a \in \ZZ, \ n \in \ZZ_{\ge 0}} $.
+\end{itemize}
+\end{example*}
+
+\begin{fact*}
+\hfill
+\begin{itemize}
+\item If $ R $ is Noetherian, then $ S^{-1}R $ is Noetherian.
+\item There exists a bijection
+$$ \correspondence{\text{prime ideals} \ \ppp S^{-1}R \subseteq S^{-1}R}{\text{prime ideals} \ \ppp \subseteq R \ \text{such that} \ \ppp \cap S = \emptyset}. $$
+\end{itemize}
+\end{fact*}
+
+\begin{corollary}
+\label{cor:11.1}
+Let $ R $ be a Dedekind domain and $ \ppp \subseteq R $ a non-zero prime ideal. Then $ R_{\br{\ppp}} $ is a DVR.
+\end{corollary}
+
+\begin{proof}
+By properties of localisation, $ R_{\br{\ppp}} $ is a Noetherian integral domain with a unique non-zero prime ideal $ \ppp R_{\br{\ppp}} $. It suffices to show that $ R_{\br{\ppp}} $ is integrally closed in $ \Frac R_{\br{\ppp}} = \Frac R $, since then $ R_{\br{\ppp}} $ is Dedekind, so by Theorem \ref{thm:10.7}, $ R_{\br{\ppp}} $ is a DVR. Let $ x \in \Frac R $ be integral over $ R_{\br{\ppp}} $. Multiplying by denominators of a monic polynomial satisfied by $ x $, we obtain $ sx^n + a_{n - 1}x^{n - 1} + \dots + a_0 = 0 $ for $ a_i \in R $ and $ s \in S $. By multiplying by $ s^{n - 1} $, $ xs $ is integral over $ R $. Thus $ xs \in R $, so $ x \in R_{\br{\ppp}} $.
+\end{proof}
+
+\begin{definition}
+If $ R $ is a Dedekind domain and $ \ppp \subseteq R $ a non-zero prime ideal, we write $ \v_\ppp $ for the normalised valuation on $ \Frac R = \Frac R_{\br{\ppp}} $ corresponding to the DVR $ R_{\br{\ppp}} $.
+\end{definition}
+
+\begin{example*}
+If $ R = \ZZ $ and $ \ppp = \abr{p} $, then $ \v_\ppp $ is the $ p $-adic valuation.
+\end{example*}
+
+\begin{theorem}
+Let $ R $ be a Dedekind domain. Then every non-zero ideal $ I \subseteq R $ can be written uniquely as a product of prime ideals, $ I = \ppp_1^{e_1} \dots \ppp_r^{e_r} $ for $ \ppp_i $ distinct.
+\end{theorem}
+
+\begin{remark*}
+This is clear for PIDs, since PID implies UFD.
+\end{remark*}
+
+\begin{proof}
+We quote the following properties of localisation.
+\begin{enumerate}
+\item If $ I \subsetneq J $ then $ IR_{\br{\ppp}} \subsetneq JR_{\br{\ppp}} $.
+\item $ I = J $ if and only if $ IR_{\br{\ppp}} = JR_{\br{\ppp}} $, for all $ \ppp $ prime ideals.
+\end{enumerate}
+Let $ I \subseteq R $ be a non-zero ideal. Then by Lemma \ref{lem:10.8}, there are prime ideals $ \ppp_1, \dots, \ppp_r $ such that $ \ppp_1^{\beta_1} \dots \ppp_r^{\beta_r} \subseteq I $, where $ \beta_i > 0 $. Then
+$$ IR_{\br{\ppp}} =
+\begin{cases}
+R_{\br{\ppp}} & \ppp \notin \cbr{\ppp_1, \dots, \ppp_r} \\
+\ppp^{\alpha_i}R_{\br{\ppp}} & \ppp = \ppp_i
+\end{cases}.
+$$
+Here, $ 0 < \alpha_i \le \beta_i $, and the second case follows from Corollary \ref{cor:11.1}. Thus $ I = \ppp_1^{\alpha_1} \dots \ppp_r^{\alpha_r} $ by property $ 2 $. For uniqueness, if $ I = \ppp_1^{\alpha_1} \dots \ppp_r^{\alpha_r} = \ppp_1^{\gamma_1} \dots \ppp_r^{\gamma_r} $ then $ \ppp_i^{\alpha_i}R_{\br{\ppp_i}} = \ppp_i^{\gamma_i}R_{\br{\ppp_i}} $, so $ \alpha_i = \gamma_i $ by unique factorisation in DVRs.
+\end{proof}
+
+\subsection{Extensions of Dedekind domains}
+
+Let $ L / K $ be a finite extension. For $ x \in L $ we write $ \Tr_{L / K} x \in K $ for the trace of the $ K $-linear map
+$$ \function{L}{L}{y}{xy}. $$
+If $ L / K $ is separable such that $ \sbr{L : K} = n $ and $ \sigma_1, \dots, \sigma_n : L \to \overline{K} $ denote the embeddings of $ L $ into a separable closure $ \overline{K} $, then
+$$ \Tr_{L / K} x = \sum_{i = 1}^n \sigma_i\br{x}. $$
+
+\pagebreak
+
+\begin{lemma}
+Let $ L / K $ be a finite separable extension of fields. Then the symmetric bilinear pairing
+$$ \function[\br{,}]{L \times L}{K}{\br{x, y}}{\Tr_{L / K} xy} $$
+is non-degenerate.
+\end{lemma}
+
+\begin{proof}
+By the primitive element theorem, $ L = K\br{\alpha} $ for some $ \alpha \in L $. We consider the matrix $ A $ for $ \br{,} $ in the $ K $-basis for $ L $ given by $ 1, \dots, \alpha^{n - 1} $. Then $ A_{ij} = \Tr_{L / K} \alpha^{i + j} = \sbr{BB^\intercal}_{ij} $ where $ B $ is the $ n \times n $ matrix with
+$$ B = \threebythree{1}{\dots}{1}{\vdots}{\ddots}{\vdots}{\sigma_1\br{\alpha^{n - 1}}}{\dots}{\sigma_n\br{\alpha^{n - 1}}}, $$
+so the Vandermonde determinant is
+$$ \det A = \br{\det B}^2 = \sbr{\prod_{1 \le i < j \le n} \br{\sigma_i\br{\alpha} - \sigma_j\br{\alpha}}}^2 \ne 0, $$
+since $ \sigma_i\br{\alpha} \ne \sigma_j\br{\alpha} $ for $ i \ne j $.
+\end{proof}
+
+\begin{remark*}
+In fact a finite extension of fields $ L / K $ is separable if and only if the trace form is non-degenerate.
+\end{remark*}
+
+\begin{theorem}
+\label{thm:11.5}
+Let $ \OOO_K $ be a Dedekind domain and $ L $ a finite separable extension of $ K = \Frac \OOO_K $. Then the integral closure $ \OOO_L $ of $ \OOO_K $ in $ L $ is a Dedekind domain.
+\end{theorem}
+
+\begin{proof}
+Since $ \OOO_L \subseteq L $, it is an integral domain. We need to show the following.
+\begin{itemize}
+\item $ \OOO_L $ is Noetherian. Let $ e_1, \dots, e_n \in L $ be a $ K $-basis for $ L $. Upon scaling by $ K $, we may assume $ e_i \in \OOO_L $, for all $ i $. Let $ f_i \in L $ be the dual basis with respect to the trace form $ \br{,} $. Let $ x \in \OOO_L $ and write $ x = \sum_{i = 1}^n \lambda_if_i $ for $ \lambda_i \in K $. Then $ \lambda_i = \Tr_{L / K} xe_i \in \OOO_K $, since for any $ z \in \OOO_L $, $ \Tr_{L / K} z $ is a sum of elements which are integral over $ \OOO_K $, so $ \Tr_{L / K} z $ is integral over $ \OOO_K $, so $ \Tr_{L / K} z \in \OOO_K $. Thus $ \OOO_L \subseteq \OOO_Kf_1 + \dots + \OOO_Kf_n $. Since $ \OOO_K $ is Noetherian, $ \OOO_L $ is finitely generated as an $ \OOO_K $-module, hence $ \OOO_L $ is Noetherian.
+\item $ \OOO_L $ is integrally closed in $ L $. Example sheet $ 2 $.
+\item Every non-zero prime ideal $ \pp $ in $ \OOO_L $ is maximal. Let $ \pp $ be a non-zero prime ideal of $ \OOO_L $, and define $ \ppp = \pp \cap \OOO_K $ a prime ideal of $ \OOO_K $. Let $ x \in \pp $, then $ x $ satisfies an equation $ x^n + a_{n - 1}x^{n - 1} + \dots + a_0 = 0 $ for $ a_i \in \OOO_K $ with $ a_0 \ne 0 $. Then $ a_0 \in \pp \cap \OOO_K $ is a non-zero element of $ \ppp $, so $ \ppp $ is non-zero, so $ \ppp $ is maximal. We have $ \OOO_K / \ppp \hookrightarrow \OOO_L / \pp $, and $ \OOO_L / \pp $ is a finite dimensional vector space over $ \OOO_K / \ppp $. Since $ \OOO_L / \pp $ is an integral domain, it is a field, using the rank-nullity theorem applied to the map $ y \mapsto zy $.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+Theorem \ref{thm:11.5} in fact holds without the assumption that $ L / K $ is separable.
+\end{remark*}
+
+\begin{corollary}
+The ring of integers inside a number field is a Dedekind domain.
+\end{corollary}
+
+\begin{remark*}
+By convention, if $ \OOO_K $ is the ring of integers of a number field and $ \ppp \subseteq \OOO_K $ is a non-zero prime ideal, we normalise $ \abs{\cdot}_\ppp $, the absolute value associated to $ \v_\ppp $, by
+$$ \abs{x}_\ppp = \N_\ppp^{-\v_\ppp\br{x}}, \qquad \N_\ppp = \#\br{\OOO_K / \ppp}. $$
+\end{remark*}
+
+\lecture{12}{Wednesday}{04/11/20}
+
+\begin{lemma}
+\label{lem:12.1}
+Let $ \OOO_K $ be a Dedekind domain. Let $ 0 \ne x \in \OOO_K $. Then
+$$ \abr{x} = \prod_{\ppp \ne 0 \ \text{prime ideals}} \ppp^{\v_\ppp\br{x}}. $$
+\end{lemma}
+
+Note product is finite.
+
+\begin{proof}
+$ x\OOO_{K, \br{\ppp}} = \br{\ppp\OOO_{K, \br{\ppp}}}^{\v_\ppp\br{x}} $ by definition of $ \v_\ppp\br{x} $. Lemma \ref{lem:12.1} follows from properties of localisation, where $ I = J $ if and only if $ I\OOO_{K, \br{\ppp}} = J\OOO_{K, \br{\ppp}} $ for all prime ideals $ \ppp $.
+\end{proof}
+
+\pagebreak
+
+\begin{notation*}
+Let $ \OOO_K $ be a Dedekind domain, let $ L / K $ be a finite separable extension, and let $ \pp \subseteq \OOO_L $ and $ \ppp \subseteq \OOO_K $ be non-zero prime ideals. We write $ \pp \mid \ppp $ if
+$$ \ppp\OOO_L = \pp_1^{e_1} \dots \pp_r^{e_r}, \qquad \pp \in \cbr{\pp_1, \dots, \pp_r}, \qquad e_i > 0. $$
+\end{notation*}
+
+\begin{theorem}
+\label{thm:12.2}
+Let $ \OOO_K $ be a Dedekind domain and $ L $ a finite separable extension of $ K = \Frac \OOO_K $. For $ \ppp $ a non-zero prime ideal of $ \OOO_K $, we write $ \ppp\OOO_L = \pp_1^{e_1} \dots \pp_r^{e_r} $ for $ e_i > 0 $. Then the absolute values on $ L $ extending $ \abs{\cdot}_\ppp $, up to equivalence, are precisely $ \abs{\cdot}_{\pp_1}, \dots, \abs{\cdot}_{\pp_r} $.
+\end{theorem}
+
+\begin{proof}
+By Lemma \ref{lem:12.1}, for any $ x \in \OOO_K $ and $ i = 1, \dots, r $, we have $ \v_{\pp_i}\br{x} = e_i\v_\ppp\br{x} $. Hence up to equivalence, $ \abs{\cdot}_{\pp_i} $ extends $ \abs{\cdot}_\ppp $. Now suppose $ \abs{\cdot} $ is an absolute value on $ L $ extending $ \abs{\cdot}_\ppp $. Then $ \abs{\cdot} $ is bounded on $ \ZZ $, hence $ \abs{\cdot} $ is non-archimedean. Let $ R = \cbr{x \in L \st \abs{x} \le 1} \subseteq L $ be the valuation ring for $ L $ with respect to $ \abs{\cdot} $. Then $ \OOO_K \subseteq R $, and since $ R $ is integrally closed in $ L $, by lecture $ 6 $, we have $ \OOO_L \subseteq R $. Set
+\begin{equation}
+\label{eq:3}
+\pp = \cbr{x \in \OOO_L \st \abs{x} < 1}.
+\end{equation}
+It is easy to check $ \pp $ is a non-zero prime ideal. For example,
+\begin{itemize}
+\item if $ x, y \in \pp $ then $ x + y \in \pp $ by $ \br{\ref{eq:3}} $,
+\item if $ r \in \OOO_L $ and $ x \in \pp $ then $ rx \in \pp $ by $ \OOO_L \subseteq R $ and $ \br{\ref{eq:3}} $,
+\item if $ x, y \in \OOO_L $ and $ xy \in \pp $ then $ x \in \pp $ or $ y \in \pp $ by $ \br{\ref{eq:3}} $, and
+\item $ \ppp \subseteq \pp $, hence $ \pp $ is non-zero.
+\end{itemize}
+Then $ \OOO_{L, \br{\pp}} \subseteq R $, since if $ s \in \OOO_L \setminus \pp $ then $ \abs{s} = 1 $. But $ \OOO_{L, \br{\pp}} $ is a DVR, hence a maximal subring of $ L $, so $ \OOO_{L, \br{\pp}} = R $. Hence $ \abs{\cdot} $ is equivalent to $ \abs{\cdot}_\pp $. Since $ \abs{\cdot} $ extends $ \abs{\cdot}_\ppp $, $ \pp \cap \OOO_K = \ppp $. Thus $ \pp_1^{e_1} \dots \pp_r^{e_r} \subseteq \pp $, so $ \pp = \pp_i $ for some $ i $.
+\end{proof}
+
+Let $ K $ be a number field. If $ \sigma : K \to \RR, \CC $ is a real or complex embedding, then $ x \mapsto \abs{\sigma\br{x}}_\infty $ defines an absolute value on $ K $, by example sheet $ 2 $, denoted by $ \abs{\cdot}_\sigma $.
+
+\begin{corollary}
+Let $ K $ be a number field with ring of integers $ \OOO_K $. Then any absolute value on $ K $ is either
+\begin{itemize}
+\item $ \abs{\cdot}_\ppp $ for some non-zero prime ideal of $ \OOO_K $, or
+\item $ \abs{\cdot}_\sigma $ for some $ \sigma : K \to \RR, \CC $.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+\hfill
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item $ \abs{\cdot} $ is non-archimedean. Then $ \eval{\abs{\cdot}}_\QQ $ is equivalent to $ \abs{\cdot}_p $ for some prime $ p $ by Ostrowski's theorem. Theorem \ref{thm:12.2} implies $ \abs{\cdot} $ is equivalent to $ \abs{\cdot}_\ppp $ for $ \ppp $ a prime ideal of $ \OOO_K $ dividing $ \abr{p} $.
+\item $ \abs{\cdot} $ is archimedean. Example sheet.
+\end{enumerate}
+\end{proof}
+
+\subsection{Completions of number fields}
+
+Now let $ L / K $ be an extension of number fields with rings of integers $ \OOO_K $ and $ \OOO_L $ respectively. Let $ \ppp \subseteq \OOO_K $ and $ \pp \subseteq \OOO_L $ be non-zero prime ideals such that $ \pp $ divides $ \ppp $. We write $ K_\ppp $ and $ L_\pp $ for the completion of $ K $ and $ L $ with respect to $ \abs{\cdot}_\ppp $ and $ \abs{\cdot}_\pp $ respectively.
+
+\begin{lemma}
+\label{lem:12.4}
+\hfill
+\begin{itemize}
+\item The natural map $ L \otimes_K K_\ppp \to L_\pp $ is surjective.
+\item $ \sbr{L_\pp : K_\ppp} \le \sbr{L : K} $.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Let $ M = LK_\ppp \subseteq L_\pp $. Then $ M $ is a finite extension of $ K_\ppp $ and $ \sbr{M : K_\ppp} \le \sbr{L : K} $. Moreover $ M $ is complete and since $ L \subseteq M \subseteq L_\pp $, we have $ L_\pp = M $.
+\end{proof}
+
+\pagebreak
+
+\begin{lemma}[Chinese remainder theorem]
+Let $ R $ be a ring. Let $ I_1, \dots, I_n \subseteq R $ be ideals such that $ I_i + I_j = R $ for all $ i \ne j $. Then
+\begin{itemize}
+\item $ \bigcap_{i = 1}^n I_i = \prod_{i = 1}^n I_i = I $, and
+\item $ R / I \cong \prod_{i = 1}^n R / I_i $.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Example sheet $ 2 $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:12.6}
+$$ L \otimes_K K_\ppp \cong \prod_{\pp \mid \ppp} L_\pp. $$
+\end{theorem}
+
+\begin{proof}
+Write $ L = K\br{\alpha} $, by separability, and let $ f\br{X} \in K\sbr{X} $ be the minimal polynomial of $ \alpha $. Let $ f\br{X} = f_1\br{X} \dots f_r\br{X} $ in $ K_\ppp\sbr{X} $ where $ f_i\br{X} \in K_\ppp\sbr{X} $ are distinct irreducible. Then $ L \cong K\sbr{X} / \abr{f\br{X}} $, and hence by CRT,
+$$ L \otimes_K K_\ppp \cong K_\ppp\sbr{X} / \abr{f\br{X}} \cong \prod_{i = 1}^r K_\ppp\sbr{X} / \abr{f_i\br{X}}. $$
+Set $ L_i = K_\ppp\sbr{X} / \abr{f_i\br{X}} $, a finite extension of $ K_\ppp $. Then $ L_i $ contains both $ L $ and $ K_\ppp $, using the map of fields $ K\sbr{X} / \abr{f\br{X}} \hookrightarrow K_\ppp\sbr{X} / \abr{f_i\br{X}} $ is injective. Moreover $ L $ is dense inside $ L_i $. Indeed since $ K $ is dense in $ K_\ppp $, can approximate coefficients of an element of $ K_\ppp\sbr{X} / \abr{f_i\br{X}} $ with an element of $ K\sbr{X} / \abr{f\br{X}} $. Then Theorem \ref{thm:12.6} follows from the following three claims.
+\begin{itemize}
+\item $ L_i \cong L_\pp $ for a prime $ \pp $ of $ \OOO_L $ dividing $ \ppp $. Since $ \sbr{L_i : K_\ppp} < \infty $, there is a unique absolute value $ \abs{\cdot} $ on $ L_i $ extending $ \abs{\cdot}_\ppp $. By Theorem \ref{thm:12.2}, $ \eval{\abs{\cdot}}_L $ is equivalent to $ \abs{\cdot}_\pp $ for some $ \pp \mid \ppp $. Since $ L $ is dense in $ L_i $ and $ L_i $ is complete, we have $ L_i \cong L_\pp $.
+\item Each $ \pp $ appears at most once. Suppose $ \phi : L_i \cong L_j $ is an isomorphism preserving $ L $ and $ K_\ppp $, then $ \phi : K_\ppp\sbr{X} / \abr{f_i\br{X}} \xrightarrow{\sim} K_\ppp\sbr{X} / \abr{f_j\br{X}} $ takes $ X $ to $ X $. Hence $ f_i\br{X} = f_j\br{X} $, so $ i = j $.
+\item Each $ \pp $ appears at least once. By Lemma \ref{lem:12.4}, the natural map $ \pi_\pp : L \otimes_K K_\ppp \to L_\pp $ is surjective for any $ \pp \mid \ppp $. Since $ L_\pp $ is a field, $ \pi_\pp $ factors through $ L_i $ for some $ i $, and hence $ L_i \cong L_\pp $ by surjectivity of $ \pi_\pp $.
+\end{itemize}
+\end{proof}
+
+\begin{example*}
+Let $ K = \QQ $, let $ L = \QQ\br{i} $, and let $ f\br{X} = X^2 + 1 $. By Hensel, $ \sqrt{-1} \in \QQ_5 $. Thus $ \abr{5} $ splits in $ \QQ\br{i} $, that is $ 5\OOO_L = \ppp_1\ppp_2 $.
+\end{example*}
+
+\begin{corollary}
+For $ x \in L $,
+$$ \N_{L / K}\br{x} = \prod_{\pp \mid \ppp} \N_{L_\pp / K_\ppp}\br{x}. $$
+\end{corollary}
+
+\begin{proof}
+Let $ \ppp\OOO_L = \pp_1^{e_1} \dots \pp_r^{e_r} $. Let $ \BBB_1, \dots, \BBB_r $ be bases for $ L_{\pp_1}, \dots, L_{\pp_r} $ as $ K_\ppp $-vector spaces. Then $ \BBB = \bigcup_{i = 1}^r \BBB_i $ is a basis for $ L \otimes_K K_\ppp $ over $ K_\ppp $. Let $ \sbr{\cdot x}_\BBB $ and $ \sbr{\cdot x}_{\BBB_i} $ denote the matrices for $ \cdot x : L \otimes_K K_\ppp \to L \otimes_K K_\ppp $ and $ \cdot x : L_{\pp_i} \to L_{\pp_i} $ with respect to the bases $ \BBB $ and $ \BBB_i $ respectively. Then
+$$ \sbr{\cdot x}_\BBB = \threebythree{\sbr{\cdot x}_{\BBB_1}}{}{0}{}{\ddots}{}{0}{}{\sbr{\cdot x}_{\BBB_r}}, $$
+so
+$$ \N_{L / K}\br{x} = \det \sbr{\cdot x}_\BBB = \prod_{i = 1}^r \det \sbr{\cdot x}_{\BBB_i} = \prod_{i = 1}^r \N_{L_{\pp_i} / K_\ppp}\br{x}. $$
+\end{proof}
+
+\subsection{Decomposition groups}
+
+\lecture{13}{Friday}{06/11/20}
+
+Let $ \OOO_K $ be a Dedekind domain, $ L $ a finite separable extension of $ K = \Frac \OOO_K $, and $ \OOO_L $ the integral closure of $ \OOO_K $ in $ L $. By lecture $ 11 $, if $ 0 \ne \ppp \subseteq \OOO_K $ is a prime ideal, then $ \ppp\OOO_L = \pp_1^{e_1} \dots \pp_r^{e_r} $ where $ \pp_i $ are distinct prime ideals of $ \OOO_L $. Note that for any $ i $, $ \ppp \subseteq \OOO_K \cap \pp_i \subsetneq \OOO_K $, hence $ \ppp = \OOO_K \cap \pp_i $.
+
+\pagebreak
+
+\begin{definition}
+$ e_i $ is the \textbf{ramification index} of $ \pp_i $ over $ \ppp $. We say $ \ppp $ \textbf{ramifies} in $ L $ if some $ e_i > 1 $.
+\end{definition}
+
+\begin{example*}
+Let $ \OOO_K = \CC\sbr{t} $, let $ \OOO_L = \CC\sbr{T} $, and let
+$$ \function{\OOO_K}{\OOO_L}{t}{T^n}. $$
+We have $ t\OOO_L = T^n\OOO_L $, so the ramification index of $ \abr{T} $ over $ \abr{t} $ is $ n $. Corresponds geometrically to the degree $ n $ covering of Riemann surfaces
+$$ \function{\CC}{\CC}{x}{x^n}, $$
+having a ramification at zero with ramification index $ n $.
+\end{example*}
+
+\begin{definition}
+$ f_i = \sbr{\OOO_L / \pp_i : \OOO_K / \ppp} $ is the \textbf{residue class degree} of $ \pp_i $ over $ \ppp $.
+\end{definition}
+
+\begin{theorem}
+\label{thm:13.3}
+$$ \sum_{i = 1}^r e_if_i = \sbr{L : K}. $$
+\end{theorem}
+
+\begin{proof}
+Let $ S = \OOO_K \setminus \ppp $. We have the following whose proofs are left as an exercise.
+\begin{enumerate}
+\item $ S^{-1}\OOO_L $ is the integral closure of $ S^{-1}\OOO_K $ in $ L $.
+\item $ S^{-1}\ppp S^{-1}\OOO_L \cong S^{-1}\pp_1^{e_1} \dots \pp_r^{e_r} $.
+\item $ S^{-1}\OOO_L / S^{-1}\pp_i \cong \OOO_L / \pp_i $ and $ S^{-1}\OOO_K / S^{-1}\ppp \cong \OOO_K / \ppp $.
+\end{enumerate}
+In particular, $ 2 $ and $ 3 $ imply $ e_i $ and $ f_i $ do not change when we replace $ \OOO_K $ and $ \OOO_L $ by $ S^{-1}\OOO_K $ and $ S^{-1}\OOO_L $. Thus we may assume that $ \OOO_K $ is a DVR, and hence a PID. By CRT, we have
+\begin{equation}
+\label{eq:4}
+\OOO_L / \ppp\OOO_L \cong \prod_{i = 1}^r \OOO_L / \pp_i^{e_i}.
+\end{equation}
+Note that $ \OOO_L / \ppp\OOO_L $ is a $ k = \OOO_K / \ppp $-module, that is a $ k $-vector space. We count dimensions of both sides in $ \br{\ref{eq:4}} $. For each $ i $, we have a decreasing sequence of $ k $-subspaces
+$$ 0 \subseteq \pp_i^{e_i - 1} / \pp_i^{e_i} \subseteq \dots \subseteq \pp_i / \pp_i^{e_i} \subseteq \OOO_L / \pp_i^{e_i}. $$
+Thus $ \dim_k \OOO_L / \pp_i^{e_i} = \sum_{j = 0}^{e_i - 1} \dim_k \pp_i^j / \pp_i^{j + 1} $. Note that $ \pp_i^j / \pp_i^{j + 1} $ is an $ \OOO_L / \pp_i $-module and $ x \in \pp_i^j \setminus \pp_i^{j + 1} $ is a generator. For example, can prove this after localising at $ \pp_i $. Then $ \dim_k \pp_i^j / \pp_i^{j + 1} = f_i $ and we have $ \dim_k \OOO_L / \pp_i^{e_i} = e_if_i $. Recall that $ \OOO_K $ is a DVR. By the structure theorem for modules over PIDs, $ \OOO_L $ is a free module over $ \OOO_K $ of rank $ n = \sbr{L : K} $. Thus $ \OOO_L / \ppp\OOO_L \cong \br{\OOO_K / \ppp}^n $ as $ \OOO_K $-modules and hence $ \dim_k \OOO_L / \ppp\OOO_L = n $.
+\end{proof}
+
+Theorem \ref{thm:13.3} is the algebraic analogue of the fact that for a degree $ n $ covering $ X \to Y $ of compact Riemann surfaces, and $ y \in Y $ we have
+$$ n = \sum_{x \in f^{-1}\br{y}} e_x, $$
+where $ e_x $ is the ramification index of $ x $. Now assume $ L / K $ is Galois. Then for any $ \sigma \in \Gal\br{L / K} $, $ \sigma\br{\pp_i} \cap \OOO_K = \ppp $ and hence $ \sigma\br{\pp_i} \in \cbr{\pp_1, \dots, \pp_r} $, so $ \Gal\br{L / K} $ acts on $ \cbr{\pp_1, \dots, \pp_r} $.
+
+\begin{proposition}
+\label{prop:13.4}
+The action of $ \Gal\br{L / K} $ on $ \cbr{\pp_1, \dots, \pp_r} $ is transitive.
+\end{proposition}
+
+\begin{proof}
+Suppose not, so that there exist $ i \ne j $ such that $ \sigma\br{\pp_i} \ne \pp_j $ for all $ \sigma \in \Gal\br{L / K} $. By CRT, we may choose $ x \in \OOO_L $ such that $ x \equiv 0 \mod \pp_i $ and $ x \equiv 1 \mod \sigma\br{\pp_j} $ for all $ \sigma \in \Gal\br{L / K} $. Then
+$$ \N_{L / K}\br{x} = \prod_{\sigma \in \Gal\br{L / K}} \sigma\br{x} \in \OOO_K \cap \pp_i = \ppp \subseteq \pp_j. $$
+Since $ \pp_j $ is prime, there exists $ \tau \in \Gal\br{L / K} $ such that $ \tau\br{x} \in \pp_j $, so $ x \in \tau^{-1}\br{\pp_j} $, that is $ x \equiv 0 \mod \tau^{-1}\br{\pp_i} $, a contradiction.
+\end{proof}
+
+\pagebreak
+
+\begin{corollary}
+Suppose $ L / K $ is Galois. Then $ e_1 = \dots = e_r = e $ and $ f_1 = \dots = f_r = f $, and we have $ n = efr $.
+\end{corollary}
+
+\begin{proof}
+For any $ \sigma \in \Gal\br{L / K} $ we have
+\begin{itemize}
+\item $ \ppp = \sigma\br{\ppp} = \sigma\br{\pp_1}^{e_1} \dots \sigma\br{\pp_r}^{e_r} $, so $ e_1 = \dots = e_r $, and
+\item $ \OOO_L / \pp_i = \OOO_L / \sigma\br{\pp_i} $, so $ f_1 = \dots = f_r $.
+\end{itemize}
+\end{proof}
+
+Let $ L / K $ be complete discretely valued fields with normalised valuations $ v_L $ and $ v_K $ and uniformisers $ \pi_L $ and $ \pi_K $. The \textbf{ramification index} is $ e = e_{L / K} = v_L\br{\pi_K} $, that is $ \pi_L^e\OOO_L = \pi_K\OOO_L $. The \textbf{residue class degree} is $ f = f_{L / K} = \sbr{k_L : k} $.
+
+\begin{corollary}
+\label{cor:13.6}
+Suppose either
+\begin{enumerate}
+\item $ L / K $ is finite separable, or
+\item $ f $ is finite.
+\end{enumerate}
+Then $ \sbr{L : K} = ef $.
+\end{corollary}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Theorem \ref{thm:13.3}.
+\item Can apply the same proof as in Theorem \ref{thm:13.3} if we know $ \OOO_L $ is finitely generated as an $ \OOO_K $-module. As before, $ \dim_k \OOO_L / \pi_K\OOO_L = ef < \infty $. Let $ x_1, \dots, x_m \in \OOO_L $ be a set of coset representatives for a $ k $-basis for $ \OOO_L / \pi_K\OOO_L $. For $ y \in \OOO_L $, can write
+$$ y = \sum_{i = 0}^\infty \br{\sum_{j = 1}^m a_{ij}x_j}\pi_K^i = \sum_{j = 1}^m \br{\sum_{i = 0}^\infty a_{ij}\pi_K^i}x_j, \qquad a_{ij} \in \OOO_K, $$
+by Proposition \ref{prop:3.5}, so $ \OOO_L $ is finitely generated over $ \OOO_K $.
+\end{enumerate}
+\end{proof}
+
+Let $ \OOO_K $ be a Dedekind domain, $ L $ a finite separable extension of $ K = \Frac \OOO_K $, and $ \OOO_L $ the integral closure of $ \OOO_K $ in $ L $.
+
+\begin{definition}
+Let $ L / K $ be finite Galois. The \textbf{decomposition group} at a prime $ \pp $ of $ \OOO_L $ is the subgroup of $ \Gal\br{L / K} $ defined by
+$$ \G_\pp = \cbr{\sigma \in \Gal\br{L / K} \st \sigma\br{\pp} = \pp}. $$
+\end{definition}
+
+Proposition \ref{prop:13.4} shows that for any $ \pp $ and $ \pp' $ dividing $ \ppp $, $ \G_\pp $ and $ \G_{\pp'} $ are conjugate and $ \G_\pp $ has size $ ef $. Recall we write $ L_\pp $ and $ K_\ppp $ for the completions of $ L $ and $ K $ with respect to $ \abs{\cdot}_\pp $ and $ \abs{\cdot}_\ppp $ respectively.
+
+\begin{proposition}
+Suppose $ L / K $ is finite Galois and $ \pp $ is a prime ideal of $ L $ dividing $ \ppp $. Then
+\begin{enumerate}
+\item $ L_\pp / K_\ppp $ is Galois, and
+\item there is a natural map $ \res : \Gal\br{L_\pp / K_\ppp} \to \Gal\br{L / K} $ which is injective and has image $ \G_\pp $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Since $ L / K $ is Galois, $ L $ is the splitting field of a separable polynomial $ f\br{X} \in K\sbr{X} $. Then $ L_\pp $ is the splitting field of $ f $ considered as an element of $ K_\ppp\sbr{X} $, so $ L_\pp / K_\ppp $ is Galois.
+\item Let $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, then $ \sigma\br{L} = L $ since $ L / K $ is normal, hence we have a map $ \res : \Gal\br{L_\pp / K_\ppp} \to \Gal\br{L / K} $. Since $ L $ is dense in $ L_\pp $, $ \res $ is injective. By Lemma \ref{lem:10.2} $ \abs{\sigma\br{x}}_\pp = \abs{x}_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $ and $ x \in L_\pp $. Then $ \sigma\br{\pp} = \pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, so $ \res \sigma \in \G_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $. To show surjectivity it suffices to show that $ \sbr{L_\pp : K_\ppp} = ef = \abs{\G_\pp} $. We have already seen $ \abs{\G_\pp} = ef $. We can apply Corollary \ref{cor:13.6} to $ L_\pp / K_\ppp $ noting that $ e $ and $ f $ do not change when we take completions.
+\end{enumerate}
 \end{proof}
 
 \end{document}
