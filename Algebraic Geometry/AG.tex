@@ -10,6 +10,7 @@
 % Macros
 \newcommand{\Sch}{\textbf{Sch}}
 \newcommand{\Set}{\textbf{Set}}
+\newcommand{\HOM}{\mathcal{H}om}
 
 \begin{document}
 
@@ -753,7 +754,7 @@ $$ \PP_A^n = \Proj A\sbr{X_0, \dots, X_n}. $$
 
 \begin{example*}
 If $ k $ is an algebraically closed field, consider $ \PP_k^1 = \Proj k\sbr{X_0, X_1} $. The closed points, that is points $ \ppp $ such that $ \cbr{\ppp} $ is closed, correspond to maximal elements of $ \Proj S $. \footnote{Exercise: check} These maximal elements are ideals of the form $ \abr{aX_0 - bX_1} $. The only maximal homogeneous ideal of $ k\sbr{X_0, X_1} $ is $ \abr{X_0, X_1} = S_+ $, since any maximal ideal is of the form $ \abr{X_0 - a_0, X_1 - a_1} $. The other prime ideals of $ k\sbr{X_0, X_1} $ are principal, that is of the form $ \abr{f} $ with $ f $ irreducible or $ f = 0 $. For $ \abr{f} $ to be homogeneous, $ f $ must be homogeneous. Any such polynomial splits into linear factors, all homogeneous, so in order for $ f $ to be irreducible it must be linear. Note we have a one-to-one correspondence between
-$$ \function{\cbr{\abr{aX_0 - bX_1} \st a, b \in K, \ a, b \ \text{not both zero}}}{\br{k^2 \setminus \cbr{\br{0, 0}}} / k^*}{\abr{aX_0 - bX_1}}{\br{b : a}}, $$
+$$ \function{\cbr{\abr{aX_0 - bX_1} \st a, b \in k, \ a, b \ \text{not both zero}}}{\br{k^2 \setminus \cbr{\br{0, 0}}} / k^*}{\abr{aX_0 - bX_1}}{\br{b : a}}, $$
 where $ k^* $ acts by $ \br{a, b} \mapsto \br{\lambda a, \lambda b} $ for $ \lambda \in k^* $. The conclusion is that the closed points of $ \PP_k^1 $ are in one-to-one correspondence with points of $ \br{k^2 \setminus \cbr{\br{0, 0}}} / k^* $. More generally, the closed points of $ \PP_k^n $ are in one-to-one correspondence with points of $ \br{k^{n + 1} \setminus \cbr{0}} / k^* $. Can see this by making use of the open cover $ \cbr{\DD_+\br{X_i} \st 0 \le i \le n} $, \footnote{Exercise: good exercise} which is an open cover since $ \ppp \notin \DD_+\br{X_i} $ for any $ i $ implies that $ X_i \in \ppp $ for all $ i $, so $ S_+ \subseteq \ppp $ and so $ \ppp \notin \Proj S $.
 \end{example*}
 
@@ -799,7 +800,7 @@ are equivalent if there exists an isomorphism $ i $ making the diagram commute.
 \item Let $ \Spec k\sbr{X, Y} / \abr{X} \to \Spec k\sbr{X, Y} = \AA^2 $. This gives a closed subscheme structure to the set $ \VV\br{X} $. Note $ \VV\br{X^2, XY} = \VV\br{X} $. This gives a closed immersion $ \Spec k\sbr{X, Y} / \abr{X^2, XY} \to \AA^2 $. This gives a different closed subscheme structure on $ \VV\br{X} $. Note these two subschemes are isomorphic away from the origin, which we can see by looking at $ \DD\br{Y} \subseteq \Spec k\sbr{X, Y} / \abr{X} $, where
 $$ \DD\br{Y} \cong \Spec \br{k\sbr{X, Y} / \abr{X}}_Y = \Spec k\sbr{Y}_Y. $$
 Looking at $ \DD\br{Y} \subseteq \Spec k\sbr{X, Y} / \abr{X^2, XY} $,
-$$ \DD\br{Y} \cong \Spec \br{k\sbr{X, Y} / \abr{X^2, XY}}_Y \cong \Spec \br{k\sbr{X, Y}_Y / \abr{X}} \cong \Spec k\sbr{Y}_Y. $$
+$$ \DD\br{Y} \cong \Spec \br{k\sbr{X, Y} / \abr{X^2, XY}}_Y \cong \Spec k\sbr{X, Y}_Y / \abr{X} \cong \Spec k\sbr{Y}_Y. $$
 \end{itemize}
 \end{example*}
 
@@ -875,19 +876,320 @@ T \arrow[dashed]{dr} \arrow[bend left=30]{drr}{q} \arrow[bend right=30]{ddr}[swa
 & X \arrow{r}[swap]{f} & Z
 \end{tikzcd}.
 $$
-The advantage of using Yoneda is that we can check identities using fibre products using identities of the products of sets.
+The advantage of using Yoneda is that we can check identities using fibre products using identities of fibre products of sets.
 
 \begin{example*}
 In $ \Set $,
-$$ \bijection{\br{A \times_B B} \times_C D}{A \times_B D}{\br{\br{a, c}, d}}{\br{a, d}}{\br{\br{a, f\br{d}}, d}}{\br{a, d}}, \qquad f : D \to C. $$
+$$ \bijection{\br{A \times_B C} \times_C D}{A \times_B D}{\br{\br{a, c}, d}}{\br{a, d}}{\br{\br{a, f\br{d}}, d}}{\br{a, d}}, \qquad f : D \to C. $$
 Then we have two functors
 $$
 \begin{tikzcd}
-T \arrow{r} \arrow{dr} & \h_A\br{T} \times_{\h_B\br{T}} \h_C\br{T} \times_{\h_C\br{T}} \h_D\br{T} \arrow{d}{\sim} \\
+T \arrow{r} \arrow{dr} & \br{\h_A\br{T} \times_{\h_B\br{T}} \h_C\br{T}} \times_{\h_C\br{T}} \h_D\br{T} \arrow{d}{\sim} \\
 & \h_A\br{T} \times_{\h_B\br{T}} \h_D\br{T}
 \end{tikzcd},
 $$
 and natural transformations showing those functors are isomorphic, and hence represent isomorphic objects.
 \end{example*}
+
+\lecture{11}{Monday}{02/11/20}
+
+\begin{theorem}
+Fibre products exist in the category of schemes.
+\end{theorem}
+
+\begin{proof}
+Will construct $ X \times_S Y $ for various cases, bootstrapping up to the general case.
+\begin{enumerate}[leftmargin=0.5in, label=Step \arabic*.]
+\item Let $ X = \Spec A $, let $ Y = \Spec B $, and let $ S = \Spec R $, so
+$$
+\begin{tikzcd}
+& Y \arrow{d} \\
+X \arrow{r} & S
+\end{tikzcd}
+\qquad \iff \qquad
+\begin{tikzcd}
+& B \\
+A & R \arrow{u} \arrow{l}
+\end{tikzcd}.
+$$
+Push-outs exist in the category of rings, so
+$$
+\begin{tikzcd}
+C & & \\
+& A \otimes_R B \arrow[dashed]{ul}[swap]{\exists !h} & B \arrow[bend right=30]{ull}[swap]{p_2'} \arrow{l}[swap]{p_2} \\
+& A \arrow[bend left=30]{uul}{p_1'} \arrow{u}{p_1} & R \arrow{u}[swap]{g} \arrow{l}{f}
+\end{tikzcd},
+$$
+where $ p_1\br{a} = a \otimes 1 $ and $ p_2\br{b} = 1 \otimes b $. Here $ h $ is defined by $ h\br{a \otimes b} = p_1'\br{a}p_2'\br{b} $. Check well-defined. \footnote{Exercise} Thus $ \Spec A \otimes_R B $ is $ \Spec A \times_{\Spec R} \Spec B $ in the category of affine schemes.
+
+\pagebreak
+
+If $ T $ is an arbitrary scheme, then giving a morphism $ T \to \Spec A $ is the same as giving a morphism $ A \to \Gamma\br{T, \OOO_T} $, by question $ 12 $, example sheet $ 1 $. Thus giving a commutative diagram
+$$
+\begin{tikzcd}
+T \arrow[bend left=30]{drr} \arrow[bend right=30]{ddr} & & \\
+& & \Spec B \arrow{d} \\
+& \Spec A \arrow{r} & \Spec R
+\end{tikzcd}
+$$
+is equivalent to
+$$
+\begin{tikzcd}
+\Gamma\br{T, \OOO_T} & & \\
+& A \otimes_R B \arrow[dashed]{ul}[swap]{\exists !h} & B \arrow[bend right=30]{ull} \arrow{l} \\
+& A \arrow[bend left=30]{uul} \arrow{u} & R \arrow{u}[swap]{g} \arrow{l}{f}
+\end{tikzcd},
+$$
+and $ h : A \otimes_R B \to \Gamma\br{T, \OOO_T} $ induces a map $ T \to \Spec A \otimes_R B $. Thus $ \Spec A \otimes_R B $ is the fibre product $ \Spec A \times_{\Spec R} \Spec B $ in the category of schemes.
+\item Will construct more general fibre products by gluing of schemes using question $ 14 $ on example sheet $ 1 $. We also glue morphisms, so if $ X $ and $ Y $ are schemes, $ \cbr{U_i} $ an open cover of $ X $, and we are given morphisms $ f_i : U_i \to Y $ such that $ \eval{f_i}_{U_i \cap U_j} = \eval{f_j}_{U_i \cap U_j} $, then we obtain $ f : X \to Y $ such that $ \eval{f}_{U_i} = f_i $. The argument is given in the examples class.
+\item If $ X, Y \to S $ are given and $ U \subseteq X $ is open, suppose that $ X \times_S Y $ exists, with projections $ p_1 : X \times_S Y \to X $ and $ p_2 : X \times_S Y \to Y $. Then $ p_1^{-1}\br{U} $ is $ U \times_S Y $. By commutativity of the diagram
+$$
+\begin{tikzcd}
+T \arrow[dashed]{dr}[swap]{\exists! h} \arrow{drr}{\exists !h'} \arrow[bend left=30]{drrr} \arrow[bend right=30]{ddr} & & & \\
+& p_1^{-1}\br{U} \arrow[hookrightarrow]{r} \arrow{d} & X \times_S Y \arrow{r} \arrow{d} & Y \arrow{d} \\
+& U \arrow[hookrightarrow]{r} & X \arrow{r} & S
+\end{tikzcd},
+$$
+the image of $ h' $ must be contained in $ p_1^{-1}\br{U} $. Thus $ h' $ factors through $ p_1^{-1}\br{U} \hookrightarrow X \times_S Y $ giving the unique map $ h $, so the universal property holds for $ p_1^{-1}\br{U} $.
+\item Suppose $ \cbr{X_i} $ is an open cover of $ X $ and $ X_i \times_S Y $ exists for each $ i $. Then $ X \times_S Y $ exists. Let $ X_{ij} = X_i \cap X_j $, and let $ U_{ij} = p_1^{-1}\br{X_{ij}} \subseteq X_i \times_S Y $. By step $ 3 $, $ U_{ij} = X_{ij} \times_S Y $. By the universal property of fibre products there exists a unique isomorphism $ \phi_{ij} : U_{ij} \to U_{ji} $. Check these gluing maps $ \phi_{ij} $ satisfy the requirements of question $ 14 $ on example sheet $ 1 $. \footnote{Exercise: check} Thus we can glue the $ X_i \times_S Y $ via $ \phi_{ij} $'s to get a scheme $ X \times_S Y $, but need to check it satisfies the fibre product axioms. So suppose given
+$$
+\begin{tikzcd}
+T \arrow[bend left=30]{drr}{p_2'} \arrow[bend right=30]{ddr}[swap]{p_1'} & & \\
+& & Y \arrow{d} \\
+& X \arrow{r} & S
+\end{tikzcd}.
+$$
+
+\pagebreak
+
+Let $ T_i = \br{p_1'}^{-1}\br{X_i} $, so get a morphism $ \theta_i : T_i \to X_i \times_S Y \hookrightarrow X \times_S Y $, where $ X_i \times_S Y \hookrightarrow X \times_S Y $ is an open immersion by construction. On $ T_i \cap T_j $ these maps agree since they factor through $ X_{ij} \times_S Y \subseteq X_i \times_S Y $ and $ X_{ji} \times_S Y \subseteq X_j \times_S Y $ and by the universal property they agree. Thus using step $ 2 $, we can glue the $ \theta_i $'s to get $ \theta : T \to X \times_S Y $.
+\item Using step $ 4 $ and $ 1 $ we may construct $ X \times_S Y $ when $ S $ and $ Y $ are affine. Repeating for $ Y $, we obtain $ X \times_S Y $ when $ S $ is affine, and $ X $ and $ Y $ are arbitrary.
+\item Let $ X, Y, S $ be arbitrary, take an open affine cover $ \cbr{S_i} $ of $ S $, let $ f : X \to S $ and $ g : Y \to S $, and let $ X_i = f^{-1}\br{S_i} $ and $ Y_i = g^{-1}\br{S_i} $. Then $ X_i \times_{S_i} Y_i $ exists and $ X_i \times_{S_i} Y_i = X_i \times_S Y_i $. \footnote{Exercise: check, immediate from universal property} Use the same gluing argument as before, to get $ X \times_S Y $.
+\end{enumerate}
+\end{proof}
+
+\subsection{Fibres of morphisms}
+
+The philosophy in $ \Set $ is
+$$
+\begin{tikzcd}
+f^{-1}\br{y} = \cbr{y} \times_Y X \arrow{r} \arrow{d} & X \arrow{d}{f} \\
+\cbr{y} \arrow{r} & Y
+\end{tikzcd}.
+$$
+Given $ f : X \to Y $ a morphism and $ y \in Y $, let $ \kappa\br{y} = \OOO_{Y, y} / \mmm_y $ be the residue field of $ y $, so we get a morphism $ \Spec \kappa\br{y} \to Y $ with image $ y $. Then we define
+$$ X_y = \Spec \kappa\br{y} \times_Y X $$
+to be the \textbf{scheme-theoretic fibre} of $ f $ at $ y $.
+
+\begin{example*}
+Let $ f : X = \Spec k\sbr{X} \to Y = \Spec k\sbr{t} $ be induced by
+$$ \function{k\sbr{t}}{k\sbr{X}}{t}{X^2}. $$
+For $ y = \abr{t - a} \subseteq k\sbr{t} $ and $ a \in k $, $ \kappa\br{y} = k\sbr{t} / \abr{t - a} \cong k $. If $ B $ is an $ A $-algebra then $ A / I \otimes_A B = B / IB $, so
+$$ X_y = \Spec \kappa\br{y} \otimes_{k\sbr{t}} k\sbr{X} = \Spec k\sbr{X} / \abr{X^2 - a}. $$
+If $ a \ne 0 $ and $ \ch k \ne 2 $, we obtain either $ X_y $ consists of two distinct points, if $ \sqrt{a} \in k $, or a single point if $ \sqrt{a} \notin k $. If $ a = 0 $, we get $ \Spec k\sbr{X} / \abr{X^2} $.
+\end{example*}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item In general, it is hard to calculate fibre products, since $ X \times_S Y $ is not the set-theoretic fibre product in general. For example, $ \AA_k^1 \times_{\Spec k} \AA_k^1 = \Spec k\sbr{X} \otimes_k k\sbr{Y} = \Spec k\sbr{X, Y} = \AA_k^2 $.
+\item If we are interested only in varieties, such as schemes over a field $ k $, the usual product of varieties $ X \times Y $ corresponds to $ X \times_{\Spec k} Y $. More generally, if we are working in the category $ \Sch / S $, the natural product is $ X \times_S Y $.
+\item Given schemes $ S $ and $ T $ with a morphism $ T \to S $, we get a functor
+$$ \function{\Sch / S}{\Sch / T}{\br{X \to S}}{\br{X \times_S T \to T}}. $$
+This functor is called \textbf{base-change}.
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\lecture{12}{Wednesday}{04/11/20}
+
+\begin{example*}
+Consider a scheme $ X $ over $ \Spec \ZZ $, such as $ X = \Proj \ZZ\sbr{X, Y, Z} / I \to \Spec \ZZ $ where $ I = \abr{X^n + Y^n - Z^n} $. May consider base-changes
+\begin{itemize}
+\item $ \Spec \FF_p \to \Spec \ZZ $, induced by $ \ZZ \to \ZZ / p\ZZ \cong \FF_p $, which gives $ X \times_{\Spec \ZZ} \Spec \FF_p = \Proj \FF_p\sbr{X, Y, Z} / I $,
+\item $ \Spec \QQ \to \Spec \ZZ $, induced by $ \ZZ \to \QQ $, which gives $ X \times_{\Spec \ZZ} \Spec \QQ = \Proj \QQ\sbr{X, Y, Z} / I $, or
+\item $ \Spec \CC \to \Spec \ZZ $, induced by $ \ZZ \to \CC $, which gives $ X \times_{\Spec \ZZ} \Spec \CC = \Proj \CC\sbr{X, Y, Z} / I \subseteq \PP_\CC^2 $.
+\end{itemize}
+\end{example*}
+
+\subsection{Properties of schemes and morphisms of schemes}
+
+See example sheet $ 2 $ for more details or your favourite algebraic geometry text.
+
+\begin{definition*}
+A scheme $ X $ is \textbf{integral} if for every $ U \subseteq X $ open, $ \OOO_X\br{U} $ is an integral domain.
+\end{definition*}
+
+\begin{definition*}
+A scheme $ X $ is \textbf{reduced} if for every $ U \subseteq X $ open, $ \OOO_X\br{U} $ has no nilpotents.
+\end{definition*}
+
+\begin{definition*}
+A scheme $ X $ is \textbf{irreducible} if the underlying topological space $ X $ is irreducible, that is if $ X = X_1 \cup X_2 $ with $ X_1, X_2 \subseteq X $ closed, then either $ X_1 = X $ or $ X_2 = X $.
+\end{definition*}
+
+\begin{example*}
+Let $ X = \Spec k\sbr{X, Y} / \abr{XY} $.
+\begin{itemize}
+\item $ X $ is not integral because $ \Gamma\br{X, \OOO_X} = k\sbr{X, Y} / \abr{XY} $ is not an integral domain, since $ XY = 0 $.
+\item $ X $ is reduced.
+\item $ X $ is not irreducible, since $ X = \VV\br{X} \cup \VV\br{Y} $.
+\end{itemize}
+\end{example*}
+
+\begin{theorem}
+$ X $ is integral if and only if $ X $ is reduced and irreducible.
+\end{theorem}
+
+\begin{definition*}
+Let $ X $ be a scheme. It is \textbf{locally Noetherian} if there exists a cover $ \cbr{U_i} $ of $ X $ with $ U_i = \Spec A_i $ affine and $ A_i $ Noetherian. Then $ X $ is \textbf{Noetherian} if the cover may be taken to be finite.
+\end{definition*}
+
+\begin{example*}
+$ \Spec k\sbr{X_1, X_2, \dots} $ with a countable number of variables is not locally Noetherian.
+\end{example*}
+
+Not obvious, but can show that $ X $ is locally Noetherian if and only if, if $ U \subseteq X $ is affine and $ U = \Spec A $, then $ A $ is Noetherian.
+
+\begin{definition*}
+A morphism $ f : X \to Y $ of schemes is \textbf{locally of finite type} if there is a covering of $ Y $ by affine open sets $ \cbr{V_i = \Spec B_i} $ such that for each $ i $, $ f^{-1}\br{V_i} $ can be covered by affine open sets $ \cbr{U_{ij} = \Spec A_{ij}} $, where each $ A_{ij} $ is a finitely generated $ B_i $-algebra. We say $ f $ is of \textbf{finite type} if for each $ i $, the cover $ \cbr{U_{ij}} $ may be taken to be finite.
+\end{definition*}
+
+\begin{definition*}
+Let $ k $ be an algebraically closed field. A \textbf{variety over $ k $} is a scheme $ X $ over $ \Spec k $ which is integral and $ X \to \Spec k $ is of finite type, that is $ X $ can be covered by a finite number of open affines $ U_i = \Spec A_i $ with $ A_i $ a finitely generated $ k $-algebra.
+\end{definition*}
+
+The $ A_i $ must be integral domains, so $ A_i = k\sbr{X_1, \dots, X_n} / I $ where $ I $ is a prime ideal. Note that this still allows a non-Hausdorff scheme $ \AA^1 \cup \AA^1 $ obtained by gluing $ \DD\br{X} \subseteq \AA^1 $ to $ \DD\br{X} \subseteq \AA^1 $.
+
+\begin{example*}
+Let $ X_i = \Spec k\sbr{X_i, Y_i} / \abr{X_iY_i} $ for $ i \in \ZZ $. Glue $ X_i $ to $ X_{i + 1} $ along open subsets $ U_{i, i + 1} \subseteq X_i $ given by $ \DD\br{X_i} $ and $ U_{i + 1, i} \subseteq X_{i + 1} $ given by $ \DD\br{Y_{i + 1}} $ via the map
+$$ \function{U_{i + 1, i} = \Spec k\sbr{Y_{i + 1}}_{Y_{i + 1}}}{U_{i, i + 1} = \Spec k\sbr{X_i}_{X_i}}{Y_{i + 1}}{\dfrac{1}{X_i}}. $$
+Doing this for all $ i $, we get an infinite chain of $ \PP^1 $'s. Note $ \cbr{X_i} $ forms an open cover of $ X $ but has no finite subcover. Not quasi-compact, only locally of finite type over $ \Spec k $.
+\end{example*}
+
+\pagebreak
+
+\subsection{Separated and proper morphisms}
+
+\begin{remark*}
+A topological space $ X $ is Hausdorff if and only if the diagonal $ \Delta = \cbr{\br{x, x} \st x \in X} \subseteq X \times X $ is closed.
+\end{remark*}
+
+\begin{example*}
+Let $ X $ be $ \RR $ with doubled origin in the usual Euclidean topology. Then $ X \times X $ is $ \RR^2 $ with doubled axes and four origins. Then $ \Delta $ only contains two origins but other origins are in the closure of $ \Delta $.
+\end{example*}
+
+\begin{definition*}
+Let $ f : X \to Y $ be a morphism of schemes, and $ \Delta : X \to X \times_Y X $ be the morphism induced by the diagram
+$$
+\begin{tikzcd}
+X \arrow[bend left=30]{drr}{\id_X} \arrow[bend right=30]{ddr}[swap]{\id_X} & & \\
+& & X \arrow{d}{f} \\
+& X \arrow{r}[swap]{f} & Y
+\end{tikzcd}.
+$$
+We say $ f $ is \textbf{separated} if $ \Delta $ is a closed immersion.
+\end{definition*}
+
+\begin{theorem}[Valuative criterion for separatedness]
+Let $ f : X \to Y $ be a morphism and $ X $ Noetherian. Then $ f $ is separated if and only if the following condition holds. For any field $ k $ and any valuation ring $ R \subseteq k $, that is for any $ x \in k $ such that $ x \ne 0 $ either $ x \in R $ or $ x^{-1} \in R $, let $ T = \Spec R $ and $ U = \Spec k $, and $ \iota : U \to T $ be the morphism induced by the inclusion $ R \hookrightarrow k $. Given a commutative diagram
+$$
+\begin{tikzcd}
+U \arrow{r} \arrow{d}[swap]{\iota} & X \arrow{d}{f} \\
+T \arrow[dashed]{ur}{\iota'} \arrow{r} & Y
+\end{tikzcd},
+$$
+then there exists at most one morphism $ \iota' : T \to X $ making the diagram commute.
+\end{theorem}
+
+\lecture{13}{Friday}{06/11/20}
+
+The intuition is if $ R $ is a valuation ring, it has a zero prime ideal and a unique maximal ideal, and $ \overline{\cbr{0}} = \VV\br{0} = \Spec R = T $.
+
+\begin{remark*}
+We may now define a variety over a field $ k $ as a scheme $ X $ which is integral and finite type, separated over $ \Spec k $.
+\end{remark*}
+
+\begin{definition*}
+A morphism $ f : X \to Y $ is \textbf{proper} if it is separated, of finite type, and universally closed. That is, for any morphism $ Y' \to Y $ the induced projection $ X \times_Y Y' \to Y' $ is a closed map, that is the image of a closed set is closed.
+\end{definition*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \PP_k^n = \Proj k\sbr{X_0, \dots, X_n} \to \Spec k $ is proper.
+\item $ \AA_k^1 \to \Spec k $ is not proper. Consider the base-change by $ \AA_k^1 \to \Spec k $. Let
+$$ \function[p_2]{\AA_k^1 \times_k \AA_k^1 = \AA_k^2 = \Spec k\sbr{X} \otimes_k k\sbr{Y} = \Spec k\sbr{X, Y}}{\AA_k^1 = \Spec k\sbr{t}}{\br{x, y}}{y}. $$
+This is not a closed map. For example, $ p_2\br{\VV\br{XY - 1}} = \DD\br{t} $, which is open and not closed.
+\end{itemize}
+\end{example*}
+
+\begin{theorem}[Valuative criterion for properness]
+Let $ f : X \to Y $ be a finite type morphism with $ X $ Noetherian. Then $ f $ is proper if as in the criterion for separatedness, whenever given a diagram
+$$
+\begin{tikzcd}
+\Spec k = U \arrow{r} \arrow{d} & X \arrow{d}{f} \\
+\Spec R = T \arrow[dashed]{ur}{\exists !g} \arrow{r} & Y
+\end{tikzcd},
+$$
+there exists a unique morphism $ g : T \to X $ making the diagram commute.
+\end{theorem}
+
+\begin{example*}
+Projective varieties, that is closed subvarieties in $ \PP_k^n $, are proper over $ \Spec k $.
+\end{example*}
+
+\section{Sheaves of \texorpdfstring{$ \OOO_X $-modules}{modules}}
+
+The idea is to go from the notion of an $ A $-module $ M $ to the notion of an $ \OOO_X $-module $ \FFF $.
+
+\begin{definition*}
+Let $ \br{X, \OOO_X} $ be a ringed space. A \textbf{sheaf of $ \OOO_X $-modules} is a sheaf of abelian groups $ \FFF $ on $ X $ such that for each $ U \subseteq X $, $ \FFF\br{U} $ has the structure of an $ \OOO_X\br{U} $-module, compatible with restriction, that is if $ s \in \OOO_X\br{U} $ and $ m \in \FFF\br{U} $, then $ \eval{s}_V \cdot \eval{m}_V = \eval{\br{s \cdot m}}_V $ for $ V \subseteq U $. A \textbf{morphism of sheaves of $ \OOO_X $-modules} $ \phi : \FFF \to \GGG $ is a morphism of sheaves of abelian groups such that for all $ U \subseteq X $, $ \phi_U : \FFF\br{U} \to \GGG\br{U} $ is a homomorphism of $ \OOO_X\br{U} $-modules.
+\begin{itemize}
+\item Kernels, cokernels, and images of morphisms of sheaves of $ \OOO_X $-modules are sheaves of $ \OOO_X $-modules.
+\item $ \Hom_\OOO_X\br{\FFF, \GGG} $ denotes the group of $ \OOO_X $-module homomorphisms $ \cbr{\phi : \FFF \to \GGG} $. This is an $ \OOO_X\br{X} $-module. Then $ U \mapsto \Hom_{\OOO_U}\br{\eval{\FFF}_U, \eval{\GGG}_U} $, which is an $ \OOO_X $-module, is a sheaf of $ \OOO_X $-modules, written $ \HOM_{\OOO_X}\br{\FFF, \GGG} $, the \textbf{sheaf hom}.
+\item If $ \FFF $ and $ \GGG $ are $ \OOO_X $-modules, we denote by $ F \otimes_{\OOO_X} \GGG $ the sheaf associated to the presheaf $ U \mapsto \FFF\br{U} \otimes_{\OOO_X\br{U}} \GGG\br{U} $.
+\item Push-forwards and pull-backs. For modules, let $ \phi : A \to B $ be a homomorphism of rings, let $ M $ be a $ B $-module, and let $ N $ be an $ A $-module. Then $ M $ is also an $ A $-module such that
+$$ a \cdot m = \phi\br{a} \cdot m, \qquad a \in A, \qquad m \in M, $$
+and $ B \otimes_A N $ is a $ B $-module via
+$$ b \cdot \br{b' \otimes n} = bb' \otimes n, \qquad b \in B, \qquad b' \otimes n \in B \otimes_A N. $$
+Given $ f : X \to Y $ a morphism of ringed spaces, so $ f^\# : \OOO_Y \to f_*\OOO_X $, if $ \FFF $ is a sheaf of $ \OOO_X $-modules and $ \GGG $ is a sheaf of $ \OOO_Y $-modules, then the following holds.
+\begin{itemize}
+\item $ f_*\FFF $ is naturally a sheaf of $ f_*\OOO_X $-modules, since $ \br{f_*\FFF}\br{U} = \FFF\br{f^{-1}\br{U}} $ which is a $ \br{f_*\OOO_X}\br{U} = \OOO_X\br{f^{-1}\br{U}} $-module, and hence $ f_*\FFF $ is an $ \OOO_Y $-module via $ f^\# $.
+\item $ f^{-1}\GGG $ is naturally a sheaf of $ f^{-1}\OOO_Y $-modules. But $ f^\# $ induces the adjoint map $ f^\# : f^{-1}\OOO_Y \to \OOO_X $, by question $ 10 $ on example sheet $ 1 $. Define $ f^*\GGG = f^{-1}\GGG \otimes_{f^{-1}\OOO_Y} \OOO_X $. This is a sheaf of $ \OOO_X $-modules.
+\end{itemize}
+\end{itemize}
+\end{definition*}
+
+\begin{definition*}
+A sheaf of $ \OOO_X $-modules is \textbf{free} if it is isomorphic to $ \bigoplus_{i \in I} \OOO_X $ for some index set $ I $. If $ \#I = r < \infty $, then we say $ \FFF $ has \textbf{rank} $ r $. A sheaf $ \FFF $ is \textbf{locally free} of rank $ r $ if there exists an open cover $ \cbr{U_i} $ on $ X $ such that $ \eval{\FFF}_{U_i} $ is free of rank $ r $ for each $ i $. Then $ \FFF $ is a \textbf{line bundle} if it is rank one. Often more generally, one might refer to a rank $ r $ locally free sheaf as a rank $ r $ \textbf{vector bundle}.
+\end{definition*}
+
+If $ S \subseteq A $ is a multiplicatively closed subset, then
+$$ S^{-1}M = \cbr{\dfrac{m}{a} \st a \in S, \ m \in M} / \sim, $$
+where $ m / a \sim m / a' $ if and only if there exists $ b \in S $ such that $ b\br{ma' - m'a} = 0 $. Also, $ S^{-1}M = M \otimes_A S^{-1}A $.
+
+\begin{example*}
+Let $ X = \Spec A $ be an affine scheme, and let $ M $ be an $ A $-module. For $ \ppp \in \Spec A $, we have the localisation $ M_\ppp = M \otimes_A A_\ppp $. Define a sheaf $ \widetilde{M} $ on $ \Spec A $ by
+$$ \widetilde{M}\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} M_\ppp \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in M_\ppp \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists m \in M, \ \exists s \in A, \ \forall \qqq \in V, \ s \notin \qqq, \ s\br{\qqq} = \dfrac{m}{s} \end{array}}. $$
+\end{example*}
+
+\begin{example*}
+$ \widetilde{A} = \OOO_{\Spec A} $.
+\end{example*}
+
+\begin{proposition}
+\hfill
+\begin{itemize}
+\item $ \widetilde{M}_\ppp = M_\ppp $.
+\item $ \widetilde{M}\br{\DD\br{f}} = M_f $.
+\item $ \Gamma\br{\Spec A, \widetilde{M}} = M $.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Exactly as the corresponding statements for $ \OOO_{\Spec A} $.
+\end{proof}
 
 \end{document}
