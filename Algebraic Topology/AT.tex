@@ -9,6 +9,7 @@
 
 % Macros
 \newcommand{\da}{\partial}
+\newcommand{\pt}{\cbr{\text{point}}}
 
 \begin{document}
 
@@ -46,7 +47,7 @@ Let $ X $ and $ Y $ be topological spaces. Maps $ f_0, f_1 : Y \to X $ are \text
 $ \simeq $ is an equivalence relation on the set of maps from $ Y $ to $ X $.
 \end{exercise*}
 
-Note that $ X $ is \textbf{path-connected} if and only if every two maps $ \cbr{\text{point}} \to X $ are homotopic. Let
+Note that $ X $ is \textbf{path-connected} if and only if every two maps $ \pt \to X $ are homotopic. Let
 $$ \S^n = \cbr{x \in \RR^{n + 1} \st \norm{x} = 1}, $$
 so $ \S^1 = \cbr{z \in \CC \st \abs{z} = 1} $.
 
@@ -117,7 +118,7 @@ $$ F\br{t, v} = tv + \br{1 - t}\dfrac{v}{\norm{v}}. $$
 \end{example*}
 
 \begin{example*}
-$ \cbr{0} \simeq \RR^n $ is a homotopy equivalence. \footnote{Exercise: check} If $ X \simeq \cbr{\text{point}} $ we say $ X $ is \textbf{contractible}.
+$ \cbr{0} \simeq \RR^n $ is a homotopy equivalence. \footnote{Exercise: check} If $ X \simeq \pt $ we say $ X $ is \textbf{contractible}.
 \end{example*}
 
 Algebraic topology is the study of topological spaces up to homotopy equivalence. The idea is that homeomorphism is too delicate a relation. Homotopy equivalence keeps track of essential topological information. More precisely, we assign
@@ -316,7 +317,7 @@ What can we compute?
 
 \begin{lemma}
 Let $ X $ be a point. Then
-$$ \H_i\br{\cbr{\text{point}}} =
+$$ \H_i\br{\pt} =
 \begin{cases}
 \ZZ & i = 0 \\
 0 & \text{otherwise}
@@ -325,17 +326,17 @@ $$
 \end{lemma}
 
 \begin{proof}
-For each $ n \ge 0 $, there exists a unique $ n $-simplex $ \sigma_n : \Delta^n \to \cbr{\text{point}} $ in $ X $, the constant map. Then $ \da\br{\sigma_1} = \sigma_1 \circ \delta_0 - \sigma_1 \circ \delta_1 = \sigma_0 - \sigma_0 = 0 $ and $ \da\br{\sigma_2} = \sigma_2 \circ \delta_0 - \sigma_2 \circ \delta_1 + \sigma_2 \circ \delta_2 = \sigma_1 - \sigma_1 + \sigma_1 = \sigma_1 $, and
+For each $ n \ge 0 $, there exists a unique $ n $-simplex $ \sigma_n : \Delta^n \to \pt $ in $ X $, the constant map. Then $ \da\br{\sigma_1} = \sigma_1 \circ \delta_0 - \sigma_1 \circ \delta_1 = \sigma_0 - \sigma_0 = 0 $ and $ \da\br{\sigma_2} = \sigma_2 \circ \delta_0 - \sigma_2 \circ \delta_1 + \sigma_2 \circ \delta_2 = \sigma_1 - \sigma_1 + \sigma_1 = \sigma_1 $, and
 $$ \da\br{\sigma_n} =
 \begin{cases}
 \sigma_{n - 1} & n \ \text{even} \\
 0 & n \ \text{odd}
 \end{cases}.
 $$
-So $ \C_\bullet\br{\cbr{\text{point}}} $ is
+So $ \C_\bullet\br{\pt} $ is
 $$
 \begin{tikzcd}[row sep=tiny]
-\dots \arrow{r} & \C_3\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \C_2\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \C_1\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \C_0\br{\cbr{\text{point}}} \arrow[cong]{d} \\
+\dots \arrow{r} & \C_3\br{\pt} \arrow{r} \arrow[cong]{d} & \C_2\br{\pt} \arrow{r} \arrow[cong]{d} & \C_1\br{\pt} \arrow{r} \arrow[cong]{d} & \C_0\br{\pt} \arrow[cong]{d} \\
 \dots \arrow[dashed]{r}[swap]{1} & \ZZ \arrow[dashed]{r}[swap]{0} & \ZZ \arrow[dashed]{r}[swap]{1} & \ZZ \arrow[dashed]{r}[swap]{0} & \ZZ
 \end{tikzcd}.
 $$
@@ -343,7 +344,7 @@ Now check the result.
 \end{proof}
 
 \begin{exercise*}
-$$ \H^i\br{\cbr{\text{point}}} \cong
+$$ \H^i\br{\pt} \cong
 \begin{cases}
 \ZZ & i = 0 \\
 0 & \text{otherwise}
@@ -374,7 +375,7 @@ We sometimes write $ \pi_0\br{X} $ for the set of path-components of $ X $.
 \begin{proof}
 Define the \textbf{augmentation}
 $$ \function[\epsilon]{\C_0\br{X}}{\ZZ}{\displaystyle\sum_i n_i\sigma_i}{\displaystyle\sum_i n_i}, $$
-where $ \sigma_i : \cbr{\text{point}} \to X $ are $ 0 $-simplices in $ X $. Since $ X \ne \emptyset $, $ \epsilon $ is onto. If $ \tau = \sbr{v_0, v_1} : \Delta^1 \to X $, then $ \epsilon\br{\da\br{\tau}} = \epsilon\br{v_1 - v_0} = 0 $. So $ \im \br{\da : \C_1\br{X} \to \C_0\br{X}} \subseteq \ker \epsilon $, so $ \epsilon $ defines $ \H_0\br{X} = \C_0\br{X} / \im \da \to \ZZ $. So far we did not use path-connectivity. But suppose $ \sum_i n_i\sigma_i \in \ker \epsilon $. Fix a basepoint $ p \in X $. For all $ i $ pick
+where $ \sigma_i : \pt \to X $ are $ 0 $-simplices in $ X $. Since $ X \ne \emptyset $, $ \epsilon $ is onto. If $ \tau = \sbr{v_0, v_1} : \Delta^1 \to X $, then $ \epsilon\br{\da\br{\tau}} = \epsilon\br{v_1 - v_0} = 0 $. So $ \im \br{\da : \C_1\br{X} \to \C_0\br{X}} \subseteq \ker \epsilon $, so $ \epsilon $ defines $ \H_0\br{X} = \C_0\br{X} / \im \da \to \ZZ $. So far we did not use path-connectivity. But suppose $ \sum_i n_i\sigma_i \in \ker \epsilon $. Fix a basepoint $ p \in X $. For all $ i $ pick
 $$ \functions[\tau_i]{\Delta^i \cong \sbr{0, 1}}{X}{1}{\sigma_i}{0}{p}. $$
 Then $ \da\br{\sum_i n_i\tau_i} = \sum_i n_i\sigma_i - \br{\sum_i n_i}p = \sum_i n_i\sigma_i $, as $ \sum_i n_i\sigma_i \in \ker \epsilon $, so $ \ker \epsilon \subseteq \im \da $ and $ \epsilon : \H_0\br{X} \xrightarrow{\sim} \ZZ $.
 \end{proof}
@@ -497,7 +498,7 @@ $$
 \end{proposition}
 
 \begin{proof}
-Let $ \S^1 = X = A \cup B $ where $ A $ and $ B $ are open intervals such that $ A \cap B $ are two disjoint open intervals, so $ A \simeq \cbr{\text{point}} \simeq B $ and $ A \cap B \simeq \cbr{\text{point} \ p} \sqcup \cbr{\text{point} \ q} $. By homotopy invariance,
+Let $ \S^1 = X = A \cup B $ where $ A $ and $ B $ are open intervals such that $ A \cap B $ are two disjoint open intervals, so $ A \simeq \pt \simeq B $ and $ A \cap B \simeq \pt \sqcup \pt = \cbr{p} \sqcup \cbr{q} $. By homotopy invariance,
 $$ \H_\bullet\br{\RR} =
 \begin{cases}
 \ZZ & \bullet = 0 \\
@@ -521,7 +522,7 @@ $$
 0 & & \ZZ \oplus \ZZ \arrow[dashed]{r}[swap]{\alpha} & \ZZ \oplus \ZZ \arrow[dashed]{r}[swap]{\beta} & \ZZ
 \end{tikzcd}.
 $$
-Recall that $ \H_0\br{Z} $ is free abelian on $ \pi_0\br{Z} $, the set of path-components, and indeed is generated by $ \sigma : \cbr{\text{point}} \to Z $, for any choice of point in each component. So
+Recall that $ \H_0\br{Z} $ is free abelian on $ \pi_0\br{Z} $, the set of path-components, and indeed is generated by $ \sigma : \pt \to Z $, for any choice of point in each component. So
 $$ \function[\alpha = \br{\br{i_A}_*, \br{i_B}_*}]{\ZZ\abr{p} \oplus \ZZ\abr{q}}{\ZZ \oplus \ZZ}{\br{a, b}}{\br{a + b, a + b}}, $$
 and
 $$ \function[\beta = \br{j_A}_* - \br{j_B}_*]{\ZZ \oplus \ZZ}{\ZZ}{\br{u, v}}{u - v}. $$
@@ -563,9 +564,9 @@ $$
 & & & & 0
 \end{tikzcd}.
 $$
-We showed before that for path-connected $ X $, $ \H_0\br{X} \cong \ZZ $ is generated by $ \sigma : \cbr{\text{point}} \to X \in \C_0\br{X} $. By question sheet $ 1 $, $ \H^0\br{X} \cong \ZZ $ is generated by
-$$ \function[\psi]{\C_0\br{X}}{\ZZ}{\sigma}{1}, \qquad \sigma : \cbr{\text{point}} \to X. $$
-If $ n > 1 $, $ \S^{n - 1} $ is connected. So
+We showed before that for path-connected $ X $, $ \H_0\br{X} \cong \ZZ $ is generated by $ \sigma : \pt \to X \in \C_0\br{X} $. By question sheet $ 1 $, $ \H^0\br{X} \cong \ZZ $ is generated by
+$$ \function[\psi]{\C_0\br{X}}{\ZZ}{\sigma}{1}, \qquad \sigma : \pt \to X. $$
+If $ n > 1 $, then $ \S^{n - 1} $ is connected. So
 $$
 \begin{tikzcd}[row sep=tiny]
 \H^0\br{\S^n} \arrow{r} \arrow[cong]{d} & \H^0\br{\RR^n} \oplus \H^0\br{\RR^n} \arrow{r} \arrow[cong]{d} & \H^0\br{\S^{n - 1}} \arrow{r} \arrow[cong]{d} & \H^1\br{\S^n} \arrow{r} & \H^1\br{\RR^n} \oplus \H^1\br{\RR^n} \arrow[cong]{d} \\
@@ -608,10 +609,10 @@ $ \deg \id = 1 $, so if $ f $ is a homeomorphism, $ \deg f \in \cbr{\pm 1} $.
 \begin{example*}
 The degree of the constant map is zero, since the constant map
 $$ \function[f]{\S^n}{\S^n}{x}{p} $$
-factorises as $ \S^n \to \cbr{\text{point}} \to \S^n $, so
+factorises as $ \S^n \to \pt \to \S^n $, so
 $$
 \begin{tikzcd}[row sep=tiny]
-\H_n\br{\S^n} \arrow{r} \arrow[cong]{d} & \H_n\br{\cbr{\text{point}}} \arrow{r} \arrow[cong]{d} & \H_n\br{\S^n} \arrow[cong]{d} \\
+\H_n\br{\S^n} \arrow{r} \arrow[cong]{d} & \H_n\br{\pt} \arrow{r} \arrow[cong]{d} & \H_n\br{\S^n} \arrow[cong]{d} \\
 \ZZ \arrow[dashed]{r} & 0 \arrow[dashed]{r} & \ZZ
 \end{tikzcd}
 $$
@@ -648,7 +649,7 @@ and $ \H_1\br{\S^1} = \ker \alpha \cong \ZZ\abr{\br{1, -1}} $ is generated by $ 
 \item The antipodal map
 $$ \function[\a_n]{\S^n}{\S^n}{x}{-x} $$
 has degree $ \br{-1}^{n + 1} $.
-\item If $ f : \S^n \to \S^n $ has no fixed point, $ f \simeq \a_n $.
+\item If $ f : \S^n \to \S^n $ has no fixed point, then $ f \simeq \a_n $.
 \item If $ G $ acts freely on $ \S^{2k} $, then $ G \le \ZZ / 2 $.
 \end{enumerate}
 \end{corollary}
@@ -781,7 +782,7 @@ $$ \H_j\br{\S^1; \ZZ / 2} \cong
 \ZZ / 2 & j = 0, 1 \\
 0 & \text{otherwise}
 \end{cases},
-\qquad \H_i\br{\cbr{\text{point}}; \ZZ / 2} \cong
+\qquad \H_i\br{\pt; \ZZ / 2} \cong
 \begin{cases}
 \ZZ / 2 & i = 0 \\
 0 & \text{otherwise}
@@ -865,7 +866,7 @@ so $ \sbr{f_n\br{\alpha}} = \sbr{g_n\br{\alpha}} \in \H_n\br{D_\bullet} $.
 Chain homotopy is an equivalence relation on chain complexes and chain maps.
 \end{exercise*}
 
-\subsection{Homotopy invariance}
+\subsection{Proof of homotopy invariance}
 
 \begin{theorem}[Homotopy invariance, version $ 2 $]
 If $ f \simeq g : X \to Y $ then
@@ -900,7 +901,7 @@ since the $ i = j $ terms cancel in pairs except for $ i = j = 0 $, the top, and
 \end{proof}
 
 \begin{remark*}
-If $ C^\bullet $ and $ D^\bullet $ are cochain complexes, $ f \simeq g $ are \textbf{cochain homotopic} if there exist $ P^i : C^i \to D^{i - 1} $ such that
+If $ C^\bullet $ and $ D^\bullet $ are cochain complexes, then $ f \simeq g $ are \textbf{cochain homotopic} if there exist $ P^i : C^i \to D^{i - 1} $ such that
 $$ \da^* \circ P \pm P \circ \da^* = f - g, $$
 so
 $$
@@ -967,7 +968,7 @@ Let $ c_n \in C_n $ be a cycle, so $ \da\br{c_n} = 0 $, representing $ \sbr{c_n}
 $$ \delta\br{\sbr{c_n}} = \sbr{a_{n - 1}}. $$
 Check $ \delta $ is well-defined.
 \begin{itemize}
-\item Given $ c_n $, we chose $ b_n $. If $ \beta\br{b_n'} = c_n $, $ b_n - b_n' \in \ker \beta = \im \alpha $, so $ b_n' = b_n + \alpha\br{a_n} $ for some $ a_n \in A_n $, and $ \da\br{b_n'} = \da\br{b_n} + \da\br{\alpha\br{a_n}} = \alpha\br{a_{n - 1} + \da\br{a_n}} $, so $ \sbr{a_{n - 1}} \in \H_{n - 1}\br{A_\bullet} $ is unchanged.
+\item Given $ c_n $, we chose $ b_n $. If $ \beta\br{b_n'} = c_n $, then $ b_n - b_n' \in \ker \beta = \im \alpha $, so $ b_n' = b_n + \alpha\br{a_n} $ for some $ a_n \in A_n $, and $ \da\br{b_n'} = \da\br{b_n} + \da\br{\alpha\br{a_n}} = \alpha\br{a_{n - 1} + \da\br{a_n}} $, so $ \sbr{a_{n - 1}} \in \H_{n - 1}\br{A_\bullet} $ is unchanged.
 \item If $ \sbr{c_n} = \sbr{c_n'} $, then $ c_n - c_n' \in \im \da $, say $ c_n' = c_n + \da\br{c_{n + 1}} $. Pick $ b_{n + 1} $ such that $ \beta\br{b_{n + 1}} = c_{n + 1} $ and then $ b_n \mapsto b_n + \da\br{b_{n + 1}} $ and $ \da\br{b_n} $ is unchanged, so get the same $ a_{n - 1} $.
 \end{itemize}
 So $ \delta $ is well-defined and it is easy to see it is a homomorphism. In the resulting
@@ -1050,7 +1051,7 @@ is a commuting diagram of abelian groups with exact rows. If $ \alpha, \beta, \d
 \end{lemma}
 
 \begin{proof}
-More diagram chasing. We will show $ \gamma $ is one-to-one, and you check it is onto. Let $ c \in C $ have $ \gamma\br{c} = 0 $. Then $ \delta\br{\da\br{c}} = \da'\br{\gamma\br{c}} = 0 $ so $ \da\br{c} \in \ker \delta $, and $ \delta $ is an isomorphism so $ \da\br{c} = 0 $. Since the rows are exact, $ c \in \ker \da = \im \da $, so $ c = \da\br{b} $ for $ b \in B $. Then $ \da'\br{\beta\br{b}} = \gamma\br{\da\br{b}} = \gamma\br{c} = 0 $, so $ \beta\br{b} \in \ker \da' = \im \da' $, and $ \beta\br{b} = \da'\br{a'} $. Since $ \alpha $ is an isomorphism, there exists $ a \in A $ such that $ \alpha\br{a} = a' $. Now $ \beta\br{\da\br{a}} = \da'\br{\alpha\br{a}} = \da'\br{a'} = \beta\br{b} $ so $ \da\br{a} - b \in \ker \beta $, and $ \beta $ is an isomorphism so $ b = \da\br{a} $. Thus $ c = \da\br{b} = \da^2\br{a} = 0 $ and $ c $ is one-to-one.
+More diagram chasing. We will show $ \gamma $ is one-to-one, and you check it is onto. \footnote{Exercise} Let $ c \in C $ have $ \gamma\br{c} = 0 $. Then $ \delta\br{\da\br{c}} = \da'\br{\gamma\br{c}} = 0 $ so $ \da\br{c} \in \ker \delta $, and $ \delta $ is an isomorphism so $ \da\br{c} = 0 $. Since the rows are exact, $ c \in \ker \da = \im \da $, so $ c = \da\br{b} $ for $ b \in B $. Then $ \da'\br{\beta\br{b}} = \gamma\br{\da\br{b}} = \gamma\br{c} = 0 $, so $ \beta\br{b} \in \ker \da' = \im \da' $, and $ \beta\br{b} = \da'\br{a'} $. Since $ \alpha $ is an isomorphism, there exists $ a \in A $ such that $ \alpha\br{a} = a' $. Now $ \beta\br{\da\br{a}} = \da'\br{\alpha\br{a}} = \da'\br{a'} = \beta\br{b} $ so $ \da\br{a} - b \in \ker \beta $, and $ \beta $ is an isomorphism so $ b = \da\br{a} $. Thus $ c = \da\br{b} = \da^2\br{a} = 0 $ and $ c $ is one-to-one.
 \end{proof}
 
 \begin{corollary}
@@ -1093,7 +1094,7 @@ A pair $ \br{X, A} $ is \textbf{good} if $ A \subseteq X $ is closed and is a de
 \end{itemize}
 \end{definition*}
 
-So you can squeeze $ U $ back onto $ A $ without moving $ A $. If $ X $, and hence $ U $, is Hausdorff, $ A $ is automatically closed.
+So you can squeeze $ U $ back onto $ A $ without moving $ A $. If $ X $, and hence $ U $, is Hausdorff, then $ A $ is automatically closed.
 
 \begin{proposition}
 If $ \br{X, A} $ is good, the natural map $ \br{X, A} \to \br{X / A, A / A} $ induces isomorphisms
@@ -1103,7 +1104,7 @@ $$ \H_\bullet\br{X, A} \xrightarrow{\sim} \widetilde{\H_\bullet}\br{X / A}. $$
 \begin{proof}
 Note that homotopy invariance and the $ 5 $-lemma show inclusion defines isomorphisms
 $$ \H_\bullet\br{A} \xrightarrow{\sim} \H_\bullet\br{U}, \qquad \H_\bullet\br{X, A} \xrightarrow{\sim} \H_\bullet\br{X, U}. $$
-The inclusion $ A / A = \cbr{\text{point}} \hookrightarrow U / A $ is a deformation retract and in particular a homotopy equivalence, so
+The inclusion $ A / A = \pt \hookrightarrow U / A $ is a deformation retract and in particular a homotopy equivalence, so
 $$ \H_\bullet\br{X / A, A / A} \xrightarrow{\sim} \H_\bullet\br{X / A, U / A} $$
 is also an isomorphism by the $ 5 $-lemma. Consider
 $$
@@ -1150,7 +1151,7 @@ $$
 
 \pagebreak
 
-\subsection{Mayer-Vietoris and excision}
+\subsection{Proof of Mayer-Vietoris and excision}
 
 \lecture{7}{Friday}{23/10/20}
 
@@ -1224,7 +1225,7 @@ is an isomorphism on homology. So
 proving excision.
 \end{example*}
 
-\subsection{Small simplices theorem}
+\subsection{Proof of small simplices theorem}
 
 So it just remains to prove the small simplices theorem that $ \C_\bullet^\UUU\br{X} \hookrightarrow \C_\bullet\br{X} $ is an isomorphism on homology. The key geometric ingredient is to divide simplices into smaller simplices.
 
@@ -1311,7 +1312,7 @@ If $ \sbr{v_0, \dots, v_n} \subseteq \RR^{n + 1} $ is a simplex, then each simpl
 \begin{corollary}
 \hfill
 \begin{enumerate}
-\item If $ \sigma \in \C_n^\UUU\br{X} $, $ \phi_n^X\br{\sigma} \in \C_n^\UUU\br{X} $.
+\item If $ \sigma \in \C_n^\UUU\br{X} $, then $ \phi_n^X\br{\sigma} \in \C_n^\UUU\br{X} $.
 \item If $ \sigma \in \C_n\br{X} $, there exists $ k \gg 0 $ such that $ \br{\phi_n^X}^k\br{\sigma} \in \C_n^\UUU\br{X} $.
 \end{enumerate}
 \end{corollary}
@@ -1358,11 +1359,11 @@ for $ I_k $ an indexing set and $ \D_i^k = \cbr{x \in \RR^k \st \norm{x} \le 1} 
 \begin{example*}
 \hfill
 \begin{itemize}
-\item $ \S^n = \cbr{\text{point}} \cup \D^n $ attached via the constant map $ \da\D^n \to \cbr{\text{point}} $.
-\item $ \S^n = \cbr{\text{point}} \cup \cbr{\text{point}} \cup \D_{\alpha_1}^1 \cup \D_{\alpha_2}^1 \cup \D_{\beta_1}^2 \cup \D_{\beta_2}^2 $.
+\item $ \S^n = \pt \cup \D^n $ attached via the constant map $ \da\D^n \to \pt $.
+\item $ \S^n = \pt \cup \pt \cup \D_{\alpha_1}^1 \cup \D_{\alpha_2}^1 \cup \D_{\beta_1}^2 \cup \D_{\beta_2}^2 $.
 \item $ \T^2 $ has one $ 0 $-cell, two $ 1 $-cells, and one $ 2 $-cell.
 \item $ \Sigma_2 $ has one $ 0 $-cell, four $ 1 $-cells, and one $ 2 $-cell.
-\item The \textbf{wedge product}. If $ X $ and $ Y $ are cell complexes, $ X \vee Y = \abr{X \sqcup Y} / x_0 \sim y_0 $ where $ x_0 \in X_0 $ and $ y_0 \in Y_0 $.
+\item The \textbf{wedge product}. If $ X $ and $ Y $ are cell complexes, then $ X \vee Y = \abr{X \sqcup Y} / x_0 \sim y_0 $ where $ x_0 \in X_0 $ and $ y_0 \in Y_0 $.
 \end{itemize}
 \end{example*}
 
@@ -1370,8 +1371,8 @@ for $ I_k $ an indexing set and $ \D_i^k = \cbr{x \in \RR^k \st \norm{x} \le 1} 
 Let $ X $ be a cell complex. The $ \D_i^k $ are $ k $-cells.
 \begin{itemize}
 \item $ X_k $ is the \textbf{$ k $-skeleton} of $ X $.
-\item If there exists $ N $ such that $ X = X_N $, $ X $ is a \textbf{finite-dimensional} cell complex.
-\item If $ X = X_N $ and $ I_j < \infty $ for all $ j $, $ X $ is a \textbf{finite} cell complex. Then $ X $ is compact.
+\item If there exists $ N $ such that $ X = X_N $, then $ X $ is a \textbf{finite-dimensional} cell complex.
+\item If $ X = X_N $ and $ I_j < \infty $ for all $ j $, then $ X $ is a \textbf{finite} cell complex. Then $ X $ is compact.
 \item $ X = \bigsqcup_{k \ge 0} \mathring{\D_\alpha^k} $ is the disjoint union of its open cells $ \C_\alpha^k $ as attaching maps take $ \da\D_\alpha^k $ to $ X_{k - 1} $.
 \item A \textbf{subcomplex} $ A \subseteq X $ is a closed subspace which is a union of cells of $ X $. Note that given a cell complex $ X $, you cannot throw out a random bunch of cells to get a subcomplex. There may be later cells that try to attach to things you are throwing out.
 \end{itemize}
@@ -1472,7 +1473,7 @@ $$
 so $ \H_k\br{X_n} \cong \dots \cong \H_k\br{X_0} = 0 $, since $ X_0 $ is a discrete set.
 \item The same sequence as before
 $$ \H_{k + 1}\br{X_n, X_{n - 1}} \to \H_k\br{X_{n - 1}} \to \H_k\br{X_n} \to \H_k\br{X_n, X_{n - 1}} $$
-with $ k < n - 1 $ shows $ \H_k\br{X_{n - 1}} \cong \dots \cong \H_k\br{X_N} $ for all $ N > n - 1 $. If $ X $ is finite-dimensional, we are done. In general, if $ \alpha \in \H_k\br{X} $, $ \alpha $ is represented by a finite union of simplices, which is compact. If $ Z \subseteq X $ is compact, there exists $ N $ such that $ Z \subseteq X_N $. So $ \alpha \in \im \br{\phi_N : \H_k\br{X_N} \to \H_k\br{X}} $ for all $ N \gg 0 $. Similarly, if a cycle $ \alpha = \sum_i a_i\sigma_i \in \H_k\br{X} $ bounds a $ \br{k + 1} $-chain in $ X $, that $ \br{k + 1} $-chain lives in some $ X_{N'} $ for $ N' \gg 0 $, so $ \sbr{\alpha} = 0 \in \H_k\br{X_{N'}} $, that is $ \phi_N $ is one-to-one for $ N \gg 0 $.
+with $ k < n - 1 $ shows $ \H_k\br{X_{n - 1}} \cong \dots \cong \H_k\br{X_N} $ for all $ N > n - 1 $. If $ X $ is finite-dimensional, we are done. In general, if $ \alpha \in \H_k\br{X} $, then $ \alpha $ is represented by a finite union of simplices, which is compact. If $ Z \subseteq X $ is compact, there exists $ N $ such that $ Z \subseteq X_N $. So $ \alpha \in \im \br{\phi_N : \H_k\br{X_N} \to \H_k\br{X}} $ for all $ N \gg 0 $. Similarly, if a cycle $ \alpha = \sum_i a_i\sigma_i \in \H_k\br{X} $ bounds a $ \br{k + 1} $-chain in $ X $, that $ \br{k + 1} $-chain lives in some $ X_{N'} $ for $ N' \gg 0 $, so $ \sbr{\alpha} = 0 \in \H_k\br{X_{N'}} $, that is $ \phi_N $ is one-to-one for $ N \gg 0 $.
 \end{enumerate}
 \end{proof}
 
@@ -1636,7 +1637,7 @@ $$ \deg f = \sum_{i = 1}^m \deg_{x_i} f. $$
 \end{lemma}
 
 \begin{remark*}
-If $ f : \S^n \to \S^n $ is smooth, $ f^{-1}\br{y} $ is finite if $ y $ is a regular value for $ f $, and by Sard's theorem, almost all values, in particular a dense set, are regular.
+If $ f : \S^n \to \S^n $ is smooth, then $ f^{-1}\br{y} $ is finite if $ y $ is a regular value for $ f $, and by Sard's theorem, almost all values, in particular a dense set, are regular.
 \end{remark*}
 
 \pagebreak
@@ -1674,7 +1675,7 @@ so $ \H_1\br{K; \ZZ} \cong \ZZ \oplus \ZZ / 2 $ and $ \H_2\br{K; \ZZ} = 0 $, aga
 \end{exercise*}
 
 \begin{example*}
-The real projective space $ \RR\PP^n = \D^n \cup \RR\PP^{n - 1} = \D^n \cup \dots \cup \D^1 \cup \cbr{\text{point}} $ has one cell of each degree $ 0 \le i \le n $, so
+The real projective space $ \RR\PP^n = \D^n \cup \RR\PP^{n - 1} = \D^n \cup \dots \cup \D^1 \cup \pt $ has one cell of each degree $ 0 \le i \le n $, so
 $$
 \begin{tikzcd}[row sep=tiny]
 0 \arrow{r} & \C_n^{\cell}\br{\RR\PP^n} \arrow{r} \arrow[cong]{d} & \dots \arrow{r} & \C_0^{\cell}\br{\RR\PP^n} \arrow{r} \arrow[cong]{d} & 0 \\
@@ -1718,7 +1719,7 @@ which vanishes as for Klein and as $ \H_0\br{\Sigma_g} = \ZZ $.
 
 There is also \textbf{cellular cohomology}
 $$ \C_{\cell}^i\br{X} = \H^i\br{X_i, X_{i - 1}}, \qquad \da_{\cell}^* : \H^i\br{X_i, X_{i - 1}} \to \H^{i + 1}\br{X_{i + 1}, X_i}, $$
-and $ \H_{\cell}^\bullet\br{X} \cong \H_{\cell}\br{X} $ by the exactly analogous argument as for homology.
+and $ \H_{\cell}^\bullet\br{X} \cong \H^\bullet\br{X} $ by the exactly analogous argument as for homology.
 
 \pagebreak
 
@@ -1837,9 +1838,469 @@ $$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^k\dim_\FF \H_k\br{X; \FF}. $$
 \begin{itemize}
 \item $ \S^4 \ncong \CC\PP^2 $ as $ \chi\br{\S^4} = 2 $ and $ \chi\br{\CC\PP^2} = 3 $, since $ \S^4 $ has one $ 0 $-cell and one $ 4 $-cell and $ \CC\PP^2 $ has one $ 4 $-cell, one $ 2 $-cell, and one $ 0 $-cell.
 \item $ \chi\br{\Sigma_g} = 2 - 2g $, since $ \Sigma_g $ has one $ 0 $-cell, $ 2g $ distinct $ 1 $-cells, and one $ 2 $-cell.
-\item If $ A $ and $ B $ are finite cell complexes, $ A \times B $ has a product cell structure such that the open $ i $-cells are of the form $ \br{\text{$ j $-cell in} \ A} \times \br{\text{$ \br{i - j} $-cell in} \ B} $, so $ \chi\br{A \times B} = \chi\br{A}\chi\br{B} $.
-\item If $ X = A \cup B $ is a union of two subcomplexes, $ \chi\br{X} = \chi\br{A} + \chi\br{B} - \chi\br{A \cap B} $.
+\item If $ A $ and $ B $ are finite cell complexes, then $ A \times B $ has a product cell structure such that the open $ i $-cells are of the form $ \br{\text{$ j $-cell in} \ A} \times \br{\text{$ \br{i - j} $-cell in} \ B} $, so $ \chi\br{A \times B} = \chi\br{A}\chi\br{B} $.
+\item If $ X = A \cup B $ is a union of two subcomplexes, then $ \chi\br{X} = \chi\br{A} + \chi\br{B} - \chi\br{A \cap B} $.
 \end{itemize}
 \end{example*}
+
+\pagebreak
+
+\section{Generalised homology theories}
+
+\subsection{Eilenberg-Steenrod axioms}
+
+\lecture{11}{Monday}{02/11/20}
+
+\begin{definition*}
+An assignment $ \br{X, A} \mapsto h_\bullet\br{X, A} = \bigoplus_{i \in \ZZ} h_i\br{X, A} $ of graded abelian groups to pairs of topological spaces and subspaces is called a \textbf{generalised homology theory} if it satisfies the following.
+\begin{itemize}
+\item Functoriality. A map $ f : \br{X, A} \to \br{Y, B} $ induces a degree-preserving homomorphism
+$$ f_* : h_\bullet\br{X, A} \to h_\bullet\br{Y, B}, $$
+such that $ \id_* = \id $ and $ \br{f \circ g}_* = f_* \circ g_* $.
+\item Homotopy invariance. If $ f \simeq g $, through maps of pairs, then $ f_* = g_* $.
+\item Long exact sequence. If $ h_i\br{X} = h_i\br{X, \emptyset} $, then there exists $ \da : h_i\br{X, A} \to h_{i - 1}\br{A} $ such that
+$$ \dots \to h_i\br{A} \xrightarrow{\iota_*} h_i\br{X} \xrightarrow{\iota_*} h_i\br{X, A} \xrightarrow{\da} h_{i - 1}\br{A} \to \dots $$
+is exact and natural.
+\item Excision. If $ \overline{Z} \subseteq \mathring{A} $, then
+$$ \iota_* : h_\bullet\br{X \setminus Z, A \setminus Z} \xrightarrow{\sim} h_\bullet\br{X, A}. $$
+\item Unions. If $ X = \bigsqcup_\alpha X_\alpha $, then
+$$ \bigoplus \br{\iota_\alpha}_* : \bigoplus_\alpha h_\bullet\br{X_\alpha} \xrightarrow{\sim} h_\bullet\br{\bigsqcup_\alpha X_\alpha}. $$
+\end{itemize}
+These axioms are usually called the \textbf{Eilenberg-Steenrod axioms}.
+\end{definition*}
+
+One sometimes restricts attention to pairs $ \br{X, A} $ which are not too pathological so for example components and path-components agree. The axioms let us formalise the idea that homology of cell complexes is quite constrained or computable.
+
+\begin{definition*}
+If $ h_\bullet $ and $ k_\bullet $ are generalised homotopy theories, a \textbf{natural transformation} $ \Phi : h_\bullet \to k_\bullet $ comprises homomorphisms $ \Phi_{X, A} : h_\bullet\br{X, A} \to k_\bullet\br{X, A} $ for all $ \br{X, A} $, which are compatible with all the structure.
+\end{definition*}
+
+\begin{example*}
+If $ f : \br{X, A} \to \br{Y, B} $ then
+$$
+\begin{tikzcd}
+h_\bullet\br{X, A} \arrow{r}{f_*} \arrow{d}[swap]{\Phi_{X, A}} & h_\bullet\br{Y, B} \arrow{d}{\Phi_{Y, B}} \\
+k_\bullet\br{X, A} \arrow{r}[swap]{f_*} & k_\bullet\br{Y, B}
+\end{tikzcd}
+$$
+commutes, and similarly for maps of long exact sequence of pairs and excision or union isomorphisms.
+\end{example*}
+
+\subsection{Cellular example}
+
+\begin{proposition}
+Let $ h_\bullet $ and $ k_\bullet $ be generalised homology theories defined on the class of pairs $ \br{X, A} $ where $ X $ is homotopy equivalent to a cell complex and $ A \subseteq X $ to a subcomplex. Suppose $ \Phi : h_\bullet \to k_\bullet $ is a natural transformation. If $ \Phi : h_\bullet\br{\pt} \xrightarrow{\sim} k_\bullet\br{\pt} $ is an isomorphism for $ X = \pt $, and $ A = \emptyset $, then $ \Phi_{\br{X, A}} : h_\bullet\br{X, A} \xrightarrow{\sim} k_\bullet\br{X, A} $ for all finite-dimensional $ \br{X, A} $ in this class.
+\end{proposition}
+
+Then $ h_\bullet\br{\pt} $ is called the \textbf{coefficient} of the generalised homology theory.
+
+\begin{notation*}
+Call this class of $ \br{X, A} $ the \textbf{cellular pairs}.
+\end{notation*}
+
+\pagebreak
+
+\begin{proof}
+Induct on $ \dim X $. If $ \dim X = 0 $, then $ X = \cbr{\text{discrete set}} = X_0 $, so the result follows from unions. So inductively suppose $ \Phi_{\br{X, A}} $ is an isomorphism whenever $ \dim X \le n - 1 $, and suppose $ X = X_n $ is $ n $-dimensional. Consider
+$$
+\begin{tikzcd}[column sep=small]
+\dots \arrow{r} & h_{i + 1}\br{X, X_{n - 1}} \arrow{r} \arrow{d}{\Phi} & h_i\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & h_i\br{X} \arrow{r} \arrow{d}{\Phi} & h_i\br{X, X_{n - 1}} \arrow{r} \arrow{d}{\Phi} & h_{i - 1}\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & \dots \\
+\dots \arrow{r} & k_{i + 1}\br{X, X_{n - 1}} \arrow{r} & k_i\br{X_{n - 1}} \arrow{r} & k_i\br{X} \arrow{r} & k_i\br{X, X_{n - 1}} \arrow{r} & k_{i - 1}\br{X_{n - 1}} \arrow{r} & \dots
+\end{tikzcd}.
+$$
+By the $ 5 $-lemma, if $ \Phi_{\br{X, X_{n - 1}}} $ is an isomorphism for all $ i $, then $ \Phi_{\br{X, \emptyset}} $ is an isomorphism for all $ i $. Apply excision, by replacing $ X_{n - 1} $ by a neighbourhood $ \N_\epsilon\br{X_{n - 1}} $ which does not change $ h_\bullet\br{X, A} $ by homotopy invariance then excise $ X_{n - 1} $, to show
+$$ h_\bullet\br{X, X_{n - 1}} = h_\bullet\br{X_n, X_{n - 1}} \cong h_\bullet\br{\bigsqcup_\alpha \D_\alpha^n, \bigsqcup_\alpha \da\D_\alpha^n}, $$
+where the union is over $ n $-cells. By unions,
+$$ h_\bullet\br{\bigsqcup_\alpha \D_\alpha^n, \bigsqcup_\alpha \da\D_\alpha^n} \cong \bigoplus_\alpha h_\bullet\br{\D_\alpha^n, \da\D_\alpha^n}, $$
+and similarly for $ k_\bullet $, so it suffices to prove $ \Phi_{\br{\D_\alpha^n, \da\D_\alpha^n}} $ is an isomorphism. But now
+$$
+\begin{tikzcd}[column sep=small]
+\dots \arrow{r} & h_i\br{\da\D^n} \arrow{r} \arrow{d}{\text{Induction}}[swap]{\sim} & h_i\br{\D^n} \arrow{r} \arrow{d}{\text{Homotopy}}[swap]{\sim} & h_i\br{\D^n, \da\D^n} \arrow{r} \arrow{d}{\phi} & h_{i - 1}\br{\da\D^n} \arrow{r} \arrow{d}{\text{Induction}}[swap]{\sim} & h_{i - 1}\br{\D^n} \arrow{r} \arrow{d}{\text{Homotopy}}[swap]{\sim} & \dots \\
+\dots \arrow{r} & k_i\br{\da\D^n} \arrow{r} & k_i\br{\D^n} \arrow{r} & k_i\br{\D^n, \da\D^n} \arrow{r} & k_{i - 1}\br{\da\D^n} \arrow{r} & k_{i - 1}\br{\D^n} \arrow{r} & \dots
+\end{tikzcd},
+$$
+so by the $ 5 $-lemma, $ \phi $ is an isomorphism as required. Inductively this shows $ \Phi_{\br{X, \emptyset}} $ if $ \dim X = n $, and then the $ 5 $-lemma and the long exact sequence shows $ \Phi_{\br{X, A}} $ is an isomorphism if $ \dim X = n $. So we are done for finite-dimensional cellular pairs.
+\end{proof}
+
+The result also holds for infinite-dimensional cellular pairs, but we will not need this.
+
+\begin{example*}
+Note that for $ h_\bullet\br{X, A} = \H_\bullet\br{X, A} $ we know $ \H_i\br{X_k} \to \H_i\br{X} $ is onto once $ k > i $, so easy to reduce to the finite-dimensional case.
+\end{example*}
+
+A warning is that the axioms do not determine $ h_\bullet\br{X, A} $ from $ h_\bullet\br{\pt} $ formally, and it is rather that naturally related theories have the same indeterminacy.
+
+\subsection{Generalisations}
+
+\begin{remark*}
+A \textbf{generalised cohomology theory} $ \br{X, A} \mapsto h^\bullet\br{X, A} $ is similar, and has
+\begin{itemize}
+\item contravariant functoriality, so $ f : \br{X, A} \to \br{Y, B} $ induces
+$$ f^* : h^\bullet\br{Y, B} \to h^\bullet\br{X, A}, $$
+\item homotopy invariance,
+\item long exact sequence
+$$ \dots \to h^\bullet\br{X, A} \to h^\bullet\br{X} \to h^\bullet\br{A} \xrightarrow{\da} h^{\bullet + 1}\br{X, A} \to \dots, $$
+\item excision, and
+\item unions, which is a direct product
+$$ h^\bullet\br{\bigsqcup_\alpha X_\alpha} \cong \prod_\alpha h^\bullet\br{X_\alpha}. $$
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\begin{remark*}
+There are uninterestingly different generalised homology theories, such as $ \br{X, A} \mapsto \H_\bullet\br{X, A} \otimes_\ZZ R $ for your favourite graded group $ R $, but interestingly different ones are not obtained from chain complexes.
+\begin{itemize}
+\item In lecture $ 1 $ we briefly mentioned homotopy groups $ \pi_i\br{X} $. If
+$$ \Sigma X = \br{X \times \sbr{0, 1}} / \cbr{\br{x, 0} \sim \pt, \ \br{x, 1} \sim \pt \st x \in X} $$
+is the \textbf{suspension}, then there exist maps
+$$ \pi_i\br{X} \to \pi_{i + 1}\br{\Sigma X} \to \dots, $$
+and these eventually become isomorphisms, so the \textbf{stable homotopy group} is
+$$ \pi_i^{\s\t} = \lim_k \pi_{i + k}\br{\Sigma^kX}. $$
+Then $ \pi_\bullet^{\s\t}\br{\pt} $ is unknown, and determining it is one of the major open problems of mathematics.
+\item In $ \K $-theory, $ \K_\bullet\br{X} $ is another generalised homology theory, built out of vector bundles, which we will discuss. Probably developed in the homotopy theory course.
+\end{itemize}
+\end{remark*}
+
+\begin{remark*}
+Different generalised homology theories do not come from chain complexes, but the existence of different chain complexes is still deep and important.
+\begin{itemize}
+\item \textbf{$\check{\mathbf{C}}$ech cochains}. Fix a cover $ \UUU = \cbr{U_\alpha \st \alpha \in A} $ of a space $ X $. Let
+$$ S_k = \cbr{\br{a_0, \dots, a_k} \in A^{k + 1} \st U_{a_0} \cap \dots \cap U_{a_k} \ne \emptyset}, $$
+let $ \vC^k\br{X, \UUU} $ be the maps from $ S_k $ to $ \ZZ $, and let
+$$ \function[\da]{\vC^k\br{X, \UUU}}{\vC^{k + 1}\br{X, \UUU}}{\psi}{\br{\br{a_0, \dots, a_{k + 1}} \mapsto \displaystyle\sum_{i = 0}^{k + 1} \psi\br{a_0, \dots, \widehat{a_i}, \dots, a_{k + 1}}}}. $$
+Then $ \da^2 = 0 $, by the same proof as singular cohomology, which gives $ \vH^\bullet\br{X, \UUU} $. Now set
+$$ \vH^\bullet\br{X} = \lim_U \vH^\bullet\br{X, \UUU}, $$
+the limit over finer and finer covers.
+\item \textbf{Morse cochains}. Take $ M $ a compact $ \C^\infty $-manifold and $ f : M \to \RR $ smooth with non-degenerate critical points, so if $ \eval{\d f}_x = 0 $, then $ \eval{\d^2f}_x $ is non-degenerate. The index of $ x $ is the number of negative eigenvalues of $ \eval{\d^2f}_x $. Let
+$$ \C_{\Morse}^k\br{f} = \bigoplus_{x \ \text{critical in} \ f \ \text{of index} \ k} \ZZ. $$
+There exists $ \da_{\Morse} $, counting flow lines $ \dot{\gamma} = -\nabla f \circ \gamma $ for $ \gamma : \RR \to M $, such that $ \H_{\Morse}^\bullet\br{f} \cong \H^\bullet\br{M} $.
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\section{Cup-products}
+
+\lecture{12}{Wednesday}{04/11/20}
+
+Up to now we developed homology and cohomology in parallel, and we will use Mayer-Vietoris, excision, etc freely for cohomology too. But there is a key difference, which will in some sense dominate the rest of the course. Cohomology is a ring.
+
+\subsection{The cohomology ring}
+
+\begin{definition*}
+If $ \phi \in \C^k\br{X} $ and $ \psi \in \C^l\br{X} $, their \textbf{cup-product} $ \phi \cup \psi \in \C^{k + l}\br{X} $ is defined by
+$$ \br{\phi \cup \psi}\br{\sbr{v_0, \dots, v_{k + l}}} = \phi\br{\sbr{v_0, \dots, v_k}}\psi\br{\sbr{v_k, \dots, v_l}}, $$
+so feed the front face of the simplex to $ \phi $ and the back face to $ \psi $.
+\end{definition*}
+
+\begin{notation*}
+We will typically just write $ \phi \cdot \psi $ rather than $ \phi \cup \psi $, but still call it cup-product.
+\end{notation*}
+
+\begin{lemma}
+If $ \da^* : \C^\bullet\br{X} \to \C^{\bullet + 1}\br{X} $ is the coboundary operator in $ \C^\bullet\br{X} $, then
+$$ \da^*\br{\phi \cdot \psi} = \br{\da^*\phi} \cdot \psi + \br{-1}^k\phi \cdot \br{\da^*\psi}, \qquad \phi \in \C^k\br{X}, \qquad \psi \in \C^l\br{X}. $$
+\end{lemma}
+
+Note that sometimes write
+$$ \da^*\br{\phi \cdot \psi} = \br{\da^*\phi} \cdot \psi + \br{-1}^{\abs{\phi}}\phi \cdot \br{\da^*\psi}, $$
+where $ \abs{\phi} $ is the degree of $ \phi $, assumed homogeneous.
+
+\begin{proof}
+Note that
+\begin{equation}
+\label{eq:3}
+\br{\br{\da^*\phi} \cdot \psi}\br{\sbr{v_0, \dots, v_{k + l + 1}}} = \sum_{i = 0}^{k + 1} \br{-1}^i\phi\br{\sbr{v_0, \dots, \widehat{v_i}, \dots, v_{k + 1}}}\psi\br{\sbr{v_{k + 1}, \dots, v_{k + l + 1}}},
+\end{equation}
+\begin{equation}
+\label{eq:4}
+\br{\br{-1}^k\phi \cdot \br{\da^*\psi}}\br{\sbr{v_0, \dots, v_{k + l + 1}}} = \phi\br{\sbr{v_0, \dots, v_k}}\sum_{i = k}^{k + l + 1} \br{-1}^i\phi\br{\sbr{v_k, \dots, \widehat{v_i}, \dots, v_{k + l + 1}}},
+\end{equation}
+where $ \br{-1}^k $ on the left hand side is absorbed here. The last term of $ \br{\ref{eq:3}} $ and the first term of $ \br{\ref{eq:4}} $ cancel, since one has $ \br{-1}^{k + 1} $ and one $ \br{-1}^k $. The remaining terms give
+$$ \br{\phi \cdot \psi}\br{\sum_{i = 0}^{k + l + 1} \br{-1}^i\sbr{v_0, \dots, \widehat{v_i}, \dots, v_{k + l + 1}}} = \br{\da^*\br{\phi \cdot \psi}}\br{\sbr{v_0, \dots, v_{k + l + 1}}}. $$
+\end{proof}
+
+\begin{corollary}
+Cup-product descends to cohomology, that is it induces
+\begin{equation}
+\label{eq:5}
+\H^k\br{X} \times \H^l\br{X} \to \H^{k + l}\br{X}.
+\end{equation}
+This makes $ \H^\bullet\br{X} $ a graded unital ring.
+\end{corollary}
+
+\begin{proof}
+Let $ \phi \in \C^k\br{X} $ and $ \psi \in \C^l\br{X} $ be closed. Then $ \da^*\br{\phi \cdot \psi} = \br{\da^*\phi} \cdot \psi + \br{-1}^k\phi \cdot \br{\da^*\psi} = 0 $, so set $ \sbr{\phi} \cup \sbr{\psi} = \sbr{\phi \cup \psi} $, an element of $ \H^{k + l}\br{X} $. If we change $ \phi $ to $ \phi + \da^*\alpha $ for $ \alpha \in \C^{k - 1}\br{X} $, then $ \br{\phi + \da^*\alpha} \cdot \psi = \phi \cdot \psi + \br{\da^*\alpha} \cdot \psi = \phi \cdot \psi + \da^*\br{\alpha \cdot \psi} $, using $ \da^*\psi = 0 $, so $ \sbr{\phi \cdot \psi} $ does not depend on the choice of cocycle representative for $ \sbr{\phi} $, and changing the representative for $ \sbr{\psi} $ is similar. So $ \br{\ref{eq:5}} $ is well-defined, on cohomology. Let $ 1 \in \C^0\br{X} $ which is defined by $ 1\br{p} = 1 \in \ZZ $ for all $ p \in X $, the generators of $ \C_0\br{X} $. Then $ \br{\da^*1}\br{\sbr{v_0, v_1}} = 1\br{v_0} - 1\br{v_1} = 0 $, so $ \da^*1 = 0 $. Thus $ \sbr{1} \in \H^0\br{X} $, and
+$$ \br{\phi \cdot 1}\br{\sbr{v_0, \dots, v_k}} = \phi\br{\sbr{v_0, \dots, v_k}} \cdot 1\br{v_k} = \phi\br{\sbr{v_0, \dots, v_k}}, $$
+$$ \br{1 \cdot \psi}\br{\sbr{v_0, \dots, v_l}} = 1\br{v_0} \cdot \psi\br{\sbr{v_0, \dots, v_l}} = \psi\br{\sbr{v_0, \dots, v_l}}, $$
+so $ \sbr{1} $ is a unit.
+\end{proof}
+
+\pagebreak
+
+Recall that for an abelian group $ G $,
+$$ \C_j\br{X; G} = \C_j\br{X; \ZZ} \otimes G = \cbr{\sum_i a_i\sigma_i \st a_i \in G, \ \sigma_i : \Delta^j \to X}, \qquad \C^j\br{X; G} = \Hom_\ZZ\br{\C_j\br{X; \ZZ}, G}, $$
+so $ \C^\bullet\br{X; R} $ is a ring whenever the coefficient group $ G = R $ is a ring. Then $ \H^\bullet\br{X; R} $ is a ring if $ R $ is a ring and unital if $ R $ is unital.
+
+\begin{proposition}
+\hfill
+\begin{itemize}
+\item Cup-product is associative, at the chain level, and so on cohomology, so
+$$ \phi \cdot \br{\psi \cdot \tau} = \br{\phi \cdot \psi} \cdot \tau \in \C^{k + l + r}\br{X}, \qquad \phi \in \C^k\br{X}, \qquad \psi \in \C^l\br{X}, \qquad \tau \in \C^r\br{X}. $$
+\item If $ f : X \to Y $, then $ f^\# : \C^\bullet\br{Y} \to \C^\bullet\br{X} $ satisfies
+$$ f^\#\br{\phi \cdot \psi} = \br{f^\#\phi} \cdot \br{f^\#\psi}, $$
+which is immediate from the definitions, so $ f^* : \H^\bullet\br{Y} \to \H^\bullet\br{X} $ is a unital ring homomorphism.
+\item \textbf{Cross-product} is
+$$ \function[\times]{\H^i\br{Y} \times \H^j\br{Z}}{\H^{i + j}\br{Y \times Z}}{\br{\phi, \psi}}{\p_Y^*\phi \cup \p_Z^*\psi}, \qquad Y \xleftarrow{\p_Y} Y \times Z \xrightarrow{\p_Z} Z. $$
+If $ Y = Z = X $ and the diagonal is
+$$ \function[\Delta]{X}{X \times X}{x}{\br{x, x}}, $$
+cup-product is
+$$ \cup : \H^k\br{X} \times \H^l\br{X} \xrightarrow{\times} \H^{k + l}\br{X \times X} \xrightarrow{\Delta^*} \H^{k + l}\br{X}, $$
+so the existence of $ \Delta $ and the contravariance of cohomology are key.
+\end{itemize}
+\end{proposition}
+
+Great, we have a product. But, as with original definition of homology and cohomology, there is little we can immediately compute.
+
+\begin{example*}
+$ \H^\bullet\br{\pt} \cong \ZZ $ in degree zero, with its usual ring structure, and
+$$ \H^\bullet\br{\S^n} \cong
+\begin{cases}
+\ZZ & \bullet = 0, n \\
+0 & \text{otherwise}
+\end{cases},
+$$
+so $ \H^\bullet\br{\S^n} \cong \ZZ\sbr{x} / \abr{x^2} $ for $ \abs{x} = n $.
+\end{example*}
+
+\begin{example*}
+Let $ X $ and $ Y $ be cell complexes with basepoints $ x_0 \in X $ and $ y_0 \in Y $, and let $ X \vee Y = \br{X \sqcup Y} / x_0 \sim y_0 $. Then
+$$ \widetilde{\H^\bullet}\br{X \vee Y} \cong \widetilde{\H^\bullet}\br{X} \oplus \widetilde{\H^\bullet}\br{Y} $$
+is a ring isomorphism. Indeed,
+$$ X \xleftarrow{\p_X} X \vee Y \xrightarrow{\p_Y} Y, \qquad X \xrightarrow{\iota_X} X \vee Y \xleftarrow{\iota_Y} Y $$
+induce ring homomorphisms
+$$ \H^\bullet\br{X} \xrightarrow{\p_X^*} \H^\bullet\br{X \vee Y} \xleftarrow{\p_Y^*} \H^\bullet\br{Y}, \qquad \H^\bullet\br{X} \xleftarrow{\iota_X^*} \H^\bullet\br{X \vee Y} \xrightarrow{\iota_Y^*} \H^\bullet\br{Y}, $$
+and Mayer-Vietoris gives
+$$ \H^\bullet\br{X \vee Y} \xrightarrow{\br{\iota_X^*, \iota_Y^*}} \H^\bullet\br{X \vee Y} \to \H^\bullet\br{\pt}, $$
+which shows
+$$ \p_X^* \oplus \p_Y^* : \widetilde{\H^\bullet}\br{X} \oplus \widetilde{\H^\bullet}\br{Y} \to \widetilde{\H^\bullet}\br{X \vee Y} $$
+is an isomorphism additively.
+\end{example*}
+
+\pagebreak
+
+\subsection{Key features}
+
+From the definitions, not sure we can do much else. We need two key features to get going. We will state them now and prove one of them later.
+
+\begin{proposition}[Graded commutativity]
+$ \H^\bullet\br{X} $ is \textbf{graded commutative}, or \textbf{skew-commutative}, so
+$$ \phi \cdot \psi = \br{-1}^{kl}\psi \cdot \phi, \qquad \phi \in \H^k\br{X}, \qquad \psi \in \H^l\br{X}. $$
+\end{proposition}
+
+Note that this is not true at chain level, only on cohomology.
+
+\begin{example*}
+Suppose
+$$ \H^\bullet\br{X; \ZZ} \cong
+\begin{cases}
+\ZZ & \bullet = 0, 3, 6 \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+For degree reasons, the only possible interesting product is $ \H^3\br{X; \ZZ} \times \H^3\br{X; \ZZ} \to \H^6\br{X; \ZZ} $, but if $ \H^3\br{X} = \ZZ\theta $, then $ \theta \cdot \theta = -\theta \cdot \theta $ as $ \br{-1}^{\abs{\theta}} = -1 $, so $ 2\theta \cdot \theta = 0 $. Then $ \theta \cdot \theta = 0 $, since no $ 2 $-torsion in $ \H^6\br{X; \ZZ} $. For example, $ \S^3 \vee \S^6 $ is such a space.
+\end{example*}
+
+Let $ A $ and $ B $ be abelian groups. Then $ A \otimes B $ is characterised by the universal property
+$$
+\begin{tikzcd}
+A \times B \arrow{r}{\text{Bilinear}} \arrow[twoheadrightarrow, dashed]{d}[swap]{\exists} & C \\
+A \otimes B \arrow[dashed]{ur}[swap]{\exists \ \text{Linear}} &
+\end{tikzcd},
+$$
+where $ C $ is an abelian group. Concretely, it is generated by symbols $ a \otimes b $ such that
+$$ \br{a + a'} \otimes b = a \otimes b + a' \otimes b, \qquad a \otimes \br{b + b'} = a \otimes b + a \otimes b'. $$
+
+\begin{example*}
+$$ \ZZ \otimes A = A, \qquad \ZZ / n \otimes A = A / nA, \qquad \br{A \otimes B} \otimes C \cong A \otimes \br{B \otimes C}, \qquad A \otimes B \cong B \otimes A, $$
+$$ \br{\bigoplus_i A_i} \otimes B \cong \bigoplus_i \br{A_i \otimes B}, \qquad f : A \to A', \ g : B \to B' \implies f \otimes g : A \otimes A' \to B \otimes B'. $$
+\end{example*}
+
+\begin{remark*}
+If $ A $ and $ B $ are modules over a commutative ring $ R $,
+$$ A \otimes_R B = \br{A \otimes B} / \cbr{ra \otimes b = a \otimes rb \st a \in A, \ b \in B, \ r \in B}. $$
+\end{remark*}
+
+\begin{theorem}[K\"unneth theorem]
+\label{thm:kunneththeorem}
+Let $ Y $ be a cell complex such that $ \H^i\br{Y} $ is free for all $ i $. Then cross-product
+$$ \bigoplus_{k + l = n} \H^k\br{X} \otimes \H^l\br{Y} \to \H^n\br{X \times Y} $$
+is an isomorphism whenever $ X $ is a finite cell complex.
+\end{theorem}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item Cross-product $ \H^i\br{X} \times \H^j\br{Y} \to \H^{i + j}\br{X \times Y} $ is bilinear, but bilinear maps are rarely homomorphisms, so natural to pass to tensor product.
+\item For $ R $ a commutative ring, if $ \H^j\br{Y; R} $ is a free $ R $-module for all $ j $, then
+$$ \bigoplus_{k + l = n} \H^k\br{X; R} \otimes_R \H^l\br{Y; R} \xrightarrow{\sim} \H^n\br{X \times Y; R}. $$
+Note that if $ R $ is a field, $ \H^j\br{Y; R} $ is free.
+\item Write
+$$ \function[\times]{\H^\bullet\br{X; R} \otimes_R \H^\bullet\br{Y; R}}{\H^\bullet\br{X \times Y; R}}{a \otimes b}{a \times b} $$
+for K\"unneth. Note that this is a ring homomorphism where $ \br{a \otimes b}\br{c \otimes d} = \br{-1}^{\abs{b}\abs{c}}ac \otimes bd $. \footnote{Exercise: check}
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\begin{example*}
+The \textbf{exterior algebra} $ \Lambda\br{x_i \st x_i \in I} $ is free on generators $ \cbr{x_i} $ subject to skew-commutativity, so $ \H^\bullet\br{\S^1} \cong \ZZ\sbr{x} / \abr{x^2} = \Lambda\br{x} $ for $ \abs{x} = 1 $. By cellular cohomology,
+$$ \H^\bullet\br{\T^2} =
+\begin{cases}
+\ZZ & \bullet = 0, 2 \\
+\ZZ^2 & \bullet = 1 \\
+0 & \text{otherwise}
+\end{cases},
+\qquad
+\begin{array}{l}
+\H^0\br{\T^2} \cong \H^0\br{\S^1} \otimes \H^0\br{\S^1}, \\
+\H^1\br{\T^2} \cong \H^1\br{\S^1} \otimes \H^0\br{\S^1} \oplus \H^0\br{\S^1} \otimes \H^1\br{\S^1}, \\
+\H^2\br{\T^2} \cong \H^1\br{\S^1} \otimes \H^1\br{\S^1}.
+\end{array}
+$$
+Let $ \H^1\br{\T^2} $ be generated by $ x_1 \otimes 1 $ and $ 1 \otimes x_2 $. For degree reasons, the only possible interesting product is
+$$ \function{\H^1\br{\T^2} \times \H^1\br{\T^2}}{\H^2\br{\T^2}}{\br{x_1 \otimes 1, 1 \otimes x_2}}{x_1x_2 = x_1 \times x_2}, $$
+and $ x_1x_2 = -x_2x_1 $ by skew-commutativity, so the only non-zero products are those of $ \Lambda\br{x_1, x_2} $.
+\end{example*}
+
+\begin{corollary}
+$ \H^\bullet\br{\T^n} = \Lambda^\bullet\H^1\br{\T^n} $ is the exterior algebra on $ n $ degree one generators.
+\end{corollary}
+
+\begin{example*}
+Label $ 1 \in \H^0\br{\Sigma_g} $ for the unit and $ u \in \H^2\br{\Sigma_g} $ for a generator in
+$$ \H^\bullet\br{\Sigma_g} \cong
+\begin{cases}
+\ZZ & \bullet = 0, 2 \\
+\ZZ^{2g} & \bullet = 1
+\end{cases}.
+$$
+The ring structure is
+$$ \ZZ\abr{x_1, \dots, x_g, y_1, \dots, y_g \st x_ix_j = 0 = y_iy_j, \ x_iy_j = \delta_{ij}u}, $$
+and note $ y_ix_j = -x_jy_i $ by skew-commutativity. Consider
+$$ \Sigma_g \xrightarrow{\pi} \bigvee_{i = 1}^g \T^2 \xleftarrow{\p} \bigsqcup_{i = 1}^g \T^2. $$
+Check that $ \pi^* $ and $ \p^* $ are isomorphisms on degree one cohomology, so $ x_i $ and $ y_j $ define classes in $ \H^1\br{\bigvee_i \T^2} $ and $ \H^1\br{\Sigma_g} $. \footnote{Exercise} On degree two cohomology,
+$$
+\begin{tikzcd}[row sep=tiny]
+\H^2\br{\Sigma_g} \arrow[cong]{d} & \H^2\br{\bigvee_{i = 1}^g \T^2} \arrow{l}[swap]{\pi^*} \arrow{r}{\p^*} \arrow[cong]{d} & \H^2\br{\bigsqcup_{i = 1}^g \T^2} \arrow[cong]{d} \\
+\ZZ & \ZZ^g \arrow[dashed]{l}{\sum_i q_i \mapsfrom \br{q_1, \dots, q_g}} \arrow[dashed]{r}[swap]{\sim} & \ZZ^g
+\end{tikzcd},
+$$
+by symmetry on the $ \T_i^2 $. Now the result follows. If $ i \ne j $, then $ x_i $ and $ x_j $ come from disjoint copies of $ \T^2 $ so $ x_ix_j = 0 $, and similarly $ x_iy_j = 0 $ and $ y_iy_j = 0 $. If $ i = j $, then $ x_ix_i = 0 $ and $ y_iy_i = 0 $, and $ x_iy_i = u $ is the fixed generator of $ \H^2\br{\T^2} $ for the $ i $-th copy of $ \T^2 $.
+\end{example*}
+
+\lecture{13}{Friday}{06/11/20}
+
+As $ \H^n\br{\S^n} \cong \ZZ \cong \H^n\br{\T^n} $ we can define the \textbf{degree} of maps $ \S^n \to \T^n $ or $ \T^n \to \S^n $ via induced maps on cohomology, well-defined up to sign.
+
+\begin{corollary}
+There is no map $ f : \S^n \to \T^n $ of non-zero degree if $ n > 1 $.
+\end{corollary}
+
+\begin{proof}
+Let $ x_1 \dots x_n $ be the generator of $ \H^n\br{\T^n} $. Then
+$$ \function[f^*]{\H^1\br{\T^n}}{\H^1\br{\S^n} = 0}{x_i}{0}, $$
+so $ f^*\br{x_1 \dots x_n} = \prod_i f^*\br{x_i} = 0 $.
+\end{proof}
+
+\begin{exercise*}
+In contrast, there exists $ f : \T^n \to \S^n $ of degree one.
+\end{exercise*}
+
+\pagebreak
+
+\subsection{Proof of Kunneth theorem}
+
+Recall
+$$ \C^k\br{X, A} = \cbr{\phi \in \C^k\br{X} \st \forall \sigma \in \C_k\br{A} \subseteq \C_k\br{X}, \ \phi\br{\sigma} = 0}. $$
+If $ \phi \in \C^k\br{X, A} $ and $ \psi \in \C^l\br{X} $ then $ \phi \cdot \psi \in \C^{k + l}\br{X, A} $, since
+$$ \br{\phi \cdot \psi}\br{\sbr{v_0, \dots, v_{k + l}}} = \phi\br{\sbr{v_0, \dots, v_k}}\psi\br{\sbr{v_k, \dots, v_{k + l}}} = 0. $$
+So there is a \textbf{relative cup-product}
+$$ \H^\bullet\br{X, A} \otimes \H^\bullet\br{X} \to \H^\bullet\br{X, A}, $$
+and in particular $ \H^\bullet\br{X, A} $ is a graded ring. Note that this is typically not unital. Analogously, cross-product defines $ \C^k\br{X, A} \otimes \C^l\br{Y} \to \C^{k + l}\br{X \times Y, A \times Y} $ and a \textbf{relative cross-product}
+$$ \H^\bullet\br{X, A} \otimes \H^\bullet\br{Y} \to \H^\bullet\br{X \times Y, A \times Y}. $$
+We will use this to pay one of our debts.
+
+\begin{proof}[Proof of Theorem \ref{thm:kunneththeorem}]
+We consider the associations
+$$ \br{X, A} \mapsto h^\bullet\br{X, A} = \H^\bullet\br{X, A} \otimes \H^\bullet\br{Y}, \qquad \br{X, A} \mapsto k^\bullet\br{X, A} = \H^\bullet\br{X \times Y, A \times Y}, $$
+functors of $ \br{X, A} $, with $ Y $ fixed. Relative cross-product defines $ \Phi : h^\bullet\br{X, A} \to k^\bullet\br{X, A} $, and
+$$ \Phi_{\pt} : h^\bullet\br{\pt} \otimes \H^\bullet\br{Y} \to \H^\bullet\br{\pt \times Y} = k^\bullet\br{\pt} $$
+is an isomorphism. So by our discussion with axioms of how generalised cohomology theories behave for finite cell complexes, it suffices to prove
+\begin{enumerate}
+\item $ h^\bullet $ and $ k^\bullet $ are generalised cohomology theories, and
+\item $ \Phi $ is a natural transformation, or entwines all the structure.
+\end{enumerate}
+Then $ \Phi_{\br{X, A}} $ will be an isomorphism for all $ \br{X, A} $ and we will be done.
+\begin{enumerate}
+\item All generalised cohomology theory axioms are immediate for $ k^\bullet $ from properties of cohomology. For $ h^\bullet $, they are clear except the long exact sequence of a pair and unions. For those, use two algebraic facts.
+\begin{itemize}
+\item Tensoring with a free module preserves exactness.
+\item $ \br{\prod_\alpha M_\alpha} \otimes N = \prod_\alpha \br{M_\alpha \otimes N} $ if $ N $ is finitely generated and free.
+\end{itemize}
+\item So we need $ \Phi : \H^\bullet\br{X, A} \otimes \H^\bullet\br{Y} \to \H^\bullet\br{X \times Y, A \times Y} $ to be compatible with homotopy invariance, long exact sequence, excision, etc. Well, cross-product is natural for maps of spaces, so homotopy invariance and excision are fine. So basically just need to check
+$$
+\begin{tikzcd}
+\H^k\br{A} \otimes \H^l\br{Y} \arrow{r}{\delta \otimes \id} \arrow{d}[swap]{\times} & \H^{k + 1}\br{X, A} \otimes \H^l\br{Y} \arrow{d}{\times} \\
+\H^{k + l}\br{A \times Y} \arrow{r}[swap]{\delta} & \H^{k + l + 1}\br{X \times Y, A \times Y}
+\end{tikzcd}
+$$
+commutes. To define $ \delta $, for $ \phi \in \C^k\br{A} $ a cocycle, so $ \da^*\br{\phi} = 0 $, extend $ \phi $ to $ \widehat{\phi} \in \C^k\br{X} $ a cochain, and set $ \delta\br{\phi} = \da^*\br{\widehat{\phi}} $. Note that this does vanish on simplices in $ A $. If $ \psi \in \C^l\br{Y} $ is a cocycle, then $ \widehat{\phi} \times \psi $ does extend $ \phi \times \psi $ using $ \da^*\br{\psi} = 0 $, and this is what we need.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\subsection{Proof of graded commutativity}
+
+The other debt is graded commutativity. Since not true at chain level, can expect proof to be painful.
+
+\begin{proof}
+\hfill
+\begin{enumerate}[leftmargin=0.5in, label=Sketch \arabic*.]
+\item Let $ \epsilon_n = \br{-1}^{n\br{n + 1} / 2} $ and
+$$ \function[\rho]{\C_n\br{X}}{\C_n\br{X}}{\sbr{v_0, \dots, v_n}}{\epsilon_n\sbr{v_n, \dots, v_0}}, $$
+where $ \epsilon_n $ is the sign of the element of the $ n $-th symmetric group needed to reorder vertices we indicated. Claim that $ \rho $ is a chain map, chain homotopic to the identity. Given this,
+$$ \br{\rho^*\phi \cdot \rho^*\psi}\br{\sbr{v_0, \dots, v_{k + l}}} = \phi\br{\epsilon_k\sbr{v_k, \dots, v_0}}\psi\br{\epsilon_l\sbr{v_{k + l}, \dots, v_k}}, $$
+$$ \br{\rho^*\br{\psi \cdot \phi}}\br{\sbr{v_0, \dots, v_{k + l}}} = \epsilon_{k + l}\psi\br{\sbr{v_k, \dots, v_0}}\phi\br{\sbr{v_k, \dots, v_0}}, $$
+so $ \epsilon_k\epsilon_l\rho^*\phi \cdot \rho^*\psi = \epsilon_{k + l}\rho^*\br{\psi \cdot \phi} $ and $ \epsilon_{k + l} = \br{-1}^{kl}\epsilon_k\epsilon_l $. But $ \rho^* \simeq \id $, so $ \rho^* = \id $ on cohomology, so $ \sbr{\phi} \cdot \sbr{\psi} = \br{-1}^{kl}\sbr{\psi} \cdot \sbr{\phi} $ on cohomology. So just need to claim that $ \rho $ is a chain map, chain homotopic to the identity. To see $ \rho $ is a chain map, compute directly
+$$ \da\br{\rho\br{\sbr{v_0, \dots, v_n}}} = \epsilon_n\sum_i \br{-1}^i\sbr{v_n, \dots, \widehat{v_{n - i}}, \dots, v_0}, $$
+$$ \rho\br{\da\br{\sbr{v_0, \dots, v_n}}} = \rho\br{\sum_i \br{-1}^i\sbr{v_0, \dots, \widehat{v_i}, \dots, v_n}} = \epsilon_{n - 1}\sum_i \br{-1}^{n - i}\sbr{v_n, \dots, \widehat{v_{n - i}}, \dots, v_0}, $$
+and $ \epsilon_n = \br{-1}^n\epsilon_{n - 1} $. To show $ \rho : \C_n\br{X} \to \C_n\br{X} $ is chain homotopic to the identity, use a twisted prism $ P : \C_n\br{X} \to \C_{n + 1}\br{X} $ such that $ \da \circ P + P \circ \da = \rho - \id $. See the prism operator from the proof of homotopy invariance, but reverse order of vertices on the top. If $ \pi : \Delta^n \times \sbr{0, 1} \to \Delta^n $ is the projection,
+$$ P\br{\sigma} = \sum_i \br{-1}^i\epsilon_{n - i}\eval{\br{\sigma \circ \pi}}_{\sbr{v_0, \dots, v_i, w_n, \dots, w_i}}. $$
+Compare to the earlier prism operator. In fact, this does the job, since
+$$ \da\br{P\br{\sigma}} + P\br{\da\br{\sigma}} = \epsilon_n\sbr{w_n, \dots, w_0} - \sbr{v_0, \dots, v_n}. $$
+\item Let
+$$ \function[\Delta]{\C_{k + l}\br{X}}{\C_k\br{X} \otimes \C_l\br{X}}{\sbr{v_0, \dots, v_{k + l}}}{\sbr{v_0, \dots, v_k} \otimes \sbr{v_k, \dots, v_{k + l}}} $$
+and
+$$ \function[\widetilde{\Delta}]{\C_{k + l}\br{X}}{\C_k\br{X} \otimes \C_l\br{X}}{\sbr{v_0, \dots, v_{k + l}}}{\sbr{v_l, \dots, v_{k + l}} \otimes \sbr{v_0, \dots, v_l}\br{-1}^{kl}} $$
+be chain maps. Then
+$$ \phi \cdot \psi = \cdot_\ZZ \circ \br{\phi \otimes \psi} \circ \Delta, \qquad \br{-1}^{kl}\psi \cdot \phi = \cdot_\ZZ \circ \br{\phi \otimes \psi} \circ \widetilde{\Delta}. $$
+Claim that there is a unique natural chain map $ \C_\bullet\br{X} \to \C_\bullet\br{X} \otimes \C_\bullet\br{X} $ up to chain homotopy equivalence, so $ \Delta $ and $ \widetilde{\Delta} $ agree on homology. By naturality, it suffices to prove this for $ \Delta^n $ itself. But $ \C_\bullet\br{\Delta^n} $ and $ \C_\bullet\br{\Delta^n} \otimes \C_\bullet\br{\Delta^n} $ are free resolutions of $ \ZZ $, by the technique of acyclic models, so
+$$ \H_\bullet\br{\CC_\bullet\br{\Delta^n}} =
+\begin{cases}
+\ZZ & \bullet = 0 \\
+0 & \text{otherwise}
+\end{cases},
+\qquad \H_\bullet\br{\CC_\bullet\br{\Delta^n} \otimes \CC_\bullet\br{\Delta^n}} =
+\begin{cases}
+\ZZ & \bullet = 0 \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+Any two free resolutions of $ \ZZ $ are chain homotopy equivalent.
+\end{enumerate}
+\end{proof}
 
 \end{document}
