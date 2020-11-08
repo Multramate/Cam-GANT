@@ -26,6 +26,8 @@
 \delimitershortfall5pt
 \ifx\thm\undefined\newtheorem{n}{}\else\newtheorem{n}{}[\thm]\fi
 \newcommand\newoperator[1]{\ifcsdef{#1}{\cslet{#1}{\relax}}{}\csdef{#1}{\operatorname{#1}}}
+\newcommand\vC{\check{\C}}
+\newcommand\vH{\check{\H}}
 \setlength{\parindent}{0cm}
 
 % Environments
@@ -341,15 +343,18 @@
 \newoperator{Int}   % Integral
 \newoperator{ker}   % Kernel
 \newoperator{Mat}   % Matrix
+\newoperator{Morse} % Morse
 \newoperator{MV}    % Mayer-Vietoris
+\newoperator{ns}    % Nonsingular
 \newoperator{Ob}    % Object
 \newoperator{ord}   % Order
 \newoperator{Pic}   % Picard
 \newoperator{Proj}  % Projective
+\newoperator{res}   % Restriction
 \newoperator{rk}    % Rank
 \newoperator{Spec}  % Spectrum
 \newoperator{Tors}  % Torsion
-\newoperator{tr}    % Trace
+\newoperator{Tr}    % Trace
 
 % Roman
 
