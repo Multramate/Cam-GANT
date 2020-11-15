@@ -1742,15 +1742,15 @@ A direct check shows the outer $ h $ maps are isomorphisms, so just need the dia
 
 \begin{proposition}
 Let $ X $ be a finite cell complex. Then
-$$ \H^i\br{X; \ZZ} \cong \br{\H_i\br{X; \ZZ} / \Tors} \oplus \Tors \H_{i - 1}\br{X; \ZZ}. $$
+$$ \H^i\br{X; \ZZ} \cong \br{\H_i\br{X; \ZZ} / \tors} \oplus \tors \H_{i - 1}\br{X; \ZZ}. $$
 \end{proposition}
 
 Note that for an abelian group $ G $,
-$$ \Tors G = \cbr{\text{elements of finite order}} = \cbr{\text{all $ \ZZ / k $-summands} \st k \ge 2} \le G. $$
+$$ \tors G = \cbr{\text{elements of finite order}} = \cbr{\text{all $ \ZZ / k $-summands} \st k \ge 2} \le G. $$
 
 \begin{proof}
 This is now just algebra. Let $ C_\bullet $ be a chain complex of free finitely generated abelian groups, and $ C^\bullet = \Hom\br{C_\bullet, \ZZ} $ the dual complex. Then
-$$ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \Tors} \oplus \Tors \H_{i - 1}\br{C_\bullet}. $$
+$$ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \tors} \oplus \tors \H_{i - 1}\br{C_\bullet}. $$
 The key idea is to break $ C_\bullet $ into a collection of short exact sequences
 $$ 0 \to Z_n \to C_n \to B_{n - 1} \to 0, \qquad 0 \to B_n \to Z_n \to \H_n\br{C_\bullet} \to 0, $$
 where $ Z_i = \ker \br{\da_i : C_i \to C_{i - 1}} $ and $ B_i = \im \br{\da_{i + 1} : C_{i + 1} \to C_i} $. In the former sequence, all the terms are free finitely generated abelian groups, so we can non-canonically split these and write $ C_n \cong Z_n \oplus B_{n - 1} $ for all $ n $, so there exists $ \alpha_n : B_{n - 1} \to C_n $ such that $ \da_n \circ \alpha_n = \id $. Then $ C_\bullet $ becomes
@@ -1779,7 +1779,7 @@ d_{k - 1} \mid d_k
 $$
 so $ \br{\ref{eq:2}} $ breaks into a direct sum of complexes of the form
 $$ 0 \to \ZZ \xrightarrow{0} \ZZ \to 0, \qquad 0 \to \ZZ \xrightarrow{d_i} \ZZ \to 0. $$
-Now the relation $ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \Tors} \oplus \Tors \H_{i - 1}\br{C_\bullet} $ is obvious, by just checking in these two examples.
+Now the relation $ \H^i\br{C^\bullet} = \br{\H_i\br{C_\bullet} / \tors} \oplus \tors \H_{i - 1}\br{C_\bullet} $ is obvious, by just checking in these two examples.
 \end{proof}
 
 \pagebreak
@@ -1869,7 +1869,7 @@ $$ \bigoplus \br{\iota_\alpha}_* : \bigoplus_\alpha h_\bullet\br{X_\alpha} \xrig
 These axioms are usually called the \textbf{Eilenberg-Steenrod axioms}.
 \end{definition*}
 
-One sometimes restricts attention to pairs $ \br{X, A} $ which are not too pathological so for example components and path-components agree. The axioms let us formalise the idea that homology of cell complexes is quite constrained or computable.
+One sometimes restricts attention to pairs $ \br{X, A} $ which are not too pathological, so for example components and path-components agree. The axioms let us formalise the idea that homology of cell complexes is quite constrained or computable.
 
 \begin{definition*}
 If $ h_\bullet $ and $ k_\bullet $ are generalised homotopy theories, a \textbf{natural transformation} $ \Phi : h_\bullet \to k_\bullet $ comprises homomorphisms $ \Phi_{X, A} : h_\bullet\br{X, A} \to k_\bullet\br{X, A} $ for all $ \br{X, A} $, which are compatible with all the structure.
@@ -2302,5 +2302,486 @@ $$
 Any two free resolutions of $ \ZZ $ are chain homotopy equivalent.
 \end{enumerate}
 \end{proof}
+
+\pagebreak
+
+\subsection{Lyusternik-Schnirelmann categories}
+
+\lecture{14}{Monday}{09/11/20}
+
+Cohomology $ \H^\bullet\br{X} $ is a ring. That is useful because $ f : X \to Y $ induces $ f^* : \H^\bullet\br{X} \to \H^\bullet\br{Y} $ a ring homomorphism but it also gives rise to new kinds of invariants.
+
+\begin{definition*}
+The \textbf{cup-length} of a space $ X $ is
+$$ \cl X = \max \cbr{N \st \exists \alpha_i, \ 1 \le i \le N, \ \alpha_i \in \H^{> 0}\br{X}, \ \alpha_1 \cdot \dots \cdot \alpha_N \ne 0}. $$
+\end{definition*}
+
+Similarly, one could for example define the minimal number of elements of $ \H^\bullet\br{X} $ needed to generate it as a ring.
+
+\begin{example*}
+$ \cl \S^n = 1 $ and $ \cl \T^n = \cl \br{\S^1 \times \dots \times \S^1} = n $.
+\end{example*}
+
+Fix a space $ X $. We define a function
+$$ \function[\nu]{\cbr{\text{subsets of} \ X}}{\NN \cup \cbr{\infty}}{A}{\nu\br{A}}, $$
+the \textbf{Lyusternik-Schnirelmann category} of $ A $, where $ \nu\br{A} $ is the least $ N $ such that $ A $ can be covered by $ N $ open sets $ U_i \subseteq X $ such that the inclusion maps $ U_i \hookrightarrow X $ are homotopic to constant maps. In particular $ U_i \simeq \pt $ is contractible. Let $ \nu\br{A} = \infty $ if $ A $ cannot be covered by any finite collection of such sets, and let $ \nu\br{\emptyset} = 0 $ by convention.
+
+\begin{remark*}
+We usually only discuss $ \nu $ for spaces $ X $ that admit some cover $ \UUU = \cbr{U_i \st i \in I} $ by open sets such that $ U_i \hookrightarrow X $ is nullhomotopic. Note that if $ X $ is also compact, then $ \nu $ is finite-valued.
+\end{remark*}
+
+\begin{example*}
+Any compact manifold has finite category, and $ \nu\br{\S^n} = 2 $.
+\end{example*}
+
+By example sheet $ 2 $, $ \cl X < \nu\br{X} $. Let $ X $ be a manifold. Then $ \nu : \cbr{\text{subsets of} \ X} \to \NN \cup \cbr{\infty} $ satisfies
+\begin{itemize}
+\item if $ A \subseteq X $, then there exists a open neighbourhood $ A \subseteq U \subseteq X $ such that $ \nu\br{A} = \nu\br{U} $,
+\item if $ A \subseteq B $, then $ \nu\br{A} \le \nu\br{B} $,
+\item $ \nu\br{A \cup B} \le \nu\br{A} + \nu\br{B} $,
+\item $ \nu\br{\emptyset} = 0 $ and $ \nu\br{\pt} = 1 $, and
+\item $ \nu $ is a homeomorphism invariant, so if $ f : X \xrightarrow{\sim} X $, then $ \nu\br{A} = \nu\br{f\br{A}} $.
+\end{itemize}
+
+\begin{theorem}
+Let $ M $ be a connected, closed smooth manifold. Any smooth function $ f : M \to \RR $ has at least $ 1 + \cl M $ critical points.
+\end{theorem}
+
+\begin{proof}
+We will show that if $ f $ has finitely many critical points, then there are at least $ \nu\br{M} $ of them. Since $ \cl M < \nu\br{M} $, we win. The proof will use some ideas from differential topology and geometry, and is therefore a digression from the course proper, so not examinable. Pick a Riemannian metric $ g $ on $ M $, so we have the downwards gradient vector field $ -\nabla f $ of $ f $ such that $ \abr{\nabla f, y}_g = \d f\br{y} $ for all $ y \in \Gamma\br{\T M} $. As $ M $ is compact, there is an associated flow $ \cbr{\phi_t} $ of $ M $. Call the set
+$$ \Crit f = \cbr{f\br{p} \ \text{is a critical value of} \ f}. $$
+Note that if $ c : I \to M $ is a curve, $ \abr{\nabla f, \tod{c}{t}}_g = \tod{}{t}\br{f \circ c} $, so $ \nabla f $ points away from $ f^{-1}\br{t} $. Let
+$$ M^c = f^{-1}\br{\intoc{-\infty, c}}, \qquad c_j = \sup \cbr{c \st \nu\br{M^c} < j}, $$
+so $ c_1 = \min f $ and $ c_N = \max f $ where $ N = \nu\br{M} $. Claim that $ c_j \in \Crit f $ and either $ c_j < c_{j + 1} $ or $ f^{-1}\br{c_j} $ contains infinitely many critical points of $ f $, so if the number of critical values of $ f $ is finite, $ c_1 < \dots < c_N $ and we win.
+
+\pagebreak
+
+\begin{itemize}
+\item $ c_j \in \Crit f $. This follows from the following property of flows. If $ c \in \RR \setminus \Crit f $, there exist $ t, \delta > 0 $ such that $ \phi^t\br{M^{c + \delta}} \subseteq M^{c - \delta} $. The flow is by homeomorphisms, so
+$$ \nu\br{M^{c + \delta}} = \nu\br{\phi^t\br{M^{c + \delta}}} \le \nu\br{M^{c - \delta}}, $$
+so $ c \notin \cbr{c_j} = \cbr{\sup \cbr{c \st \nu\br{M^c} < j}} $.
+\item Suppose $ \abs{f^{-1}\br{c_j} \cap \Crit f} < \infty $ is finite. Note that if $ \Sigma \subseteq M $ for $ M $ a connected manifold is finite, there exists an open $ \RR^n \cong U \subseteq M $ with $ \Sigma \subseteq U $, so $ \nu\br{\Sigma} \le \nu\br{U} = 1 $. So as $ \phi^t\br{M^{c_j + \delta} \setminus U} \subseteq M^{c_j - \delta} $ for suitable $ t $ and $ \delta $,
+$$ \nu\br{M^{c_j + \delta}} \le \nu\br{M^{c_j + \delta} \setminus U} + 1 \le \nu\br{M^{c_j - \delta}} + 1 < j + 1, $$
+by definition of $ c_j $. Thus $ c_{j + 1} \ge c_j + \delta > c_j $, as required. The upshot is if there exists finite many critical points, there are at least $ N = \nu\br{M} $ of them.
+\end{itemize}
+\end{proof}
+
+\begin{corollary}
+Every $ f : \T^n \to \RR $ has at least $ n + 1 $ critical points.
+\end{corollary}
+
+\begin{proof}
+$ \cl \T^n = n $.
+\end{proof}
+
+\begin{remark*}
+Morse theory is about studying $ \H^\bullet\br{M} $ via $ \Crit f $ where $ f $ has non-degenerate critical points. The fact that $ \H^\bullet\br{M} \cong \H_{\Morse}^\bullet\br{f} $ implies if $ f $ has non-degenerate critical points, it has at least $ \sum_j \rk \H^j\br{M} $ such. The Lyusternik-Schnirelmann bound is weaker but has no non-degeneracy hypotheses.
+\end{remark*}
+
+\pagebreak
+
+\section{Vector bundles}
+
+\lecture{15}{Wednesday}{11/11/20}
+
+Our goal is to understand cup-product better, and eventually the cohomology rings of manifolds. But we will get there by a roundabout route.
+
+\subsection{Vector bundles}
+
+\begin{definition*}
+Let $ B $ be a space. A \textbf{vector bundle} $ E \to B $ of rank $ d $ is a family of vector spaces $ \cbr{E_b}_{b \in B} $ and a topology on the disjoint union $ E = \bigsqcup_{b \in B} E_b $ such that
+\begin{itemize}
+\item the projection $ p : E \to B $ is continuous, and
+\item there is \textbf{local triviality}, so for all $ b \in B $ there exists an open $ U \ni b $ and a \textbf{local trivialisation} such that the diagram
+$$
+\begin{tikzcd}
+p^{-1}\br{U} = \eval{E}_U \arrow{r}{\psi} \arrow{dr}[swap]{p} & U \times \RR^d \arrow{d}{\pi_1} \\
+& U &
+\end{tikzcd}
+$$
+commutes and $ \psi : E_y = p^{-1}\br{y} \to \cbr{y} \times \RR^n $ is a linear isomorphism for all $ y \in U $.
+\end{itemize}
+\end{definition*}
+
+\begin{notation*}
+$ E $ is the \textbf{total space} and $ B $ is the \textbf{base space}. The $ E_b $ are the \textbf{fibres}. A map $ s : B \to E $ such that $ p \circ s = \id_B $ is a \textbf{section} of $ E $. There is the \textbf{zero-section}, which sends
+$$ \function{B}{E_b}{b}{0}. $$
+Note the zero section $ \iota : B \to E $ and the projection $ p : E \to B $ are inverse homotopy equivalences, that is $ p \circ \iota = \id_B $ and $ \iota \circ p \simeq \id_E $. The \textbf{trivial} rank $ d $ vector bundle is $ \br{E = B \times \RR^d, p = \pi_1} $.
+\end{notation*}
+
+\begin{example*}
+The M\"obius strip is a non-trivial rank one bundle over $ \S^1 $, and $ \S^1 \times \RR $ is a trivial rank one bundle over $ \S^1 $.
+\end{example*}
+
+The following are operations on vector bundles.
+\begin{itemize}
+\item \textbf{Pullback}. If $ \pi : E \to X $ is a vector bundle and $ f : Y \to X $, then $ \pi : f^*E \to Y $ is defined by
+$$ f^*E = \cbr{\br{e, y} \in E \times Y \st \pi\br{e} = f\br{y}}, $$
+and $ \pi = \pi_2 $. So $ \br{f^*E}_y = E_{f\br{y}} $.
+\item \textbf{Whitney sum}. If $ \pi_1 : E \to X $ and $ \pi_2 : F \to X $ are vector bundles, $ E \oplus F \to X $ has
+$$ E \oplus F = \cbr{\br{e, f} \in E \times F \st \pi_1\br{e} = \pi_2\br{f}}, $$
+so there exists an induced projection to $ X $. So $ \br{E \oplus F}_x = E_x \oplus F_x $.
+\end{itemize}
+Note that both pullback and Whitney sum
+\begin{itemize}
+\item take trivial bundles to trivial bundles, and
+\item commute with restriction to open sets in $ X $.
+\end{itemize}
+That is, $ \eval{E}_U \oplus \eval{F}_U = \eval{\br{E \oplus F}}_U $ and $ f^*\br{\eval{E}_U} = \eval{\br{f^*E}}_{f^{-1}\br{U}} $, so pullback and Whitney sum preserve the property of being locally trivial. More generally, anything you can do to a vector space, you can do to a vector bundle. Given $ E $ and $ F $ there is $ E \otimes F $, the dual bundle $ E^* $, exterior powers of $ E $, etc, with the fibres given by the corresponding vector space operations.
+
+\pagebreak
+
+\begin{definition*}
+A \textbf{subbundle} $ F \subseteq E $ is a subspace such that for all $ x \in X $ there exists a local trivialisation of $ E $, so $ x \in U $ and
+$$
+\begin{tikzcd}[row sep=tiny]
+\eval{E}_U \arrow{r}{\psi} & U \times \RR^d \\
+\eval{F}_U = F \cap \pi^{-1}\br{U} \arrow[subset]{u} \arrow{r}[swap]{\psi} & U \times \RR^k \arrow[subset]{u}
+\end{tikzcd},
+$$
+for $ \RR^k \subseteq \RR^d $. Then $ \eval{\pi}_F : F \to X $ is also a vector bundle now of rank $ k $. If $ F \subseteq E $ is a subbundle there is \textbf{quotient bundle} with fibre $ E_x / F_x $. Note that vector bundles $ p : E \to X $ and $ p' : E' \to X $ are \textbf{isomorphic} if there exists
+$$
+\begin{tikzcd}
+E \arrow{r}{\phi} \arrow{d}[swap]{p} & E' \arrow{d}{p'} \\
+X \arrow{r}[swap]{g} & X
+\end{tikzcd},
+$$
+where $ \phi $ and $ g $ are homeomorphisms, such that $ \eval{\phi}_{E_x} : E_x \xrightarrow{\sim} E_{g\br{x}}' $ are linear isomorphisms for all $ x $. Some people insist $ g = \id $.
+\end{definition*}
+
+The following is another viewpoint. Let $ E \to B $ be a vector bundle and $ \cbr{U_\alpha}_{\alpha \in A} $ a trivialising open cover. For $ \alpha, \beta \in A $,
+$$
+\begin{tikzcd}
+\eval{E}_{U_\alpha \cap U_\beta} \arrow{r}{\psi_\alpha} \arrow[swap]{d}{\psi_\beta} & \br{U_\alpha \cap U_\beta} \times \RR^d \arrow[dashed]{dl}{U_\alpha \cap U_\beta \xrightarrow{\psi_\beta \circ \psi_\alpha^{-1}} \GL\br{d; \RR}} \\
+\br{U_\alpha \cap U_\beta} \times \RR^d
+\end{tikzcd}.
+$$
+The functions $ \psi_{\beta\alpha} = \psi_\beta \circ \psi_\alpha^{-1} $ satisfy the \textbf{cocycle condition}
+$$ \psi_{\alpha\alpha} = \id, \qquad \psi_{\alpha\beta} = \br{\psi_{\beta\alpha}}^{-1}, \qquad \psi_{\alpha\gamma} \circ \psi_{\gamma\beta} \circ \psi_{\beta\alpha} = \id. $$
+We can build
+$$ E = \br{\bigsqcup_{\alpha \in A} U_\alpha \times \RR^d} / \sim, $$
+where $ \br{x, v} \sim \br{x, \psi_{\beta\alpha}\br{x}\br{v}} $ for all $ x \in U_\alpha \cap U_\beta $. So given a cover $ \cbr{U_\alpha}_{\alpha \in A} $ and matrix-valued functions $ \cbr{\psi_{\beta\alpha} : U_\alpha \cap U_\beta \to \GL\br{d; \RR}} $ satisfying the cocycle condition there is an associated vector bundle.
+
+\begin{example*}
+If $ E \to B $ and $ F \to B $ are given, $ E \otimes F $ is the bundle with underlying set $ \bigsqcup_b E_b \otimes F_b $ and topologised via the transition functions $ \psi_{\beta\alpha}^E \otimes \psi_{\beta\alpha}^F : U_\alpha \cap U_\beta \to \GL\br{d_1d_2; \RR} $, where $ \rk E = d_1 $ and $ \rk F = d_2 $.
+\end{example*}
+
+\begin{example*}
+If $ M $ is a smooth manifold, the \textbf{tangent bundle} $ \T M $, of rank $ n = \dim_\RR M $, is defined with respect to an atlas $ \cbr{\br{U_\alpha, \phi_\alpha : U_\alpha \xrightarrow{\sim} \RR^n}} $ of charts for $ M $ by the transition matrices $ \psi_{\beta\alpha} $ of partial derivatives of $ \phi_{\beta\alpha} $, where
+$$ \phi_{\beta\alpha} = \phi_\beta \circ \phi_\alpha^{-1} : \phi_\alpha\br{U_\alpha \cap U_\beta} \to \phi_\beta\br{U_\alpha \cap U_\beta} $$
+are diffeomorphisms of open sets. The cocycle condition is implied by the chain rule.
+\end{example*}
+
+\begin{example*}
+If $ M $ is a smooth manifold and $ \iota : N \hookrightarrow M $ is a smooth submanifold, $ \T N \subseteq \iota^*\T M = \eval{\T M}_N $ is a subbundle. The quotient $ \nu_{N / M} = \iota^*\T M / \T N $ is the \textbf{normal bundle} of $ N $ in $ M $.
+\end{example*}
+
+\subsection{The tautological bundle over the Grassmannian}
+
+\begin{example*}
+Let
+$$ X = \Gr\br{k; \RR^n} = \cbr{\text{$ k $-dimensional subspace of} \ \RR^n}, $$
+the \textbf{Grassmannian}, defining $ X $ to be a quotient of $ \GL\br{n; \RR} $, or $ X = \O\br{n} / \O\br{k} \times \O\br{n - k} $ since any subspace has an orthonormal basis so now consider changes of basis which do not change the subspace. The \textbf{tautological bundle} $ E \to \Gr\br{k; \RR^n} $ has fibre at $ x $ the subspace $ \abr{x} \subseteq \RR^n $, where
+$$ E = \cbr{\br{x, v} \in \Gr\br{k; \RR^n} \times \RR^n \st v \in \abr{x}}. $$
+Sometimes we write $ E_{\taut} $.
+\end{example*}
+
+\pagebreak
+
+\begin{lemma}
+$ E_{\taut} $ is locally trivial.
+\end{lemma}
+
+\begin{proof}
+Pick an inner product $ \abr{,} $ on $ \RR^n $. For $ x \in X $,
+$$ U = \cbr{y \in X \st E_y \cap E_x^\perp = \cbr{0}} $$
+is an open neighbourhood of $ x $. Let
+$$ \function[\psi]{\eval{E}_U}{U \times E_x = U \times \RR^k}{\br{y, \xi}}{\br{y, \pi_{\abr{x}}\br{\xi}}}, $$
+where $ \pi_{\abr{x}} : \RR^n \to \abr{x} $ is the orthogonal projection. For all $ y \in U $, $ \eval{\pi_{\abr{x}}}_{E_y} : E_y \xrightarrow{\sim} E_x = \abr{x} $ by definition of $ U $.
+\end{proof}
+
+Note that there is an obvious notion of a complex vector bundle, where $ E_y \cong \CC^d $ for all $ y $ and transition maps are valued in $ \GL\br{d; \CC} $, and a tautological bundle $ E \to \Gr\br{k; \CC^n} $. Thus there is a tautological \textbf{line bundle}, a vector bundle of rank one, $ \LLL_{\taut} = \LLL \to \RR\PP^n $ with fibres $ \RR $ and $ \LLL_{\taut} = \LLL \to \CC\PP^n $ with fibres $ \CC $.
+
+\begin{lemma}
+Let $ X $ be compact and Hausdorff, or more generally paracompact and Hausdorff. If $ \cbr{U_\alpha}_{\alpha \in A} $ is an open cover of $ X $, there is a subordinate \textbf{partition of unity} $ \cbr{\lambda_\alpha : X \to \RR_{\ge 0}}_{\alpha \in A} $ such that
+\begin{itemize}
+\item $ \supp \lambda_\alpha = \cbr{x \in X \st \lambda_\alpha\br{x} \ne 0} \subseteq U_\alpha $,
+\item for all $ x \in X $, $ \#\cbr{i \st x \in \supp \lambda_i} < \infty $, and
+\item for all $ x \in X $, $ \sum_{\alpha \in A} \lambda_\alpha\br{x} = 1 $.
+\end{itemize}
+\end{lemma}
+
+We will not prove this.
+
+\begin{definition*}
+An \textbf{inner product} on a vector bundle $ E \to X $ is a map $ \lambda : E \otimes E \to \RR $ such that for all $ x \in X $, $ \lambda_x : E_x \otimes E_x \to \RR $ is an inner product on $ E_x $.
+\end{definition*}
+
+\begin{lemma}
+A vector bundle $ p : E \to X $ over a compact Hausdorff space admits an inner product. Moreover, $ E $ is globally generated by sections, so for all $ x \in X $ and $ \xi_x \in E_x $, there exists $ s : X \to E $ a section such that $ s\br{x} = \xi_x $, so $ p \circ s = \id_X $.
+\end{lemma}
+
+\begin{proof}
+Fix a trivialising open cover $ \cbr{U_\alpha}_{\alpha \in A} $ for $ E $. Fix an inner product $ \abr{,} $ on $ \RR^d $ for $ d = \rk E $. Via $ \psi_\alpha : \eval{E}_{U_\alpha} \to U_\alpha \times \RR^d $, $ \abr{,} $ gives $ \abr{,}_\alpha $ an inner product on $ \eval{E}_{U_\alpha} $. If $ \cbr{\lambda_\alpha} $ is a partition of unity subordinate to $ \cbr{U_\alpha} $, for $ u \otimes v \in E \otimes E $ set
+\begin{equation}
+\label{eq:6}
+\lambda\br{u \otimes v} = \abr{u, v} = \sum_{\alpha \in A} \lambda_\alpha\br{p\br{u}}\abr{u, v}_{\alpha}.
+\end{equation}
+Note that $ \abr{u, v}_\alpha $ is only defined if $ p\br{u} = p\br{v} \in U_\alpha $. But if this is not true, $ \lambda_\alpha\br{p\br{u}} = 0 $, so that is ok. Note $ \br{\ref{eq:6}} $ is a finite sum. It is easy to check this is an inner product. Similarly for global generation. If $ x \in U_\alpha $ and $ \xi_x \in E_x $, pick a section $ s_\alpha $ of $ \eval{E}_{U_\alpha} $ such that $ s_\alpha\br{x} = \xi_x $, such as a constant section with respect to the isomorphism
+$$ \function{\eval{E}_{U_\alpha}}{U_\alpha \times \RR^d}{\xi_x}{\br{x, v}}. $$
+Now let $ s = \sum_\alpha \lambda_\alpha s_\alpha $, a section of $ E $.
+\end{proof}
+
+\begin{corollary}
+Let $ X $ be compact Hausdorff and $ E \to X $ a vector bundle of rank $ d $. Then there exists $ N > d $ and $ f : X \to \Gr\br{d; \RR^N} $ such that
+\begin{equation}
+\label{eq:7}
+E \cong f^*E_{\taut}.
+\end{equation}
+\end{corollary}
+
+We say the tautological bundle and the Grassmannian are \textbf{universal} for rank $ d $ bundles.
+
+\begin{remark*}
+There is a lot of choice here, such as of $ N $. If $ \Gr\br{d; \RR^\infty} = \bigcup_{N \ge d} \Gr\br{d; \RR^N} $ then there is a bijection
+$$ \function{\cbr{\text{homotopy classes of maps} \ X \to \Gr\br{d; \RR^\infty}}}{\cbr{\text{rank} \ d \ \text{vector bundles over} \ X} / \cong}{f}{f^*E_{\taut}}. $$
+See problem sheet $ 3 $.
+\end{remark*}
+
+\pagebreak
+
+\begin{proof}
+By compactness of $ X $, there exists a finite set $ \cbr{s_1, \dots, s_N} $ of sections of $ E $ such that for all $ x \in X $, $ \cbr{s_1\br{x}, \dots, s_N\br{x}} $ spans $ E_x \cong \RR^d $. Fix an inner product $ \abr{,} $ on $ E $ and consider
+$$ \function[\alpha]{E}{X \times \RR^N}{\br{x, \xi}}{\br{x, \abr{s_1\br{x}, \xi}, \dots, \abr{s_N\br{x}, \xi}}}. $$
+Then $ \alpha $ embeds $ E $ as a subbundle of a trivial bundle. We then define
+$$ \function[f]{X}{\Gr\br{d; \RR^N}}{x}{\alpha\br{E_x} \subseteq \RR^N}, $$
+and $ \br{\ref{eq:7}} $ holds by construction.
+\end{proof}
+
+Note that this also shows that if $ X $ is compact Hausdorff and $ E \to X $, there exists $ F \to X $ another subbundle such that $ E \oplus F $ is a trivial bundle, and $ F_x = \alpha\br{E_x}^\perp $ with respect to $ \abr{,}_{\RR^N} $.
+
+\subsection{Thom classes and Euler classes}
+
+\lecture{16}{Friday}{13/11/20}
+
+Last time we discussed vector bundles $ E \to X $. Since $ E \simeq X $, it appears as if the cohomology of $ E $ has no new information. But in fact vector bundles are ubiquitous in part because they give rise to distinguished elements of cohomology. Note if $ E \to X $ has rank $ n $, $ \H^n\br{E_x, E_x \setminus \cbr{0}} \cong \H^n\br{\RR^n, \RR^n \setminus \cbr{0}} \cong \H^{n - 1}\br{\S^{n - 1}} \cong \ZZ $.
+
+\begin{definition*}
+A rank $ n $ vector bundle $ E \to X $ is \textbf{oriented} if for all $ x \in X $ we fix a generator $ \epsilon_x \in \H^n\br{E_x, E_x \setminus \cbr{0}} $ and these vary locally trivially, so if $ x \in U \subseteq X $ is a trivialising open neighbourhood, then $ E_y \xrightarrow{\sim} E_x $ sends $ \epsilon_y \mapsfrom \epsilon_x $ for all $ y \in U $. Thus
+$$
+\begin{tikzcd}[row sep=tiny]
+\eval{E}_U \arrow{r}{\sim} & U \times E_x \\
+E_y \arrow[subset]{u} \arrow{r}[swap]{\sim} & \cbr{y} \times E_x \arrow[subset]{u}
+\end{tikzcd}.
+$$
+\end{definition*}
+
+\begin{notation*}
+$ E^\# = E \setminus \cbr{\text{zero-section} \ X \subseteq E} $ and $ E_x^\# = E_x \setminus \cbr{0} $.
+\end{notation*}
+
+Note that can also make sense of $ E $ being $ R $-orientable or $ R $-oriented for a coefficient ring $ R $. Note if $ R = \FF_2 $, every $ E $ is $ \FF_2 $-oriented, as $ \H^\bullet\br{\RR^n, \RR^n \setminus \cbr{0}; \FF_2} \cong \ZZ / 2 $ has a unique generator.
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item If $ E \to X $ is defined by transition cocycles $ g_{\alpha\beta} : U_\alpha \cap U_\beta \to \GL\br{n; \RR} $ and $ \im g_{\alpha\beta} \subseteq \GL^+\br{n; \RR} $ with positive determinant then $ E $ is orientable.
+\item If $ M $ is a smooth manifold, $ M $ is orientable if and only if $ \T M $ is orientable.
+\end{itemize}
+\end{remark*}
+
+\begin{theorem}[Thom isomorphism theorem]
+Let $ \pi : E \to X $ be an oriented vector bundle of rank $ n $.
+\begin{itemize}
+\item $ \H^k\br{E, E^\#} = 0 $ for $ k < n $.
+\item There exists a unique element $ \u_E \in \H^n\br{E, E^\#} $ such that the restriction, the pullback with respect to $ \br{E_x, E_x \setminus \cbr{0}} \hookrightarrow \br{E, E^\#} $, is $ \eval{\u_E}_{E_x} = \epsilon_x $ for all $ x $.
+\item The map
+$$ \function{\H^k\br{X}}{\H^{k + n}\br{E, E^\#}}{\alpha}{\pi^*\alpha \cdot \u_E} $$
+is an isomorphism for all $ k $.
+\end{itemize}
+\end{theorem}
+
+\begin{definition*}
+$ \u_E \in \H^n\br{E, E^\#} $ is the \textbf{Thom class} of $ E $. Under
+$$ \H^n\br{E, E^\#} \xrightarrow{\text{LES}} \H^n\br{E} \xrightarrow{\br{\text{zero-section}}^*} \H^n\br{X}, $$
+$ \u_E $ maps to $ \e_E $, the \textbf{Euler class} of $ E $.
+\end{definition*}
+
+The upshot is an oriented vector bundle $ E \to X $ defines a class $ \e_E \in \H^{\rk E}\br{X} $. Note that if $ E \to X $ is oriented, and $ f : Y \to X $, then $ f^*E \to Y $ inherits an orientation via $ \br{E_y, E_y \setminus \cbr{0}} \xrightarrow{\sim} \br{E_{f\br{y}}, E_{f\br{y}} \setminus \cbr{0}} $. These isomorphisms vary locally trivially. Now the uniqueness part of the Thom isomorphism says
+$$ \u_{f^*E} = \widehat{f}^*\u_E, \qquad \widehat{f} : \br{f^*E, f^*E^\#} \to \br{E, E^\#}. $$
+
+\pagebreak
+
+\begin{definition*}
+If $ \PPP $ is a property, an assignment
+$$ \function{\cbr{\PPP \ \text{vector bundles over} \ X}}{\H^\bullet\br{X}}{E}{c\br{E}}, $$
+such that $ c\br{f^*E} = f^*c\br{E} $ for all $ f : X \to Y $ is called a \textbf{characteristic class} of $ \PPP $ vector bundles.
+\end{definition*}
+
+\begin{example*}
+The Euler class is a characteristic class for oriented vector bundles.
+\end{example*}
+
+Characteristic classes give a global measure of the non-triviality of a vector bundle. Note if $ E = X \times \RR^d $ is trivial, $ E = f^*E_{\triv} $ for $ \RR^d = E_{\triv} $, so $ c\br{E} = f^*c\br{E_{\triv}} \in f^*\H^\bullet\br{\pt} $ is zero in $ \widetilde{\H^\bullet}\br{X} $.
+
+\begin{lemma}
+If an oriented vector bundle $ \pi : E \to X $ has a nowhere zero section, $ \e_E = 0 $.
+\end{lemma}
+
+\begin{proof}
+Suppose $ s : X \to E $ has image in $ E^\# = E \setminus \cbr{\text{zero-section}} $. We have
+$$
+\begin{tikzcd}
+X \arrow{r}{s} \arrow[bend right=30]{rr}[swap]{\id_X} & E^\# \subseteq E \arrow{r}{\pi} & X \\
+\end{tikzcd},
+$$
+so $ \e_E \in \im \br{\H^k\br{E^\#} \to \H^k\br{X}} $ for $ k = \rk E $. But
+$$
+\begin{tikzcd}
+\H^k\br{E, E^\#} \arrow{r} \arrow[bend left=30]{rr}{\u_E \mapsto 0} \arrow{dr}[swap]{\u_E \mapsto \e_E} & \H^k\br{E} \arrow{r} \arrow{d}{\iota^*} & \H^k\br{E^\#} \arrow{dl}{s^*} \\
+& H^k\br{X} &
+\end{tikzcd},
+$$
+so $ \e_E = 0 $.
+\end{proof}
+
+A caveat is that this is not quite as good as it looks.
+
+\begin{lemma}
+If $ E \to X $ is oriented and $ \rk E = d $ is odd, $ 2\e_E = 0 $.
+\end{lemma}
+
+\begin{proof}
+The map
+$$ \function[\alpha]{E}{E}{v}{-v} $$
+acts by $ -1 $ on $ \H^d\br{E_x, E_x \setminus \cbr{0}} $ as it is a composition of $ d $ reflections, so $ \alpha^*\u_E = -\u_E $. But if $ s_0 : X \to E $ is the zero-section, $ \alpha \circ s_0 = s_0 $ and $ \eval{\u_E}_{s_0\br{x}} = \e_E \in \H^d\br{X} $. Combine these ingredients.
+\end{proof}
+
+So if $ \H^d\br{X} $ has no $ 2 $-torsion, $ \e_E = 0 $.
+
+\subsection{The Gysin sequence}
+
+Let $ E \to X $ be a vector bundle of rank $ d $. Suppose $ E $ admits an inner product, such as if $ X $ is compact Hausdorff. The \textbf{sphere bundle} is
+$$ \S\br{E} = \cbr{e \in E \st \abr{e, e} = 1}. $$
+Note $ \S\br{E} \hookrightarrow E^\# = E \setminus \cbr{\text{zero-section}} $ is a homotopy equivalence, so $ \S\br{E} $ is independent of the inner product $ \abr{,} $ up to homotopy equivalence. The map $ \S\br{E} \to X $ is a fibre bundle with fibre $ S^{d - 1} $. In general a \textbf{fibre bundle} $ p : Z \to X $ with fibre $ F $ is a map such that for all $ x \in X $ there exists an open $ x \in U \subseteq X $ and local trivialisations
+$$
+\begin{tikzcd}
+p^{-1}\br{U} \arrow{rr}{\psi} \arrow{dr}[swap]{p} & & U \times F \arrow{dl}{\pi_1} \\
+& U &
+\end{tikzcd},
+$$
+such that $ \psi = p^{-1}\br{t} \xrightarrow{\sim} \cbr{t} \times F $ for all $ t \in U $.
+
+\begin{remark*}
+A vector bundle is not a fibre bundle with fibre $ \RR^d $.
+\end{remark*}
+
+\pagebreak
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item If $ X = \RR\PP^n $ and $ \LLL $ is tautological, then $ \S\br{\LLL} = \S^n \to \RR\PP^n $ has fibre $ \S^0 = \cbr{p, q} $.
+\item If $ X = \CC\PP^n $ and $ \LLL $ is the tautological complex line bundle, then $ \S\br{\LLL} = \S^{2n + 1} \to \CC\PP^n $ has fibre $ \S^1 $.
+\end{itemize}
+\end{example*}
+
+Consider the long exact sequence of $ \br{E, E^\#} $,
+$$ \dots \to \H^i\br{E, E^\#} \to \H^i\br{E} \to \H^i\br{E^\#} \to \H^{i + 1}\br{E, E^\#} \to \dots. $$
+But we can use the Thom isomorphism and homotopy invariance to rewrite this as
+$$
+\begin{tikzcd}
+\dots \arrow{r} & \H^{i + d}\br{E, E^\#} \arrow{r} & \H^{i + d}\br{E} \arrow{r} & \H^{i + d}\br{E^\#} \arrow{r} & \H^{i + d + 1}\br{E, E^\#} \arrow{r} & \dots \\
+\dots \arrow{r} & \H^i\br{X} \arrow{u}{\sim}[swap]{\text{Thom}} \arrow{r}[swap]{\phi} & \H^{i + d}\br{X} \arrow{u}{\sim}[swap]{\text{Homotopy}} \arrow{r} & \H^{i + d}\br{\S\br{E}} \arrow{u}{\sim}[swap]{\text{Homotopy}} \arrow{r} & \H^{i + 1}\br{X} \arrow{u}{\sim}[swap]{\text{Thom}} \arrow{r} & \dots
+\end{tikzcd}.
+$$
+The map
+$$ \function[\phi]{\H^i\br{X}}{\H^{i + d}\br{X}}{\alpha}{\alpha \cdot \e_E} $$
+is cup-product with the Euler class of $ E $, which is
+$$ \alpha \xrightarrow{\text{Thom}} \pi^*\alpha \cdot \u_E \xrightarrow{\text{LES}} \eval{\br{\pi^*\alpha \cdot \u_E}}_E \xrightarrow{s_0^*} \eval{s_0^*\pi^*\alpha \cdot \u_E}_X = \alpha \cdot \e_E, $$
+where $ s_0 : X \to E $ is the zero-section.
+
+\begin{definition*}
+The \textbf{Gysin sequence} of the oriented vector bundle $ E \to X $ is the long exact sequence
+$$ \dots \to \H^i\br{X} \xrightarrow{\cdot \e_E} \H^{i + d}\br{X} \to \H^{i + d}\br{\S\br{E}} \to \H^{i + 1}\br{X} \to \dots, $$
+where $ d = \rk E $.
+\end{definition*}
+
+The latter map is sometimes called called integration over the fibre.
+
+\begin{remark*}
+Recall relative cup-product is $ \H^i\br{X, A} \oplus \H^i\br{X} \to \H^{i + j}\br{X, A} $. For any pair $ \br{X, A} $, the long exact sequence
+$$ \dots \to \H^i\br{X, A} \to \H^i\br{X} \to \H^i\br{X} \to \H^{i + 1}\br{X, A} \to \dots $$
+is a long exact sequence of $ \H^\bullet\br{X} $-modules, that is the maps in the exact sequence commute with cup-product by $ \H^\bullet\br{X} $.
+\end{remark*}
+
+\begin{corollary}
+The Gysin sequence is a long exact sequence of left $ \H^\bullet\br{X} $-modules.
+\end{corollary}
+
+\begin{proof}
+See problem sheet $ 3 $.
+\end{proof}
+
+\begin{example*}
+If $ \LLL \to \CC\PP^n $ is tautological, then $ \LLL_v = \abr{v} \subseteq \CC^{n + 1} $, so
+$$ \LLL = \cbr{\br{u, v} \in \CC^{n + 1} \times \CC\PP^n \st u \in \abr{v}}. $$
+Claim that any complex vector bundle is canonically $ \ZZ $-oriented, as $ \GL\br{n; \CC} \hookrightarrow \GL\br{2n; \RR} $ lands in matrices of positive determinant. Also, $ \S\br{\LLL} \cong \S^{2n + 1} \subseteq \CC^{n + 1} $. Gysin for $ i \le 2n - 2 $ gives
+$$
+\begin{tikzcd}[row sep=tiny]
+\H^{i + 1}\br{\S^{n + 1}} \arrow{r} \arrow[cong]{d} & \H^i\br{\CC\PP^n} \arrow{r}{\cdot \e_\LLL} & \H^{i + 2}\br{\CC\PP^n} \arrow{r} & \H^{i + 2}\br{\S^{2n + 1}} \arrow[cong]{d} \\
+0 & & & 0
+\end{tikzcd},
+$$
+and
+$$ \H^\bullet\br{\CC\PP^n} =
+\begin{cases}
+\ZZ & \bullet = 0, 2, \dots, 2n - 2, 2n \\
+0 & \text{otherwise}
+\end{cases},
+$$
+so $ \H^\bullet\br{\CC\PP^n} \cong \ZZ\sbr{x} / \abr{x^{n + 1}} $ for $ \abs{x} = 2 $ where $ x = \e_\LLL $.
+\end{example*}
+
+\pagebreak
+
+\begin{example*}
+The \textbf{Stiefel manifold} is
+$$ \V_k\br{\CC^n} = \cbr{\text{ordered $ k $-tuples of orthonormal vectors in} \ \CC^n} \subseteq \CC^n \times \dots \times \CC^n. $$
+There is a tautological bundle $ E \to \V_k\br{\CC^n} $ such that $ \eval{E}_{\cbr{e_1, \dots, e_k}} = \abr{e_1, \dots, e_k} $.
+\end{example*}
+
+\begin{exercise*}
+$ E $ is locally trivial.
+\end{exercise*}
+
+\begin{proposition}
+$$ \H^\bullet\br{\V_k\br{\CC^n}} = \Lambda\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}} $$
+is the exterior algebra on generators $ a_i \in \H^i\br{\V_k\br{\CC^n}} $, that is free except for skew-commutativity.
+\end{proposition}
+
+\begin{proof}
+Induct on $ k $.
+\begin{itemize}
+\item $ \V_1\br{\CC^n} \cong \S^{2n - 1} $ and $ \H^\bullet\br{\S^{2n - 1}} = \Lambda\br{a_{2n - 1}} = \ZZ\sbr{a_{2n - 1}} / \abr{a_{2n - 1}^2} $.
+\item Suppose the result holds for $ \V_k\br{\CC^n} $. There is a forgetful map
+$$ \function{\V_{k + 1}\br{\CC^n}}{\V_k\br{\CC^n}}{\cbr{e_1, \dots, e_{k + 1}}}{\cbr{e_1, \dots, e_k}}, $$
+which shows $ \V_{k + 1}\br{\CC^n} = \S\br{F} $, where $ F = E^\perp \to \V_k\br{\CC^n} $ with fibre the Hermitian orthogonal complement to $ E_x \subseteq \CC^n $. Note that $ F $ is a rank $ n - k $ complex bundle, so $ \e_F \in \H^{2n - 2k}\br{\V_k\br{\CC^n}} = 0 $, by induction, since $ \H^\bullet\br{\V_k\br{\CC^n}} = \Lambda\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}} $. Gysin gives
+$$ 0 \xrightarrow{\cdot \e_F} \H^i\br{\V_k\br{\CC^n}} \to \H^i\br{\V_{k - 1}\br{\CC^n}} \xrightarrow{\lambda} \H^{i - 2n + 2k + 1}\br{\V_k\br{\CC^n}} \xrightarrow{\cdot \e_F} 0. $$
+Choose $ a_{2n - 2k - 1} \in \H^{2n - 2k - 1}\br{\V_{k + 1}\br{\CC^n}} $ such that $ \lambda\br{a_{2n - 2k - 1}} = 1 \in \H^0\br{\V_k\br{\CC^n}} $. Then
+$$ \function{\H^\bullet\br{\V_k\br{\CC^n}} \oplus \H^\bullet\br{\V_k\br{\CC^n}}}{\H^\bullet\br{\V_{k + 1}\br{\CC^n}}}{\br{u, v}}{u + v \cdot a_{2n - 2k - 1}} $$
+is a $ \H^\bullet\br{\V_k\br{\CC^n}} $-module isomorphism.
+\end{itemize}
+\end{proof}
+
+Note that $ \V_n\br{\CC^n} = \U\br{n} $ is the unitary group. So $ \H^\bullet\br{\U\br{n}} = \Lambda\br{a_1, a_3, \dots, a_{2n - 3}, a_{2n - 1}} $ and $ \U\br{n} $ has the same cohomology ring as $ \S^1 \times \S^3 \times \dots \times \S^{2n - 3} \times \S^{2n - 1} $.
+
+\begin{remark*}
+Let
+$$ \b_i\br{\U\br{n}} = \rk \H^i\br{\U\br{n}; \ZZ}, $$
+the $ i $-th \textbf{Betti number}. Then
+$$ \sum_{i \ge 0} \b_i\br{\U\br{n}}t^i = \prod_{i = 1}^n \br{1 + t^{2i - 1}}. $$
+Quite often generating functions for cohomology have nice properties.
+\end{remark*}
 
 \end{document}
