@@ -376,7 +376,7 @@ $$ x = u^2x' + r, \qquad y = u^3y' + u^2sx' + t, \qquad u, r, s, t \in K, \qquad
 \begin{proof}
 Let $ \abr{1, x} = \LLL\br{2\br{\OOO_E}} = \abr{1, x'} $ and $ \abr{1, x, y} = \LLL\br{3\br{\OOO_E}} = \abr{1, x', y'} $. Then
 $$ x = \lambda x' + r, \qquad y = \mu y' + \sigma x' + t, \qquad \lambda, r, \mu, \sigma, t \in K, \qquad \lambda, \mu \ne 0. $$
-Looking at coefficients of $ x^3 $ and $ y^2 $, $ \lambda^3 = \mu^2 $, so $ \br{\lambda, \mu} = \br{u^2, u^3} $ for some $ u \in K^* $. Put $ s = \sigma / u^2 $.
+Looking at the coefficients of $ x^3 $ and $ y^2 $, $ \lambda^3 = \mu^2 $, so $ \br{\lambda, \mu} = \br{u^2, u^3} $ for some $ u \in K^* $. Put $ s = \sigma / u^2 $.
 \end{proof}
 
 \pagebreak
@@ -625,7 +625,7 @@ Let $ E_1 $ and $ E_2 $ be elliptic curves.
 \item An \textbf{isogeny} $ \phi : E_1 \to E_2 $ is a nonconstant morphism with $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $, which is if and only if it is surjective on $ \overline{K} $-points, by Theorem \ref{thm:2.8}. We say $ E_1 $ and $ E_2 $ are \textbf{isogenous}.
 \item Let
 $$ \Hom\br{E_1, E_2} = \cbr{\text{isogenies} \ E_1 \to E_2} \cup \cbr{0}. $$
-This is a group under $ \br{\phi + \psi}\br{P} = \phi\br{P} + \psi\br{P} $. If $ \phi : E_1 \to E_2 $ and $ \psi : E_2 \to E_3 $ are isogenies then $ \psi \circ \phi $ is an isogeny. By the tower law, $ \deg \br{\psi \circ \phi}  = \deg \phi\deg \psi $.
+This is a group under $ \br{\phi + \psi}\br{P} = \phi\br{P} + \psi\br{P} $. If $ \phi : E_1 \to E_2 $ and $ \psi : E_2 \to E_3 $ are isogenies then $ \psi \circ \phi $ is an isogeny. By the tower law, $ \deg \br{\psi \circ \phi} = \deg \phi\deg \psi $.
 \end{itemize}
 \end{definition*}
 
@@ -637,12 +637,12 @@ If $ 0 \ne n \in \ZZ $ then $ \sbr{n} : E \to E $ is an isogeny.
 By Theorem \ref{thm:4.4}, $ \sbr{n} $ is a morphism. We must show $ \sbr{n} \ne 0 $. Assume $ \ch K \ne 2 $.
 \begin{itemize}[leftmargin=0.5in]
 \item[$ n = 2 $.] By Lemma \ref{lem:4.5}, $ \#E\sbr{2} = 4 $, so $ \sbr{2} \ne 0 $.
-\item[$ n $ odd.] By Lemma \ref{lem:4.5}, there exists $ 0 \ne T \in E\sbr{2} $. Then $ nT = T \ne 0 $, so $ \sbr{n} \ne 0 $.
+\item[$ n $ odd.] By Lemma \ref{lem:4.5}, there exists $ \OOO \ne T \in E\sbr{2} $. Then $ nT = T \ne 0 $, so $ \sbr{n} \ne 0 $.
 \end{itemize}
 Now use $ \sbr{mn} = \sbr{m} \circ \sbr{n} $. If $ \ch K = 2 $ then replace Lemma \ref{lem:4.5} with a lemma computing $ E\sbr{3} $.
 \end{proof}
 
-A corollary is that $ \Hom\br{E_1, E_2} $ is torsion-free as a $ \ZZ $-module.
+A corollary is that $ \Hom\br{E_1, E_2} $ is torsion free as a $ \ZZ $-module.
 
 \subsection{Isogenies}
 
@@ -791,7 +791,7 @@ $ \deg n\phi = n^2\deg \phi $ for all $ n \in \ZZ $ and $ \phi \in \Hom\br{E_1, 
 \pagebreak
 
 \begin{example}
-Let $ E / K $ be an elliptic curve, and let $ 0 \ne T \in E\br{K}\sbr{2} $. Suppose $ \ch K \ne 2 $. Without loss of generality $ E $ is
+Let $ E / K $ be an elliptic curve, and let $ \OOO \ne T \in E\br{K}\sbr{2} $. Suppose $ \ch K \ne 2 $. Without loss of generality $ E $ is
 $$ y^2 = x\br{x^2 + ax + b}, \qquad a, b \in K, \qquad b\br{a^2 - 4b} \ne 0, $$
 and $ T = \br{0, 0} $. If $ P = \br{x, y} $ and $ P' = P + T = \br{x', y'} $, then
 $$ x' = \br{\dfrac{y}{x}}^2 - x - a = \dfrac{x^2 + ax + b}{x} - x - a = \dfrac{b}{x}, \qquad y' = -\br{\dfrac{y}{x}}x' = -\dfrac{by}{x^2}. $$
@@ -955,11 +955,12 @@ Then $ \alpha^*\br{\d x} = \d\br{x^n} = nx^{n - 1}\d x $. So if $ \ch k \nmid n 
 \end{example*}
 
 \begin{theorem}
+\label{thm:6.5}
 If $ \ch K \nmid n $ then $ E\sbr{n} \cong \br{\ZZ / n\ZZ}^2 $.
 \end{theorem}
 
 \begin{proof}
-By Lemma \ref{lem:6.3} and induction, $ \sbr{n}^*\omega = n\omega $. So if $ \ch K \nmid n $, $ \sbr{n} $ is separable. By Theorem \ref{thm:2.8}, $ \#\sbr{n}^{-1}\br{Q} = \deg \sbr{n} $ for all but finitely many $ Q \in E $. Since $ \sbr{n} $ is a group homomorphism, $ \#\sbr{n}^{-1}\br{Q} = \#E\sbr{n} $ for all $ Q \in E $, so $ \#E\sbr{n} = \deg \sbr{n} = n^2 $, by Corollary \ref{cor:5.8}. By group theory,
+By Lemma \ref{lem:6.3} and induction, $ \sbr{n}^*\omega = n\omega $. So if $ \ch K \nmid n $, then $ \sbr{n} $ is separable. By Theorem \ref{thm:2.8}, $ \#\sbr{n}^{-1}\br{Q} = \deg \sbr{n} $ for all but finitely many $ Q \in E $. Since $ \sbr{n} $ is a group homomorphism, $ \#\sbr{n}^{-1}\br{Q} = \#E\sbr{n} $ for all $ Q \in E $, so $ \#E\sbr{n} = \deg \sbr{n} = n^2 $, by Corollary \ref{cor:5.8}. By group theory,
 $$ E\sbr{n} \cong \ZZ / d_1\ZZ \times \dots \times \ZZ / d_t\ZZ, \qquad d_1 \mid \dots \mid d_t \mid n, $$
 and $ \prod_{i = 1}^t d_i = n^2 $. If $ p $ is a prime with $ p \mid d_1 $ then $ E\sbr{p} \cong \br{\ZZ / p\ZZ}^t $. But $ \#E\sbr{p} = p^2 $, so $ t = 2 $. Then $ d_1 \mid d_2 \mid n $ and $ d_1d_2 = n^2 $, so $ d_1 = d_2 = n $.
 \end{proof}
@@ -1025,7 +1026,7 @@ $$ \log F\br{T} = \sum_{x \in \abs{C}} \sum_{m = 1}^\infty \dfrac{1}{m}T^{m\deg 
 Then
 $$ T\dod{}{T}\log F\br{T} = \sum_{x \in \abs{C}} \sum_{m = 1}^\infty \br{\deg x}T^{m\deg x} = \sum_{n = 1}^\infty \br{\sum_{x \in \abs{C}, \ \deg x \mid n} \deg x}T^n = \sum_{n = 1}^\infty \#C\br{\FF_{q^n}}T^n, $$
 so
-$$ F\br{T} = \exp \br{\sum_{n = 1}^\infty \dfrac{\#C\br{\FF_{q^n}}}{n}T^n}. $$
+$$ F\br{T} = \exp \sum_{n = 1}^\infty \dfrac{\#C\br{\FF_{q^n}}}{n}T^n. $$
 
 \lecture{10}{Friday}{30/10/20}
 
@@ -1046,7 +1047,7 @@ See example sheet $ 2 $.
 
 \begin{definition*}
 The \textbf{zeta function} of a variety $ V / \FF_q $ is
-$$ \Z_V\br{T} = \exp \br{\sum_{n = 1}^\infty \dfrac{\#V\br{\FF_{q^n}}}{n}T^n}. $$
+$$ \Z_V\br{T} = \exp \sum_{n = 1}^\infty \dfrac{\#V\br{\FF_{q^n}}}{n}T^n. $$
 \end{definition*}
 
 \begin{lemma}
@@ -1060,7 +1061,7 @@ $$ \Tr \phi^{n + 2} - a\Tr \phi^{n + 1} + q\Tr \phi^n = 0. $$
 This second order difference equation with initial conditions $ \Tr 1 = 2 $ and $ \Tr \phi = a $ has solution $ \Tr \phi^n = \alpha^n + \beta^n $ where $ \alpha, \beta \in \CC $ are the roots of $ X^2 - aX + q = 0 $, so
 $$ \#E\br{\FF_{q^n}} = \deg \br{1 - \phi^n} = 1 + \deg \phi^n - \Tr \phi^n = 1 + q^n - \alpha^n - \beta^n. $$
 Thus
-$$ \Z_E\br{T} = \exp \br{\sum_{n = 1}^\infty \br{\dfrac{T^n}{n} + \dfrac{\br{qT}^n}{n} - \dfrac{\br{\alpha T}^n}{n} - \dfrac{\br{\beta T}^n}{n}}} = \dfrac{\br{1 - \alpha T}\br{1 - \beta T}}{\br{1 - T}\br{1 - qT}} = \dfrac{1 - aT + qT^2}{\br{1 - T}\br{1 - qT}}, $$
+$$ \Z_E\br{T} = \exp \sum_{n = 1}^\infty \br{\dfrac{T^n}{n} + \dfrac{\br{qT}^n}{n} - \dfrac{\br{\alpha T}^n}{n} - \dfrac{\br{\beta T}^n}{n}} = \dfrac{\br{1 - \alpha T}\br{1 - \beta T}}{\br{1 - T}\br{1 - qT}} = \dfrac{1 - aT + qT^2}{\br{1 - T}\br{1 - qT}}, $$
 using $ -\log \br{1 - x} = \sum_{n = 1}^\infty x^n / n $.
 \end{proof}
 
@@ -1136,7 +1137,7 @@ Claim that $ x_{n + 1} \equiv x_n \mod I^{n + s} $ for all $ n \ge 0 $. By induc
 This proves the claim, so $ \br{x_n}_{n \ge 0} $ is Cauchy. Since $ R $ is complete, $ x_n \to b $ as $ n \to \infty $, for some $ b \in R $. Taking the limit as $ n \to \infty $ in $ \br{\ref{eq:8}} $, $ b = b - F\br{b} $, so $ F\br{b} = 0 $. Taking the limit as $ n \to \infty $ in $ \br{\ref{eq:9}} $, $ b \equiv 0 \mod I^s $. Uniqueness is proved using $ \br{\ref{eq:10}} $ and the assumption $ R $ is an integral domain.
 \end{proof}
 
-\subsection{The main example}
+\subsection{A nonstandard affine piece}
 
 Let $ E $ be
 $$ Y^2Z + a_1XYZ + a_3YZ^2 = X^3 + a_2X^2Z + a_4XZ^2 + a_6Z^3. $$
@@ -1272,7 +1273,7 @@ We take $ \lambda = -b / a $, using again that $ a \in R^\times $. We get $ g\br
 \item The notation is $ F_1\br{X, Y} = \tpd{F}{X}\br{X, Y} $.
 \begin{itemize}
 \item Uniqueness. Let
-$$ p\br{T} = \tod{}{T}\br{\log T} = 1 + a_2T + a_3T^2 + \dots. $$
+$$ p\br{T} = \dod{}{T}\br{\log T} = 1 + a_2T + a_3T^2 + \dots. $$
 Differentiating $ \br{\ref{eq:11}} $ with respect to $ X $ gives
 $$ p\br{F\br{X, Y}}F_1\br{X, Y} = p\br{X} + 0. $$
 Putting $ X = 0 $ gives
@@ -1297,6 +1298,7 @@ Let $ \FFF $, such as $ \widehat{\GG_\a}, \widehat{\GG_\m}, \widehat{E} $, be a 
 \end{notation*}
 
 \begin{corollary}
+\label{cor:8.5}
 Let $ \FFF $ be a formal group over $ R $, and $ n \in \ZZ $. Suppose $ n \in R^\times $. Then
 \begin{itemize}
 \item $ \sbr{n} : \FFF \to \FFF $ is an isomorphism, and
@@ -1332,7 +1334,7 @@ A Weierstrass equation for $ E $ with coefficients $ a_1, \dots, a_6 \in K $ is 
 \begin{remark*}
 \hfill
 \begin{itemize}
-\item Putting $ x = u^x' $ and $ y = u^3y' $ gives $ a_i = u^ia_i' $, so integral Weierstrass equations exist.
+\item Putting $ x = u^2x' $ and $ y = u^3y' $ gives $ a_i = u^ia_i' $, so integral Weierstrass equations exist.
 \item Since $ a_1, \dots, a_6 \in \OOO_K $, $ \Delta \in \OOO_K $, so $ v\br{\Delta} \ge 0 $, so minimal Weierstrass equations exist.
 \item If $ \ch k \ne 2, 3 $ then there exists a minimal Weierstrass equation of the form $ y^2 = x^3 + ax + b $.
 \end{itemize}
@@ -1355,7 +1357,7 @@ Compare to example sheet $ 1 $, question $ 5 $.
 \end{itemize}
 \end{proof}
 
-\subsection{The filtration of formal groups}
+\subsection{A filtration of formal groups}
 
 Since $ K $ complete, $ \OOO_K $ is complete with respect to the ideal $ \pi^r\OOO_K $, for any $ r \ge 1 $. Fix a minimal Weierstrass equation for $ E / K $, which gives a formal group $ \widehat{E} $ over $ \OOO_K $. Taking $ I = \pi^r\OOO_K $ in Lemma \ref{lem:8.2}
 \begin{align*}
@@ -1377,6 +1379,7 @@ We show that $ \FFF\br{\pi^r\OOO_K} \cong \br{\OOO_K, +} $ for $ r $ sufficientl
 \lecture{13}{Friday}{06/11/20}
 
 \begin{theorem}
+\label{thm:9.2}
 Let $ \FFF $ be a formal group over $ \OOO_K $. Let $ e = v\br{p} $. If $ r > e / \br{p - 1} $ then $ \log : \FFF\br{\pi^r\OOO_K} \xrightarrow{\sim} \widehat{\GG_\a}\br{\pi^r\OOO_K} $ is an isomorphism with inverse $ \exp : \widehat{\GG_\a}\br{\pi^r\OOO_K} \xrightarrow{\sim} \FFF\br{\pi^r\OOO_K} $.
 \end{theorem}
 
@@ -1386,7 +1389,7 @@ $ \widehat{\GG_\a}\br{\pi^r\OOO_K} = \br{\pi^r\OOO_K, +} \cong \br{\OOO_K, +} $.
 
 \begin{proof}
 For $ x \in \pi^r\OOO_K $ we must check the power series $ \exp $ and $ \log $ converge. Recall $ \exp T = T + \br{b_2 / 2!}T^2 + \br{b_3 / 3!}T^3 + \dots $ for $ b_i \in \OOO_K $. Claim that $ \v_p\br{n!} \le \br{n - 1} / \br{p - 1} $, since
-$$ \v_p\br{n!} = \sum_{r = 1}^\infty \fbr{\dfrac{n}{p^r}} < \sum_{r = 1}^\infty \dfrac{n}{p^r} = n\dfrac{\tfrac{1}{p}}{1 - \tfrac{1}{p}} = \dfrac{n}{p - 1}, $$
+$$ \v_p\br{n!} = \sum_{r = 1}^\infty \fbr{\dfrac{n}{p^r}} < \sum_{r = 1}^\infty \dfrac{n}{p^r} = n\br{\dfrac{\tfrac{1}{p}}{1 - \tfrac{1}{p}}} = \dfrac{n}{p - 1}, $$
 so $ \br{p - 1}\v_p\br{n!} < n $, so $ \br{p - 1}\v_p\br{n!} \le n - 1 $, since the left hand side is in $ \ZZ $. Now
 $$ v\br{\dfrac{b_nx^n}{n!}} \ge nr - e\br{\dfrac{n - 1}{p - 1}} = \br{n - 1}\br{r - \dfrac{e}{p - 1}} + r. $$
 This is always at least $ r $ and tends to infinity as $ n \to \infty $, so $ \exp x $ converges and belongs to $ \pi^r\OOO_K $. The same method works for $ \log $.
@@ -1422,7 +1425,7 @@ Say Weierstrass equations are related by $ \sbr{u; r, s, t} $ for $ u \in K^* $ 
 \end{proof}
 
 \begin{definition*}
-The reduction $ \widetilde{E} / k $ of $ E / K $ is defined by the reduction of a minimal Weierstrass equation. Then $ E $ has \textbf{good reduction} if $ \widetilde{E} $ is non-singular, and so an elliptic curve, otherwise it has \textbf{bad reduction}.
+The reduction $ \widetilde{E} / k $ of $ E / K $ is defined by the reduction of a minimal Weierstrass equation. Then $ E $ has \textbf{good reduction} if $ \widetilde{E} $ is nonsingular, and so an elliptic curve, otherwise it has \textbf{bad reduction}.
 \end{definition*}
 
 For an integral Weierstrass equation
@@ -1435,7 +1438,7 @@ For an integral Weierstrass equation
 \pagebreak
 
 There is a well-defined map
-$$ \function{\PP^2\br{K}}{\PP^2\br{k}}{\br{x : y : z}}{\widetilde{x} : \widetilde{y} : \widetilde{z}}, $$
+$$ \function{\PP^2\br{K}}{\PP^2\br{k}}{\br{x : y : z}}{\br{\widetilde{x} : \widetilde{y} : \widetilde{z}}}, $$
 choosing the representative of $ \br{x : y : z} $ with $ \min\br{v\br{x}, v\br{y}, v\br{z}} = 0 $. We restrict to give
 $$ \function{E\br{K}}{\widetilde{E}\br{k}}{P}{\widetilde{P}}. $$
 If $ P = \br{x, y} \in E\br{K} $ then by Lemma \ref{lem:9.1} either $ x, y \in \OOO_K $, so $ \widetilde{P} = \br{x, y} $, or $ v\br{x} = -2s $ and $ v\br{y} = -3s $, so $ P = \br{\pi^{3s}x : \pi^{3s}y : \pi^{3s}} $ and $ \widetilde{P} = \br{0 : 1 : 0} $. Thus
@@ -1447,8 +1450,356 @@ $$ \widetilde{E}_{\ns} =
 \widetilde{E} \setminus \cbr{\text{singular point}} & E \ \text{has bad reduction}
 \end{cases}.
 $$
-The chord and tangent process still defines a group law on $ \widetilde{E}_{\ns} $. In cases of bad reduction either $ \widetilde{E}_{\ns} \cong \GG_\a $, an \textbf{additive reduction}, or $ \widetilde{E}_{\ns} \cong \GG_\m $, a \textbf{multiplicative reduction}. The isomorphism is over $ k $, or possibly a quadratic extension of $ k $. For simplicity suppose $ \ch k \ne 2 $. Then $ \widetilde{E} $ is $ y^2 = f\br{x} $ for $ \deg f = 3 $, so $ \widetilde{E} $ is singular if and only if $ f $ has a repeated root. A double root gives a curve $ y^2 = x^2\br{x + 1} $ with a \textbf{node}, which leads to multiplicative reduction. See example sheet $ 3 $. A triple root gives a curve $ y^2 = x^3 $ with a \textbf{cusp}, which leads to additive reduction. We check
+The chord and tangent process still defines a group law on $ \widetilde{E}_{\ns} $. In cases of bad reduction
+\begin{itemize}
+\item $ \widetilde{E}_{\ns} \cong \GG_\a $, an \textbf{additive reduction}, or
+\item $ \widetilde{E}_{\ns} \cong \GG_\m $, a \textbf{multiplicative reduction}.
+\end{itemize}
+The isomorphism is over $ k $, or possibly a quadratic extension of $ k $. For simplicity suppose $ \ch k \ne 2 $. Then $ \widetilde{E} $ is $ y^2 = f\br{x} $ for $ \deg f = 3 $, so $ \widetilde{E} $ is singular if and only if $ f $ has a repeated root.
+\begin{itemize}
+\item A double root gives a curve $ y^2 = x^2\br{x + 1} $ with a \textbf{node}, which leads to multiplicative reduction. See example sheet $ 3 $.
+\item A triple root gives a curve $ y^2 = x^3 $ with a \textbf{cusp}, which leads to additive reduction. We check
 $$ \bijection{\widetilde{E}_{\ns}}{\GG_\a}{\br{x, y}}{\dfrac{x}{y}}{\br{\dfrac{1}{t^2}, \dfrac{1}{t^3}}}{t} $$
-is a group homomorphism. Let $ P_1, P_2, P_3 $ lie on the line $ ax + by = 1 $. Write $ P_i = \br{x_i, y_i} $ and $ t_i = x_i / y_i $. Then $ x_i^3 = y_i^2 = y_i^2\br{ax_i + by_i} $, so $ t_1, t_2, t_3 $ are the roots of $ X^3 - aX - b = 0 $. Looking at coefficient of $ X^2 $ gives $ t_1 + t_2 + t_3 = 0 $.
+is a group homomorphism. Let $ P_1, P_2, P_3 $ lie on the line $ ax + by = 1 $. Write $ P_i = \br{x_i, y_i} $ and $ t_i = x_i / y_i $. Then $ x_i^3 = y_i^2 = y_i^2\br{ax_i + by_i} $, so $ t_1, t_2, t_3 $ are the roots of $ X^3 - aX - b = 0 $. Looking at the coefficient of $ X^2 $ gives $ t_1 + t_2 + t_3 = 0 $.
+\end{itemize}
+
+\subsection{The subgroup of nonsingular reduction}
+
+\lecture{14}{Monday}{09/11/20}
+
+\begin{definition*}
+$$ E_0\br{K} = \cbr{P \in E\br{K} \st \widetilde{P} \in \widetilde{E}_{\ns}\br{k}}. $$
+\end{definition*}
+
+\begin{proposition}
+\label{prop:9.5}
+$ E_0\br{K} $ is a subgroup of $ E\br{K} $, and reduction modulo $ \pi $ is a surjective group homomorphism $ E_0\br{K} \to \widetilde{E}_{\ns}\br{k} $.
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item A line $ l $ in $ \PP^2 $ defined over $ K $ has equation $ aX + bY + cZ = 0 $ for $ a, b, c \in K $. We may assume $ \min\br{v\br{a}, v\br{b}, v\br{c}} = 0 $. Reduction modulo $ \pi $ gives the line $ \widetilde{l} $, $ \widetilde{a}X + \widetilde{b}Y + \widetilde{c}Z = 0 $. If $ P_1, P_2, P_3 \in E\br{K} $ with $ P_1 + P_2 + P_3 = \OOO $ then these points lie on a line $ l $, so $ \widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3} \in \widetilde{E}\br{k} $ lie on the line $ \widetilde{l} $. If $ \widetilde{P_1}, \widetilde{P_2} \in \widetilde{E}_{\ns}\br{k} $ then $ \widetilde{P_3} \in \widetilde{E}_{\ns}\br{k} $. So if $ P_1, P_2 \in E_0\br{K} $ then $ P_3 \in E_0\br{K} $ and $ \widetilde{P_1} + \widetilde{P_2} + \widetilde{P_3} = \OOO $. Check this still works if $ \#\cbr{\widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3}} < 3 $. \footnote{Exercise}
+
+\pagebreak
+
+\item For surjectivity, let
+$$ f\br{x, y} = y^2 + a_1xy + a_3y - \br{x^3 + a_2x^2 + a_4x + a_6}. $$
+Let $ \widetilde{P} \in \widetilde{E}_{\ns}\br{k} \setminus \cbr{\OOO} $ say $ \widetilde{P} = \br{\widetilde{x_0}, \widetilde{y_0}} $ for some $ x_0, y_0 \in \OOO_K $. Since $ \widetilde{P} $ is nonsingular, either
+\begin{enumerate}
+\item $ \tpd{f}{x}\br{x_0, y_0} \not\equiv 0 \mod \pi $, or
+\item $ \tpd{f}{y}\br{x_0, y_0} \not\equiv 0 \mod \pi $.
+\end{enumerate}
+If $ 1 $ we put $ g\br{t} = f\br{t, y_0} \in \OOO_K\sbr{t} $. Then $ g\br{x_0} \equiv 0 \mod \pi $ and $ g'\br{x_0} \in \OOO_K^\times $. By Hensel's lemma, there exists $ b \in \OOO_K $ such that $ g\br{b} = 0 $ and $ b \equiv x_0 \mod \pi $. Then $ P = \br{b, y_0} \in E\br{K} $ has reduction $ \widetilde{P} $. Case $ 2 $ is similar.
+\end{itemize}
+\end{proof}
+
+Recall for $ r \ge 1 $ we have
+$$ E_r\br{K} = \cbr{\br{x, y} \in E\br{K} \st v\br{x} \le -2r, \ v\br{y} \le -3r} \cup \cbr{\OOO}. $$
+If $ r > e / \br{p - 1} $,
+$$
+\begin{tikzcd}[column sep=small, row sep=tiny]
+E_r\br{K} \arrow[subset]{r} \arrow[cong]{d} & \dots \arrow[subset]{r} & E_2\br{K} \arrow[cong]{d} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E_1\br{K} \arrow[cong]{d} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E_0\br{K} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E\br{K}, \\
+\br{\OOO_K, +} & & \widehat{E}\br{\pi^2\OOO_K} & & \widehat{E}\br{\pi\OOO_K} & & & & \\
+& & & \br{k, +} & & \widetilde{E}_{\ns}\br{k} & & ? &
+\end{tikzcd}.
+$$
+
+\begin{lemma}
+\label{lem:9.6}
+If $ \abs{k} < \infty $ then $ E_0\br{K} \subset E\br{K} $ has finite index.
+\end{lemma}
+
+The proof is a compactness argument. See below.
+
+\begin{theorem}
+\label{thm:9.7}
+If $ \sbr{K : \QQ_p} < \infty $ then $ E\br{K} $ contains a subgroup of finite index isomorphic to $ \br{\OOO_K, +} $.
+\end{theorem}
+
+\begin{proof}
+$ \abs{k} < \infty $, so this follows from the above.
+\end{proof}
+
+\begin{lemma}
+If $ \abs{k} < \infty $ then $ \PP^n\br{K} $ is compact, with respect to the $ \pi $-adic topology.
+\end{lemma}
+
+\begin{proof}
+Since $ \abs{k} < \infty $, $ \OOO_K / \pi^r\OOO_K $ is finite for all $ r \ge 1 $, so
+$$ \OOO_K \xrightarrow{\sim} \varprojlim_r \OOO_K / \pi^r\OOO_K $$
+is compact. Then $ \PP^n\br{K} $ is the union of compact sets
+$$ \cbr{\br{a_0 : \dots : a_{i - 1} : 1 : a_{i + 1} : \dots : a_n} \st a_j \in \OOO_K}, $$
+and hence compact.
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{lem:9.6}]
+$ E\br{K} \subset \PP^2\br{K} $ is closed subset, so $ \br{E\br{K}, +} $ is a compact topological group. If $ \widetilde{E} $ has singular point $ \br{\widetilde{x_0}, \widetilde{y_0}} $ then
+$$ E\br{K} \setminus E_0\br{K} = \cbr{\br{x, y} \in E\br{K} \st v\br{x - x_0} \ge 1, \ v\br{y - y_0} \ge 1} $$
+is a closed subset of $ E\br{K} $, so $ E_0\br{K} $ is an open subgroup of $ E\br{K} $. The cosets of $ E_0\br{K} $ are an open cover of $ E\br{K} $, so $ \sbr{E\br{K} : E_0\br{K}} < \infty $.
+\end{proof}
+
+The \textbf{Tamagawa number} is
+$$ \c_K\br{E} = \sbr{E\br{K} : E_0\br{K}}. $$
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item If good reduction, then $ \c_K\br{E} = 1 $, but the converse is false.
+\item It can be shown that either $ \c_K\br{E} = v\br{\Delta} $ or $ \c_K\br{E} \le 4 $. Essential we work with a minimal Weierstrass equation.
+\end{itemize}
+\end{remark*}
+
+\pagebreak
+
+\subsection{Unramified extensions}
+
+Let $ \sbr{K : \QQ_p} < \infty $ and let $ L / K $ be a finite extension with residue fields $ k' $ and $ k $. Let $ f = \sbr{k' : k} $. Then
+$$
+\begin{tikzcd}
+K^* \arrow[twoheadrightarrow]{r}{\v_K} \arrow[subset]{d} & \ZZ \arrow{d}{\cdot e} \\
+L^* \arrow[twoheadrightarrow]{r}[swap]{\v_L} & \ZZ
+\end{tikzcd}.
+$$
+
+\begin{fact*}
+$ \sbr{L : K} = ef $. If $ L / K $ is Galois then there is a natural group homomorphism $ \Gal\br{L / K} \to \Gal\br{k' / k} $. This map is surjective with kernel of order $ e $.
+\end{fact*}
+
+\begin{definition*}
+$ L / K $ is \textbf{unramified} if $ e = 1 $.
+\end{definition*}
+
+\begin{fact*}
+For each integer $ m \ge 1 $
+\begin{itemize}
+\item $ k $ has a unique extension of degree $ m $, say $ k_m $,
+\item $ K $ has a unique unramified extension of degree $ m $, say $ K_m $.
+\end{itemize}
+These extensions are Galois with cyclic Galois group.
+\end{fact*}
+
+\begin{definition*}
+The \textbf{maximal unramified extension} is
+$$ K^{\nr} = \bigcup_{m \ge 1} K_m \subseteq \overline{K}. $$
+\end{definition*}
+
+\begin{notation*}
+\hfill
+\begin{itemize}
+\item $ \sbr{n}^{-1}P = \cbr{Q \in E\br{\overline{K}} \st nQ = P} $.
+\item $ K\br{\cbr{P_1, \dots, P_r}} = K\br{x_1, \dots, x_r, y_1, \dots, y_r} $ with $ P_i = \br{x_i, y_i} $.
+\end{itemize}
+\end{notation*}
+
+\begin{theorem}
+Let $ \sbr{K : \QQ_p} < \infty $. Suppose $ E / K $ has good reduction and $ p \nmid n $. If $ P \in E\br{K} $ then $ K\br{\sbr{n}^{-1}P} / K $ is unramified.
+\end{theorem}
+
+\begin{proof}
+For each $ m \ge 1 $ there is a short exact sequence
+$$ 0 \to E_1\br{K_m} \to E\br{K_m} \to \widetilde{E}\br{k_m} \to 0. $$
+Taking union over $ m \ge 1 $ gives a commutative diagram
+$$
+\begin{tikzcd}
+0 \arrow{r} & E_1\br{K^{\nr}} \arrow{r} \arrow{d}{\cdot n} & E\br{K^{\nr}} \arrow{r} \arrow{d}{\cdot n} & \widetilde{E}\br{\overline{k}} \arrow{r} \arrow{d}{\cdot n} & 0 \\
+0 \arrow{r} & E_1\br{K^{\nr}} \arrow{r} & E\br{K^{\nr}} \arrow{r} & \widetilde{E}\br{\overline{k}} \arrow{r} & 0
+\end{tikzcd}.
+$$
+The left map is an isomorphism by Corollary \ref{cor:8.5}, noting that $ p \nmid n $, so $ n \in \OOO_K^\times $. Since $ K^{\nr} $ is not complete we must apply Corollary \ref{cor:8.5} over each $ K_m $. The right map is surjective by Theorem \ref{thm:2.8} with kernel isomorphic to $ \br{\ZZ / n\ZZ}^2 $ by Theorem \ref{thm:6.5}, noting that $ p \nmid n $. By the snake lemma,
+$$ E\br{K^{\nr}}\sbr{n} = \br{\ZZ / n\ZZ}^2, \qquad E\br{K^{\nr}} / nE\br{K^{\nr}} = 0. $$
+So if $ P \in E\br{K} $ then there exists $ Q \in E\br{K^{\nr}} $ such that $ nQ = P $ and $ \sbr{n}^{-1}P = \cbr{Q + T \st T \in E\sbr{n}} \subset E\br{K^{\nr}} $, so $ K\br{\sbr{n}^{-1}P} \subset K^{\nr} $. Thus $ K\br{\sbr{n}^{-1}P} / K $ is unramified.
+\end{proof}
+
+\lecture{15}{Wednesday}{11/11/20}
+
+\begin{corollary}
+\label{cor:9.10}
+Let $ E / K $ be an elliptic curve with $ \sbr{K : \QQ_p} < \infty $. Then $ E\br{K}_{\tors} $ is finite.
+\end{corollary}
+
+\begin{proof}
+In Theorem \ref{thm:9.7} we saw there exists a finite index subgroup $ E_r\br{K} \subset E\br{K} $ with $ E_r\br{K} \cong \br{\OOO_K, +} $. Since $ E_r\br{K} $ is torsion free $ E\br{K}_{\tors} \hookrightarrow E\br{K} / E_r\br{K} $, which is finite.
+\end{proof}
+
+\pagebreak
+
+\section{Elliptic curves over number fields I: the torsion subgroup}
+
+Let $ \sbr{K : \QQ} < \infty $, and let $ E / K $ be an elliptic curve.
+
+\subsection{Primes of good and bad reduction}
+
+\begin{notation*}
+If $ \ppp $ is a prime of $ K $, that is of $ \OOO_K $, then $ K_\ppp $ is the $ \ppp $-adic completion of $ K $ and $ k_\ppp = \OOO_K / \ppp $.
+\end{notation*}
+
+\begin{definition*}
+$ \ppp $ is a \textbf{prime of good reduction} for $ E / K $ if $ E / K_\ppp $ has good reduction.
+\end{definition*}
+
+\begin{lemma}
+$ E / K $ has only finitely many primes of bad reduction.
+\end{lemma}
+
+\begin{proof}
+Take a Weierstrass equation for $ E $ with $ a_1, \dots, a_6 \in \OOO_K $. Since $ E $ is nonsingular, $ 0 \ne \Delta \in \OOO_K $. Write $ \abr{\Delta} = \ppp_1^{\alpha_1} \dots \ppp_r^{\alpha_r} $, a factorisation into prime ideals. Let $ S = \cbr{\ppp_1, \dots, \ppp_r} $. If $ \ppp \notin S $ then $ \v_\ppp\br{\Delta} = 0 $, so $ E / K_\ppp $ has good reduction. Thus the set of bad primes for $ E $ is in $ S $.
+\end{proof}
+
+\begin{remark*}
+If $ K $ has class number one, such as $ K = \QQ $, then we can always find a Weierstrass equation for $ E $ with $ a_1, \dots, a_6 \in \OOO_K $ which is minimal at all primes $ \ppp $.
+\end{remark*}
+
+\begin{lemma}
+$ E\br{K}_{\tors} $ is finite.
+\end{lemma}
+
+\begin{proof}
+Take any prime $ \ppp $. Then $ K \subset K_\ppp $, so $ E\br{K}_{\tors} \subset E\br{K_\ppp}_{\tors} $, which is finite by Corollary \ref{cor:9.10}.
+\end{proof}
+
+\subsection{Reduction modulo \texorpdfstring{$ \ppp $}{p}}
+
+\begin{lemma}
+\label{lem:10.3}
+Let $ \ppp $ be a prime of good reduction with $ \ppp \nmid n $. Then reduction modulo $ \ppp $ gives an injective group homomorphism $ E\br{K}\sbr{n} \hookrightarrow \widetilde{E}\br{k_\ppp}\sbr{n} $.
+\end{lemma}
+
+\begin{proof}
+By Proposition \ref{prop:9.5}, $ E\br{K_\ppp} \to \widetilde{E}\br{k_\ppp} $ is a group homomorphism with kernel $ E_1\br{K_\ppp} $. By Corollary \ref{cor:8.5} and $ \ppp \nmid n $, $ E_1\br{K_\ppp} $ has no $ n $-torsion.
+\end{proof}
+
+\begin{example*}
+Let $ E / \QQ $ be $ y^2 + y = x^3 - x^2 $. Then $ \Delta = -11 $, so $ E $ has good reduction at all $ p \nmid 11 $, and
+$$
+\begin{array}{c|cccccc}
+p & 2 & 3 & 5 & 7 & 11 & 13 \\
+\hline
+\#\widetilde{E}\br{\FF_p} & 5 & 5 & 5 & 10 & - & 10
+\end{array}.
+$$
+By Lemma \ref{lem:10.3}, $ \#E\br{\QQ}_{\tors} \mid 5 \cdot 2^a $ for some $ a \ge 0 $ and $ \#E\br{\QQ}_{\tors} \mid 5 \cdot 3^b $ for some $ b \ge 0 $, so $ \#E\br{\QQ}_{\tors} \mid 5 $. Let $ T = \br{0, 0} \in E\br{\QQ} $. By calculation, $ 5T = \OOO $, so $ E\br{\QQ}_{\tors} \cong \ZZ / 5\ZZ $.
+\end{example*}
+
+\begin{example*}
+Let $ E / \QQ $ be $ y^2 + y = x^3 + x^2 $. Then $ \Delta = -43 $, so $ E $ has good reduction at all $ p \ne 43 $, and
+$$
+\begin{array}{c|cccccc}
+p & 2 & 3 & 5 & 7 & 11 & 13 \\
+\hline
+\#\widetilde{E}\br{\FF_p} & 5 & 6 & 10 & 8 & 9 & 19
+\end{array}.
+$$
+So $ \#E\br{\QQ}_{\tors} \mid 5 \cdot 2^a $ for some $ a \ge 0 $ and $ \#E\br{\QQ}_{\tors} \mid 9 \cdot 11^b $ for some $ b \ge 0 $, so $ E\br{\QQ}_{\tors} = \cbr{\OOO} $. Thus $ P = \br{0, 0} \in E\br{\QQ} $ is a point of infinite order, so $ \rk E\br{\QQ} \ge 1 $.
+\end{example*}
+
+\begin{example*}
+Let $ E_D $ be $ y^2 = x^3 - D^2x $ for $ D \in \ZZ $ a squarefree integer. Then $ \Delta = 2^6\Delta^6 $, and $ E_D\br{\QQ}_{\tors} \supseteq \cbr{\OOO, \br{0, 0}, \br{\pm D, 0}} \cong \br{\ZZ / 2\ZZ}^2 $. Let $ f\br{x} = x^3 - D^2x $. If $ p \nmid 2D $ then
+$$ \#\widetilde{E_D}\br{\FF_p} = 1 + \sum_{x \in \FF_p^2} \br{\br{\dfrac{f\br{x}}{p}} + 1}. $$
+If $ p \equiv 3 \mod 4 $ then since $ f\br{x} $ is an odd function
+$$ \br{\dfrac{f\br{-x}}{p}} = \br{\dfrac{-f\br{x}}{p}} = \br{\dfrac{-1}{p}}\br{\dfrac{f\br{x}}{p}} = -\br{\dfrac{f\br{x}}{p}}, $$
+so $ \#\widetilde{E_D}\br{\FF_p} = p + 1 $. Let $ m = \#E_D\br{\QQ}_{\tors} $. We have $ 4 \mid m \mid p + 1 $ for all sufficiently large primes $ p $ with $ p \equiv 3 \mod 4 $, where $ p \nmid 2D $ and $ p \nmid m $. So $ m = 4 $, since otherwise this contradicts Dirichlet's theorem on primes in arithmetic progressions, so $ E_D\br{\QQ}_{\tors} \cong \br{\ZZ / 2\ZZ}^2 $. Thus $ \rk E_D\br{\QQ} \ge 1 $ if and only if there exist $ x, y \in \QQ $ with $ y \ne 0 $ such that $ y^2 = x^3 - Dx $, if and only if $ D $ is a congruent number.
+\end{example*}
+
+\pagebreak
+
+\subsection{The Lutz-Nagell theorem}
+
+\begin{lemma}
+\label{lem:10.4}
+Let $ E / \QQ $ be given by a Weierstrass equation with $ a_1, \dots, a_6 \in \ZZ $. Suppose $ \OOO \ne T = \br{x, y} \in E\br{\QQ}_{\tors} $. Then
+\begin{enumerate}
+\item $ 4x, 8y \in \ZZ $, and
+\item if $ 2 \mid a_1 $ or $ 2T \ne \OOO $ then $ x, y \in \ZZ $.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item The Weierstrass equation defines a formal group $ \widehat{E} $ over $ \ZZ $. For $ r \ge 1 $ we have
+$$ \widehat{E}\br{p^r\ZZ_p} = \cbr{\br{x, y} \in E\br{\QQ_p} \st \v_p\br{x} \le -2r, \ \v_p\br{y} \le -3r} \cup \cbr{\OOO}. $$
+By Theorem \ref{thm:9.2}, $ \widehat{E}\br{p^r\ZZ_p} \cong \br{\ZZ_p, +} $ if $ r > 1 / \br{p - 1} $, so $ \widehat{E}\br{4\ZZ_2} $ and $ \widehat{E}\br{p\ZZ_p} $ for $ p $ odd are torsion free. Since $ \OOO \ne T \in E\br{\QQ}_{\tors} $ it follows that $ \v_2\br{x} \ge -2 $ and $ \v_2\br{y} \ge -3 $, and $ \v_p\br{x} \ge 0 $ and $ \v_p\br{y} \ge 0 $ for all odd primes $ p $. This proves $ 1 $.
+\item Suppose $ T \in \widehat{E}\br{2\ZZ_2} $, that is $ \v_2\br{x} = -2 $ and $ \v_2\br{y} = -3 $. Since $ \widehat{E}\br{2\ZZ_2} / \widehat{E}\br{4\ZZ_2} \cong \br{\FF_2, +} $ and $ \widehat{E}\br{4\ZZ_2} $ is torsion free we get $ 2T = \OOO $. Also $ \br{x, y} = T = -T = \br{x, -y - a_1x - a_3} $, so $ 2y + a_1x + a_3 = 0 $, so $ 8y + 4xa_1 + 4a_3 = 0 $. Then $ 8y $ is odd, $ 4x $ is odd, and $ 4a_3 $ is even, so $ a_1 $ is odd. So if $ 2T \ne \OOO $ or $ a_1 $ is even then $ T \notin \widehat{E}\br{2\ZZ_2} $, so $ x, y \in \ZZ $.
+\end{enumerate}
+\end{proof}
+
+\begin{example*}
+$ y^2 + xy = x^3 + 4x + 1 $ has $ \br{-\tfrac{1}{4}, \tfrac{1}{8}} \in E\br{\QQ}\sbr{2} $.
+\end{example*}
+
+\lecture{16}{Friday}{13/11/20}
+
+\begin{theorem}[Lutz-Nagell]
+Let $ E / \QQ $ be $ y^2 = f\br{x} = x^3 + ax + b $ for $ a, b \in \ZZ $. Suppose $ \OOO \ne T = \br{x, y} \in E\br{\QQ}_{\tors} $. Then $ x, y \in \ZZ $ and either $ y = 0 $ or $ y^2 \mid 4a^3 + 27b^2 $.
+\end{theorem}
+
+\begin{proof}
+By Lemma \ref{lem:10.4}, $ x, y \in \ZZ $. If $ 2T = \OOO $ then $ y = 0 $. Otherwise $ \OOO \ne 2T = \br{x_2, y_2} \in E\br{\QQ}_{\tors} $. By Lemma \ref{lem:10.4}, $ x_2, y_2 \in \ZZ $. But $ x_2 = \br{f'\br{x} / 2y}^2 - 2x $, so $ y \mid f'\br{x} $. Since $ E $ is nonsingular, $ f\br{X} $ and $ f'\br{X} $ are coprime, so $ f\br{X} $ and $ f'\br{X}^2 $ are coprime. Then there exist $ g, h \in \QQ\sbr{X} $ such that $ g\br{X}f\br{X} + h\br{X}f'\br{X}^2 = 1 $. Doing this calculation and clearing denominators gives $ \br{3X^2 + 4a}f'\br{X}^2 - 27\br{X^3 + aX - b}f\br{X} = 4a^3 + 27b^2 $. Since $ y \mid f'\br{x} $ and $ y^2 = f\br{x} $ we get $ y^2 \mid 4a^3 + 27b^2 $.
+\end{proof}
+
+\begin{remark*}
+Mazur showed that if $ E / \QQ $ is an elliptic curve
+$$ E\br{\QQ}_{\tors} \cong
+\begin{cases}
+\ZZ / n\ZZ & 1 \le n \le 12, \ n \ne 11 \\
+\ZZ / 2\ZZ \times \ZZ / 2n\ZZ & 1 \le n \le 4
+\end{cases}.
+$$
+Moreover all fifteen possibilities occur.
+\end{remark*}
+
+\pagebreak
+
+\section{Kummer theory}
+
+Let $ K $ be a field, and let $ \ch K \nmid n $. Assume $ \mu_n \subset K $.
+
+\begin{lemma}
+\label{lem:11.1}
+Let $ \Delta \subset K^* / \br{K^*}^n $ be a finite subgroup. Let $ L = K\br{\sqrt[n]{\Delta}} $. Then $ L / K $ is Galois and $ \Gal\br{L / K} \cong \Hom\br{\Delta, \mu_n} $.
+\end{lemma}
+
+\begin{proof}
+$ L / K $ is Galois since $ \mu_n \subset K $ and $ \ch K \nmid n $. Define the \textbf{Kummer pairing}
+$$ \function[\abr{,}]{\Gal\br{L, K} \times \Delta}{\mu_n}{\br{\sigma, x}}{\dfrac{\sigma\br{\sqrt[n]{x}}}{\sqrt[n]{x}}}. $$
+\begin{itemize}
+\item Well-defined. If $ \alpha, \beta \in L $ with $ \alpha^n = \beta^n = x $, then $ \br{\alpha / \beta}^n = 1 $. Then $ \alpha / \beta \in \mu_n \subset K $, so $ \sigma\br{\alpha} / \alpha = \sigma\br{\beta} / \beta $.
+\item Bilinear, since
+$$ \abr{\sigma\tau, x} = \dfrac{\sigma\br{\tau\br{\sqrt[n]{x}}}\tau\br{\sqrt[n]{x}}}{\tau\br{\sqrt[n]{x}}\sqrt[n]{x}} = \abr{\sigma, x}\abr{\tau, x}, \qquad \abr{\sigma, xy} = \dfrac{\sigma\br{\sqrt[n]{xy}}}{\sqrt[n]{xy}} = \dfrac{\sigma\br{\sqrt[n]{x}}\sigma\br{\sqrt[n]{y}}}{\sqrt[n]{x}\sqrt[n]{y}} = \abr{\sigma, x}\abr{\sigma, y}. $$
+\item Nondegenerate. Let $ \sigma \in \Gal\br{L / K} $. If $ \abr{\sigma, x} = 1 $ for all $ x \in \Delta $ then $ \sigma\br{\sqrt[n]{x}} = \sqrt[n]{x} $ for all $ x \in \Delta $, so $ \sigma $ fixes $ L $ pointwise, that is $ \sigma = \id $. Let $ x \in \Delta $. If $ \abr{\sigma, x} = 1 $ for all $ \sigma \in \Gal\br{L / K} $ then $ \sigma\br{\sqrt[n]{x}} = \sqrt[n]{x} $ for all $ \sigma \in \Gal\br{L / K} $, so $ \sqrt[n]{x} \in K^* $, so $ x \in \br{K^*}^n $, that is $ x\br{K^*}^n $ is trivial in $ \Delta $.
+\end{itemize}
+We get injective group homomorphisms
+\begin{enumerate}
+\item $ \Gal\br{L / K} \hookrightarrow \Hom\br{\Delta, \mu_n} $, and
+\item $ \Delta \hookrightarrow \Hom\br{\Gal\br{L / K}, \mu_r} $.
+\end{enumerate}
+By $ 1 $, $ \Gal\br{L / K} $ is abelian and of exponent dividing $ n $, where the exponent is the least integer $ m $ such that $ g^m = 1 $ for all $ g $. Note that if $ G $ is a finite abelian group of exponent dividing $ n $ then $ \Hom\br{G, \mu_n} \cong G $, noncanonically. So $ \abs{\Gal\br{L / K}} \le \abs{\Delta} \le \abs{\Gal\br{L / K}} $ by $ 1 $ and $ 2 $, so $ 1 $ and $ 2 $ are isomorphisms.
+\end{proof}
+
+\begin{example*}
+$ \Gal\br{\QQ\br{\sqrt{2}, \sqrt{3}, \sqrt{5}} / \QQ} \cong \br{\ZZ / 2\ZZ}^3 $.
+\end{example*}
+
+\begin{theorem}
+There is a bijection
+$$ \bijection{\cbr{\text{finite subgroups} \ \Delta \subset K^* / \br{K^*}^n}}{\cbr{\text{finite abelian extensions} \ L / K \ \text{of exponent dividing} \ n}}{\Delta}{K\br{\sqrt[n]{\Delta}}}{\br{\br{L^*}^n \cap K^*} / \br{K^*}^n}{L}. $$
+\end{theorem}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item Let $ L / K $ be a finite abelian extension of exponent dividing $ n $. Let $ \Delta = \br{\br{L^*}^n \cap K^*} / \br{K^*}^n $. Then $ K\br{\sqrt[n]{\Delta}} \subset L $ and we aim to show equality. Let $ G = \Gal\br{L / K} $. The Kummer pairing gives an injection $ \Delta \hookrightarrow \Hom\br{G, \mu_n} $. Claim that this is a surjection. Given the claim $ \Delta \cong \Hom\br{G, \mu_n} $, so by Lemma \ref{lem:11.1} $ \sbr{K\br{\sqrt[n]{\Delta}} : K} = \abs{\Delta} = \abs{G} = \sbr{L : K} $. But $ K\br{\sqrt[n]{\Delta}} \subset L $, so $ L = K\br{\sqrt[n]{\Delta}} $. To prove the claim, let $ \chi : G \to \mu_n $ be a group homomorphism. Distinct automorphisms are linearly independent, so there exists $ a \in L $ such that $ y = \sum_{\tau \in G} \chi\br{\tau}^{-1}\tau\br{a} \ne 0 $. Let $ \sigma \in G $. Then
+\begin{equation}
+\label{eq:12}
+\sigma\br{y} = \sum_{\tau \in G} \chi\br{\tau}^{-1}\sigma\br{\tau\br{a}} = \sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}\sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}y,
+\end{equation}
+so $ \sigma\br{y^n} = y^n $ for all $ \sigma \in G $. Let $ x = y^n $. Then $ x \in K^* \cap \br{L^*}^n $, that is $ x \in \Delta $. Also by $ \br{\ref{eq:12}} $, $ \chi : \sigma \mapsto \sigma\br{y} / y = \sigma\br{\sqrt[n]{x}} / \sqrt[n]{x} $. This proves the claim.
+
+\pagebreak
+
+\item Let $ \Delta \subset K^* / \br{K^*}^n $ be a finite subgroup. Let $ L = K\br{\sqrt[n]{\Delta}} $ and $ \Delta' = \br{\br{L^*}^n \cap K^*} / \br{K^*}^n $. We must show $ \Delta' = \Delta $. Clearly $ \Delta \subset \Delta' $, so $ L = K\br{\sqrt[n]{\Delta}} \subset K\br{\sqrt[n]{\Delta'}} \subset L $. Then $ K\br{\sqrt[n]{\Delta}} = K\br{\sqrt[n]{\Delta'}} $, so by Lemma \ref{lem:11.1}, $ \abs{\Delta} = \abs{\Delta'} $. Since $ \Delta \subset \Delta' $ it follows that $ \Delta = \Delta' $.
+\end{itemize}
+\end{proof}
 
 \end{document}
