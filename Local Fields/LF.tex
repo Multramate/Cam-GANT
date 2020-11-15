@@ -20,8 +20,8 @@
 
 \lecture{1}{Friday}{09/10/20}
 
-How can we find solutions to Diophantine equations? Let $ f\br{x_1, \dots, x_r} \in \ZZ\sbr{x_1, \dots, x_r} $ be a polynomial with integer coefficients. What are integer or rational solutions to $ f\br{x_1, \dots, x_r} = 0 $? Finding solutions to Diophantine equations in general is a very difficult problem. Consider a related but much simpler problem of solving the congruences
-$$ f\br{x_1, \dots, x_r} \equiv 0 \mod p, \qquad \dots, \qquad f\br{x_1, \dots, x_r} \equiv 0 \mod p^n, \qquad \dots. $$
+How can we find solutions to Diophantine equations? Let $ f\br{X_1, \dots, X_r} \in \ZZ\sbr{X_1, \dots, X_r} $ be a polynomial with integer coefficients. What are integer or rational solutions to $ f\br{X_1, \dots, X_r} = 0 $? Finding solutions to Diophantine equations in general is a very difficult problem. Consider a related but much simpler problem of solving the congruences
+$$ f\br{X_1, \dots, X_r} \equiv 0 \mod p, \qquad \dots, \qquad f\br{X_1, \dots, X_r} \equiv 0 \mod p^n, \qquad \dots. $$
 Now this is just a finite computation, since modulo primes there are only finitely many choices for solutions, so this is a much easier problem. Local fields give a way to package all this information together.
 
 \subsection{Absolute values}
@@ -220,10 +220,10 @@ determines a non-archimedean absolute value. Conversely, a non-archimedean absol
 \begin{itemize}
 \item If $ K = \QQ $, then $ \v_p\br{x} = -\log_p \abs{x}_p $ is the \textbf{$ p $-adic valuation}.
 \item If $ k $ is a field and $ K = k\br{t} = \Frac k\sbr{t} $ is the \textbf{rational function field}, then
-$$ v\br{t^n\dfrac{f\br{t}}{g\br{t}}} = n, \qquad f, g \in k\sbr{t}, \qquad f\br{0}, g\br{0} \ne 0 $$
+$$ \v\br{t^n\dfrac{f\br{t}}{g\br{t}}} = n, \qquad f, g \in k\sbr{t}, \qquad f\br{0}, g\br{0} \ne 0 $$
 is the \textbf{$ t $-adic valuation}.
 \item If $ K = k\br{\br{t}} = \Frac k\sbr{\sbr{t}} = \cbr{\sum_{i = n}^\infty a_it^i \st a_i \in k, \ n \in \ZZ} $ is the \textbf{field of formal Laurent series} over $ k $, then
-$$ v\br{\sum_i a_it^i} = \min \cbr{i \st a_i \ne 0} $$
+$$ \v\br{\sum_i a_it^i} = \min \cbr{i \st a_i \ne 0} $$
 is the $ t $-adic valuation on $ K $.
 \end{itemize}
 \end{example*}
@@ -312,7 +312,7 @@ Let $ v $ be a valuation on $ K $. The following are equivalent.
 \item[$ 1 \implies 2 $.] Let $ I \subseteq \OOO_K $ be a non-zero ideal. Let $ x \in I $ such that $ v\br{x} = \min \cbr{v\br{a} \st a \in I} $ which exists since $ v $ is discrete. Then $ x\OOO_K = \cbr{a \in \OOO_K \st v\br{a} \ge v\br{x}} \subseteq I $, and hence $ x\OOO_K = I $ by definition of $ x $.
 \item[$ 2 \implies 3 $.] Clear.
 \item[$ 3 \implies 4 $.] Write $ \mmm = \OOO_Kx_1 + \dots + \OOO_Kx_n $. Without loss of generality $ v\br{x_1} \le \dots \le v\br{x_n} $. Then $ \mmm = \OOO_Kx_1 $.
-\item[$ 4 \implies 1 $.] Let $ \mmm = \OOO_K\pi $ for some $ \pi \in \OOO_K $ and let $ c = v\br{\pi} $. Then if $ v\br{x} > 0 $, $ x \in \mmm $ and hence $ v\br{x} \ge c $. Thus $ v\br{K^\times} \cap \br{0, c} = \emptyset $. Since $ v\br{K^\times} $ is a subgroup of $ \br{\RR, +} $, we have $ v\br{K^\times} = c\ZZ $.
+\item[$ 4 \implies 1 $.] Let $ \mmm = \OOO_K\pi $ for some $ \pi \in \OOO_K $ and let $ c = v\br{\pi} $. Then if $ v\br{x} > 0 $, then $ x \in \mmm $ and hence $ v\br{x} \ge c $. Thus $ v\br{K^\times} \cap \br{0, c} = \emptyset $. Since $ v\br{K^\times} $ is a subgroup of $ \br{\RR, +} $, we have $ v\br{K^\times} = c\ZZ $.
 \end{itemize}
 \end{proof}
 
@@ -349,7 +349,7 @@ A ring $ R $ is called a \textbf{discrete valuation ring (DVR)} if it is a PID w
 \begin{itemize}
 \item $ \ZZ_{\br{\abr{p}}} $ is a DVR, the valuation ring of $ \abs{\cdot}_p $ on $ \QQ $.
 \item The ring of formal power series $ k\sbr{\sbr{t}} = \cbr{\sum_{n \ge 0} a_nt^n \st a_n \in k} $ is a DVR, the valuation ring for the $ t $-adic absolute value on $ k\br{\br{t}} $.
-\item Non-example. If $ K = k\br{t} $ is the rational function field and $ K' = K\br{t^{1 / 2}, t^{1 / 4}, \dots} $, then the $ t $-adic valuation extends to $ K' $, and $ v\br{t^{1 / 2^n}} = 1 / 2^n $ is not discrete.
+\item Non-example. If $ K = k\br{t} $ is the rational function field and $ K' = K\br{t^{1 / 2}, t^{1 / 4}, \dots} $, then the $ t $-adic valuation extends to $ K' $, and $ \v\br{t^{1 / 2^n}} = 1 / 2^n $ is not discrete.
 \end{itemize}
 \end{example*}
 
@@ -518,8 +518,8 @@ This gives the construction of $ \br{x_n}_{n = 1}^\infty $.
 \begin{itemize}
 \item By property $ 2 $, $ \br{x_n}_{n = 1}^\infty $ is Cauchy, so let $ x \in \OOO_K $ such that $ x_n \to x $. Then $ f\br{x} = \lim_{n \to \infty} f\br{x_n} = 0 $ by $ 1 $. Moreover $ 2 $ implies $ a = x_1 \equiv x_n \mod \pi^{1 + r} $ for all $ n $, so $ a \equiv x \mod \pi^{1 + r} $, so $ \abs{x - a} < \abs{f'\br{a}} $. This proves existence.
 \item For uniqueness, suppose $ x' $ also satisfies $ f\br{x'} = 0 $ and $ \abs{x' - a} < \abs{f'\br{a}} $. Set $ \delta = x' - x \ne 0 $. Then $ \abs{x' - a} < \abs{f'\br{a}} $, $ \abs{x - a} < \abs{f'\br{a}} $, and the ultrametric inequality implies $ \abs{\delta} = \abs{x - x'} < \abs{f'\br{a}} = \abs{f'\br{x}} $. But
-$$ 0 = f\br{x'} = f\br{x + \delta} = \underbrace{f\br{x}}_{= 0} + f'\br{x}\delta + \underbrace{\dots}_{\abs{\cdot} \le \abs{\delta}^2}. $$
-Hence $ \abs{f'\br{x}\delta} \le \abs{\delta}^2 $, so $ \abs{f'\br{x}} \le \abs{\delta} $, a contradiction.
+$$ 0 = f\br{x'} = f\br{x + \delta} = f\br{x} + f'\br{x}\delta + \underbrace{\dots}_{\abs{\cdot} \le \abs{\delta}^2}, $$
+where $ f\br{x} = 0 $. Hence $ \abs{f'\br{x}\delta} \le \abs{\delta}^2 $, so $ \abs{f'\br{x}} \le \abs{\delta} $, a contradiction.
 \end{itemize}
 \end{proof}
 
@@ -576,7 +576,7 @@ Let $ f\br{X} = a_nX^n + \dots + a_0 \in K\sbr{X} $ with $ a_0, a_n \ne 0 $. If 
 \end{corollary}
 
 \begin{proof}
-Upon scaling, we may assume $ f\br{X} \in \OOO_K\sbr{X} $ with $ \max_i\br{\abs{a_i}} = 1 $. Thus we need to show that $ \max\br{\abs{a_0}, \abs{a_n}} = 1 $. If not, let $ r $ be minimal such that $ \abs{a_r} = 1 $, then $ 0 < r < n $. Thus we have $ \overline{f}\br{X} = X^r\br{a_r + \dots + a_nX^{n - r}} \mod \mmm $. Then Theorem \ref{thm:4.4} implies $ f\br{X} = g\br{X}h\br{X} $ and $ 0 < \deg g < n $.
+Upon scaling, we may assume $ f\br{X} \in \OOO_K\sbr{X} $ with $ \max_i \br{\abs{a_i}} = 1 $. Thus we need to show that $ \max\br{\abs{a_0}, \abs{a_n}} = 1 $. If not, let $ r $ be minimal such that $ \abs{a_r} = 1 $, then $ 0 < r < n $. Thus we have $ \overline{f}\br{X} = X^r\br{a_r + \dots + a_nX^{n - r}} \mod \mmm $. Then Theorem \ref{thm:4.4} implies $ f\br{X} = g\br{X}h\br{X} $ and $ 0 < \deg g < n $.
 \end{proof}
 
 \subsection{Teichm\"uller lifts}
@@ -597,7 +597,7 @@ Since $ \ch R = p $, $ \br{x + y}^p = x^p + y^p $, so Frobenius is a ring homomo
 \hfill
 \begin{itemize}
 \item $ \FF_{p^n} $ and $ \overline{\FF_p} $ are perfect fields.
-\item $ \FF_p\sbr{t} $ is not perfect, since $ t $ is not in the image of Frobenius.
+\item $ \FF_p\sbr{t} $ is not perfect, since $ t \notin \im \Frob $.
 \item $ \FF_p\br{t^{1 / p^\infty}} = \FF_p\br{t, t^{1 / p}, \dots} $ is a perfect field, the \textbf{perfection} of $ \FF_p\br{t} $. The $ t $-adic absolute value extends to $ \FF_p\br{t^{1 / p^\infty}} $, and the completion of $ \FF_p\br{t^{1 / p^\infty}} $ is a \textbf{perfectoid field}.
 \end{itemize}
 \end{example*}
@@ -615,7 +615,7 @@ Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ k 
 \item $ a \equiv \sbr{a} \mod \mmm $ for all $ a \in k $, and
 \item $ \sbr{ab} \equiv \sbr{a}\sbr{b} \mod \mmm $ for all $ a, b \in k $.
 \end{enumerate}
-Moreover if $ \ch \OOO_K = p $, $ \sbr{\cdot} $ is a ring homomorphism.
+Moreover if $ \ch \OOO_K = p $, then $ \sbr{\cdot} $ is a ring homomorphism.
 \end{theorem}
 
 \begin{definition}
@@ -669,7 +669,7 @@ so $ 2 $ is satisfied.
 
 \pagebreak
 
-If $ \ch \OOO_K = p $, $ y_i + u_i $ is a lift of $ a^{1 / p^i} + b^{1 / p^i} = \br{a + b}^{1 / p^i} $. Then
+If $ \ch \OOO_K = p $, then $ y_i + u_i $ is a lift of $ a^{1 / p^i} + b^{1 / p^i} = \br{a + b}^{1 / p^i} $. Then
 $$ \sbr{a + b} = \lim_{i \to \infty} \br{y_i + u_i}^{p^i} = \lim_{i \to \infty} \br{y_i^{p^i} + u_i^{p^i}} = \lim_{i \to \infty} \br{x_i + z_i} = \sbr{a} + \sbr{b}. $$
 It is easy to check that $ \sbr{0} = 0 $ and $ \sbr{1} = 1 $, so $ \sbr{\cdot} $ is a ring homomorphism. For uniqueness, let $ \phi : k \to \OOO_K $ be another such map. Then for $ a \in k $, $ \phi\br{a^{1 / p^i}} $ is a lift of $ a^{1 / p^i} $, it follows that
 $$ \sbr{a} = \lim_{i \to \infty} \phi\br{a^{1 / p^i}}^{p^i} = \lim_{i \to \infty} \phi\br{a} = \phi\br{a}. $$
@@ -682,7 +682,7 @@ Let $ K = \QQ_p $, and let $ \sbr{\cdot} : \FF_p \to \ZZ_p $. If $ a \in \FF_p^\
 More generally is the following.
 
 \begin{lemma}
-Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. If $ k = \OOO_K / \mmm \subseteq \overline{\FF_p} $, $ \sbr{a} \in \OOO_K^\times $ is a root of unity.
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. If $ k = \OOO_K / \mmm \subseteq \overline{\FF_p} $, then $ \sbr{a} \in \OOO_K^\times $ is a root of unity.
 \end{lemma}
 
 \begin{proof}
@@ -729,7 +729,7 @@ where $ \cdot y : L \to L $ is the $ K $-linear map induced by multiplication by
 \pagebreak
 
 \begin{definition}
-Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ V $ a vector space over $ K $. $ A $ \textbf{norm} on $ V $ is a function $ \norm{\cdot} : V \to \RR_{\ge 0} $ satisfying
+Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ V $ a vector space over $ K $. A \textbf{norm} on $ V $ is a function $ \norm{\cdot} : V \to \RR_{\ge 0} $ satisfying
 \begin{itemize}
 \item $ \norm{x} = 0 $ if and only if $ x = 0 $,
 \item $ \norm{\lambda x} = \abs{\lambda}\norm{x} $ for all $ \lambda \in K $ and $ x \in V $, and
@@ -1181,7 +1181,7 @@ Let $ \br{K, \abs{\cdot}} $ be an archimedean local field. Then $ K = \RR $ or $
 \begin{proof}
 If $ \ch K > 0 $, then $ K $ is non-archimedean by Corollary \ref{cor:9.4}. Therefore $ \ch K = 0 $, and hence $ \QQ \subseteq K $. Since $ \abs{\cdot} $ is archimedean, $ \eval{\abs{\cdot}}_\QQ $ is equivalent to $ \abs{\cdot}_\infty $ by Ostrowski. Therefore, since $ K $ is complete, we have $ \RR \subseteq K $.
 \begin{itemize}
-\item We first consider the case $ \CC \subseteq K $. Then by uniqueness of extensions of absolute values, $ \eval{\abs{\cdot}}_\CC $ is equivalent to $ \abs{\cdot}_\infty $. Suppose $ \alpha \in K \setminus \CC $. Then $ f\br{x} = \abs{x - \alpha} $ is a continuous function on $ \CC $, hence attains a lower bound at $ b \in \CC $ say, since $ \CC \subseteq K $ is closed. Set $ \beta = \alpha - b $ and we let $ c \in \CC $ such that $ 0 < \abs{c} < \abs{\beta} $. We have $ \abs{\beta - a} \ge \abs{\beta} $ for all $ a \in \CC $. Hence
+\item We first consider the case $ \CC \subseteq K $. Then by uniqueness of extensions of absolute values, $ \eval{\abs{\cdot}}_\CC $ is equivalent to $ \abs{\cdot}_\infty $. Suppose $ \alpha \in K \setminus \CC $. Then $ f\br{X} = \abs{X - \alpha} $ is a continuous function on $ \CC $, hence attains a lower bound at $ b \in \CC $ say, since $ \CC \subseteq K $ is closed. Set $ \beta = \alpha - b $ and we let $ c \in \CC $ such that $ 0 < \abs{c} < \abs{\beta} $. We have $ \abs{\beta - a} \ge \abs{\beta} $ for all $ a \in \CC $. Hence
 $$ \dfrac{\abs{\beta - c}}{\abs{\beta}} \le \dfrac{\abs{\beta - c}}{\abs{\beta}}\prod_{\zeta^n = 1, \ \zeta \ne 1} \dfrac{\abs{\beta - \zeta c}}{\abs{\beta}} = \dfrac{\abs{\beta^n - c^n}}{\abs{\beta}^n} = \abs{1 - \br{\dfrac{c}{\beta}}^n} \to 1, $$
 as $ n \to \infty $, since $ \abs{c / \beta} < 1 $ implies that $ \br{c / \beta}^n \to 0 $. Then $ \abs{\beta - c} \le \abs{\beta} $, so $ \abs{\beta - c} = \abs{\beta} $. Replacing $ \beta $ by $ \beta - c $ and iterating, we obtain $ \abs{\beta - mc} = \abs{\beta} $ for all $ m \in \NN $, so
 $$ \abs{m}\abs{c} = \abs{mc} \le \abs{\beta - mc} + \abs{\beta} = 2\abs{\beta}. $$
@@ -1433,10 +1433,8 @@ Theorem \ref{thm:11.5} in fact holds without the assumption that $ L / K $ is se
 The ring of integers inside a number field is a Dedekind domain.
 \end{corollary}
 
-\begin{remark*}
 By convention, if $ \OOO_K $ is the ring of integers of a number field and $ \ppp \subseteq \OOO_K $ is a non-zero prime ideal, we normalise $ \abs{\cdot}_\ppp $, the absolute value associated to $ \v_\ppp $, by
 $$ \abs{x}_\ppp = \N_\ppp^{-\v_\ppp\br{x}}, \qquad \N_\ppp = \#\br{\OOO_K / \ppp}. $$
-\end{remark*}
 
 \lecture{12}{Wednesday}{04/11/20}
 
@@ -1608,8 +1606,8 @@ Thus $ \dim_k \OOO_L / \pp_i^{e_i} = \sum_{j = 0}^{e_i - 1} \dim_k \pp_i^j / \pp
 \end{proof}
 
 Theorem \ref{thm:13.3} is the algebraic analogue of the fact that for a degree $ n $ covering $ X \to Y $ of compact Riemann surfaces, and $ y \in Y $ we have
-$$ n = \sum_{x \in f^{-1}\br{y}} e_x, $$
-where $ e_x $ is the ramification index of $ x $. Now assume $ L / K $ is Galois. Then for any $ \sigma \in \Gal\br{L / K} $, $ \sigma\br{\pp_i} \cap \OOO_K = \ppp $ and hence $ \sigma\br{\pp_i} \in \cbr{\pp_1, \dots, \pp_r} $, so $ \Gal\br{L / K} $ acts on $ \cbr{\pp_1, \dots, \pp_r} $.
+$$ n = \sum_{x \in f^{-1}\br{y}} \e_x, $$
+where $ \e_x $ is the ramification index of $ x $. Now assume $ L / K $ is Galois. Then for any $ \sigma \in \Gal\br{L / K} $, $ \sigma\br{\pp_i} \cap \OOO_K = \ppp $ and hence $ \sigma\br{\pp_i} \in \cbr{\pp_1, \dots, \pp_r} $, so $ \Gal\br{L / K} $ acts on $ \cbr{\pp_1, \dots, \pp_r} $.
 
 \begin{proposition}
 \label{prop:13.4}
@@ -1625,7 +1623,7 @@ Since $ \pp_j $ is prime, there exists $ \tau \in \Gal\br{L / K} $ such that $ \
 \pagebreak
 
 \begin{corollary}
-Suppose $ L / K $ is Galois. Then $ e_1 = \dots = e_r = e $ and $ f_1 = \dots = f_r = f $, and we have $ n = efr $.
+Suppose $ L / K $ is Galois. Then $ e_1 = \dots = e_r = \e $ and $ f_1 = \dots = f_r = \f $, and we have $ n = \e\f r $.
 \end{corollary}
 
 \begin{proof}
@@ -1636,23 +1634,23 @@ For any $ \sigma \in \Gal\br{L / K} $ we have
 \end{itemize}
 \end{proof}
 
-Let $ L / K $ be complete discretely valued fields with normalised valuations $ v_L $ and $ v_K $ and uniformisers $ \pi_L $ and $ \pi_K $. The \textbf{ramification index} is $ e = e_{L / K} = v_L\br{\pi_K} $, that is $ \pi_L^e\OOO_L = \pi_K\OOO_L $. The \textbf{residue class degree} is $ f = f_{L / K} = \sbr{k_L : k} $.
+Let $ L / K $ be complete discretely valued fields with normalised valuations $ \v_L $ and $ \v_K $ and uniformisers $ \pi_L $ and $ \pi_K $. The \textbf{ramification index} is $ \e = \e_{L / K} = \v_L\br{\pi_K} $, that is $ \pi_L^\e\OOO_L = \pi_K\OOO_L $. The \textbf{residue class degree} is $ \f = \f_{L / K} = \sbr{k_L : k} $.
 
 \begin{corollary}
 \label{cor:13.6}
 Suppose either
 \begin{enumerate}
 \item $ L / K $ is finite separable, or
-\item $ f $ is finite.
+\item $ \f $ is finite.
 \end{enumerate}
-Then $ \sbr{L : K} = ef $.
+Then $ \sbr{L : K} = \e\f $.
 \end{corollary}
 
 \begin{proof}
 \hfill
 \begin{enumerate}
 \item Theorem \ref{thm:13.3}.
-\item Can apply the same proof as in Theorem \ref{thm:13.3} if we know $ \OOO_L $ is finitely generated as an $ \OOO_K $-module. As before, $ \dim_k \OOO_L / \pi_K\OOO_L = ef < \infty $. Let $ x_1, \dots, x_m \in \OOO_L $ be a set of coset representatives for a $ k $-basis for $ \OOO_L / \pi_K\OOO_L $. For $ y \in \OOO_L $, can write
+\item Can apply the same proof as in Theorem \ref{thm:13.3} if we know $ \OOO_L $ is finitely generated as an $ \OOO_K $-module. As before, $ \dim_k \OOO_L / \pi_K\OOO_L = \e\f < \infty $. Let $ x_1, \dots, x_m \in \OOO_L $ be a set of coset representatives for a $ k $-basis for $ \OOO_L / \pi_K\OOO_L $. For $ y \in \OOO_L $, can write
 $$ y = \sum_{i = 0}^\infty \br{\sum_{j = 1}^m a_{ij}x_j}\pi_K^i = \sum_{j = 1}^m \br{\sum_{i = 0}^\infty a_{ij}\pi_K^i}x_j, \qquad a_{ij} \in \OOO_K, $$
 by Proposition \ref{prop:3.5}, so $ \OOO_L $ is finitely generated over $ \OOO_K $.
 \end{enumerate}
@@ -1679,8 +1677,395 @@ Suppose $ L / K $ is finite Galois and $ \pp $ is a prime ideal of $ L $ dividin
 \hfill
 \begin{enumerate}
 \item Since $ L / K $ is Galois, $ L $ is the splitting field of a separable polynomial $ f\br{X} \in K\sbr{X} $. Then $ L_\pp $ is the splitting field of $ f $ considered as an element of $ K_\ppp\sbr{X} $, so $ L_\pp / K_\ppp $ is Galois.
-\item Let $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, then $ \sigma\br{L} = L $ since $ L / K $ is normal, hence we have a map $ \res : \Gal\br{L_\pp / K_\ppp} \to \Gal\br{L / K} $. Since $ L $ is dense in $ L_\pp $, $ \res $ is injective. By Lemma \ref{lem:10.2} $ \abs{\sigma\br{x}}_\pp = \abs{x}_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $ and $ x \in L_\pp $. Then $ \sigma\br{\pp} = \pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, so $ \res \sigma \in \G_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $. To show surjectivity it suffices to show that $ \sbr{L_\pp : K_\ppp} = ef = \abs{\G_\pp} $. We have already seen $ \abs{\G_\pp} = ef $. We can apply Corollary \ref{cor:13.6} to $ L_\pp / K_\ppp $ noting that $ e $ and $ f $ do not change when we take completions.
+\item Let $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, then $ \sigma\br{L} = L $ since $ L / K $ is normal, hence we have a map $ \res : \Gal\br{L_\pp / K_\ppp} \to \Gal\br{L / K} $. Since $ L $ is dense in $ L_\pp $, $ \res $ is injective. By Lemma \ref{lem:10.2} $ \abs{\sigma\br{x}}_\pp = \abs{x}_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $ and $ x \in L_\pp $. Then $ \sigma\br{\pp} = \pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $, so $ \res \sigma \in \G_\pp $ for all $ \sigma \in \Gal\br{L_\pp / K_\ppp} $. To show surjectivity it suffices to show that $ \sbr{L_\pp : K_\ppp} = \e\f = \abs{\G_\pp} $. We have already seen $ \abs{\G_\pp} = \e\f $. We can apply Corollary \ref{cor:13.6} to $ L_\pp / K_\ppp $ noting that $ \e $ and $ \f $ do not change when we take completions.
 \end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\section{Ramification theory}
+
+\subsection{Unramified and totally ramified extensions}
+
+\lecture{14}{Monday}{09/11/20}
+
+Let $ K $ be a non-archimedean local field and $ L $ a finite separable extension of $ K $. Then $ L $ is a local field. Then
+\begin{equation}
+\label{eq:5}
+\sbr{L : K} = \e_{L / K}\f_{L / K}.
+\end{equation}
+
+\begin{lemma}
+Let $ M / L / K $ be finite separable extensions of local fields. Then
+\begin{enumerate}
+\item $ \e_{M / K} = \e_{M / L}\e_{L / K} $, and
+\item $ \f_{M / K} = \f_{M / L}\f_{L / K} $.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item[$ 2 $.] $ \f_{M / K} = \sbr{k_M : k} = \sbr{k_M : k_L}\sbr{k_L : k} = \f_{M / L}\f_{L / K} $.
+\item[$ 1 $.] $ 2 $ and $ \br{\ref{eq:5}} $.
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+The extension $ L / K $ is said to be
+\begin{itemize}
+\item \textbf{unramified} if $ \e_{L / K} = 1 $, if and only if $ \f_{L / K} = \sbr{L : K} $,
+\item \textbf{ramified} if $ \e_{L / K} > 1 $, if and only if $ \f_{L / K} < \sbr{L : K} $, and
+\item \textbf{totally ramified} if $ \e_{L / K} = \sbr{L : K} $, if and only if $ \f_{L / K} = 1 $.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+\label{thm:14.3}
+Let $ L / K $ be a finite separable extension of local fields, then there exists a field $ K_0 $ such that $ K \subseteq K_0 \subseteq L $ and such that
+\begin{itemize}
+\item $ K_0 / K $ is unramified, and
+\item $ L / K_0 $ is totally ramified.
+\end{itemize}
+Moreover $ \sbr{K_0 : K} = \f_{L / K} $ and $ \sbr{L : K_0} = \e_{L / K} $, and $ K_0 / K $ is Galois.
+\end{theorem}
+
+\begin{proof}
+Let $ k = \FF_q $, so that $ k_L = \FF_{q^\f} $ for $ \f = \f_{L / K} $. Set $ m = q^\f - 1 $. Let $ \sbr{\cdot} : \FF_{q^\f}^\times \to L^\times $ be the Teichm\"uller map for $ L $ and let $ \zeta_m = \sbr{a} $ where $ a $ is a generator of $ \FF_{q^\f}^\times $. Then $ \zeta_m $ is a primitive $ m $-th root of unity, by lecture $ 5 $. We set
+$$ K_0 = K\br{\zeta_m} \subseteq L. $$
+Then $ K_0 $ is the splitting field of the separable polynomial $ f\br{X} = X^m - 1 \in K\sbr{X} $, hence $ K_0 / K $ is Galois. Since $ \abs{\zeta_m} = 1 $, we have $ \zeta_m \in \OOO_{K_0}^\times $. It follows that $ k_0 = \OOO_{K_0} / \mmm_0 $ contains a primitive $ m $-th root of unity, so $ k_0 = \FF_{q^\f} \cong k_L $. Now $ \Gal\br{K_0 / K} $ preserves $ \OOO_{K_0} $ and $ \mmm_0 $, using $ \abs{x} = \abs{\sigma\br{x}} $ for all $ x \in K_0 $ and $ \sigma \in \Gal\br{K_0 / K} $. Thus there is a natural map $ \res : \Gal\br{K_0 / K} \to \Gal\br{k_0 / k} $. For $ \sigma \in \Gal\br{K_0 / K} $ we have $ \sigma\br{\zeta_m} = \zeta_m $ if $ \sigma\br{\zeta_m} \equiv \zeta_m \mod \mmm_0 $. This follows from the fact that $ \sigma\br{\zeta_m} = \sbr{\br{\res \sigma}\br{\zeta_m \mod \mmm_0}} $. Thus $ \res $ is injective. It follows that $ \abs{\Gal\br{K_0 / K}} \le \abs{\Gal\br{k_0 / k}} = \f = \f_{L / K} $, so $ \sbr{K_0 : K} = \f_{L / K} $ and $ \res $ is an isomorphism. Thus $ K_0 / K $ is unramified. Since $ k_0 \cong k_L $, $ \f_{L / K_0} = 1 $ and hence $ L / K_0 $ is totally ramified.
+\end{proof}
+
+We obtain the following description of unramified extensions.
+
+\begin{theorem}
+\label{thm:14.4}
+Let $ K $ be a non-archimedean local field with $ k \cong \FF_q $. For any $ n \ge 1 $, there is a unique unramified extension $ L / K $ of degree $ n $. Moreover $ L / K $ is Galois and the natural map $ \Gal\br{L / K} \to \Gal\br{k_L / k} $ is an isomorphism. In particular $ \Gal\br{L / K} $ is cyclic group generated by an element $ \Frob_{L / K} $ such that
+$$ \Frob_{L / K}\br{x} \equiv x^q \mod \mmm_L, \qquad x \in \OOO_L. $$
+\end{theorem}
+
+\begin{proof}
+For $ n \ge 1 $, we take $ L = K\br{\zeta_m} $ where $ m = q^n - 1 $ and $ \zeta_m \in \overline{K}^\times $ is a primitive $ m $-th root of unity. Then as in the proof of Theorem \ref{thm:14.3}, $ \Gal\br{L / K} \xrightarrow{\sim} \Gal\br{k_L / k} \cong \Gal\br{\FF_{q^n} / \FF_q} $ and is cyclic and generated by a lift of $ x \mapsto x^q $. Uniqueness is clear since for $ L / K $ degree $ n $ unramified, we have $ \zeta_m \in L $ and hence $ L = K\br{\zeta_m} $ by degree reasons.
+\end{proof}
+
+\pagebreak
+
+\begin{corollary}
+Let $ K $ be a non-archimedean local field, and let $ L / K $ be finite Galois. Then the natural map $ \res : \Gal\br{L / K} \to \Gal\br{k_L / k} $ is surjective.
+\end{corollary}
+
+\begin{proof}
+With the notation of Theorem \ref{thm:14.3} the map $ \res $ factors as
+$$ \Gal\br{L / K} \twoheadrightarrow \Gal\br{K_0 / K} \xrightarrow{\sim} \Gal\br{k_L / k}. $$
+\end{proof}
+
+\begin{definition}
+Let $ L / K $ be a finite Galois extension of local fields. The \textbf{inertia subgroup} $ \I_{L / K} \subseteq \Gal\br{L / K} $ is defined to be the kernel of the surjective map $ \Gal\br{L / K} \twoheadrightarrow \Gal\br{k_L / k} $.
+\end{definition}
+
+Since $ \e_{L / K}\f_{L / K} = \sbr{L : K} $, we have $ \abs{\I_{L / K}} = \e_{L / K} $. There is an exact sequence
+$$ 0 \to \I_{L / K} \xrightarrow{\iota} \Gal\br{L / K} \xrightarrow{\rho} \Gal\br{k_L / k} \to 0. $$
+By exactness, $ \I_{L / K} = \ker \rho $ and $ \Gal\br{k_L / k} = \coker \iota $. Then $ \I_{L / K} = \Gal\br{L / K_0} $, where $ L / K_0 $ is totally ramified.
+
+\begin{definition}
+Let $ K $ be a non-archimedean local field, with normalised valuation $ \v $. Let $ f\br{X} = X^n + a_{n - 1}X^{n - 1} + \dots + a_0 \in \OOO_K\sbr{X} $. We say $ f\br{X} $ is \textbf{Eisenstein} if $ \v\br{a_i} \ge 1 $ for all $ i $ and $ \v\br{a_0} = 1 $.
+\end{definition}
+
+\begin{fact*}
+If $ f\br{X} $ is Eisenstein, then $ f\br{X} $ is irreducible.
+\end{fact*}
+
+\begin{theorem}
+\label{thm:14.8}
+\hfill
+\begin{enumerate}
+\item If $ L / K $ is a finite totally ramified extension of non-archimedean local fields, then the minimal polynomial of $ \pi_L \in \OOO_L $ is an Eisenstein polynomial and $ \OOO_L = \OOO_K\sbr{\pi_L} $, so $ L = K\br{\pi_L} $.
+\item Conversely, if $ f\br{X} \in \OOO_K\sbr{X} $ is Eisenstein and $ \alpha $ is a root of $ f $, then $ L = K\br{\alpha} / K $ is totally ramified.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ \v_L $ be the normalised valuation for $ L $ and set $ \e = \sbr{L : K} $. Let $ f\br{X} = X^m + a_{m - 1}X^{m - 1} + \dots + a_0 \in \OOO_K\sbr{X} $ be the minimal polynomial for $ \pi_L $, which is monic since $ \OOO_L $ is integral over $ \OOO_K $. Then $ m \le \e $. Since $ \v_L\br{K^\times} = \e\ZZ $, we have $ \v_L\br{a_i\pi_L^i} \equiv i \mod \e $ for $ i < m $, so that these terms all have different residues modulo $ \e $. We have $ \pi_L^m = -\sum_{i = 0}^{m - 1} a_i\pi_L^i $ hence
+$$ m = \v_L\br{\pi_L^m} = \min_{0 \le i \le m - 1} \br{i + \e\v_K\br{a_i}}, $$
+so $ \v_K\br{a_i} \ge 1 $ for all $ i $, $ m = \e $, and $ \v_K\br{a_0} = 1 $. Thus $ f\br{X} $ is Eisenstein, and $ L = K\br{\pi_L} $. For $ y \in L $, we write $ y = \sum_{i = 0}^{\e - 1} \pi_L^ib_i $ for $ b_i \in K $. Then
+$$ \v_L\br{y} = \min_{0 \le i \le m - 1} \br{i + \e\v_K\br{b_i}}. $$
+Thus $ y \in \OOO_L $ if and only if $ \v_L\br{y} \ge 0 $, if and only if $ \v_K\br{b_i} \ge 0 $ for all $ i $, if and only if $ y \in \OOO_K\sbr{\pi_L} $.
+\item Let $ f\br{X} = X^n + a_{n - 1}X^{n - 1} + \dots + a_0 $ be Eisenstein and let $ \e = \e_{L / K} $. Thus $ \v_L\br{a_i} \ge \e $ and $ \v_L\br{a_0} = \e $. If $ \v_L\br{\alpha} \le 0 $ we have $ \v_L\br{\alpha^n} < \v_L\br{\sum_{i = 0}^{n - 1} a_i\alpha^i} $ hence $ \v_L\br{\alpha} > 0 $. For $ i \ne 0 $, $ \v_L\br{a_i\alpha^i} > \e = \v_L\br{a_0} $. It follows that $ \v_L\br{-\sum_{i = 0}^{n - 1} a_i\alpha^i} = \e $ and hence $ \v_L\br{\alpha^n} = \e $, so $ n\v_L\br{\alpha} = \e $. But $ n = \sbr{L : K} \ge \e $, so $ n = \e $ and $ L $ is totally ramified.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\subsection{Structure of units}
+
+\lecture{15}{Wednesday}{11/11/20}
+
+Let $ \sbr{K : \QQ_p} < \infty $, with normalised valuation $ \v_K $ and uniformiser $ \pi $, and let $ \e = \e_{K / \QQ_p} $, the \textbf{absolute ramification index}.
+
+\begin{proposition}
+If $ r > \e / \br{p - 1} $, then the series
+$$ \exp x = \sum_{n = 0}^\infty \dfrac{x^n}{n!} $$
+converges on $ \pi^r\OOO_K $ and $ \exp $ determines an isomorphism $ \br{\pi^r\OOO_K, +} \xrightarrow{\sim} \br{1 + \pi^r\OOO_K, \times} $.
+\end{proposition}
+
+\begin{proof}
+By example sheet $ 1 $,
+$$ \v_K\br{n!} = \e\v_p\br{n!} = \e\br{\dfrac{n - \s_p\br{n}}{p - 1}} \le \e\br{\dfrac{n - 1}{p - 1}}. $$
+For $ x \in \pi^r\OOO_K $, we have for $ n \ge 1 $,
+$$ \v_K\br{\dfrac{x^n}{n!}} \ge nr - \e\br{\dfrac{n - 1}{p - 1}} = r + \br{n - 1}\br{r - \dfrac{\e}{p - 1}} \to \infty, $$
+as $ n \to \infty $. Thus $ \exp x $ converges. Since $ \v_K\br{x^n / n!} \ge r $ for $ n \ge 1 $, $ \exp x \in 1 + \pi^r\OOO_K $. Similarly consider
+$$ \function[\log]{1 + \pi^r\OOO_K}{\pi^r\OOO_K}{1 + x}{\displaystyle\sum_{n = 1}^\infty \dfrac{\br{-1}^{n - 1}}{n}x^n}. $$
+Can check convergence as before. Recall properties of power series
+$$ \exp \br{X + Y} = \exp X\exp Y, \qquad \exp \log X = X, \qquad \log \exp X = X. $$
+Thus $ \exp : \br{\pi^r\OOO_K, +} \to \br{1 + \pi^r\OOO_K, \times} $ is an isomorphism of groups.
+\end{proof}
+
+Now let $ K $ be a non-archimedean local field. We define a filtration on $ \OOO_K^\times $. Write $ \U_K = \OOO_K^\times $.
+
+\begin{definition}
+For $ s \in \ZZ_{\ge 1} $, the \textbf{$ s $-th unit group} $ \U_K^{\br{s}} $ is defined by
+$$ \U_K^{\br{s}} = \br{1 + \pi^s\OOO_K, \times}. $$
+We set $ \U_K^{\br{0}} = \U_K $. Then we have
+$$ \dots \subseteq \U_K^{\br{s}} \subseteq \dots \subseteq \U_K^{\br{1}} \subseteq \U_K^{\br{0}} = \U_K. $$
+\end{definition}
+
+\begin{proposition}
+\label{prop:15.3}
+We have
+\begin{enumerate}
+\item $ \U_K^{\br{0}} / \U_K^{\br{1}} \cong \br{k^\times, \times} $ for $ k = \OOO_K / \pi\OOO_K $, and
+\item $ \U_K^{\br{s}} / \U_K^{\br{s + 1}} \cong \br{k, +} $ for $ s \ge 1 $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Reduction modulo $ \pi $ gives a natural surjection $ \OOO_K^\times \to k^\times $. The kernel is $ 1 + \pi\OOO_K = \U_K^{\br{1}} $.
+\item Define
+$$ \function[f]{\U_K^{\br{s}}}{k}{1 + \pi^sx}{x \mod \pi}. $$
+Then $ \br{1 + \pi^sx}\br{1 + \pi^sy} = \br{1 + \pi^s\br{x + y + \pi^sxy}} $ and $ x + y + \pi^sxy \equiv x + y \mod \pi $, hence $ f $ is a group homomorphism. It is easy to see $ f $ is surjective and $ \ker f = \U_K^{\br{s + 1}} $.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\begin{corollary}
+Let $ \sbr{K : \QQ_p} < \infty $. Then $ \OOO_K^\times $ has a subgroup of finite index isomorphic to $ \br{\OOO_K, +} $.
+\end{corollary}
+
+\begin{proof}
+If $ r > \e / \br{p - 1} $, then $ \br{\OOO_K, +} \cong \U_K^{\br{r}} $, so $ \U_K^{\br{r}} \subseteq \U_K $ is finite index by Proposition \ref{prop:15.3}.
+\end{proof}
+
+\begin{example*}
+If $ \ZZ_p $ for $ p > 2 $, then $ \e = 1 $ and can take $ r = 1 $. Then there is an isomorphism
+$$ \function{\ZZ_p^\times}{\br{\ZZ / p\ZZ}^\times \times \br{1 + p\ZZ_p} \cong \ZZ / \br{p - 1}\ZZ \times \ZZ_p}{x}{\br{x \mod p, \dfrac{x}{\sbr{x \mod p}}}}. $$
+If $ p = 2 $, take $ r = 2 $. Then
+$$ \ZZ_2^\times \xrightarrow{\sim} \br{\ZZ / 4\ZZ}^\times \times \br{1 + 4\ZZ_2} \cong \ZZ / 2\ZZ \times \ZZ_2. $$
+Get another proof that
+$$ \ZZ_p^\times / \br{\ZZ_p^\times}^2 \cong
+\begin{cases}
+\ZZ / 2\ZZ & p > 2 \\
+\br{\ZZ / 2\ZZ}^2 & p = 2
+\end{cases}.
+$$
+\end{example*}
+
+\subsection{Higher ramification groups}
+
+Let $ L / K $ be a finite Galois extension of local fields. We define an analogous filtration of $ \Gal\br{L / K} $.
+
+\begin{definition}
+Let $ \v_L $ be the normalised valuation on $ L $. For $ s \in \RR_{\ge -1} $, we define the \textbf{$ s $-th ramification group} by
+$$ \G_s\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \forall x \in \OOO_L, \ \v_L\br{\sigma\br{x} - x} \ge s + 1}. $$
+\end{definition}
+
+\begin{example*}
+$ \G_{-1}\br{L / K} = \Gal\br{L / K} $. If $ \pi_L $ is a uniformiser in $ L $, then
+$$ \G_0\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \forall x \in \OOO_L, \ \sigma\br{x} \equiv x \mod \pi_L} = \ker \br{\Gal\br{L / K} \twoheadrightarrow \Gal\br{k_L / k}} = \I_{L / K}. $$
+\end{example*}
+
+Note that for $ s \in \ZZ_{\ge 0} $
+$$ \G_s\br{L / K} = \ker \br{\Gal\br{L / K} \to \Aut \br{\OOO_L / \pi_L^{s + 1}\OOO_L}}, $$
+hence $ \G_s\br{L / K} $ is normal in $ G $. We have for $ s \in \ZZ_{\ge -1} $
+$$ \dots \subseteq \G_s \subseteq \dots \subseteq \G_0 \subseteq \G_{-1} = \Gal\br{L / K}. $$
+
+\begin{remark*}
+$ \G_s $ only changes at the integers. The definition for $ s \in \RR_{\ge -1} $ will be used later.
+\end{remark*}
+
+\begin{theorem}
+\label{thm:15.6}
+\hfill
+\begin{enumerate}
+\item Let $ \pi_L \in \OOO_L $ be a uniformiser. For $ s \ge 0 $,
+$$ \G_s = \cbr{\sigma \in \G_0 \st \v_L\br{\sigma\br{\pi_L} - \pi_L} \ge s + 1}. $$
+\item $ \bigcap_{n = 0}^\infty \G_n = \cbr{1} $.
+\item Let $ s \in \ZZ_{\ge 0} $. There is an injective group homomorphism $ \G_s / \G_{s + 1} \hookrightarrow \U_L^{\br{s}} / \U_L^{\br{s + 1}} $ induced by the map $ \sigma \mapsto \sigma\br{\pi_L} / \pi_L $. This map is independent of the choice of $ \pi_L $.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $ K_0 \subseteq L $ be the maximal unramified extension of $ K $ contained in $ L $. Upon replacing $ K $ by $ K_0 $, we may assume $ L / K $ is totally ramified.
+\begin{enumerate}
+\item By Theorem \ref{thm:14.8}, $ \OOO_L = \OOO_K\sbr{\pi_L} $. Suppose $ \v_L\br{\sigma\br{\pi_L} - \pi_L} \ge s + 1 $. Let $ x \in \OOO_L $, then $ x = f\br{\pi_L} $ for $ f\br{X} \in \OOO_K\sbr{X} $. Then
+$$ \sigma\br{x} - x = \sigma\br{f\br{\pi_L}} - f\br{\pi_L} = f\br{\sigma\br{\pi_L}} - f\br{\pi_L} = \br{\sigma\br{\pi_L} - \pi_L}g\br{\pi_L}, $$
+where $ g\br{X} \in \OOO_K\sbr{X} $, using $ X^n - Y^n = \br{X - Y}\br{X^{n - 1} + \dots + Y^{n - 1}} $. Thus $ \v_L\br{\sigma\br{x} - x} = \v_L\br{\sigma\br{\pi_L} - \pi_L} + \v_L\br{g\br{\pi_L}} \ge s + 1 $.
+\item Suppose $ \sigma \in \Gal\br{L / K} $ such that $ \sigma \ne \id $. Then $ \sigma\br{\pi_L} \ne \pi_L $ because $ L = K\br{\pi_L} $, and hence $ \v_L\br{\sigma\br{\pi_L} - \pi_L} < \infty $. Thus $ \sigma \notin \G_s $ for $ s \gg 0 $.
+
+\pagebreak
+
+\item Note that for $ \sigma \in \G_s $ and $ s \in \ZZ_{\ge 0} $, $ \sigma\br{\pi_L} \in \pi_L + \pi_L^{s + 1}\OOO_L $, so $ \sigma\br{\pi_L} / \pi_L \in 1 + \pi_L^s\OOO_L $. We claim
+$$ \function[\phi]{\G_s}{\U_L^{\br{s}} / \U_L^{\br{s + 1}}}{\sigma}{\dfrac{\sigma\br{\pi_L}}{\pi_L}} $$
+is a group homomorphism with kernel $ \G_{s + 1} $. For $ \sigma, \tau \in \G_s $, let $ \tau\br{\pi_L} = u\pi_L $ for $ u \in \OOO_L^\times $. Then
+$$ \dfrac{\sigma\br{\tau\br{\pi_L}}}{\pi_L} = \dfrac{\sigma\br{\tau\br{\pi_L}}}{\tau\br{\pi_L}} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} = \dfrac{\sigma\br{u}}{u} \cdot \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L}. $$
+But $ \sigma\br{u} \in u + \pi_L^{s + 1}\OOO_L $ since $ \sigma \in \G_s $ thus $ \sigma\br{u} / u \in \U_L^{\br{s + 1}} $ and hence
+$$ \dfrac{\sigma\br{\tau\br{\pi_L}}}{\pi_L} \equiv \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} \mod \U_L^{\br{s + 1}}, $$
+so $ \phi $ is a group homomorphism. Moreover
+$$ \ker \phi = \cbr{\sigma \in \G_s \st \sigma\br{\pi_L} \equiv \pi_L \mod \pi_L^{s + 2}} = \G_{s + 1}. $$
+If $ \pi_L' = a\pi_L $ is another uniformiser for $ a \in \U_L $, then
+$$ \dfrac{\sigma\br{\pi_L'}}{\pi_L'} = \dfrac{\sigma\br{a}}{a} \cdot \dfrac{\sigma\br{\pi_L}}{\pi_L} \equiv \dfrac{\sigma\br{\pi_L}}{\pi_L} \mod \U_L^{\br{s + 1}}. $$
+\end{enumerate}
+\end{proof}
+
+\lecture{16}{Friday}{13/11/20}
+
+\begin{corollary}
+Let $ L / K $ be a finite Galois extension of non-archimedean local fields. Then $ \Gal\br{L / K} $ is solvable.
+\end{corollary}
+
+\begin{proof}
+By Proposition \ref{prop:15.3}, Theorem \ref{thm:15.6}, and Theorem \ref{thm:14.4}, for $ s \in \ZZ_{\ge 1} $
+$$ \G_s / \G_{s + 1} \hookrightarrow
+\begin{cases}
+\Gal\br{k_L / k} & s = -1 \\
+\br{k_L^\times, \times} & s = 0 \\
+\br{k_L, +} & s \ge 1
+\end{cases}.
+$$
+Thus $ \G_s / \G_{s + 1} $ is abelian for $ s \ge -1 $. Conclude using Theorem \ref{thm:15.6}.$ 2 $.
+\end{proof}
+
+Let $ \ch k = p $. Then $ \abs{\G_0 / \G_1} $ is coprime to $ p $ and $ \abs{\G_1} = p^n $ for some $ n \ge 0 $. Thus $ \G_1 $ is the unique, since normal, Sylow $ p $-subgroup of $ \G_0 = \I_{L / K} $.
+
+\begin{definition}
+The group $ \G_1 $ is called the \textbf{wild inertia group} and $ \G_0 / \G_1 $ is the \textbf{tame quotient}. Say $ L / K $, not necessarily Galois, is \textbf{tamely ramified} if $ \ch k = p \nmid \e_{L / K} $, which is if and only if $ \G_1 = \cbr{1} $ if $ L / K $ is Galois. Otherwise it is \textbf{wildly ramified}. Thus
+$$
+\begin{tikzcd}
+L \arrow[dash]{dr}{\text{totally wildly ramified}} \arrow[dash]{ddd} & \\
+& K' \arrow[dash]{d}{\text{totally tamely ramified}} \\
+& K_0 \arrow[dash]{dl}{\text{unramified}} \\
+K &
+\end{tikzcd}.
+$$
+\end{definition}
+
+\pagebreak
+
+\begin{example*}
+Let $ K = \QQ_p $. Let $ \zeta_{p^n} $ be a primitive $ p^n $-th root of unity, and let $ L = \QQ_p\br{\zeta_{p^n}} $. Then the $ p^n $-th cyclotomic polynomial
+$$ \Phi_{p^n}\br{X} = X^{p^{n - 1}\br{p - 1}} + \dots + 1 $$
+is the minimal polynomial of $ \zeta_{p^n} $. By example sheet $ 3 $,
+\begin{itemize}
+\item $ \Phi_{p^n}\br{X} $ is irreducible,
+\item $ L / \QQ_p $ is Galois and totally ramified of degree $ p^{n - 1}\br{p - 1} $, and
+\item $ \pi = \zeta_{p^n} - 1 $ is a uniformiser of $ \OOO_L $, and hence $ \OOO_L = \ZZ_p\sbr{\zeta_{p^n} - 1} = \ZZ_p\sbr{\zeta_{p^n}} $.
+\end{itemize}
+We have an isomorphism of abelian groups
+$$ \function{\br{\ZZ / p^n\ZZ}^\times}{\Gal\br{L / \QQ_p}}{m}{\sigma_m : \zeta_{p^n} \mapsto \zeta_{p^n}^m}. $$
+Thus $ \sigma_m\br{\pi} - \pi = \zeta_{p^n}^m - \zeta_{p^n} = \br{\zeta_{p^n}^{m - 1} - 1}\zeta_{p^n} $. Let $ k $ be maximal such that $ p^k \mid m - 1 $. Then $ \zeta_{p^n}^{m - 1} $ is a primitive $ p^{n - k} $-th root of unity, and hence $ \zeta_{p^n}^{m - 1} - 1 $ is a uniformiser $ \pi' $ in $ L' = \QQ_p\br{\zeta_{p^n}^{m - 1}} $. Thus
+$$ \v_L\br{\sigma_m\br{\pi} - \pi} = \v_L\br{\pi'} = \e_{L / L'} = \dfrac{\e_{L / \QQ_p}}{\e_{L' / \QQ_p}} = \dfrac{\sbr{L : \QQ_p}}{\sbr{L' : \QQ_p}} = \dfrac{p^{n - 1}\br{p - 1}}{p^{n - k - 1}\br{p - 1}} = p^k. $$
+By Theorem \ref{thm:15.6}.$ 1 $, $ \sigma_m \in \G_i $ if and only if $ p^k \ge i + 1 $. Thus
+$$ \G_i \cong
+\begin{cases}
+\br{\ZZ / p^n\ZZ}^\times & i \le 0 \\
+\br{1 + p^k\ZZ} / p^n\ZZ & p^{k - 1} - 1 < i \le p^k - 1, \ 1 \le k \le n - 1 \\
+\cbr{1} & p^{n - 1} - 1 < i
+\end{cases},
+$$
+which is reminiscent of $ \U_{\QQ_p}^{\br{k}} $.
+\end{example*}
+
+\subsection{Upper numbering of ramification groups}
+
+$ \G_s $ behaves well with respect to taking subgroups.
+
+\begin{proposition}
+\label{prop:16.3}
+Let $ L / F / K $ be finite extensions of non-archimedean local fields, and let $ L / K $ be Galois. Then for $ s \in \RR_{\ge -1} $,
+$$ \G_s\br{L / F} = \G_s\br{L / K} \cap \Gal\br{L / F}. $$
+\end{proposition}
+
+\begin{proof}
+$ \G_s\br{L / F} = \cbr{\sigma \in \Gal\br{L / F} \st \forall x \in \OOO_L, \ \v_L\br{\sigma\br{x} - x} \ge s + 1} = \Gal\br{L / F} \cap \G_s\br{L / K} $.
+\end{proof}
+
+However $ \G_s $ behaves badly with respect to taking quotients. Fix this by renumbering. Let $ L / K $ be finite Galois. Define a function by
+$$ \function[\phi = \phi_{L / K}]{\RR_{\ge -1}}{\RR}{s}{\displaystyle\intd{0}{s}{\dfrac{1}{\sbr{\G_0 : \G_t}}}{t}}. $$
+By convention, if $ t \in \intco{-1, 0} $, then
+$$ \dfrac{1}{\sbr{\G_0 : \G_t}} = \sbr{\G_t : \G_0}. $$
+We have for $ m \le s < m + 1 $ for $ m \in \ZZ_{\ge -1} $,
+$$ \phi\br{s} =
+\begin{cases}
+s & m = -1 \\
+\dfrac{1}{\abs{\G_0}}\br{\abs{\G_1} + \dots + \abs{\G_m} + \br{s - m}\abs{\G_{m + 1}}} & m \ge 0
+\end{cases}.
+$$
+Thus
+\begin{itemize}
+\item $ \phi $ is continuous and piecewise linear, and
+\item $ \phi $ is strictly increasing.
+\end{itemize}
+
+\pagebreak
+
+\begin{notation*}
+Let $ L / F / K $ be finite extensions of non-archimedean local fields with $ L / K $ and $ F / K $ Galois, and let $ \G = \Gal\br{L / K} $ and $ \H = \Gal\br{L / F} $, so $ \G / \H = \Gal\br{F / K} $. If $ s \in \RR_{\ge -1} $, then $ \G_s $, $ \H_s $, and $ \br{\G / \H}_s $ are the $ s $-th higher ramification groups for $ \G $, $ \H $, and $ \G / \H $ respectively.
+\end{notation*}
+
+\begin{theorem}[Herbrand's theorem]
+\label{thm:16.4}
+Let $ L / F / K $ as above. Then for $ s \in \RR_{\ge -1} $ we have
+$$ \G_s\H / \H = \br{\G / \H}_{\phi_{L / F}\br{s}}. $$
+\end{theorem}
+
+As $ \phi_{L / K} $ is continuous and strictly increasing, we may define $ \psi_{L / K} = \phi_{L / K}^{-1} $.
+
+\begin{definition}
+Let $ L / K $ be finite Galois. The \textbf{higher ramification groups in upper numbering} is defined by
+$$ \G^s\br{L / K} = \G_{\psi_{L / K}\br{s}}\br{L / K}. $$
+\end{definition}
+
+Can rephrase Theorem \ref{thm:16.4} as follows.
+
+\begin{lemma}
+\label{lem:16.6}
+Let $ L / F / K $ as above.
+\begin{enumerate}
+\item $ \phi_{L / K} = \phi_{F / K} \circ \phi_{L / F} $.
+\item $ \psi_{L / K} = \psi_{L / F} \circ \psi_{F / K} $.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $ \psi = \phi^{-1} $, it suffices to prove $ 1 $. Then $ \phi_{L / K} $ and $ \phi_{F / K} \circ \phi_{L / F} $ are continuous and piecewise linear and $ \phi_{L / K}\br{0} = \br{\phi_{F / K} \circ \phi_{L / F}}\br{0} = 0 $. Thus it suffices to show derivatives are equal. Let $ r = \phi_{L / F}\br{s} $. By the fundamental theorem of calculus,
+$$ \br{\phi_{F / K} \circ \phi_{L / F}}'\br{s} = \phi_{L / F}'\br{s}\phi_{F / K}'\br{r} = \dfrac{\abs{\H_s}}{\abs{\H_0}} \cdot \dfrac{\abs{\br{\G / \H}_r}}{\abs{\br{\G / \H}_0}} = \dfrac{\abs{\H_s}}{\e_{L / F}} \cdot \dfrac{\abs{\br{\G / \H}_r}}{\e_{F / K}}. $$
+Theorem \ref{thm:16.4} implies $ \br{\G / \H}_r = \G_s\H / \H = \G_s / \br{\G_s \cap \H} = \G_s / \H_s $, by Proposition \ref{prop:16.3}. Thus
+$$ \phi_{L / K}'\br{s} = \dfrac{\abs{\G_s}}{\abs{\G_0}} = \dfrac{\abs{\H_s}\abs{\br{\G / \H}_r}}{\e_{L / K}} = \dfrac{\abs{\H_s}}{\e_{L / F}} \cdot \dfrac{\abs{\br{\G / \H}_r}}{\e_{F / K}}. $$
+\end{proof}
+
+\begin{corollary}
+For $ t \in \intoc{-1, \infty} $
+$$ \G^t\H / \H = \br{\G / \H}^t. $$
+\end{corollary}
+
+\begin{proof}
+Let $ r = \psi_{F / K}\br{t} $. Then by Theorem \ref{thm:16.4},
+$$ \br{\G / \H}^t = \br{\G / \H}_r = \G_{\psi_{L / F}\br{r}}\H / \H = \G^t\H / \H, $$
+since $ \G_{\psi_{L / F}\br{r}} = \G_{\psi_{L / K}\br{t}} = \G^t $, by Lemma \ref{lem:16.6}.
 \end{proof}
 
 \end{document}
