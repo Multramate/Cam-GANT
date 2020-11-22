@@ -25,6 +25,7 @@
 \addto\captionsUKenglish{\renewcommand{\abstractname}{Syllabus}}
 \delimitershortfall5pt
 \ifx\thm\undefined\newtheorem{n}{}\else\newtheorem{n}{}[\thm]\fi
+\newcommand\from{\leftarrow}
 \newcommand\newoperator[1]{\ifcsdef{#1}{\cslet{#1}{\relax}}{}\csdef{#1}{\operatorname{#1}}}
 \newcommand\vC{\check{\C}}
 \newcommand\vH{\check{\H}}
@@ -229,22 +230,22 @@
 \newcommand{\bijection}[7][]{    % Bijection
   \ifx &#1&
     \begin{array}{rcl}
-      #2 & \longleftrightarrow & #3 \\
-      #4 & \longmapsto         & #5 \\
-      #6 & \longmapsfrom       & #7
+      \displaystyle #2 & \longleftrightarrow & \displaystyle #3 \\
+      \displaystyle #4 & \longmapsto         & \displaystyle #5 \\
+      \displaystyle #6 & \longmapsfrom       & \displaystyle #7
     \end{array}
   \else
     \begin{array}{ccrcl}
-      #1 & : & #2 & \longrightarrow & #3 \\
-         &   & #4 & \longmapsto     & #5 \\
-         &   & #6 & \longmapsfrom   & #7
+      \displaystyle #1 & : & \displaystyle #2 & \longrightarrow & \displaystyle #3 \\
+                       &   & \displaystyle #4 & \longmapsto     & \displaystyle #5 \\
+                       &   & \displaystyle #6 & \longmapsfrom   & \displaystyle #7
     \end{array}
   \fi
 }
 \newcommand{\correspondence}[2]{ % Correspondence
   \cbr{
     \begin{array}{c}
-      #1
+      \displaystyle #1
     \end{array}
   }
   \qquad
@@ -252,35 +253,35 @@
   \qquad
   \cbr{
     \begin{array}{c}
-      #2
+      \displaystyle #2
     \end{array}
   }
 }
 \newcommand{\function}[5][]{     % Function
   \ifx &#1&
     \begin{array}{rcl}
-      #2 & \longrightarrow & #3 \\
-      #4 & \longmapsto     & #5
+      \displaystyle #2 & \longrightarrow & \displaystyle #3 \\
+      \displaystyle #4 & \longmapsto     & \displaystyle #5
     \end{array}
   \else
     \begin{array}{ccrcl}
-      #1 & : & #2 & \longrightarrow & #3 \\
-         &   & #4 & \longmapsto     & #5
+      \displaystyle #1 & : & \displaystyle #2 & \longrightarrow & \displaystyle #3 \\
+                       &   & \displaystyle #4 & \longmapsto     & \displaystyle #5
     \end{array}
   \fi
 }
 \newcommand{\functions}[7][]{    % Functions
   \ifx &#1&
     \begin{array}{rcl}
-      #2 & \longrightarrow & #3 \\
-      #4 & \longmapsto     & #5 \\
-      #6 & \longmapsto     & #7
+      \displaystyle #2 & \longrightarrow & \displaystyle #3 \\
+      \displaystyle #4 & \longmapsto     & \displaystyle #5 \\
+      \displaystyle #6 & \longmapsto     & \displaystyle #7
     \end{array}
   \else
     \begin{array}{ccrcl}
-      #1 & : & #2 & \longrightarrow & #3 \\
-         &   & #4 & \longmapsto     & #5 \\
-         &   & #6 & \longmapsto     & #7
+      \displaystyle #1 & : & \displaystyle #2 & \longrightarrow & \displaystyle #3 \\
+                       &   & \displaystyle #4 & \longmapsto     & \displaystyle #5 \\
+                       &   & \displaystyle #6 & \longmapsto     & \displaystyle #7
     \end{array}
   \fi
 }
@@ -326,20 +327,25 @@
 
 % Operators
 
+\newoperator{ab}    % Abelian
+\newoperator{Art}   % Artin
 \newoperator{Aut}   % Automorphism
+\newoperator{Ca}    % Cartier
 \newoperator{cell}  % Cell
 \newoperator{ch}    % Characteristic
 \newoperator{cl}    % Cup length
+\newoperator{Cl}    % Class
 \newoperator{codim} % Codimension
 \newoperator{coker} % Cokernel
 \newoperator{Cone}  % Cone
 \newoperator{Crit}  % Critical
+\newoperator{ct}    % Compact
 \newoperator{div}   % Divisor
 \newoperator{Div}   % Divisor group
 \newoperator{End}   % Endomorphism
 \newoperator{Ext}   % Ext
 \newoperator{Frac}  % Fraction
-\newoperator{Frob}  % Frobenius
+\newoperator{Fr}    % Frobenius
 \newoperator{Gal}   % Galois
 \newoperator{GL}    % General linear
 \newoperator{Gr}    % Grassmannian
@@ -352,7 +358,6 @@
 \newoperator{Mat}   % Matrix
 \newoperator{Morse} % Morse
 \newoperator{MV}    % Mayer-Vietoris
-\newoperator{nr}    % Unramified
 \newoperator{ns}    % Nonsingular
 \newoperator{Ob}    % Object
 \newoperator{ord}   % Order
@@ -366,6 +371,7 @@
 \newoperator{tors}  % Torsion
 \newoperator{Tr}    % Trace
 \newoperator{triv}  % Trivial
+\newoperator{ur}    % Unramified
 
 % Roman
 
