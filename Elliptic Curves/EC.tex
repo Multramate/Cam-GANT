@@ -8,6 +8,7 @@
 \input{../style/header}
 
 % Macros
+\newcommand{\pp}{\mathfrak{P}}
 \newcommand{\rational}[5][]{
   \ifx &#1&
     \begin{array}{rcl}
@@ -154,7 +155,7 @@ Work over $ K = \overline{K} $.
 
 \begin{definition}
 \label{def:2.1}
-A plane algebraic curve $ C = \cbr{f\br{x, y} = 0} \subset \AA^2 $ for an irreducible polynomial $ f $ is \textbf{rational} if it has a rational parameterisation, that is there exists $ \phi, \psi \in K\br{t} $ such that
+A plane algebraic curve $ C = \cbr{f\br{x, y} = 0} \subset \AA^2 $ for an irreducible polynomial $ f $ is \textbf{rational} if it has a \textbf{rational parameterisation}, that is there exists $ \phi, \psi \in K\br{t} $ such that
 $$ \function{\AA^1}{\AA^2}{t}{\br{\phi\br{t}, \psi\br{t}}} $$
 is injective on $ \AA^1 $ minus a finite set, and $ f\br{\phi\br{t}, \psi\br{t}} = 0 $.
 \end{definition}
@@ -200,7 +201,7 @@ Still assuming $ K = \overline{K} $, let $ C $ be a smooth projective curve.
 Let $ C $ be an algebraic curve, with function field $ K\br{C} $. Let $ P \in C $ be a smooth point. Write $ \ord_P f $ for the order of vanishing of $ f \in K\br{C} $ at $ P $, which is negative if $ f $ has a pole.
 
 \begin{fact*}
-$ \ord_P : K\br{C}^* \to \ZZ $ is a discrete valuation, that is
+$ \ord_P : K\br{C}^* \to \ZZ $ is a \textbf{discrete valuation}, that is
 $$ \ord_P \br{f_1f_2} = \ord_P f_1 + \ord_P f_2, \qquad \ord_P \br{f_1 + f_2} \ge \min\br{\ord_P f_1, \ord_P f_2}. $$
 \end{fact*}
 
@@ -218,8 +219,8 @@ $$ \gamma x + \delta y \in K\br{C} \ \text{is a uniformiser at} \ p \qquad \iff 
 \begin{example}
 \label{eg:2.6}
 The projective closure of $ \cbr{y^2 = x\br{x - 1}\br{x - \lambda}} \subset \AA^2 $ for $ \lambda \ne 0, 1 $ is
-$$ \cbr{Y^2Z = X\br{X - Z}\br{X - \lambda Z}} \subset \PP^2, $$
-where $ x = X / Z $ and $ y = Y / Z $. Let $ P = \br{0 : 1 : 0} $. We compute $ \ord_P x $ and $ \ord_P y $. Put $ t = X / Y $ and $ w = Z / Y $. Then
+$$ \cbr{Y^2Z = X\br{X - Z}\br{X - \lambda Z}} \subset \PP^2, \qquad x = \dfrac{X}{Z}, \qquad y = \dfrac{Y}{Z}. $$
+Let $ P = \br{0 : 1 : 0} $. We compute $ \ord_P x $ and $ \ord_P y $. Put $ t = X / Y $ and $ w = Z / Y $. Then
 \begin{equation}
 \label{eq:2}
 w = t\br{t - w}\br{t - \lambda w}.
@@ -315,7 +316,7 @@ Moreover if $ \phi $ is separable then $ \e_\phi\br{P} = 1 $ for all but finitel
 \label{rem:2.9}
 Let $ C $ be an algebraic curve. A rational map is given by
 $$ \rational[\phi]{C}{\PP^n}{P}{\br{f_0\br{P} : \dots : f_n\br{P}}}, $$
-where $ f_0, \dots, f_n \in K\br{C} $ not all zero. A fact is if $ C $ is smooth then $ \phi $ is a morphism.
+where $ f_0, \dots, f_n \in K\br{C} $ are not all zero. A fact is if $ C $ is smooth then $ \phi $ is a morphism.
 \end{remark}
 
 \pagebreak
@@ -533,7 +534,7 @@ It is a subgroup of $ E = E\br{\overline{K}} $.
 
 \begin{theorem}
 \label{thm:4.4}
-Elliptic curves are group varieties. That is,
+Elliptic curves are \textbf{group varieties}. That is,
 $$ \function[\sbr{-1}]{E}{E}{P}{-P}, \qquad \function[+]{E \times E}{E}{\br{P, Q}}{P + Q} $$
 are morphisms of algebraic varieties.
 \end{theorem}
@@ -653,7 +654,7 @@ $$ \phi\br{P + Q} = \phi\br{P} + \phi\br{Q}, \qquad P, Q \in E_1. $$
 
 \begin{proof}
 $ \phi $ induces a map
-$$ \function[\phi_*]{\Div^0 E_1}{\Div^0 E_2}{\displaystyle\sum_{P \in E} n_P\br{P}}{\displaystyle\sum_{P \in E} n_P\br{\phi\br{P}}}. $$
+$$ \function[\phi_*]{\Div^0 E_1}{\Div^0 E_2}{\sum_{P \in E} n_P\br{P}}{\sum_{P \in E} n_P\br{\phi\br{P}}}. $$
 Recall $ \phi^* : K\br{E_2} \hookrightarrow K\br{E_1} $. A fact is that
 $$ \div \br{\N_{K\br{E_1} / K\br{E_2}} f} = \phi_*\br{\div f}, \qquad f \in K\br{E_1}^*. $$
 So $ \phi_* $ takes principal divisors to principal divisors. Since $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $ the diagram
@@ -741,11 +742,11 @@ $$ q\br{x + y} + q\br{x - y} = \tfrac{1}{2}\abr{x + y, x + y} + \tfrac{1}{2}\abr
 $ \deg : \Hom\br{E_1, E_2} \to \ZZ $ is a quadratic form.
 \end{theorem}
 
-Note that $ \deg 0 = 0 $. For the proof we assume $ \ch K \ne 2, 3 $. We write $ E_2 $ as $ y^2 = x^3 + ax + b $. Let $ P, Q \in E_2 $ with $ P, Q, P + Q, P - Q \ne 0 $. Let $ x_1, \dots, x_4 $ be the $ x $-coordinates of these four points.
+Note that $ \deg 0 = 0 $. For the proof we assume $ \ch K \ne 2, 3 $. We write $ E_2 $ as $ y^2 = x^3 + ax + b $. Let $ P, Q \in E_2 $ with $ P, Q, P + Q, P - Q \ne \OOO $. Let $ x_1, \dots, x_4 $ be the $ x $-coordinates of these four points.
 
 \begin{lemma}
 \label{lem:5.7}
-There exist $ w_0, w_1, w_2 \in \ZZ\sbr{a, b}\sbr{x_1, x_2} $ of degree at most two in $ x_1 $ and degree at most two in $ x_2 $ such that $ \br{1 : x_3 + x_4 : x_3x_4} = \br{w_0 : w_1 : w_2} $.
+There exist $ w_0, w_1, w_2 \in \ZZ\sbr{a, b}\sbr{x_1, x_2} $ of degree at most two in $ x_1 $ and of degree at most two in $ x_2 $ such that $ \br{1 : x_3 + x_4 : x_3x_4} = \br{w_0 : w_1 : w_2} $.
 \end{lemma}
 
 \begin{proof}
@@ -960,7 +961,7 @@ If $ \ch K \nmid n $ then $ E\sbr{n} \cong \br{\ZZ / n\ZZ}^2 $.
 \end{theorem}
 
 \begin{proof}
-By Lemma \ref{lem:6.3} and induction, $ \sbr{n}^*\omega = n\omega $. So if $ \ch K \nmid n $, then $ \sbr{n} $ is separable. By Theorem \ref{thm:2.8}, $ \#\sbr{n}^{-1}\br{Q} = \deg \sbr{n} $ for all but finitely many $ Q \in E $. Since $ \sbr{n} $ is a group homomorphism, $ \#\sbr{n}^{-1}\br{Q} = \#E\sbr{n} $ for all $ Q \in E $, so $ \#E\sbr{n} = \deg \sbr{n} = n^2 $, by Corollary \ref{cor:5.8}. By group theory,
+By Lemma \ref{lem:6.3} and induction, $ \sbr{n}^*\omega = n\omega $. So if $ \ch K \nmid n $, then $ \sbr{n} $ is separable. By Theorem \ref{thm:2.8}, $ \#\sbr{n}^{-1}Q = \deg \sbr{n} $ for all but finitely many $ Q \in E $. Since $ \sbr{n} $ is a group homomorphism, $ \#\sbr{n}^{-1}Q = \#E\sbr{n} $ for all $ Q \in E $, so $ \#E\sbr{n} = \deg \sbr{n} = n^2 $, by Corollary \ref{cor:5.8}. By group theory,
 $$ E\sbr{n} \cong \ZZ / d_1\ZZ \times \dots \times \ZZ / d_t\ZZ, \qquad d_1 \mid \dots \mid d_t \mid n, $$
 and $ \prod_{i = 1}^t d_i = n^2 $. If $ p $ is a prime with $ p \mid d_1 $ then $ E\sbr{p} \cong \br{\ZZ / p\ZZ}^t $. But $ \#E\sbr{p} = p^2 $, so $ t = 2 $. Then $ d_1 \mid d_2 \mid n $ and $ d_1d_2 = n^2 $, so $ d_1 = d_2 = n $.
 \end{proof}
@@ -1014,7 +1015,7 @@ since $ q \equiv 0 \mod p $. By Lemma \ref{lem:6.3}, $ \br{1 - \phi}^*\omega = \
 
 For $ K $ a number field
 $$ \zeta_K\br{s} = \sum_{\aaa \subset \OOO_K} \dfrac{1}{\br{\N\aaa}^s} = \prod_{\ppp \subset \OOO_K, \ \ppp \ \text{prime}} \br{1 - \dfrac{1}{\br{\N\ppp}^s}}^{-1}. $$
-For $ K $ a function field, that is $ K = \FF_q\br{C} $ where $ C / \FF_q $ is a smooth projective curve,
+For $ K $ a \textbf{function field}, that is $ K = \FF_q\br{C} $ where $ C / \FF_q $ is a smooth projective curve,
 $$ \zeta_K\br{s} = \prod_{x \in \abs{C}} \br{1 - \dfrac{1}{\br{\N x}^s}}^{-1}, $$
 where $ \abs{C} $ are the \textbf{closed points} on $ C $, the orbits for the action of $ \Gal\br{\overline{\FF_q} / \FF_q} $ on $ C\br{\overline{\FF_q}} $, and $ \N x = q^{\deg x} $ where $ \deg x $ is the size of the orbit. We have $ \zeta_K\br{s} = F\br{q^{-s}} $ for some $ F \in Q\sbr{\sbr{T}} $, where
 $$ F\br{T} = \prod_{x \in \abs{C}} \br{1 - T^{\deg x}}^{-1}. $$
@@ -1081,7 +1082,7 @@ Let $ K = \FF_q\br{E} $. If $ \zeta_K\br{s} = 0 $, then $ \Z_E\br{q^{-s}} = 0 $,
 \subsection{Complete rings}
 
 \begin{definition*}
-Let $ R $ be a ring, and let $ I \subseteq R $ an ideal. The \textbf{$ I $-adic topology} is the topology on $ R $ with basis $ \cbr{r + I^n \st r \in R, \ n \ge 1} $.
+Let $ R $ be a ring, and let $ I \subset R $ an ideal. The \textbf{$ I $-adic topology} is the topology on $ R $ with basis $ \cbr{r + I^n \st r \in R, \ n \ge 1} $.
 \end{definition*}
 
 \begin{definition*}
@@ -1552,7 +1553,7 @@ $$ \c_K\br{E} = \sbr{E\br{K} : E_0\br{K}}. $$
 
 \pagebreak
 
-\subsection{Unramified extensions}
+\subsection{Unramified extensions of local fields}
 
 Let $ \sbr{K : \QQ_p} < \infty $ and let $ L / K $ be a finite extension with residue fields $ k' $ and $ k $. Let $ f = \sbr{k' : k} $. Then
 $$
@@ -1581,7 +1582,7 @@ These extensions are Galois with cyclic Galois group.
 
 \begin{definition*}
 The \textbf{maximal unramified extension} is
-$$ K^{\nr} = \bigcup_{m \ge 1} K_m \subseteq \overline{K}. $$
+$$ K^{\ur} = \bigcup_{m \ge 1} K_m \subset \overline{K}. $$
 \end{definition*}
 
 \begin{notation*}
@@ -1593,6 +1594,7 @@ $$ K^{\nr} = \bigcup_{m \ge 1} K_m \subseteq \overline{K}. $$
 \end{notation*}
 
 \begin{theorem}
+\label{thm:9.9}
 Let $ \sbr{K : \QQ_p} < \infty $. Suppose $ E / K $ has good reduction and $ p \nmid n $. If $ P \in E\br{K} $ then $ K\br{\sbr{n}^{-1}P} / K $ is unramified.
 \end{theorem}
 
@@ -1602,13 +1604,13 @@ $$ 0 \to E_1\br{K_m} \to E\br{K_m} \to \widetilde{E}\br{k_m} \to 0. $$
 Taking union over $ m \ge 1 $ gives a commutative diagram
 $$
 \begin{tikzcd}
-0 \arrow{r} & E_1\br{K^{\nr}} \arrow{r} \arrow{d}{\cdot n} & E\br{K^{\nr}} \arrow{r} \arrow{d}{\cdot n} & \widetilde{E}\br{\overline{k}} \arrow{r} \arrow{d}{\cdot n} & 0 \\
-0 \arrow{r} & E_1\br{K^{\nr}} \arrow{r} & E\br{K^{\nr}} \arrow{r} & \widetilde{E}\br{\overline{k}} \arrow{r} & 0
+0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & E\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & \widetilde{E}\br{\overline{k}} \arrow{r} \arrow{d}{\cdot n} & 0 \\
+0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} & E\br{K^{\ur}} \arrow{r} & \widetilde{E}\br{\overline{k}} \arrow{r} & 0
 \end{tikzcd}.
 $$
-The left map is an isomorphism by Corollary \ref{cor:8.5}, noting that $ p \nmid n $, so $ n \in \OOO_K^\times $. Since $ K^{\nr} $ is not complete we must apply Corollary \ref{cor:8.5} over each $ K_m $. The right map is surjective by Theorem \ref{thm:2.8} with kernel isomorphic to $ \br{\ZZ / n\ZZ}^2 $ by Theorem \ref{thm:6.5}, noting that $ p \nmid n $. By the snake lemma,
-$$ E\br{K^{\nr}}\sbr{n} = \br{\ZZ / n\ZZ}^2, \qquad E\br{K^{\nr}} / nE\br{K^{\nr}} = 0. $$
-So if $ P \in E\br{K} $ then there exists $ Q \in E\br{K^{\nr}} $ such that $ nQ = P $ and $ \sbr{n}^{-1}P = \cbr{Q + T \st T \in E\sbr{n}} \subset E\br{K^{\nr}} $, so $ K\br{\sbr{n}^{-1}P} \subset K^{\nr} $. Thus $ K\br{\sbr{n}^{-1}P} / K $ is unramified.
+The left map is an isomorphism by Corollary \ref{cor:8.5}, noting that $ p \nmid n $, so $ n \in \OOO_K^\times $. Since $ K^{\ur} $ is not complete we must apply Corollary \ref{cor:8.5} over each $ K_m $. The right map is surjective by Theorem \ref{thm:2.8} with kernel isomorphic to $ \br{\ZZ / n\ZZ}^2 $ by Theorem \ref{thm:6.5}, noting that $ p \nmid n $. By the snake lemma,
+$$ E\br{K^{\ur}}\sbr{n} = \br{\ZZ / n\ZZ}^2, \qquad E\br{K^{\ur}} / nE\br{K^{\ur}} = 0. $$
+So if $ P \in E\br{K} $ then there exists $ Q \in E\br{K^{\ur}} $ such that $ nQ = P $ and $ \sbr{n}^{-1}P = \cbr{Q + T \st T \in E\sbr{n}} \subset E\br{K^{\ur}} $, so $ K\br{\sbr{n}^{-1}P} \subset K^{\ur} $. Thus $ K\br{\sbr{n}^{-1}P} / K $ is unramified.
 \end{proof}
 
 \lecture{15}{Wednesday}{11/11/20}
@@ -1698,7 +1700,7 @@ Let $ E_D $ be $ y^2 = x^3 - D^2x $ for $ D \in \ZZ $ a squarefree integer. Then
 $$ \#\widetilde{E_D}\br{\FF_p} = 1 + \sum_{x \in \FF_p^2} \br{\br{\dfrac{f\br{x}}{p}} + 1}. $$
 If $ p \equiv 3 \mod 4 $ then since $ f\br{x} $ is an odd function
 $$ \br{\dfrac{f\br{-x}}{p}} = \br{\dfrac{-f\br{x}}{p}} = \br{\dfrac{-1}{p}}\br{\dfrac{f\br{x}}{p}} = -\br{\dfrac{f\br{x}}{p}}, $$
-so $ \#\widetilde{E_D}\br{\FF_p} = p + 1 $. Let $ m = \#E_D\br{\QQ}_{\tors} $. We have $ 4 \mid m \mid p + 1 $ for all sufficiently large primes $ p $ with $ p \equiv 3 \mod 4 $, where $ p \nmid 2D $ and $ p \nmid m $. So $ m = 4 $, since otherwise this contradicts Dirichlet's theorem on primes in arithmetic progressions, so $ E_D\br{\QQ}_{\tors} \cong \br{\ZZ / 2\ZZ}^2 $. Thus $ \rk E_D\br{\QQ} \ge 1 $ if and only if there exist $ x, y \in \QQ $ with $ y \ne 0 $ such that $ y^2 = x^3 - Dx $, if and only if $ D $ is a congruent number.
+so $ \#\widetilde{E_D}\br{\FF_p} = p + 1 $. Let $ m = \#E_D\br{\QQ}_{\tors} $. We have $ 4 \mid m \mid p + 1 $ for all sufficiently large primes $ p $ with $ p \equiv 3 \mod 4 $, where $ p \nmid 2D $ and $ p \nmid m $. So $ m = 4 $, since otherwise this contradicts Dirichlet's theorem on primes in arithmetic progressions, so $ E_D\br{\QQ}_{\tors} \cong \br{\ZZ / 2\ZZ}^2 $. Thus $ \rk E_D\br{\QQ} \ge 1 $ if and only if there exist $ x, y \in \QQ $ with $ y \ne 0 $ such that $ y^2 = x^3 - D^2x $, if and only if $ D $ is a congruent number.
 \end{example*}
 
 \pagebreak
@@ -1735,7 +1737,9 @@ Let $ E / \QQ $ be $ y^2 = f\br{x} = x^3 + ax + b $ for $ a, b \in \ZZ $. Suppos
 \end{theorem}
 
 \begin{proof}
-By Lemma \ref{lem:10.4}, $ x, y \in \ZZ $. If $ 2T = \OOO $ then $ y = 0 $. Otherwise $ \OOO \ne 2T = \br{x_2, y_2} \in E\br{\QQ}_{\tors} $. By Lemma \ref{lem:10.4}, $ x_2, y_2 \in \ZZ $. But $ x_2 = \br{f'\br{x} / 2y}^2 - 2x $, so $ y \mid f'\br{x} $. Since $ E $ is nonsingular, $ f\br{X} $ and $ f'\br{X} $ are coprime, so $ f\br{X} $ and $ f'\br{X}^2 $ are coprime. Then there exist $ g, h \in \QQ\sbr{X} $ such that $ g\br{X}f\br{X} + h\br{X}f'\br{X}^2 = 1 $. Doing this calculation and clearing denominators gives $ \br{3X^2 + 4a}f'\br{X}^2 - 27\br{X^3 + aX - b}f\br{X} = 4a^3 + 27b^2 $. Since $ y \mid f'\br{x} $ and $ y^2 = f\br{x} $ we get $ y^2 \mid 4a^3 + 27b^2 $.
+By Lemma \ref{lem:10.4}, $ x, y \in \ZZ $. If $ 2T = \OOO $ then $ y = 0 $. Otherwise $ \OOO \ne 2T = \br{x_2, y_2} \in E\br{\QQ}_{\tors} $. By Lemma \ref{lem:10.4}, $ x_2, y_2 \in \ZZ $. But $ x_2 = \br{f'\br{x} / 2y}^2 - 2x $, so $ y \mid f'\br{x} $. Since $ E $ is nonsingular, $ f\br{X} $ and $ f'\br{X} $ are coprime, so $ f\br{X} $ and $ f'\br{X}^2 $ are coprime. Then there exist $ g, h \in \QQ\sbr{X} $ such that $ g\br{X}f\br{X} + h\br{X}f'\br{X}^2 = 1 $. Doing this calculation and clearing denominators gives
+$$ \br{3X^2 + 4a}f'\br{X}^2 - 27\br{X^3 + aX - b}f\br{X} = 4a^3 + 27b^2. $$
+Since $ y \mid f'\br{x} $ and $ y^2 = f\br{x} $ we get $ y^2 \mid 4a^3 + 27b^2 $.
 \end{proof}
 
 \begin{remark*}
@@ -1755,9 +1759,12 @@ Moreover all fifteen possibilities occur.
 
 Let $ K $ be a field, and let $ \ch K \nmid n $. Assume $ \mu_n \subset K $.
 
+\subsection{The Kummer theorem}
+
 \begin{lemma}
 \label{lem:11.1}
-Let $ \Delta \subset K^* / \br{K^*}^n $ be a finite subgroup. Let $ L = K\br{\sqrt[n]{\Delta}} $. Then $ L / K $ is Galois and $ \Gal\br{L / K} \cong \Hom\br{\Delta, \mu_n} $.
+Let $ \Delta \subset K^* / \br{K^*}^n $ be a finite subgroup. Let $ L = K\br{\sqrt[n]{\Delta}} $. Then $ L / K $ is Galois and
+$$ \Gal\br{L / K} \cong \Hom\br{\Delta, \mu_n}. $$
 \end{lemma}
 
 \begin{proof}
@@ -1782,6 +1789,7 @@ $ \Gal\br{\QQ\br{\sqrt{2}, \sqrt{3}, \sqrt{5}} / \QQ} \cong \br{\ZZ / 2\ZZ}^3 $.
 \end{example*}
 
 \begin{theorem}
+\label{thm:11.2}
 There is a bijection
 $$ \bijection{\cbr{\text{finite subgroups} \ \Delta \subset K^* / \br{K^*}^n}}{\cbr{\text{finite abelian extensions} \ L / K \ \text{of exponent dividing} \ n}}{\Delta}{K\br{\sqrt[n]{\Delta}}}{\br{\br{L^*}^n \cap K^*} / \br{K^*}^n}{L}. $$
 \end{theorem}
@@ -1794,12 +1802,399 @@ $$ \bijection{\cbr{\text{finite subgroups} \ \Delta \subset K^* / \br{K^*}^n}}{\
 \label{eq:12}
 \sigma\br{y} = \sum_{\tau \in G} \chi\br{\tau}^{-1}\sigma\br{\tau\br{a}} = \sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}\sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}y,
 \end{equation}
-so $ \sigma\br{y^n} = y^n $ for all $ \sigma \in G $. Let $ x = y^n $. Then $ x \in K^* \cap \br{L^*}^n $, that is $ x \in \Delta $. Also by $ \br{\ref{eq:12}} $, $ \chi : \sigma \mapsto \sigma\br{y} / y = \sigma\br{\sqrt[n]{x}} / \sqrt[n]{x} $. This proves the claim.
 
 \pagebreak
 
+so $ \sigma\br{y^n} = y^n $ for all $ \sigma \in G $. Let $ x = y^n $. Then $ x \in K^* \cap \br{L^*}^n $, that is $ x \in \Delta $. Also by $ \br{\ref{eq:12}} $, $ \chi : \sigma \mapsto \sigma\br{y} / y = \sigma\br{\sqrt[n]{x}} / \sqrt[n]{x} $, so
+$$ \function{\Delta}{\Hom\br{G, \mu_n}}{x}{\chi}. $$
+This proves the claim.
 \item Let $ \Delta \subset K^* / \br{K^*}^n $ be a finite subgroup. Let $ L = K\br{\sqrt[n]{\Delta}} $ and $ \Delta' = \br{\br{L^*}^n \cap K^*} / \br{K^*}^n $. We must show $ \Delta' = \Delta $. Clearly $ \Delta \subset \Delta' $, so $ L = K\br{\sqrt[n]{\Delta}} \subset K\br{\sqrt[n]{\Delta'}} \subset L $. Then $ K\br{\sqrt[n]{\Delta}} = K\br{\sqrt[n]{\Delta'}} $, so by Lemma \ref{lem:11.1}, $ \abs{\Delta} = \abs{\Delta'} $. Since $ \Delta \subset \Delta' $ it follows that $ \Delta = \Delta' $.
 \end{itemize}
 \end{proof}
+
+\subsection{Unramified Kummer extensions}
+
+\lecture{17}{Monday}{16/11/20}
+
+\begin{proposition}
+\label{prop:11.3}
+Let $ K $ be a number field such that $ \mu_n \subset K $. Let $ S $ be a finite set of primes of $ K $. There are only finitely many extensions $ L / K $ such that
+\begin{itemize}
+\item $ L / K $ is abelian of exponent dividing $ n $, and
+\item $ L / K $ is unramified at all primes $ \ppp \notin S $.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+By Theorem \ref{thm:11.2}, $ L = K\br{\sqrt[n]{\Delta}} $ for some $ \Delta \subset K^* / \br{K^*}^n $ a finite subgroup. Let $ \ppp $ be a prime of $ K $ such that $ \ppp\OOO_L = \pp_1^{e_1} \dots \pp_r^{e_r} $ for $ \pp_i $ a prime in $ \OOO_L $. If $ x \in K^* $ represents an element of $ \Delta $ then $ n\v_{\pp_i}\br{\sqrt[n]{x}} = \v_{\pp_i}\br{x} = e_i\v_\ppp\br{x} $. If $ \ppp \notin S $ then all $ e_i = 1 $, so $ \v_\ppp\br{x} \equiv 0 \mod n $. Thus $ \Delta \subset K\br{S, n} $ where
+$$ K\br{S, n} = \cbr{x \in K^* / \br{K^*}^n \st \forall \ppp \notin S, \ \v_\ppp\br{x} \equiv 0 \mod n}, $$
+and the proof is completed by Lemma \ref{lem:11.4}.
+\end{proof}
+
+\begin{lemma}
+\label{lem:11.4}
+$ K\br{S, n} $ is finite.
+\end{lemma}
+
+\begin{proof}
+The map
+$$ \function{K\br{S, n}}{\br{\ZZ / n\ZZ}^{\abs{S}}}{x}{\br{\v_\ppp\br{x} \mod n}_{\ppp \in S}} $$
+is a group homomorphism with kernel $ K\br{\emptyset, n} $. Since $ \abs{S} < \infty $, it suffices to prove Lemma \ref{lem:11.4} with $ S = \emptyset $. If $ x \in K^* $ represents an element of $ K\br{\emptyset, n} $ then $ \abr{x} = \aaa^n $ for some ideal $ \aaa $. There is an exact sequence
+$$ 0 \to \OOO_K^\times / \br{\OOO_K^\times}^n \to K\br{\emptyset, n} \xrightarrow{x\br{K^*}^n \mapsto \sbr{\aaa}} \Cl_K\sbr{n} \to 0. $$
+Since $ \abs{\Cl_K} < \infty $ and $ \OOO_K^\times $ is finitely generated, by Dirichlet's unit theorem, $ K\br{\emptyset, n} $ is finite.
+\end{proof}
+
+\pagebreak
+
+\section{Elliptic curves over number fields II: the Mordell-Weil theorem}
+
+\subsection{The weak Mordell-Weil theorem}
+
+\begin{lemma}
+\label{lem:12.1}
+Let $ E / K $ be an elliptic curve, and let $ L / K $ be a finite Galois extension. Then the map $ E\br{K} / nE\br{K} \to E\br{L} / nE\br{L} $ has finite kernel.
+\end{lemma}
+
+\begin{proof}
+For each element in the kernel we pick a coset representative $ P \in E\br{K} $ and then $ Q \in E\br{L} $ with $ nQ = P $. Note that for any $ \sigma \in \Gal\br{L / K} $, $ n\br{\sigma\br{Q} - Q} = \sigma\br{P} - P = 0 $. Since $ \Gal\br{L / K} $ is finite and $ E\sbr{n} $ is finite, there are only finitely many possibilities for the map
+$$ \function{\Gal\br{L / K}}{E\sbr{n}}{\sigma}{\sigma\br{Q} - Q}. $$
+But if $ P_1, P_2 \in E\br{K} $ such that $ P_i = nQ_i $ for $ Q_1, Q_2 \in E\br{L} $ and $ \sigma\br{Q_1} - Q_1 = \sigma\br{Q_2} - Q_2 $ for all $ \sigma \in \Gal\br{L / K} $, then $ \sigma\br{Q_1 - Q_2} = Q_1 - Q_2 $ for all $ \sigma \in \Gal\br{L / K} $. Then $ Q_1 - Q_2 \in E\br{K} $, so $ P_1 - P_2 \in nE\br{K} $.
+\end{proof}
+
+\begin{theorem}[Weak Mordell-Weil]
+Let $ K $ be a number field, let $ E / K $ be an elliptic curve, and let $ n \ge 2 $ be an integer. Then $ E\br{K} / nE\br{K} $ is finite.
+\end{theorem}
+
+\begin{proof}
+By Lemma \ref{lem:12.1}, we may replace $ K $ by a finite Galois extension. So without loss of generality $ \mu_n \subset K $ and $ E\sbr{n} \subset E\br{K} $. Let
+$$ S = \cbr{\ppp \mid n} \cup \cbr{\text{primes of bad reduction for} \ E / K}. $$
+For each $ P \in E\br{K} $ the extension $ K\br{\sbr{n}^{-1}P} / K $ is unramified outside $ S $, by Theorem \ref{thm:9.9}. Let $ Q \in \sbr{n}^{-1}P $. Since $ E\sbr{n} \subset E\br{K} $, $ K\br{Q} = K\br{\sbr{n}^{-1}P} $. This is a Galois extension of $ K $. Let
+$$ \function{\Gal\br{K\br{Q} / K}}{E\sbr{n} \cong \br{\ZZ / n\ZZ}^2}{\sigma}{\sigma\br{Q} - Q}. $$
+This is
+\begin{itemize}
+\item a group homomorphism, since
+$$ \sigma\tau\br{Q} - Q = \sigma\br{\tau\br{Q} - Q} + \sigma\br{Q} - Q = \tau\br{Q} - Q + \sigma\br{Q} - Q, $$
+\item injective, since if $ \sigma\br{Q} = Q $ then $ \sigma $ fixes $ K\br{Q} $ pointwise, that is $ \sigma = \id $.
+\end{itemize}
+Then $ K\br{Q} / K $ is an abelian extension of exponent dividing $ n $, unramified outside $ S $. By Proposition \ref{prop:11.3}, there are only finitely many possibilities for $ K\br{Q} $, as we vary $ P \in E\br{K} $. Let $ L $ be the composite of all such extensions of $ K $, that is for all $ P \in E\br{K} $. Then $ L / K $ is finite, and Galois, and $ E\br{K} / nE\br{K} \to E\br{L} / nE\br{L} $ is the zero map. By Lemma \ref{lem:12.1}, $ \abs{E\br{K} / nE\br{K}} < \infty $.
+\end{proof}
+
+\begin{remark*}
+If $ K = \RR $ or $ K = \CC $ or $ \sbr{K : \QQ_p} < \infty $ then $ \abs{E\br{K} / nE\br{K}} < \infty $, yet $ E\br{K} $ is not finitely generated, indeed uncountable.
+\end{remark*}
+
+\pagebreak
+
+\subsection{The Mordell-Weil theorem}
+
+Let $ E / K $ be an elliptic curve over a number field.
+
+\begin{fact*}
+There exists a quadratic form, the canonical height, $ \widehat{\h} : E\br{K} \to \RR_{\ge 0} $ with the property that
+\begin{equation}
+\label{eq:13}
+\#\cbr{P \in E\br{K} \st \widehat{\h}\br{P} \le B} < \infty, \qquad B \ge 0.
+\end{equation}
+\end{fact*}
+
+\begin{theorem}[Mordell-Weil]
+Let $ K $ be a number field, and let $ E / K $ be an elliptic curve. Then $ E\br{K} $ is a finitely generated abelian group.
+\end{theorem}
+
+\begin{proof}
+Fix any integer $ n \ge 2 $. By weak Mordell-Weil, $ \abs{E\br{K} / nE\br{K}} < \infty $. Pick coset representatives $ P_1, \dots, P_m $. Let
+$$ \Sigma = \cbr{P \in E\br{K} \st \widehat{\h}\br{P} \le \max_{1 \le i \le m} \widehat{\h}\br{P_i}}. $$
+Claim that $ \Sigma $ generates $ E\br{K} $. If not there exists $ P \in E\br{K} \setminus \cbr{\text{subgroup generated by} \ \Sigma} $ of minimal height, which exists by $ \br{\ref{eq:13}} $. Then $ P = P_i + nQ $ for some $ 1 \le i \le m $ and $ Q \in E\br{K} $. Note that $ Q \in E\br{K} \setminus \cbr{\text{subgroup generated by} \ \Sigma} $. By the minimal choice of $ P $,
+$$ 4\widehat{\h}\br{P} \le 4\widehat{\h}\br{Q} \le n^2\widehat{\h}\br{Q} = \widehat{\h}\br{nQ} = \widehat{\h}\br{P - P_i} \le \widehat{\h}\br{P - P_i} + \widehat{\h}\br{P + P_i} = 2\widehat{\h}\br{P} + 2\widehat{\h}\br{P_i}, $$
+by the parallelogram law, so $ \widehat{\h}\br{P} \le \widehat{\h}\br{P_i} $. By definition of $ \Sigma $, $ P \in \Sigma $, a contradiction to the choice of $ P $. This proves the claim. But by $ \br{\ref{eq:13}} $, $ \Sigma $ is finite.
+\end{proof}
+
+\lecture{18}{Wednesday}{18/11/20}
+
+\begin{remark*}
+The structure theorem for finitely generated abelian groups shows
+$$ E\br{K} \cong E\br{K}_{\tors} \times \ZZ^r, \qquad r \ge 0, $$
+where $ r $ is called the \textbf{rank}. There is no known algorithm proven to compute $ \rk E\br{K} $ in all cases.
+\end{remark*}
+
+\pagebreak
+
+\section{Heights}
+
+For simplicity take $ K = \QQ $.
+
+\subsection{Naive heights on projective space}
+
+Write $ P \in \PP^n\br{\QQ} $ as $ P = \br{a_0 : \dots : a_n} $ where $ a_0, \dots, a_n \in \ZZ $ such that $ \gcd\br{a_0, \dots, a_n} = 1 $.
+
+\begin{definition*}
+The \textbf{height} is
+$$ \H\br{P} = \max_{0 \le i \le n} \abs{a_i}. $$
+\end{definition*}
+
+\begin{lemma}
+\label{lem:13.1}
+Let $ f_1, f_2 \in \QQ\sbr{X_1, X_2} $ be coprime homogeneous polynomials of degree $ d $. Let
+$$ \function[F]{\PP^1}{\PP^1}{\br{x_1 : x_2}}{\br{f_1\br{x_1, x_2} : f_2\br{x_1, x_2}}}. $$
+Then there exist $ c_1, c_2 > 0 $ such that
+$$ c_1\H\br{P}^d \le \H\br{F\br{P}} \le c_2\H\br{P}^d, \qquad P \in \PP^1\br{\QQ}. $$
+\end{lemma}
+
+\begin{proof}
+Without loss of generality $ f_1, f_2 \in \ZZ\sbr{X_1, X_2} $.
+\begin{itemize}
+\item Upper bound. Write $ P = \br{a : b} $ for $ a, b \in \ZZ $ coprime. Then
+$$ \H\br{F\br{P}} \le \max\br{\abs{f_1\br{a, b}}, \abs{f_2\br{a, b}}} \le c_2\max\br{\abs{a}^d, \abs{b}^d}, $$
+where $ c_2 $ is the maximum of the sum of absolute values of coefficients of $ f_1 $ and $ f_2 $, so $ \H\br{F\br{P}} \le c_2\H\br{P}^d $.
+\item Lower bound. We claim there exist $ g_{ij} \in \ZZ\sbr{X_1, X_2} $ homogeneous polynomials of degree $ d - 1 $ and $ \kappa \in \ZZ_{> 0} $ such that
+\begin{equation}
+\label{eq:14}
+\sum_{j = 1}^2 g_{ij}f_j = \kappa X_i^{2d - 1}, \qquad i = 1, 2.
+\end{equation}
+Indeed running Euclid's algorithm on $ f_1\br{X, 1} $ and $ f_2\br{X, 1} $ gives $ r, s \in \QQ\sbr{X} $ of degree less than $ d $ such that $ r\br{X}f_1\br{X, 1} + s\br{X}f_2\br{X, 1} = 1 $. Homogenising and clearing denominators gives $ \br{\ref{eq:14}} $ with $ i = 2 $. Likewise for $ i = 1 $. Write $ P = \br{a_1 : a_2} $ for $ a_1, a_2 \in \ZZ $ coprime. By $ \br{\ref{eq:14}} $,
+$$ \sum_{j = 1}^2 g_{ij}\br{a_1, a_2}f_j\br{a_1, a_2} = \kappa a_i^{2d - 1}, \qquad i = 1, 2, $$
+so $ \gcd\br{f_1\br{a_1, a_2}, f_2\br{a_1, a_2}} $ divides $ \gcd\br{\kappa a_1^{2d - 1}, \kappa a_2^{2d - 1}} = \kappa $. But also
+$$ \abs{\kappa a_i^{2d - 1}} \le \max_{j = 1, 2} \abs{f_j\br{a_1, a_2}}\sum_{j = 1}^2 \abs{g_{ij}\br{a_1, a_2}} \le \kappa\H\br{F\br{P}}\gamma_i\H\br{P}^{d - 1}, $$
+where $ \gamma_i $ is the sum of absolute values of coefficients of $ g_{i1} $ and $ g_{i2} $. Then
+$$ \kappa\abs{a_i}^{2d - 1} \le \gamma_i\kappa\H\br{F\br{P}}\H\br{P}^{d - 1}, \qquad i = 1, 2, $$
+so
+$$ \H\br{P}^{2d - 1} \le \max\br{\gamma_1, \gamma_2}\H\br{F\br{P}}\H\br{P}^{d - 1}. $$
+Thus
+$$ c_1\H\br{P}^d = \dfrac{1}{\max\br{\gamma_1, \gamma_2}}\H\br{P}^d \le \H\br{F\br{P}}. $$
+\end{itemize}
+\end{proof}
+
+\begin{notation*}
+For $ x \in \QQ $
+$$ \H\br{x} = \H\br{\br{x : 1}} = \max\br{\abs{u}, \abs{v}}, \qquad x = \dfrac{u}{v}, \qquad u, v \in \ZZ \ \text{coprime}. $$
+\end{notation*}
+
+\pagebreak
+
+\subsection{Naive heights on elliptic curves}
+
+\begin{definition*}
+The \textbf{height} is
+$$ \function[\H]{E\br{\QQ}}{\RR_{\ge 1}}{P}{
+\begin{cases}
+\H\br{x} & P = \br{x, y} \\
+1 & P = \OOO_E
+\end{cases}
+}. $$
+The \textbf{logarithmic height} is
+$$ \function[\h]{E\br{\QQ}}{\RR_{\ge 0}}{P}{\log \H\br{P}}. $$
+\end{definition*}
+
+\begin{lemma}
+\label{lem:13.2}
+Let $ E $ and $ E' $ be elliptic curves over $ \QQ $, and let $ \phi : E \to E' $ be an isogeny defined over $ \QQ $. Then there exists $ c > 0 $ such that
+$$ \abs{\h\br{\phi\br{P}} - \br{\deg \phi}\h\br{P}} \le c, \qquad P \in E\br{\QQ}. $$
+\end{lemma}
+
+Note that $ c $ depends on $ E, E', \phi $ but not on $ P $.
+
+\begin{proof}
+Recall, by Lemma \ref{lem:5.3},
+$$
+\begin{tikzcd}
+E \arrow{r}{\phi} \arrow{d}[swap]{x} & E' \arrow{d}{x} \\
+\PP^1 \arrow{r}[swap]{\xi} & \PP^1
+\end{tikzcd},
+$$
+where $ \deg \phi = \deg \xi = d $, say. By Lemma \ref{lem:13.1}, there exist $ c_1, c_2 \ge 0 $ such that
+$$ c_1\H\br{P}^d \le \H\br{\phi\br{P}} \le c_2\H\br{P}^d, \qquad P \in \PP^1\br{\QQ}. $$
+Taking logarithms gives
+$$ \abs{\h\br{\phi\br{P}} - d\h\br{P}} \le \max\br{\log c_2, -\log c_1} = c. $$
+\end{proof}
+
+\begin{example*}
+Let $ \phi = \sbr{2} : E \to E $. Then there exists $ c > 0 $ such that
+\begin{equation}
+\label{eq:15}
+\abs{\h\br{2P} - 4\h\br{P}} \le c, \qquad P \in E\br{\QQ}.
+\end{equation}
+\end{example*}
+
+\subsection{The canonical height quadratic form}
+
+\begin{definition*}
+The \textbf{canonical height} is
+$$ \widehat{\h}\br{P} = \lim_{n \to \infty} \dfrac{1}{4^n}\h\br{2^nP}. $$
+\end{definition*}
+
+We check convergence. Let $ m \ge n $. Then
+\begin{align*}
+\abs{\dfrac{1}{4^m}\h\br{2^mP} - \dfrac{1}{4^n}\h\br{2^nP}}
+& \le \sum_{r = n}^{m - 1} \abs{\dfrac{1}{4^{r + 1}}\h\br{2^{r + 1}P} - \dfrac{1}{4^r}\h\br{2^rP}} \\
+& = \sum_{r = n}^{m - 1} \dfrac{1}{4^{r + 1}}\abs{\h\br{2\br{2^rP}} - 4\h\br{2^rP}}
+\le c\sum_{r = n}^\infty \dfrac{1}{4^{r + 1}} & \text{by} \ \br{\ref{eq:15}} \\
+& = \dfrac{c}{4^{n + 1}} \cdot \dfrac{1}{1 - \tfrac{1}{4}}
+= \dfrac{c}{3 \cdot 4^n}
+\to 0, & n \to \infty.
+\end{align*}
+So the sequence is Cauchy and $ \widehat{\h}\br{P} $ exists.
+
+\pagebreak
+
+\begin{lemma}
+\label{lem:13.3}
+$ \abs{\h\br{P} - \widehat{\h}\br{P}} $ is bounded for $ P \in E\br{\QQ} $.
+\end{lemma}
+
+\begin{proof}
+Putting $ n = 0 $ in the above calculation
+$$ \abs{\dfrac{1}{4^m}\h\br{2^mP} - \h\br{P}} \le \dfrac{c}{3}. $$
+Take the limit as $ m \to \infty $.
+\end{proof}
+
+\begin{corollary}
+For any $ B > 0 $, $ \#\cbr{P \in E\br{\QQ} \st \widehat{h}\br{P} \le B} $ is finite.
+\end{corollary}
+
+\begin{proof}
+If $ \widehat{\h}\br{P} $ is bounded, then by Lemma \ref{lem:13.3}, $ \h\br{P} $ is bounded, so there are only finitely many possibilities for $ x $. Each $ x $ leaves at most two choices for $ y $.
+\end{proof}
+
+\begin{lemma}
+\label{lem:13.5}
+Let $ \phi : E \to E' $ be an isogeny over $ \QQ $. Then
+$$ \widehat{\h}\br{\phi\br{P}} = \br{\deg \phi}\widehat{\h}\br{P}, \qquad P \in E\br{\QQ}. $$
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lem:13.2} there exists $ c > 0 $ such that $ \abs{\h\br{\phi\br{P}} - \br{\deg \phi}\h\br{P}} \le c $ for all $ P \in E\br{\QQ} $. Replace $ P $ by $ 2^nP $, divide by $ 4^n $, and take the limit as $ n \to \infty $.
+\end{proof}
+
+\lecture{19}{Friday}{20/11/20}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item $ \H $ and $ \h $ depend on a choice of Weierstrass equation, but Lemma \ref{lem:13.5}, with $ \deg \phi = 1 $, shows $ \widehat{\h} $ does not.
+\item Taking $ \phi = \sbr{n} : E \to E $ shows $ \widehat{\h}\br{nP} = n^2\widehat{\h}\br{P} $ for all $ n \in \ZZ $.
+\end{itemize}
+\end{remark*}
+
+\begin{lemma}
+\label{lem:13.6}
+Let $ E / \QQ $ be an elliptic curve $ y^2 = x^3 + ax + b $ for $ a, b \in \ZZ $. Then there exists $ c > 0 $ such that
+$$ \H\br{P + Q}\H\br{P - Q} \le c\H\br{P}^2\H\br{Q}^2, \qquad P, Q \in E\br{\QQ}, \qquad P, Q, P \pm Q \ne \OOO_E. $$
+\end{lemma}
+
+\begin{proof}
+Let $ P, Q, P + Q, P - Q $ have $ x $-coordinates $ x_1, \dots, x_4 $. By Lemma \ref{lem:5.7} there exist $ w_1, w_2, w_3 \in \ZZ\sbr{x_1, x_2} $ of degree at most two in $ x_1 $ and of degree at most two in $ x_2 $ such that $ \br{1 : x_3 + x_4 : x_3x_4} = \br{w_0 : w_1 : w_2} $. Write $ x_i = r_i / s_i $ for $ r_i, s_i \in \ZZ $ coprime. Then
+$$ \br{s_3s_4 : r_3s_4 + r_4s_3 : r_3r_4} = \br{\br{r_1s_2 - r_2s_1}^2 : w_1\br{r_1, s_1, r_2, s_2} : w_2\br{r_1, s_1, r_2, s_2}}, $$
+where $ s_3s_4, r_3s_4 + r_4s_3, r_3r_4 $ are coprime, so
+\begin{align*}
+\H\br{P + Q}\H\br{P - Q}
+& = \max\br{\abs{r_3}, \abs{s_3}}\max\br{\abs{r_4}, \abs{s_4}}
+\le 2\max\br{\abs{s_3s_4}, \abs{r_3s_4 + r_4s_3}, \abs{r_3r_4}} \\
+& \le 2\max\br{\abs{r_1s_2 - r_2s_1}^2, \abs{w_1\br{r_1, s_1, r_2, s_2}}, \abs{w_2\br{r_1, s_1, r_2, s_2}}}
+\le c\H\br{P}^2\H\br{Q}^2,
+\end{align*}
+where $ c $ depends on $ E $, but not on $ P $ and $ Q $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:13.7}
+$ \widehat{\h} : E\br{\QQ} \to \RR_{\ge 0} $ is a quadratic form.
+\end{theorem}
+
+\begin{proof}
+By Lemma \ref{lem:13.6} and since $ \abs{\h\br{2P} - 4\h\br{P}} $ is bounded,
+$$ \h\br{P + Q} + \h\br{P - Q} \le 2\h\br{P} + 2\h\br{Q} + c, \qquad P, Q \in E\br{\QQ}. $$
+Replacing $ P $ and $ Q $ by $ 2^nP $ and $ 2^nQ $, dividing by $ 4^n $, and taking the limit as $ n \to \infty $ gives
+$$ \widehat{\h}\br{P + Q} + \widehat{\h}\br{P - Q} \le 2\widehat{\h}\br{P} + 2\widehat{\h}\br{Q}. $$
+Replacing $ P $ and $ Q $ by $ P + Q $ and $ P - Q $ and using $ \widehat{\h}\br{2P} = 4\widehat{\h}\br{P} $ gives the reverse inequality. Thus $ \widehat{\h} $ satisfies the parallelogram law, so $ \widehat{\h} $ is a quadratic form.
+\end{proof}
+
+\pagebreak
+
+\subsection{Heights on number fields}
+
+The \textbf{places} of a number field $ K $ are
+\begin{itemize}
+\item the finite places, or primes, $ \abs{x}_\ppp = c^{-\v_\ppp\br{x}} $ for some fixed $ c > 1 $, and
+\item the infinite places, or real and complex embeddings, $ \abs{x}_\sigma = \abs{\sigma\br{x}}^d $ for some fixed $ d > 0 $.
+\end{itemize}
+For each place $ v $ we may chose a normalisation $ \abs{\cdot}_v $, that is make a choice of $ c $ and $ d $, such that
+$$ \prod_v \abs{\lambda}_v = 1, \qquad \lambda \in K^*, $$
+the \textbf{product formula}.
+
+\begin{remark*}
+For $ K $ a number field let $ P = \br{a_0 : \dots : a_n} \in \PP^n\br{K} $. Define
+$$ \H\br{P} = \prod_v \max_{0 \le i \le n} \abs{a_i}_v. $$
+This is well-defined by the product formula. All results in this section generalise from $ \QQ $ to $ K $.
+\end{remark*}
+
+\begin{remark*}
+Let $ \pi_i : E \times E \times E \to E $ be projection onto the $ i $-th factor. Let $ \pi_{ij} = \pi_i + \pi_j $ and $ \pi_{123} = \pi_1 + \pi_2 + \pi_3 $. The \textbf{theorem of the cube}, proof omitted, says that if $ D \in \Div E $ then
+$$ \pi_{123}^*D + \pi_1^*D + \pi_2^*D + \pi_3^*D \sim \pi_{12}^*D + \pi_{13}^*D + \pi_{23}^*D. $$
+This can be used to give alternative proofs of Theorem \ref{thm:5.6} and Theorem \ref{thm:13.7}.
+\end{remark*}
+
+\pagebreak
+
+\section{Dual isogenies and the Weil pairing}
+
+\subsection{Dual isogenies}
+
+Let $ K $ be a perfect field, and let $ E / K $ be an elliptic curve.
+
+\begin{proposition}
+\label{prop:14.1}
+Let $ \Phi \subset E\br{\overline{K}} $ be a finite $ \Gal\br{\overline{K} / K} $-stable subgroup. Then there exist an elliptic curve $ E' / K $ and a separable isogeny $ \phi : E \to E' $ defined over $ K $ with kernel $ \Phi $ such that every isogeny $ \psi : E \to E'' $ with $ \Phi \subset \ker \psi $ factors uniquely in $ \phi $, so
+$$
+\begin{tikzcd}
+E \arrow{rr}{\psi} \arrow{dr}[swap]{\phi} & & E'' \\
+& E' \arrow[dashed]{ur}[swap]{\exists !} &
+\end{tikzcd}.
+$$
+\end{proposition}
+
+\begin{proof}
+Omitted. Silverman, Chapter III, Proposition 4.12.
+\end{proof}
+
+\begin{proposition}
+Let $ \phi : E \to E' $ be an isogeny of degree $ n $. Then there exists a unique isogeny $ \widehat{\phi} : E' \to E $ such that $ \widehat{\phi} \circ \phi = \sbr{n} $.
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item If $ \phi $ is separable, then $ \abs{\ker \phi} = n $, so $ \ker \phi \subset E\sbr{n} $. Apply Proposition \ref{prop:14.1} with $ \psi = \sbr{n} $.
+\item The case $ \phi $ is inseparable is omitted. See Silverman, Chapter III, Theorem 6.1. For uniqueness, if $ \psi_1 \circ \phi = \psi_2 \circ \phi = \sbr{n} $, then $ \br{\psi_1 - \psi_2} \circ \phi = 0 $. Since $ \phi $ is nonconstant, so surjective on $ \overline{K} $ points, $ \psi_1 - \psi_2 = 0 $, so $ \psi_1 = \psi_2 $.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item Let $ E_1 \sim E_2 $ if and only if $ E_1 $ and $ E_2 $ are isogenous. Then $ \sim $ is an equivalence relation.
+\item $ \deg \sbr{n} = n^2 $, so $ \deg \phi = \deg \widehat{\phi} $ and $ \widehat{\sbr{n}} = \sbr{n} $.
+\item $ \phi \circ \widehat{\phi} \circ \phi = \phi \circ \sbr{n}_E = \sbr{n}_{E'} \circ \phi $, so $ \phi \circ \widehat{\phi} = \sbr{n}_{E'} $. In particular $ \widehat{\widehat{\phi}} = \phi $.
+\item If $ \psi : E_1 \to E_2 $ and $ \phi : E_2 \to E_3 $ then $ \widehat{\phi \circ \psi} = \widehat{\psi} \circ \widehat{\phi} $.
+\item If $ \phi \in \End E $ then by example sheet $ 2 $, $ \phi^2 - \sbr{\Tr \phi}\phi + \sbr{\deg \phi} = 0 $, so $ \br{\sbr{\Tr \phi} - \phi} \circ \phi = \sbr{\deg \phi} $. Thus $ \sbr{\Tr \phi} = \phi + \widehat{\phi} $.
+\end{itemize}
+\end{remark*}
+
+\begin{lemma}
+\label{lem:14.3}
+If $ \phi, \psi \in \Hom\br{E, E'} $ then
+$$ \widehat{\phi + \psi} = \widehat{\phi} + \widehat{\psi}. $$
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item If $ E = E' $ then this follows from $ \Tr \br{\phi + \psi} = \Tr \phi + \Tr \psi $.
+\item In general let $ \alpha : E' \to E $ be any isogeny, such as $ \widehat{\phi} $. By $ 1 $, $ \widehat{\alpha \circ \phi + \alpha \circ \psi} = \widehat{\alpha \circ \phi} + \widehat{\alpha \circ \psi} $, so $ \widehat{\alpha \circ \br{\phi + \psi}} = \widehat{\phi} \circ \widehat{\alpha} + \widehat{\psi} \circ \widehat{\alpha} $. Thus $ \widehat{\phi + \psi} \circ \widehat{\alpha} = \br{\widehat{\phi} + \widehat{\psi}} \circ \widehat{\alpha} $, so $ \widehat{\phi + \psi} = \widehat{\phi} + \widehat{\psi} $.
+\end{enumerate}
+\end{proof}
+
+\begin{remark*}
+In Silverman's book he proves Lemma \ref{lem:14.3} first, and uses this to show $ \deg : \Hom\br{E, E'} \to \ZZ $ is a quadratic form.
+\end{remark*}
 
 \end{document}
