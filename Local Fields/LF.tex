@@ -39,7 +39,7 @@ We say $ \br{K, \abs{\cdot}} $ is a \textbf{valued field}.
 \begin{example*}
 \hfill
 \begin{itemize}
-\item Let $ K = \RR, \CC $ with the usual absolute value. Write $ \abs{\cdot}_\infty $ for this absolute value.
+\item Let $ K = \RR $ or $ K = \CC $ with the usual absolute value. Write $ \abs{\cdot}_\infty $ for this absolute value.
 \item Let $ K $ be any field. The \textbf{trivial absolute value} on $ K $ is defined by
 $$ \abs{x} =
 \begin{cases}
@@ -413,7 +413,7 @@ commutes for all $ n $, there is a unique homomorphism $ \psi : B \to \varprojli
 
 \begin{proof}
 Define
-$$ \function[\psi]{B}{\displaystyle\prod_{n = 1}^\infty A_n}{b}{\displaystyle\prod_{n = 1}^\infty \psi_n\br{b}}. $$
+$$ \function[\psi]{B}{\prod_{n = 1}^\infty A_n}{b}{\prod_{n = 1}^\infty \psi_n\br{b}}. $$
 Then $ \psi_n = \phi_n \circ \psi_{n + 1} $ implies that $ \psi\br{b} \in \varprojlim_n A_n $. The map is clearly unique, determined by $ \psi_n = \phi_n \circ \psi_{n + 1} $, and is a homomorphism of rings.
 \end{proof}
 
@@ -597,7 +597,7 @@ Since $ \ch R = p $, $ \br{x + y}^p = x^p + y^p $, so Frobenius is a ring homomo
 \hfill
 \begin{itemize}
 \item $ \FF_{p^n} $ and $ \overline{\FF_p} $ are perfect fields.
-\item $ \FF_p\sbr{t} $ is not perfect, since $ t \notin \im \Frob $.
+\item $ \FF_p\sbr{t} $ is not perfect, since $ t \notin \im \Fr $.
 \item $ \FF_p\br{t^{1 / p^\infty}} = \FF_p\br{t, t^{1 / p}, \dots} $ is a perfect field, the \textbf{perfection} of $ \FF_p\br{t} $. The $ t $-adic absolute value extends to $ \FF_p\br{t^{1 / p^\infty}} $, and the completion of $ \FF_p\br{t^{1 / p^\infty}} $ is a \textbf{perfectoid field}.
 \end{itemize}
 \end{example*}
@@ -696,7 +696,7 @@ Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ k 
 
 \begin{proof}
 Since $ K = \Frac \OOO_K $, it suffices to show $ \OOO_K \cong k\sbr{\sbr{t}} $. Fix $ \pi \in \OOO_K $ a uniformiser, let $ \sbr{\cdot} : k \to \OOO_K $ be the Teichm\"uller map, and define
-$$ \function[\phi]{k\sbr{\sbr{t}}}{\OOO_K}{\displaystyle\sum_{i = 0}^\infty a_it^i}{\displaystyle\sum_{i = 0}^\infty \sbr{a_i}\pi^i}. $$
+$$ \function[\phi]{k\sbr{\sbr{t}}}{\OOO_K}{\sum_{i = 0}^\infty a_it^i}{\sum_{i = 0}^\infty \sbr{a_i}\pi^i}. $$
 Then $ \phi $ is a ring homomorphism since $ \sbr{\cdot} $ is a ring homomorphism and it is a bijection by Proposition \ref{prop:3.5}.$ 2 $.
 \end{proof}
 
@@ -1227,7 +1227,7 @@ Since $ x \mapsto \abs{\sigma\br{x}}_L $ is also another absolute value on $ L $
 \end{proof}
 
 \begin{lemma}[Krasner's lemma]
-Let $ \br{K, \abs{\cdot}} $ a complete discretely valued field. Let $ f\br{X} \in K\sbr{X} $ be a separable irreducible polynomial with roots $ \alpha_1, \dots, \alpha_n \in \overline{K} $, the separable closure of $ K $. Suppose $ \beta \in \overline{K} $ with $ \abs{\beta - \alpha_1} < \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $. Then $ \alpha_1 \in K\br{\beta} $.
+Let $ \br{K, \abs{\cdot}} $ a complete discretely valued field. Let $ f\br{X} \in K\sbr{X} $ be a separable irreducible polynomial with roots $ \alpha_1, \dots, \alpha_n \in \overline{K} $, a separable closure of $ K $. Suppose $ \beta \in \overline{K} $ with $ \abs{\beta - \alpha_1} < \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $. Then $ \alpha_1 \in K\br{\beta} $.
 \end{lemma}
 
 \begin{proof}
@@ -1444,7 +1444,7 @@ Let $ \OOO_K $ be a Dedekind domain. Let $ 0 \ne x \in \OOO_K $. Then
 $$ \abr{x} = \prod_{\ppp \ne 0 \ \text{prime ideals}} \ppp^{\v_\ppp\br{x}}. $$
 \end{lemma}
 
-Note product is finite.
+Note the product is finite.
 
 \begin{proof}
 $ x\OOO_{K, \br{\ppp}} = \br{\ppp\OOO_{K, \br{\ppp}}}^{\v_\ppp\br{x}} $ by definition of $ \v_\ppp\br{x} $. Lemma \ref{lem:12.1} follows from properties of localisation, where $ I = J $ if and only if $ I\OOO_{K, \br{\ppp}} = J\OOO_{K, \br{\ppp}} $ for all prime ideals $ \ppp $.
@@ -1733,22 +1733,26 @@ Moreover $ \sbr{K_0 : K} = \f_{L / K} $ and $ \sbr{L : K_0} = \e_{L / K} $, and 
 \begin{proof}
 Let $ k = \FF_q $, so that $ k_L = \FF_{q^\f} $ for $ \f = \f_{L / K} $. Set $ m = q^\f - 1 $. Let $ \sbr{\cdot} : \FF_{q^\f}^\times \to L^\times $ be the Teichm\"uller map for $ L $ and let $ \zeta_m = \sbr{a} $ where $ a $ is a generator of $ \FF_{q^\f}^\times $. Then $ \zeta_m $ is a primitive $ m $-th root of unity, by lecture $ 5 $. We set
 $$ K_0 = K\br{\zeta_m} \subseteq L. $$
-Then $ K_0 $ is the splitting field of the separable polynomial $ f\br{X} = X^m - 1 \in K\sbr{X} $, hence $ K_0 / K $ is Galois. Since $ \abs{\zeta_m} = 1 $, we have $ \zeta_m \in \OOO_{K_0}^\times $. It follows that $ k_0 = \OOO_{K_0} / \mmm_0 $ contains a primitive $ m $-th root of unity, so $ k_0 = \FF_{q^\f} \cong k_L $. Now $ \Gal\br{K_0 / K} $ preserves $ \OOO_{K_0} $ and $ \mmm_0 $, using $ \abs{x} = \abs{\sigma\br{x}} $ for all $ x \in K_0 $ and $ \sigma \in \Gal\br{K_0 / K} $. Thus there is a natural map $ \res : \Gal\br{K_0 / K} \to \Gal\br{k_0 / k} $. For $ \sigma \in \Gal\br{K_0 / K} $ we have $ \sigma\br{\zeta_m} = \zeta_m $ if $ \sigma\br{\zeta_m} \equiv \zeta_m \mod \mmm_0 $. This follows from the fact that $ \sigma\br{\zeta_m} = \sbr{\br{\res \sigma}\br{\zeta_m \mod \mmm_0}} $. Thus $ \res $ is injective. It follows that $ \abs{\Gal\br{K_0 / K}} \le \abs{\Gal\br{k_0 / k}} = \f = \f_{L / K} $, so $ \sbr{K_0 : K} = \f_{L / K} $ and $ \res $ is an isomorphism. Thus $ K_0 / K $ is unramified. Since $ k_0 \cong k_L $, $ \f_{L / K_0} = 1 $ and hence $ L / K_0 $ is totally ramified.
+Then $ K_0 $ is the splitting field of the separable polynomial $ f\br{X} = X^m - 1 \in K\sbr{X} $, hence $ K_0 / K $ is Galois. Since $ \abs{\zeta_m} = 1 $, we have $ \zeta_m \in \OOO_{K_0}^\times $. It follows that $ k_0 = \OOO_{K_0} / \mmm_0 $ contains a primitive $ m $-th root of unity, so $ k_0 = \FF_{q^\f} \cong k_L $. Now $ \Gal\br{K_0 / K} $ preserves $ \OOO_{K_0} $ and $ \mmm_0 $, using $ \abs{x} = \abs{\sigma\br{x}} $ for all $ x \in K_0 $ and $ \sigma \in \Gal\br{K_0 / K} $. Thus there is a natural map
+$$ \res : \Gal\br{K_0 / K} \to \Gal\br{k_0 / k}. $$
+For $ \sigma \in \Gal\br{K_0 / K} $ we have $ \sigma\br{\zeta_m} = \zeta_m $ if $ \sigma\br{\zeta_m} \equiv \zeta_m \mod \mmm_0 $. This follows from the fact that $ \sigma\br{\zeta_m} = \sbr{\br{\res \sigma}\br{\zeta_m \mod \mmm_0}} $. Thus $ \res $ is injective. It follows that $ \abs{\Gal\br{K_0 / K}} \le \abs{\Gal\br{k_0 / k}} = \f = \f_{L / K} $, so $ \sbr{K_0 : K} = \f_{L / K} $ and $ \res $ is an isomorphism. Thus $ K_0 / K $ is unramified. Since $ k_0 \cong k_L $, $ \f_{L / K_0} = 1 $ and hence $ L / K_0 $ is totally ramified.
 \end{proof}
 
 We obtain the following description of unramified extensions.
 
 \begin{theorem}
 \label{thm:14.4}
-Let $ K $ be a non-archimedean local field with $ k \cong \FF_q $. For any $ n \ge 1 $, there is a unique unramified extension $ L / K $ of degree $ n $. Moreover $ L / K $ is Galois and the natural map $ \Gal\br{L / K} \to \Gal\br{k_L / k} $ is an isomorphism. In particular $ \Gal\br{L / K} $ is cyclic group generated by an element $ \Frob_{L / K} $ such that
-$$ \Frob_{L / K}\br{x} \equiv x^q \mod \mmm_L, \qquad x \in \OOO_L. $$
+Let $ K $ be a non-archimedean local field with $ k \cong \FF_q $. For any $ n \ge 1 $, there is a unique unramified extension $ L / K $ of degree $ n $. Moreover $ L / K $ is Galois and the natural map $ \Gal\br{L / K} \to \Gal\br{k_L / k} $ is an isomorphism. In particular $ \Gal\br{L / K} $ is cyclic group generated by an element $ \Fr_{L / K} $ such that
+$$ \Fr_{L / K}\br{x} \equiv x^q \mod \mmm_L, \qquad x \in \OOO_L. $$
 \end{theorem}
 
-\begin{proof}
-For $ n \ge 1 $, we take $ L = K\br{\zeta_m} $ where $ m = q^n - 1 $ and $ \zeta_m \in \overline{K}^\times $ is a primitive $ m $-th root of unity. Then as in the proof of Theorem \ref{thm:14.3}, $ \Gal\br{L / K} \xrightarrow{\sim} \Gal\br{k_L / k} \cong \Gal\br{\FF_{q^n} / \FF_q} $ and is cyclic and generated by a lift of $ x \mapsto x^q $. Uniqueness is clear since for $ L / K $ degree $ n $ unramified, we have $ \zeta_m \in L $ and hence $ L = K\br{\zeta_m} $ by degree reasons.
-\end{proof}
-
 \pagebreak
+
+\begin{proof}
+For $ n \ge 1 $, we take $ L = K\br{\zeta_m} $ where $ m = q^n - 1 $ and $ \zeta_m \in \overline{K}^\times $ is a primitive $ m $-th root of unity. Then as in the proof of Theorem \ref{thm:14.3},
+$$ \Gal\br{L / K} \xrightarrow{\sim} \Gal\br{k_L / k} \cong \Gal\br{\FF_{q^n} / \FF_q}, $$
+and is cyclic and generated by a lift of $ x \mapsto x^q $. Uniqueness is clear since for $ L / K $ degree $ n $ unramified, we have $ \zeta_m \in L $ and hence $ L = K\br{\zeta_m} $ by degree reasons.
+\end{proof}
 
 \begin{corollary}
 Let $ K $ be a non-archimedean local field, and let $ L / K $ be finite Galois. Then the natural map $ \res : \Gal\br{L / K} \to \Gal\br{k_L / k} $ is surjective.
@@ -1816,7 +1820,7 @@ $$ \v_K\br{n!} = \e\v_p\br{n!} = \e\br{\dfrac{n - \s_p\br{n}}{p - 1}} \le \e\br{
 For $ x \in \pi^r\OOO_K $, we have for $ n \ge 1 $,
 $$ \v_K\br{\dfrac{x^n}{n!}} \ge nr - \e\br{\dfrac{n - 1}{p - 1}} = r + \br{n - 1}\br{r - \dfrac{\e}{p - 1}} \to \infty, $$
 as $ n \to \infty $. Thus $ \exp x $ converges. Since $ \v_K\br{x^n / n!} \ge r $ for $ n \ge 1 $, $ \exp x \in 1 + \pi^r\OOO_K $. Similarly consider
-$$ \function[\log]{1 + \pi^r\OOO_K}{\pi^r\OOO_K}{1 + x}{\displaystyle\sum_{n = 1}^\infty \dfrac{\br{-1}^{n - 1}}{n}x^n}. $$
+$$ \function[\log]{1 + \pi^r\OOO_K}{\pi^r\OOO_K}{1 + x}{\sum_{n = 1}^\infty \dfrac{\br{-1}^{n - 1}}{n}x^n}. $$
 Can check convergence as before. Recall properties of power series
 $$ \exp \br{X + Y} = \exp X\exp Y, \qquad \exp \log X = X, \qquad \log \exp X = X. $$
 Thus $ \exp : \br{\pi^r\OOO_K, +} \to \br{1 + \pi^r\OOO_K, \times} $ is an isomorphism of groups.
@@ -1921,9 +1925,9 @@ where $ g\br{X} \in \OOO_K\sbr{X} $, using $ X^n - Y^n = \br{X - Y}\br{X^{n - 1}
 \item Note that for $ \sigma \in \G_s $ and $ s \in \ZZ_{\ge 0} $, $ \sigma\br{\pi_L} \in \pi_L + \pi_L^{s + 1}\OOO_L $, so $ \sigma\br{\pi_L} / \pi_L \in 1 + \pi_L^s\OOO_L $. We claim
 $$ \function[\phi]{\G_s}{\U_L^{\br{s}} / \U_L^{\br{s + 1}}}{\sigma}{\dfrac{\sigma\br{\pi_L}}{\pi_L}} $$
 is a group homomorphism with kernel $ \G_{s + 1} $. For $ \sigma, \tau \in \G_s $, let $ \tau\br{\pi_L} = u\pi_L $ for $ u \in \OOO_L^\times $. Then
-$$ \dfrac{\sigma\br{\tau\br{\pi_L}}}{\pi_L} = \dfrac{\sigma\br{\tau\br{\pi_L}}}{\tau\br{\pi_L}} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} = \dfrac{\sigma\br{u}}{u} \cdot \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L}. $$
+$$ \dfrac{\sigma\tau\br{\pi_L}}{\pi_L} = \dfrac{\sigma\br{\tau\br{\pi_L}}}{\tau\br{\pi_L}} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} = \dfrac{\sigma\br{u}}{u} \cdot \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L}. $$
 But $ \sigma\br{u} \in u + \pi_L^{s + 1}\OOO_L $ since $ \sigma \in \G_s $ thus $ \sigma\br{u} / u \in \U_L^{\br{s + 1}} $ and hence
-$$ \dfrac{\sigma\br{\tau\br{\pi_L}}}{\pi_L} \equiv \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} \mod \U_L^{\br{s + 1}}, $$
+$$ \dfrac{\sigma\tau\br{\pi_L}}{\pi_L} \equiv \dfrac{\sigma\br{\pi_L}}{\pi_L} \cdot \dfrac{\tau\br{\pi_L}}{\pi_L} \mod \U_L^{\br{s + 1}}, $$
 so $ \phi $ is a group homomorphism. Moreover
 $$ \ker \phi = \cbr{\sigma \in \G_s \st \sigma\br{\pi_L} \equiv \pi_L \mod \pi_L^{s + 2}} = \G_{s + 1}. $$
 If $ \pi_L' = a\pi_L $ is another uniformiser for $ a \in \U_L $, then
@@ -1952,7 +1956,10 @@ Thus $ \G_s / \G_{s + 1} $ is abelian for $ s \ge -1 $. Conclude using Theorem \
 Let $ \ch k = p $. Then $ \abs{\G_0 / \G_1} $ is coprime to $ p $ and $ \abs{\G_1} = p^n $ for some $ n \ge 0 $. Thus $ \G_1 $ is the unique, since normal, Sylow $ p $-subgroup of $ \G_0 = \I_{L / K} $.
 
 \begin{definition}
-The group $ \G_1 $ is called the \textbf{wild inertia group} and $ \G_0 / \G_1 $ is the \textbf{tame quotient}. Say $ L / K $, not necessarily Galois, is \textbf{tamely ramified} if $ \ch k = p \nmid \e_{L / K} $, which is if and only if $ \G_1 = \cbr{1} $ if $ L / K $ is Galois. Otherwise it is \textbf{wildly ramified}. Thus
+The group $ \G_1 $ is called the \textbf{wild inertia group} and $ \G_0 / \G_1 $ is the \textbf{tame quotient}. Say $ L / K $, not necessarily Galois, is \textbf{tamely ramified} if $ \ch k = p \nmid \e_{L / K} $, which is if and only if $ \G_1 = \cbr{1} $ if $ L / K $ is Galois. Otherwise it is \textbf{wildly ramified}.
+\end{definition}
+
+Thus
 $$
 \begin{tikzcd}
 L \arrow[dash]{dr}{\text{totally wildly ramified}} \arrow[dash]{ddd} & \\
@@ -1961,7 +1968,6 @@ L \arrow[dash]{dr}{\text{totally wildly ramified}} \arrow[dash]{ddd} & \\
 K &
 \end{tikzcd}.
 $$
-\end{definition}
 
 \pagebreak
 
@@ -1983,7 +1989,7 @@ $$ \G_i \cong
 \begin{cases}
 \br{\ZZ / p^n\ZZ}^\times & i \le 0 \\
 \br{1 + p^k\ZZ} / p^n\ZZ & p^{k - 1} - 1 < i \le p^k - 1, \ 1 \le k \le n - 1 \\
-\cbr{1} & p^{n - 1} - 1 < i
+\cbr{1} & i > p^{n - 1} - 1
 \end{cases},
 $$
 which is reminiscent of $ \U_{\QQ_p}^{\br{k}} $.
@@ -2004,7 +2010,7 @@ $ \G_s\br{L / F} = \cbr{\sigma \in \Gal\br{L / F} \st \forall x \in \OOO_L, \ \v
 \end{proof}
 
 However $ \G_s $ behaves badly with respect to taking quotients. Fix this by renumbering. Let $ L / K $ be finite Galois. Define a function by
-$$ \function[\phi = \phi_{L / K}]{\RR_{\ge -1}}{\RR}{s}{\displaystyle\intd{0}{s}{\dfrac{1}{\sbr{\G_0 : \G_t}}}{t}}. $$
+$$ \function[\phi = \phi_{L / K}]{\RR_{\ge -1}}{\RR}{s}{\intd{0}{s}{\dfrac{1}{\sbr{\G_0 : \G_t}}}{t}}. $$
 By convention, if $ t \in \intco{-1, 0} $, then
 $$ \dfrac{1}{\sbr{\G_0 : \G_t}} = \sbr{\G_t : \G_0}. $$
 We have for $ m \le s < m + 1 $ for $ m \in \ZZ_{\ge -1} $,
@@ -2058,6 +2064,7 @@ $$ \phi_{L / K}'\br{s} = \dfrac{\abs{\G_s}}{\abs{\G_0}} = \dfrac{\abs{\H_s}\abs{
 \end{proof}
 
 \begin{corollary}
+\label{cor:16.7}
 For $ t \in \intoc{-1, \infty} $
 $$ \G^t\H / \H = \br{\G / \H}^t. $$
 \end{corollary}
@@ -2067,5 +2074,460 @@ Let $ r = \psi_{F / K}\br{t} $. Then by Theorem \ref{thm:16.4},
 $$ \br{\G / \H}^t = \br{\G / \H}_r = \G_{\psi_{L / F}\br{r}}\H / \H = \G^t\H / \H, $$
 since $ \G_{\psi_{L / F}\br{r}} = \G_{\psi_{L / K}\br{t}} = \G^t $, by Lemma \ref{lem:16.6}.
 \end{proof}
+
+\subsection{Proof of Herbrand's theorem}
+
+\lecture{17}{Monday}{16/11/20}
+
+We introduce an auxiliary function.
+
+\begin{definition}
+Let $ L / K $ be finite Galois, and let $ \id \ne \sigma \in \Gal\br{L / K} $. Define
+$$ \function[\i_{L / K}]{\Gal\br{L / K}}{\ZZ \cup \cbr{\infty}}{\sigma}{\min_{x \in \OOO_L} \v_L\br{\sigma\br{x} - x} = \max \cbr{i \in \ZZ \st \sigma \in \G_{i - 1}}}. $$
+By convention, $ \i_{L / K}\br{\id} = \infty $.
+\end{definition}
+
+Note that
+$$ \G_s\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \i_{L / K}\br{\sigma} \ge s + 1}. $$
+
+\pagebreak
+
+\begin{lemma}
+\label{lem:17.2}
+Let $ L / K $ be finite Galois. Let $ x \in \OOO_L $ such that $ \OOO_K\sbr{x} = \OOO_L $. Then
+\begin{enumerate}
+\item $ \i_{L / K}\br{\sigma} = \v_L\br{\sigma\br{x} - x} $, and
+\item we have
+$$ \G_s\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \v_L\br{\sigma\br{x} - x} \ge s + 1}. $$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $ y \in \OOO_L $, then $ y = f\br{x} $ for $ f\br{x} \in \OOO_K\sbr{x} $. The same argument as in Theorem \ref{thm:15.6}.$ 1 $ shows that $ \sigma\br{x} - x \mid \sigma\br{y} - y $ in $ \OOO_L $, so $ \v_L\br{\sigma\br{y} - y} \ge \v_L\br{\sigma\br{x} - x} $, which implies $ 1 $ and $ 2 $.
+\end{proof}
+
+\begin{proposition}
+\label{prop:17.3}
+Let $ L / F / K $ as above, and let $ \sigma \in \G $. Then we have
+$$ \i_{F / K}\br{\sigma\H} = \e_{L / F}^{-1}\sum_{\tau \in \H} \i_{L / K}\br{\sigma\tau}. $$
+\end{proposition}
+
+\begin{proof}
+When $ \sigma \in \H $, we interpret as $ \infty = \infty $. Thus assume $ \sigma \notin \H $. Let $ \v_L $ and $ \v_F $ be the normalised valuations on $ L $ and $ F $. Let $ x \in \OOO_F $ and $ y \in \OOO_L $, such that $ \OOO_F = \OOO_K\sbr{x} $ and $ \OOO_L = \OOO_K\sbr{y} $. Define
+$$ a = \sigma\br{x} - x \in \OOO_L, \qquad b = \prod_{\tau \in \H} \br{\sigma\tau\br{y} - y} \in \OOO_L. $$
+Then by Lemma \ref{lem:17.2},
+$$ \e_{L / F}\i_{F / K}\br{\sigma\H} = \e_{L / F}\v_F\br{\sigma\br{x} - x} = \v_L\br{\sigma\br{x} - x} = \v_L\br{a}. $$
+And
+$$ \sum_{\tau \in \H} \i_{L / K}\br{\sigma\tau} = \sum_{\tau \in \H} \v_L\br{\sigma\tau\br{y} - y} = \v_L\br{\prod_{\tau \in \H} \br{\sigma\tau\br{y} - y}} = \v_L\br{b}. $$
+Need to show $ \v_L\br{a} = \v_L\br{b} $. We show that $ a \mid b $ and $ b \mid a $ in $ \OOO_L $.
+\begin{itemize}
+\item $ a \mid b $. Let $ f \in \OOO_F\sbr{X} $ be the minimal polynomial for $ y $ over $ \OOO_F $. Then $ f\br{X} = \prod_{\tau \in \H} \br{X - \tau\br{y}} $ and $ \sigma\br{f}\br{X} = \prod_{\tau \in \H} \br{X - \sigma\tau\br{y}} $. Since $ \OOO_F = \OOO_K\sbr{x} $, $ a = \sigma\br{x} - x $ divides $ \sigma\br{z} - z $ for all $ z \in \OOO_F $, by Lemma \ref{lem:17.2}. Thus $ a $ divides all coefficients of $ \sigma\br{f}\br{X} - f\br{X} $, so
+$$ a \mid \sigma\br{f}\br{y} - f\br{y} = \sigma\br{f}\br{y} = \pm b. $$
+\item $ b \mid a $. Let $ g \in \OOO_K\sbr{X} $ such that $ x = g\br{y} $. Then $ g\br{X} - x \in \OOO_F\sbr{X} $ has $ y $ as a root, so $ g\br{X} - x = f\br{X}h\br{X} $ for some $ h \in \OOO_F\sbr{X} $. Applying $ \sigma $ and evaluating at $ y $ gives
+$$ \sigma\br{g}\br{y} - \sigma\br{x} = \sigma\br{f}\br{y}\sigma\br{h}\br{y} = \pm b\sigma\br{h}\br{y}, $$
+where $ \sigma\br{h}\br{y} \in \OOO_L $. But $ \sigma\br{g}\br{y} = g\br{y} = x $ and hence $ b \mid a $.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}
+\label{lem:17.4}
+Let $ L / K $ be finite Galois, and let $ \sigma \in \G = \Gal\br{L / K} $. Then
+$$ \phi_{L / K}\br{s} = -1 + \dfrac{1}{\abs{\G_0}}\sum_{\sigma \in \G} \min\br{\i_{L / K}\br{\sigma}, s + 1}, \qquad s \in \RR_{\ge -1}. $$
+\end{lemma}
+
+\begin{proof}
+Both sides are piecewise linear and continuous. Let $ \theta\br{s} $ be the right hand side. Then $ \phi_{L / K}\br{-1} = -1 = \theta\br{-1} $. Thus it suffices to show $ \theta' = \phi_{L / K}' $, and
+$$ \theta'\br{s} = \dfrac{1}{\abs{\G_0}} \cdot \#\cbr{\sigma \in \G \st \i_{L / K}\br{\sigma} \ge s + 1} = \dfrac{\abs{\G_s}}{\abs{\G_0}} = \phi_{L / K}'\br{s}. $$
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of Theorem \ref{thm:16.4}]
+Want $ \G_s\H / \H = \br{\G / \H}_{\phi_{L / F}\br{s}} $. Define a function by
+$$ \function[j]{\G / \H}{\ZZ \cup \cbr{\infty}}{\sigma\H}{\max_{\tau \in \H} \cbr{\i_{L / K}\br{\sigma\tau}}}, \qquad \sigma \in \G. $$
+Then we have $ \sigma\H \in \G_s\H / \H $ if and only if $ j\br{\sigma\H} - 1 \ge s $, if and only if $ \phi_{L / F}\br{j\br{\sigma\H} - 1} \ge \phi_{L / F}\br{s} $, since $ \phi $ is strictly increasing. On the other hand, we have $ \sigma\H \in \br{\G / \H}_{\phi_{L / F}\br{s}} $ if and only if $ \i_{F / K}\br{\sigma\H} - 1 \ge \phi_{L / F}\br{s} $. Thus it suffices to show
+$$ \phi_{L / F}\br{j\br{\sigma\H} - 1} = \i_{F / K}\br{\sigma\H} - 1. $$
+Can assume $ \sigma \notin \H $. Upon replacing $ \sigma $ by another element in $ \sigma\H $ we may assume $ j\br{\sigma\H} = \i_{L / K}\br{\sigma} = m $, that is $ \sigma \in \G_{m - 1} \setminus \G_m $. If $ \tau \in \H_{m - 1} = \G_{m - 1} \cap \H $, then $ \sigma\tau \in \G_{m - 1} $. Then $ \i_{L / K}\br{\sigma\tau} \ge m $, so $ \i_{L / K}\br{\sigma\tau} = m $ by maximality of $ m $. On the other hand if $ \tau \notin \H_{m - 1} $, then $ \sigma\tau \notin \G_{m - 1} $, so $ \i_{L / K}\br{\sigma\tau} < m $ and $ \i_{L / K}\br{\sigma\tau} = \i_{L / K}\br{\tau} $. In either case, we have for any $ \tau \in \H $, $ \i_{L / K}\br{\sigma\tau} = \min\br{\i_{L / K}\br{\tau}, m} $. By Proposition \ref{prop:17.3}, we have
+$$ \i_{F / K}\br{\sigma\H} = \e_{L / F}^{-1}\sum_{\tau \in \H} \min\br{\i_{L / K}\br{\tau}, m}. $$
+But $ \i_{L / K}\br{\tau} = \i_{L / F}\br{\tau} $ and $ \e_{L / F} = \abs{\H_0} $. Thus Lemma \ref{lem:17.4} implies
+$$ \i_{F / K}\br{\sigma\H} = \dfrac{1}{\abs{\H_0}}\sum_{\tau \in \H} \min\br{\i_{L / F}\br{\tau}, m} = \phi_{L / F}\br{m - 1} + 1 = \phi_{L / F}\br{j\br{\sigma\H} - 1} + 1. $$
+\end{proof}
+
+\begin{example*}
+Let $ K = \QQ_p $, and let $ L = \QQ_p\br{\zeta_{p^n}} $. Then $ \G \cong \br{\ZZ / p^n\ZZ}^\times $. Let $ k \in \ZZ $ such that $ 1 \le k \le n - 1 $. For $ p^{k - 1} - 1 < s \le p^k - 1 $,
+$$ \G_s \cong \cbr{m \in \br{\ZZ / p^n\ZZ}^\times \st m \equiv 1 \mod p^k}. $$
+Let us compute $ \phi_{L / K} $. Since $ \G_s $ jumps at $ p^k - 1 $, $ \phi_{L / K} $ is linear on $ \sbr{p^{k - 1} - 1, p^k - 1} $. It suffices to determine $ \phi_{L / K}\br{p^k - 1} $. Claim that
+$$ \phi_{L / K}\br{p^k - 1} = k, \qquad 1 \le k \le n - 1. $$
+Since $ \sbr{\G_0 : \G_t} = p^{t - 1}\br{p - 1} $,
+\begin{align*}
+\phi\br{p^k - 1}
+& = \dfrac{1}{p - 1}\br{p - 1} + \dfrac{1}{p\br{p - 1}}\br{\br{p^2 - 1} - \br{p - 1}} + \dots + \dfrac{1}{p^{k - 1}\br{p - 1}}\br{\br{p^k - 1} - \br{p^{k - 1} - 1}} \\
+& = 1 + \dots + 1
+= k.
+\end{align*}
+Thus
+$$ \G^s \cong
+\begin{cases}
+\br{\ZZ / p^n\ZZ}^\times & s \le 0 \\
+\br{1 + p^k\ZZ} / p^n\ZZ & k - 1 < s \le k, \ 1 \le k \le n - 1 \\
+\cbr{1} & s > n - 1
+\end{cases},
+$$
+which seems much more natural. Note that $ \phi\br{p^k - 1} $ is an integer, a priori not clear.
+\end{example*}
+
+\begin{definition}
+We say $ i $ is a \textbf{jump} in the filtration $ \cbr{\G^s}_{s \in \RR_{\ge -1}} $ if $ \G^i \ne \G^j $ for all $ j > i $.
+\end{definition}
+
+\begin{theorem}[Hasse-Arf]
+If $ \Gal\br{L / K} $ is abelian, then the jumps of the filtration $ \cbr{\G^s}_{s \in \RR_{\ge -1}} $ can only be integers.
+\end{theorem}
+
+\begin{proof}
+Omit. Serre, Local fields, Chapter $ 4 $, Section $ 7 $.
+\end{proof}
+
+\pagebreak
+
+\section{Local class field theory}
+
+\subsection{Infinite Galois theory}
+
+\lecture{18}{Wednesday}{18/11/20}
+
+Let $ L / K $ be an algebraic extension of fields.
+
+\begin{definition}
+$ L / K $ is \textbf{separable} if for every $ \alpha \in L $, the minimal polynomial $ f_\alpha\br{X} \in K\sbr{X} $ for $ \alpha $ is separable. It is \textbf{normal} if $ f_\alpha\br{X} $ splits in $ L $ for all $ \alpha \in L $. We say the extension $ L / K $ is \textbf{Galois} if it is separable and normal. In this case we write $ \Gal\br{L / K} = \Aut_K L $.
+\end{definition}
+
+If $ L / K $ is finite and Galois, the Galois correspondence is a one-to-one correspondence
+$$ \function{\cbr{\text{subextensions} \ K \subseteq K' \subseteq L}}{\cbr{\text{subgroups of} \ \Gal\br{L / K}}}{K'}{\Gal\br{L / K'}}. $$
+For $ L / K $ infinite, need to introduce a topology. Let $ \br{I, \le} $ be a partially ordered set. We say that $ I $ is a \textbf{directed set} if for all $ i, j \in I $ there is some $ k \in I $ such that $ i \le k $ and $ j \le k $.
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Any total order, such as $ \br{\NN, \le} $.
+\item $ \br{\NN_{\ge 1}, \mid} $ ordered by divisibility.
+\end{itemize}
+\end{example*}
+
+\begin{definition}
+Let $ \br{I, \le} $ be a directed set and $ \br{G_i}_{i \in I} $ a collection of groups together with transition maps $ \phi_{ij} : G_j \to G_i $ for $ i \le j $ such that $ \phi_{ik} = \phi_{ij} \circ \phi_{jk} $ whenever $ i \le j \le k $ and $ \phi_{ii} = \id $. We say $ \br{\br{G_i}_{i \in I}, \phi_{ij}} $ is an \textbf{inverse system}. The \textbf{inverse limit} of $ \br{\br{G_i}_{i \in I}, \phi_{ij}} $ is defined by
+$$ \varprojlim_{i \in I} G_i = \cbr{\br{g_i}_{i \in I} \in \prod_{i \in I} G_i \st \phi_{ij}\br{g_j} = g_i}. $$
+\end{definition}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item For $ \br{\NN, \le} $, recovers the previous definition.
+\item There exist projection maps $ \psi_j : \varprojlim_{i \in I} G_i \to G_j $.
+\item $ \varprojlim_{i \in I} G_i $ satisfies the universal property.
+\end{itemize}
+\end{remark*}
+
+If all $ G_i $ are finite, we define the \textbf{profinite topology} on $ \varprojlim_{i \in I} G_i $ as the weakest topology such that $ \psi_j $ are continuous for all $ j \in I $.
+
+\begin{proposition}
+\label{prop:18.3}
+Let $ L / K $ be Galois.
+\begin{itemize}
+\item The set
+$$ I = \cbr{F / K \ \text{finite Galois} \st F \subseteq L} $$
+is a directed set under $ \subseteq $.
+\item For $ F, F' \in I $ such that $ F \subseteq F' $, there is a restriction map $ \res_{F, F'} : \Gal\br{F' / K} \to \Gal\br{F / K} $ and the natural map
+$$ \Gal\br{L / K} \to \varprojlim_{F \in I} \Gal\br{F / K} $$
+is an isomorphism.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Example sheet $ 4 $.
+\end{proof}
+
+Thus $ \Gal\br{L / K} $ packages information of $ \Gal\br{F / K} $ for all finite Galois subextensions, and is endowed with the profinite topology.
+
+\pagebreak
+
+\begin{example*}
+Let $ K = \FF_q $, and let $ L = \overline{\FF_q} $ be an algebraic closure. There is a one-to-one correspondence
+$$ \function{\NN_{\ge 1}}{\cbr{F / K \ \text{finite Galois}}}{n}{\FF_{q^n}}, $$
+since $ \FF_{q^m} \subseteq \FF_{q^n} $ if and only if $ m \mid n $. Then
+$$
+\begin{tikzcd}[row sep=small]
+\Fr_q \arrow[leftrightarrow]{d} & \Gal\br{\FF_{q^n} / \FF_q} \arrow[twoheadrightarrow]{r} \arrow[cong]{d} & \Gal\br{\FF_{q^m} / \FF_q} \arrow[cong]{d} & \Fr_q \arrow[leftrightarrow]{d} \\
+1 & \ZZ / n\ZZ \arrow[twoheadrightarrow]{r}[swap]{\mod m} & \ZZ / m\ZZ & 1
+\end{tikzcd},
+$$
+so
+$$
+\begin{array}{rcl}
+\Gal\br{\overline{\FF_q} / \FF_q} & \cong & \widehat{\ZZ} = \displaystyle\varprojlim_{n \in \br{\NN_{\ge 1}, \mid}} \ZZ / n\ZZ \\
+\Fr_q & \longleftrightarrow & 1 \\
+\abr{\Fr_q} & \longleftrightarrow & \ZZ
+\end{array}.
+$$
+By example sheet $ 3 $,
+$$ \widehat{\ZZ} \cong \prod_{p \ \text{prime}} \ZZ_p. $$
+\end{example*}
+
+\begin{theorem}[Fundamental theorem of Galois theory]
+Let $ L / K $ be Galois. There is a bijection
+$$ \bijection{\cbr{F / K \ \text{subextensions of} \ L / K}}{\cbr{\text{closed subgroups of} \ \Gal\br{L / K}}}{F}{\Gal\br{L / F}}{L^H}{H}. $$
+Moreover, $ F / K $ is finite if and only if $ \Gal\br{L / F} $ is open, and $ F / K $ is Galois if and only if $ \Gal\br{L / F} $ is normal in $ \Gal\br{L / K} $.
+\end{theorem}
+
+\begin{proof}
+Omit.
+\end{proof}
+
+\subsection{Weil group}
+
+Let $ K $ be a local field and $ L / K $ a separable algebraic extension.
+
+\begin{definition}
+\hfill
+\begin{itemize}
+\item $ L / K $ is \textbf{unramified} if $ F / K $ is unramified for all $ F / K $ finite subextensions.
+\item $ L / K $ is \textbf{totally ramified} if $ F / K $ is totally ramified for all $ F / K $ finite subextensions.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Let $ L / K $ be unramified. Then $ L / K $ is Galois and
+$$ \Gal\br{L / K} \cong \Gal\br{k_L / k}. $$
+\end{proposition}
+
+\begin{proof}
+Every finite subextension $ F / K $ is unramified hence Galois, so $ L / K $ is normal and separable, hence $ L / K $ is Galois. Moreover, there exists a commutative diagram
+$$
+\begin{tikzcd}
+\Gal\br{L / K} \arrow{r}{\res} \arrow{d}{\sim}[swap]{\ref{prop:18.3}} & \Gal\br{k_L / k} \arrow{d}{i} \\
+\displaystyle\varprojlim_{F / K \ \text{finite}, \ F \subseteq L} \Gal\br{F / K} \arrow{r}[swap]{\sim} & \displaystyle\varprojlim_{F / K \ \text{finite}, \ F \subseteq L} \Gal\br{k_F / k}
+\end{tikzcd}.
+$$
+By Theorem \ref{thm:14.4} and Proposition \ref{prop:18.3},
+$$ \varprojlim_{F / K \ \text{finite}, \ F \subseteq L} \Gal\br{k_F / k} \cong \varprojlim_{l / k \ \text{finite}, \ l \subseteq k_L} \Gal\br{l / k} \cong \Gal\br{k_L / k}, $$
+so $ i $ is an isomorphism.
+\end{proof}
+
+\pagebreak
+
+By example sheet $ 3 $, if $ L_1 / K $ and $ L_2 / K $ are finite unramified, then $ L_1L_2 / K $ is unramified. Thus for any $ L / K $, there exists a maximal unramified subextension $ K_0 / K $. There is a surjection
+$$ \res : \Gal\br{L / K} \to \Gal\br{K_0 / K} \cong \Gal\br{k_L / k}, $$
+and we write $ \I_{L / K} $ for the kernel of $ \res $, the \textbf{inertia subgroup}. We let $ \Fr_{k_L / k} \in \Gal\br{k_L / k} $ be the Frobenius $ x \mapsto x^{\abs{k}} $, and we let $ \abr{\Fr_{k_L / k}} $ be the subgroup generated by $ \Fr_{k_L / k} $.
+
+\begin{definition}
+Let $ L / K $ be Galois. The \textbf{Weil group} $ \W\br{L / K} $ is the subgroup of $ \Gal\br{L / K} $ which maps to $ \abr{\Fr_{k_L / k}} \subseteq \Gal\br{k_L / k} $, that is $ \res^{-1}\br{\abr{\Fr_{k_L / k}}} $.
+\end{definition}
+
+\begin{remark*}
+If $ k_L / k $ is finite $ \W\br{L / K} = \Gal\br{L / K} $. There exists a commutative diagram
+$$
+\begin{tikzcd}
+0 \arrow{r} & \I_{L / K} \arrow{r} \arrow[cong]{d} & \W\br{L / K} \arrow{r} \arrow[hookrightarrow]{d} & \abr{\Fr_{k_L / k}} \arrow{r} \arrow[hookrightarrow]{d} & 0 \\
+0 \arrow{r} & \I_{L / K} \arrow{r} & \Gal\br{L / K} \arrow{r} & \Gal\br{k_L / k} \arrow{r} & 0
+\end{tikzcd},
+$$
+with exact rows. We endow $ \W\br{L / K} $ with the weakest topology such that $ \I_{L / K} $ is an open subgroup of $ \W\br{L / K} $ equipped with its subspace topology as $ \I_{L / K} \subseteq \Gal\br{L / K} $. A warning is if $ k_L / k $ is infinite, this is not the subspace topology on $ \W\br{L / K} \subseteq \Gal\br{L / K} $.
+\end{remark*}
+
+\begin{proposition}
+Let $ K $ be a local field, and let $ L / K $ be a Galois extension.
+\begin{enumerate}
+\item $ \W\br{L / K} $ is dense in $ \Gal\br{L / K} $.
+\item If $ F / K $ is a finite subextension of $ L / K $, then $ \W\br{L / F} = \W\br{L / K} \cap \Gal\br{L / F} $.
+\item If $ F / K $ is a finite Galois subextension, then $ \W\br{L / K} / \W\br{L / F} \cong \Gal\br{F / K} $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item $ \W\br{L / K} $ is dense in $ \Gal\br{L / K} $ if and only if for all $ F / K $ finite Galois subextensions, $ \W\br{L / K} $ intersects every coset of $ \Gal\br{L / F} $, if and only if for all $ F / K $ finite Galois, $ \W\br{L / K} \twoheadrightarrow \Gal\br{F / K} $. We have a diagram
+$$
+\begin{tikzcd}
+0 \arrow{r} & \I_{L / K} \arrow{r} \arrow{d}{a} & \W\br{L / K} \arrow{r} \arrow{d}{b} & \abr{\Fr_{k_L / k}} \arrow{r} \arrow{d}{c} & 0 \\
+0 \arrow{r} & \I_{F / K} \arrow{r} & \Gal\br{F / K} \arrow{r} & \Gal\br{k_F / k} \arrow{r} & 0
+\end{tikzcd}.
+$$
+By example sheet $ 4 $, $ a $ is surjective. Since $ \Gal\br{k_F / k} $ is generated by $ \Fr_{k_F / k} $, $ c $ is surjective. By a diagram chase, $ b $ is surjective.
+\item Let $ F / K $ be finite. There exists a diagram
+$$
+\begin{tikzcd}
+\Gal\br{L / K} \arrow[twoheadrightarrow]{r} & \Gal\br{k_L / k} & \abr{\Fr_{k_L / k}} \arrow[subset]{l} \\
+\Gal\br{L / F} \arrow[hookrightarrow]{u} \arrow[twoheadrightarrow]{r} & \Gal\br{k_L / k_F} \arrow[hookrightarrow]{u} & \abr{\Fr_{k_L / k_F}} \arrow[hookrightarrow]{u} \arrow[subset]{l}
+\end{tikzcd}.
+$$
+Hence for $ \sigma \in \Gal\br{L / F} $, $ \sigma \in \W\br{L / F} $ if and only if $ \eval{\sigma}_{k_L} \in \abr{\Fr_{k_L / k_F}} $, if and only if $ \eval{\sigma}_{k_L} \in \abr{\Fr_{k_L / k}} $, if and only if $ \sigma \in \W\br{L / K} $.
+\item
+\begin{align*}
+\W\br{L / K} / \W\br{L / F}
+& = \W\br{L / K} / \br{\W\br{L / K} \cap \Gal\br{L / F}} & \text{by} \ 2 \\
+& \cong \W\br{L / K}\Gal\br{L / F} / \Gal\br{L / F} \\
+& = \Gal\br{L / K} / \Gal\br{L / F} & \text{by} \ 1 \\
+& \cong \Gal\br{F / K}.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\subsection{Statements of local class field theory}
+
+\lecture{19}{Friday}{20/11/20}
+
+Let $ K $ be a non-archimedean local field.
+
+\begin{definition}
+An extension $ L / K $ is \textbf{abelian} if it is Galois and $ \Gal\br{L / K} $ is an abelian group.
+\end{definition}
+
+\begin{fact*}
+Let $ L_1 / K $ and $ L_2 / K $ be abelian.
+\begin{enumerate}
+\item $ L_1L_2 / K $ is abelian.
+\item If $ L_1 \cap L_2 = K $, there is a canonical isomorphism
+$$ \Gal\br{L_1L_2 / K} \xrightarrow{\sim} \Gal\br{L_1 / K} \times \Gal\br{L_2 / K}. $$
+\end{enumerate}
+By fact $ 1 $, there exists a maximal abelian extension $ K^{\ab} $ of $ K $.
+\end{fact*}
+
+\begin{example*}
+Let $ K^{\ur} $ denote the maximal unramified extension of $ K $ inside a separable closure $ \overline{K} $. If $ \abs{k} = q $, then
+$$ K^{\ur} = \bigcup_{m = 1}^\infty K\br{\zeta_{q^m - 1}}, \qquad k_{K^{\ur}} \cong \overline{\FF_q}, \qquad \Gal\br{K^{\ur} / K} \cong \Gal\br{\overline{\FF_q} / \FF_q} \cong \widehat{\ZZ}, $$
+so $ K^{\ur} $ is abelian and hence $ K^{\ur} \subseteq K^{\ab} $. There exists an exact sequence
+$$ 0 \to \I_{K^{\ab} / K} \to \W\br{K^{\ab} / K} \to \ZZ \to 0. $$
+\end{example*}
+
+For $ L / K $ unramified, let $ \Fr_{L / K} \in \Gal\br{L / K} $ correspond to $ \Fr_{k_L / k} \in \Gal\br{k_L / k} $.
+
+\begin{theorem}[Local Artin reciprocity]
+\hfill
+\begin{itemize}
+\item There exists a unique topological isomorphism, so an isomorphism of groups and a homeomorphism,
+$$ \Art_K : K^\times \to \W\br{K^{\ab} / K}, $$
+called the \textbf{Artin reciprocity map}, satisfying the following properties.
+\begin{itemize}
+\item For any uniformiser $ \pi \in K $,
+$$ \eval{\Art_K\br{\pi}}_{K^{\ur}} = \Fr_{K^{\ur} / K}. $$
+\item For each finite subextension $ L / K $ in $ K^{\ab} / K $,
+$$ \eval{\Art_K\br{\N_{L / K}\br{L^\times}}}_L = \id. $$
+\end{itemize}
+\item Let $ L / K $ be finite abelian. Then $ \Art_K $ induces an isomorphism
+$$ K^\times / \N_{L / K}\br{L^\times} \cong \W\br{K^{\ab} / K} / \W\br{K^{\ab} / L} \cong \Gal\br{L / K}. $$
+\end{itemize}
+\end{theorem}
+
+\begin{remark*}
+$ \Fr_{K^{\ur} / K} $ lifts $ x \mapsto x^q $ in $ \Gal\br{\overline{\FF_q} / \FF_q} $. This is the \textbf{arithmetic Frobenius}, and $ \br{\Fr_{K^{\ur} / K}}^{-1} $ is called the \textbf{geometric Frobenius}. There is another normalisation of $ \Art_K $ with
+$$ \eval{\Art_K\br{\pi}}_{K^{\ur}} = \br{\Fr_{K^{\ur} / K}}^{-1}. $$
+\end{remark*}
+
+The following are properties of the Artin reciprocity map.
+
+\begin{theorem}[Existence theorem]
+For $ H \subseteq K^\times $ an open finite subgroup, there is a finite abelian extension $ L / K $ such that $ \N_{L / K}\br{L^\times} = H $. In particular, $ \Art_K $ induces an inclusion reversing isomorphism of posets
+$$ \bijection{\cbr{\text{open finite index subgroups of} \ K^\times}}{\cbr{\text{finite abelian extensions} \ L / K}}{H}{\br{K^{\ab}}^{\Art_K\br{H}}}{\N_{L / K}\br{L^\times}}{L / K}. $$
+\end{theorem}
+
+\pagebreak
+
+\begin{theorem}[Norm functoriality]
+Let $ L / K $ be a finite separable extension. There is a commutative diagram
+$$
+\begin{tikzcd}
+L^\times \arrow{r}{\Art_L} \arrow{d}[swap]{\N_{L / K}} & \W\br{L^{\ab} / L} \arrow{d}{\res} \\
+K^\times \arrow{r}[swap]{\Art_K} & \W\br{K^{\ab} / K}
+\end{tikzcd}.
+$$
+\end{theorem}
+
+\begin{definition}
+Let $ L / K $ be Galois. For $ s \in \RR_{\ge -1} $ we define
+$$ \G^s\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \forall F / K \ \text{finite Galois subextension}, \ \eval{\sigma}_F \in \G^s\br{F / K}}. $$
+\end{definition}
+
+By Corollary \ref{cor:16.7}, $ \G^s\br{L / K} $ is well-defined.
+
+\begin{theorem}[Compatibility with higher ramification groups]
+Let $ s \in \ZZ_{\ge 0} $. Then
+$$ \Art_K\br{\U_K^{\br{s}}} = \G^s\br{K^{\ab} / K}. $$
+\end{theorem}
+
+Note that
+$$ \G^s\br{K^{\ab} / K} \subseteq \I_{K^{\ab} / K} \subseteq \W\br{K^{\ab} / K}, \qquad s \ge 0. $$
+
+\subsection{Construction of \texorpdfstring{$ \Art_{\QQ_p} $}{Art Qp}}
+
+Recall that
+$$ \QQ_p^{\ur} = \bigcup_{m = 1}^\infty \QQ_p\br{\zeta_{p^m - 1}} = \bigcup_{p \nmid m} \QQ_p\br{\zeta_m}. $$
+By example sheet $ 3 $, $ \QQ_p\br{\zeta_{p^n}} / \QQ_p $ is totally ramified of degree $ p^{n - 1}\br{p - 1} $, with $ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}}} \cong \br{\ZZ / p^n\ZZ}^\times $. For $ n \ge m \ge 1 $, there is a diagram
+$$
+\begin{tikzcd}
+\Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \arrow[twoheadrightarrow]{r} \arrow{d}{\sim}[swap]{\theta_n} & \Gal\br{\QQ_p\br{\zeta_{p^m}} / \QQ_p} \arrow{d}{\theta_n}[swap]{\sim} \\
+\br{\ZZ / p^n\ZZ}^\times \arrow[twoheadrightarrow]{r}[swap]{\mod m} & \br{\ZZ / p^m\ZZ}^\times
+\end{tikzcd}.
+$$
+Set
+$$ \QQ_p\br{\zeta_{p^\infty}} = \bigcup_{n = 1}^\infty \QQ_p\br{\zeta_{p^n}}. $$
+Then $ \QQ_p\br{\zeta_{p^\infty}} / \QQ_p $ is Galois and we have
+$$ \theta : \Gal\br{\QQ_p\br{\zeta_{p^\infty}} / \QQ_p} \xrightarrow{\sim} \varprojlim_{n \ge 1} \br{\ZZ / p^n\ZZ}^\times \cong \ZZ_p^\times. $$
+We have $ \QQ_p\br{\zeta_{p^\infty}} \cap \QQ_p^{\ur} = \QQ_p $, since $ \QQ_p\br{\zeta_{p^\infty}} $ is totally ramified and $ \QQ_p^{\ur} $ is unramified. It follows that there is an isomorphism
+$$ \Gal\br{\QQ_p\br{\zeta_{p^\infty}}\QQ_p^{\ur} / \QQ_p} \cong \widehat{\ZZ} \times \ZZ_p^\times. $$
+
+\begin{theorem}[Local Kronecker-Weber]
+$$ \QQ_p^{\ab} = \QQ_p^{\ur}\QQ_p\br{\zeta_{p^\infty}}. $$
+\end{theorem}
+
+\begin{proof}
+Later.
+\end{proof}
+
+The Artin map can now be constructed as follows. We have an isomorphism
+$$ \function{\ZZ \times \ZZ_p^\times}{\QQ_p^\times}{\br{n, u}}{p^nu}. $$
+Then
+$$ \Art_{\QQ_p}\br{p^nu} = \br{\br{\Fr_{\QQ_p^{\ur} / \QQ_p}}^n, \theta^{-1}\br{u}} \in \Gal\br{\QQ_p^{\ur} / \QQ_p} \times \Gal\br{\QQ_p\br{\zeta_{p^\infty}} / \QQ_p}. $$
+
+\pagebreak
+
+\begin{remark*}
+The definition of $ \Art_{\QQ_p} $ involves the choice of a totally ramified $ \QQ_p\br{\zeta_{p^\infty}} $, and there is no maximal totally ramified extension of $ \QQ_p $, such as by example sheet $ 3 $ question $ 6 $(b), and the choice of a uniformiser $ p $, which determines the isomorphism $ \QQ_p^\times \cong \ZZ \times \ZZ_p^\times $. These choices are related, since the choices cancel out so $ \Art_{\QQ_p} $ is in fact canonical.
+\end{remark*}
+
+Thus $ \Art_{\QQ_p} $ was constructed by constructing a totally ramified extension $ \QQ_p\br{\zeta_{p^n}} $ with
+$$ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \xrightarrow{\sim} \br{\ZZ / p^n\ZZ}^\times \cong \U_{\QQ_p}^{\br{0}} / \U_{\QQ_p}^{\br{n}}. $$
+In general, let $ K $ be a local field, and let $ \pi $ be a uniformiser of $ K $. We construct for $ n \ge 1 $ a totally ramified Galois extension $ K_{\pi, n} / K $ satisfying
+\begin{enumerate}
+\item $ K \subseteq K_{\pi, 1} \subseteq K_{\pi, 2} \subseteq \dots $,
+\item for $ n \ge m \ge 1 $ there exists a diagram
+$$
+\begin{tikzcd}
+\Gal\br{K_{\pi, n} / K} \arrow[twoheadrightarrow]{r} \arrow{d}{\sim}[swap]{\psi_n} & \Gal\br{K_{\pi, m} / K} \arrow{d}{\psi_m}[swap]{\sim} \\
+\OOO_K^\times / \U_K^{\br{n}} \arrow[twoheadrightarrow]{r}[swap]{\mod m} & \OOO_K^\times / \U_K^{\br{m}}
+\end{tikzcd},
+$$
+\item setting $ K_{\pi, \infty} = \bigcup_{n = 1}^\infty K_{\pi, n} $, we have
+$$ K^{\ab} = K^{\ur}K_{\pi, \infty}. $$
+\end{enumerate}
+Since $ \OOO_K^\times = \U_K^{\br{0}} \cong \varprojlim_n \OOO_K^\times / \U_K^{\br{n}} $, by $ 2 $, there exists an isomorphism $ \psi : \Gal\br{K_{\pi, \infty} / K} \cong \OOO_K^\times $. Can define $ \Art_K $ by
+$$ \function{K^\times \cong \ZZ \times \OOO_K^\times}{\Gal\br{K^{\ur} / K} \times \Gal\br{K_{\pi, \infty} / K} \cong \Gal\br{K^{\ab} / K}}{\pi^nu \leftrightarrow \br{n, u}}{\br{\br{\Fr_{K^{\ur} / K}}^n, \psi^{-1}\br{u}}}. $$
+Thus
+$$
+\begin{tikzcd}
+& \QQ_p^{\ab} \arrow[dash]{dl} \arrow[dash]{dr} & \\
+\QQ_p^{\ur} \arrow[dash]{dr}[swap]{\widehat{\ZZ}} & & \QQ_p\br{\zeta_{p^\infty}} \arrow[dash]{dl}{\ZZ_p^\times} \\
+& \QQ_p &
+\end{tikzcd}
+\qquad \implies \qquad
+\begin{tikzcd}
+& K^{\ab} \arrow[dash]{dl} \arrow[dash]{dr} & \\
+K^{\ur} \arrow[dash]{dr}[swap]{\widehat{\ZZ}} & & K_{\pi, \infty} \arrow[dash]{dl}{\OOO_K^\times} \\
+& K &
+\end{tikzcd}.
+$$
+The goal is to construct $ K_{\pi, n} $.
 
 \end{document}
