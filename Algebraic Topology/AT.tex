@@ -9,6 +9,8 @@
 
 % Macros
 \newcommand{\da}{\partial}
+\newcommand{\ext}{\textstyle\bigwedge}
+\newcommand{\Hc}{\H_{\ct}}
 \newcommand{\pt}{\cbr{\text{point}}}
 
 \begin{document}
@@ -231,7 +233,7 @@ $$ \function[\delta_i]{\Delta^{n - 1}}{\Delta_i^n \subseteq \Delta^n}{\br{t_0, \
 If $ X $ is a space, a \textbf{singular $ n $-simplex} in $ X $ is a map $ \sigma : \Delta^n \to X $. The \textbf{singular chain complex} $ \br{\C_\bullet\br{X}, \da} $ has
 $$ \C_n\br{X} = \cbr{\sum_{i = 1}^N n_i\sigma_i \st N < \infty, \ n_i \in \ZZ, \ \sigma_i : \Delta^n \to X}, $$
 the free abelian group on the singular $ n $-simplices in $ X $, and
-$$ \function[\da]{\C_n\br{X}}{\C_{n - 1}\br{X}}{\sigma}{\displaystyle\sum_{i = 0}^n \br{-1}^i\br{\sigma \circ \delta_i}}, $$
+$$ \function[\da]{\C_n\br{X}}{\C_{n - 1}\br{X}}{\sigma}{\sum_{i = 0}^n \br{-1}^i\br{\sigma \circ \delta_i}}, $$
 extended linearly.
 \end{definition*}
 
@@ -240,7 +242,7 @@ $ \Delta^0 $ is a point, $ \Delta^1 $ is a line, $ \Delta^2 $ is a triangle, and
 \end{example*}
 
 Note that $ n + 1 $ ordered points $ \cbr{v_i}_{0 \le i \le n} \subseteq \RR^{n + 1} $ determine an $ n $-simplex if $ \cbr{v_i - v_0 \st 1 \le i \le n} $ are linearly independent, by taking their convex hull, and
-$$ \function[\sigma]{\Delta^n}{\RR^{n + 1}}{\underline{t}}{\displaystyle\sum_{i = 0}^n t_iv_i}. $$
+$$ \function[\sigma]{\Delta^n}{\RR^{n + 1}}{\underline{t}}{\sum_{i = 0}^n t_iv_i}. $$
 We orient the edges $ v_i \to v_j $ if $ i < j $. Write $ \sbr{v_0, \dots, v_n} $ for this $ n $-simplex, then
 $$ \da\br{\sigma} = \sum_{i = 0}^n \br{-1}^i\eval{\sigma}_{\sbr{v_0, \dots, \widehat{v_i}, \dots, v_n}}, $$
 where the index $ \widehat{v_i} $ is omitted.
@@ -374,7 +376,7 @@ We sometimes write $ \pi_0\br{X} $ for the set of path-components of $ X $.
 
 \begin{proof}
 Define the \textbf{augmentation}
-$$ \function[\epsilon]{\C_0\br{X}}{\ZZ}{\displaystyle\sum_i n_i\sigma_i}{\displaystyle\sum_i n_i}, $$
+$$ \function[\epsilon]{\C_0\br{X}}{\ZZ}{\sum_i n_i\sigma_i}{\sum_i n_i}, $$
 where $ \sigma_i : \pt \to X $ are $ 0 $-simplices in $ X $. Since $ X \ne \emptyset $, $ \epsilon $ is onto. If $ \tau = \sbr{v_0, v_1} : \Delta^1 \to X $, then $ \epsilon\br{\da\br{\tau}} = \epsilon\br{v_1 - v_0} = 0 $. So $ \im \br{\da : \C_1\br{X} \to \C_0\br{X}} \subseteq \ker \epsilon $, so $ \epsilon $ defines $ \H_0\br{X} = \C_0\br{X} / \im \da \to \ZZ $. So far we did not use path-connectivity. But suppose $ \sum_i n_i\sigma_i \in \ker \epsilon $. Fix a basepoint $ p \in X $. For all $ i $ pick
 $$ \functions[\tau_i]{\Delta^i \cong \sbr{0, 1}}{X}{1}{\sigma_i}{0}{p}. $$
 Then $ \da\br{\sum_i n_i\tau_i} = \sum_i n_i\sigma_i - \br{\sum_i n_i}p = \sum_i n_i\sigma_i $, as $ \sum_i n_i\sigma_i \in \ker \epsilon $, so $ \ker \epsilon \subseteq \im \da $ and $ \epsilon : \H_0\br{X} \xrightarrow{\sim} \ZZ $.
@@ -887,7 +889,7 @@ $$ \da \circ P \pm P \circ \da = \br{\iota_1}_\# - \br{\iota_0}_\# $$
 says that the boundary of the prism is the prism on the boundary plus the top minus the bottom. The details of the proof are not very illuminating, so we will be quite terse. Label the base of the prism by $ \sbr{v_0, \dots, v_n} $ and the top $ \sbr{w_0, \dots, w_n} $. Claim that $ \sigma_{n + 1}^i = \sbr{v_0, \dots, v_i, w_i, \dots, w_n} $ is an $ \br{n + 1} $-simplex, and
 $$ \Delta^n \times \sbr{0, 1} = \bigcup_{i = 0}^n \sigma_{n + 1}^i. $$
 We will not prove this, so see Hatcher. Define
-$$ \function[P_n]{\C_n\br{X}}{\C_{n + 1}\br{X \times \sbr{0, 1}}}{\sigma}{\displaystyle\sum_{i = 0}^n \br{-1}^i\eval{\br{\sigma \times \id}}_{\sbr{v_0, \dots, v_i, w_i, \dots, w_n}} = \displaystyle\sum_{i = 0}^n \br{-1}^i\br{\br{\sigma \times \id} \circ \sigma_{n + 1}^i}}. $$
+$$ \function[P_n]{\C_n\br{X}}{\C_{n + 1}\br{X \times \sbr{0, 1}}}{\sigma}{\sum_{i = 0}^n \br{-1}^i\eval{\br{\sigma \times \id}}_{\sbr{v_0, \dots, v_i, w_i, \dots, w_n}} = \sum_{i = 0}^n \br{-1}^i\br{\br{\sigma \times \id} \circ \sigma_{n + 1}^i}}. $$
 Claim that $ \da \circ P + P \circ \da = \br{\iota_1}_\# - \br{\iota_0}_\# $. Well,
 \begin{align*}
 \da\br{P_n\br{\sigma}}
@@ -1009,7 +1011,7 @@ $ \H_\bullet\br{\C_\bullet\br{X, A}, \da} $ is denoted $ \H_\bullet\br{X, A} $, 
 \pagebreak
 
 \begin{lemma}
-If $ f : \br{X, A} \to \br{Y, B} $ is a map of pairs, that is $ f : X \to Y $ satisfies $ f\br{A} \subseteq B $, then $ f $ induces $ \br{f_*}_i : \H_i\br{X, A} \to \H_i\br{Y, B} $ for all $ i $.
+If $ f : \br{X, A} \to \br{Y, B} $ is a \textbf{map of pairs}, that is $ f : X \to Y $ satisfies $ f\br{A} \subseteq B $, then $ f $ induces $ \br{f_*}_i : \H_i\br{X, A} \to \H_i\br{Y, B} $ for all $ i $.
 \end{lemma}
 
 \begin{proof}
@@ -1087,7 +1089,7 @@ $$ \widetilde{\H_0}\br{X} \oplus \ZZ \cong \H_0\br{X}, \qquad \widetilde{\H_i}\b
 \end{exercise*}
 
 \begin{definition*}
-A pair $ \br{X, A} $ is \textbf{good} if $ A \subseteq X $ is closed and is a deformation retract of an open neighbourhood $ A \subseteq U \subseteq X $, that is there exists $ H : \sbr{0, 1} \times U \to U $ such that
+A pair $ \br{X, A} $ is \textbf{good} if $ A \subseteq X $ is closed and is a \textbf{deformation retract} of an open neighbourhood $ A \subseteq U \subseteq X $, that is there exists $ H : \sbr{0, 1} \times U \to U $ such that
 \begin{itemize}
 \item $ \eval{H}_{\cbr{0} \times U} = \id $ and $ \eval{H}_{\cbr{1} \times U} $ has image in $ A $, and
 \item $ H $ is fixed on $ A $, so for all $ t \in \sbr{0, 1} $ and $ a \in A $, $ H\br{t, a} = a $.
@@ -1255,7 +1257,7 @@ $$ \da\br{\Cone_i^{\Delta^n}\br{\sigma}} =
 \end{cases},
 $$
 where
-$$ \function[\epsilon]{\C_0\br{\Delta^n}}{\ZZ}{\displaystyle\sum_i n_ip_i}{\displaystyle\sum_i n_i} $$
+$$ \function[\epsilon]{\C_0\br{\Delta^n}}{\ZZ}{\sum_i n_ip_i}{\sum_i n_i} $$
 is the augmentation.
 \end{exercise*}
 
@@ -1321,7 +1323,7 @@ If $ \sbr{v_0, \dots, v_n} \subseteq \RR^{n + 1} $ is a simplex, then each simpl
 \hfill
 \begin{enumerate}
 \item Obvious.
-\item $ \sigma $ is a finite sum of simplices, so it suffices to prove the result for one $ \sigma : \Delta^n \to X $. Let $ \UUU = \cbr{U_\alpha}_{\alpha \in I} $. Now $ \cbr{\sigma^{-1}\br{\mathring{U_\alpha}}}_{\alpha \in I} $ is an open cover of $ \Delta^n $, so has a Lebesgue number, that is there exists $ \epsilon > 0 $ such that any open $ \epsilon $-ball in $ \Delta^n $ lies in some $ \sigma^{-1}\br{U_\alpha} $. Now pick $ k \gg 0 $ such that $ \br{n / \br{n + 1}}^k \ll \epsilon $.
+\item $ \sigma $ is a finite sum of simplices, so it suffices to prove the result for one $ \sigma : \Delta^n \to X $. Let $ \UUU = \cbr{U_\alpha}_{\alpha \in I} $. Now $ \cbr{\sigma^{-1}\br{\mathring{U_\alpha}}}_{\alpha \in I} $ is an open cover of $ \Delta^n $, so has a \textbf{Lebesgue number}, that is there exists $ \epsilon > 0 $ such that any open $ \epsilon $-ball in $ \Delta^n $ lies in some $ \sigma^{-1}\br{U_\alpha} $. Now pick $ k \gg 0 $ such that $ \br{n / \br{n + 1}}^k \ll \epsilon $.
 \end{enumerate}
 \end{proof}
 
@@ -1968,7 +1970,7 @@ Different generalised homology theories do not come from chain complexes, but th
 \item \textbf{$\check{\mathbf{C}}$ech cochains}. Fix a cover $ \UUU = \cbr{U_\alpha \st \alpha \in A} $ of a space $ X $. Let
 $$ S_k = \cbr{\br{a_0, \dots, a_k} \in A^{k + 1} \st U_{a_0} \cap \dots \cap U_{a_k} \ne \emptyset}, $$
 let $ \vC^k\br{X, \UUU} $ be the maps from $ S_k $ to $ \ZZ $, and let
-$$ \function[\da]{\vC^k\br{X, \UUU}}{\vC^{k + 1}\br{X, \UUU}}{\psi}{\br{\br{a_0, \dots, a_{k + 1}} \mapsto \displaystyle\sum_{i = 0}^{k + 1} \psi\br{a_0, \dots, \widehat{a_i}, \dots, a_{k + 1}}}}. $$
+$$ \function[\da]{\vC^k\br{X, \UUU}}{\vC^{k + 1}\br{X, \UUU}}{\psi}{\br{\br{a_0, \dots, a_{k + 1}} \mapsto \sum_{i = 0}^{k + 1} \psi\br{a_0, \dots, \widehat{a_i}, \dots, a_{k + 1}}}}. $$
 Then $ \da^2 = 0 $, by the same proof as singular cohomology, which gives $ \vH^\bullet\br{X, \UUU} $. Now set
 $$ \vH^\bullet\br{X} = \lim_U \vH^\bullet\br{X, \UUU}, $$
 the limit over finer and finer covers.
@@ -2155,7 +2157,7 @@ for K\"unneth. Note that this is a ring homomorphism where $ \br{a \otimes b}\br
 \pagebreak
 
 \begin{example*}
-The \textbf{exterior algebra} $ \Lambda\br{x_i \st x_i \in I} $ is free on generators $ \cbr{x_i} $ subject to skew-commutativity, so $ \H^\bullet\br{\S^1} \cong \ZZ\sbr{x} / \abr{x^2} = \Lambda\br{x} $ for $ \abs{x} = 1 $. By cellular cohomology,
+The \textbf{exterior algebra} $ \ext\br{x_i \st x_i \in I} $ is free on generators $ \cbr{x_i} $ subject to skew-commutativity, so $ \H^\bullet\br{\S^1} \cong \ZZ\sbr{x} / \abr{x^2} = \ext\br{x} $ for $ \abs{x} = 1 $. By cellular cohomology,
 $$ \H^\bullet\br{\T^2} =
 \begin{cases}
 \ZZ & \bullet = 0, 2 \\
@@ -2171,11 +2173,11 @@ $$ \H^\bullet\br{\T^2} =
 $$
 Let $ \H^1\br{\T^2} $ be generated by $ x_1 \otimes 1 $ and $ 1 \otimes x_2 $. For degree reasons, the only possible interesting product is
 $$ \function{\H^1\br{\T^2} \times \H^1\br{\T^2}}{\H^2\br{\T^2}}{\br{x_1 \otimes 1, 1 \otimes x_2}}{x_1x_2 = x_1 \times x_2}, $$
-and $ x_1x_2 = -x_2x_1 $ by skew-commutativity, so the only non-zero products are those of $ \Lambda\br{x_1, x_2} $.
+and $ x_1x_2 = -x_2x_1 $ by skew-commutativity, so the only non-zero products are those of $ \ext\br{x_1, x_2} $.
 \end{example*}
 
 \begin{corollary}
-$ \H^\bullet\br{\T^n} = \Lambda^\bullet\H^1\br{\T^n} $ is the exterior algebra on $ n $ degree one generators.
+$ \H^\bullet\br{\T^n} = \ext^\bullet\H^1\br{\T^n} $ is the exterior algebra on $ n $ degree one generators.
 \end{corollary}
 
 \begin{example*}
@@ -2220,7 +2222,7 @@ In contrast, there exists $ f : \T^n \to \S^n $ of degree one.
 
 \pagebreak
 
-\subsection{Proof of Kunneth theorem}
+\subsection{Proof of K\"unneth theorem}
 
 Recall
 $$ \C^k\br{X, A} = \cbr{\phi \in \C^k\br{X} \st \forall \sigma \in \C_k\br{A} \subseteq \C_k\br{X}, \ \phi\br{\sigma} = 0}. $$
@@ -2236,7 +2238,7 @@ We will use this to pay one of our debts.
 We consider the associations
 $$ \br{X, A} \mapsto h^\bullet\br{X, A} = \H^\bullet\br{X, A} \otimes \H^\bullet\br{Y}, \qquad \br{X, A} \mapsto k^\bullet\br{X, A} = \H^\bullet\br{X \times Y, A \times Y}, $$
 functors of $ \br{X, A} $, with $ Y $ fixed. Relative cross-product defines $ \Phi : h^\bullet\br{X, A} \to k^\bullet\br{X, A} $, and
-$$ \Phi_{\pt} : h^\bullet\br{\pt} \otimes \H^\bullet\br{Y} \to \H^\bullet\br{\pt \times Y} = k^\bullet\br{\pt} $$
+$$ \Phi_{\pt} : h^\bullet\br{\pt} = \H^\bullet\br{\pt} \otimes \H^\bullet\br{Y} \to \H^\bullet\br{\pt \times Y} = k^\bullet\br{\pt} $$
 is an isomorphism. So by our discussion with axioms of how generalised cohomology theories behave for finite cell complexes, it suffices to prove
 \begin{enumerate}
 \item $ h^\bullet $ and $ k^\bullet $ are generalised cohomology theories, and
@@ -2476,7 +2478,7 @@ are diffeomorphisms of open sets. The cocycle condition is implied by the chain 
 If $ M $ is a smooth manifold and $ \iota : N \hookrightarrow M $ is a smooth submanifold, $ \T N \subseteq \iota^*\T M = \eval{\T M}_N $ is a subbundle. The quotient $ \nu_{N / M} = \iota^*\T M / \T N $ is the \textbf{normal bundle} of $ N $ in $ M $.
 \end{example*}
 
-\subsection{The tautological bundle over the Grassmannian}
+\subsection{Tautological bundles over Grassmannians}
 
 \begin{example*}
 Let
@@ -2564,7 +2566,7 @@ Note that this also shows that if $ X $ is compact Hausdorff and $ E \to X $, th
 
 \lecture{16}{Friday}{13/11/20}
 
-Last time we discussed vector bundles $ E \to X $. Since $ E \simeq X $, it appears as if the cohomology of $ E $ has no new information. But in fact vector bundles are ubiquitous in part because they give rise to distinguished elements of cohomology. Note if $ E \to X $ has rank $ n $, $ \H^n\br{E_x, E_x \setminus \cbr{0}} \cong \H^n\br{\RR^n, \RR^n \setminus \cbr{0}} \cong \H^{n - 1}\br{\S^{n - 1}} \cong \ZZ $.
+Last time we discussed vector bundles $ E \to X $. Since $ E \simeq X $, it appears as if the cohomology of $ E $ has no new information. But in fact vector bundles are ubiquitous in part because they give rise to distinguished elements of cohomology. Note if $ E \to X $ has rank $ n $, then $ \H^n\br{E_x, E_x \setminus \cbr{0}} \cong \H^n\br{\RR^n, \RR^n \setminus \cbr{0}} \cong \H^{n - 1}\br{\S^{n - 1}} \cong \ZZ $.
 
 \begin{definition*}
 A rank $ n $ vector bundle $ E \to X $ is \textbf{oriented} if for all $ x \in X $ we fix a generator $ \epsilon_x \in \H^n\br{E_x, E_x \setminus \cbr{0}} $ and these vary locally trivially, so if $ x \in U \subseteq X $ is a trivialising open neighbourhood, then $ E_y \xrightarrow{\sim} E_x $ sends $ \epsilon_y \mapsfrom \epsilon_x $ for all $ y \in U $. Thus
@@ -2591,10 +2593,11 @@ Note that can also make sense of $ E $ being $ R $-orientable or $ R $-oriented 
 \end{remark*}
 
 \begin{theorem}[Thom isomorphism theorem]
+\label{thm:thomisomorphism}
 Let $ \pi : E \to X $ be an oriented vector bundle of rank $ n $.
 \begin{itemize}
 \item $ \H^k\br{E, E^\#} = 0 $ for $ k < n $.
-\item There exists a unique element $ \u_E \in \H^n\br{E, E^\#} $ such that the restriction, the pullback with respect to $ \br{E_x, E_x \setminus \cbr{0}} \hookrightarrow \br{E, E^\#} $, is $ \eval{\u_E}_{E_x} = \epsilon_x $ for all $ x $.
+\item There exists a unique element $ \u_E \in \H^n\br{E, E^\#} $ such that the restriction, pullback with respect to $ \br{E_x, E_x \setminus \cbr{0}} \hookrightarrow \br{E, E^\#} $, is $ \eval{\u_E}_{E_x} = \epsilon_x $ for all $ x $.
 \item The map
 $$ \function{\H^k\br{X}}{\H^{k + n}\br{E, E^\#}}{\alpha}{\pi^*\alpha \cdot \u_E} $$
 is an isomorphism for all $ k $.
@@ -2632,7 +2635,7 @@ If an oriented vector bundle $ \pi : E \to X $ has a nowhere zero section, $ \e_
 Suppose $ s : X \to E $ has image in $ E^\# = E \setminus \cbr{\text{zero-section}} $. We have
 $$
 \begin{tikzcd}
-X \arrow{r}{s} \arrow[bend right=30]{rr}[swap]{\id_X} & E^\# \subseteq E \arrow{r}{\pi} & X \\
+X \arrow{r}{s} \arrow[bend right=30]{rr}[swap]{\id_X} & E^\# \subseteq E \arrow{r}{\pi} & X
 \end{tikzcd},
 $$
 so $ \e_E \in \im \br{\H^k\br{E^\#} \to \H^k\br{X}} $ for $ k = \rk E $. But
@@ -2756,17 +2759,20 @@ $ E $ is locally trivial.
 \end{exercise*}
 
 \begin{proposition}
-$$ \H^\bullet\br{\V_k\br{\CC^n}} = \Lambda\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}} $$
+$$ \H^\bullet\br{\V_k\br{\CC^n}} = \ext\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}} $$
 is the exterior algebra on generators $ a_i \in \H^i\br{\V_k\br{\CC^n}} $, that is free except for skew-commutativity.
 \end{proposition}
 
 \begin{proof}
 Induct on $ k $.
 \begin{itemize}
-\item $ \V_1\br{\CC^n} \cong \S^{2n - 1} $ and $ \H^\bullet\br{\S^{2n - 1}} = \Lambda\br{a_{2n - 1}} = \ZZ\sbr{a_{2n - 1}} / \abr{a_{2n - 1}^2} $.
+\item $ \V_1\br{\CC^n} \cong \S^{2n - 1} $ and
+$$ \H^\bullet\br{\S^{2n - 1}} = \ext\br{a_{2n - 1}} = \ZZ\sbr{a_{2n - 1}} / \abr{a_{2n - 1}^2}. $$
 \item Suppose the result holds for $ \V_k\br{\CC^n} $. There is a forgetful map
 $$ \function{\V_{k + 1}\br{\CC^n}}{\V_k\br{\CC^n}}{\cbr{e_1, \dots, e_{k + 1}}}{\cbr{e_1, \dots, e_k}}, $$
-which shows $ \V_{k + 1}\br{\CC^n} = \S\br{F} $, where $ F = E^\perp \to \V_k\br{\CC^n} $ with fibre the Hermitian orthogonal complement to $ E_x \subseteq \CC^n $. Note that $ F $ is a rank $ n - k $ complex bundle, so $ \e_F \in \H^{2n - 2k}\br{\V_k\br{\CC^n}} = 0 $, by induction, since $ \H^\bullet\br{\V_k\br{\CC^n}} = \Lambda\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}} $. Gysin gives
+which shows $ \V_{k + 1}\br{\CC^n} = \S\br{F} $, where $ F = E^\perp \to \V_k\br{\CC^n} $ with fibre the Hermitian orthogonal complement to $ E_x \subseteq \CC^n $. Note that $ F $ is a rank $ n - k $ complex bundle, so $ \e_F \in \H^{2n - 2k}\br{\V_k\br{\CC^n}} = 0 $, by induction, since
+$$ \H^\bullet\br{\V_k\br{\CC^n}} = \ext\br{a_{2n - 2k + 1}, a_{2n - 2k + 3}, \dots, a_{2n - 3}, a_{2n - 1}}. $$
+Gysin gives
 $$ 0 \xrightarrow{\cdot \e_F} \H^i\br{\V_k\br{\CC^n}} \to \H^i\br{\V_{k - 1}\br{\CC^n}} \xrightarrow{\lambda} \H^{i - 2n + 2k + 1}\br{\V_k\br{\CC^n}} \xrightarrow{\cdot \e_F} 0. $$
 Choose $ a_{2n - 2k - 1} \in \H^{2n - 2k - 1}\br{\V_{k + 1}\br{\CC^n}} $ such that $ \lambda\br{a_{2n - 2k - 1}} = 1 \in \H^0\br{\V_k\br{\CC^n}} $. Then
 $$ \function{\H^\bullet\br{\V_k\br{\CC^n}} \oplus \H^\bullet\br{\V_k\br{\CC^n}}}{\H^\bullet\br{\V_{k + 1}\br{\CC^n}}}{\br{u, v}}{u + v \cdot a_{2n - 2k - 1}} $$
@@ -2774,7 +2780,9 @@ is a $ \H^\bullet\br{\V_k\br{\CC^n}} $-module isomorphism.
 \end{itemize}
 \end{proof}
 
-Note that $ \V_n\br{\CC^n} = \U\br{n} $ is the unitary group. So $ \H^\bullet\br{\U\br{n}} = \Lambda\br{a_1, a_3, \dots, a_{2n - 3}, a_{2n - 1}} $ and $ \U\br{n} $ has the same cohomology ring as $ \S^1 \times \S^3 \times \dots \times \S^{2n - 3} \times \S^{2n - 1} $.
+Note that $ \V_n\br{\CC^n} = \U\br{n} $ is the unitary group. So
+$$ \H^\bullet\br{\U\br{n}} = \ext\br{a_1, a_3, \dots, a_{2n - 3}, a_{2n - 1}}, $$
+and $ \U\br{n} $ has the same cohomology ring as $ \S^1 \times \S^3 \times \dots \times \S^{2n - 3} \times \S^{2n - 1} $.
 
 \begin{remark*}
 Let
@@ -2783,5 +2791,475 @@ the $ i $-th \textbf{Betti number}. Then
 $$ \sum_{i \ge 0} \b_i\br{\U\br{n}}t^i = \prod_{i = 1}^n \br{1 + t^{2i - 1}}. $$
 Quite often generating functions for cohomology have nice properties.
 \end{remark*}
+
+\pagebreak
+
+\subsection{Proof of Thom isomorphism}
+
+\lecture{17}{Monday}{16/11/20}
+
+We will prove the Thom isomorphism under the hypothesis that $ X $ has a finite trivialising open cover for $ E $, such as if $ X $ is compact. To get the general case one then invokes Zorn's lemma. We will also assume all spaces are homotopy equivalent to finite cell complexes. The proof will be by induction on the number of sets of such a trivialising cover. The base case is a relative K\"unneth theorem. Recall that for K\"unneth, we showed
+$$ \H^\bullet\br{X, A} \otimes \H^\bullet\br{Y} \xrightarrow{\sim} \H^\bullet\br{X \times Y, A \times Y}, $$
+if $ \H^\bullet\br{Y} $ is finitely generated and free, and $ \br{X, A} $ is a cellular pair.
+
+\begin{lemma}[Relative K\"unneth]
+\label{lem:relativekunneth}
+Suppose $ \H^\bullet\br{Y} $, $ \H^\bullet\br{B} $, and $ \H^\bullet\br{Y, B} $ are finitely generated and free. Then
+0$$ \times : \H^\bullet\br{X} \otimes \H^\bullet\br{Y, B} \xrightarrow{\sim} \H^\bullet\br{X \times Y, X \times B} $$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Consider
+$$
+\begin{tikzcd}
+\H^\bullet\br{X} \otimes \H^\bullet\br{Y, B} \arrow{r}{\times} & \H^\bullet\br{X \times Y, X \times B} \\
+\H^\bullet\br{X} \otimes \H^\bullet\br{Y / B, \pt} \arrow{u}{p^*} \arrow{r}[swap]{\times} & \H^\bullet\br{X \times Y / B, X \times \pt} \arrow{u}[swap]{\widehat{p}^*}
+\end{tikzcd},
+$$
+where $ p : Y \to Y / B $ and $ \widehat{p} : X \times Y \to X \times Y / B $. Now $ \H^\bullet\br{Y, B} \cong \widetilde{\H^\bullet}\br{Y / B} $ and
+$$ \H^\bullet\br{X \times Y, X \times B} \cong \widetilde{\H^\bullet}\br{\br{X \times Y} / \br{X \times B}} = \widetilde{\H^\bullet}\br{\br{X \times Y / B} / \br{X \times \pt}}, $$
+a homeomorphism via $ \widehat{p} $, so it suffices to prove Lemma \ref{lem:relativekunneth} when $ B = \pt $. Now
+$$ \H^\bullet\br{Y, \pt} \to \H^\bullet\br{Y} \to \H^\bullet\br{\pt} $$
+splits, canonically if we choose a point of $ Y $, using
+$$
+\begin{tikzcd}
+\pt \arrow[hookrightarrow]{r} \arrow[bend right=30]{rr}[swap]{\id} & Y \arrow{r} & \pt
+\end{tikzcd}.
+$$
+So now can reduce to the $ 5 $-lemma. \footnote{Exercise: check}
+\end{proof}
+
+\begin{lemma}[Relative Mayer-Vietoris]
+If $ \br{X, Y} = \br{A \cup B, C \cup D} $ there is a long exact sequence
+$$ \dots \to \H^i\br{X, Y} \to \H^i\br{A, C} \oplus \H^i\br{B, D} \to \H^i\br{A \cap B, C \cap D} \to \H^{i + 1}\br{X, Y} \to \dots. $$
+\end{lemma}
+
+\begin{proof}
+Write $ \C_\bullet^\UUU\br{X} = \C_\bullet\br{A + B} $ for $ \UUU = \cbr{A, B} $, simplices lying wholly in $ A $ or $ B $, and $ \C_\UUU^\bullet\br{X} = \C^\bullet\br{A + B} = \Hom\br{\C_\bullet\br{A + B}, \ZZ} $, so the inclusion $ \C_\bullet\br{A + B} \hookrightarrow \C_\bullet\br{X} $ and the restriction $ \C^\bullet\br{X} \to \C^\bullet\br{A + B} $ are isomorphisms on homology and cohomology, by small simplices. Consider
+$$
+\begin{tikzcd}
+0 \arrow{r} & \C^n\br{X, Y} \arrow{r} \arrow{d}{\phi} & \C^n\br{Y} \arrow{r} \arrow{d}{\res} & \C^n\br{Y} \arrow{r} \arrow{d}{\res} & 0 \\
+0 \arrow{r} & \C^n\br{A + B, C + D} = \ker \alpha \arrow{r} & \C^n\br{A + B} \arrow{r}[swap]{\alpha} & \C^n\br{C + D} \arrow{r} & 0
+\end{tikzcd}.
+$$
+Both rows are exact. By the $ 5 $-lemma, $ \phi : \C^\bullet\br{X, Y} \to \C^\bullet\br{A + B, C + D} $ is an isomorphism on cohomology. Now consider the sequences
+\begin{equation}
+\label{eq:8}
+0 \to \C^\bullet\br{A + B, C + D} \xrightarrow{\widetilde{\beta}} \C^\bullet\br{A, C} \oplus \C^\bullet\br{B, D} \to \C^\bullet\br{A \cap B, C \cap D} \to 0,
+\end{equation}
+dual to
+$$ 0 \from \C_\bullet\br{A + B, C + D} \xleftarrow{\beta} \C_\bullet\br{A, C} \oplus \C_\bullet\br{B, D} \from \C_\bullet\br{A \cap B, C \cap D} \from 0. $$
+Then $ \beta $ is onto as $ \C_\bullet\br{A + B, C + D} $ is free on simplices in $ A $ or $ B $ not wholly in $ C $ or $ D $, so $ \widetilde{\beta} $ is injective. So $ \br{\ref{eq:8}} $ is exact and the associated long exact sequence is the relative Mayer-Vietoris.
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of Theorem \ref{thm:thomisomorphism}]
+\hfill
+\begin{itemize}
+\item The base case is $ E = X \times \RR^d $ and $ E^\# = X \times \RR^d \setminus \cbr{0} $. Then $ \H^\bullet\br{\RR^d, \RR^d \setminus \cbr{0}} $ is finitely generated and free so relative K\"unneth gives the isomorphism
+$$ \function{\H^d\br{E, E^\#}}{\H^d\br{X} \otimes \H^d\br{\RR^d, \RR^d \setminus \cbr{0}}}{\u_E}{1 \otimes w_d}, $$
+where $ w_d \in \H^d\br{\RR^d, \RR^d \setminus \cbr{0}} $ is the orientation generator. Now all parts of Thom are obvious.
+\item For the inductive argument, assume the Thom isomorphism is proven for all oriented vector bundles over spaces $ Y $ such that $ Y $ has a finite trivialising cover for the bundle of less than $ k $ sets, and suppose $ E \to X $ has a trivialising cover with $ k $ sets. So there exists $ X = A \cup B $ such that $ \eval{E}_A $, $ \eval{E}_B $, and $ \eval{E}_{A \cap B} $ have a trivialising cover by at most $ k - 1 $ sets. Relative Mayer-Vietoris gives
+$$
+\begin{tikzcd}
+\dots \arrow{r} & \H^{i - 1}\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r} & \H^i\br{E, E^\#} \arrow[in=135, out=-45]{dl} & \\
+& \H^i\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^i\br{\eval{E}_B, \eval{E^\#}_B} \arrow{r} & \H^i\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r} & \dots
+\end{tikzcd}.
+$$
+For $ i < d $,
+$$ 0 \to \H^i\br{E, E^\#} \to 0, $$
+so $ \H^i\br{E, E^\#} = 0 $. For $ i = d $,
+$$ 0 \to \H^d\br{E, E^\#} \xrightarrow{\phi} \H^d\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^d\br{\eval{E}_B, \eval{E^\#}_B} \to \H^d\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}}. $$
+Let $ \br{\u_{\eval{E}_A}, \u_{\eval{E}_B}} \in \H^d\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^d\br{\eval{E}_B, \eval{E^\#}_B} $. By uniqueness of Thom classes for $ \eval{E}_A $ and $ \eval{E}_B $, $ \u_{\eval{E}_A} $ and $ \u_{\eval{E}_B} $ have the same image in $ \H^d\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} $, so there exists $ \u_E \in \H^d\br{E, E^\#} $ such that $ \phi\br{\u_E} = \br{\u_{\eval{E}_A}, \u_{\eval{E}_B}} $. Also since $ \phi $ is injective, $ \u_E $ is unique. Clearly $ \eval{\u_E}_{\br{E_x, E_x \setminus \cbr{0}}} = \epsilon_x $ is the orientation generator for all $ x \in X $ since this was true for $ \u_{\eval{E}_A} $ and $ \u_{\eval{E}_B} $, and $ A $ and $ B $ cover $ X $. It remains to show
+$$ \function[T]{\H^i\br{X}}{\H^{i + d}\br{E, E^\#}}{\alpha}{\pi^*\alpha \cdot \u_E} $$
+is an isomorphism for all $ i $. By $ 5 $-lemma, and induction, it suffices to prove the diagram
+$$
+\begin{tikzcd}[column sep=tiny]
+\dots \arrow{r} & \H^i\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r}{\da_{\MV}^*} & \H^{i + 1}\br{E, E^\#} \arrow{r} & \H^{i + 1}\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^{i + 1}\br{\eval{E}_B, \eval{E^\#}_B} \arrow{r} & \dots \\
+\dots \arrow{r} & \H^{i - d}\br{A \cap B} \arrow{u}{T_{A \cap B}} \arrow{r}[swap]{\da_{\MV}^*} & \H^{i - d + 1}\br{X} \arrow{u}{T_X} \arrow{r} & \H^{i - d + 1}\br{A} \oplus \H^{i - d + 1}\br{B} \arrow{u}{T_A \oplus T_B} \arrow{r} & \dots
+\end{tikzcd}
+$$
+commutes. Know $ T_{A \cap B} $ is an isomorphism by induction. Straightforward to see the right square commutes, and others like it. Let $ \phi \in \C^d\br{E, E^\#} $ be a cocycle representing $ \u_E $, so $ \eval{\phi}_{\eval{E}_A} $ represents $ \u_{\eval{E}_A} $. Let $ \sbr{\alpha} \in \H^{i - d}\br{A \cap B} $. Write $ \alpha = \psi_A - \psi_B $ for $ \psi_A \in \C^{i - d}\br{A} $ and $ \psi_B \in \C^{i - d}\br{B} $, so $ \da_{\MV}^*\br{\sbr{\alpha}} = \sbr{\da^*\br{\psi_A}} $. So
+\begin{equation}
+\label{eq:9}
+T_X \circ \da_{\MV}^* : \alpha \mapsto \pi^*\br{\da^*\br{\psi_A}} \cdot \phi.
+\end{equation}
+Now $ \pi^*\alpha \cdot \u_{\eval{E}_{A \cap B}} = \pi^*\psi_A \cdot \eval{\phi}_{\eval{E}_A} - \pi^*\psi_B \cdot \eval{\phi}_{\eval{E}_B} $ is now expressed as a difference of chains in $ \C^i\br{\eval{E}_A, \eval{E^\#}_A} $ and $ \C^i\br{\eval{E}_B, \eval{E^\#}_B} $. So
+\begin{equation}
+\label{eq:10}
+\da_{\MV}^* \circ T_{A \cap B} : \alpha \mapsto \da^*\br{\pi^*\psi_A \cdot \eval{\phi}_{\eval{E}_A}}.
+\end{equation}
+Now $ \br{\ref{eq:9}} = \br{\ref{eq:10}} $ using $ \pi^* \circ \da^* = \da^* \circ \pi^* $ and $ \da^*\br{\phi} = 0 $.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\section{Cohomology of manifolds}
+
+\lecture{18}{Wednesday}{18/11/20}
+
+We proved the Thom isomorphism theorem by induction over the open sets of a cover, reducing to local triviality. We would like to use or similar local-to-global approach to study $ \H^\bullet\br{M} $ for a manifold $ M $, using that $ M \cong \RR^n $ locally. But we first need a version of cohomology which is more interesting for $ \RR^n $ itself.
+
+\subsection{Direct limits}
+
+Let $ A $ be a poset such that for all $ a, b \in A $ there exists $ c $ such that $ a \le c $ and $ b \le c $. A \textbf{direct system} of groups indexed by $ A $ comprises
+\begin{itemize}
+\item $ \cbr{G_a}_{a \in A} $ for $ G_a $ abelian, and
+\item $ \rho_{ab} : G_a \to G_b $ homomorphisms for all $ a \le b $ such that $ \rho_{bc} = \rho_{ab} = \rho_{ac} $ if $ a \le b \le c $ and $ \rho_{aa} = \id_{G_a} $.
+\end{itemize}
+
+\begin{definition*}
+The \textbf{direct limit} of $ \cbr{G_a, \rho_{ab}} $ is the group
+$$ \varinjlim_A G_a = \br{\bigoplus_{a \in A} G_a} / \abr{x - \rho_{ab}\br{x} \st x \in G_a, \ a \le b}. $$
+\end{definition*}
+
+Note that the underlying set of this group is $ \br{\bigsqcup_{a \in A} G_a} / \sim $ where $ x \sim \rho_{ij}\br{x} $ for all $ x \in G_i $ and $ i \le j $. The group operation is, given $ x \in G_a $ and $ y \in G_b $, pick $ c $ such that $ a \le c $ and $ b \le c $. Now $ x \sim \rho_{ac}\br{x} \in G_c $ and $ y \sim \rho_{bc}\br{y} \in G_c $, and
+$$ \sbr{x} + \sbr{y} = \sbr{\rho_{ac}\br{x} + \rho_{bc}\br{y}}. $$
+Note that if $ \Gamma \subseteq A $ has the property that for all $ a \in A $, there exists $ \alpha \in \Gamma $ such that $ a \le \alpha $, we say $ \Gamma $ is \textbf{cofinal}, and then $ \varinjlim_A G_a = \varinjlim_\Gamma G_a $.
+
+\begin{example*}
+Let $ A = \NN $, let $ G_a = \ZZ / p^a $ for a fixed prime $ p $, and let $ \rho_{a, a + 1} : \ZZ / p^a \to \ZZ / p^{a + 1} $ be multiplication by $ p $. Then
+$$ \varinjlim_A G_a = \ZZ\br{p^\infty} = \cbr{z \in \S^1 \st z \ \text{is a $ p^n $-th root of unity for some} \ n}, $$
+the \textbf{Pr\"ufer group}.
+\end{example*}
+
+\begin{example*}
+Let $ A = \NN $. Take a new partial order $ \le_{\div} $ on $ \NN $ such that $ m \le_{\div} n $ if and only if $ m \mid n $. Let $ G_a = \ZZ $ for all $ a $, and $ \rho_{ab} : \ZZ \to \ZZ $ be multiplication by $ b / a $. Then $ \varinjlim_A G_a \cong \QQ $. Indeed, for $ \le_{\div} $, the numbers $ 1!, 2!, \dots $ are cofinal, so
+$$ \varinjlim_\NN G_a = \varinjlim_n G_{n!} = \varinjlim \br{\ZZ \xrightarrow{2} \ZZ \xrightarrow{3} \ZZ \to \dots} \cong \varinjlim \br{\ZZ \xrightarrow{\id} \dfrac{1}{2!}\ZZ \xrightarrow{\id} \dfrac{1}{3!}\ZZ \to \dots} = \bigcup_n \dfrac{1}{n!}\ZZ = \QQ. $$
+\end{example*}
+
+\subsection{Cohomology with compact supports}
+
+Let $ X $ be a space and $ K_1, K_2 \subseteq X $ compact subsets. If $ K_1 \subseteq K_2 $, then $ X \setminus K_1 \supseteq X \setminus X_2 $, so there exists an inclusion of pairs $ \br{X, X \setminus K_2} \hookrightarrow \br{X, X \setminus K_1} $. Thus there exists a natural map $ \H^\bullet\br{X, X \setminus K_1} \to \H^\bullet\br{X, X \setminus K_2} $.
+
+\begin{definition*}
+The \textbf{cohomology with compact supports} is
+$$ \Hc^\bullet\br{X} = \varinjlim_\KKK \H^\bullet\br{X, X \setminus K}, $$
+where $ \KKK = \cbr{\text{compact subsets of} \ X} $, partially ordered by inclusion.
+\end{definition*}
+
+\begin{remark*}
+We could also define
+\begin{align*}
+\C_{\ct}^\bullet\br{X}
+& = \cbr{\phi \in \C^\bullet\br{X} \st \exists K \subseteq X \ \text{compact}, \ \eval{\phi}_{X \setminus K} \equiv 0} \\
+& = \cbr{\phi \in \C^\bullet\br{X} \st \exists K \subseteq X \ \text{compact}, \ \forall \sigma : \Delta^k \to X \setminus K, \ \phi\br{\sigma} = 0}.
+\end{align*}
+Then $ \da^* $ preserves $ \C_{\ct}^\bullet\br{X} $ and $ \H^\bullet\br{\C^\bullet\br{X}, \da^*} = \Hc^\bullet\br{X} $.
+\end{remark*}
+
+\pagebreak
+
+\begin{example*}
+If $ X $ is compact, there is a final element in the poset $ \KKK $, namely $ X $, so
+$$ \varinjlim_\KKK \H^\bullet\br{X, X \setminus K} = \H^\bullet\br{X, X \setminus X} = \H^\bullet\br{X, \emptyset} = \H^\bullet\br{X}. $$
+Thus $ \Hc^\bullet\br{X} = \H^\bullet\br{X} $.
+\end{example*}
+
+\begin{example*}
+$$ \Hc^j\br{\RR^n} \cong
+\begin{cases}
+\ZZ & j = n \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+Every compact $ K $ lies in $ \overline{\B}\br{0, N} = \cbr{\norm{x} \le N} $ for some $ N $, so
+$$ \varinjlim_\KKK \H^\bullet\br{\RR^n, \RR^n \setminus K} = \varinjlim_N \H^\bullet\br{\RR^n, \RR^n \setminus \overline{\B}\br{0, N}}. $$
+But
+$$
+\begin{tikzcd}
+\H^\bullet\br{\RR^n, \RR^n \setminus \overline{\B}\br{0, N}} \arrow{r}{\iota^*} \arrow{d}{\sim}[swap]{\text{LES, Homotopy}} & \H^\bullet\br{\RR^n, \RR^n \setminus \overline{\B}\br{0, N + 1}} \arrow{d}{\text{LES, Homotopy}}[swap]{\sim} \\
+\H^\bullet\br{\S^{n - 1}} \arrow{r}[swap]{\id} & \H^\bullet\br{\S^{n - 1}}
+\end{tikzcd},
+$$
+so
+$$ \Hc^n\br{\RR^n} = \varinjlim_N \br{\ZZ \xrightarrow{\id} \ZZ \xrightarrow{\id} \ZZ \to \dots} \cong \ZZ. $$
+\end{example*}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item $ \Hc^\bullet\br{\pt} \not\cong \Hc^\bullet\br{\RR^n} $, so cohomology with compact supports is not homotopy invariant.
+\item Cohomology with compact supports is not functorial under general continuous maps.
+\begin{itemize}
+\item If $ f : X \to Y $ is \textbf{proper}, that is $ f $ is closed map and $ f^{-1} $ of compact is compact, then there exists $ f^* : \Hc^\bullet\br{Y} \to \Hc^{\bullet}\br{X} $.
+\item If $ \iota : U \hookrightarrow M $ is the inclusion of an open set in a Hausdorff space $ M $, so compact sets are closed, there is an \textbf{extension-by-zero} pushforward $ \iota_* : \Hc^\bullet\br{U} \to \Hc^\bullet\br{M} $. Indeed, if $ K \subseteq U $ is compact, $ K \subseteq M $ is compact, and $ \H^\bullet\br{M, M \setminus K} \cong \H^\bullet\br{U, U \setminus K} $ by excision. Since there are more compact sets in $ M $ than in $ U $, get a map
+$$ \varinjlim_{K \subseteq U} \H^\bullet\br{U, U \setminus K} \to \varinjlim_{K \subseteq M} \H^\bullet\br{M, M \setminus K}, $$
+via the inclusion of posets $ \KKK_U \hookrightarrow \KKK_M $.
+\end{itemize}
+\end{itemize}
+\end{remark*}
+
+\begin{remark*}
+If $ \sigma : \Delta^k \to X $ and $ \phi \in \C_{\ct}^k\br{U} $ lies in $ \C^k\br{U, U \setminus K} $, subdivide $ \sigma $ into $ \sum_j \sigma_j $ such that each $ \sigma_j $ lies inside $ U $ or outside $ K $, and make $ \phi $ vanish on all the latter.
+\end{remark*}
+
+\begin{example*}
+If $ \iota : U \hookrightarrow \RR^n $ is inclusion of an open disc, $ \iota_* : \Hc^n\br{U} \to \Hc^n\br{\RR^n} $ is an isomorphism. By transition and rescaling homeomorphisms, without loss of generality $ 0 \in U \subseteq \B\br{0, 1} $. Now
+$$ \Hc^\bullet\br{U} = \varinjlim_n \H^\bullet\br{U, U \setminus \overline{\B}\br{0, 1 - \dfrac{1}{n}}} \xrightarrow{\sim} \varinjlim_k \H^\bullet\br{\RR^n, \RR^n \setminus \overline{\B}\br{0, k}}. $$
+\end{example*}
+
+\begin{proposition}
+Let $ X $ be a locally compact Hausdorff space. If $ X = U \cup V $ is a union of open sets, we have a Mayer-Vietoris sequence
+$$ \dots \to \Hc^i\br{U \cap V} \to \Hc^i\br{U} \oplus \Hc^i\br{V} \to \Hc^i\br{X} \to \Hc^{i + 1}\br{U \cap V} \to \dots. $$
+\end{proposition}
+
+Note the direction of the arrows. Contrast to the usual cohomology Mayer-Vietoris. But given degrees, also not like homology Mayer-Vietoris either.
+
+\pagebreak
+
+\begin{remark*}
+The direct limit of exact sequences is exact. See question sheet $ 4 $.
+\end{remark*}
+
+\begin{proof}
+Recall if $ \br{X, Y} = \br{A \cup B, C \cup D} $, we have relative Mayer-Vietoris
+$$ \dots \to \H^i\br{X, Y} \to \H^i\br{A, C} \oplus \H^i\br{B, D} \to \H^i\br{A \cap B, C \cap D} \to \H^{i + 1}\br{X, Y} \to \dots. $$
+Suppose $ X = U \cup V $, and $ K \subseteq U $ and $ L \subseteq V $ are compact. Set $ A = B = X $, $ C = X \setminus K $, $ D = X \setminus L $, and $ Y = C \cup D = X \setminus \br{K \cap L} $, so $ C \cap D = X \setminus \br{K \cup L} $. Then
+$$
+\begin{tikzcd}
+\dots \arrow{r} & \H^i\br{X, X \setminus K \cap L} \arrow{r} & \H^i\br{X, X \setminus K} \oplus \H^i\br{X, X \setminus L} \arrow[in=135, out=-45]{dl} & \\
+& \H^i\br{X, X \setminus K \cup L} \arrow{r} & \H^{i + 1}\br{X, X \setminus K \cap L} \arrow{r} & \dots
+\end{tikzcd}.
+$$
+Excise $ X \setminus U \cap V $, $ X \setminus U $ and $ X \setminus V $ from $ X $ in the first three places to get
+$$
+\begin{tikzcd}
+\dots \arrow{r} & \H^i\br{U \cap V, U \cap V \setminus K \cap L} \arrow{r} & \H^i\br{U, U \setminus K} \oplus \H^i\br{V, V \setminus L} \arrow[in=135, out=-45]{dl} & \\
+& \H^i\br{X, X \setminus K \cup L} \arrow{r} & \H^{i + 1}\br{U \cap V, U \cap V \setminus K \cap L} \arrow{r} & \dots
+\end{tikzcd}.
+$$
+Now
+\begin{itemize}
+\item each compact set $ Q \subseteq U \cap V $ has the form $ K \cap L $ for $ K \subseteq U $ and $ L \subseteq V $ compact, so $ Q = K = L $, and
+\item every compact set in $ X $ is contained in $ K \cup L $ for some compact $ K \subseteq U $ and $ L \subseteq V $, since $ X $ is locally compact.
+\end{itemize}
+Note that $ X $ is locally compact, so for all $ C \subseteq X $ compact, $ C $ has a finite cover by compact sets $ C_i $ such that for all $ i $ and $ j $, $ C_i \in U $ or $ C_j \in V $ and $ \cbr{\mathring{C_i}} $ over $ C $. Now take the limit of $ X \subseteq U $ compact and the limit of $ L \subseteq V $ compact, and use the remark.
+\end{proof}
+
+\begin{definition*}
+A manifold $ M $ has \textbf{finite type} if, for some $ N $, one can write $ M = \bigcup_{i = 1}^N U_i $ such that every iterated intersection $ U_{i_1} \cap \dots \cap U_{i_k} $ for $ k \ge 1 $ is empty or homeomorphic to $ \RR^n $. Call such a cover a \textbf{good cover}.
+\end{definition*}
+
+\begin{fact*}
+If $ M $ is a closed smooth manifold, or the interior of a compact smooth manifold with boundary, then $ M $ has finite type. Use a cover by geodesically convex balls for some Riemannian metric.
+\end{fact*}
+
+\begin{proposition}
+Let $ M $ be a manifold of finite type, and of dimension $ n $.
+\begin{enumerate}
+\item $ \Hc^i\br{M} = 0 $ for all $ i > n $, and $ \Hc^i\br{M} $ is finitely generated for all $ i $.
+\item If $ M $ is connected, $ \Hc^n\br{M} $ is cyclic, and for $ \iota : U \hookrightarrow M $ the inclusion of an open disc, $ \iota_* : \Hc^n\br{U} \twoheadrightarrow \Hc^n\br{M} $ is onto.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Induct on the number of sets in a good cover. If that number is $ N = 1 $, then $ M \cong \RR^n $ and we already know the result. For induction, let $ M = U \cup V $ for $ U $ and $ V $ of lower type. In fact without loss of generality $ U \cong \RR^n $. Then
+$$ \dots \to \Hc^i\br{U \cap V} \to \Hc^i\br{U} \oplus \Hc^i\br{V} \to \Hc^i\br{M} \to \Hc^{i + 1}\br{U \cap V} \to \dots. $$
+\begin{enumerate}
+\item Immediate by exactness, and using that if $ G $ and $ H $ are abelian groups and $ H $ and $ G / H $ are finitely generated then so is $ G $.
+\item Since $ M $ is connected, $ U \cap V \ne \emptyset $. Take a disc $ D \hookrightarrow U \cap V \hookrightarrow U \cong \RR^n \hookrightarrow M $. So $ \Hc^n\br{D} \xrightarrow{\sim} \Hc^n\br{U} $, so $ \Hc^n\br{U \cap V} \twoheadrightarrow \Hc^n\br{U} $ is onto. Thus $ \Hc^n\br{V} \twoheadrightarrow \Hc^n\br{M} $ is onto by exactness, and $ \Hc^n\br{V} $ is cyclic by induction.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\begin{corollary}
+If $ M $ is a closed smooth manifold,
+\begin{enumerate}
+\item $ \H^i\br{M} = 0 $ unless $ i \in \cbr{0, \dots, n = \dim M} $, and
+\item $ \H^n\br{M} $ has rank zero or one.
+\end{enumerate}
+\end{corollary}
+
+\begin{remark*}
+$ 1 $ follows from the fact that $ M $ is homotopy equivalent to an $ n $-dimensional finite cell complex, but $ 2 $ is really something new and special to manifolds.
+\end{remark*}
+
+\begin{example*}
+This implies there is no compact manifold homotopy equivalent to $ \S^n \vee \S^n $.
+\end{example*}
+
+\subsection{Oriented manifolds}
+
+\lecture{19}{Friday}{20/11/20}
+
+\begin{definition*}
+A \textbf{local orientation} of $ M $ at $ x $ is a choice of generator $ \epsilon_x \in \H_n\br{M, M \setminus X} $, which by excision is $ \H_n\br{U, U \setminus X} \cong \ZZ $ where $ U $ is a disc neighbourhood of $ x $.
+\end{definition*}
+
+\begin{definition*}
+The topological manifold $ M $ is \textbf{oriented} if we can choose local orientations $ \epsilon_x \in \H_n\br{M, M \setminus X} $ for all $ x \in M $ such that if $ \phi : U \xrightarrow{\sim} \RR^n $ for $ U \subseteq M $ open is any chart,
+$$
+\begin{tikzcd}
+\H_n\br{M, M \setminus \cbr{p}} \arrow{r}{\text{Excision}}[swap]{\sim} \arrow[dashed]{d} & \H_n\br{U, U \setminus \cbr{p}} \arrow{r}{\phi}[swap]{\sim} & \H_n\br{\RR^n, \RR^n \setminus \cbr{\phi\br{p}}} \arrow{d}{\text{Translation}}[swap]{\sim} \\
+\H_n\br{M, M \setminus \cbr{q}} & \H_n\br{U, U \setminus \cbr{q}} \arrow{l}{\text{Excision}}[swap]{\sim} \arrow{r}{\sim}[swap]{\phi} & \H_n\br{\RR^n, \RR^n \setminus \cbr{\phi\br{q}}}
+\end{tikzcd}
+$$
+sends $ \epsilon_p \mapsto \epsilon_q $ for all $ p, q \in U $.
+\end{definition*}
+
+\begin{definition*}
+Let $ U, V \subseteq \RR^n $ be open, and $ f : U \to V $ a homeomorphism. We say $ f $ is \textbf{orientation-preserving} if for all $ x \in U $ and $ f\br{x} \in V $, the map
+$$
+\begin{tikzcd}
+\H_n\br{\RR^n, \RR^n \setminus \cbr{0}} \arrow{r}{\text{Translation}}[swap]{\sim} \arrow[dashed]{d} & \H_n\br{\RR^n, \RR^n \setminus \cbr{x}} \arrow{r}{\text{Excision}}[swap]{\sim} & \H_n\br{U, U \setminus \cbr{x}} \arrow{d}{f_*} \\
+\H_n\br{\RR^n, \RR^n \setminus \cbr{0}} & \H_n\br{\RR^n, \RR^n \setminus \cbr{f\br{x}}} \arrow{l}{\text{Translation}}[swap]{\sim} & \H_n\br{V, V \setminus \cbr{f\br{x}}} \arrow{l}{\text{Excision}}[swap]{\sim}
+\end{tikzcd}
+$$
+is the identity.
+\end{definition*}
+
+\begin{lemma}
+$ M $ is \textbf{orientable}, that is admits an orientation $ \cbr{\epsilon_x}_{x \in M} $, if and only if it admits an atlas
+$$ \cbr{\br{U_\alpha, \phi_\alpha : U_\alpha \xrightarrow{\sim} \RR^n} \st \bigcup_\alpha U_\alpha = M}, $$
+such that the transition maps are orientation-preserving homeomorphisms of open subsets of $ \RR^n $.
+\end{lemma}
+
+\begin{proof}
+Given an orientation-preserving atlas, and $ x \in U_\alpha $, define $ \epsilon_x $ via
+$$ \H_n\br{M, M \setminus \cbr{x}} \cong \H_n\br{U_\alpha, U_\alpha \setminus \cbr{x}} \cong \H_n\br{\RR^n, \RR^n \setminus \cbr{\phi_\alpha\br{x}}} \xrightarrow{\text{Translation}} \H_n\br{\RR^n, \RR^n \setminus \cbr{0}}, $$
+where $ \epsilon_{\pt} \in \H_n\br{\RR^n, \RR^n \setminus \cbr{0}} $ is fixed once and for all. The atlas being orientation-preserving implies that $ \epsilon_x $ independent of the choice of $ U_\alpha \ni x $.
+\end{proof}
+
+\begin{example*}
+Suppose $ U, V \subseteq \RR^n $ are open and $ f : U \to V $ is a diffeomorphism. Then $ f $ is locally approximated by $ \eval{\D f}_x : \T_xU \to \T_{f\br{x}}V $. For example, with respect to the standard metric, the exponential map identifies open neighbourhoods $ U \supseteq U' \ni x $ and $ V \supseteq V' \ni f\br{x} $ with open balls in $ \T_xU $ and $ \T_{f\br{x}}V $. Can use this to show $ f $ is orientation-preserving at $ x $ if and only if $ \eval{\D f}_x $ has positive determinant. In particular if $ U, V \subseteq \CC^n $ and $ f $ is holomorphic, it preserves the canonical local orientations.
+\end{example*}
+
+\begin{remark*}
+$ \H_n\br{U, U \setminus \cbr{x}}^* \cong \H^n\br{U, U \setminus \cbr{x}} \cong \Hc^n\br{U} $. So one can also define orientability by choosing generators $ \epsilon_U \in \Hc^n\br{U} $ for all open discs $ U \subseteq M $, which have the compatibility that if $ U \subseteq V \subseteq M $ then $ \epsilon_U \mapsto \epsilon_V $ under extension-by-zero. And a homeomorphism $ f : \RR^n \xrightarrow{\sim} \RR^n $ is orientation-preserving if and only if it acts by the identity on $ \Hc^n\br{\RR^n} $.
+\end{remark*}
+
+\pagebreak
+
+\begin{theorem}
+Let $ M $ be a connected $ n $-manifold of finite type.
+\begin{enumerate}
+\item If $ M $ is oriented, there exists a unique isomorphism $ \eta : \Hc^n\br{M} \xrightarrow{\sim} \ZZ $ such that for each open disc $ \iota : U \subseteq M $,
+$$ \function[\eta \circ \iota_*]{\Hc^n\br{U}}{\ZZ}{\epsilon_U}{1}. $$
+\item If $ M $ is not orientable,
+$$ \Hc^n\br{M} \cong \ZZ / 2. $$
+\end{enumerate}
+\end{theorem}
+
+In de Rham cohomology, $ \eta $ is integration over $ M $. Equivalently in $ 1 $, for all $ x \in M $ in a chart $ \cbr{\br{U, \phi}} $ of an orientation-preserving atlas, $ \epsilon_x^+ \mapsto 1 $ via
+$$ \H_n\br{M, M \setminus \cbr{x}}^* \xrightarrow{\text{Excision}} \H_n\br{U, U \setminus \cbr{x}}^* \xrightarrow{\sim} \H^n\br{U, U \setminus \cbr{x}} \xrightarrow{\sim} \Hc^n\br{U} \xrightarrow{\iota_*} \Hc^n\br{M} \xrightarrow{\eta} \ZZ. $$
+
+\begin{proof}
+Take a finite good cover $ M = \bigcup_{i = 1}^N U_i $, and set $ W_i = U_1 \cup \dots \cup U_i $. Suppose for induction $ W_i $ is oriented. Write $ W_i \cap U_{i + 1} = V_1 \sqcup \dots \sqcup V_p $ for connected components, each of lower type. Mayer-Vietoris gives
+$$
+\begin{tikzcd}[row sep=tiny]
+\dots \arrow{r} & \Hc^n\br{V_1} \oplus \dots \oplus \Hc^n\br{V_p} \arrow{r} \arrow[cong]{d} & \Hc^n\br{W_i} \oplus \Hc^n\br{U_{i + 1}} \arrow{r}{\alpha} \arrow[cong]{d} & \Hc^n\br{W_{i + 1}} \arrow{r} & 0 \\
+& \ZZ \oplus \dots \oplus \ZZ \arrow[dashed]{r}[swap]{\phi} & \ZZ \oplus \ZZ & &
+\end{tikzcd}.
+$$
+Let $ w_i \in \Hc^n\br{V_i} $ be a generator such that $ \phi\br{w_i} = \br{1, \epsilon_i} $ for $ \epsilon_i \in \cbr{\pm 1} $ and $ 1 \in \eta_{w_i} : \Hc^n\br{W_i} \xrightarrow{\sim} \ZZ $, which is known.
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item All $ \epsilon_i $ are equal. Define the orientation of $ U_{i + 1} $ such that $ \epsilon_i = 1 $ for all $ i $. Then $ \alpha\br{1, 0} = \alpha\br{0, 1} $ is an orientation generator for $ \Hc^n\br{W_{i + 1}} \cong \ZZ $, by exactness. Inductively, $ W_{i + 1} $ is oriented, and if we reach $ W_N = M $ we win.
+\item $ \epsilon_i $ takes both values $ \pm 1 $. Then $ \im \phi = \abr{\br{1, 1}, \br{1, -1}} $, so $ \Hc^n\br{W_{i + 1}} \cong \ZZ / 2 $. For $ j > i + 1 $, $ W_{j + 1} = W_j \cup U_{j + 1} $, and $ W_j \cap U_{j + 1} = V_1' \sqcup \dots \sqcup V_q' $,
+$$
+\begin{tikzcd}[row sep=tiny]
+\dots \arrow{r} & \Hc^n\br{V_1'} \oplus \dots \oplus \Hc^n\br{V_p'} \arrow{r} \arrow[cong]{d} & \Hc^n\br{W_j} \oplus \Hc^n\br{U_{j + 1}} \arrow{r}{\alpha} \arrow[cong]{d} & \Hc^n\br{W_{j + 1}} \arrow{r} & 0 \\
+& \ZZ \oplus \dots \oplus \ZZ \arrow[dashed]{r}[swap]{\phi} & \ZZ / 2 \oplus \ZZ & &
+\end{tikzcd},
+$$
+inductively. Now orient each $ V_i' $ such that $ \phi\br{\epsilon_i} = \br{\lambda_i, 1} $. By last time, for any finite type manifold $ W $ and disc $ U \subseteq W $, $ \Hc^n\br{U} \twoheadrightarrow \Hc^n\br{W} $ is onto, so all $ \lambda_i = 1 \in \ZZ / 2 $ and $ \Hc^n\br{W_{i + 1}} \cong \ZZ / 2 $, that is the $ \ZZ / 2 $ persists.
+\end{enumerate}
+\end{proof}
+
+\subsection{Cup-product on manifolds}
+
+We now get a beautiful geometric description of cup-product on a smooth closed manifold.
+
+\begin{theorem}[Tubular neighbourhood theorem]
+Let $ M $ be a smooth manifold and $ Y \subseteq M $ a compact smooth submanifold. There is an open neighbourhood $ U_Y $ of $ Y $ in $ M $ and a diffeomorphism
+$$
+\begin{tikzcd}[row sep=tiny]
+U_Y \arrow{r}{\phi} & \nu_{Y / M} \\
+Y \arrow[subset]{u} \arrow{r}[swap]{\id} & \text{zero-section} \arrow[subset]{u}
+\end{tikzcd},
+$$
+where $ \nu_{Y / M} $ is the normal bundle $ \br{\nu_{Y / M}}_y = \T_yM / \T_yY $. Moreover both $ U_Y $ and $ \phi $ are unique up to isotopy.
+\end{theorem}
+
+\pagebreak
+
+\begin{definition*}
+$ Y \subseteq M $ is \textbf{co-oriented} if $ \nu_{Y / M} $ is oriented, as a vector bundle. The rank $ \dim M - \dim Y $ of $ \nu_{Y / M} $ is the \textbf{codimension} of $ Y $ in $ M $.
+\end{definition*}
+
+\begin{definition*}
+Smooth manifolds $ Y, Z \subseteq M $ intersect \textbf{transversely} if for all $ x \in Y \cap Z $,
+$$ \T_xY + \T_xZ = \T_xM. $$
+\end{definition*}
+
+\begin{remark*}
+If $ Y, Z \subseteq M $ intersect transversely, $ Y \cap Z $ is a smooth submanifold of $ M $, and
+$$ \codim \br{Y \cap Z} = \codim Y + \codim Z, \qquad \nu_{\br{Y \cap Z} / M} \cong \eval{\nu_{Y / M}}_{Y \cap Z} \oplus \eval{\nu_{Z / M}}_{Y \cap Z}. $$
+There are tubular neighbourhoods $ U_{Y \cap Z} = U_Y \cap U_Z $ compatible with this decomposition, that is $ U_{Y \cap Z, p} \cong U_{Y, p} \times U_{Z, p} $.
+\end{remark*}
+
+\begin{definition*}
+Let $ Y \subseteq M $ be a compact co-oriented smooth submanifold of codimension $ k $. We define
+$$ \H^k\br{\nu_Y, \nu_Y^\#} \xrightarrow{\sim} \H^k\br{U_Y, U_Y \setminus Y} \xrightarrow{\text{Excision}} \H^k\br{M, M \setminus Y} \to \Hc^k\br{M}, $$
+mapping $ \u_{\nu_Y} $ to $ \epsilon_Y $, the \textbf{cohomology class} associated to $ Y $.
+\end{definition*}
+
+\begin{example*}
+Suppose $ Y = \pt \hookrightarrow M^n $, an oriented $ n $-manifold. Then $ \epsilon_{\pt} \in \Hc^n\br{M} \cong \ZZ $, fixed by orientation, is the orientation generator, that is $ \epsilon_{\pt} = 1 \in \ZZ $.
+\end{example*}
+
+Observe that if $ Y $ and $ Z $ are co-oriented, and intersect transversely, an ordering of $ Y $ and $ Z $ defines a co-orientation of $ Y \cap Z $, by question sheet $ 4 $.
+
+\begin{proposition}[Cup-product is dual to intersection]
+\label{prop:cupintersection}
+If $ Y $ and $ Z $ are smooth closed co-oriented submanifolds of a manifold $ M $, which intersect transversely, then
+$$ \epsilon_{Y \cap Z} = \epsilon_Y \cdot \epsilon_Z, $$
+so cup-product is given by transverse intersection.
+\end{proposition}
+
+\begin{remark*}
+$$ \epsilon_Y \cdot \epsilon_Z = \br{-1}^{\codim Y \cdot \codim Z}\epsilon_Z \cdot \epsilon_Y. $$
+Recall $ \nu_{Y \cap Z} \cong \nu_Y \oplus \nu_Z $. Re-ordering $ Y $ and $ Z $ changes the co-orientation on $ Y \cap Z $ compatibly with Proposition \ref{prop:cupintersection}.
+\end{remark*}
+
+\begin{corollary}
+If $ Y $ and $ Z $ are oriented smooth submanifolds of an oriented closed $ M $, and $ Y \cap Z = \pt $, transversely, then $ \epsilon_Y \cdot \epsilon_Z = \pm 1 \in \H^n\br{M} \cong \ZZ $, in particular $ \epsilon_Y $ and $ \epsilon_Z $ are non-zero. On the other hand, if $ Y \cap Z = \emptyset $, then $ \epsilon_Y \cdot \epsilon_Z = 0 $.
+\end{corollary}
+
+This is a very powerful way of computing cohomology rings.
+
+\begin{example*}
+In $ \CC\PP^2 $, two lines $ \sbr{x, y, 0} $ and $ \sbr{0, y, z} $ meet at one point, transversely, since in a chart $ y = 1 $ it looks like $ \CC_x \cup \CC_z = \CC_{xz}^2 $ as coordinate axes. So $ \epsilon_{l_1} \cdot \epsilon_{l_2} = 1 \in \H^4\br{\CC\PP^2} \xrightarrow{\sim} \ZZ $. But the space of lines is connected, so $ \epsilon_{l_1} = \epsilon_{l_2} \in \H^2\br{\CC\PP^2} $. So
+$$ \H^\bullet\br{\CC\PP^2} = \ZZ\sbr{\epsilon_l} / \abr{\epsilon_l^3}. $$
+\end{example*}
+
+\begin{example*}
+In $ \CC\PP^2 \# \CC\PP^2 $, let $ \epsilon_{l_1} = x $ and $ \epsilon_{l_2} = y $. Then $ x \cdot x = y \cdot y = 1 = \epsilon_{\pt} $ and $ x \cdot y = 0 $, so
+$$ \H^\bullet\br{\CC\PP^2 \# \CC\PP^2} = \ZZ\sbr{x, y} / \abr{x^2 = y^2, \ xy = 0, \ x^3 = y^3 = 0}. $$
+\end{example*}
+
+\begin{example*}
+In $ \CC\PP^1 \times \CC\PP^1 $, $ \epsilon_{l \times \pt} = \epsilon_{\pt \times l} = \epsilon_{\pt} = 1 $. But $ \epsilon_{l \times \pt} \cdot \epsilon_{l \times \pt} = 0 $ as $ \br{\CC\PP^1 \times \cbr{p}} \cap \br{\CC\PP^1 \times \cbr{q}} = \emptyset $ if $ p \ne q $, so
+$$ \H^\bullet\br{\CC\PP^1 \times \CC\PP^1} = \ZZ\sbr{x, y} / \abr{x^2 = y^2 = 0}. $$
+\end{example*}
+
+\pagebreak
+
+\begin{proof}[Proof of Proposition \ref{prop:cupintersection}]
+There is a relative cross-product
+$$ \H^i\br{X, A} \otimes \H^j\br{Y, B} \to \H^{i + j}\br{X \times Y, A \times Y \cup X \times B}, $$
+so there is one
+\begin{equation}
+\label{eq:11}
+\H^j\br{\RR^j, \RR^j \setminus \cbr{0}} \times \H^l\br{\RR^l, \RR^l \setminus \cbr{0}} \xrightarrow{\sim} \H^{j + l}\br{\RR^{j + l}, \RR^{j + l} \setminus \cbr{0}}.
+\end{equation}
+Since $ \H^l\br{\RR^l, \RR^l \setminus \cbr{0}} $ is finitely generated and free for all $ i $, by K\"unneth, $ \br{\ref{eq:11}} $ is an isomorphism. Consider relative cup-product, for $ E \to X $ and $ F \to X $ vector bundles
+$$ \function{\H^i\br{E, E^\#} \otimes \H^j\br{F, F^\#}}{\H^{i + j}\br{E \oplus F, \br{E \oplus F}^\#}}{x \otimes y}{\pi_E^*x \cdot \pi_F^*y}, \qquad E \xleftarrow{\pi_E} E \oplus F \xrightarrow{\pi_F} F. $$
+Suppose $ E $ and $ F $ are oriented. Then $ \br{\ref{eq:11}} $ being an isomorphism implies that $ \u_{E \oplus F} = \pi_E^*\u_E \cdot \pi_F^*\u_F $ by uniqueness in the Thom isomorphism, since the Thom class is unique such that it restricts to a generator for all fibres. So for $ Y, Z \subseteq M $, $ \epsilon_{Y \cap Z} $ is $ \u_{\nu_{Y \cap Z}} $ pushed forward to $ \H^\bullet\br{M} $, and $ \nu_{Y \cap Z} = \eval{\nu_Y}_{Y \cap Z} \oplus \eval{\nu_Z}_{Y \cap Z} $, so $ \epsilon_{Y \cap Z} $ is $ \u_{\nu_Y} \cdot \u_{\nu_Z} $ pushed forward, which is $ \epsilon_Y \cdot \epsilon_Z $.
+\end{proof}
 
 \end{document}
