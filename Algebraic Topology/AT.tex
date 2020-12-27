@@ -19,8 +19,6 @@
 
 \section{Introduction}
 
-\subsection{Connectedness}
-
 \lecture{1}{Friday}{09/10/20}
 
 Algebraic topology concerns the connectivity properties of topological spaces.
@@ -102,8 +100,6 @@ $$ \gamma_{1, s}\br{v} = v - sf\br{v}, \qquad 0 \le s \le 1. $$
 Then $ \gamma_{1, 1} = \gamma_1 $, and $ \im \gamma_{1, s} \subseteq \RR^n \setminus \cbr{0} $ as $ \norm{v} = 1 $ and $ \norm{sf\br{v}} = \abs{s}\norm{f\br{v}} < 1 $ if $ s < 1 $, so $ \deg \gamma_{1, 0} = \deg \gamma_{1, 1} $. The inclusion has $ \deg \gamma_{1, 0} = 1 $ and $ \deg \gamma_{1, 1} = 0 $ from above, a contradiction.
 \end{proof}
 
-\subsection{Homotopy}
-
 \begin{definition*}
 $ f : X \to Y $ is a \textbf{homotopy equivalence} if there exists $ g : Y \to X $ such that $ f \circ g \simeq \id_Y $ and $ g \circ f \simeq \id_X $. Then $ g $ is a \textbf{homotopy inverse} for $ f $, and $ \simeq $ is an equivalence relation on spaces.
 \end{definition*}
@@ -136,7 +132,7 @@ This is a well-defined operation on the \textbf{fundamental group}
 $$ \pi_1\br{X, x_0} = \cbr{\text{maps} \ \gamma : \S^1 \to X \st \gamma\br{0} = x_0 \ \text{fixed}} / \br{\simeq \ \text{preserving} \ x_0}. $$
 Similarly, the \textbf{$ n $-th homotopy group} is
 $$ \pi_n\br{X, x_0} = \cbr{\text{based maps} \ \S^n \to X \ \text{at} \ x_0} / \simeq. $$
-The issue is that they are very hard to compute, such as $ \pi_n\br{\S^2, x_0} $ not known for all $ n $. There is no simply-connected \textbf{manifold}, a Hausdorff second countable space $ X $ locally homeomorphic to $ \RR^n $, of dimension greater than zero, with $ \pi_n\br{X} $ known for all $ n $. So we will do something else, homology and cohomology. It is algebraically harder to set up, but the computational gain is worth it. Note that computing cohomology of harder spaces, such as the space of diffeomorphisms of some manifold or the space of embeddings of one manifold into another, is still very hard.
+The issue is that they are very hard to compute, such as $ \pi_n\br{\S^2, x_0} $ not known for all $ n $. There is no simply-connected \textbf{manifold}, a Hausdorff second countable space $ X $ locally homeomorphic to $ \RR^n $, of dimension more than zero, with $ \pi_n\br{X} $ known for all $ n $. So we will do something else, homology and cohomology. It is algebraically harder to set up, but the computational gain is worth it. Note that computing cohomology of harder spaces, such as the space of diffeomorphisms of some manifold or the space of embeddings of one manifold into another, is still very hard.
 
 \begin{remark*}
 \hfill
@@ -313,8 +309,6 @@ so cohomology is contravariant.
 
 \pagebreak
 
-\subsection{Basic examples}
-
 What can we compute?
 
 \begin{lemma}
@@ -384,7 +378,7 @@ Then $ \da\br{\sum_i n_i\tau_i} = \sum_i n_i\sigma_i - \br{\sum_i n_i}p = \sum_i
 
 \pagebreak
 
-\subsection{Structural theorems}
+\subsection{Structural theorems: homotopy invariance and Mayer-Vietoris}
 
 The following is an informal picture. Let $ X $ be an annulus, and let $ \sigma : \Delta^1 \to X $ be a $ 1 $-simplex, which happens to be a closed loop $ \sbr{0, 1} \to X $ going around the inner circle. Recall that $ \sigma $ has $ \da\br{\sigma} = \sigma\br{1} - \sigma\br{0} = 0 $, so $ \sigma $ defines $ \sbr{\sigma} \in \H_1\br{X} $. We would hope this is non-zero, as we cannot see a way to fill in $ \sigma $ with $ 2 $-simplices, in contrast to a $ 1 $-simplex $ \tau : \Delta^1 \cong \sbr{0, 1} \to X $ away from the inner circle. But $ \C_i\br{X} $ is uncountably generated for all $ i $ and very hard to control. A question is how do we rule out all configurations of $ 2 $-simplices, or other representatives for $ \sbr{\sigma} \in \H_i\br{X} $? Informally, in the realm of nice spaces, there is nothing else you can compute from the definition. Homology and cohomology are rendered useful by a collection of structural theorems. We will state these, and see how to use them, and then return to prove them later.
 
@@ -624,7 +618,7 @@ factorises through the zero group.
 Note that combining with $ \S^{n - 1} \simeq \RR^n \setminus \cbr{0} $, this fills in details, modulo homotopy invariance and Mayer-Vietoris, for results from the first lecture on Brouwer's theorem.
 
 \begin{lemma}
-Let $ \O\br{k} = \cbr{A \in \Mat_k \RR \st AA^\intercal = \I} $. A matrix $ A \in \O\br{n + 1} $, which acts on $ \S^n \subseteq \RR^{n + 1} $, acts on $ \H_n\br{\S^n} $ by multiplication by $ \det A $.
+Let $ \O\br{k} = \cbr{A \in \Mat_k \RR \st AA^\intercal = \id} $. A matrix $ A \in \O\br{n + 1} $, which acts on $ \S^n \subseteq \RR^{n + 1} $, acts on $ \H_n\br{\S^n} $ by multiplication by $ \det A $.
 \end{lemma}
 
 \begin{proof}
@@ -827,7 +821,7 @@ There were many ways we could have cut up $ K $. In some cases, some decompositi
 
 Now we should pay some debts.
 
-\subsection{Chain homotopy}
+\subsection{Proof of homotopy invariance}
 
 Let $ C_\bullet $ and $ D_\bullet $ be chain complexes.
 
@@ -867,8 +861,6 @@ so $ \sbr{f_n\br{\alpha}} = \sbr{g_n\br{\alpha}} \in \H_n\br{D_\bullet} $.
 \begin{exercise*}
 Chain homotopy is an equivalence relation on chain complexes and chain maps.
 \end{exercise*}
-
-\subsection{Proof of homotopy invariance}
 
 \begin{theorem}[Homotopy invariance, version $ 2 $]
 If $ f \simeq g : X \to Y $ then
@@ -949,7 +941,7 @@ $$ 0 \to A_\bullet \to B_\bullet \to C_\bullet \to 0. $$
 If
 $$ 0 \to A_\bullet \to B_\bullet \to C_\bullet \to 0 $$
 is a short exact sequence of chain complexes, there is a boundary map $ \delta : \H_n\br{C_\bullet} \to \H_{n - 1}\br{A_\bullet} $ fitting into a \textbf{long exact sequence} on homology
-$$ \dots \to \H_n\br{A_\bullet} \xrightarrow{\br{\alpha_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{\beta_*}_n} \H_n\br{C_\bullet} \xrightarrow{\delta} \H_{n - 1}\br{A_\bullet} \to \dots. $$
+$$ \dots \to \H_{n + 1}\br{C_\bullet} \xrightarrow{\delta} \H_n\br{A_\bullet} \xrightarrow{\br{\alpha_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{\beta_*}_n} \H_n\br{C_\bullet} \to \dots. $$
 \end{proposition}
 
 \begin{proof}
@@ -974,7 +966,7 @@ Check $ \delta $ is well-defined.
 \item If $ \sbr{c_n} = \sbr{c_n'} $, then $ c_n - c_n' \in \im \da $, say $ c_n' = c_n + \da\br{c_{n + 1}} $. Pick $ b_{n + 1} $ such that $ \beta\br{b_{n + 1}} = c_{n + 1} $ and then $ b_n \mapsto b_n + \da\br{b_{n + 1}} $ and $ \da\br{b_n} $ is unchanged, so get the same $ a_{n - 1} $.
 \end{itemize}
 So $ \delta $ is well-defined and it is easy to see it is a homomorphism. In the resulting
-$$ \dots \to \H_n\br{A_\bullet} \xrightarrow{\br{\alpha_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{\beta_*}_n} \H_n\br{C_\bullet} \xrightarrow{\delta} \H_{n - 1}\br{A_\bullet} \to \dots, $$
+$$ \dots \to \H_{n + 1}\br{C_\bullet} \xrightarrow{\delta} \H_n\br{A_\bullet} \xrightarrow{\br{\alpha_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{\beta_*}_n} \H_n\br{C_\bullet} \to \dots, $$
 should check exactness at all three kinds of terms, that is $ \im \beta_* \subseteq \ker \delta $ and $ \ker \delta \subseteq \im \beta_* $, etc, so six inclusions in total. \footnote{Exercise: do this}
 \end{proof}
 
@@ -994,7 +986,7 @@ $$ \H_p\br{X; \ZZ / n} \to \H_{p - 1}\br{X; \ZZ}, \qquad \H_p\br{X; \ZZ / n} \to
 We will revisit these later, probably.
 \end{example*}
 
-\subsection{Relative homology}
+\subsection{Relative homology and excision}
 
 \begin{example*}
 Let $ A \subseteq X $ be a subspace. We have an inclusion $ \C_\bullet\br{A} \hookrightarrow \C_\bullet\br{X} $ compatible with boundary maps, since if $ \sigma : \Delta^i \to A \subseteq X $, then $ \sigma \circ \delta_i : \Delta^{i - 1} \to A $ too. Define
@@ -1019,7 +1011,7 @@ Elementary.
 \end{proof}
 
 The long exact sequence
-$$ \dots \to \H_i\br{A} \to \H_i\br{X} \to \H_i\br{X, A} \to \H_{i - 1}\br{A} \to \dots $$
+$$ \dots \to \H_{i + 1}\br{X, A} \to \H_i\br{A} \to \H_i\br{X} \to \H_i\br{X, A} \to \dots $$
 is called the \textbf{long exact sequence of the pair $ \br{X, A} $}.
 
 \begin{remark*}
@@ -1160,7 +1152,7 @@ $$
 We have stated two major properties of homology and cohomology without proof, Mayer-Vietoris and excision. Recall that we also saw if
 $$ 0 \to A_\bullet \to B_\bullet \to C_\bullet \to 0 $$
 is a short exact sequence of chain complexes, then there exists a long exact sequence in homology
-$$ \dots \to \H_i\br{A_\bullet} \to \H_i\br{B_\bullet} \to \H_i\br{C_\bullet} \to \H_{i - 1}\br{A_\bullet} \to \dots. $$
+$$ \dots \to \H_{i + 1}\br{C_\bullet} \to \H_i\br{A_\bullet} \to \H_i\br{B_\bullet} \to \H_i\br{C_\bullet} \to \dots. $$
 Mayer-Vietoris will be a consequence of this.
 
 \begin{definition*}
@@ -1275,8 +1267,8 @@ Then
 $$ \da \circ \Cone^{\Delta^n} + \Cone^{\Delta^n} \circ \da = \id_{\C_\bullet\br{\Delta^n}} - \c. $$
 
 \begin{definition*}
-A collection of chain maps $ \phi^X : \C_\bullet\br{X} \to \C_\bullet\br{X} $, defined for all spaces $ X $, is \textbf{natural} if for all $ f : X \to Y $,
-$$ f_\# \circ \phi^X = \phi^Y \circ f_\#. $$
+A collection of chain maps $ \phi^X : \C_\bullet\br{X} \to \C_\bullet\br{X} $, defined for all spaces $ X $, is \textbf{natural} if
+$$ f_\# \circ \phi^X = \phi^Y \circ f_\#, \qquad f : X \to Y. $$
 Similarly for a collection $ P : \C_\bullet\br{X} \to \C_{\bullet + 1}\br{X} $ of chain homotopies between natural $ \phi^X $ and $ \psi^X $.
 \end{definition*}
 
@@ -1380,8 +1372,6 @@ Let $ X $ be a cell complex. The $ \D_i^k $ are $ k $-cells.
 \end{itemize}
 \end{notation*}
 
-\subsection{Point-set digression}
-
 Let $ X = \bigcup_{n \ge 0} X_n $ be a cell complex.
 
 \begin{exercise*}
@@ -1398,7 +1388,7 @@ Let $ A \subseteq X $. We build an open neighbourhood $ \N_\epsilon\br{A} $ of $
 = & \br{\text{open $ \epsilon $-neighbourhood of} \ \br{\phi_\alpha^n}^{-1}\br{A} \setminus \da\D_\alpha^{n + 1} \subseteq \D_\alpha^{n + 1} \setminus \da\D_\alpha^{n + 1}} \\
 & \cup \br{\intoc{1 - \epsilon, 1} \times \br{\phi_\alpha^n}^{-1}\br{\N_\epsilon^n\br{A}}},
 \end{align*}
-where $ \epsilon $ depends on $ \alpha $, and $ \intoc{1 - \epsilon, 1} $ is the radial spherical coordinate on $ \D_\alpha^{n + 1} $ and $ \br{\phi_\alpha^n}^{-1}\br{\N_\epsilon^n\br{A}} $ is the angular coordinate on $ \da\D_\alpha^{n + 1} $. Then $ \N_\epsilon\br{A} = \bigcup_{n \ge 0} \N_\epsilon^n\br{A} $ is open, as it is open in every cell.
+where $ \epsilon $ depends on $ \alpha $, and $ \intoc{1 - \epsilon, 1} $ is the radial spherical co-ordinate on $ \D_\alpha^{n + 1} $ and $ \br{\phi_\alpha^n}^{-1}\br{\N_\epsilon^n\br{A}} $ is the angular co-ordinate on $ \da\D_\alpha^{n + 1} $. Then $ \N_\epsilon\br{A} = \bigcup_{n \ge 0} \N_\epsilon^n\br{A} $ is open, as it is open in every cell.
 
 \begin{proposition}
 Cell complexes are Hausdorff and locally contractible. So connected if and only if path-connected.
@@ -1616,7 +1606,7 @@ $$
 \begin{tikzcd}[column sep=small]
 1 \arrow{r} \arrow{d} & 1 \arrow{r} & d_{\alpha\beta} \\
 e_\alpha \arrow{dr} & & \\
-& \sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{r} & \sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{uu}
+& \displaystyle\sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{r} & \displaystyle\sum_\gamma d_{\alpha\gamma}e_\gamma \arrow{uu}
 \end{tikzcd},
 $$
 so $ d_{\alpha\beta} = \deg f_{\alpha\beta} $ as claimed.
@@ -1655,7 +1645,7 @@ $$
 \begin{tikzcd}[column sep=small]
 1 \arrow{r} \arrow{dd} & \deg f \arrow{dd} \\
 & \\
-\br{1, \dots, 1} \arrow{r} & \sum_i \deg_{x_i} f
+\br{1, \dots, 1} \arrow{r} & \displaystyle\sum_i \deg_{x_i} f
 \end{tikzcd},
 $$
 which implies the result.
@@ -1773,11 +1763,7 @@ d_1 & & & & & \\
 & & & & & 0
 \end{pmatrix},
 \qquad
-\begin{cases}
-d_1 \mid d_2 \\
-\vdots \\
-d_{k - 1} \mid d_k
-\end{cases},
+d_1 \mid \dots \mid d_k,
 $$
 so $ \br{\ref{eq:2}} $ breaks into a direct sum of complexes of the form
 $$ 0 \to \ZZ \xrightarrow{0} \ZZ \to 0, \qquad 0 \to \ZZ \xrightarrow{d_i} \ZZ \to 0. $$
@@ -1801,7 +1787,7 @@ $$ 0 \to \Ext^1\br{\H_{n - 1}\br{X; \ZZ}, G} \to \H^n\br{X; G} \to \Hom\br{\H_n\
 We will not prove this.
 \end{remark*}
 
-\subsection{Euler characteristic}
+\subsection{The Euler characteristic}
 
 Recall that if $ X $ is a finite cell complex, we saw $ \H_i\br{X} $ is finitely generated for all $ i $, and $ \H_i\br{X} = 0 $ if $ i > \dim X $. So $ \bigoplus_i \H_i\br{X; \QQ} $ is a finite-dimensional graded $ \QQ $-vector space.
 
@@ -1833,6 +1819,7 @@ so
 \begin{remark*}
 If $ \FF $ is a field,
 $$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^k\dim_\FF \H_k\br{X; \FF}. $$
+Indeed, $ \rk \C_k^{\cell}\br{X} = \dim_\FF \br{\C_k^{\cell}\br{X} \otimes_\RR \FF} $.
 \end{remark*}
 
 \begin{example*}
@@ -1847,14 +1834,14 @@ $$ \chi\br{X} = \sum_{k \ge 0} \br{-1}^k\dim_\FF \H_k\br{X; \FF}. $$
 
 \pagebreak
 
-\section{Generalised homology theories}
-
-\subsection{Eilenberg-Steenrod axioms}
+\subsection{Generalised homology theories}
 
 \lecture{11}{Monday}{02/11/20}
 
 \begin{definition*}
-An assignment $ \br{X, A} \mapsto h_\bullet\br{X, A} = \bigoplus_{i \in \ZZ} h_i\br{X, A} $ of graded abelian groups to pairs of topological spaces and subspaces is called a \textbf{generalised homology theory} if it satisfies the following.
+An assignment
+$$ \br{X, A} \mapsto h_\bullet\br{X, A} = \bigoplus_{i \in \ZZ} h_i\br{X, A} $$
+of graded abelian groups to pairs of topological spaces and subspaces is called a \textbf{generalised homology theory} if it satisfies the following.
 \begin{itemize}
 \item Functoriality. A map $ f : \br{X, A} \to \br{Y, B} $ induces a degree-preserving homomorphism
 $$ f_* : h_\bullet\br{X, A} \to h_\bullet\br{Y, B}, $$
@@ -1888,8 +1875,6 @@ $$
 commutes, and similarly for maps of long exact sequence of pairs and excision or union isomorphisms.
 \end{example*}
 
-\subsection{Cellular example}
-
 \begin{proposition}
 Let $ h_\bullet $ and $ k_\bullet $ be generalised homology theories defined on the class of pairs $ \br{X, A} $ where $ X $ is homotopy equivalent to a cell complex and $ A \subseteq X $ to a subcomplex. Suppose $ \Phi : h_\bullet \to k_\bullet $ is a natural transformation. If $ \Phi : h_\bullet\br{\pt} \xrightarrow{\sim} k_\bullet\br{\pt} $ is an isomorphism for $ X = \pt $, and $ A = \emptyset $, then $ \Phi_{\br{X, A}} : h_\bullet\br{X, A} \xrightarrow{\sim} k_\bullet\br{X, A} $ for all finite-dimensional $ \br{X, A} $ in this class.
 \end{proposition}
@@ -1906,8 +1891,8 @@ Call this class of $ \br{X, A} $ the \textbf{cellular pairs}.
 Induct on $ \dim X $. If $ \dim X = 0 $, then $ X = \cbr{\text{discrete set}} = X_0 $, so the result follows from unions. So inductively suppose $ \Phi_{\br{X, A}} $ is an isomorphism whenever $ \dim X \le n - 1 $, and suppose $ X = X_n $ is $ n $-dimensional. Consider
 $$
 \begin{tikzcd}[column sep=small]
-\dots \arrow{r} & h_{i + 1}\br{X, X_{n - 1}} \arrow{r} \arrow{d}{\Phi} & h_i\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & h_i\br{X} \arrow{r} \arrow{d}{\Phi} & h_i\br{X, X_{n - 1}} \arrow{r} \arrow{d}{\Phi} & h_{i - 1}\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & \dots \\
-\dots \arrow{r} & k_{i + 1}\br{X, X_{n - 1}} \arrow{r} & k_i\br{X_{n - 1}} \arrow{r} & k_i\br{X} \arrow{r} & k_i\br{X, X_{n - 1}} \arrow{r} & k_{i - 1}\br{X_{n - 1}} \arrow{r} & \dots
+\dots \arrow{r} & h_i\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & h_i\br{X} \arrow{r} \arrow{d}{\Phi} & h_i\br{X, X_{n - 1}} \arrow{r} \arrow{d}{\Phi} & h_{i - 1}\br{X_{n - 1}} \arrow{r} \arrow{d}{\Phi}[swap]{\sim} & h_{i - 1}\br{X} \arrow{r} \arrow{d}{\Phi} & \dots \\
+\dots \arrow{r} & k_i\br{X_{n - 1}} \arrow{r} & k_i\br{X} \arrow{r} & k_i\br{X, X_{n - 1}} \arrow{r} & k_{i - 1}\br{X_{n - 1}} \arrow{r} & k_{i - 1}\br{X} \arrow{r} & \dots
 \end{tikzcd}.
 $$
 By the $ 5 $-lemma, if $ \Phi_{\br{X, X_{n - 1}}} $ is an isomorphism for all $ i $, then $ \Phi_{\br{X, \emptyset}} $ is an isomorphism for all $ i $. Apply excision, by replacing $ X_{n - 1} $ by a neighbourhood $ \N_\epsilon\br{X_{n - 1}} $ which does not change $ h_\bullet\br{X, A} $ by homotopy invariance then excise $ X_{n - 1} $, to show
@@ -1931,8 +1916,6 @@ Note that for $ h_\bullet\br{X, A} = \H_\bullet\br{X, A} $ we know $ \H_i\br{X_k
 \end{example*}
 
 A warning is that the axioms do not determine $ h_\bullet\br{X, A} $ from $ h_\bullet\br{\pt} $ formally, and it is rather that naturally related theories have the same indeterminacy.
-
-\subsection{Generalisations}
 
 \begin{remark*}
 A \textbf{generalised cohomology theory} $ \br{X, A} \mapsto h^\bullet\br{X, A} $ is similar, and has
@@ -1967,7 +1950,7 @@ Then $ \pi_\bullet^{\s\t}\br{\pt} $ is unknown, and determining it is one of the
 \begin{remark*}
 Different generalised homology theories do not come from chain complexes, but the existence of different chain complexes is still deep and important.
 \begin{itemize}
-\item \textbf{$\check{\mathbf{C}}$ech cochains}. Fix a cover $ \UUU = \cbr{U_\alpha \st \alpha \in A} $ of a space $ X $. Let
+\item \textbf{$\check{\text{C}}$ech cochains}. Fix a cover $ \UUU = \cbr{U_\alpha \st \alpha \in A} $ of a space $ X $. Let
 $$ S_k = \cbr{\br{a_0, \dots, a_k} \in A^{k + 1} \st U_{a_0} \cap \dots \cap U_{a_k} \ne \emptyset}, $$
 let $ \vC^k\br{X, \UUU} $ be the maps from $ S_k $ to $ \ZZ $, and let
 $$ \function[\da]{\vC^k\br{X, \UUU}}{\vC^{k + 1}\br{X, \UUU}}{\psi}{\br{\br{a_0, \dots, a_{k + 1}} \mapsto \sum_{i = 0}^{k + 1} \psi\br{a_0, \dots, \widehat{a_i}, \dots, a_{k + 1}}}}. $$
@@ -2041,6 +2024,8 @@ so $ \sbr{1} $ is a unit.
 
 \pagebreak
 
+\subsection{Basic properties}
+
 Recall that for an abelian group $ G $,
 $$ \C_j\br{X; G} = \C_j\br{X; \ZZ} \otimes G = \cbr{\sum_i a_i\sigma_i \st a_i \in G, \ \sigma_i : \Delta^j \to X}, \qquad \C^j\br{X; G} = \Hom_\ZZ\br{\C_j\br{X; \ZZ}, G}, $$
 so $ \C^\bullet\br{X; R} $ is a ring whenever the coefficient group $ G = R $ is a ring. Then $ \H^\bullet\br{X; R} $ is a ring if $ R $ is a ring and unital if $ R $ is unital.
@@ -2054,7 +2039,7 @@ $$ \phi \cdot \br{\psi \cdot \tau} = \br{\phi \cdot \psi} \cdot \tau \in \C^{k +
 $$ f^\#\br{\phi \cdot \psi} = \br{f^\#\phi} \cdot \br{f^\#\psi}, $$
 which is immediate from the definitions, so $ f^* : \H^\bullet\br{Y} \to \H^\bullet\br{X} $ is a unital ring homomorphism.
 \item \textbf{Cross-product} is
-$$ \function[\times]{\H^i\br{Y} \times \H^j\br{Z}}{\H^{i + j}\br{Y \times Z}}{\br{\phi, \psi}}{\p_Y^*\phi \cup \p_Z^*\psi}, \qquad Y \xleftarrow{\p_Y} Y \times Z \xrightarrow{\p_Z} Z. $$
+$$ \function[\times]{\H^i\br{Y} \times \H^j\br{Z}}{\H^{i + j}\br{Y \times Z}}{\br{\phi, \psi}}{\pi_Y^*\phi \cup \pi_Z^*\psi}, \qquad Y \xleftarrow{\pi_Y} Y \times Z \xrightarrow{\pi_Z} Z. $$
 If $ Y = Z = X $ and the diagonal is
 $$ \function[\Delta]{X}{X \times X}{x}{\br{x, x}}, $$
 cup-product is
@@ -2080,19 +2065,19 @@ so $ \H^\bullet\br{\S^n} \cong \ZZ\sbr{x} / \abr{x^2} $ for $ \abs{x} = n $.
 Let $ X $ and $ Y $ be cell complexes with basepoints $ x_0 \in X $ and $ y_0 \in Y $, and let $ X \vee Y = \br{X \sqcup Y} / x_0 \sim y_0 $. Then
 $$ \widetilde{\H^\bullet}\br{X \vee Y} \cong \widetilde{\H^\bullet}\br{X} \oplus \widetilde{\H^\bullet}\br{Y} $$
 is a ring isomorphism. Indeed,
-$$ X \xleftarrow{\p_X} X \vee Y \xrightarrow{\p_Y} Y, \qquad X \xrightarrow{\iota_X} X \vee Y \xleftarrow{\iota_Y} Y $$
+$$ X \xleftarrow{\pi_X} X \vee Y \xrightarrow{\pi_Y} Y, \qquad X \xrightarrow{\iota_X} X \vee Y \xleftarrow{\iota_Y} Y $$
 induce ring homomorphisms
-$$ \H^\bullet\br{X} \xrightarrow{\p_X^*} \H^\bullet\br{X \vee Y} \xleftarrow{\p_Y^*} \H^\bullet\br{Y}, \qquad \H^\bullet\br{X} \xleftarrow{\iota_X^*} \H^\bullet\br{X \vee Y} \xrightarrow{\iota_Y^*} \H^\bullet\br{Y}, $$
+$$ \H^\bullet\br{X} \xrightarrow{\pi_X^*} \H^\bullet\br{X \vee Y} \xleftarrow{\pi_Y^*} \H^\bullet\br{Y}, \qquad \H^\bullet\br{X} \xleftarrow{\iota_X^*} \H^\bullet\br{X \vee Y} \xrightarrow{\iota_Y^*} \H^\bullet\br{Y}, $$
 and Mayer-Vietoris gives
 $$ \H^\bullet\br{X \vee Y} \xrightarrow{\br{\iota_X^*, \iota_Y^*}} \H^\bullet\br{X \vee Y} \to \H^\bullet\br{\pt}, $$
 which shows
-$$ \p_X^* \oplus \p_Y^* : \widetilde{\H^\bullet}\br{X} \oplus \widetilde{\H^\bullet}\br{Y} \to \widetilde{\H^\bullet}\br{X \vee Y} $$
+$$ \pi_X^* \oplus \pi_Y^* : \widetilde{\H^\bullet}\br{X} \oplus \widetilde{\H^\bullet}\br{Y} \to \widetilde{\H^\bullet}\br{X \vee Y} $$
 is an isomorphism additively.
 \end{example*}
 
 \pagebreak
 
-\subsection{Key features}
+\subsection{Key features: graded commutativity and K\"unneth theorem}
 
 From the definitions, not sure we can do much else. We need two key features to get going. We will state them now and prove one of them later.
 
@@ -2191,11 +2176,11 @@ $$
 The ring structure is
 $$ \ZZ\abr{x_1, \dots, x_g, y_1, \dots, y_g \st x_ix_j = 0 = y_iy_j, \ x_iy_j = \delta_{ij}u}, $$
 and note $ y_ix_j = -x_jy_i $ by skew-commutativity. Consider
-$$ \Sigma_g \xrightarrow{\pi} \bigvee_{i = 1}^g \T^2 \xleftarrow{\p} \bigsqcup_{i = 1}^g \T^2. $$
-Check that $ \pi^* $ and $ \p^* $ are isomorphisms on degree one cohomology, so $ x_i $ and $ y_j $ define classes in $ \H^1\br{\bigvee_i \T^2} $ and $ \H^1\br{\Sigma_g} $. \footnote{Exercise} On degree two cohomology,
+$$ \Sigma_g \xrightarrow{\pi} \bigvee_{i = 1}^g \T^2 \xleftarrow{p} \bigsqcup_{i = 1}^g \T^2. $$
+Check that $ \pi^* $ and $ p^* $ are isomorphisms on degree one cohomology, so $ x_i $ and $ y_j $ define classes in $ \H^1\br{\bigvee_i \T^2} $ and $ \H^1\br{\Sigma_g} $. \footnote{Exercise} On degree two cohomology,
 $$
 \begin{tikzcd}[row sep=tiny]
-\H^2\br{\Sigma_g} \arrow[cong]{d} & \H^2\br{\bigvee_{i = 1}^g \T^2} \arrow{l}[swap]{\pi^*} \arrow{r}{\p^*} \arrow[cong]{d} & \H^2\br{\bigsqcup_{i = 1}^g \T^2} \arrow[cong]{d} \\
+\H^2\br{\Sigma_g} \arrow[cong]{d} & \H^2\br{\bigvee_{i = 1}^g \T^2} \arrow{l}[swap]{\pi^*} \arrow{r}{p^*} \arrow[cong]{d} & \H^2\br{\bigsqcup_{i = 1}^g \T^2} \arrow[cong]{d} \\
 \ZZ & \ZZ^g \arrow[dashed]{l}{\sum_i q_i \mapsfrom \br{q_1, \dots, q_g}} \arrow[dashed]{r}[swap]{\sim} & \ZZ^g
 \end{tikzcd},
 $$
@@ -2307,7 +2292,7 @@ Any two free resolutions of $ \ZZ $ are chain homotopy equivalent.
 
 \pagebreak
 
-\subsection{Lyusternik-Schnirelmann categories}
+\subsection{The Lyusternik-Schnirelmann category}
 
 \lecture{14}{Monday}{09/11/20}
 
@@ -2408,7 +2393,7 @@ commutes and $ \psi : E_y = p^{-1}\br{y} \to \cbr{y} \times \RR^n $ is a linear 
 \begin{notation*}
 $ E $ is the \textbf{total space} and $ B $ is the \textbf{base space}. The $ E_b $ are the \textbf{fibres}. A map $ s : B \to E $ such that $ p \circ s = \id_B $ is a \textbf{section} of $ E $. There is the \textbf{zero-section}, which sends
 $$ \function{B}{E_b}{b}{0}. $$
-Note the zero section $ \iota : B \to E $ and the projection $ p : E \to B $ are inverse homotopy equivalences, that is $ p \circ \iota = \id_B $ and $ \iota \circ p \simeq \id_E $. The \textbf{trivial} rank $ d $ vector bundle is $ \br{E = B \times \RR^d, p = \pi_1} $.
+Note the zero-section $ \iota : B \to E $ and the projection $ p : E \to B $ are inverse homotopy equivalences, that is $ p \circ \iota = \id_B $ and $ \iota \circ p \simeq \id_E $. The \textbf{trivial} rank $ d $ vector bundle is $ \br{E = B \times \RR^d, p = \pi_1} $.
 \end{notation*}
 
 \begin{example*}
@@ -2478,7 +2463,7 @@ are diffeomorphisms of open sets. The cocycle condition is implied by the chain 
 If $ M $ is a smooth manifold and $ \iota : N \hookrightarrow M $ is a smooth submanifold, $ \T N \subseteq \iota^*\T M = \eval{\T M}_N $ is a subbundle. The quotient $ \nu_{N / M} = \iota^*\T M / \T N $ is the \textbf{normal bundle} of $ N $ in $ M $.
 \end{example*}
 
-\subsection{Tautological bundles over Grassmannians}
+\subsection{The tautological bundle over the Grassmannian}
 
 \begin{example*}
 Let
@@ -2562,7 +2547,7 @@ and $ \br{\ref{eq:7}} $ holds by construction.
 
 Note that this also shows that if $ X $ is compact Hausdorff and $ E \to X $, there exists $ F \to X $ another subbundle such that $ E \oplus F $ is a trivial bundle, and $ F_x = \alpha\br{E_x}^\perp $ with respect to $ \abr{,}_{\RR^N} $.
 
-\subsection{Thom classes and Euler classes}
+\subsection{Thom isomorphism}
 
 \lecture{16}{Friday}{13/11/20}
 
@@ -2618,7 +2603,9 @@ $$ \u_{f^*E} = \widehat{f}^*\u_E, \qquad \widehat{f} : \br{f^*E, f^*E^\#} \to \b
 \begin{definition*}
 If $ \PPP $ is a property, an assignment
 $$ \function{\cbr{\PPP \ \text{vector bundles over} \ X}}{\H^\bullet\br{X}}{E}{c\br{E}}, $$
-such that $ c\br{f^*E} = f^*c\br{E} $ for all $ f : X \to Y $ is called a \textbf{characteristic class} of $ \PPP $ vector bundles.
+such that
+$$ c\br{f^*E} = f^*c\br{E}, \qquad f : X \to Y $$
+is called a \textbf{characteristic class} of $ \PPP $ vector bundles.
 \end{definition*}
 
 \begin{example*}
@@ -2628,7 +2615,7 @@ The Euler class is a characteristic class for oriented vector bundles.
 Characteristic classes give a global measure of the non-triviality of a vector bundle. Note if $ E = X \times \RR^d $ is trivial, $ E = f^*E_{\triv} $ for $ \RR^d = E_{\triv} $, so $ c\br{E} = f^*c\br{E_{\triv}} \in f^*\H^\bullet\br{\pt} $ is zero in $ \widetilde{\H^\bullet}\br{X} $.
 
 \begin{lemma}
-If an oriented vector bundle $ \pi : E \to X $ has a nowhere zero section, $ \e_E = 0 $.
+If an oriented vector bundle $ \pi : E \to X $ has a nowhere zero-section, $ \e_E = 0 $.
 \end{lemma}
 
 \begin{proof}
@@ -2675,11 +2662,11 @@ p^{-1}\br{U} \arrow{rr}{\psi} \arrow{dr}[swap]{p} & & U \times F \arrow{dl}{\pi_
 $$
 such that $ \psi = p^{-1}\br{t} \xrightarrow{\sim} \cbr{t} \times F $ for all $ t \in U $.
 
+\pagebreak
+
 \begin{remark*}
 A vector bundle is not a fibre bundle with fibre $ \RR^d $.
 \end{remark*}
-
-\pagebreak
 
 \begin{example*}
 \hfill
@@ -2748,11 +2735,11 @@ so $ \H^\bullet\br{\CC\PP^n} \cong \ZZ\sbr{x} / \abr{x^{n + 1}} $ for $ \abs{x} 
 
 \pagebreak
 
-\begin{example*}
+\subsection{The Stiefel manifold}
+
 The \textbf{Stiefel manifold} is
 $$ \V_k\br{\CC^n} = \cbr{\text{ordered $ k $-tuples of orthonormal vectors in} \ \CC^n} \subseteq \CC^n \times \dots \times \CC^n. $$
 There is a tautological bundle $ E \to \V_k\br{\CC^n} $ such that $ \eval{E}_{\cbr{e_1, \dots, e_k}} = \abr{e_1, \dots, e_k} $.
-\end{example*}
 
 \begin{exercise*}
 $ E $ is locally trivial.
@@ -2849,7 +2836,7 @@ Both rows are exact. By the $ 5 $-lemma, $ \phi : \C^\bullet\br{X, Y} \to \C^\bu
 0 \to \C^\bullet\br{A + B, C + D} \xrightarrow{\widetilde{\beta}} \C^\bullet\br{A, C} \oplus \C^\bullet\br{B, D} \to \C^\bullet\br{A \cap B, C \cap D} \to 0,
 \end{equation}
 dual to
-$$ 0 \from \C_\bullet\br{A + B, C + D} \xleftarrow{\beta} \C_\bullet\br{A, C} \oplus \C_\bullet\br{B, D} \from \C_\bullet\br{A \cap B, C \cap D} \from 0. $$
+$$ 0 \gets \C_\bullet\br{A + B, C + D} \xleftarrow{\beta} \C_\bullet\br{A, C} \oplus \C_\bullet\br{B, D} \gets \C_\bullet\br{A \cap B, C \cap D} \gets 0. $$
 Then $ \beta $ is onto as $ \C_\bullet\br{A + B, C + D} $ is free on simplices in $ A $ or $ B $ not wholly in $ C $ or $ D $, so $ \widetilde{\beta} $ is injective. So $ \br{\ref{eq:8}} $ is exact and the associated long exact sequence is the relative Mayer-Vietoris.
 \end{proof}
 
@@ -2858,14 +2845,14 @@ Then $ \beta $ is onto as $ \C_\bullet\br{A + B, C + D} $ is free on simplices i
 \begin{proof}[Proof of Theorem \ref{thm:thomisomorphism}]
 \hfill
 \begin{itemize}
-\item The base case is $ E = X \times \RR^d $ and $ E^\# = X \times \RR^d \setminus \cbr{0} $. Then $ \H^\bullet\br{\RR^d, \RR^d \setminus \cbr{0}} $ is finitely generated and free so relative K\"unneth gives the isomorphism
+\item The base case is $ E = X \times \RR^d $ and $ E^\# = X \times \RR^d \setminus \cbr{0} $. Then $ \H^\bullet\br{\RR^d, \RR^d \setminus \cbr{0}} $ is finitely generated and free, so relative K\"unneth gives the isomorphism
 $$ \function{\H^d\br{E, E^\#}}{\H^d\br{X} \otimes \H^d\br{\RR^d, \RR^d \setminus \cbr{0}}}{\u_E}{1 \otimes w_d}, $$
 where $ w_d \in \H^d\br{\RR^d, \RR^d \setminus \cbr{0}} $ is the orientation generator. Now all parts of Thom are obvious.
 \item For the inductive argument, assume the Thom isomorphism is proven for all oriented vector bundles over spaces $ Y $ such that $ Y $ has a finite trivialising cover for the bundle of less than $ k $ sets, and suppose $ E \to X $ has a trivialising cover with $ k $ sets. So there exists $ X = A \cup B $ such that $ \eval{E}_A $, $ \eval{E}_B $, and $ \eval{E}_{A \cap B} $ have a trivialising cover by at most $ k - 1 $ sets. Relative Mayer-Vietoris gives
 $$
 \begin{tikzcd}
-\dots \arrow{r} & \H^{i - 1}\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r} & \H^i\br{E, E^\#} \arrow[in=135, out=-45]{dl} & \\
-& \H^i\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^i\br{\eval{E}_B, \eval{E^\#}_B} \arrow{r} & \H^i\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r} & \dots
+\dots \arrow{r} & \H^i\br{E, E^\#} \arrow{r} & \H^i\br{\eval{E}_A, \eval{E^\#}_A} \oplus \H^i\br{\eval{E}_B, \eval{E^\#}_B} \arrow[in=180, out=0, overlay]{dl} & \\
+& \H^i\br{\eval{E}_{A \cap B}, \eval{E^\#}_{A \cap B}} \arrow{r} & \H^{i + 1}\br{E, E^\#} \arrow{r} & \dots
 \end{tikzcd}.
 $$
 For $ i < d $,
@@ -2901,11 +2888,7 @@ Now $ \br{\ref{eq:9}} = \br{\ref{eq:10}} $ using $ \pi^* \circ \da^* = \da^* \ci
 
 \lecture{18}{Wednesday}{18/11/20}
 
-We proved the Thom isomorphism theorem by induction over the open sets of a cover, reducing to local triviality. We would like to use or similar local-to-global approach to study $ \H^\bullet\br{M} $ for a manifold $ M $, using that $ M \cong \RR^n $ locally. But we first need a version of cohomology which is more interesting for $ \RR^n $ itself.
-
-\subsection{Direct limits}
-
-Let $ A $ be a poset such that for all $ a, b \in A $ there exists $ c $ such that $ a \le c $ and $ b \le c $. A \textbf{direct system} of groups indexed by $ A $ comprises
+We proved the Thom isomorphism theorem by induction over the open sets of a cover, reducing to local triviality. We would like to use or similar local-to-global approach to study $ \H^\bullet\br{M} $ for a manifold $ M $, using that $ M \cong \RR^n $ locally. But we first need a version of cohomology which is more interesting for $ \RR^n $ itself. Let $ A $ be a poset such that for all $ a, b \in A $ there exists $ c $ such that $ a \le c $ and $ b \le c $. A \textbf{direct system} of groups indexed by $ A $ comprises
 \begin{itemize}
 \item $ \cbr{G_a}_{a \in A} $ for $ G_a $ abelian, and
 \item $ \rho_{ab} : G_a \to G_b $ homomorphisms for all $ a \le b $ such that $ \rho_{bc} = \rho_{ab} = \rho_{ac} $ if $ a \le b \le c $ and $ \rho_{aa} = \id_{G_a} $.
@@ -3021,14 +3004,14 @@ $$ \dots \to \H^i\br{X, Y} \to \H^i\br{A, C} \oplus \H^i\br{B, D} \to \H^i\br{A 
 Suppose $ X = U \cup V $, and $ K \subseteq U $ and $ L \subseteq V $ are compact. Set $ A = B = X $, $ C = X \setminus K $, $ D = X \setminus L $, and $ Y = C \cup D = X \setminus \br{K \cap L} $, so $ C \cap D = X \setminus \br{K \cup L} $. Then
 $$
 \begin{tikzcd}
-\dots \arrow{r} & \H^i\br{X, X \setminus K \cap L} \arrow{r} & \H^i\br{X, X \setminus K} \oplus \H^i\br{X, X \setminus L} \arrow[in=135, out=-45]{dl} & \\
+\dots \arrow{r} & \H^i\br{X, X \setminus K \cap L} \arrow{r} & \H^i\br{X, X \setminus K} \oplus \H^i\br{X, X \setminus L} \arrow[in=180, out=0, overlay]{dl} & \\
 & \H^i\br{X, X \setminus K \cup L} \arrow{r} & \H^{i + 1}\br{X, X \setminus K \cap L} \arrow{r} & \dots
 \end{tikzcd}.
 $$
 Excise $ X \setminus U \cap V $, $ X \setminus U $ and $ X \setminus V $ from $ X $ in the first three places to get
 $$
 \begin{tikzcd}
-\dots \arrow{r} & \H^i\br{U \cap V, U \cap V \setminus K \cap L} \arrow{r} & \H^i\br{U, U \setminus K} \oplus \H^i\br{V, V \setminus L} \arrow[in=135, out=-45]{dl} & \\
+\dots \arrow{r} & \H^i\br{U \cap V, U \cap V \setminus K \cap L} \arrow{r} & \H^i\br{U, U \setminus K} \oplus \H^i\br{V, V \setminus L} \arrow[in=180, out=-0, overlay]{dl} & \\
 & \H^i\br{X, X \setminus K \cup L} \arrow{r} & \H^{i + 1}\br{U \cap V, U \cap V \setminus K \cap L} \arrow{r} & \dots
 \end{tikzcd}.
 $$
@@ -3083,7 +3066,7 @@ $ 1 $ follows from the fact that $ M $ is homotopy equivalent to an $ n $-dimens
 This implies there is no compact manifold homotopy equivalent to $ \S^n \vee \S^n $.
 \end{example*}
 
-\subsection{Oriented manifolds}
+\subsection{Orientability}
 
 \lecture{19}{Friday}{20/11/20}
 
@@ -3145,7 +3128,7 @@ $$ \Hc^n\br{M} \cong \ZZ / 2. $$
 \end{enumerate}
 \end{theorem}
 
-In de Rham cohomology, $ \eta $ is integration over $ M $. Equivalently in $ 1 $, for all $ x \in M $ in a chart $ \cbr{\br{U, \phi}} $ of an orientation-preserving atlas, $ \epsilon_x^+ \mapsto 1 $ via
+In de Rham cohomology, $ \eta = \int_M $ is integration over $ M $. Equivalently in $ 1 $, for all $ x \in M $ in a chart $ \cbr{\br{U, \phi}} $ of an orientation-preserving atlas, $ \epsilon_x^+ \mapsto 1 $ via
 $$ \H_n\br{M, M \setminus \cbr{x}}^* \xrightarrow{\text{Excision}} \H_n\br{U, U \setminus \cbr{x}}^* \xrightarrow{\sim} \H^n\br{U, U \setminus \cbr{x}} \xrightarrow{\sim} \Hc^n\br{U} \xrightarrow{\iota_*} \Hc^n\br{M} \xrightarrow{\eta} \ZZ. $$
 
 \begin{proof}
@@ -3170,7 +3153,7 @@ inductively. Now orient each $ V_i' $ such that $ \phi\br{\epsilon_i} = \br{\lam
 \end{enumerate}
 \end{proof}
 
-\subsection{Cup-product on manifolds}
+\subsection{Cup-products}
 
 We now get a beautiful geometric description of cup-product on a smooth closed manifold.
 
@@ -3192,8 +3175,8 @@ $ Y \subseteq M $ is \textbf{co-oriented} if $ \nu_{Y / M} $ is oriented, as a v
 \end{definition*}
 
 \begin{definition*}
-Smooth manifolds $ Y, Z \subseteq M $ intersect \textbf{transversely} if for all $ x \in Y \cap Z $,
-$$ \T_xY + \T_xZ = \T_xM. $$
+Smooth manifolds $ Y, Z \subseteq M $ intersect \textbf{transversely} if
+$$ \T_xY + \T_xZ = \T_xM, \qquad x \in Y \cap Z. $$
 \end{definition*}
 
 \begin{remark*}
@@ -3205,7 +3188,7 @@ There are tubular neighbourhoods $ U_{Y \cap Z} = U_Y \cap U_Z $ compatible with
 \begin{definition*}
 Let $ Y \subseteq M $ be a compact co-oriented smooth submanifold of codimension $ k $. We define
 $$ \H^k\br{\nu_Y, \nu_Y^\#} \xrightarrow{\sim} \H^k\br{U_Y, U_Y \setminus Y} \xrightarrow{\text{Excision}} \H^k\br{M, M \setminus Y} \to \Hc^k\br{M}, $$
-mapping $ \u_{\nu_Y} $ to $ \epsilon_Y $, the \textbf{cohomology class} associated to $ Y $.
+mapping $ \u_{\nu_Y} \in \H^k\br{\nu_Y, \nu_Y^\#} $ to $ \epsilon_Y \in \Hc^k\br{M} $, the \textbf{cohomology class} associated to $ Y $.
 \end{definition*}
 
 \begin{example*}
@@ -3233,7 +3216,7 @@ If $ Y $ and $ Z $ are oriented smooth submanifolds of an oriented closed $ M $,
 This is a very powerful way of computing cohomology rings.
 
 \begin{example*}
-In $ \CC\PP^2 $, two lines $ \sbr{x, y, 0} $ and $ \sbr{0, y, z} $ meet at one point, transversely, since in a chart $ y = 1 $ it looks like $ \CC_x \cup \CC_z = \CC_{xz}^2 $ as coordinate axes. So $ \epsilon_{l_1} \cdot \epsilon_{l_2} = 1 \in \H^4\br{\CC\PP^2} \xrightarrow{\sim} \ZZ $. But the space of lines is connected, so $ \epsilon_{l_1} = \epsilon_{l_2} \in \H^2\br{\CC\PP^2} $. So
+In $ \CC\PP^2 $, two lines $ \sbr{x, y, 0} $ and $ \sbr{0, y, z} $ meet at one point, transversely, since in a chart $ y = 1 $ it looks like $ \CC_x \cup \CC_z = \CC_{xz}^2 $ as co-ordinate axes. So $ \epsilon_{l_1} \cdot \epsilon_{l_2} = 1 \in \H^4\br{\CC\PP^2} \xrightarrow{\sim} \ZZ $. But the space of lines is connected, so $ \epsilon_{l_1} = \epsilon_{l_2} \in \H^2\br{\CC\PP^2} $. So
 $$ \H^\bullet\br{\CC\PP^2} = \ZZ\sbr{\epsilon_l} / \abr{\epsilon_l^3}. $$
 \end{example*}
 
@@ -3261,5 +3244,570 @@ Since $ \H^l\br{\RR^l, \RR^l \setminus \cbr{0}} $ is finitely generated and free
 $$ \function{\H^i\br{E, E^\#} \otimes \H^j\br{F, F^\#}}{\H^{i + j}\br{E \oplus F, \br{E \oplus F}^\#}}{x \otimes y}{\pi_E^*x \cdot \pi_F^*y}, \qquad E \xleftarrow{\pi_E} E \oplus F \xrightarrow{\pi_F} F. $$
 Suppose $ E $ and $ F $ are oriented. Then $ \br{\ref{eq:11}} $ being an isomorphism implies that $ \u_{E \oplus F} = \pi_E^*\u_E \cdot \pi_F^*\u_F $ by uniqueness in the Thom isomorphism, since the Thom class is unique such that it restricts to a generator for all fibres. So for $ Y, Z \subseteq M $, $ \epsilon_{Y \cap Z} $ is $ \u_{\nu_{Y \cap Z}} $ pushed forward to $ \H^\bullet\br{M} $, and $ \nu_{Y \cap Z} = \eval{\nu_Y}_{Y \cap Z} \oplus \eval{\nu_Z}_{Y \cap Z} $, so $ \epsilon_{Y \cap Z} $ is $ \u_{\nu_Y} \cdot \u_{\nu_Z} $ pushed forward, which is $ \epsilon_Y \cdot \epsilon_Z $.
 \end{proof}
+
+\subsection{Poincar\'e duality}
+
+\lecture{20}{Monday}{23/11/20}
+
+Thom showed that $ \H^\bullet\br{M; \QQ} $ is generated by $ \cbr{\epsilon_Y} $, that is there are enough submanifolds, and also that this fails over $ \ZZ $. This says we can compute $ \H^\bullet\br{M; \QQ} $ as a ring, for closed $ M $, from intersections of submanifolds, but does not a priori say the result is non-trivial.
+
+\begin{theorem}[Poincar\'e duality, version $ 1 $]
+Fix a field $ \FF $, and suppose $ M^n $ is oriented over $ \FF $. The pairing
+$$ \H^j\br{M; \FF} \otimes \Hc^{n - j}\br{M; \FF} \xrightarrow{\cup} \Hc^n\br{M; \FF} \xrightarrow{\sim} \FF, $$
+is non-degenerate, where $ \Hc^n\br{M; \FF} \xrightarrow{\sim} \FF $ is the isomorphism coming from the orientation.
+\end{theorem}
+
+If $ U \subseteq M $ is a disc, $ \Hc^n\br{U; \FF} \xrightarrow{\sim} \Hc^n\br{M; \FF} \xrightarrow{\sim} \FF $.
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item If $ K \subseteq M $ is compact, relative cup-product $ \H^i\br{M} \otimes \H^j\br{M, M \setminus K} \to \H^{i + j}\br{M, M \setminus K} $ is compatible with maps $ \br{M, M \setminus K_1} \hookrightarrow \br{M, M \setminus K_2} $ and induces $ \H^\bullet\br{M} \otimes \Hc^\bullet\br{M} \to \Hc^\bullet\br{M} $.
+\item Note every manifold $ M $ is $ \FF_2 $-oriented, as $ \H_n\br{M, M \setminus \cbr{x}} \cong \ZZ / 2 $ has a unique generator.
+\end{itemize}
+\end{remark*}
+
+Poincar\'e duality is the key structural result on the cohomology of manifolds.
+
+\begin{corollary}
+Let $ M $ be closed and $ \dim M $ odd. Then $ \chi\br{M} = 0 $.
+\end{corollary}
+
+\begin{proof}
+$ \chi\br{M} = \sum_{i \ge 0} \br{-1}^i \rk_{\FF_2} \H^i\br{M; \FF_2} $ and $ \H^i\br{M; \FF_2} \cong \H^{n - i}\br{M; \FF_2}^* $. Since $ n $ is odd, all terms in the sum cancel.
+\end{proof}
+
+\begin{corollary}
+Let $ M^n $ and $ N^n $ be $ \FF $-oriented closed manifolds. Let $ f : M \to N $ have non-zero degree, that is $ f^* : \H^n\br{N; \FF} \cong \FF \to \H^n\br{M; \FF} \cong \FF $ is non-trivial. Then $ f^* : \H^i\br{N; \FF} \to \H^i\br{M; \FF} $ is injective for all $ i $.
+\end{corollary}
+
+\begin{proof}
+If $ 0 \ne \alpha \in \H^i\br{N; \FF} $, there exists $ \beta \in \H^{n - i}\br{N; \FF} $ such that $ \alpha \cdot \beta \ne 0 \in \H^n\br{N; \FF} $. Since $ \deg_{\FF} f \ne 0 $, $ f^*\br{\alpha \cdot \beta} \ne 0 $, so $ f^*\br{\alpha} \cdot f^*\br{\beta} \ne 0 $. Thus $ f^*\br{\alpha} \ne 0 $.
+\end{proof}
+
+\begin{theorem}[Poincar\'e duality, version $ 2 $]
+\label{thm:poincareduality}
+Let $ M^n $ be an oriented manifold. There is a distinguished isomorphism
+$$ \D : \Hc^k\br{M; \ZZ} \to \H_{n - k}\br{M; \ZZ}, $$
+for all $ k $.
+\end{theorem}
+
+If $ M $ is $ R $-oriented, there exists a corresponding isomorphism working over $ R $, for a commutative ring $ R $. This is defined using cap-product.
+
+\pagebreak
+
+\subsection{Cap-products}
+
+\begin{definition*}
+If $ X $ is a space, \textbf{cap-product} is
+$$ \function[\cap]{\C_k\br{X} \otimes \C^l\br{X}}{\C_{k - l}\br{X}}{\br{\sbr{v_0, \dots, v_k}, \psi}}{\psi\br{\sbr{v_0, \dots, v_l}}\sbr{v_l, \dots, v_k}}. $$
+\end{definition*}
+
+If $ l > k $, this vanishes tautologically.
+
+\begin{lemma}
+For any space $ X $, cap-product satisfies
+\begin{enumerate}
+\item for $ \sigma \in \C_k\br{X} $ and $ \phi \in \C^l\br{X} $,
+$$ \da\br{\sigma \cap \phi} = \br{-1}^l\br{\da\br{\sigma} \cap \phi - \sigma \cap \da^*\br{\phi}}, $$
+therefore $ \cap $ descends to a map
+$$ \cap : \H_k\br{X} \otimes \H^l\br{X} \to \H_{k - l}\br{X}, $$
+\item if $ f : X \to Y $, for $ \alpha \in \H_k\br{X} $ and $ \psi \in \H^l\br{Y} $,
+$$ f_*\alpha \cap \psi = f_*\br{\alpha \cap f^*\psi} \in \H_{k - l}\br{Y}, $$
+\item for $ \sigma \in \C_{k + l}\br{X} $, $ \phi \in \C^k\br{X} $, and $ \psi \in \C^l\br{X} $,
+$$ \psi\br{\sigma \cap \phi} = \br{\phi \cup \psi}\br{\sigma} \in \ZZ. $$
+\end{enumerate}
+\end{lemma}
+
+\begin{remark*}
+$ \C_k\br{A} \otimes \C^l\br{X, A} \to \C_{k - l}\br{X} $ vanishes identically, so there is a relative cap-product $ \C_k\br{X, A} \otimes \C^l\br{X, A} \to \C_{k - l}\br{X} $, which again descends to cohomology.
+\end{remark*}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item If $ \sigma = \sbr{v_0, \dots, v_k} \in \C_k\br{X} $ and $ \phi \in \C^l\br{X} $, then $ \sigma \cap \phi = \phi\br{\sbr{v_0, \dots, v_l}}\sbr{v_l, \dots, v_k} $. Then
+\begin{align*}
+\da\br{\sigma} \cap \phi
+= \ & \sum_{i = 0}^l \br{-1}^i\phi\br{\sbr{v_0, \dots, \widehat{v_i}, \dots, v_{l + 1}}}\sbr{v_{l + 1}, \dots, v_k} \\
+& + \sum_{i = l + 1}^k \br{-1}^i\phi\br{\sbr{v_0, \dots, v_l}}\sbr{v_l, \dots, \widehat{v_i}, \dots, v_k}, \\
+\sigma \cap \da^*\br{\phi}
+= \ & \sum_{i = 0}^{l + 1} \br{-1}^i\phi\br{\sbr{v_0, \dots, \widehat{v_i}, \dots, v_{l + 1}}}\sbr{v_{l + 1}, \dots, v_k}, \\
+\da\br{\sigma \cap \phi}
+= \ & \sum_{i = l}^k \br{-1}^{i - l}\phi\br{\sbr{v_0, \dots, v_l}}\sbr{v_l, \dots, \widehat{v_i}, \dots, v_k},
+\end{align*}
+so $ \da\br{\sigma \cap \phi} = \br{-1}^l\br{\da\br{\sigma} \cap \phi - \sigma \cap \da^*\br{\phi}} $. Now if $ \sigma $ is a cycle and $ \phi $ is a cocycle, $ \sigma \cap \phi $ is a cycle, so $ \sbr{\sigma \cap \phi} \in \H_{k - l}\br{X} $ is defined, and clearly only depends on $ \sbr{\sigma} \in \H_k\br{X} $ and $ \sbr{\phi} \in \H^l\br{X} $.
+\item If $ f : X \to Y $, for $ \alpha \in \H_k\br{X} $ and $ \psi \in \H^l\br{Y} $, then $ f_*\alpha \cap \psi = f_*\br{\alpha \cap f^*\psi} \in \H_{k - l}\br{Y} $, that is
+$$
+\begin{tikzcd}
+\H_k\br{X} \times \H^l\br{Y} \arrow{r}{f_* \times \id} \arrow[cong]{d} & \H_k\br{Y} \times \H^l\br{Y} \arrow{r}{\cap_*} & \H_{k - l}\br{Y} \\
+\H_k\br{X} \times \H^l\br{Y} \arrow{r}[swap]{\id \times f^*} & \H_k\br{X} \times \H^l\br{X} \arrow{r}[swap]{\cap_*} & \H_{k - l}\br{X} \arrow{u}{f_*}
+\end{tikzcd}
+$$
+commutes. This holds at cochain level, since if $ \sigma : \Delta^k = \sbr{v_0, \dots, v_k} \to X $,
+$$ f_*\br{\sigma \cap f^*\psi} = f_*\br{f^*\psi\br{\sbr{v_0, \dots, v_l}}\sbr{v_l, \dots, v_k}} = \phi\br{\eval{f_*\sigma}_{\sbr{v_0, \dots, v_l}}}\eval{f_*\sigma}_{\sbr{v_l, \dots, v_k}} = f_*\sigma \cap \psi, $$
+as required.
+
+\pagebreak
+
+\item I leave it to you to check that at chain level, for $ \sigma \in \C_{k + l}\br{X} $, $ \phi \in \C^k\br{X} $, and $ \psi \in \C^l\br{X} $, $ \psi\br{\sigma \cap \phi} = \br{\phi \cup \psi}\br{\sigma} \in \ZZ $. \footnote{Exercise} Note this says the diagram
+$$
+\begin{tikzcd}
+\H^l\br{X} \arrow{r}{\eta} \arrow{d}[swap]{\phi \cup -} & \Hom\br{\H_l\br{X}, \ZZ} \arrow{d}{\br{- \cap \phi}^*} \\
+\H^{k + l}\br{X} \arrow{r}[swap]{\eta} & \Hom\br{\H_{k + l}\br{X}, \ZZ}
+\end{tikzcd}
+$$
+commutes, where $ \eta $ is the natural map, which is not in general an isomorphism.
+\end{enumerate}
+\end{proof}
+
+\begin{remark*}
+The key point about fields $ \FF $ is that cohomology is free, so $ \eta : \H^i\br{M, \FF} \xrightarrow{\sim} \Hom\br{\H_i\br{M; \FF}, \FF} $ and cup and cap determine each other.
+\end{remark*}
+
+\subsection{Proof of Poincar\'e duality}
+
+Suppose $ M $ is a closed manifold, and we know $ M $ is homotopy equivalent to a finite cell complex. If $ M $ is oriented, $ \H^n\br{M} = \Hc^n\br{M} \xrightarrow{\sim} \ZZ $ and $ \H^n\br{M} \xrightarrow{\sim} \Hom\br{\H_n\br{M}, \ZZ} $, since if $ M $ is an $ n $-dimensional cell complex then $ \H_n\br{M} \cong \ZZ $. These yield a distinguished generator $ \sbr{M} \in \H_n\br{M; \ZZ} $, the \textbf{fundamental class}. It will turn out
+$$ \function[\D]{\H^l\br{M}}{\H_{n - l}\br{M}}{\alpha}{\alpha \cap \sbr{M}} $$
+is cap-product with the fundamental class. So we have
+$$ \function{\H^l\br{M; \FF} \otimes \H^{n - l}\br{M; \FF}}{\FF}{\br{\alpha, \beta}}{\abr{\alpha - \beta, \sbr{M}} = \beta\br{\D\br{\alpha}}}. $$
+This is non-degenerate if and only if $ \D $ is an isomorphism, so Poincar\'e duality version $ 1 $ and Poincar\'e duality version $ 2 $ are equivalent.
+
+\begin{proposition}
+\label{prop:orientationclass}
+Let $ M $ be an oriented manifold and $ \omega_x \in \H_n\br{M, M \setminus \cbr{x}} $ the orientation generator. For each compact $ K \subseteq M $, there exists a unique \textbf{orientation class} $ \omega_K \in \H_n\br{M, M \setminus \cbr{x}} $ such that inclusion sends
+$$ \function{\br{M, M \setminus K}}{\br{M, M \setminus \cbr{x}}}{\omega_K}{\omega_x}, \qquad x \in K. $$
+Moreover,
+$$ \H_i\br{M, M \setminus K} = 0, \qquad i > n. $$
+\end{proposition}
+
+Given this, for $ M $ oriented and $ K \subseteq L \subseteq M $ compact,
+$$
+\begin{tikzcd}
+\H_i\br{M, M \setminus L} \times \H^k\br{M, M \setminus L} \arrow{r}{\cap} \arrow[bend right=30]{d}[swap]{\iota_*} & \H_{i - k}\br{M} \arrow[cong]{d} \\
+\H_i\br{M, M \setminus K} \times \H^k\br{M, M \setminus K} \arrow[bend right=30]{u}[swap]{\iota^*} \arrow{r}[swap]{\cap} & \H_{i - k}\br{M}
+\end{tikzcd}.
+$$
+Take $ i = n = \dim M $. Since $ \iota_*\omega_L = \omega_K $, by uniqueness, $ \omega_K \cap \phi = \iota_*\omega_L \cap \phi = \omega_L \cap \iota_*\phi $, so $ \phi \mapsto \omega_K \cap \phi $ is compatible with the maps in the direct system for $ \KKK = \cbr{\text{compact sets}} $ and $ \br{M, M \setminus K} \hookrightarrow \br{M, M \setminus L} $. Thus there exists an induced $ \D : \Hc^k\br{M} \to \H_{n - k}\br{M} $. This is the map in Poincar\'e duality. We need to
+\begin{itemize}
+\item prove Proposition \ref{prop:orientationclass} which constructs $ \omega_K $ and hence $ \D $, and
+\item deduce Poincar\'e duality.
+\end{itemize}
+
+\pagebreak
+
+\lecture{21}{Wednesday}{25/11/20}
+
+\begin{proof}
+Say a compact set $ K \subseteq M $ is \textbf{good} if it satisfies the conclusions of Proposition \ref{prop:orientationclass}. We work in stages.
+\begin{itemize}
+\item If $ A $, $ B $, and $ A \cap B $ are good, $ A \cup B $ is good. Mayer-Vietoris gives
+$$ 0 \to \H_n\br{M, M \setminus A \cup B} \to \H_n\br{M, M \setminus A} \oplus \H_n\br{M, M \setminus B} \to \H_n\br{M, M \setminus A \cap B}. $$
+By uniqueness for $ A \cap B $,
+$$ \function{\H_n\br{M, M \setminus A} \oplus \H_n\br{M, M \setminus B}}{\H_n\br{M, M \setminus A \cap B}}{\br{\omega_A, \omega_B}}{\omega_{A \cap B} - \omega_{A \cap B} = 0}, $$
+so there exists $ \omega_{A \cup B} \mapsto \br{\omega_A, \omega_B} $, and the initial zero says $ \omega_{A \cup B} $ is unique. See the Thom isomorphism.
+\item We now show the following.
+\begin{itemize}
+\item If $ K \subseteq \RR^n $ is convex, it is good. If $ K \subseteq \RR^n $ is convex, $ \H_\bullet\br{\RR^n, \RR^n \setminus K} \cong \H_\bullet\br{\RR^n, \RR^n \setminus \cbr{0}} $ and the result is easy. Inductively, finite unions of convex sets are good.
+\item If $ K \subseteq \RR^n $, it is good. If $ K \subseteq \RR^n $ is compact, there exists $ R $ such that $ K \subseteq \overline{\B}\br{R} $. Define $ \omega_K = \eval{\omega_{\overline{\B}\br{R}}}_K $ via $ \br{\RR^n, \RR^n \setminus \overline{\B}\br{R}} \hookrightarrow \br{\RR^n, \RR^n \setminus K} $. Then certainly $ \eval{\omega_K}_x = \omega_x $ for all $ x \in K $, so just need uniqueness, that is that no other element of $ \H_n\br{\RR^n, \RR^n \setminus K} $ has this property. Suppose $ \lambda \in \H_n\br{\RR^n, \RR^n \setminus K} $ has $ \eval{\lambda}_x = 0 $ for all $ x \in K $. Then $ \da\lambda $ is a finite union of simplices in $ \RR^n \setminus K $, so there is a finite union of balls $ B_j $ such that $ K \subseteq \widetilde{K} = \bigcup_j B_j $ and $ \da\lambda \cap \widetilde{K} = \emptyset $. So $ \lambda \in \im \br{\H_n\br{\RR^n, \RR^n \setminus \widetilde{K}} \to \H_n\br{\RR^n, \RR^n \setminus K}} $. But $ \widetilde{K} $ is a finite union of convex sets, and we know $ \widetilde{K} $ is good, so $ \lambda = 0 $.
+\item If $ K \subseteq M $, it is good. Now if $ K \subseteq M $ is compact, then $ K = \bigcup_{\text{finite} \ i} K_i $, where $ K_i \subseteq \D^n \cong \RR^n \subseteq M $ are compact. So since all compact $ K_i \subseteq \RR^n $ are good, all $ K $ are good.
+\end{itemize}
+\end{itemize}
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:poincareduality}]
+Now say an open subset $ U \subseteq M $ is \textbf{good} if Poincar\'e duality holds for $ U $. As usual, use Mayer-Vietoris to show if $ U $, $ V $, and $ U \cap V $ are good then $ U \cup V $ is good. Mayer-Vietoris gives
+$$
+\begin{tikzcd}[column sep=tiny]
+\Hc^k\br{U \cap V} \arrow{r} \arrow{d}{\D}[swap]{\sim} & \Hc^k\br{U} \oplus \Hc^k\br{V} \arrow{r} \arrow{d}{\D}[swap]{\sim} & \Hc^k\br{U \cup V} \arrow{r} \arrow{d}{\D}[swap]{\phi} & \Hc^{k + 1}\br{U \cap V} \arrow{r} \arrow{d}{\D}[swap]{\sim} & \Hc^{k + 1}\br{U} \oplus \Hc^{k + 1}\br{V} \arrow{d}{\D}[swap]{\sim} \\
+\H_{n - k}\br{U \cap V} \arrow{r} & \H_{n - k}\br{U} \oplus \H_{n - k}\br{V} \arrow{r} & \H_{n - k}\br{U \cup V} \arrow{r} & \H_{n - k - 1}\br{U \cap V} \arrow{r} & \H_{n - k - 1}\br{U} \oplus \H_{n - k - 1}\br{V}
+\end{tikzcd}.
+$$
+As usual by the $ 5 $-lemma, $ \phi $ is an isomorphism provided the squares commute. As usual, the Mayer-Vietoris boundary square is the most delicate. The snag is that it does not commute. But it commutes up to a global sign, that is one that depends only on $ k $. The $ 5 $-lemma still applies in this case, \footnote{Exercise: easy} and it commutes up to sign. \footnote{Exercise: surprisingly unpleasant, see Hatcher page 246, much nicer in de Rham cohomology} If $ M $ has finite type, the proof ends here by induction on the number of sets in a good cover. Now, let $ M = \bigcup_{i = 1}^\infty U_i $ and $ U_1 \subseteq U_2 \subseteq \dots $ such that all $ U_i $ are good. Any compact $ K \subseteq M $ lies in $ U_N $ for some $ N $, so $ \varinjlim_i \Hc^j\br{U_i} \xrightarrow{\sim} \Hc^j\br{M} $. Any finite union of simplices is compact, so lies in some $ U_N $, so $ \varinjlim_j \H_{n - i}\br{U_j} \xrightarrow{\sim} \H_{n - i}\br{M} $, and the direct limit of isomorphisms is an isomorphism. Any open subset of $ \RR^n $ is a countable union of open balls, so all open sets in $ \RR^n $ are good, by induction for finite unions and above for infinite unions. And any manifold is second countable, so has a countable cover by open discs. So we win and $ M $ is good.
+\end{proof}
+
+\pagebreak
+
+\subsection{Closed smooth oriented submanifolds}
+
+Recall that if $ M^n $ is closed, we have a fundamental class
+$$ \function[\D]{\H^0\br{M; \ZZ}}{\H_n\br{M; \ZZ}}{1}{\omega_M = \sbr{M}}. $$
+If $ \iota : Y^{n - k} \subseteq M^n $ is a closed smooth submanifold and $ Y $ and $ M $ are oriented, so $ Y $ is co-oriented, we now have
+$$ \epsilon_Y = \u_{\nu_{Y / M}} \in \H^k\br{\nu_Y, \nu_Y^\#} \cong \H^k\br{M, M \setminus Y} \to \Hc^k\br{M} \xrightarrow{\D} \H_{n - k}\br{M}, $$
+by the tubular neighbourhood theorem and excision, and
+$$ \sbr{Y} \in \H_{n - k}\br{Y} \xrightarrow{\iota_*} \H_{n - k}\br{M}, $$
+two ways of associating a cohomology class.
+
+\begin{proposition}
+$$ \D\br{\epsilon_Y} = \iota_*\sbr{Y} \in \H_{n - k}\br{M}. $$
+\end{proposition}
+
+\begin{proof}
+The diagram
+$$
+\begin{tikzcd}
+\H_{n - k}\br{Y} \arrow{r}[swap]{\sim} \arrow[cong]{d} & \H_{n - k}\br{U_Y} \arrow{r}{\D^{-1}}[swap]{\sim} \arrow{d}{\iota_*} & \Hc^k\br{U_Y} \arrow{d}{\iota_*} \\
+\H_{n - k}\br{Y} \arrow{r}[swap]{\iota_*} & \H_{n - k}\br{M} \arrow{r}{\sim}[swap]{\D^{-1}} & \Hc^k\br{M}
+\end{tikzcd}
+$$
+commutes, by the proof of Poincar\'e duality version $ 2 $, so $ \D^{-1}\br{\iota_*\sbr{Y}} $ is the image of a class in $ \Hc^k\br{U_Y} \cong \H^k\br{\nu_Y, \nu_Y^\#} $. We know that $ \H^k\br{\nu_Y, \nu_Y^\#} $ is just $ \ZZ \cong \H^0\br{Y} $ by the Thom isomorphism, so $ \D^{-1}\br{\iota_*\sbr{Y}} $ and $ \epsilon_Y $ are generators. Let $ V \subseteq Y $ be a small disc so $ \eval{\nu_{Y / M}}_V $ is trivial, so $ V \times \eval{\nu_{Y / M}}_y = W \subseteq M $. An orientation on $ Y $ and $ M $ amounts to fixing generators of $ \Hc^{n - k}\br{V} $ and $ \Hc^n\br{W} $. A co-orientation for $ Y $ fixes a generator of $ \Hc^k\br{\eval{\nu_Y}_y} $ such that the natural isomorphism
+$$ \Hc^{n - k}\br{V} \otimes \Hc^k\br{\nu_Y} \xrightarrow{\times} \Hc^n\br{W} \xrightarrow{\sim} \Hc^n\br{M} $$
+respects generators. Now $ \epsilon_Y $ is characterised by restricting on fibres $ \eval{\nu_{Y / M}}_y $ to the correct generator, and $ \sbr{Y} = \omega_Y \in \H_{n - k}\br{Y} \to \H^{n - k}\br{Y}^* = \Hc^{n - k}\br{Y}^* = \Hc^{n - k}\br{V}^* $ is characterised by being the correct generator.
+\end{proof}
+
+\begin{corollary}
+Let $ \iota : Y^{n - k} \subseteq M^n $ be a closed smooth oriented submanifold of an oriented closed manifold. Write $ \int_M : \H^n\br{M} \to \ZZ $ and $ \int_Y : \H^{n - k}\br{Y} \to \ZZ $ for the isomorphisms given by the orientations, so $ \int_Y = \abr{-, \sbr{Y}} $, etc. Then
+$$ \int_Y \iota^*\alpha = \int_M \alpha \cdot \epsilon_Y, \qquad \alpha \in \H^{n - k}\br{M}. $$
+\end{corollary}
+
+Thus, $ \epsilon_Y $ behaves like a Dirac delta along $ Y $.
+
+\begin{proof}
+This is just a restatement of things we have already said, that $ \abr{\alpha - \beta, \sbr{M}} = \beta\br{\D\br{\alpha}} $ and $ \D\br{\epsilon_Y} = \iota_*\sbr{Y} $.
+\end{proof}
+
+\lecture{22}{Friday}{27/11/20}
+
+Let $ E \to M $ be a smooth vector bundle, and $ s : M \to E $ a smooth section transverse to the zero-section, that is $ s\br{M}, 0_E \subseteq E $ are transverse. Then $ Y = s^{-1}\br{0} \subseteq M $ is a smooth submanifold of $ M $. Note that $ \codim \br{Y \subseteq E} = \codim \br{s\br{M} \subseteq E} + \codim \br{0_E \subseteq E} = 2\rk E $, so $ \codim \br{Y \subseteq M} = \rk E $. If $ x \in Y $, then
+$$ \function[\eval{\D_s}_x]{\T_xM}{\T_xE = \T_xM \oplus E_x}{\xi}{\br{\xi, \sigma_x\br{\xi}}}, $$
+where $ \sigma_x : \T_xM \to E_x $ is linear. Assume $ E $ is oriented as a vector bundle.
+
+\pagebreak
+
+\begin{proposition}
+$ Y $ is canonically oriented, and $ \epsilon_Y = \e_E \in \H^k\br{M} $.
+\end{proposition}
+
+\begin{proof}
+For $ x \in Y $, $ \T_xM = \T_xY \oplus \eval{\nu_{Y / M}}_x $. Since $ s $ vanishes transversely, $ \T\br{s\br{M}} + \T0_E = \T E $ along $ Y $, so $ \eval{\sigma_x}_{\eval{\nu_{Y / M}}_x} : \eval{\nu_{Y / M}}_x \xrightarrow{\sim} E_x $. So $ \eval{s^*E}_Y \cong \nu_{Y / M} $, and the orientation of $ E $ induces a co-orientation of $ Y $. Now, $ \u_{\nu_{Y / M}} = \u_{s^*E} = s^*\u_E = \iota_{0_E}^*\u_E $ as $ s $ is homotopic to the zero-section. Pushing forward, $ \epsilon_Y = \e_E $.
+\end{proof}
+
+\begin{remark*}
+We saw before that if $ \e_E \ne 0 $, then $ E $ has no nowhere-vanishing zero-section for any oriented bundle $ E \to X $, so this refines that fact.
+\end{remark*}
+
+\subsection{The diagonal submanifold}
+
+Now let $ M^n $ be a closed oriented manifold. K\"unneth says
+$$ \H^\bullet\br{M \times M; \FF} \cong \H^\bullet\br{M; \FF} \otimes \H^\bullet\br{M; \FF}, $$
+for any field $ \FF $. Poincar\'e duality says
+$$ \function{\H^\bullet\br{M; \FF} \otimes \H^{n - \bullet}\br{M; \FF}}{\FF}{\br{a, b}}{\abr{a \cdot b, \sbr{M}} = \int_M a \cdot b} $$
+is non-degenerate. Let $ \cbr{a_i} $ and $ \cbr{b_j} $ be dual bases of $ \H^\bullet\br{M; \FF} $, so
+$$ \abr{a_i \cdot b_j, \sbr{M}} = \delta_{ij}, \qquad a_i \in \H^{d_i}\br{M; \FF}, \qquad b_i \in \H^{n - d_i}\br{M; \FF}. $$
+
+\begin{proposition}
+The diagonal $ \Delta \subseteq M \times M $ is co-oriented, and
+$$ \epsilon_\Delta = \sum_i \br{-1}^{d_i} a_i \times b_i = \sum_i \br{-1}^{d_i} a_i \otimes b_i \in \H^n\br{M \times M; \FF}, $$
+by K\"unneth, where $ a_i \times b_i = \pi_1^*a_i \cdot \pi_2^*b_i $ for
+$$ M \xleftarrow{\pi_1} M \times M \xrightarrow{\pi_2} M. $$
+\end{proposition}
+
+\begin{proof}
+$ \nu_{\Delta / M \times M} \cong \T M $, so an orientation of $ M $ co-orients $ \Delta $. By non-degeneracy of cup-product over a field, it suffices to prove that for any $ \xi \otimes \eta \in \H^p\br{M; \FF} \otimes \H^{n - p}\br{M; \FF} \subseteq \H^n\br{M \times M; \FF} $,
+$$ \abr{\br{\xi \otimes \eta} \cdot \epsilon_\Delta, \sbr{M \times M}} = \abr{\br{\xi \otimes \eta} \cdot \sum_i \br{-1}^{d_i} \br{a_i \otimes b_i}, \sbr{M \times M}}, $$
+where $ \sbr{M \times M} = \sbr{M} \otimes \sbr{M} \in \H_n\br{M} \otimes \H_n\br{M} = \H_{2n}\br{M \times M} $. Recall $ \int_M \alpha \cdot \epsilon_Y = \int_Y \eval{\alpha}_Y $, that is $ \abr{\alpha \cdot \epsilon_Y, \sbr{M}} = \abr{\eval{\alpha}_Y, \sbr{Y}} $. So the left hand side is
+$$ \abr{\eval{\xi \otimes \eta}_\Delta, \sbr{\Delta}} = \abr{\xi \cdot \eta, \sbr{M}}. $$
+The right hand side is
+$$ \abr{\br{\xi \otimes \eta} \cdot \sum_i \br{\br{-1}^{d_i} a_i \otimes b_i}, \sbr{M \times M}} = \sum_i \br{-1}^{d_i}\br{-1}^{d_i\br{n - p}}\abr{\xi \cdot a_i, \sbr{M}} \cdot \abr{\eta \cdot b_i, \sbr{M}}, $$
+using $ \abr{\br{\pi_1^*\alpha \cdot \pi_2^*\beta}, \sbr{M \times M}} = \abr{\alpha, \sbr{M}} \cdot \abr{\beta, \sbr{M}} $ if $ \abs{\alpha} = n = \abs{\beta} $. This is non-zero only if $ p = n - d_i $ and $ n - p = d_i $, so need
+$$ \abr{\xi \cdot \eta, \sbr{M}} =
+\begin{cases}
+\sum_i \br{-1}^{d_i + d_i^2}\abr{\xi \cdot a_i, \sbr{M}} \cdot \abr{\eta \cdot b_i, \sbr{M}} & p = n - d_i \\
+0 & p \ne n - d_i
+\end{cases}.
+$$
+As $ \cbr{a_j} $ form a basis, let $ \eta = a_j $. Then $ \abr{\xi \cdot a_j, \sbr{M}} = \abr{\xi \cdot a_i, \sbr{M}}\delta_{ji} $.
+\end{proof}
+
+\pagebreak
+
+\begin{corollary}[Gauss-Bonnet theorem]
+Let $ M $ be a closed oriented smooth manifold. Then
+$$ \abr{\e_{\T M}, \sbr{M}} = \chi\br{M}. $$
+\end{corollary}
+
+So if $ \chi\br{M} \ne 0 $, every vector field on $ M $ has a zero. See the result for $ \S^n $ via degrees.
+
+\begin{proof}
+Under the natural identification $ \nu_{\Delta / M \times M} \cong \T M $, $ \eval{\epsilon_\Delta}_\Delta = \e_{\nu_\Delta / M \times M} = \e_{\T M} $, so
+$$ \abr{\e_{\T M}, \sbr{M}} = \sum_i \br{-1}^{d_i}\abr{a_i \cdot b_i, \sbr{M}} = \sum_k \br{-1}^k \rk_\FF\H^k\br{M; \FF} = \chi\br{M}. $$
+\end{proof}
+
+\subsection{Lefschetz fixed point theorem}
+
+Now suppose $ Y, Z \subseteq M $ are closed co-oriented submanifolds of a closed oriented manifold $ M^n $, and furthermore assume $ \dim Y + \dim Z = \dim M = n $, so $ \codim Y + \codim Z = n $. Then if $ Y $ and $ Z $ are transverse, $ Y \cap Z $ is a finite set of co-oriented signed points. For $ x \in Y \pitchfork Z $ we set
+$$ \sign x =
+\begin{cases}
+1 & \T_xM \cong \eval{\nu_{Y / M}}_x \oplus \eval{\nu_{Z / M}}_x \ \text{is an oriented isomorphism} \\
+-1 & \text{otherwise}
+\end{cases}.
+$$
+
+\begin{lemma}
+$$ \abr{\epsilon_Y \cdot \epsilon_Z, \sbr{M}} = \sum_{x \in Y \pitchfork Z} \sign x. $$
+\end{lemma}
+
+\begin{proof}
+The left hand side is
+$$ \abr{\epsilon_{Y \cap Z}, \sbr{M}} = \abr{\eval{\epsilon_{Y \cap Z}}_{Y \cap Z}, \sbr{Y \cap Z}} = \sum_{x \in Y \cap Z} \epsilon_x\sign x = \sum_{x \in Y \cap Z} \sign x, $$
+by definition of orientation of $ M $.
+\end{proof}
+
+Say $ f : M \to M $ has \textbf{non-degenerate fixed points} if $ \Delta \pitchfork \Gamma_f \subseteq M \times M $, where $ \Gamma_f $ is the graph of $ f $. If $ F\br{x} = \br{x, f\br{x}} $, want
+$$ \eval{\br{\D\Delta \oplus \D F}}_x = \twobytwo{\id}{\id}{\eval{\D f}_x}{\id} : \T_xM \oplus \T_xM \xrightarrow{\sim} \T_{\br{x, x}}\br{M \times M}, $$
+when $ f\br{x} = x $. This is true if for all $ x $ such that $ f\br{x} = x $, $ \id - \eval{\D f}_x $ is invertible. The sign of the corresponding fixed point is $ \sign \det \br{\id - \eval{\D f}_x} $.
+
+\begin{corollary}[Lefschetz fixed point theorem]
+\label{cor:lefschetztheorem}
+Let $ M $ be a closed $ \FF $-oriented smooth manifold. Let $ f : M \to M $ be smooth with non-degenerate fixed points. Then the algebraic count of $ \Fix f $ is
+\begin{align*}
+\sum_{x \in \Fix f} \sign x
+= \L\br{f}
+& = \STr \br{f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF}} \\
+& = \sum_{k \ge 0} \br{-1}^k\Tr \br{f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF}} \in \FF,
+\end{align*}
+the \textbf{Lefschetz number}.
+\end{corollary}
+
+Usually take $ \FF = \QQ $ or $ \FF = \ZZ / 2 $.
+
+\begin{corollary}
+If $ M $ is a closed smooth oriented manifold, and $ f : M \to M $ is continuous and $ f \simeq \id $, then $ \chi\br{M} \ne 0 $ implies that $ \Fix f \ne \emptyset $.
+\end{corollary}
+
+\begin{proof}
+$ f $ admits a smooth $ \C^0 $-approximation $ \widehat{f} $ and if $ \Fix f = \emptyset $ then $ \Fix \widehat{f} = \emptyset $. But $ \widehat{f} \simeq f \simeq \id $, so $ \L\br{\widehat{f}} = \chi\br{M} $.
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of Corollary \ref{cor:lefschetztheorem}]
+$ \Fix f = \Delta_M \cap \Gamma_f $, so
+$$ \sum_{x \in \Fix f} \sign x = \abr{\epsilon_\Delta \cdot \epsilon_{\Gamma_f}, \sbr{M \times M}} = \abr{\eval{\epsilon_\Delta}_{\Gamma_f}, \sbr{\Gamma_f}} = \abr{\br{\id \times f}^*\epsilon_\Delta, \sbr{M}}. $$
+If $ F = \id \times f $, then $ F^*\epsilon_\Delta = \sum_i \br{-1}^{d_i}a_i \cdot f^*b_i $. Now $ \abr{a_i \cdot f^*b_i, \sbr{M}} $ is the $ \br{i, i} $-matrix entry of $ f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF} $ with respect to the basis $ \cbr{b_j} $, since if $ f^*b_i = \sum_j m_{ij}b_j $ then $ m_{ii} = \abr{a_i \cdot f^*b_i, \sbr{M}} $.
+\end{proof}
+
+\lecture{23}{Monday}{30/11/20}
+
+Let us illustrate our theory in some concrete examples.
+
+\begin{corollary}
+Let $ f : \CC\PP^{2k} \to \CC\PP^{2k} $ be any map. Then $ f $ has a fixed point. In particular, no non-trivial finite group acts freely on $ \CC\PP^{2k} $.
+\end{corollary}
+
+\begin{proof}
+It suffices to prove if $ f $ is smooth, $ \L\br{f} \ne 0 $. Let $ \alpha \in \H^2\br{\PP^{2k}; \ZZ} $ be a generator, and suppose $ f^*\br{\alpha} = l\alpha $ for $ l \in \ZZ $. Then $ f^*\br{\alpha^i} = l^i\alpha^i $ for $ 0 \le i \le 2k $, so
+$$ \L\br{f} = 1 + \dots + l^{2k} =
+\begin{cases}
+2k + 1 & l = 1 \\
+\dfrac{1 - l^{2k + 1}}{1 - l} & l \ne 1
+\end{cases}.
+$$
+In all cases, $ \L\br{f} \ne 0 $.
+\end{proof}
+
+\begin{example*}
+Let $ \br{N, \da N} $ be a compact smooth manifold with boundary $ \da N $, and $ M = N \cup_{\da N} \overline{N} $ the \textbf{double} of $ N $. If $ f : N \to N $ sends $ \da N \to \da N $, then there is an induced map $ F : M \to M $ and
+$$ \L\br{F} = 2\L\br{f} - \L\br{\eval{f}_{\da N}}. $$
+It is a fact that $ M $ is smooth. If $ N $ is oriented and $ \overline{N} $ denotes $ N $ with the opposite orientation, then $ M $ is oriented. Mayer-Vietoris shows
+$$ \H^i\br{M} \to \H^i\br{N} \oplus \H^i\br{N} \to \H^i\br{\da N} $$
+is exact and natural under $ f $ and the obvious map $ F $. Now if $ g $ is a self-map of a short exact sequence
+$$ 0 \to A \to B \to C \to 0, $$
+then $ \Tr g_A - \Tr g_B + \Tr g_C = 0 $.
+\end{example*}
+
+\begin{example*}
+Let $ P $ be the \textbf{pair of pants} $ \S^2 \setminus \cbr{\text{three open discs}} $. If $ f : P \to P $ is a homeomorphism without fixed points, then $ f $ cyclically permutes the three boundary components. First, a homeomorphism $ P \to P $ must preserve $ \da P = \S^1 \sqcup \S^1 \sqcup \S^1 $. \footnote{Exercise: why?} Then $ f $ acts on $ \H^0\br{\da P} = \ZZ^3 $ by a permutation representation, and we cannot fix exactly two connected components, or we fix three, so $ \Tr \br{f^* : \H^0\br{\da P} \to \H^0\br{\da P}} \in \cbr{0, 1, 3} $. But since $ \Fix f = \emptyset $, $ \Fix \br{\eval{f}_{\da P}} = \emptyset $, so $ \L\br{\eval{f}_{\da P}} = 0 $, so $ \Tr \br{f^* : \H^i\br{\da P} \to \H^i\br{\da P}} $ is equal for $ i = 0, 1 $. Now consider the long exact sequence of the pair $ \br{P, \da P} $,
+$$ \H^0\br{P} \to \H^0\br{\da P} \to \H^1\br{P, \da P} \xrightarrow{\alpha} \H^1\br{P} \to \H^1\br{\da P} \to \H^2\br{P, \da P} \to 0, $$
+since $ P $ is homotopy equivalent to a one-dimensional complex.
+\begin{itemize}
+\item $ \L\br{f} = 0 $ and $ f $ acts on $ \H^0\br{P} $ by the identity, so it acts on $ \H^1\br{P} $ by a map of trace one.
+\item $ f $ is a homeomorphism, so it acts on $ \H^2\br{P, \da P} \cong \Hc^2\br{P} \cong \ZZ $ by $ \pm 1 $ depending on whether it preserves or reverses orientation.
+\item $ \alpha : \H^1\br{P, \da P} \to \H^1\br{P} $ vanishes since $ \H^1\br{P} \hookrightarrow \H^1\br{\da P} $.
+\end{itemize}
+So taking trace in
+$$ \H^1\br{P} \to \H^1\br{\da P} \to \H^2\br{P, \da P} $$
+says the action on $ \H^1\br{\da P} $ has trace $ 1 + 1 $, which is impossible by the earlier discussion for $ \S^1 \sqcup \S^1 \sqcup \S^1 $, or $ 1 - 1 $. Thus $ \Tr \br{f : \H^\bullet\br{\da P} \to \H^\bullet\br{\da P}} = 0 $, so $ f $ preserves $ \da P $ by a $ 3 $-cycle.
+\end{example*}
+
+\pagebreak
+
+\begin{example*}
+Let $ f : \Sigma \to \Sigma $ for a Riemann surface $ \Sigma $ have an isolated fixed point at $ p $. Then if $ f $ is holomorphic, the local degree of $ f $ at $ p $ is more than zero. Locally there are co-ordinates, so
+$$ \function[f]{\D}{\D}{z}{z^m}, $$
+where $ m $ is the multiplicity of $ f $ at zero. See one-variable complex analysis. Then $ \deg_p f = m $. Smoothly we can perturb $ f $ to have $ m $ isolated non-degenerate fixed points, by considering $ z^m + \epsilon = f_2\br{z} $ and noting $ f $ and $ f_2 $ are homotopic as maps $ \da\D \to \CC^* $.
+\end{example*}
+
+\begin{corollary}
+If $ \Sigma $ is a Riemann surface of genus at least two and $ f : \Sigma \to \Sigma $ is a holomorphic automorphism of $ \Sigma $ acting trivially on cohomology, then $ f = \id_\Sigma $, not just homotopic.
+\end{corollary}
+
+Thus there is an injection from the holomorphic automorphisms of $ \Sigma $ to $ \Aut \H^\bullet\br{\Sigma; \ZZ} $, so is discrete.
+
+\begin{proof}
+If $ \Delta_\Sigma, \Gamma_f \subseteq \Sigma \times \Sigma $ are not identical, then they must meet at isolated points by the identity theorem from complex analysis. The previous discussion says each isolated fixed point contributes a positive amount to $ \sum_{x \in \Fix \widehat{f}} \sign x $ where $ \widehat{f} \simeq f $ is smooth with non-degenerate fixed points. But $ \widehat{f} \simeq f $ and $ \eval{f}_{\H^\bullet\br{\Sigma}} = \id $, so $ \L\br{\widehat{f}} = \chi\br{\Sigma} = 2 - 2\g < 0 $, a contradiction. The only resolution is that $ \Gamma_f \equiv \Delta $, so $ f = \id_\Sigma $.
+\end{proof}
+
+Let $ M $ and $ N $ be closed oriented manifolds of dimension $ n $. For $ f : M \to N $, let $ f^! : \H^\bullet\br{M} \to \H^\bullet\br{N} $ be
+$$ f^! : \H^i\br{M} \xrightarrow{\D_M} \H_{n - i}\br{M} \xrightarrow{f_*} \H_{n - i}\br{N} \xrightarrow{\D_N} \H^i\br{N}. $$
+Define for $ f, g : M \to N $ the \textbf{co-incidence number}
+$$ \L\br{f, g} = \STr \br{g^*f^! : \H^\bullet\br{M} \to \H^\bullet\br{M}}. $$
+
+\begin{proposition}
+If $ \L\br{f, g} \ne 0 $ there exists $ m \in M $ such that $ f\br{M} = g\br{M} \in \NN $.
+\end{proposition}
+
+\begin{proof}
+As usual we can suppose $ f $ and $ g $ are smooth. Want $ \Gamma_f \cap \Gamma_g \ne \emptyset $. Let us assume $ \L\br{f, g} \ne 0 \in \ZZ / 2 $ and ignore any signs anywhere. We claim
+\begin{equation}
+\label{eq:12}
+\L\br{f, g} = \abr{\epsilon_{\Gamma_f} \cdot \epsilon_{\Gamma_g}, \sbr{M \times N}}.
+\end{equation}
+Recall the cohomology class $ \epsilon_Y $ of an oriented submanifold $ Y \subseteq W $ is $ \D_W^{-1}\br{\iota_*\sbr{Y}} $, so $ \epsilon_{\Gamma_f} = \br{\id \times f}^!\epsilon_{\Delta_M} $, where
+$$
+\begin{tikzcd}
+\Delta_M \arrow{r} \arrow{d}[swap]{\id \times f} & M \times M \arrow{d}{\id \times f} \\
+\Gamma_f \arrow{r} & M \times N
+\end{tikzcd}.
+$$
+So
+$$ \abr{\epsilon_{\Gamma_f} \cdot \epsilon_{\Gamma_g}, \sbr{M \times N}} = \abr{\br{\id \times f}^!\epsilon_\Delta \cdot \epsilon_{\Gamma_g}, \sbr{M \times N}} = \abr{\br{\id \times f}^!\eval{\epsilon_\Delta}_{\Gamma_g}, \sbr{\Gamma_g}} = \abr{\br{\id \times g}^*\br{\id \times f}^!\epsilon_\Delta, \sbr{M}}, $$
+as $ \Gamma_g = \br{\id \times g}\br{\Delta} $. Now
+$$ \br{\id \times g}^*\br{\id \times f}^!\epsilon_\Delta = \sum_i \br{-1}^{d_i}a_i \cdot g^*f^!b_i, $$
+for $ \cbr{a_i} $ and $ \cbr{b_j} $ dual bases, so the right hand side of $ \br{\ref{eq:12}} $ is $ \STr g^*f^! $ as required.
+\end{proof}
+
+\begin{example*}
+If $ f : M \to M $, then $ f^!f^* : \H^\bullet\br{M} \to \H^\bullet\br{M} $ is multiplication by $ \deg f $, since
+$$ f^!f^*a = \D^{-1}\br{f_*\D\br{f^*a}} = \D^{-1}\br{f_*\br{f^*a \cap \sbr{M}}} = \D^{-1}\br{a \cap f_*\sbr{M}} = \deg f \cdot \D^{-1}\br{a \cap \sbr{M}} = \deg f \cdot a. $$
+Contrast that $ f^*f^! $ is multiplication by $ \deg f $ on the subspace $ \im f^* $. \footnote{Exercise: check}
+\end{example*}
+
+\begin{corollary}
+If $ f : \CC\PP^{2k} \to \CC\PP^{2k} $ has non-zero degree, and $ g \simeq f $, then there exists $ p $ such that $ f\br{p} = g\br{p} $.
+\end{corollary}
+
+\begin{proof}
+Since it has non-zero degree, working over $ \QQ $, $ f^* $ is onto, so $ f^*f^! = \deg f $. Thus $ \L\br{f, f} \ne 0 $, and $ f \simeq g $, so $ \L\br{f, g} = 0 $.
+\end{proof}
+
+\pagebreak
+
+\subsection{Cobordism}
+
+\lecture{24}{Wednesday}{02/12/20}
+
+Classifying manifolds up to diffeomorphism is hard once dimension is more than two, and algorithmically impossible once dimension is more than three. One of the great insights of twentieth century geometry was that one can classify manifolds up to a different equivalence relation.
+
+\begin{definition*}
+Closed oriented smooth $ n $-manifolds $ M $ and $ N $ are oriented \textbf{cobordant} if there exists an oriented $ W^{n + 1} $ such that $ \da W = M \sqcup \overline{N} $, reversing the orientation of $ N $.
+\end{definition*}
+
+Oriented cobordism is an equivalence relation, where transitivity uses the existence of collar neighbourhoods of the boundary. Let
+$$ \Omega_n = \cbr{\text{oriented cobordism classes of smooth $ n $-manifolds}}. $$
+Define $ + $ by $ M + N = M \sqcup N $ and $ \cdot $ by $ M \cdot N = M \times N $. Then $ \Omega_\bullet = \bigoplus_{n \ge 0} \Omega_n $ is a graded ring. Note
+$$ M \cdot N = \br{-1}^{\dim M\dim N}N \cdot M, $$
+so $ \Omega_\bullet $ is graded commutative.
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \Omega_0 = \ZZ $ is generated by a point.
+\item $ \Omega_1 = \cbr{0} $, since a $ 1 $-manifold is the nullcobordism of an oriented $ \S^1 $.
+\item $ \Omega_2 = \cbr{0} $, since a $ 2 $-manifold bounds a region in $ 3 $-space.
+\item $ \Omega_3 = \cbr{0} $ is non-trivial, and follows from the Dehn surgery presentation of $ 3 $-manifolds.
+\end{itemize}
+\end{example*}
+
+\begin{lemma}
+If $ M^{2n} $ is closed and $ M = \da W^{2n + 1} $ then $ \chi\br{M} $ is even. Thus, $ \CC\PP^2 $ is not the boundary of any $ 5 $-manifold.
+\end{lemma}
+
+\begin{proof}
+If $ M = \da W $, construct the double $ Z = W \cup_M W $. By Poincar\'e duality, $ \chi\br{Z} = 0 $, as it is closed and odd-dimensional. But Mayer-Vietoris gives
+$$ \dots \to \H_{i + 1}\br{Z} \to \H_i\br{M} \to \H_i\br{W} \oplus \H_i\br{W} \to \H_i\br{Z} \to \dots $$
+exact, so the alternating sum of ranks of these groups vanishes. Thus $ \chi\br{M} = 2\chi\br{W} $.
+\end{proof}
+
+Thus $ l $ times $ \PP^2 \times \dots \times \PP^2 \ne 0 \in \Omega_{4l} $ for all $ l \ge 1 $. Let $ M^{4n} $ be closed oriented. So cup-product
+$$ \H^{2n}\br{M; \RR} \otimes \H^{2n}\br{M; \RR} \to \RR $$
+is a non-degenerate symmetric bilinear form.
+
+\begin{definition*}
+The \textbf{index} $ \I\br{M} $ of $ M^{4n} $ is the signature, the number of positive minus the number of negative eigenvalues, of the symmetric bilinear form. For $ M^4 $, people usually write $ \sigma\br{M} $.
+\end{definition*}
+
+Note that
+\begin{itemize}
+\item $ \I\br{M} \equiv \chi\br{M} \mod 2 $,
+\item $ \I\br{M \sqcup M'} = \I\br{M} + \I\br{M'} $, and
+\item $ \I\br{M \times M'} = \I\br{M} \cdot \I\br{M'} $,
+\end{itemize}
+so $ \I $ defines a ring homomorphism $ \Omega_{4\bullet} \to \ZZ $. If $ M $ is a manifold with boundary $ \da M $, using an open collar neighbourhood $ \da M \times \intco{0, \epsilon} \hookrightarrow M $,
+$$ \H^\bullet\br{M, \da M} \cong \Hc^\bullet\br{M \setminus \da M} \xrightarrow{\D} \H_{n - \bullet}\br{M \setminus \da M} \cong \H_{n - \bullet}\br{M}, $$
+by homotopy invariance. The orientation class $ \omega_K \in \H_n\br{M, M \setminus K} $ for $ K $ the complement of an open collar $ \da M \times \intco{0, \epsilon} $ of $ \da M \subseteq M $ gives a \textbf{relative fundamental class} $ \sbr{M, \da M} \in \H_n\br{M, \da M} $.
+
+\begin{lemma}
+\label{lem:boundaryorientation}
+An orientation of $ M $ defines an orientation of $ \da M $, and
+$$ \function{\H_n\br{M, \da M}}{\H_{n - 1}\br{\da M}}{\sbr{M, \da M}}{\sbr{\da M}}. $$
+\end{lemma}
+
+\pagebreak
+
+\begin{proof}
+$ \sbr{M, \da M} $ is characterised by giving generators for $ \H_n\br{M, M \setminus \cbr{y}} \cong \H_n\br{\mathring{M}, \mathring{M} \setminus \cbr{y}} $ where $ y \in \mathring{M} $, and $ \sbr{\da M} $ is characterised by giving generators for $ \H_{n - 1}\br{\da M, \da M \setminus \cbr{x}} $ where $ x \in \da M $. For any triple $ A \subseteq B \subseteq X $, there exists a long exact sequence \footnote{Exercise}
+$$ \dots \to \H_{i + 1}\br{X, B} \to \H_i\br{B, A} \to \H_i\br{X, A} \to \H_i\br{X, B} \to \dots. $$
+Take $ \br{M, M \setminus \mathring{U}, M \setminus U} $, so $ M \setminus U \simeq M $ and $ \H_\bullet\br{M, M \setminus U} = 0 $. So
+\begin{align*}
+\H_\bullet\br{M, M \setminus \cbr{y}}
+& \cong \H_\bullet\br{M, M \setminus \mathring{U}} & \text{homotopy invariance for} \ \cbr{y} \hookrightarrow \mathring{U} \\
+& \cong \H_{\bullet - 1}\br{M \setminus \mathring{U}, M \setminus U} & \text{exactness} \\
+& \cong \H_{\bullet - 1}\br{M \setminus \mathring{U}, \br{M \setminus U} \setminus \cbr{x}} & \text{homotopy invariance} \\
+& \cong \H_{\bullet - 1}\br{\da M, \da M \setminus \cbr{x}} & \text{excising} \ \mathring{M} \setminus \mathring{U}.
+\end{align*}
+\end{proof}
+
+\begin{corollary}[Lefschetz duality]
+For an oriented manifold with boundary $ \br{M, \da M} $, cap-product
+$$ - \cap \sbr{M, \da M} : \H^i\br{M} \xrightarrow{\D_\r} \H_{n - i}\br{M, \da M} $$
+is an isomorphism.
+\end{corollary}
+
+\begin{proof}
+Mayer-Vietoris gives
+$$
+\begin{tikzcd}
+\H^{i - 1}\br{\da M} \arrow{r} \arrow{d}{\D_{\da M}}[swap]{\sim} & \H^i\br{M, \da M} \arrow{r} \arrow{d}{\D_M}[swap]{\sim} & \H^i\br{M} \arrow{r} \arrow{d}{\D_\r}[swap]{\sim} & \H^i\br{\da M} \arrow{r} \arrow{d}{\D_{\da M}}[swap]{\sim} & \H^{i + 1}\br{M, \da M} \arrow{d}{\D_M}[swap]{\sim} \\
+\H_{n - i}\br{\da M} \arrow{r} & \H_{n - i}\br{M} \arrow{r} & \H_{n - i}\br{M, \da M} \arrow{r} & \H_{n - i - 1}\br{\da M} \arrow{r} & \H_{n - i - 1}\br{M}
+\end{tikzcd}.
+$$
+The result follows by the $ 5 $-lemma, after checking squares commute using Lemma \ref{lem:boundaryorientation}.
+\end{proof}
+
+\begin{exercise*}
+Let $ V $ be a real $ 2k $-dimensional vector space with a symmetric bilinear form $ Q $. If there is a $ k $-dimensional isotropic subspace $ W \subseteq V $, that is $ Q\br{v, v'} = 0 $ for all $ v, v' \in W $, then the signature of $ Q $ is zero.
+\end{exercise*}
+
+\begin{corollary}
+If $ M^{4n} = \da W^{4n + 1} $ is an oriented boundary, then $ \I\br{M} = 0 $.
+\end{corollary}
+
+\begin{proof}
+Let $ \iota : M \to W $ be the inclusion, so $ \iota^*\H^{2n}\br{W} \subseteq \H^{2n}\br{M} $. Now for $ \alpha, \beta \in \H^{2n}\br{W} $, and $ Q $ the intersection form on $ M $,
+$$ Q\br{\iota^*\alpha, \iota^*\beta} = \abr{\iota^*\alpha \cdot \iota^*\beta, \sbr{\da W}} = \abr{\alpha \cdot \beta, \iota_*\sbr{\da W}} = 0, $$
+as $ \sbr{\da W} \in \im \br{j_* : \H_{4n + 1}\br{W, \da W} \to \H_{4n}\br{\da W}} $ so $ \iota_*\sbr{\da W} = \im \br{\iota \circ j}_* $. Now, working over a field $ \RR $,
+$$
+\begin{tikzcd}
+\H^{2n}\br{W} \arrow{r}{\iota^*} \arrow{d}{\D}[swap]{\sim} & \H^{2n}\br{M} \arrow{r}{\delta^*} \arrow{d}{\D}[swap]{\sim} & \H^{2n + 1}\br{W, \da W} \arrow{d}{\D}[swap]{\sim} \\
+\H_{2n + 1}\br{W, M} \arrow{r}[swap]{\delta} & \H_{2n}\br{M} \arrow{r}[swap]{\iota_*} & \H_{2n}\br{W}
+\end{tikzcd}.
+$$
+Then $ \im \iota^* $ and $ \ker \iota_* $ have the same rank $ \dim \H_{2n}\br{M} - \rk \iota_* $ and $ \rk \iota_* = \rk \iota^* $, so $ \dim \H_{2n}\br{M} = 2\rk \iota^* $.
+\end{proof}
+
+Thom proved that
+$$ \Omega_\bullet \otimes \QQ \cong \QQ\sbr{\CC\PP^{2k} \st k \ge 1} \cong \QQ\sbr{x_4, x_8, \dots}, $$
+a polynomial ring on countably many generators. Let $ f : \S^{n + k} \to \S^k $ be smooth. If $ t \in \S^k $ is regular, then $ M_t = f^{-1}\br{t} \subseteq \S^{n + k} $ is a closed smooth manifold, and there is a trivialisation of $ \nu_{M_t / \S^{n + k}} $. Given $ t_1 $ and $ t_2 $ regular and a generic path $ \gamma $ from $ t_1 $ to $ t_2 $, $ f^{-1}\br{\gamma} = W_\gamma $ with $ \da W_\gamma = M_{t_1} \sqcup \overline{M_{t_2}} $. The \textbf{Pontrjagin-Thom construction} interprets the stable homotopy groups of spheres in terms of framed cobordism, keeping track of trivialisations of normal bundles, by $ \pi_n^{\s\t} = \Omega_n^{\text{framed}} $. So cobordism seems central in homotopy theory.
 
 \end{document}
