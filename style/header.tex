@@ -23,9 +23,12 @@
 % Formatting
 
 \addto\captionsUKenglish{\renewcommand{\abstractname}{Syllabus}}
+\DeclareFontFamily{U}{wncyr}{}
+\DeclareFontShape{U}{wncyr}{m}{n}{<->wncyr10}{}
+\DeclareSymbolFont{cyr}{U}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathord}{cyr}{"58}
 \delimitershortfall5pt
 \ifx\thm\undefined\newtheorem{n}{}\else\newtheorem{n}{}[\thm]\fi
-\newcommand\from{\leftarrow}
 \newcommand\newoperator[1]{\ifcsdef{#1}{\cslet{#1}{\relax}}{}\csdef{#1}{\operatorname{#1}}}
 \newcommand\vC{\check{\C}}
 \newcommand\vH{\check{\H}}
@@ -340,10 +343,12 @@
 \newoperator{Cone}  % Cone
 \newoperator{Crit}  % Critical
 \newoperator{ct}    % Compact
+\newoperator{cts}   % Continuous
 \newoperator{div}   % Divisor
 \newoperator{Div}   % Divisor group
 \newoperator{End}   % Endomorphism
 \newoperator{Ext}   % Ext
+\newoperator{Fix}   % Fix
 \newoperator{Frac}  % Fraction
 \newoperator{Fr}    % Frobenius
 \newoperator{Gal}   % Galois
@@ -363,10 +368,15 @@
 \newoperator{ord}   % Order
 \newoperator{Pic}   % Picard
 \newoperator{Proj}  % Projective
+\newoperator{Reg}   % Regulator
 \newoperator{res}   % Restriction
 \newoperator{rk}    % Rank
+\newoperator{sep}   % Separable
+\newoperator{sign}  % Sign
 \newoperator{Spec}  % Spectrum
+\newoperator{Sum}   % Sum
 \newoperator{supp}  % Support
+\newoperator{STr}   % Supertrace
 \newoperator{taut}  % Tautological
 \newoperator{tors}  % Torsion
 \newoperator{Tr}    % Trace
