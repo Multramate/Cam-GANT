@@ -102,6 +102,8 @@ $$ u = a^2, \qquad v = b^2, \qquad u + v = c^2, \qquad u - v = d^2, \qquad a, b,
 Since $ u \not\equiv v \mod 2 $ both $ c $ and $ d $ are odd. Then $ \br{\br{c + d} / 2}^2 + \br{\br{c - d} / 2}^2 = \br{c^2 + d^2} / 2 = u = a^2 $, so $ \Delta\br{\br{c + d} / 2, \br{c - d} / 2, a} $ is a primitive triangle. Its area is $ \br{c^2 - d^2} / 8 = v / 4 = \br{b / 2}^2 $. Let $ w_1 = b / 2 $. By Lemma \ref{lem:1.1}, $ w_1^2 = u_1v_1\br{u_1^2 - v_1^2} $ for some $ u_1, v_1 \in \ZZ $, that is we have a new solution to $ \br{\ref{eq:1}} $. But $ 4w_1^2 = b^2 = v \mid w^2 $, so $ w_1 \le w / 2 $. So by Fermat's method of infinite descent, there is no solution to $ \br{\ref{eq:1}} $.
 \end{proof}
 
+\pagebreak
+
 \subsection{A variant for polynomials}
 
 In this section, $ K $ is a field with $ \ch K \ne 2 $, with algebraic closure $ \overline{K} $.
@@ -467,7 +469,7 @@ Then
 \item Let $ P, Q \in E $, let $ S $ be the third point of intersection of $ PQ $ and $ E $, and let $ R $ be the third point of intersection of $ \OOO_ES $ and $ E $. Let $ l = 0 $ be the line $ PQ $ and let $ m = 0 $ be the line $ \OOO_ES $. Then
 $$ \div \dfrac{l}{m} = \br{P} + \br{S} + \br{Q} - \br{R} - \br{S} - \br{\OOO_E} = \br{P} + \br{Q} - \br{\OOO_E} - \br{P \oplus Q}, $$
 so $ \br{P \oplus Q} + \br{\OOO_E} \sim \br{P} + \br{Q} $. Thus $ \br{P \oplus Q} - \br{\OOO_E} \sim \br{P} - \br{\OOO_E} + \br{Q} - \br{\OOO_E} $, so $ \psi\br{P \oplus Q} = \psi\br{P} + \psi\br{Q} $.
-\item For injectivity, suppose $ \psi\br{P} = \psi\br{Q} $ for $ P \ne Q $. Then there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f = P - Q $, and $ \deg \br{f : E \to \PP^1} = \ord_P f = 1 $, so $ E \cong \PP^1 $, a contradiction. For surjectivity, let $ \sbr{D} \in \Pic^0 E $. Then $ D + \br{\OOO_E} $ has degree one. By Riemann Roch, $ \dim \LLL\br{D + \br{\OOO_E}} = 1 $, so there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f + D + \br{\OOO_E} \ge 0 $. Since $ \div f + D + \br{\OOO_E} $ has degree one, $ \div f + D + \br{\OOO_E} = \br{P} $ for some $ P \in E $, so $ \br{P} - \br{\OOO_E} \sim D $. Thus $ \psi\br{P} = \sbr{D} $.
+\item For injectivity, suppose $ \psi\br{P} = \psi\br{Q} $ for $ P \ne Q $. Then there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f = \br{P} - \br{Q} $, and $ \deg \br{f : E \to \PP^1} = \ord_P f = 1 $, so $ E \cong \PP^1 $, a contradiction. For surjectivity, let $ \sbr{D} \in \Pic^0 E $. Then $ D + \br{\OOO_E} $ has degree one. By Riemann Roch, $ \dim \LLL\br{D + \br{\OOO_E}} = 1 $, so there exists $ f \in \overline{K}\br{E}^* $ such that $ \div f + D + \br{\OOO_E} \ge 0 $. Since $ \div f + D + \br{\OOO_E} $ has degree one, $ \div f + D + \br{\OOO_E} = \br{P} $ for some $ P \in E $, so $ \br{P} - \br{\OOO_E} \sim D $. Thus $ \psi\br{P} = \sbr{D} $.
 \end{enumerate}
 \end{proof}
 
@@ -835,7 +837,7 @@ $$ \ord_P \omega = \ord_P f. $$
 This is independent of the choice of $ t $.
 
 \begin{fact*}
-Suppose $ f \in K\br{C}^* $ such that $ \ord_P f = n \ne 0 $. If $ \ch k \nmid n $ then
+Suppose $ f \in K\br{C}^* $ such that $ \ord_P f = n \ne 0 $. If $ \ch K \nmid n $ then
 $$ \ord_P \br{\d f} = n - 1. $$
 \end{fact*}
 
@@ -952,7 +954,7 @@ Let $ \GG_\m = \AA^1 \setminus \cbr{0} = \PP^1 \setminus \cbr{0, \infty} $ be th
 $$ \function{\GG_\m \times \GG_\m}{\GG_\m}{\br{x, y}}{xy}. $$
 Let $ n \ge 1 $ be an integer, and let
 $$ \function[\alpha]{\GG_\m}{\GG_\m}{x}{x^n}. $$
-Then $ \alpha^*\br{\d x} = \d\br{x^n} = nx^{n - 1}\d x $. So if $ \ch k \nmid n $ then $ \alpha $ is separable. By Theorem \ref{thm:2.8}, $ \#\alpha^{-1}\br{Q} = \deg \alpha $ for all but finitely many $ Q \in \GG_\m $. Since $ \alpha $ is a group homomorphism, $ \#\alpha^{-1}\br{Q} = \#\ker \alpha $ for all $ Q \in \GG_\m $. Thus $ \#\ker \alpha = \deg \alpha = n $, that is $ K = \overline{K} $ contains exactly $ n $ distinct $ n $-th roots of unity.
+Then $ \alpha^*\br{\d x} = \d\br{x^n} = nx^{n - 1}\d x $. So if $ \ch K \nmid n $ then $ \alpha $ is separable. By Theorem \ref{thm:2.8}, $ \#\alpha^{-1}\br{Q} = \deg \alpha $ for all but finitely many $ Q \in \GG_\m $. Since $ \alpha $ is a group homomorphism, $ \#\alpha^{-1}\br{Q} = \#\ker \alpha $ for all $ Q \in \GG_\m $. Thus $ \#\ker \alpha = \deg \alpha = n $, that is $ K = \overline{K} $ contains exactly $ n $ distinct $ n $-th roots of unity.
 \end{example*}
 
 \begin{theorem}
@@ -1072,7 +1074,7 @@ By Hasse's theorem, $ \abs{a} \le 2\sqrt{q} $. Then $ \alpha = \overline{\beta} 
 \label{eq:7}
 \abs{\alpha} = \abs{\beta} = \sqrt{q}.
 \end{equation}
-Let $ K = \FF_q\br{E} $. If $ \zeta_K\br{s} = 0 $, then $ \Z_E\br{q^{-s}} = 0 $, so $ q^s = \alpha $ or $ q^s = \beta $. Thus $ \Re s = \tfrac{1}{2} $ by $ \br{\ref{eq:7}} $.
+Let $ K = \FF_q\br{E} $. If $ \zeta_K\br{s} = 0 $, then $ \Z_E\br{q^{-s}} = 0 $, so $ q^s = \alpha, \beta $. Thus $ \Re s = \tfrac{1}{2} $ by $ \br{\ref{eq:7}} $.
 \end{remark*}
 
 \pagebreak
@@ -1375,7 +1377,7 @@ $$ \dots \subset \FFF\br{\pi^2\OOO_K} \subset \FFF\br{\pi\OOO_K}. $$
 
 \pagebreak
 
-We show that $ \FFF\br{\pi^r\OOO_K} \cong \br{\OOO_K, +} $ for $ r $ sufficiently large and $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{k, +} $.
+We show that $ \FFF\br{\pi^r\OOO_K} \cong \br{\OOO_K, +} $ for $ r $ sufficiently large and $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{k, +} $ for all $ r \ge 1 $.
 
 \lecture{13}{Friday}{06/11/20}
 
@@ -1389,7 +1391,7 @@ $ \widehat{\GG_\a}\br{\pi^r\OOO_K} = \br{\pi^r\OOO_K, +} \cong \br{\OOO_K, +} $.
 \end{remark*}
 
 \begin{proof}
-For $ x \in \pi^r\OOO_K $ we must check the power series $ \exp $ and $ \log $ converge. Recall $ \exp T = T + \br{b_2 / 2!}T^2 + \br{b_3 / 3!}T^3 + \dots $ for $ b_i \in \OOO_K $. Claim that $ \v_p\br{n!} \le \br{n - 1} / \br{p - 1} $, since
+For $ x \in \pi^r\OOO_K $ we must check the power series $ \exp x $ and $ \log x $ converge. Recall $ \exp T = T + \br{b_2 / 2!}T^2 + \br{b_3 / 3!}T^3 + \dots $ for $ b_i \in \OOO_K $. Claim that $ \v_p\br{n!} \le \br{n - 1} / \br{p - 1} $, since
 $$ \v_p\br{n!} = \sum_{r = 1}^\infty \fbr{\dfrac{n}{p^r}} < \sum_{r = 1}^\infty \dfrac{n}{p^r} = n\br{\dfrac{\tfrac{1}{p}}{1 - \tfrac{1}{p}}} = \dfrac{n}{p - 1}, $$
 so $ \br{p - 1}\v_p\br{n!} < n $, so $ \br{p - 1}\v_p\br{n!} \le n - 1 $, since the left hand side is in $ \ZZ $. Now
 $$ v\br{\dfrac{b_nx^n}{n!}} \ge nr - e\br{\dfrac{n - 1}{p - 1}} = \br{n - 1}\br{r - \dfrac{e}{p - 1}} + r. $$
@@ -1696,7 +1698,7 @@ So $ \#E\br{\QQ}_{\tors} \mid 5 \cdot 2^a $ for some $ a \ge 0 $ and $ \#E\br{\Q
 \end{example*}
 
 \begin{example*}
-Let $ E_D $ be $ y^2 = x^3 - D^2x $ for $ D \in \ZZ $ a squarefree integer. Then $ \Delta = 2^6\Delta^6 $, and $ E_D\br{\QQ}_{\tors} \supseteq \cbr{\OOO, \br{0, 0}, \br{\pm D, 0}} \cong \br{\ZZ / 2\ZZ}^2 $. Let $ f\br{x} = x^3 - D^2x $. If $ p \nmid 2D $ then
+Let $ E_D $ be $ y^2 = x^3 - D^2x $ for $ D \in \ZZ $ a squarefree integer. Then $ \Delta = 2^6D^6 $, and $ E_D\br{\QQ}_{\tors} \supset \cbr{\OOO, \br{0, 0}, \br{\pm D, 0}} \cong \br{\ZZ / 2\ZZ}^2 $. Let $ f\br{x} = x^3 - D^2x $. If $ p \nmid 2D $ then
 $$ \#\widetilde{E_D}\br{\FF_p} = 1 + \sum_{x \in \FF_p^2} \br{\br{\dfrac{f\br{x}}{p}} + 1}. $$
 If $ p \equiv 3 \mod 4 $ then since $ f\br{x} $ is an odd function
 $$ \br{\dfrac{f\br{-x}}{p}} = \br{\dfrac{-f\br{x}}{p}} = \br{\dfrac{-1}{p}}\br{\dfrac{f\br{x}}{p}} = -\br{\dfrac{f\br{x}}{p}}, $$
@@ -1880,7 +1882,7 @@ Then $ K\br{Q} / K $ is an abelian extension of exponent dividing $ n $, unramif
 \end{proof}
 
 \begin{remark*}
-If $ K = \RR $ or $ K = \CC $ or $ \sbr{K : \QQ_p} < \infty $ then $ \abs{E\br{K} / nE\br{K}} < \infty $, yet $ E\br{K} $ is not finitely generated, indeed uncountable.
+If $ K = \RR, \CC $ or $ \sbr{K : \QQ_p} < \infty $ then $ \abs{E\br{K} / nE\br{K}} < \infty $, yet $ E\br{K} $ is not finitely generated, indeed uncountable.
 \end{remark*}
 
 \pagebreak
@@ -2157,7 +2159,7 @@ Omitted. Silverman, Chapter III, Proposition 4.12.
 \end{proof}
 
 \begin{proposition}
-Let $ \phi : E \to E' $ be an isogeny of degree $ n $. Then there exists a unique isogeny $ \widehat{\phi} : E' \to E $ such that $ \widehat{\phi} \circ \phi = \sbr{n} $.
+Let $ \phi : E \to E' $ be an isogeny of degree $ n $. Then there exists a unique isogeny $ \widehat{\phi} : E' \to E $ such that $ \widehat{\phi} \circ \phi = \sbr{n} $. Then $ \widehat{\phi} $ is called the \textbf{dual isogeny}.
 \end{proposition}
 
 \begin{proof}
@@ -2196,5 +2198,524 @@ $$ \widehat{\phi + \psi} = \widehat{\phi} + \widehat{\psi}. $$
 \begin{remark*}
 In Silverman's book he proves Lemma \ref{lem:14.3} first, and uses this to show $ \deg : \Hom\br{E, E'} \to \ZZ $ is a quadratic form.
 \end{remark*}
+
+\pagebreak
+
+\subsection{The Weil pairing}
+
+\lecture{20}{Monday}{23/11/20}
+
+\begin{definition*}
+The \textbf{sum} is
+$$ \function[\Sum]{\Div E}{E}{\sum_P n_P\br{P}}{\sum_P n_PP}, $$
+adding up a formal sum using the group law.
+\end{definition*}
+
+Recall there is an isomorphism
+$$ \functions{E}{\Pic^0 E}{P}{\sbr{\br{P} - \br{\OOO_E}}}{\sum_P n_PP}{\sum_P n_P\br{P} - \br{\sum_P n_P}\br{\OOO_E}}, $$
+so $ \Sum D \mapsto \sbr{D} $ for all $ D \in \Div^0 E $.
+
+\begin{lemma}
+Let $ D \in \Div E $. Then $ D \sim 0 $ if and only if $ \deg D = 0 $ and $ \Sum D = \OOO_E $.
+\end{lemma}
+
+Let $ \phi : E \to E' $ be an isogeny of degree $ n $ with dual isogeny $ \widehat{\phi} : E' \to E $. Assume $ \ch K \ne n $, so $ \phi $ and $ \phi' $ are separable. We define the \textbf{Weil pairing}
+$$ \e_\phi : E\sbr{\phi} \times E'\sbr{\widehat{\phi}} \to \mu_n. $$
+Let $ T \in E'\sbr{\widehat{\phi}} $. Then $ nT = \OOO $. So there exists $ f \in \overline{K}\br{E'}^* $ such that
+$$ \div f = n\br{T} - n\br{\OOO}. $$
+Pick $ T_0 \in E\br{K} $ with $ \phi\br{T_0} = T $. Then
+$$ \phi^*\br{T} - \phi^*\br{\OOO} = \sum_{P \in E\sbr{\phi}} \br{P + T_0} - \sum_{P \in E\sbr{\phi}} \br{P} $$
+has sum $ nT_0 = \widehat{\phi}\br{\phi\br{T_0}} = \widehat{\phi}\br{T} = \OOO $. So there exists $ g \in \overline{K}\br{E}^* $ such that
+$$ \div g = \phi^*\br{T} - \phi^*\br{\OOO}. $$
+Now
+$$ \div \br{\phi^*f} = \phi^*\br{\div f} = n\br{\phi^*\br{T} - \phi^*\br{\OOO}} = \div g^n, $$
+so $ \phi^*f = cg^n $ for some $ c \in \overline{K}^* $. Rescaling $ f $, without loss of generality $ c = 1 $, that is $ \phi^*f = g^n $. If $ S \in E\sbr{\phi} $ then $ \phi \circ \tau_S = \phi $, so $ \tau_S^* \circ \phi^* = \phi^* $. Then $ \tau_S^*\br{\div g} = \div g $, so $ \tau_S^*g = \zeta g $ for some $ \zeta \in \overline{K}^* $. Thus
+$$ \zeta = \dfrac{g\br{X + S}}{g\br{X}}, \qquad X \in E\br{\overline{K}} \setminus \cbr{\text{zeros and poles of} \ g}. $$
+Now
+$$ \zeta^n = \dfrac{g\br{X + S}^n}{g\br{X}^n} = \dfrac{f\br{\phi\br{X + S}}}{f\br{\phi\br{X}}} = 1, $$
+since $ S \in E\sbr{\phi} $, so $ \zeta \in \mu_n $. We define
+$$ \e_\phi\br{S, T} = \dfrac{g\br{X + S}}{g\br{X}}. $$
+
+\begin{proposition}
+$ \e_\phi $ is bilinear and nondegenerate.
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item Linearity in first argument, since
+$$ \e_\phi\br{S_1 + S_2, T} = \dfrac{g\br{X + S_1 + S_2}}{g\br{X + S_2}} \cdot \dfrac{g\br{X + S_2}}{g\br{X}} = \e_\phi\br{S_1, T}\e_\phi\br{S_2, T}. $$
+
+\pagebreak
+
+\item Linearity in second argument. Let $ T_1, T_2 \in E'\sbr{\widehat{\phi}} $, and let
+$$ \div f_1 = n\br{T_1} - n\br{\OOO}, \qquad \div f_2 = n\br{T_2} - n\br{\OOO}, \qquad \phi^*f_1 = g_1^n, \qquad \phi^*f_2 = g_2^n. $$
+There exists $ h \in \overline{K}\br{E'}^* $ such that
+$$ \div h = \br{T_1} + \br{T_2} - \br{T_1 + T_2} - \br{\OOO}. $$
+Then put $ f = f_1f_2 / h^n $ and $ g = g_1g_2 / \phi^*h $. Check that
+$$ \div f = n\br{T_1 + T_2} - n\br{\OOO}, \qquad \phi^*f = \dfrac{\phi^*f_1\phi^*f_2}{\br{\phi^*h}^n} = \br{\dfrac{g_1g_2}{\phi^*h}}^n = g^n, $$
+so
+$$ \e_\phi\br{S, T_1 + T_2} = \dfrac{g\br{X + S}}{g\br{X}} = \dfrac{g_1\br{X + S}}{g_1\br{X}} \cdot \dfrac{g_2\br{X + S}}{g_2\br{X}} \cdot \dfrac{h\br{\phi\br{X}}}{h\br{\phi\br{X + S}}} = \e_\phi\br{S, T_1}\e_\phi\br{S, T_2}, $$
+since $ S \in E\sbr{\phi} $.
+\item $ \e_\phi $ is nondegenerate. Fix $ T \in E'\sbr{\widehat{\phi}} $. Suppose $ \e_\phi\br{S, T} = 1 $ for all $ S \in E\sbr{\phi} $, so $ \tau_S^*g = g $ for all $ S \in E\sbr{\phi} $. Then $ \overline{K}\br{E} / \phi^*\br{\overline{K}\br{E'}} $ is a Galois extension with Galois group $ E\sbr{\phi} $. Note that $ S \in E\sbr{\phi} $ acts as $ \tau_S^* $. Then $ g = \phi^*h $ for some $ h \in \overline{K}\br{E'} $, so $ \phi^*f = g^n = \br{\phi^*h}^n = \phi^*h^n $, so $ f = h^n $, so $ \div h = \br{T} - \br{\OOO} $, so $ T = \OOO $. We have shown the injection
+$$ \function{E'\sbr{\widehat{\phi}}}{\Hom\br{E\sbr{\phi}, \mu_n}}{T}{\br{S \mapsto \e_\phi\br{S, T}}}. $$
+This map is an isomorphism since $ \#E\sbr{\phi} = \#E'\sbr{\widehat{\phi}} = n $.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item If $ E, E', \phi $ are defined over $ K $ then $ \e_\phi $ is \textbf{Galois equivariant}, that is
+$$ \e_\phi\br{\sigma\br{S}, \sigma\br{T}} = \sigma\br{\e_\phi\br{S, T}}, \qquad \sigma \in \Gal\br{\overline{K} / K}, \qquad S \in E\sbr{\phi}, \qquad T \in E'\sbr{\widehat{\phi}}. $$
+\item Taking $ \phi = \sbr{n} : E \to E $, so $ \widehat{\phi} = \sbr{n} $, gives
+$$ \e_n : E\sbr{n} \times E\sbr{n} \to \mu_n, $$
+since $ \e_n $ is bilinear.
+\end{itemize}
+\end{remark*}
+
+\begin{corollary}
+If $ E\sbr{n} \subset E\br{K} $ then $ \mu_n \subset K $.
+\end{corollary}
+
+\begin{proof}
+Since $ \e_n $ is nondegenerate, there exist $ S, T \in E\sbr{n} $ such that $ \e_n\br{S, T} $ is a primitive $ n $-th root of unity, say $ \zeta_n $. To see this pick $ T \in E\sbr{n} $ of order $ n $. The group homomorphism
+$$ \function{E\sbr{n}}{\mu_n}{S}{\e_n\br{S, T}} $$
+has image $ \mu_d $ for some $ d \mid n $. Then $ \e_n\br{S, dT} = 1 $ for all $ S \in E\sbr{n} $. Since $ \e_n $ is nondegenerate, $ dT = 0 $, so $ d = n $. Then
+$$ \sigma\br{\zeta_n} = \e_n\br{\sigma\br{S}, \sigma\br{T}} = \e_n\br{S, T} = \zeta_n, \qquad \sigma \in \Gal\br{\overline{K} / K}, $$
+by Galois equivariance and since $ S, T \in E\br{K} $. Thus $ \zeta_n \in K $.
+\end{proof}
+
+\begin{example*}
+There does not exist $ E / \QQ $ such that $ E\br{\QQ}_{\tors} \cong \br{\ZZ / 3\ZZ}^2 $.
+\end{example*}
+
+\begin{remark*}
+In fact the Weil pairing $ \e_n $ is \textbf{alternating}, that is $ \e_n\br{T, T} = 1 $ for all $ T \in E\sbr{n} $. In particular expanding $ \e_n\br{S + T, S + T} $, show $ \e_n\br{S, T} = \e_n\br{T, S}^{-1} $.
+\end{remark*}
+
+\pagebreak
+
+\section{Galois cohomology}
+
+\subsection{Group cohomology}
+
+\lecture{21}{Wednesday}{25/11/20}
+
+Let $ G $ be a group, and let $ A $ be a \textbf{$ G $-module}, that is an abelian group with an action of $ G $ via group homomorphisms, or a $ \ZZ\sbr{G} $-module.
+
+\begin{definition*}
+The \textbf{zeroth cohomology group} is
+$$ \H^0\br{G, A} = A^G = \cbr{a \in A \st \forall \sigma \in G, \ \sigma\br{a} = a}. $$
+The \textbf{cochains}
+$$ \C^1\br{G, A} = \cbr{\text{maps} \ G \to A} $$
+contains the \textbf{cocycles}
+$$ \Z^1\br{G, A} = \cbr{\br{a_\sigma}_{\sigma \in G} \st a_{\sigma\tau} = \sigma\br{a_\tau} + a_\sigma}, $$
+which contains the \textbf{coboundaries}
+$$ \B^1\br{G, A} = \cbr{\br{\sigma\br{b} - b}_{\sigma \in G} \st b \in A}. $$
+The \textbf{first cohomology group} is
+$$ \H^1\br{G, A} = \Z^1\br{G, A} / \B^1\br{G, A}. $$
+\end{definition*}
+
+\begin{remark*}
+If $ G $ acts trivially on $ A $ then $ \H^1\br{G, A} = \Hom\br{G, A} $.
+\end{remark*}
+
+\begin{theorem}
+A short exact sequence of $ G $-modules
+$$ 0 \to A \xrightarrow{\phi} B \xrightarrow{\psi} C \to 0 $$
+gives rise to a long exact sequence of abelian groups
+$$ 0 \to A^G \xrightarrow{\phi} B^G \xrightarrow{\psi} C^G \xrightarrow{\delta} \H^1\br{G, A} \xrightarrow{\phi_*} \H^1\br{G, B} \xrightarrow{\psi_*} \H^1\br{G, C}. $$
+\end{theorem}
+
+\begin{proof}
+Omitted except the definition of $ \delta $. Let $ c \in C^G $. There exists $ b \in B $ such that $ \psi\br{b} = c $. Then $ \psi\br{\sigma\br{b} - b} = \sigma\br{c} - c = 0 $ for all $ \sigma \in G $, so $ \sigma\br{b} - b = \phi\br{a_\sigma} $ for some $ a_\sigma \in A $. Then
+$$ \phi\br{a_{\sigma\tau} - \sigma\br{a_\tau} - a_\sigma} = \sigma\tau\br{b} - b - \sigma\br{\tau\br{b} - b} - \br{\sigma\br{b} - b} = 0, $$
+so $ a_{\sigma\tau} = \sigma\br{a_\tau} + a_\sigma $. Thus $ \br{a_\sigma}_{\sigma \in G} \in \Z^1\br{G, A} $. We define
+$$ \delta\br{c} = \sbr{\br{a_\sigma}_{\sigma \in G}} \in \H^1\br{G, A}. $$
+\end{proof}
+
+\begin{theorem}
+Let $ A $ be a $ G $-module and $ H \triangleleft G $ a normal subgroup. There is an \textbf{inflation-restriction} exact sequence
+$$ 0 \to \H^1\br{G / H, A^H} \xrightarrow{\inf} \H^1\br{G, A} \xrightarrow{\res} \H^1\br{H, A}. $$
+\end{theorem}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\subsection{Galois cohomology}
+
+Let $ K $ be a perfect field. Then $ \Gal\br{\overline{K} / K} $ is a topological group with basis of open subgroups the $ \Gal\br{\overline{K} / L} $ for $ \sbr{L : K} < \infty $. If $ G = \Gal\br{\overline{K} / K} $ we modify the definition of $ \H^1\br{G, A} $ by insisting
+\begin{itemize}
+\item the stabiliser of each $ a \in A $ is an open subgroup of $ G $, and
+\item all cochains $ G \to A $ are continuous where $ A $ is given the discrete topology.
+\end{itemize}
+Then
+$$ \H^1\br{\Gal\br{\overline{K} / K}, A} = \varinjlim_{L / K \ \text{finite Galois extension}} \H^1\br{\Gal\br{L / K}, A^{\Gal\br{\overline{K} / L}}}, $$
+where the direct limit is with respect to inflation maps.
+
+\pagebreak
+
+\begin{theorem*}[Hilbert's theorem 90]
+Let $ L / K $ be a finite Galois extension. Then
+$$ \H^1\br{\Gal\br{L / K}, L^*} = 0. $$
+\end{theorem*}
+
+\begin{proof}
+Let $ G = \Gal\br{L / K} $. Let $ \br{a_\sigma}_{\sigma \in G} \in \Z^1\br{G, L^*} $. Distinct automorphisms are linearly independent, so there exists $ y \in L $ such that $ x = \sum_{\tau \in G} a_\tau^{-1}\tau\br{y} \ne 0 $. For $ \sigma \in G $, $ a_{\sigma\tau} = \sigma\br{a_\tau}a_\sigma $, so $ \sigma\br{a_\tau}^{-1} = a_\sigma a_{\sigma\tau}^{-1} $. Then
+$$ \sigma\br{x} = \sum_{\tau \in G} \sigma\br{a_\tau}^{-1}\sigma\tau\br{y} = a_\sigma\sum_{\tau \in G} a_{\sigma\tau}^{-1}\sigma\tau\br{y} = a_\sigma x, $$
+so $ a_\sigma = \sigma\br{x} / x $. Thus $ \br{a_\sigma}_{\sigma \in G} \in \B^1\br{G, L^*} $, so $ \H^1\br{G, L^*} = 0 $.
+\end{proof}
+
+A corollary is
+$$ \H^1\br{\Gal\br{\overline{K} / K}, \overline{K}^*} = 0. $$
+
+\subsection{Application to Kummer theory}
+
+Assume $ \ch K \nmid n $. There is an exact sequence of $ \Gal\br{\overline{K} / K} $-modules
+$$ 0 \to \mu_n \to \overline{K}^* \xrightarrow{x \mapsto x^n} \overline{K}^* \to 0. $$
+The long exact sequence is
+$$ K^* \xrightarrow{x \mapsto x^n} K^* \to \H^1\br{\Gal\br{\overline{K} / K}, \mu_n} \to \H^1\br{\Gal\br{\overline{K} / K}, \overline{K}^*} = 0, $$
+by Hilbert 90, so $ \H^1\br{\Gal\br{\overline{K} / K}, \mu_n} \cong K^* / \br{K^*}^n $. If $ \mu_n \subset K $ then
+\begin{equation}
+\label{eq:16}
+\Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n} \cong K^* / \br{K^*}^n.
+\end{equation}
+If $ L / K $ is a finite Galois extension then $ \pi : \Gal\br{\overline{K} / K} \twoheadrightarrow \Gal\br{L / K} $, so there is an injection
+$$ \function{\Hom\br{\Gal\br{L / K}, \mu_n}}{\Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n}}{\chi}{\chi \circ \pi}. $$
+We claim that every finite subgroup $ \Xi $ of $ \Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n} $ arises uniquely in this way for $ L / K $ a finite abelian extension of exponent dividing $ n $. So from $ \br{\ref{eq:16}} $ we recover Theorem \ref{thm:11.2}. To prove the claim, consider the pairing
+$$ \function{\Gal\br{\overline{K} / K} \times \Xi}{\mu_n}{\br{\sigma, \chi}}{\chi\br{\sigma}}. $$
+This is bilinear, has trivial right kernel, and left kernel is $ \bigcap_{\chi \in \Xi} \ker \chi \subset \Gal\br{\overline{K} / K} $, an open normal subgroup, so $ \bigcap_{\chi \in \Xi} \ker \chi = \Gal\br{\overline{K} / L} $ for some $ L / K $ finite Galois. We get a nondegenerate pairing $ \Gal\br{L / K} \times \Xi \to \mu_n $. In particular $ \Gal\br{L / K} \hookrightarrow \Hom\br{\Xi, \mu_n} $, so $ L / K $ is abelian of exponent dividing $ n $, and $ \Xi \hookrightarrow \Hom\br{\Gal\br{L / K}, \mu_n} $. This proves the claim.
+
+\begin{notation*}
+$ \H^1\br{K, -} $ means $ \H^1\br{\Gal\br{\overline{K}, K}, -} $.
+\end{notation*}
+
+\begin{lemma}
+\label{lem:15.3}
+Let $ \sbr{K : \QQ_p} < \infty $ with $ p \nmid n $. Then
+$$ \ker \br{\H^1\br{K, \mu_n} \to \H^1\br{K^{\ur}, \mu_n}} \cong \OOO_K^\times / \br{\OOO_K^\times}^n. $$
+\end{lemma}
+
+\begin{proof}
+By Hilbert 90 it suffices to show the sequence
+$$ 0 \to \OOO_K^\times / \br{\OOO_K^\times}^n \xrightarrow{\alpha} K^* / \br{K^*}^n \xrightarrow{\beta} \br{K^{\ur}}^* / \br{\br{K^{\ur}}^*}^n $$
+is exact.
+\begin{itemize}[leftmargin=1in]
+\item[$ \im \alpha \subset \ker \beta $.] Let $ a \in \OOO_K^\times $. If $ f\br{x} = x^n - a \in \OOO_K\sbr{x} $ then $ \widetilde{f}\br{x} = x^n - \widetilde{a} \in k\sbr{x} $ has distinct roots in $ \overline{k} $, using $ p \nmid n $ here. Then $ K\br{\sqrt[n]{a}} / K $ is unramified, so $ a \in \br{\br{K^{\ur}}^*}^n $.
+\item[$ \ker \beta \subset \im \alpha $.] Let $ x\br{K^*}^n \in \ker \beta $. Write $ x = u\pi^r $ with $ u \in \OOO_K^\times $ and $ r \in \ZZ $. Since the discrete valuation in $ K $ extends to $ K^{\ur} $ we have $ r \equiv 0 \mod n $, so $ x\br{K^*}^n = u\br{K^*}^n $.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\subsection{The Selmer and Tate-Shafarevich groups}
+
+\lecture{22}{Friday}{27/11/20}
+
+Let $ \phi : E \to E' $ be an isogeny of elliptic curves over $ K $. There is a short exact sequence of $ \Gal\br{\overline{K} / K} $-modules
+$$ 0 \to E\sbr{\phi} \to E \xrightarrow{\phi} E' \to 0. $$
+The long exact sequence is
+$$ E\br{K} \xrightarrow{\phi} E'\br{K} \xrightarrow{\delta} \H^1\br{K, E\sbr{\phi}} \to \H^1\br{K, E} \xrightarrow{\phi_*} \H^1\br{K, E'}. $$
+We get a short exact sequence
+$$ 0 \to E'\br{K} / \phi\br{E\br{K}} \xrightarrow{\delta} \H^1\br{K, E\sbr{\phi}} \to \H^1\br{K, E}\sbr{\phi_*} \to 0. $$
+Now take $ K $ a number field. For each place $ v $ fix an embedding $ \overline{K} \subset \overline{K_v} $. Then $ \Gal\br{\overline{K_v} / K_v} \subset \Gal\br{\overline{K} / K} $, so
+$$
+\begin{tikzcd}
+0 \arrow{r} & E'\br{K} / \phi\br{E\br{K}} \arrow{r}{\delta} \arrow{d} & \H^1\br{K, E\sbr{\phi}} \arrow{r} \arrow{d}[swap]{\res_v} \arrow[dashed]{dr} & \H^1\br{K, E}\sbr{\phi_*} \arrow{r} \arrow{d}{\res_v} & 0 \\
+0 \arrow{r} & \displaystyle\prod_v E'\br{K_v} / \phi\br{E\br{K_v}} \arrow{r}[swap]{\delta_v} & \displaystyle\prod_v \H^1\br{K_v, E\sbr{\phi}} \arrow{r} & \displaystyle\prod_v \H^1\br{K_v, E}\sbr{\phi_*} \arrow{r} & 0
+\end{tikzcd}.
+$$
+
+\begin{definition*}
+The \textbf{$ \phi $-Selmer group} is
+\begin{align*}
+\S^{\br{\phi}}\br{E / K}
+& = \ker \br{\H^1\br{K, E\sbr{\phi}} \to \prod_v \H^1\br{K_v, E}} \\
+& = \cbr{\alpha \in \H^1\br{K, E\sbr{\phi}} \st \forall v, \ \res_v\br{\alpha} \in \im \delta_v}.
+\end{align*}
+The \textbf{Tate-Shafarevich group} is
+$$ \Sha\br{E / K} = \ker \br{\H^1\br{K, E} \to \prod_v \H^1\br{K_v, E}}. $$
+\end{definition*}
+
+We get a short exact sequence
+$$ 0 \to E'\br{K} / \phi\br{E\br{K}} \to \S^{\br{\phi}}\br{E / K} \to \Sha\br{E / K}\sbr{\phi_*} \to 0. $$
+Taking $ \phi = \sbr{n} $ gives
+$$ 0 \to E\br{K} / nE\br{K} \to \S^{\br{n}}\br{E / K} \to \Sha\br{E / K}\sbr{n} \to 0. $$
+Re-organising the proof of weak Mordell-Weil gives the following.
+
+\begin{theorem}
+$ \S^{\br{n}}\br{E / K} $ is finite.
+\end{theorem}
+
+\begin{proof}
+For $ L / K $ a finite Galois extension there is an exact sequence
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & \H^1\br{\Gal\br{L / K}, E\br{L}\sbr{n}} \arrow{r}{\inf} & \H^1\br{K, E\sbr{n}} \arrow{r}{\res} & \H^1\br{L, E\sbr{n}} \\
+& & \S^{\br{n}}\br{E / K} \arrow[subset]{u} \arrow{r} & \S^{\br{n}}\br{E / L} \arrow[subset]{u}
+\end{tikzcd},
+$$
+where $ \H^1\br{\Gal\br{L / K}, E\br{L}\sbr{n}} $ is finite. By extending our field we may assume $ E\sbr{n} \subset E\br{K} $, and hence $ \mu_n \subset K $, so $ E\sbr{n} \cong \mu_n \times \mu_n $ as a Galois module. By Hilbert 90,
+$$ \H^1\br{K, E\sbr{n}} \cong \H^1\br{K, \mu_n} \times \H^1\br{K, \mu_n} \cong K^* / \br{K^*}^n \times K^* / \br{K^*}^n. $$
+
+\pagebreak
+
+Let
+$$ S = \cbr{\text{primes of bad reduction for} \ E / K} \cup \cbr{v \mid n\infty}. $$
+Note that this is a finite set of places. Define the subgroup of $ \H^1\br{K, A} $ unramified outside $ S $ by
+$$ \H^1\br{K, A; S} = \ker \br{\H^1\br{K, A} \to \prod_{v \notin S} \H^1\br{K_v^{\ur}, A}}. $$
+There is a commutative diagram with exact rows
+$$
+\begin{tikzcd}
+E\br{K_v} \arrow{r}{\cdot n} \arrow[subset]{d} & E\br{K_v} \arrow{r}{\delta_v} \arrow[subset]{d} & \H^1\br{K_v, E\sbr{n}} \arrow{d}{\res} \\
+E\br{K_v^{\ur}} \arrow{r}[swap]{\cdot n} & E\br{K_v^{\ur}} \arrow{r}[swap]{0} & \H^1\br{K_v^{\ur}, E\sbr{n}}
+\end{tikzcd}.
+$$
+The map $ \cdot n : E\br{K_v^{\ur}} \to E\br{K_v^{\ur}} $ is surjective for all $ v \notin S $, by the proof of Theorem \ref{thm:9.9}, so $ \im \delta_v \subset \ker \res $. Then
+\begin{align*}
+\S^{\br{n}}\br{E / K}
+& = \cbr{\alpha \in \H^1\br{K, E\sbr{n}} \st \forall v, \ \res_v\br{\alpha} \in \im \delta_v} \\
+& \subset \H^1\br{K, E\sbr{n}; S}
+\cong \H^1\br{K, \mu_n; S} \times \H^1\br{K, \mu_n; S}
+\cong K\br{S, n} \times K\br{S, n},
+\end{align*}
+by Lemma \ref{lem:15.3}, noting that $ \cbr{v \mid n} \subset S $. But $ K\br{S, n} $ is finite by Lemma \ref{lem:11.4}, so $ \S^{\br{n}}\br{E / K} $ is finite.
+\end{proof}
+
+\begin{remark*}
+$ \S^{\br{n}}\br{E / K} $ is finite and effectively computable. It is conjectured that $ \abs{\Sha\br{E / K}} < \infty $. This would imply that $ \rk E\br{K} $ is effectively computable.
+\end{remark*}
+
+\pagebreak
+
+\section{Descent by cyclic isogeny}
+
+\subsection{Descent by \texorpdfstring{$ n $}{n}-isogeny}
+
+Let $ E $ and $ E' $ be elliptic curves over a number field $ K $, and let $ \phi : E \to E' $ be an isogeny of degree $ n $. Suppose $ E'\sbr{\widehat{\phi}} \cong \ZZ / n\ZZ $ is generated by $ T \in E'\br{K} $. Then there is an isomorphism of Galois modules
+$$ \function{E\sbr{\phi}}{\mu_n}{S}{\e_\phi\br{S, T}}. $$
+The short exact sequence of $ \Gal\br{\overline{K} / K} $-modules
+$$ 0 \to \mu_n \to E \xrightarrow{\phi} E' \to 0 $$
+gives a long exact sequence
+$$
+\begin{tikzcd}
+E\br{K} \arrow{r} & E'\br{K} \arrow{r}{\delta} \arrow{dr}[swap]{\alpha} & \H^1\br{K, \mu_n} \arrow{r} \arrow{d}{\text{Hilbert 90}}[swap]{\sim} & \H^1\br{K, E} \\
+& & K^* / \br{K^*}^n &
+\end{tikzcd}.
+$$
+
+\begin{theorem}
+\label{thm:16.1}
+Let $ f \in K\br{E'} $ and $ g \in K\br{E} $ with $ \div f = n\br{T} - n\br{\OOO} $ and $ \phi^*f = g^n $. Then
+$$ \alpha\br{P} = f\br{P} \mod \br{K^*}^n, \qquad P \in E'\br{K} \setminus \cbr{\OOO, T}. $$
+\end{theorem}
+
+\begin{proof}
+Let $ Q \in \phi^{-1}\br{P} $. Then $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{Q} - Q \in E\sbr{\phi} \cong \mu_n $. For any $ X \in E $ not a zero or pole of $ g $, then taking $ X = Q $,
+$$ \e_\phi\br{\sigma\br{Q} - Q, T} = \dfrac{g\br{\sigma\br{Q} - Q + X}}{g\br{X}} = \dfrac{g\br{\sigma\br{Q}}}{g\br{Q}} = \dfrac{\sigma\br{g\br{Q}}}{g\br{Q}} = \dfrac{\sigma\br{\sqrt[n]{f\br{P}}}}{\sqrt[n]{f\br{P}}}, $$
+noting that $ f\br{P} = g\br{Q}^n $. Then $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{\sqrt[n]{f\br{P}}} / \sqrt[n]{f\br{P}} $. But there is an isomorphism
+$$ \function{K^* / \br{K^*}^n}{\H^1\br{K, \mu_n}}{x}{\br{\sigma \mapsto \dfrac{\sigma\br{\sqrt[n]{x}}}{\sqrt[n]{x}}}}, $$
+so $ \alpha\br{P} = f\br{P} \mod \br{K^*}^n $.
+\end{proof}
+
+\subsection{Descent by \texorpdfstring{$ 2 $}{2}-isogeny}
+
+\lecture{23}{Monday}{30/11/20}
+
+Let $ E $ be $ y^2 = x\br{x^2 + ax + b} $ where $ b\br{a^2 - 4b} \ne 0 $, let $ E' $ be $ y^2 = x\br{x^2 + a'x + b'} $ where $ a' = -2a $ and $ b' = a^2 - 4b $, and let
+$$ \function[\phi]{E}{E'}{\br{x, y}}{\br{\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b}}{x^2}}}, \qquad \function[\widehat{\phi}]{E'}{E}{\br{x, y}}{\br{\dfrac{1}{4}\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b}}{8x^2}}}. $$
+Then $ E\sbr{\phi} = \cbr{\OOO, T} $ where $ T = \br{0, 0} \in E\br{K} $ and $ E'\sbr{\widehat{\phi}} = \cbr{\OOO, T'} $ where $ T' = \br{0, 0} \in E'\br{K} $.
+
+\begin{proposition}
+There is a group homomorphism
+$$ \function{E'\br{K}}{K^* / \br{K^*}^2}{\br{x, y}}{
+\begin{cases}
+x \mod \br{K^*}^2 & x \ne 0 \\
+b' \mod \br{K^*}^2 & x = 0
+\end{cases}
+}, $$
+with kernel $ \phi\br{E\br{K}} $.
+\end{proposition}
+
+\begin{proof}
+Either apply Theorem \ref{thm:16.1} with $ f = x \in K\br{E'} $ and $ g = y / x \in K\br{E} $, or direct calculation. See example sheet $ 4 $.
+\end{proof}
+
+\pagebreak
+
+Let
+$$ \alpha_E : E\br{K} / \widehat{\phi}\br{E'\br{K}} \hookrightarrow K^* / \br{K^*}^2, \qquad \alpha_{E'} : E'\br{K} / \phi\br{E\br{K}} \hookrightarrow K^* / \br{K^*}^2. $$
+
+\begin{lemma}
+$$ 2^{\rk E\br{K}} = \dfrac{\abs{\im \alpha_E} \cdot \abs{\im \alpha_{E'}}}{4}. $$
+\end{lemma}
+
+\begin{proof}
+If $ f : A \to B $ and $ g : B \to C $ are homomorphisms of abelian groups then there is an exact sequence
+$$ 0 \to \ker f \to \ker gf \xrightarrow{f} \ker g \to \coker f \xrightarrow{g} \coker gf \to \coker g \to 0. $$
+Since $ \widehat{\phi} \circ \phi = \sbr{2}_E $ we get an exact sequence
+$$
+\begin{tikzcd}
+& \ZZ / 2\ZZ & & \ZZ / 2\ZZ & \\
+0 \arrow{r} & E\br{K}\sbr{\phi} \arrow[cong]{u} \arrow{r} & E\br{K}\sbr{2} \arrow{r}{\phi} & E'\br{K}\sbr{\widehat{\phi}} \arrow[cong]{u} \arrow[in=180, out=0, overlay]{dll} \\
+& E'\br{K} / \phi\br{E\br{K}} \arrow{r}[swap]{\widehat{\phi}} \arrow[cong]{d} & E\br{K} / 2E\br{K} \arrow{r} & E\br{K} / \widehat{\phi}\br{E'\br{K}} \arrow{r} \arrow[cong]{d} & 0 \\
+& \im \alpha_{E'} & & \im \alpha_E &
+\end{tikzcd},
+$$
+so $ \abs{E\br{K} / 2E\br{K}} / \abs{E\br{K}\sbr{2}} = \abs{\im \alpha_E} \cdot \abs{\im \alpha_{E'}} / 2 \cdot 2 $. By the Mordell-Weil theorem, $ E\br{K} \cong \Delta \times \ZZ^r $ for $ \Delta $ a finite group and $ r = \rk E\br{K} $, so $ E\br{K} / 2E\br{K} \cong \Delta / 2\Delta \times \br{\ZZ / 2\ZZ}^r $ and $ E\br{K}\sbr{2} \cong \Delta\sbr{2} $. Then $ \Delta / 2\Delta $ and $ \Delta\sbr{2} $ have the same order, since $ \Delta $ is finite. Thus $ \abs{E\br{K} / 2E\br{K}} / \abs{E\br{K}\sbr{2}} = 2^r $.
+\end{proof}
+
+\begin{lemma}
+If $ K $ is a number field and $ a, b \in \OOO_K $ then $ \im \alpha_E \subset K\br{S, 2} $ where $ S = \cbr{\text{primes dividing} \ b} $.
+\end{lemma}
+
+\begin{proof}
+Must show that if $ x, y \in K $ such that $ y^2 = x\br{x^2 + ax + b} $ and $ \v_\ppp\br{b} = 0 $ then $ \v_\ppp\br{x} \equiv 0 \mod 2 $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ \v_\ppp\br{x} < 0 $.] By Lemma \ref{lem:9.1}, $ \v_\ppp\br{x} = -2r $ and $ \v_\ppp\br{y} = -3r $ for some $ r \ge 1 $.
+\item[$ \v_\ppp\br{x} > 0 $.] Since $ \v_\ppp\br{x^2 + ax + b} = 0 $, $ \v_\ppp\br{x} = \v_\ppp\br{y^2} = 2\v_\ppp\br{y} $.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}
+If $ b_1b_2 = b $ then $ b_1\br{K^*}^2 \in \im \alpha_E $ if and only if
+\begin{equation}
+\label{eq:17}
+w^2 = b_1u^4 + au^2v^2 + b_2v^4
+\end{equation}
+is soluble for $ u, v, w \in K $ not all zero.
+\end{lemma}
+
+\begin{proof}
+If $ b_1 \in \br{K^*}^2 $ or $ b_2 \in \br{K^*}^2 $ then both conditions are satisfied. So we may assume $ b_1, b_2 \notin \br{K^*}^2 $. Then $ b_1\br{K^*}^2 \in \im \alpha_E $ if and only if there exists $ \br{x, y} \in E\br{K} $ such that $ x = b_1t^2 $ for some $ t \in K^* $, so $ y^2 = b_1t^2\br{\br{b_1t^2}^2 + ab_1t^2 + b} $, so $ \br{y / b_1t}^2 = b_1t^4 + at^2 + b_2 $. So $ \br{\ref{eq:17}} $ has a solution $ u = t $, $ v = 1 $, and $ w = y / b_1t $. Conversely if $ \br{u, v, w} $ is a solution to $ \br{\ref{eq:17}} $ then $ uv \ne 0 $ and $ \br{b_1\br{u / v}^2, b_1\br{uw / v^3}} \in E\br{K} $.
+\end{proof}
+
+Now take $ K = \QQ $. Then
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & E'\br{\QQ} / \phi\br{E\br{\QQ}} \arrow{r}{\delta} \arrow{dr}[swap]{\alpha_{E'}} & \S^{\br{\phi}}\br{E / \QQ} \arrow{r} \arrow[subset]{d} & \Sha\br{E / \QQ}\sbr{\phi_*} \arrow{r} & 0 \\
+& & \QQ^* / \br{\QQ^*}^n & &
+\end{tikzcd},
+$$
+so
+$$ \im \alpha_{E'} = \cbr{b_1\br{\QQ^*}^2 \st \br{\ref{eq:17}}' \ \text{is soluble over} \ \QQ} $$
+is contained in
+$$ \S^{\br{\phi}}\br{E / \QQ} = \cbr{b_1\br{\QQ^*}^2 \st \br{\ref{eq:17}}' \ \text{is soluble over} \ \RR \ \text{and} \ \text{over} \ \QQ_p \ \text{for all primes} \ p}, $$
+where $ \br{\ref{eq:17}}' $ means $ \br{\ref{eq:17}} $ with $ a $ and $ b $ replaced by $ a' $ and $ b' $.
+
+\pagebreak
+
+\begin{fact*}
+If $ a, b_1, b_2 \in \ZZ $ and $ p \nmid 2b\br{a^2 - 4b} $ then $ \br{\ref{eq:17}} $ is soluble over $ \QQ_p $. Uses example sheet $ 3 $, question $ 9 $ and Hensel's lemma.
+\end{fact*}
+
+\begin{example*}
+Let $ E $ be $ y^2 = x^3 - x $, so $ a = 0 $ and $ b = -1 $. Then $ \im \alpha_E = \abr{-1} \subset \QQ^* / \br{\QQ^*}^2 $. Let $ E' $ be $ y^2 = x^3 + 4x $. Then $ \im \alpha_{E'} \subset \abr{-1, 2} \subset \QQ^* / \br{\QQ^*}^2 $.
+\begin{itemize}
+\item If $ b_1 = -1 $, then $ w^2 = -u^4 - 4v^4 $ is insoluble over $ \RR $.
+\item If $ b_1 = 2 $, then $ w^2 = 2u^4 + 2v^4 $ has solution $ \br{u, v, w} = \br{1, 1, 2} $.
+\item If $ b_1 = -2 $, then $ w^2 = -2u^4 - 2v^4 $ is insoluble over $ \RR $.
+\end{itemize}
+Thus $ \im \alpha_{E'} = \abr{2} \subset \QQ^* / \br{\QQ^*}^2 $. Thus $ \rk E\br{\QQ} = 0 $, so $ 1 $ is not a congruent number.
+\end{example*}
+
+\lecture{24}{Wednesday}{02/12/20}
+
+\begin{example*}
+Let $ E $ be $ y^2 = x^3 + px $ for $ p \equiv 5 \mod 8 $ prime. If $ b_1 = -1 $, then $ w^2 = -u^4 - pv^4 $ is insoluble over $ \RR $. Thus $ \im \alpha_E = \abr{p} \subset \QQ^* / \br{\QQ^*}^2 $. Let $ E' $ be $ y^2 = x^3 - 4px $. Then $ \im \alpha_{E'} \subset \abr{-1, 2, p} \subset \QQ^* / \br{\QQ^*}^2 $. Note that $ \alpha_{E'}\br{T'} = -4p\br{\QQ^*}^2 = -p\br{\QQ^*}^2 $.
+\begin{itemize}
+\item If $ b_1 = 2 $, then $ w^2 = 2u^4 - 2pv^4 $. Suppose this is soluble. Without loss of generality $ u, v, w \in \ZZ $ such that $ \gcd\br{u, v} = 1 $. If $ p \mid u $ then $ p \mid w $ and then $ p \mid v $, a contradiction. Then $ w^2 \equiv 2u^4 \not\equiv 0 \mod p $, so $ \br{\tfrac{2}{p}} = 1 $, a contradiction since $ p \equiv 5 \mod 8 $.
+\item If $ b_1 = -2 $, then $ w^2 = -2u^4 + 2pv^4 $. Likewise this has no solution since $ \br{\tfrac{-2}{p}} = -1 $.
+\item If $ b_1 = p $, then $ w^2 = pu^4 - 4v^4 $.
+\begin{itemize}
+\item This is soluble over $ \QQ_p $ since $ \br{\tfrac{-1}{p}} = 1 $, so by Hensel's lemma $ -1 \in \br{\ZZ_p^*}^2 $.
+\item This is soluble over $ \QQ_2 $ since $ p - 4 \equiv 1 \mod 8 $, so by Hensel's lemma $ p - 4 \in \br{\ZZ_2^*}^2 $.
+\item This is soluble over $ \RR $ since $ \sqrt{p} \in \RR $.
+\end{itemize}
+Over $ \QQ $,
+$$
+\begin{array}{c|ccccc}
+p & 5 & 13 & 29 & 37 & 53 \\
+\hline
+u & 1 & 1 & 1 & 5 & 1 \\
+v & 1 & 1 & 1 & 3 & 1 \\
+w & 1 & 3 & 5 & 151 & 7
+\end{array}.
+$$
+\end{itemize}
+Thus $ \im \alpha_{E'} \subset \abr{-1, p} \subset \QQ^* / \br{\QQ^*}^2 $, and
+$$ \rk E\br{\QQ} =
+\begin{cases}
+0 & \text{this is insoluble over} \ \QQ \\
+1 & \text{this is soluble over} \ \QQ
+\end{cases}.
+$$
+The conjecture is that $ \rk E\br{\QQ} = 1 $ for all primes $ p \equiv 5 \mod 8 $.
+\end{example*}
+
+\begin{example*}[Lind]
+Let $ E $ be $ y^2 = x^3 + 17x $. Then $ \im \alpha_E = \abr{17} \subset \QQ^* / \br{\QQ^*}^2 $. Let $ E' $ be $ y^2 = x^3 - 68x $. If $ b_1 = 2 $, then $ w^2 = 2u^4 - 34v^2 $. Replacing $ w $ by $ 2w $ and dividing by two, let $ C $ be $ 2w^2 = u^4 - 17v^4 $. Denote
+$$ C\br{K} = \cbr{\br{u, v, w} \in K^3 \setminus \cbr{0} \st 2w^2 = u^4 - 17v^4} / \sim, $$
+where $ \br{u, v, w} \sim \br{\lambda u, \lambda v, \lambda^2 w} $ for all $ \lambda \in K^* $. Then
+\begin{itemize}
+\item $ C\br{\QQ_2} \ne \emptyset $ since $ 17 \in \br{\ZZ_2^*}^4 $,
+\item $ C\br{\QQ_{17}} \ne \emptyset $ since $ 2 \in \br{\ZZ_{17}^*}^2 $, and
+\item $ C\br{\RR} \ne \emptyset $ since $ \sqrt{2} \in \RR $,
+\end{itemize}
+so $ C\br{\QQ_v} \ne \emptyset $ for all places $ v $ of $ \QQ $. Suppose $ \br{u, v, w} \in C\br{\QQ} $, without loss of generality $ u, v, w \in \ZZ $ such that $ \gcd\br{u, v} = 1 $ and $ w > 0 $. If $ 17 \mid w $ then $ 17 \mid u $ and then $ 17 \mid v $, a contradiction. So if $ p \mid w $ then $ p \ne 17 $ and $ \br{\tfrac{17}{p}} = 1 $ if $ p $ is odd, so $ \br{\tfrac{p}{17}} = \br{\tfrac{17}{p}} = 1 $, by quadratic reciprocity, but also $ \br{\tfrac{2}{17}} = 1 $. Thus $ \br{\tfrac{w}{17}} = 1 $. But $ 2w^2 \equiv u^4 \mod 17 $, so $ 2 \in \br{\FF_{17}^*}^4 = \cbr{\pm 1, \pm 4} $, a contradiction. Thus $ C\br{\QQ} = \emptyset $. That is, $ C $ is a counterexample to the Hasse principle. It represents a nontrivial element of $ \Sha\br{E / \QQ} $.
+\end{example*}
+
+\pagebreak
+
+\appendix
+
+\section{The Birch Swinnerton-Dyer conjecture}
+
+Let $ E / \QQ $ be an elliptic curve.
+
+\begin{definition*}
+$ \L\br{E, s} = \prod_p \L_p\br{E, s} $ where
+$$ \L_p\br{E, s} =
+\begin{cases}
+\br{1 - \a_pp^{-s} + p^{1 - 2s}}^{-1} & \text{good reduction} \\
+\br{1 - p^{-s}}^{-1} & \text{split multiplicative reduction} \\
+\br{1 + p^{-s}}^{-1} & \text{nonsplit multiplicative reduction} \\
+1 & \text{additive reduction}
+\end{cases},
+$$
+and $ \#\widetilde{E}\br{\FF_p} = p + 1 - \a_p $.
+\end{definition*}
+
+By Hasse's theorem, $ \abs{\a_p} \le 2\sqrt{p} $, so $ \L\br{E, s} $ converges for $ \Re s > \tfrac{3}{2} $.
+
+\begin{theorem}[Wiles, Breuil, Conrad, Diamond, Taylor]
+$ \L\br{E, s} $ is the $ \L $-function of a weight two modular form and hence has an analytic continuation to all of $ \CC $, and a functional equation that relates $ \L\br{E, s} $ and $ \L\br{E, 2 - s} $.
+\end{theorem}
+
+\begin{theorem}[Weak BSD]
+$$ \ord_{s = 1} \L\br{E, s} = \rk E\br{\QQ}. $$
+\end{theorem}
+
+\begin{theorem}[Strong BSD]
+If $ r = \rk E\br{\QQ} $, then
+$$ \lim_{s \to 1} \dfrac{1}{\br{s - 1}^r}\L\br{E, s} = \dfrac{\Omega_E \cdot \Reg E\br{\QQ} \cdot \abs{\Sha\br{E / \QQ}} \cdot \prod_p \c_p}{\abs{E\br{\QQ}_{\tors}}^2}, $$
+where
+\begin{itemize}
+\item the Tamagawa number of $ E / \QQ_p $ is
+$$ \c_p = \sbr{E\br{\QQ_p} : E_0\br{\QQ_p}}, $$
+\item if $ E\br{\QQ} / E\br{\QQ}_{\tors} \cong \abr{P_1, \dots, P_r} $ then the \textbf{regulator} of $ E / \QQ $ is
+$$ \Reg E\br{\QQ} = \det \br{\sbr{P_i, P_j}}_{i, j = 1, \dots, r}, $$
+where $ \sbr{P, Q} = \widehat{\h}\br{P + Q} - \widehat{\h}\br{P} - \widehat{\h}\br{Q} $, and
+\item the \textbf{real period} of $ E / \QQ $ is
+$$ \Omega_E = \intd{E\br{\RR}}{}{\dfrac{1}{\abs{2y + a_1x + a_3}}}{x}, $$
+where $ a_i $ are the coefficients of a globally minimal Weierstrass equation.
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}[Kolyvagin]
+If $ \ord_{s = 1} \L\br{E, s} = 0, 1 $ then weak BSD holds and $ \abs{\Sha\br{E / \QQ}} < \infty $.
+\end{theorem}
 
 \end{document}
