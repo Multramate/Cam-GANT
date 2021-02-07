@@ -1,0 +1,1005 @@
+\def\module{Profinite Groups and Group Cohomology}
+\def\lecturer{Dr Gareth Wilkes}
+\def\term{Lent 2020}
+\def\cover{}
+\def\syllabus{}
+\def\thm{subsection}
+
+\input{../style/header}
+
+% Macros
+\newcommand{\Grp}{\textbf{Grp}}
+\newcommand{\Set}{\textbf{Set}}
+\newcommand{\twobytwosmall}[4]{
+  \begin{psmallmatrix}
+    #1 & #2 \\
+    #3 & #4
+  \end{psmallmatrix}
+}
+
+\begin{document}
+
+\input{../style/cover}
+
+\section{Introduction}
+
+\lecture{1}{Thursday}{21/01/21}
+
+A question is, when are things different?
+\begin{itemize}
+\item $ \ZZ $ is in bijection with $ \QQ $, by writing down a bijection.
+\item $ \QQ $ is not in bijection with $ \RR $, by diagonalisation.
+\end{itemize}
+A solution is to try to find an invariant, which is
+\begin{itemize}
+\item easier to compute,
+\item computable, and
+\item preserved under isomorphism.
+\end{itemize}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item Cardinality of a set.
+\item Dimension and base field of a vector space, which is complete.
+\item For an algebraic field extension $ K $ over $ \QQ $, the degree $ \sbr{K : \QQ} $ and the Galois group $ \Gal\br{K / \QQ} $.
+\item For a topological space $ X $, compactness, connectedness, simplicial homology groups $ \H_\bullet\br{X} $, and the fundamental group $ \pi_1\br{X} $.
+\end{itemize}
+\end{example*}
+
+\begin{theorem}
+There is no algorithm that decides whether a finite presentation represents the trivial group.
+\end{theorem}
+
+Finite groups we can decide.
+\begin{itemize}
+\item List all the finite quotients of a group.
+\item If you have two such lists, you can compare.
+\item If two groups have different sets of finite quotients, they are not isomorphic.
+\end{itemize}
+How often does this work?
+\begin{itemize}
+\item Combine all the finite quotients into one object to study, the \textbf{profinite completion}, which is a limit of the finite groups.
+\item More generally, a limit of finite groups is called a \textbf{profinite group}.
+\end{itemize}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item In Galois theory, let $ K = \bigcup_{N \in \NN} K_N $ be the extension of $ \QQ $ adjoining all $ p^N $-th roots of unity for $ p $ a fixed prime and $ N \in \NN $, which gives a short exact sequence of Galois groups
+$$ \Gal\br{K / K_N} \to \Gal\br{K / \QQ} \twoheadrightarrow \Gal\br{K_N / \QQ}. $$
+Then $ \Gal\br{K_N / \QQ} = \br{\ZZ / p^N\ZZ}^\times $ and $ \Gal\br{K / \QQ} = \varprojlim_N \br{\ZZ / p^N\ZZ}^\times = \ZZ_p^\times $.
+\item In algebraic geometry, \'etale fundamental groups are profinite groups.
+\end{itemize}
+\end{example*}
+
+The second part of the course is \textbf{group cohomology}, which is another invariant, with the following applications.
+\begin{itemize}
+\item Can tell if a group is free for some profinite groups.
+\item Given a group $ G $ and an abelian group $ A $, group cohomology tells us how many groups $ E $ exist such that $ A \triangleleft E $ and $ E / A = G $.
+\end{itemize}
+
+\pagebreak
+
+\section{Inverse limits}
+
+\subsection{Categories and limits}
+
+Let $ A $ and $ B $ be sets. How to combine into one thing? The disjoint union $ A \sqcup B $ has inclusion maps $ i_A : A \hookrightarrow A \sqcup B $ and $ i_B : B \hookrightarrow A \sqcup B $, and for any other set $ Z $, with functions $ j_A : A \to Z $ and $ j_B : B \to Z $ there is a unique function defined by
+$$ \functions[f]{A \sqcup B}{Z}{a}{j_A\br{a}}{b}{j_B\br{b}}, $$
+such that $ f \circ i_A = j_A $ and $ f \circ i_B = j_B $, so
+$$
+\begin{tikzcd}
+A \arrow{r}{i_A} \arrow{dr}[swap]{j_A} & A \sqcup B \arrow[dashed]{d}{\exists !f} & B \arrow{l}[swap]{i_B} \arrow{dl}{j_B} \\
+& Z &
+\end{tikzcd}.
+$$
+The product $ A \times B $ comes with $ p_A : A \times B \to A $ and $ p_B : A \times B \to B $ such that
+$$
+\begin{tikzcd}
+A & A \times B \arrow{l}[swap]{p_A} \arrow{r}{p_B} & B \\
+& Z \arrow{ul}{q_A} \arrow[dashed]{u}{\exists !f} \arrow{ur}[swap]{q_B} &
+\end{tikzcd},
+$$
+where $ f\br{z} = \br{q_A\br{z}, q_B\br{z}} $. Reversed all arrows, so there is a duality, and disjoint union is a coproduct. What about groups, and group homomorphisms? The product still works, but the disjoint union is not a group. The coproduct is the free product $ A * B $ such that
+$$
+\begin{tikzcd}
+A \arrow{r} \arrow{dr} & A * B \arrow[dashed]{d} & B \arrow{l} \arrow{dl} \\
+& Z &
+\end{tikzcd}.
+$$
+More generally is the pushout. Given groups $ A $, $ B $, and $ C $, and homomorphisms $ \phi_A : C \to A $ and $ \phi_B : C \to B $, the \textbf{pushout} $ A \sqcup_C B $ is
+$$
+\begin{tikzcd}
+C \arrow{r}{\phi_A} \arrow{d}[swap]{\phi_B} & A \arrow{d}{i_A} \arrow[bend left=30]{ddr}{j_A} & \\
+B \arrow{r}[swap]{i_B} \arrow[bend right=30]{drr}[swap]{j_B} & A \sqcup_C B \arrow[dashed]{dr}{\exists !f} & \\
+& & Z
+\end{tikzcd}.
+$$
+
+\begin{definition*}
+A \textbf{category} $ \CCC $ consists of
+\begin{itemize}
+\item a collection of \textbf{objects} $ \Obj \CCC $,
+\item a collection of \textbf{morphisms} or \textbf{arrows} $ \Mor \CCC $, such that each $ f \in \Mor \CCC $ has a \textbf{domain} $ X \in \Obj \CCC $ and a \textbf{codomain} $ Y \in \Obj \CCC $ written as $ f : X \to Y $,
+\item for all objects $ X \in \Obj \CCC $, you have $ \id_X : X \to X $, and
+\item if $ f : X \to Y $ and $ g : Y \to Z $, we have a defined composition $ g \circ f : X \to Z $,
+\end{itemize}
+such that
+\begin{itemize}
+\item if $ f : X \to Y $, then $ \id_Y \circ f = f = f \circ \id_X $, and
+\item if $ f : W \to X $, $ g : X \to Y $, and $ h : Y \to Z $, then $ h \circ \br{g \circ f} = \br{h \circ g} \circ f $.
+\end{itemize}
+\end{definition*}
+
+\pagebreak
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item In $ \Set $, objects are sets and morphisms are functions.
+\item In $ \Grp $, objects are groups and morphisms are group homomorphisms.
+\item In $ \Grp_{\text{fin}} $, objects are finite groups.
+\item In $ \Grp_{\text{inj}} $, morphisms are injective group homomorphisms.
+\end{itemize}
+\end{example*}
+
+\begin{definition*}
+A \textbf{partial ordering} on a set $ J $ is a binary relation $ \le $ such that
+\begin{itemize}
+\item $ i \le i $,
+\item if $ i \le j $ and $ j \le i $, then $ i = j $, and
+\item if $ i \le j $ and $ j \le k $, then $ i \le k $.
+\end{itemize}
+A \textbf{poset} is a pair $ \br{J, \le} $, which is a \textbf{total ordering} if for all $ i, j \in J $ either $ i \le j $ or $ j \le i $. The \textbf{poset category} $ \JJJ $ has objects $ \Obj \JJJ = J $ and morphisms $ \Mor \JJJ = \cbr{i \to j \st i \le j} $.
+\end{definition*}
+
+\lecture{2}{Saturday}{23/01/21}
+
+\begin{definition*}
+Let $ \CCC $ be a category. A \textbf{product} of $ A, B \in \Obj \CCC $ is an object $ P $, equipped with morphisms $ p_A : P \to A $ and $ p_B : P \to B $, such that for all $ Z \in \Obj \CCC $ and for all $ q_A : Z \to A $ and $ q_B : Z \to B $, there exists a unique $ f : Z \to P $ such that $ p_A \circ f = q_A $ and $ p_B \circ f = q_B $, so
+$$
+\begin{tikzcd}
+& Z \arrow{dl}[swap]{q_A} \arrow[dashed]{d}{\exists !f} \arrow{dr}{q_B} & \\
+A & P \arrow{l}{p_A} \arrow{r}[swap]{p_B} & B
+\end{tikzcd}.
+$$
+\end{definition*}
+
+\begin{definition*}
+Objects $ A $ and $ B $ in a category $ \CCC $ are \textbf{isomorphic} if there exist $ f : A \to B $ and $ g : B \to A $ such that $ g \circ f = \id_A $ and $ f \circ g = \id_B $.
+\end{definition*}
+
+\begin{proposition}
+If a product of $ A $ and $ B $ in $ \CCC $ exists, then it is unique up to a unique isomorphism.
+\end{proposition}
+
+\begin{proof}
+Let $ \br{P, p_A, p_B} $ and $ \br{P', p_A', p_B'} $ be products. Then
+$$
+\begin{tikzcd}
+& P' \arrow{dl}[swap]{p_A'} \arrow[bend right=30, dashed]{dd}[swap]{\exists !f} \arrow{dr}{p_B'} & \\
+A & & B \\
+& P \arrow{ul}{p_A} \arrow[bend right=30, dashed]{uu}[swap]{\exists !g} \arrow{ur}[swap]{p_B} &
+\end{tikzcd}.
+$$
+Consider $ f \circ g : P \to P $. Then $ p_A \circ f \circ g = p_A' \circ g = p_A $ and $ p_B \circ f \circ g = p_B' \circ g = p_B $. By uniqueness, $ f \circ g = \id_P $. Similarly, $ g \circ f = \id_{P'} $.
+\end{proof}
+
+\begin{notation*}
+Define $ P = A \times B $.
+\end{notation*}
+
+\begin{definition*}
+Let $ \CCC $ be a category and $ A, B \in \Obj \CCC $. Then a \textbf{coproduct} is an object $ A \sqcup B $, together with maps $ i_A : A \to A \sqcup B $ and $ i_B : B \to A \sqcup B $, with the universal property
+$$
+\begin{tikzcd}
+A \arrow{r}{i_A} \arrow{dr}[swap]{j_A} & A \sqcup B \arrow[dashed]{d}{\exists !f} & B \arrow{l}[swap]{i_B} \arrow{dl}{j_B} \\
+& Z &
+\end{tikzcd}.
+$$
+\end{definition*}
+
+Products are examples of limits and coproducts are examples of colimits.
+
+\pagebreak
+
+\begin{definition*}
+Let $ \CCC $ and $ \DDD $ be categories. A \textbf{functor} $ F : \CCC \to \DDD $ associates an object $ F\br{X} \in \Obj \DDD $ to each $ X \in \Obj \CCC $, and a morphism $ F\br{f} : F\br{X} \to F\br{Y} $ for each $ f : X \to Y $ in $ \CCC $, such that
+\begin{itemize}
+\item $ F\br{\id_X} = \id_{F\br{X}} $, and
+\item $ F\br{g \circ f} = F\br{g} \circ F\br{f} $.
+\end{itemize}
+\end{definition*}
+
+\begin{definition*}
+Let $ \JJJ $ and $ \CCC $ be categories. A \textbf{diagram of shape $ \JJJ $ in $ \CCC $} is a functor $ X : \JJJ \to \CCC $. Often write $ X\br{j} = X_j $, for $ j \in \Obj \JJJ $.
+\end{definition*}
+
+Very often, $ \JJJ $ is a poset category. In that case, if $ i \le j $, there exists a unique arrow $ f : i \to j $ and then denote $ X\br{f} = \phi_{ij} $.
+
+\begin{definition*}
+A \textbf{cone} on a diagram $ X : \JJJ \to \CCC $ is an object $ Z \in \Obj \CCC $, together with maps $ p_j : Z \to X_j = X\br{j} $ for all $ j \in \Obj \JJJ $ such that for all $ f : i \to j $, $ X\br{f} \circ p_i = p_j $, so
+$$
+\begin{tikzcd}
+& Z \arrow{dl}[swap]{p_i} \arrow{dr}{p_j} & \\
+X_i \arrow{rr}[swap]{X\br{f}} & & X_j
+\end{tikzcd}.
+$$
+A \textbf{limit} of a diagram $ X : \JJJ \to \CCC $ is a cone $ L $, with morphisms $ p_j $, such that for any cone $ Z $, with morphisms $ q_j $, there is a unique $ g : Z \to L $ such that $ p_j \circ f = q_j $, for all $ j \in \Obj \JJJ $, so
+$$
+\begin{tikzcd}
+& Z \arrow[dashed]{d}{\exists !g} \arrow[bend right=30]{ddl}[swap]{q_i} \arrow[bend left=30]{ddr}{q_j} & \\
+& L \arrow{dl}[swap]{p_i} \arrow{dr}{p_j} & \\
+X_i \arrow{rr}[swap]{X\br{f}} & & X_j
+\end{tikzcd},
+$$
+for $ f : i \to j $. \textbf{Colimits} are as limits, but arrows are reversed.
+\end{definition*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item If $ \JJJ $ is the category
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.05);
+\fill (1, 0) circle (0.05);
+\end{tikzpicture},
+$$
+then a diagram of shape $ \JJJ $ is a pair of objects. The limit is the product and the colimit is the coproduct.
+\item If $ \JJJ $ is the category
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.05);
+\fill (1, 0) circle (0.05);
+\fill (0, -1) circle (0.05);
+\draw [->] (0, 0) to (1, 0);
+\draw [->] (0, 0) to (0, -1);
+\end{tikzpicture},
+$$
+then a diagram of shape $ \JJJ $ in $ \Grp $ would be
+$$
+\begin{tikzcd}
+C \arrow{r}{\phi_{CA}} \arrow{d}[swap]{\phi_{CB}} & A \\
+B &
+\end{tikzcd}.
+$$
+The colimit is the pushout.
+\end{itemize}
+\end{example*}
+
+\begin{proposition}
+Limits and colimits are unique up to unique isomorphism.
+\end{proposition}
+
+\pagebreak
+
+\subsection{Inverse limits and profinite groups}
+
+Let $ G $ be a group. Let $ \NNN $ be the poset category whose objects are $ \cbr{N \triangleleft_\f G} $, where $ N \triangleleft_\f G $ are finite index, with ordering $ N_1 \le N_2 $ if and only if $ N_1 \subseteq N_2 $. There is a diagram of shape $ \NNN $ in $ \Grp $,
+$$ \function[X]{\NNN}{\Grp}{N}{X_N = G / N}. $$
+If $ N_1 \le N_2 $, then $ X\br{N_1 \to N_2} $ is the quotient map $ \phi_{N_1N_2} : G / N_1 \to G / N_2 $, the transition maps.
+
+\begin{definition*}
+Let $ G $ be a group. The \textbf{profinite completion} of $ G $ is the limit of this diagram, denoted $ \widehat{G} $.
+\end{definition*}
+
+Then $ G $ comes with projections $ p_N : \widehat{G} \to G / N $ for all $ N \triangleleft_\f G $ such that
+\begin{itemize}
+\item if $ N_1 \subseteq N_2 $, then $ \phi_{N_1N_2} \circ p_{N_1} = p_{N_2} $, and
+\item if $ Z $ is a group, with $ q_N : Z \to G / N $ such that $ \phi_{N_1N_2} \circ q_{N_1} = q_{N_2} $, there exists a unique $ f : Z \to \widehat{G} $ such that $ p_N \circ f = q_N $ for all $ N $.
+\end{itemize}
+Thus
+$$
+\begin{tikzcd}
+& Z \arrow[dashed]{d}{\exists !f} \arrow[bend right=30]{ddl} \arrow[bend left=30]{ddr} & \\
+& \widehat{G} \arrow{dl} \arrow{dr} & \\
+G / N_1 \arrow{rr} & & G / N_2
+\end{tikzcd}.
+$$
+In particular, $ Z = G $ works, so there is a unique morphism $ \iota_G : G \to \widehat{G} $, the \textbf{canonical morphism}, such that the diagrams commute.
+
+\begin{definition*}
+A poset $ \br{J, \le} $ is an \textbf{inverse system} if for all $ i, j \in J $ there exists $ k \in J $ such that $ k \le i $ and $ k \le j $. An \textbf{inverse system of groups} consists of an inverse system $ \br{J, \le} $ and a diagram of shape $ \JJJ $ in $ \Grp $, so $ G : \JJJ \to \Grp $. Thus an inverse system is a group $ G_j $ for all $ j \in J $ and transition maps $ \phi_{ij} : G_i \to G_j $ if $ i \le j $ such that $ \phi_{ii} = \id $ and $ \phi_{jk} \circ \phi_{ij} = \phi_{ik} $ for all $ i \le j \le k $. The \textbf{inverse limit} of this inverse system of groups $ G_j $ is the limit of this diagram, denoted $ \varprojlim_j G_j $.
+\end{definition*}
+
+\begin{definition*}
+A \textbf{profinite group} is the inverse limit of an inverse system of groups, all of which are finite.
+\end{definition*}
+
+\begin{proposition}
+Let $ \br{G_j}_{j \in J} $ be an inverse system of groups. Then the inverse limit exists, and is given by the explicit description
+$$ \varprojlim_j G_j = \cbr{\br{g_j}_{j \in J} \in \prod_{j \in J} G_j \st \forall i \le j, \ \phi_{ij}\br{g_i} = g_j}. $$
+\end{proposition}
+
+\begin{proof}
+This is a group. We have $ p_j : \varprojlim_j G_j \to G_j $, restricted from $ \prod_{j \in J} G_j \to G_j $, so $ g_j = p_j\br{\br{g_j}_{j \in J}} $. Take a cone $ Z $ on the system. Define
+$$ \function[f]{Z}{\varprojlim_j G_j}{z}{\br{q_j\br{z}}_{j \in J}}. $$
+Then $ \phi_{ij}\br{q_i\br{z}} = q_j\br{z} $, so
+$$
+\begin{tikzcd}
+& Z \arrow[dashed]{d}{\exists !f} \arrow[bend right=30]{ddl}[swap]{q_i} \arrow[bend left=30]{ddr}{q_j} & \\
+& \displaystyle\varprojlim_j G_j \arrow{dl}[swap]{p_i} \arrow{dr}{p_j} & \\
+G_i \arrow{rr} & & G_j
+\end{tikzcd}.
+$$
+\end{proof}
+
+\pagebreak
+
+\lecture{3}{Tuesday}{27/01/21}
+
+\begin{definition*}
+Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups. Give each $ G_j $ the discrete topology. Give $ \prod_j G_j $ the product topology. Then $ \varprojlim_j G_j \le \prod_j G_j $ gets the subspace topology.
+\end{definition*}
+
+\begin{proposition}
+$ \varprojlim_j G_j $ is compact Hausdorff.
+\end{proposition}
+
+\begin{proof}
+$ \prod_j G_j $ is Hausdorff and compact, by Tychonoff's theorem. Each condition $ \phi_{ij}\br{g_i} = g_j $ is a closed condition, since $ \prod_{j \in J} G_j \to G_i \times G_j $, so $ \varprojlim_j G_j $ is closed in $ \prod_j G_j $.
+\end{proof}
+
+\begin{proposition}
+Let $ \br{X_j}_{j \in J} $ be an inverse system of non-empty finite sets. Then $ \varprojlim_j X_j $ is non-empty.
+\end{proposition}
+
+\begin{proof}
+Use the finite intersection property. Let $ I_1 \subseteq J $ be a finite subset. Define
+$$ Y_{I_1} = \cbr{\br{x_j} \in \prod_j X_j \st \forall i, j \in I_1, \ \forall i \le j, \ \phi_{ij}\br{x_i} = x_j} \subseteq \prod_j X_j, $$
+a closed subset of the product. Since $ J $ is an inverse system and $ I_1 $ is finite, there exists $ k \in J $ such that $ k \le i $ for all $ i \in I_1 $. Choose $ x_k \in X_k \ne \emptyset $. Define $ x_j = \phi_{kj}\br{x_k} $ for all $ j \ge k $. Choose $ x_j $ arbitrarily elsewhere. This gives $ x = \br{x_j} \in \prod_{j \in J} X_j $, which lies in $ Y_{I_1} $, since if $ i, j \in I_1 $ such that $ i \le j $ then
+$$ x_j = \phi_{kj}\br{x_k} = \phi_{ij}\br{\phi_{ki}\br{x_k}} = \phi_{ij}\br{x_i}. $$
+So $ Y_{I_1} $ is non-empty. Then $ Y_{I_1} \cap \dots \cap Y_{I_n} \supseteq Y_{I_1 \cup \dots \cup I_n} \ne \emptyset $. By the finite intersection property, since $ \prod_j X_j $ is compact, $ \bigcap_{I_1} Y_{I_1} = \varprojlim_j X_j $ is non-empty.
+\end{proof}
+
+\begin{proposition}
+Let $ J $ be a countable set and let $ \br{X_j}_{j \in J} $ be a family of finite sets. Then $ X = \prod_{j \in J} X_j $ is \textbf{metrisable}, so the metric topology equals to the other topology.
+\end{proposition}
+
+\begin{proof}
+Without loss of generality $ J = \NN $. Give each $ X_n $ the discrete metric $ d_n $, where
+$$ d_n\br{x_n, y_n} =
+\begin{cases}
+0 & x_n = y_n \\
+1 & x_n \ne y_n
+\end{cases},
+\qquad x_n, y_n \in X_n. $$
+Define
+$$ d\br{\br{x_n}, \br{y_n}} = \sum_{n = 1}^\infty \dfrac{1}{3^n}d_n\br{x_n, y_n}, \qquad \br{x_n}, \br{y_n} \in \prod_n X_n. $$
+We need to show this gives the product topology. Let $ f : \br{X, \tau_{\text{product}}} \to \br{X, d} $ be the identity function. A basis for the metric topology are open balls $ \B\br{x, 1 / 3^n} $ for $ x \in X $ and $ n \in \NN $. Then $ d\br{\br{x_n}, \br{y_n}} < 1 / 3^m $ if and only if $ x_n = y_n $ for all $ n \le m $, and
+$$ f^{-1}\br{\B\br{\br{x_n}, \dfrac{1}{3^m}}} = \cbr{\br{y_n} \st \forall n \le m, \ y_n = x_n} = \bigcap_{n = 1}^m p_n^{-1}\br{\cbr{x_n}}, \qquad p_n : \prod_n X_n \to X_n $$
+is open in the product topology. So $ f $ is continuous, so a homeomorphism.
+\end{proof}
+
+\begin{proposition}
+A continuous bijection from a compact space to a Hausdorff space is a homeomorphism.
+\end{proposition}
+
+\begin{lemma}
+\label{lem:1.2.18}
+Let $ G $ be a finitely generated group. For each $ n \in \NN $, there are only finitely many subgroups of index $ n $.
+\end{lemma}
+
+\begin{proof}
+For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \SSS_n $, since by labelling cosets $ H, \dots, g_nH $ by symbols $ 1, \dots, n $, $ G $ permutes these right cosets by $ g \cdot g_iH = \br{gg_i}H $ and $ H $ is recovered from this as the stabiliser of $ 1 $. So there are at most as many subgroups $ H $ as homomorphisms to $ \SSS_n $, and there are only finitely many.
+\end{proof}
+
+\begin{corollary}
+If $ G $ is finitely generated, the inverse system $ \NNN = \cbr{N \triangleleft_\f G} $ is countable.
+\end{corollary}
+
+\pagebreak
+
+\begin{proposition}
+Let $ G $ be a profinite group. Then $ G $ is a \textbf{topological group}, so
+$$ \function[\m]{G \times G}{G}{\br{g, h}}{gh}, \qquad \function[\i]{G}{G}{g}{g^{-1}} $$
+are continuous.
+\end{proposition}
+
+\begin{definition*}
+Let $ G $ and $ H $ be topological groups. We say $ G $ and $ H $ are \textbf{isomorphic as topological groups} if and only if there exists $ f : G \to H $ which is both an isomorphism of groups and a homeomorphism.
+\end{definition*}
+
+Recall that if $ G $ and $ H $ are profinite, this is the same as there exists $ f $ a continuous isomorphism.
+
+\begin{proposition}
+\label{prop:1.2.25}
+Let $ H $ be a topological group and $ G = \varprojlim_j G_j $ be an inverse limit of finite groups. Let $ p_j : G \to G_j $ be the projection maps. A homomorphism $ f : H \to G $ is continuous if and only if each map $ f_j = p_j \circ f $ is continuous.
+\end{proposition}
+
+\begin{proof}
+$ f : H \to G \le \prod_j G_j $. This is continuous if and only if all $ f_j $ are continuous, by definition of the product topology.
+\end{proof}
+
+\begin{proposition}
+Let $ f : H \to G_j $ be a homomorphism from a topological group to a finite group, with the discrete topology. Then $ f $ is continuous if and only if $ \ker f $ is open in $ H $.
+\end{proposition}
+
+\begin{proof}
+If $ f $ is continuous then $ \ker f = f^{-1}\br{\cbr{1}} $ is open. Assume $ f^{-1}\br{\cbr{1}} $ is open. Then $ f^{-1}\br{\cbr{g}} $ is open for all $ g \in G $, since multiplication is continuous and $ f^{-1}\br{\cbr{g}} = hf^{-1}\br{\cbr{1}} $ for some $ h \in H $. Taking unions, the preimage of any set in $ G_j $ is open in $ H $, so $ f $ is continuous.
+\end{proof}
+
+\begin{proposition}
+Let $ G $ be a compact topological group. A subgroup of $ G $ is open if and only if it is closed and of finite index.
+\end{proposition}
+
+\begin{proposition}
+\label{prop:1.2.28}
+Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups. If $ G = \varprojlim_j G_j $, then the open subgroups $ U_j = \ker \br{p_j : G \to G_j} $ form a \textbf{basis of open neighbourhoods} of the identity $ 1 \in G $, so if $ V \subseteq G $ is any open set with $ 1 \in V $, then there exists $ j $ such that $ U_j \subseteq V $.
+\end{proposition}
+
+\begin{proof}
+Let $ V \ni 1 $ be open. By definition of the product topology,
+$$ V \supseteq p_{j_1}^{-1}\br{X_{j_1}} \cap \dots \cap p_{j_n}^{-1}\br{X_{j_n}} \supseteq p_{j_1}^{-1}\br{\cbr{1}} \cap \dots \cap p_{j_n}^{-1}\br{\cbr{1}} = U_{j_1} \cap \dots \cap U_{j_n}. $$
+for $ X_{j_i} \subseteq G_{j_i} $. There exists $ k $ such that $ k \le j_i $. Since $ p_{j_i} = \phi_{kj_i} \circ p_k $, $ \ker p_k = U_k \subseteq U_{p_{j_i}} = \ker p_{j_i} $ for all $ i $. Thus $ V \supseteq U_k $.
+\end{proof}
+
+\lecture{4}{Thursday}{28/01/21}
+
+\begin{corollary}
+If $ g = \br{g_j}_{j \in J} \in G $, then the open cosets $ gU_j = p_j^{-1}\br{\cbr{g_j}} $ form a neighbourhood base at $ g $, so for all open set $ V \ni g $, there exists $ j \in J $ such that $ gU_j \subseteq V $.
+\end{corollary}
+
+\begin{proof}
+Continuity of multiplication.
+\end{proof}
+
+\begin{corollary}
+\label{cor:1.2.30}
+A subset $ X \subseteq G $ is dense if and only if $ p_j\br{X} = p_j\br{G} $ for all $ j \in J $.
+\end{corollary}
+
+\begin{proof}
+Suppose $ X $ is not dense. There exists a non-empty open set $ V $ such that $ V \cap X = \emptyset $. Pick $ g \in V $. There exists $ j \in J $ such that $ p_j^{-1}\br{\cbr{g_j}} = gU_j \subseteq V $, where $ g_j = p_j\br{g} $. Then $ g_j \in p_j\br{G} $. But for any $ x \in X $, $ p_j\br{x} \ne g_j $, otherwise $ x \in p_j^{-1}\br{\cbr{g_j}} = gU_j \subseteq V $, so $ p_j\br{X} \ne p_j\br{G} $. Assume $ X $ is dense. Then $ p_j\br{X} \subseteq p_j\br{G} $ is obvious. If $ g_j \in p_j\br{G} $, then $ p_j^{-1}\br{\cbr{g_j}} $ is a non-empty open set, so there exists $ x \in X \cap p_j^{-1}\br{\cbr{g_j}} $, then $ p_j\br{x} = g_j $. So $ g_j \in p_j\br{X} $, so $ p_j\br{X} = p_j\br{G} $.
+\end{proof}
+
+\begin{corollary}
+\label{cor:1.2.31}
+Let $ Y $ be a compact topological space and let $ f : Y \to G $ be a continuous function. Then $ f $ is surjective if and only if $ p_j\br{f\br{Y}} = p_j\br{G} $ for all $ j \in J $.
+\end{corollary}
+
+\begin{proof}
+$ p_j\br{f\br{Y}} = p_j\br{G} $ if and only if $ f\br{Y} $ is dense, if and only if $ f\br{Y} = G $, since $ f\br{Y} $ is closed.
+\end{proof}
+
+\pagebreak
+
+\begin{proposition}
+Let $ G $ be a profinite group and $ X \subseteq G $ be a subset. Then the closure of $ X $ is
+$$ \overline{X} = \bigcap_{N \le_\o G} XN, $$
+where $ N \le_\o G $ are open subgroups.
+\end{proposition}
+
+\begin{proof}
+$ XN $ is a union of cosets, hence it is open and closed in $ G $. So $ \overline{X} \subseteq XN $ for all $ N \le_\o G $, so $ \overline{X} \subseteq \bigcap_{N \le_\o G} XN $. Take $ g \notin \overline{X} $. There exists an open $ V \subseteq G $ such that $ g \in V $ but $ X \cap V = \emptyset $. Then there exists $ j \in J $ such that $ V \supseteq gU_j $ for $ N = U_j = \ker p_j $. Then $ g \notin XN $, since if $ g = xn $ for $ x \in X $ and $ n \in N = U_j $ then $ x = gn^{-1} \in gN = gU_j \subseteq V $, a contradiction. Thus $ g \notin \bigcap_N XN $, so $ \bigcap_N XN \subseteq \overline{X} $.
+\end{proof}
+
+\begin{proposition}
+\label{prop:1.2.33}
+Let $ G $ be a profinite group and let $ \UUU $ be a collection of open normal subgroups which form a neighbourhood base at the identity. Then
+$$ G \cong \varprojlim_{U \in \UUU} G / U, $$
+as topological groups, where $ G / U $ are finite groups.
+\end{proposition}
+
+\begin{proof}
+The quotient maps $ G \twoheadrightarrow G / U $ are a cone on the inverse system, so we get a well-defined homomorphism $ f : G \to \varprojlim_U G / U $. Then
+\begin{itemize}
+\item $ f $ is continuous, since compositions with projection maps are continuous,
+\item $ f $ is surjective, since $ G \twoheadrightarrow G / U $ are surjective, and
+\item $ f $ is injective, since if $ g \in G \setminus \cbr{1} $, there exists an open subset $ V $ such that $ 1 \in V $ and $ g \notin V $ and there exists $ U \in \UUU $ such that $ 1 \in U \subseteq V $, then $ g \notin \ker \br{G \to G / U} $, so $ g \notin \ker f $.
+\end{itemize}
+\end{proof}
+
+\subsection{Change of inverse system}
+
+\begin{definition*}
+Let $ \br{J, \le} $ be an inverse system. A \textbf{cofinal subsystem} of $ J $ is a subset $ I \subseteq J $ such that for all $ j \in J $ there exists $ i \in I $ such that $ i \le j $.
+\end{definition*}
+
+Then $ I $ is an inverse system.
+
+\begin{example*}
+If $ k \in J $, then the set
+$$ J_{\le k} = \cbr{j \in J \st j \le k}, $$
+the \textbf{principal cofinal subsystem}, is cofinal in $ J $.
+\end{example*}
+
+\begin{proposition}
+Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups, and let $ I \subseteq J $ be cofinal. Then $ H = \varprojlim_{i \in I} G_i $ is topologically isomorphic to $ G = \varprojlim_{j \in J} G_j $.
+\end{proposition}
+
+\begin{proof}
+The projection map $ \prod_{j \in J} G_j \to \prod_{i \in I} G_i $ is a continuous homomorphism, and it restricts to $ f : G \to H $. Check that $ f $ is bijective.
+\begin{itemize}
+\item Injective. Take $ g = \br{g_j}_{j \in J} \in G $. Assume $ f\br{g} = 1 $, so $ g_i = p_i\br{f\br{g}} = 1 $ for all $ i \in I $. For any $ j \in J $, there exists $ i \in I $ such that $ i \le j $. Then $ g_j = \phi_{ij}\br{g_i} = \phi_{ij}\br{1} = 1 $. So $ g = 1 $.
+\item Surjective. Let $ h = \br{h_i}_{i \in I} \in H $ for $ h_i \in G_i $. Define $ g = \br{g_j} \in \prod_{j \in J} G_j $ by setting $ g_j = \phi_{ij}\br{h_i} $ for some $ i \in I $ such that $ i \le j $. If $ i_1 \le j $ and $ i_2 \le j $, there exists $ i_0 \in I $ such that $ i_0 \le i_1 $ and $ i_0 \le i_2 $, then
+$$ \phi_{i_1j}\br{h_{i_1}} = \phi_{i_1j}\br{\phi_{i_0i_1}\br{h_{i_0}}} = \phi_{i_0j}\br{h_{i_0}} = \phi_{i_2j}\br{\phi_{i_0i_2}\br{h_{i_0}}} = \phi_{i_2j}\br{h_{i_2}}. $$
+It also follows that $ g \in G $, since if $ j_1 \le j_2 $, choose $ i \in I $ such that $ i \le j_1 $, then
+$$ g_{j_2} = \phi_{ij_2}\br{h_i} = \phi_{j_1j_2}\br{\phi_{ij_1}\br{h_i}} = \phi_{j_1j_2}\br{g_{j_1}}. $$
+Finally, $ f\br{g} = h $, since $ g_i = \phi_{ii}\br{h_i} = h_i $ for all $ i \in I $.
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+\begin{definition*}
+An inverse system of groups is \textbf{surjective} if all transition maps are surjective.
+\end{definition*}
+
+\begin{proposition}
+Let $ \br{X_j}_{j \in J} $ be an inverse system of finite sets where all transition maps are surjective. Then the projection maps $ p_j : \varprojlim_j X_j \to X_j $ are surjective.
+\end{proposition}
+
+\begin{proposition}
+\label{prop:1.3.7}
+Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups. Then there exists an inverse system $ \br{G_j'}_{j \in J} $ such that $ G_j' \le G_j $, with surjective transition maps, such that $ \varprojlim_j G_j = \varprojlim_j G_j' $.
+\end{proposition}
+
+\begin{proof}
+Let $ p_j : G = \varprojlim_j G_j \to G_j $ be the projection. Define $ G_j' = p_j\br{G} $. Since $ \phi_{ij} \circ p_i = p_j $, $ \br{G_j'} $ is an inverse system with $ \eval{\phi_{ij}}_{G_i'} : G_i' \to G_j' $, and $ \eval{\phi_{ij}}_{G_i'} $ is surjective. If $ g = \br{g_j} \in G $ then $ g_j = p_j\br{g} \in G_j' $, so $ g \in \varprojlim_j G_j' \le G \le \prod_j G_j $. Thus $ \varprojlim_j G_j' = G $.
+\end{proof}
+
+\begin{definition*}
+An inverse system $ \br{J, \le} $ is \textbf{linearly ordered} if there exists a bijection $ f : J \to \NN $ such that $ i \le j $ if and only if $ f\br{i} \ge f\br{j} $, the \textbf{wrong-way ordering} on $ \NN $.
+\end{definition*}
+
+Thus cofinal if and only if increasing subsequence.
+
+\begin{proposition}
+\label{prop:1.3.11}
+If $ J $ is a countable inverse system, with no \textbf{global minimum}, so there does not exist $ m \in J $ such that $ m \le j $ for all $ j $, then $ J $ has a linearly ordered cofinal subsystem.
+\end{proposition}
+
+\pagebreak
+
+\section{Profinite groups}
+
+\subsection{The \texorpdfstring{$ p $}{p}-adic integers}
+
+\lecture{5}{Saturday}{30/01/21}
+
+Let $ p $ be a prime. Consider
+$$ \dots \to \ZZ / p^2\ZZ \to \ZZ / p\ZZ \to 1. $$
+The \textbf{ring of $ p $-adic integers} is
+$$ \ZZ_p = \varprojlim_{n \in \NN} \ZZ / p^n\ZZ. $$
+Thus $ \alpha \in \ZZ_p $ is a sequence $ \br{a_n}_{n \in \NN} $ of integers modulo $ p^n $ for $ a_n \in \ZZ / p^n\ZZ $ such that $ a_n \equiv a_m \mod p^m $ whenever $ n \ge m $, since $ \ZZ / p^n\ZZ \to \ZZ / p^m\ZZ $, and
+$$ \function[p_n]{\ZZ_p}{\ZZ / p^n\ZZ}{\alpha}{a_n = \alpha \mod p^n}. $$
+Given $ a \in \ZZ $, setting $ a_n = a \mod p^n $ gives an element $ \iota\br{a} \in \ZZ_p $ for $ \iota : \ZZ \to \ZZ_p $. Then $ \iota $ is injective, since if $ a \in \ZZ $, and $ p^n > \abs{a} $ then $ a \not\equiv 0 \mod p^n $, so $ \iota\br{a} \ne 0 $ in $ \ZZ_p $. Often $ \ZZ \le \ZZ_p $.
+
+\begin{definition*}
+Let $ \alpha = \br{a_n}, \beta = \br{b_n} \in \ZZ_p $. If $ \alpha = \beta $ then $ \d\br{\alpha, \beta} = 0 $. If $ \alpha \ne \beta $, take the smallest $ n $ such that $ a_n \ne b_n $, and set $ \d\br{\alpha, \beta} = p^{-n} $, the \textbf{$ p $-adic metric on $ \ZZ_p $}. The restriction of $ \d $ to $ \iota\br{\ZZ} $ is the \textbf{$ p $-adic metric on $ \ZZ $}.
+\end{definition*}
+
+Thus $ \alpha $ and $ \beta $ are close if $ \br{a_n} $ and $ \br{b_n} $ agree modulo $ p^n $ for all but large $ n $. Since
+$$ \B\br{0, r} = \cbr{\alpha = \br{a_n} \st \forall n \le -\log_p r, \ a_n = 0} = \ker \br{\ZZ_p \to \ZZ / p^{\fbr{-\log_p r}}\ZZ}, $$
+open balls are the subgroups $ p^n\ZZ_p \le \ZZ_p $.
+
+\begin{itemize}
+\item $ \iota\br{\ZZ} $ is dense in this metric. Let $ \alpha = \br{a_n} \in \ZZ_p $ and $ \epsilon > 0 $. Take $ n > -\log_p \epsilon $, and choose $ a \in \ZZ $ such that $ a \equiv a_n \mod p^n $. Then $ \d\br{\alpha, \iota\br{a}} \le p^{-n} < \epsilon $.
+\item The $ p $-adic metric on $ \ZZ $ is not complete, since $ a_n = 1 + \dots + p^n $ does not converge in $ \ZZ $, but does converge in $ \ZZ_p $.
+\item The $ p $-adic metric on $ \ZZ_p $ is complete. Let $ \alpha^{\br{k}} = \br{a_n^{\br{k}}}_{n \in \NN} $ be a Cauchy sequence in $ \ZZ_p $. For all $ n $ there exists $ K_n $ such that for all $ k, l \ge K_n $, we have $ \d\br{\alpha^{\br{k}}, \alpha^{\br{l}}} \le p^{-n} $, so $ a_n^{\br{k}} = a_n^{\br{l}} $ for all $ k, l \ge K_n $ so for fixed $ n $, $ a_n^{\br{k}} $ is eventually a constant $ b_n $. Then $ \beta = \br{b_n} \in \ZZ_p $, and $ \alpha^{\br{k}} \to \beta $ in $ \ZZ_p $.
+\end{itemize}
+
+Thus $ \ZZ_p $ is a completion of $ \ZZ $, but is not the profinite completion of $ \ZZ $.
+
+\begin{definition*}
+Let $ p $ be a prime. A \textbf{$ p $-group} is a finite group of order $ p^n $ for $ n \ge 0 $. A \textbf{pro $ p $-group} is an inverse limit of $ p $-groups.
+\end{definition*}
+
+\begin{definition*}
+Let $ G $ be a group and $ p $ prime. The set of normal subgroups $ N \triangleleft G $ such that $ \sbr{G : N} = p^n $ for some $ n $ form an inverse system $ \NNN_p $. Since $ G / N_1 \times G / N_2 $ are $ p $-groups, $ N_1 \cap N_2 = \ker \br{G \to G / N_1 \times G / N_2} $ is a $ p $-group. The \textbf{pro-$ p $ completion} is
+$$ \widehat{G_{\br{p}}} = \varprojlim_{N \in \NNN_p} G / N, $$
+where $ G / N_1 \to G / N_2 $ if $ N_1 \le N_2 $.
+\end{definition*}
+
+\begin{proposition}
+The additive group $ \ZZ_p $ is abelian and torsionfree.
+\end{proposition}
+
+\begin{proof}
+$ \ZZ_p \le \prod_{n \in \NN} \ZZ / p^n\ZZ $ is abelian. Let $ \alpha = \br{a_n} \in \ZZ_p \setminus \cbr{0} $. Suppose $ m\alpha = 0 $ for $ m \in \ZZ $. We want $ m = 0 $. Assume $ m = p^rs $ for $ s $ coprime to $ p $. Then $ \alpha \ne 0 $, so there exists $ n $ such that $ a_n \ne 0 $. Consider $ a_{n + r} $. Then $ 0 \equiv ma_{n + r} \equiv p^ra_{n + r}s \mod p^{n + r} $, so $ p^n \mid a_{n + r}s $. Thus $ p^n \mid a_{n + r} $, so $ a_n \equiv a_{n + r} \equiv 0 \mod p^n $, a contradiction.
+\end{proof}
+
+\pagebreak
+
+\begin{proposition}
+The ring $ \ZZ_p $ has no zero-divisors.
+\end{proposition}
+
+\begin{proof}
+Exercise. \footnote{Exercise}
+\end{proof}
+
+\subsection{The profinite completion of the integers}
+
+The \textbf{profinite completion of the integers} is
+$$ \widehat{\ZZ} = \varprojlim_n \ZZ / n\ZZ, $$
+where $ \ZZ / n\ZZ \to \ZZ / m\ZZ $ whenever $ n\ZZ \le m\ZZ $, which is if and only if $ m \mid n $, so $ n = mr $.
+
+\begin{theorem}[Chinese remainder theorem]
+There is an isomorphism of topological rings
+$$ \widehat{\ZZ} \cong \prod_{p \ \text{prime}} \ZZ_p. $$
+\end{theorem}
+
+\begin{proof}
+Each natural number $ n $ is written as a product of prime powers $ n = \prod_{p \ \text{prime}} p^{\e_p\br{n}} $. The classical CRT gives natural isomorphisms
+$$ \function[f_n]{\ZZ / n\ZZ}{\prod_{p \ \text{prime}} \ZZ / p^{\e_p\br{n}}\ZZ}{1}{\br{1, \dots, 1}}, $$
+and commutative diagrams
+$$
+\begin{tikzcd}
+\ZZ / mn\ZZ \arrow{r}{f_{mn}}[swap]{\sim} \arrow[twoheadrightarrow]{d} & \displaystyle\prod_p \ZZ / p^{\e_p\br{mn}}\ZZ \arrow[twoheadrightarrow]{d} \\
+\ZZ / n\ZZ \arrow{r}{\sim}[swap]{f_n} & \displaystyle\prod_p \ZZ / p^{\e_p\br{n}}\ZZ
+\end{tikzcd}.
+$$
+Passing to inverse limits,
+$$
+\begin{tikzcd}[row sep=tiny]
+\widehat{\ZZ} = \displaystyle\varprojlim_n \ZZ / n\ZZ \arrow{r}{\sim} \arrow[subset]{d} & \displaystyle\varprojlim_n \prod_p \ZZ / p^{\e_p\br{n}}\ZZ \arrow[subset]{d} \\
+\displaystyle\prod_n \ZZ / n\ZZ \arrow{r}[swap]{\sim} & \displaystyle\prod_n \prod_p \ZZ / p^{\e_p\br{n}}\ZZ
+\end{tikzcd}.
+$$
+The natural continuous surjections
+$$ \prod_p \ZZ_p \twoheadrightarrow \prod_p \ZZ / p^{\e_p\br{n}}\ZZ $$
+form a cone on the inverse system $ \cbr{\prod_p \ZZ / p^{\e_p\br{n}}\ZZ} $, so there exists
+$$ f : \prod_p \ZZ_p \twoheadrightarrow \varprojlim_n \prod_p \ZZ / p^{\e_p\br{n}}\ZZ, $$
+which is continuous by Proposition \ref{prop:1.2.25}, surjective by Corollary \ref{cor:1.2.31}, and injective since every non-trivial element of $ \prod_p \ZZ_p $ is non-trivial in some quotient $ \ZZ / p^e\ZZ $. So $ f $ is a topological isomorphism as required.
+\end{proof}
+
+\begin{corollary}
+The abelian group $ \widehat{\ZZ} $ is torsionfree abelian.
+\end{corollary}
+
+\begin{corollary}
+The ring $ \widehat{\ZZ} $ is not an integral domain.
+\end{corollary}
+
+\begin{proof}
+Any product of non-trivial rings $ R_1 \times R_2 $ has zero-divisors, since $ \br{r_1, 0} \cdot \br{0, r_2} = \br{0, 0} $. An element of $ \widehat{\ZZ} $ is a zero-divisor if and only if it is zero in some $ \ZZ_p $-factor.
+\end{proof}
+
+Elements of $ \iota\br{\ZZ} $ are not zero divisors in $ \widehat{\ZZ} $.
+
+\pagebreak
+
+\subsection{Profinite matrix groups}
+
+\lecture{6}{Tuesday}{02/02/21}
+
+For a commutative ring $ R $, we have
+$$ \Mat_{N \times M} R = \cbr{N \times M \ \text{matrices with elements in} \ R}. $$
+If $ N = M $, we have a ring structure, where addition and multiplication are given by the usual formula. There exists a determinant function $ \det : \Mat_{N \times N} R \to R $. Then
+$$ \ZZ_p^{NM} \cong \Mat_{N \times M} \ZZ_p = \varprojlim_{n \in \NN} \Mat_{N \times M} \ZZ / p^n\ZZ. $$
+By continuity of ring operations on $ \ZZ_p $, addition and multiplication on matrices are continuous, and $ \det : \Mat_{N \times N} \ZZ_p \to \ZZ_p $ is continuous. Since $ \ZZ_p $ is an integral domain, it has a field of fractions $ \QQ_p $, so you can do linear algebra over $ \QQ_p $. A matrix over $ \QQ_p $ has an inverse over $ \QQ_p $ if and only if its determinant is non-zero, and a matrix over $ \ZZ_p $ has an inverse over $ \ZZ_p $ if and only if its determinant and its inverse are in $ \ZZ_p^\times $. Define
+$$ \GL_N \ZZ_p = \cbr{A \in \Mat_{N \times N} \ZZ_p \st \det A \in \ZZ_p^\times}, \qquad \SL_N \ZZ_p = \cbr{A \in \Mat_{N \times N} \ZZ_p \st \det A = 1}. $$
+Both are profinite groups.
+
+\begin{lemma}
+For all $ N \ge 1 $ and $ p $ prime,
+$$ \GL_N \ZZ_p = \varprojlim_n \GL_N \ZZ / p^n\ZZ, \qquad \SL_N \ZZ_p = \varprojlim_n \SL_N \ZZ / p^n\ZZ. $$
+\end{lemma}
+
+\begin{proof}
+The diagrams
+$$
+\begin{tikzcd}
+\Mat_{N \times N} \ZZ_p \arrow{r} \arrow{d}[swap]{\det} & \Mat_{N \times N} \ZZ / p^n\ZZ \arrow{d}{\det} \\
+\ZZ_p \arrow{r} & \ZZ / p^n\ZZ
+\end{tikzcd}
+$$
+commute.
+\begin{itemize}
+\item $ A \in \GL_N \ZZ_p $ if and only if $ \det A \in \ZZ_p^\times $, if and only if $ \det A_n \in \br{\ZZ / p^n\ZZ}^\times $ for all $ n $, if and only if $ A_n \in \GL_N \ZZ / p^n\ZZ $ for all $ n $.
+\item $ A \in \SL_N \ZZ_p $ if and only if $ \det A = 1 $, if and only if $ \det A_n = 1 $ for all $ n $, if and only if $ A_n \in \SL_N \ZZ / p^n\ZZ $ for all $ n $.
+\end{itemize}
+\end{proof}
+
+Also have matrices over $ \widehat{\ZZ} $. A warning is that $ \widehat{\ZZ} $ is not an integral domain. Analogously,
+$$ \GL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A \in \widehat{\ZZ}^\times} = \varprojlim_n \GL_N \ZZ / n\ZZ = \prod_p \GL_N \ZZ_p, $$
+$$ \SL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A = 1} = \varprojlim_n \SL_N \ZZ / n\ZZ = \prod_p \SL_N \ZZ_p, $$
+since $ \Mat_{N \times N} \widehat{\ZZ} = \prod_p \Mat_{N \times N} \ZZ_p $, and
+$$ \SL_N \ZZ \le \SL_N \ZZ_p, \qquad \SL_N \ZZ \le \SL_N \widehat{\ZZ} = \varprojlim_n \SL_N \ZZ / n\ZZ $$
+are dense. See problem sheet $ 2 $.
+
+\begin{example*}
+$ \twobytwosmall{7}{9}{4}{9} \in \SL_2 \ZZ / 13\ZZ $ is in the image of $ \SL_2 \ZZ $.
+\end{example*}
+
+\pagebreak
+
+\subsection{Subgroups, quotients, and homomorphisms}
+
+\begin{proposition}
+A closed subgroup of a profinite group is a profinite group.
+\end{proposition}
+
+\begin{proof}
+Let $ G = \varprojlim_{j \in J} G_j $ be a profinite group for $ G_j $ finite. Take a closed subgroup $ H \le_\c G $ of $ G $. Define $ H_j = p_j\br{H} \le G_j $. Then $ H_j $, with transition maps $ \eval{\phi_{ij}}_{H_i} : H_i \to H_j $, are an inverse system of finite groups. Define
+$$ H' = \varprojlim_j H_j = \cbr{\br{g_j} \in \prod_{j \in J} G_j \st \forall i \le j, \ \phi_{ij}\br{g_i} = g_j, \ g_j \in H_j}. $$
+Show that $ H = H' $. If $ h = \br{h_j} \in H $, by definition $ h_j = p_j\br{h} \in H_j $, so $ H \le H' $. Suppose $ g = \br{g_j} \notin H $. Since $ H $ is closed, $ G \setminus H $ is open, so there exists a basic open set containing $ g $, which does not intersect $ H $. There exists $ j \in J $ such that $ gU_j = p_j^{-1}\br{\cbr{g_j}} \le G \setminus H $. Therefore for all $ h \in H $, $ p_j\br{h} \ne g_j $, since then $ h \in H \cap p_j^{-1}\br{\cbr{g_j}} $, so $ g_j \notin H_j $, so $ g \notin H' $. So $ H = H' $.
+\end{proof}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item The two topologies on $ H $ agree by $ \id : \br{H, \tau_{\text{profinite}}} \to \br{H, \tau_{\text{subspace}}} $, which is continuous by Proposition \ref{prop:1.2.25}.
+\item A better name for $ H' $ is $ \overline{H} $, the closure. Actually proved that $ H' = \overline{H} = H $.
+\end{itemize}
+\end{remark*}
+
+\begin{proposition}
+Let $ G = \varprojlim_j G_j $ and $ H \le G $. Set $ H_j = p_j\br{H} \le G_j $. Then the closure of $ H $ is $ \overline{H} = \varprojlim_j H_j $.
+\end{proposition}
+
+\begin{lemma}
+Let $ f : G_1 \to G_2 $ be a surjective homomorphism and $ H \le G_1 $. Then $ \sbr{G_1 : H} \ge \sbr{G_2 : f\br{H}} $.
+\end{lemma}
+
+\begin{proposition}
+Let $ G = \varprojlim_j G_j $ for $ \br{G_j} $ a surjective inverse system, so $ G \twoheadrightarrow G_j $. Let $ H \le_\c G $ and set $ H_j = p_j\br{H} \le G_j $. Then $ H $ is finite index if and only if $ \sbr{G_j : H_j} $ is constant on a cofinal subsystem, if and only if $ \sbr{G_j : H_j} $ is bounded for all $ j $. If this is true, then $ \sbr{G : H} = \sbr{G_i : H_i} $ for $ i \in I $.
+\end{proposition}
+
+\begin{proof}
+$ p_j : G \to G_j $ are surjective, so $ \sbr{G : H} \ge \sbr{G_j : H_j} $. Suppose $ \sbr{G : H} \ge N $. There exist distinct cosets $ g_1H, \dots, g_NH $ of $ H $ in $ G $, if and only if $ g_n^{-1}g_m \notin H $ if $ n \ne m $, so there exists $ j_{n, m} \in J $ such that $ p_{j_{n, m}}\br{g_n^{-1}g_m} \notin H_{j_{n, m}} $. Take $ k \le j_{n, m} $ for all $ n $ and $ m $. Then $ p_k\br{g_n^{-1}g_m} \notin H_k $ for all $ n \ne m $, so $ p_k\br{g_n}H_k $ are distinct cosets of $ H_k $ in $ G_k $, so $ \sbr{G_k : H_k} \ge N $. For any $ i $ in the cofinal subsystem $ J_{\le k} $, it follows $ \sbr{G_i : H_i} \ge N $ for all $ i \le k $. If $ \sbr{G : H} = N $ is finite, take $ k $ as above and $ I = J_{\le k} $. Then $ \sbr{G : H} \ge \sbr{G_i : H_i} \ge N = \sbr{G : H} $ for all $ i \in I $. If $ \sbr{G : H} $ is infinite, assume $ I $ is cofinal and $ \sbr{G_i : H_i} = N $ for all $ i \in I $. Then there exists $ k $ such that $ \sbr{G_k : H_k} \ge N + 1 $. But there exists $ i \in I $ such that $ i \le k $, then $ \sbr{G_i : H_i} \ge \sbr{G_k : H_k} \ge N + 1 > N = \sbr{G_i : H_i} $, a contradiction.
+\end{proof}
+
+\begin{proposition}
+Let $ G $ be a profinite group and $ N $ a closed normal subgroup. Then $ G / N $, with the quotient topology, is a profinite group.
+\end{proposition}
+
+\begin{proof}
+Take $ G = \varprojlim_j G_j $ for $ \br{G_j} $ a surjective inverse system. Let $ N_j = p_j\br{N} \triangleleft G_j = p_j\br{G} $. Recall $ N = \varprojlim_j N_j $. Define $ Q_j = G_j / N_j $. Since $ \phi_{ij}\br{N_i} \le N_j $, we get quotient homomorphisms $ \psi_{ij} : Q_i \to Q_j $, which are transition maps for the $ Q_j $. Set $ Q = \varprojlim_j Q_j $. The map $ \prod_h G_j \to \prod_j Q_j $ is continuous, so there is a continuous surjective group homomorphism $ f : G \to Q $. The kernel of this map is $ N $, since $ f\br{g} = 1 $ if and only if $ q_j\br{f\br{g}} = 1 $ for all $ j $, if and only if $ g_j \in N_j $ for all $ j $, if and only if $ g \in \varprojlim_j N_j = N $. By the first isomorphism theorem for groups,
+$$
+\begin{tikzcd}
+G \arrow{d} \arrow{dr} & \\
+G / N \arrow{r}{\sim}[swap]{\overline{f}} & Q
+\end{tikzcd}.
+$$
+Since $ G \to Q $ is continuous and $ G \to G / N $ is the quotient map, $ \overline{f} $ is continuous. Since $ G / N $ is compact and $ Q $ is Hausdorff, $ \overline{f} $ is a homeomorphism.
+\end{proof}
+
+This is the first isomorphism theorem for profinite groups.
+
+\pagebreak
+
+\lecture{7}{Thursday}{04/02/21}
+
+\begin{definition*}
+Let $ \br{G_j}_{j \in J} $ and $ \br{H_j}_{j \in J} $ be inverse systems of finite groups, over the same poset $ J $. A \textbf{morphism of inverse systems} $ \br{f_j} $ is a family of homomorphisms $ f_j : G_j \to H_j $, such that for all $ i \le j $,
+$$
+\begin{tikzcd}
+G_i \arrow{r}{f_i} \arrow{d}[swap]{\phi_{ij}^G} & H_i \arrow{d}{\phi_{ij}^H} \\
+G_j \arrow{r}[swap]{f_j} & H_j
+\end{tikzcd}
+$$
+commutes, so $ \phi_{ij}^H \circ f_i = f_j \circ \phi_{ij}^G $.
+\end{definition*}
+
+\begin{proposition}
+Let $ \br{f_j} : \br{G_j} \to \br{H_j} $ be a morphism of inverse systems. Then there is a unique continuous homomorphism $ f : G = \varprojlim_j G_j \to H = \varprojlim_j H_j $ such that
+$$
+\begin{tikzcd}
+G \arrow{r}{f} \arrow{d}[swap]{p_j^G} & H \arrow{d}{p_j^H} \\
+G_j \arrow{r}[swap]{f_j} & H_j
+\end{tikzcd},
+$$
+so $ p_j^H \circ f = f_j \circ p_j^G $ for all $ j \in J $.
+\end{proposition}
+
+\begin{proof}
+The maps $ f_j \circ p_j^G : G \to H_j $ form a cone on the inverse system $ \br{H_j} $,
+$$
+\begin{tikzcd}
+& G \arrow{dl}[swap]{f_i \circ p_i^G} \arrow{dr}{f_j \circ p_j^G} & \\
+H_i \arrow{rr}[swap]{\phi_{ij}^H} & & H_j
+\end{tikzcd},
+$$
+since $ \phi_{ij}^H \circ f_i \circ p_i^G = f_j \circ \phi_{ij}^G \circ p_i^G = f_j \circ p_j^G $. So by definition of limits, there exists a unique $ f : G \to H = \varprojlim_j H_j $ such that $ p_j^H \circ f = f_j \circ p_j^G $.
+\end{proof}
+
+Thus $ f $ is \textbf{induced} by the $ f_j $ by passing to an inverse limit.
+
+\begin{proposition}
+\label{prop:2.4.11}
+Let $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{i \in I} H_i $ be inverse limits of finite groups, where $ I $ and $ J $ are countable inverse systems with no minimum element. Let $ f : G \to H $ be a continuous homomorphism. Then there exist cofinal subsystems $ J' \subseteq J $ and $ I' \subseteq I $, an order-preserving bijection $ J' \cong I' $, and a morphism of inverse systems $ \br{f_j} : \br{G_j}_{j \in J'} \to \br{H_i}_{i \in I'} $ inducing $ f $.
+\end{proposition}
+
+\begin{proof}
+Without loss of generality, use Proposition \ref{prop:1.3.11} to assume $ J $ and $ I $ are linearly ordered. Without loss of generality both are $ \NN $, with the wrong-way ordering. Construct an increasing sequence $ \br{k_n} $ of natural numbers as follows. Each map $ p_n^H \circ f : G \to H \to H_n $ is a continuous homomorphism, so its kernel is open in $ G $. By Proposition \ref{prop:1.2.28} there exists $ k_n $ such that $ \ker \br{G \to G_{k_n}} \le \ker \br{G \to H_n} $, which means there is a quotient homomorphism
+$$
+\begin{tikzcd}
+G \arrow{r}{f} \arrow{d}[swap]{p_{k_n}^G} \arrow{dr} & H \arrow{d}{p_n^H} \\
+G_{k_n} \arrow{r}[swap]{f_n} & H_n
+\end{tikzcd}.
+$$
+Then $ \ker \br{G \to G_{n + 1}} \le \ker \br{G \to G_n} $, so without loss of generality $ k_n > k_{n - 1} $. Now $ J' = \cbr{k_n}_{n \in \NN} $ give a cofinal subsystem of $ J = \NN $, and the $ f_n $ are the required morphisms of inverse systems.
+\end{proof}
+
+\subsection{Generators of profinite groups}
+
+\begin{definition*}
+Let $ G $ be a topological group, and let $ S $ be a subset of $ G $. Then $ S $ is a \textbf{topological generating set (TGS)} for $ G $ if the subgroup $ \abr{S} $ is dense in $ G $, and $ G $ is \textbf{topologically finitely generated (TFG)} if it has some finite TGS $ S $.
+\end{definition*}
+
+\pagebreak
+
+\begin{definition*}
+Let $ G $ be a topological group and $ S \subseteq G $. The \textbf{closed subgroup of $ G $ topologically generated by $ S $} is the smallest closed subgroup of $ G $ which contains $ S $. Denoted $ \overline{\abr{S}} $.
+\end{definition*}
+
+\begin{proposition}
+Let $ G $ be a topological group and $ H $ a subgroup of $ G $. Then $ \overline{H} $ is a subgroup of $ G $. Hence for $ S \subseteq G $, the closed subgroup of $ G $ generated by $ S $ is equal to the closure of $ \abr{S} $.
+\end{proposition}
+
+\begin{proof}
+Exercise. \footnote{Exercise}
+\end{proof}
+
+\begin{lemma}
+A finite index subgroup of a finitely generated group is finitely generated.
+\end{lemma}
+
+\begin{proposition}
+If a profinite group $ G $ is TFG and $ U $ is an open subgroup of $ G $ then $ U $ is TFG.
+\end{proposition}
+
+\begin{proof}
+Let $ S $ be a finite set such that $ \abr{S} $ is dense in $ G $. Then $ \Gamma = U \cap \abr{S} $ is finite index in $ \abr{S} $, hence $ \Gamma $ is finitely generated, so $ \Gamma = \abr{S'} $ for $ S' $ finite. Since $ U $ is open, and $ \abr{S} $ is dense, $ \abr{S'} = U \cap \abr{S} $ is dense in $ U $. So $ U $ is TFG.
+\end{proof}
+
+\begin{proposition}
+Let $ \br{G_j} $ be a surjective inverse system of finite groups with $ G = \varprojlim_j G_j $. Let $ S \subseteq G $. Then $ S $ is a TGS for $ G $ if and only if $ p_j\br{S} $ generates $ G_j $ for all $ j $.
+\end{proposition}
+
+\begin{proof}
+By Corollary \ref{cor:1.2.30}, $ \abr{S} $ is dense in $ G $ if and only if $ G_j = p_j\br{\abr{S}} = \abr{p_j\br{S}} $ for all $ j $.
+\end{proof}
+
+\begin{lemma}
+Let $ G $ be a TFG profinite group. Then $ G $ may be written as the inverse limit of a countable inverse system of finite groups.
+\end{lemma}
+
+\begin{proof}
+A continuous homomorphism from $ G $ to a finite group is determined by the image of a TGS $ S $, since a function on $ S $ determines all of a homomorphism from $ \abr{S} $ and continuity gives the behaviour on all of $ G $. So there are only countably many continuous homomorphisms from $ G $ to $ \SSS_n $ for $ n \in \NN $. Every open normal subgroup of $ G $ is the kernel of such a continuous homomorphism. So there are only countably many open normal subgroups of $ G $. Then $ \UUU = \cbr{U \triangleleft_\o G} $ is a neighbourhood base of the identity, so by Proposition \ref{prop:1.2.33}, $ G = \varprojlim_{U \in \UUU} G / U $.
+\end{proof}
+
+\begin{example*}
+Let $ G $ be a TFG profinite group. Then there are only finitely many open subgroups of $ G $ of index at most $ n $. See Lemma \ref{lem:1.2.18}. Define
+$$ G_n = \bigcap \cbr{U \st U \le_\o G, \ \sbr{G : U} \le n}. $$
+Then $ G_n \triangleleft G $, and $ G_n $ is open in $ G $. And $ \cbr{G_n} $ is a neighbourhood base of the identity. So $ G = \varprojlim_{n \in \NN} G / G_n $.
+\end{example*}
+
+\begin{proposition}
+\label{prop:2.5.10}
+Let $ \ZZ_p^\times $ be the set of elements $ \alpha $ of $ \ZZ_p $ which topologically generate $ \ZZ_p $. Then $ \alpha \in \ZZ_p^\times $ if and only if $ \alpha \not\equiv 0 \mod p $. Hence $ \ZZ_p^\times $ is a closed uncountable subset of $ \ZZ_p $. For every $ n $, and every generator $ a_n \in \br{\ZZ / p^n\ZZ}^\times $ there is some $ \alpha \in \ZZ_p^\times $ such that $ \alpha \equiv a_n \mod p^n $.
+\end{proposition}
+
+\begin{proof}
+For the last part, $ a_n $ is the image of $ \alpha $, since it is a surjective inverse system, and if $ a_n $ generates $ \ZZ / p^n\ZZ $, it is coprime to $ p $. If $ \alpha = \br{a_n} $ such that $ a_1 \ne 0 $, then $ p \nmid a_n $ for any $ n $. Hence $ a_n $ is coprime to $ p $, and so generates $ \ZZ / p^n\ZZ $ for all $ n $. So $ \abr{\alpha} $ is dense in $ \ZZ_p $ by an earlier result.
+\end{proof}
+
+\lecture{8}{Saturday}{06/02/21}
+
+\begin{remark*}
+$ \ZZ_p^\times $ is the set of units in the ring $ \ZZ_p $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ \impliedby $] If $ \alpha $ is a unit, then $ \alpha \mod p^n $ is a unit in $ \ZZ / p^n\ZZ $, so generates $ \ZZ / p^n\ZZ $. Then $ \alpha $ topologically generates $ \ZZ_p $.
+\item[$ \implies $] Consider the group homomorphism
+$$ \function[f]{\ZZ_p}{\ZZ_p}{x}{\alpha x}, $$
+which is continuous as multiplication in a ring is continuous. So $ \im f $ is a closed subgroup of $ \ZZ_p $, containing $ \alpha $. Then $ \alpha $ generates $ \ZZ_p $, so the only closed subgroup containing $ \alpha $ is $ \ZZ_p $ itself. So $ 1 \in \im f $, so there exists $ \beta $ such that $ \alpha\beta = 1 $.
+\end{itemize}
+Thus $ \alpha $ is a unit if and only if $ \cbr{\alpha} $ is a TGS for $ \ZZ_p $.
+\end{remark*}
+
+\pagebreak
+
+\begin{example*}
+If $ p \ne 2 $, then $ 2 $ is invertible in $ \ZZ_p $, so $ 2^{-1} $ exists. If $ p = 3 $,
+$$ 2^{-1} = \br{\dots, 5, 2} \in \ZZ_3 \le \prod_{n \in \NN} \ZZ / 3^n\ZZ. $$
+\end{example*}
+
+\begin{proposition}
+$ \alpha \in \widehat{\ZZ}^\times $ if and only if $ \alpha \mod n \in \br{\ZZ / n\ZZ}^\times $ for all $ n $. For any $ n $, and every $ k \in \br{\ZZ / n\ZZ}^\times $ there exists a generator $ \alpha \in \widehat{\ZZ}^\times $ such that $ \alpha \equiv k \mod n $.
+\end{proposition}
+
+\begin{proof}
+Follows from Proposition \ref{prop:2.5.10} via the CRT, since $ \widehat{\ZZ} = \prod_p \ZZ_p $.
+\end{proof}
+
+\begin{theorem}[Gaschutz's lemma for finite groups]
+Let $ f : G \twoheadrightarrow H $ be a surjective homomorphism of finite groups. Suppose $ G $ has some generating set of size $ d $. For any generating set $ \cbr{z_1, \dots, z_d} \subseteq H $, there exists a generating set $ \cbr{x_1, \dots, x_d} \subseteq G $ such that $ f\br{x_i} = z_i $ for all $ i $.
+\end{theorem}
+
+Really, talking about generating vectors $ \underline{x} = \br{x_1, \dots, x_d} \in G^d $. Extend $ f $ to $ f : G^d \to H^d $.
+
+\begin{proof}
+We will prove, by induction on $ \abs{G} $, for $ H $ fixed, the following statement. The number
+$$ N_G\br{\underline{y}} = \abs{\cbr{\text{generating vectors} \ \underline{x} \ \text{of} \ G \st f\br{\underline{x}} = \underline{y}}}, $$
+where $ \underline{y} \in H^d $ is a generating vector of $ H $, is independent of $ \underline{y} $. Want to show $ N_G\br{\underline{z}} > 0 $, and $ G $ has some generating vector $ \underline{x'} \in G^d $ so $ N_G\br{\underline{z}} = N_G\br{f\br{\underline{x'}}} > 0 $. Let $ \underline{y} \in H^d $ be a generating vector. Let
+$$ \CCC = \cbr{\text{$ d $-generator proper subgroups of} \ G}. $$
+Every $ \underline{x} \in G^d $ such that $ f\br{\underline{x}} = \underline{y} $ either generates $ G $ or generates some $ C \in \CCC $. Therefore
+$$ N_G\br{\underline{y}} + \sum_{C \in \CCC} N_C\br{\underline{y}} = \abs{\cbr{\underline{x} : f\br{\underline{x}} = \underline{y}}} = \abs{\ker f}^d. $$
+Thus $ N_G\br{\underline{y}} = \abs{\ker f}^d - \sum_{C \in \CCC} N_C\br{\underline{y}} $, which is independent of $ \underline{y} $ by induction.
+\end{proof}
+
+\begin{theorem}[Gaschutz's lemma for profinite groups]
+Let $ f : G \to H $ be a continuous surjective homomorphism of profinite groups. Suppose $ G $ has a TGS of size $ d $. Then for any TGS $ \cbr{z_1, \dots, z_d} $ of $ H $, there is a TGS $ \cbr{x_1, \dots, x_d} $ of $ G $ such that $ f\br{x_i} = z_i $ for all $ i $.
+\end{theorem}
+
+\begin{proof}
+By Proposition \ref{prop:1.3.7} and Proposition \ref{prop:2.4.11} we may assume and write $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{j \in H} H_j $, surjective inverse systems of finite groups, with a morphism of inverse systems $ \br{f_j} : \br{G_j} \to \br{H_j} $ such that $ f = \varprojlim_j f_j $. It is forced that $ f_j $ is surjective, since
+$$
+\begin{tikzcd}
+G \arrow[twoheadrightarrow]{r}{f} \arrow[twoheadrightarrow]{d}[swap]{p_j^G} & H \arrow[twoheadrightarrow]{d}{p_j^H} \\
+G_j \arrow[twoheadrightarrow]{r}[swap]{f_j} & H_j
+\end{tikzcd}.
+$$
+Let $ \underline{z} $ be the given TGS of $ H $. Set $ \underline{z}_j $ for $ j \in J $ to be the image of $ \underline{z} $ in $ H_j $. Then $ \underline{z}_j = p_j^H\br{\underline{z}} $ is a generating vector of $ H_j $. Consider the finite sets
+$$ X_j = \cbr{\text{generating vectors} \ \underline{x}_j \in G_j^d \st f_j\br{\underline{x}_j} = \underline{z}_j} \ne \emptyset, $$
+by Gaschutz. The $ X_j $ form an inverse system, so $ \phi_{ij}\br{X_i} \subseteq X_j $, since
+$$
+\begin{tikzcd}
+G_i \arrow{r} \arrow{d} & H_i \arrow{d} \\
+G_j \arrow{r} & H_j
+\end{tikzcd}.
+$$
+Therefore $ \varprojlim_j X_j $ is non-empty. If $ \underline{x} \in \varprojlim_j X_j \subseteq G^d $ such that $ p_j^G\br{\underline{x}} \in X_j $, then $ \underline{x} $ is a TGS of $ G $ and $ p_j^H\br{f\br{\underline{x}}} = \underline{z}_j $ for all $ j $, so $ f\br{\underline{x}} = \underline{z} $.
+\end{proof}
+
+\pagebreak
+
+\section{Profinite completions}
+
+\subsection{Residual finiteness}
+
+\begin{notation*}
+Discrete abstract groups will be Greek letters and profinite groups will be Roman letters.
+\end{notation*}
+
+Given an abstract group $ \Gamma $ and an inverse system $ \NNN = \cbr{N \triangleleft_\f \Gamma} $, there is an inverse system of finite groups $ \Gamma / N $. Then $ \widehat{\Gamma} = \varprojlim_{N \in \NNN} \Gamma / N $, where $ \Gamma / N_1 \to \Gamma / N_2 $ if $ N_1 \le N_2 $. Also had a canonical morphism $ \iota_\Gamma = \iota : \Gamma \to \widehat{\Gamma} $. The image of $ \iota $ is dense by Corollary \ref{cor:1.2.30}. Also implies for any finite generating set $ S \subseteq \Gamma $, $ \iota\br{S} $ is a TGS of $ \widehat{\Gamma} $, so if $ \Gamma $ is finitely generated, then $ \widehat{\Gamma} $ is TFG.
+
+\begin{proposition}
+\label{prop:3.1.2}
+Let $ f : \Delta \to \Gamma $ be a group homomorphism. Then there exists a unique continuous group homomorphism $ \widehat{f} : \widehat{\Delta} \to \widehat{\Gamma} $ such that $ \widehat{f} \circ \iota_\Delta = \iota_\Gamma \circ f $, so
+$$
+\begin{tikzcd}
+\Delta \arrow{r}{f} \arrow{d}[swap]{\iota_\Delta} & \Gamma \arrow{d}{\iota_\Gamma} \\
+\widehat{\Delta} \arrow[dashed]{r}[swap]{\widehat{f}} & \widehat{\Gamma}
+\end{tikzcd}.
+$$
+\end{proposition}
+
+\begin{proof}
+Uniqueness will follow from the density of $ \iota_\Delta\br{\Delta} $ in $ \widehat{\Delta} $. Take two $ \widehat{f_1} $ and $ \widehat{f_2} $ satisfying Proposition \ref{prop:3.1.2}. Consider
+$$ S = \cbr{\delta \in \widehat{\Delta} \st \widehat{f_1}\br{\delta} = \widehat{f_2}\br{\delta}}. $$
+Then $ S $ is closed, since it is the preimage of the diagonal in $ \widehat{\Gamma} \times \widehat{\Gamma} $ under $ \br{\widehat{f_1}, \widehat{f_2}} : \widehat{\Delta} \to \widehat{\Gamma} \times \widehat{\Gamma} $, and $ S $ contains $ \iota_\Delta\br{\Delta} $, which is dense. So $ S = \widehat{\Delta} $.
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item $ \Gamma $ is finite, so $ \Gamma = \widehat{\Gamma} $. Then $ \ker f $ is a finite index normal subgroup $ M $ of $ \Delta $, so there exists a projection map $ p_M : \widehat{\Delta} \to \Delta / M $. So we get a composition
+$$
+\begin{tikzcd}
+\Delta \arrow{rr}{\iota_\Delta} \arrow{dr} \arrow{ddr}[swap]{f} & & \widehat{\Delta} \arrow{dl}[swap]{p_M} \arrow[dashed]{ddl}{\widehat{f}} \\
+& \Delta / M \arrow[hookrightarrow]{d} & \\
+& \Gamma &
+\end{tikzcd}.
+$$
+\item General case. Take some $ N \triangleleft_\f \Gamma $. There exists a unique $ q_N : \widehat{\Delta} \to \Gamma / N $ such that $ q_N \circ \iota_\Delta = p_N \circ \iota_\Gamma \circ f $. Then $ \br{q_N} $ form a cone on the inverse system, since
+$$ \phi_{N_1N_2}^\Gamma \circ q_{N_1} \circ \iota_\Delta = \phi_{N_1N_2}^\Gamma \circ p_{N_1} \circ \iota_\Gamma \circ f = p_{N_2} \circ \iota_\Gamma \circ f = q_{N_2} \circ \iota_\Delta. $$
+Thus there exists a unique $ \widehat{f} : \widehat{\Delta} \to \widehat{\Gamma} $ such that $ p_N \circ \widehat{f} = q_N $ for all $ N $, so
+$$
+\begin{tikzcd}
+\Delta \arrow{rr}{\iota_\Delta} \arrow{d}[swap]{f} & & \widehat{\Delta} \arrow[dashed]{dl}[swap]{\widehat{f}} \arrow{ddl}{q_N} \\
+\Gamma \arrow{r}{\iota_\Gamma} \arrow{dr} & \widehat{\Gamma} \arrow{d}[swap]{p_N} & \\
+& \Gamma / N &
+\end{tikzcd},
+$$
+and
+$$ p_N \circ \widehat{f} \circ \iota_\Delta = q_N \circ \iota_\Delta = p_N \circ \iota_\Gamma \circ f. $$
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+$ \widehat{\cdot} $ is a functor.
+\end{corollary}
+
+\end{document}
