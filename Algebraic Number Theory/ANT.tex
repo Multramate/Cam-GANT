@@ -1,0 +1,831 @@
+\def\module{Algebraic Number Theory}
+\def\lecturer{Dr Anthony Scholl}
+\def\term{Lent 2020}
+\def\cover{}
+\def\syllabus{}
+\def\thm{section}
+
+\input{../style/header}
+
+\begin{document}
+
+\input{../style/cover}
+
+\setcounter{section}{0}
+
+\section{Absolute values and places}
+
+\subsection{Absolute values}
+
+\lecture{1}{Thursday}{21/01/21}
+
+Let $ K $ be a field. Recall that an \textbf{absolute value (AV)} on $ K $ is a function $ \abs{\cdot} : K \to \RR_{\ge 0} $ such that for all $ x, y \in K $,
+\begin{enumerate}
+\item $ \abs{x} = 0 $ if and only if $ x = 0 $,
+\item $ \abs{xy} = \abs{x} \cdot \abs{y} $, and
+\item $ \abs{x + y} \le \abs{x} + \abs{y} $.
+\end{enumerate}
+Also assume
+\begin{itemize}
+\item[$ 4 $.] there exists $ x \in K $ such that $ \abs{x} \ne 0, 1 $.
+\end{itemize}
+This excludes the trivial AV
+$$ \abs{x} =
+\begin{cases}
+0 & x = 0 \\
+1 & x \ne 0
+\end{cases}.
+$$
+An AV is a \textbf{non-archimedean} if
+\begin{itemize}
+\item[$ 3^{\text{NA}} $.] $ \abs{x + y} \le \max\br{\abs{x}, \abs{y}} $,
+\end{itemize}
+and \textbf{archimedean} otherwise. An AV determines a metric $ \d\br{x, y} = \abs{x - y} $ which makes $ K $ a \textbf{topological field}, so $ + $, $ \times $, and $ \br{\cdot}^{-1} $ are continuous.
+
+\begin{remark*}
+It is convenient to weaken $ 3 $ to
+\begin{itemize}
+\item[$ 3' $.] there exists $ \alpha > 0 $ such that for all $ x $ and $ y $, $ \abs{x + y}^\alpha \le \abs{x}^\alpha + \abs{y}^\alpha $.
+\end{itemize}
+For non-archimedean AV, makes no difference. Does mean that if $ \abs{\cdot} $ is an AV, then so is $ \abs{\cdot}^\alpha $ for any $ \alpha > 0 $. The point is that we want the function $ z \mapsto z\overline{z} $ on $ \CC $ to be an AV. Explain why later.
+\end{remark*}
+
+Let us suppose $ \abs{\cdot} $ is a non-archimedean AV. Then
+$$ R = \cbr{x \in K \st \abs{x} \le 1} $$
+is a subring of $ K $. It is a \textbf{local ring} with maximal ideal
+$$ \mmm_R = \cbr{\abs{x} < 1}. $$
+It is a \textbf{valuation ring} of $ K $, so if $ x \in K \setminus R $ then $ x^{-1} \in R $.
+
+\begin{lemma}
+\label{lem:1.1}
+$ R $ is a maximal subring of $ K $.
+\end{lemma}
+
+\begin{proof}
+Let $ x \in K \setminus R $. Then $ \abs{x} > 1 $. Then if $ y \in R $, there exists $ n \ge 0 $ such that $ \abs{yx^{-n}} = \abs{y} / \abs{x}^n \le 1 $, that is $ y \in x^nR $ for $ n \gg 0 $. So $ R\sbr{x} = K $, hence $ R $ is maximal.
+\end{proof}
+
+\begin{remark*}
+There is a general notion of valuation, not necessarily $ \RR $-valued, seen in algebraic geometry. The valuations we are considering here are rank one valuations, and they have this maximality property.
+\end{remark*}
+
+AVs $ \abs{\cdot} $ and $ \abs{\cdot}' $ are \textbf{equivalent} if there exists $ \alpha > 0 $ such that $ \abs{\cdot}' = \abs{\cdot}^\alpha $.
+
+\begin{proposition}
+\label{prop:1.2}
+The following are equivalent.
+\begin{itemize}
+\item $ \abs{\cdot} $ and $ \abs{\cdot}' $ are equivalent.
+\item for all $ x, y \in K $, $ \abs{x} \le \abs{y} $ if and only if $ \abs{x}' \le \abs{y}' $.
+\item for all $ x, y \in K $, $ \abs{x} < \abs{y} $ if and only if $ \abs{x}' < \abs{y}' $.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+See local fields.
+\end{proof}
+
+A corollary is if $ \abs{\cdot} $ and $ \abs{\cdot}' $ are non-archimedean AVs with valuation rings $ R $ and $ R' $, then $ \abs{\cdot} $ and $ \abs{\cdot}' $ are equivalent if and only if $ R = R' $, if and only if $ R \subset R' $, by \ref{lem:1.1}.
+
+\pagebreak
+
+Equivalent AVs define equivalent metrics on $ K $, hence the completion of $ K $ with respect to $ \abs{\cdot} $ depends only on the equivalence class of $ \abs{\cdot} $. Inequivalent AVs determine independent topologies, in the following sense.
+
+\begin{proposition}[Weak approximation]
+Let $ \abs{\cdot}_i $ for $ 1 \le i \le n $ be pairwise inequivalent AVs on $ K $, let $ a_1, \dots, a_n \in K $, and let $ \delta > 0 $. Then there exists $ x \in K $ such that for all $ i $, $ \abs{x - a_i}_i < \delta $.
+\end{proposition}
+
+\begin{proof}
+Suppose $ z_j \in K $ such that $ \abs{z_j}_j > 1 $ and $ \abs{z_j}_i < 1 $ for all $ i \ne j $. Then $ \abs{z_j^N / \br{z_j^N + 1}}_i \to 0 $ as $ N \to \infty $ if $ i \ne j $ but $ \abs{z_j^N / \br{z_j^N + 1} - 1}_j = \abs{1 / \br{z_j^N + 1}}_j \to 0 $. So
+$$ x = \sum_j a_j\dfrac{z_j^N}{z_j^N + 1} $$
+works if $ N $ is sufficiently large. So it is enough to find $ z_j $, and by symmetry take $ j = 1 $. Induction on $ n $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ n = 1 $.] Trivial.
+\item[$ n > 1 $.] Suppose have $ y $ with $ \abs{y}_1 > 1 $ and $ \abs{y}_2, \dots, \abs{y}_{n - 1} < 1 $. If $ \abs{y}_n < 1 $, finished. Otherwise, pick $ w \in K $ with $ \abs{w}_1 > 1 > \abs{w}_n $, such as by \ref{prop:1.2}. If $ \abs{y}_n = 1 $, then $ z = y^Nw $ works, for $ N $ sufficiently large. If $ \abs{y}_n > 1 $, then $ z = y^Nw / \br{y^N + 1} $ works, for $ N $ sufficiently large.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+If $ K = \QQ $ and $ \abs{\cdot}_1, \dots, \abs{\cdot}_n $ are $ p_i $-adic AVs for distinct primes $ p_i $, and $ a_i \in \ZZ $, then weak approximation says that for all $ n_i \ge 1 $, there exists $ x \in \QQ $, which is a $ p_i $-adic integer for all $ i \in \cbr{1, \dots, n} $ and $ x \equiv a_i \mod p_i^{n_i} $. This of course follows from CRT, which guarantees there exists $ x \in \ZZ $ satisfying this.
+\end{remark*}
+
+\subsection{Places}
+
+\begin{definition*}
+A \textbf{place} of $ K $ is an equivalence class of AVs on $ K $.
+\end{definition*}
+
+\begin{example*}
+If $ K = \QQ $, by Ostrowski's theorem, every AV on $ \QQ $ is equivalent to one of
+\begin{itemize}
+\item a $ p $-adic AV $ \abs{\cdot}_p $ for $ p $ prime, or
+\item a Euclidean AV $ \abs{\cdot}_\infty $.
+\end{itemize}
+So places of $ \QQ $ are in bijection with $ \cbr{\text{primes}} \cup \cbr{\infty} $. We will usually simply denote the places of $ \QQ $ by $ \cbr{2, 3, \dots, \infty} = \cbr{p \le \infty} $.
+\end{example*}
+
+\begin{notation*}
+Let
+\begin{itemize}
+\item $ \V_K $ be the places of $ K $,
+\item $ \V_{K, \infty} $ be the places given by archimedean AVs, the \textbf{infinite places}, and
+\item $ \V_{K, \f} $ be the places given by non-archimedean AVs, the \textbf{finite places}.
+\end{itemize}
+Often use letters $ v $ and $ w $, decorated suitably, to denote places. If $ v \in \V_K $, then $ K_v $ will denote the completion. If $ v : K^\times \to \RR $ is a valuation, will also use $ v $ to denote the corresponding place, that is the class of AVs $ x \mapsto r^{-v\br{x}} $ for $ r > 1 $.
+\end{notation*}
+
+Can restate weak approximation in terms of places.
+
+\begin{proposition}
+Let $ v_1, \dots, v_n $ be distinct places of $ K $. Then the image of the diagonal inclusion
+$$ K \hookrightarrow \prod_{1 \le i \le n} K_{v_i} $$
+is dense, for the product topology.
+\end{proposition}
+
+\pagebreak
+
+\subsection{Extensions of places}
+
+Let $ L / K $ be finite separable, and let $ v $ and $ w $ be places of $ K $ and $ L $ respectively. Say $ w $ \textbf{lies over}, or \textbf{divides}, $ v $, denoted $ w \mid v $, if $ v = \eval{w}_K $ is the restriction of $ w $ to $ K $. Then there exists a unique continuous $ K_v \hookrightarrow L_w $ extending $ K \hookrightarrow L $.
+
+\begin{proposition}
+There is a unique isomorphism of topological rings mapping
+$$ \function{L \otimes_K K_v}{\prod_{w \in \V_L, \ w \mid v} L_w}{x \otimes y}{\br{xy}_w}. $$
+\end{proposition}
+
+In the local fields course, proved this for finite places of number fields.
+
+\begin{proof}
+Let $ L = K\br{a} $, and let $ f \in K\sbr{T} $ be the minimal polynomial, which is separable. Factor $ f = \prod_i g_i $ for $ g_i \in K_v\sbr{T} $ irreducible and distinct. Let $ L_i = K_v\sbr{T} / \abr{g_i} $. Then $ L \otimes_K K_v = K_v\sbr{T} / \abr{f} \xrightarrow{\sim} \prod_i L_i $ by CRT. Let $ w \mid v $, inducing $ \iota_w : L \hookrightarrow L_w $. Let $ g_w \in K_v\sbr{T} $ be the minimal polynomial of $ \iota_w\br{a} $ over $ K_v $. Then $ g_w \mid f $ so $ g_w \in \cbr{g_i} $ and $ L_w = K_v\br{\iota_w\br{a}} $ is some $ L_i $. Conversely, $ K_v $ is complete and $ L_i / K_v $ is finite, so there exists a unique extension of $ v $ to $ L_i $, so there is a bijection $ \cbr{g_i} \leftrightarrow \cbr{w \mid v} $, and thus
+$$ L \otimes_K K_v \cong \prod_w L_w. $$
+Use that both sides are finite-dimensional normed $ K_v $-spaces. For the left hand side, choose a basis of $ L / K $ for $ L \otimes_K K_v \cong K_v^{\sbr{L : K}} $ with norm $ \norm{\br{x_i}} = \sup_i \abs{x_i}_v $, where $ \abs{\cdot}_v $ is an AV in class of $ v $ satisfying triangle inequality. For the right hand side, $ \norm{\br{y_w}} = \sup_w \abs{y_w}_w $, where $ \abs{\cdot}_w $ is the AV in class of $ w $ extending $ \abs{\cdot}_v $. A fact is that any two norms on a finite-dimensional vector space over a field complete with respect to an AV are equivalent. For local fields, exactly the same proof as for $ \RR $, and in general not much harder. See Cassels and Fr\"ohlich chapter II, section $ 8 $.
+\end{proof}
+
+\begin{corollary}
+\label{cor:1.6}
+\hfill
+\begin{itemize}
+\item $ \cbr{w \mid v} $ is finite, non-empty, and
+$$ \sum_{w \mid v} \sbr{L_w : K_v} = \sbr{L : K}. $$
+\item For all $ x \in L $,
+$$ \N_{L / K}\br{x} = \prod_{w \mid v} \N_{L_w / K_v}\br{x}, \qquad \Tr_{L / K}\br{x} = \sum_{w \mid v} \Tr_{L_w / K_v}\br{x}. $$
+\end{itemize}
+\end{corollary}
+
+\lecture{2}{Saturday}{23/01/21}
+
+Let $ L / K $ be a finite Galois extension with $ G = \Gal\br{L / K} $. Then $ G $ acts on places $ w $ of $ L $ lying over a given place $ v $ of $ K $. If $ \abs{\cdot} $ is an AV on $ L $, then for all $ g \in G $, the map $ x \mapsto \abs{g^{-1}\br{x}} $ is an AV on $ L $, agreeing with $ \abs{\cdot} $ on $ K $. So this defines a left action of $ G $ on $ \cbr{w \mid v} $ by $ g\br{w} = w \circ g^{-1} $. If $ w = \v_\ppp $ for a prime $ \ppp $ in a Dedekind domain, then $ g\br{w} = \v_{g\br{\ppp}} $.
+
+\begin{definition*}
+Define the \textbf{decomposition group} $ \D_w $ or $ G_w $ to be the stabiliser of $ w $ in $ G $.
+\end{definition*}
+
+If $ g \in G_w $, then it is continuous for the topology induced by $ w $ on $ L $, so extends to an automorphism of $ L_w $, the completion. Then $ G_w \hookrightarrow \Aut\br{L_w / K_v} $, by continuity, so $ \#G_w \le \sbr{L_w : K_v} $, and
+$$ \#G = \br{G : G_w}\#G_w \le \br{G : G_w}\sbr{L_w : K_v} = \sum_{g \in G / G_w} \sbr{L_{g\br{w}} : K_v} \le \sum_{w' \mid v} \sbr{L_{w'} : K_v} = \sbr{L : K} = \#G, $$
+by \ref{cor:1.6}. So have equality, hence $ \sbr{L_w : K_v} = \#G_w $, and so $ L_w / K_v $ is Galois with group $ \Gal\br{L_w / K_v} \xrightarrow{\sim} G_w \subset G $, and $ G $ acts transitively on places over $ v $.
+
+\begin{notation*}
+Suppose $ v $ is discrete valuation of $ L $, so a finite place, and the valuation ring is a DVR. Then so is any $ w \mid v $, and define $ \f\br{w \mid v} = \f_{L_w / K_v} $ to be the degree of residue class extension and $ \e\br{w \mid v} $ to be the ramification degree, and
+$$ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v}. $$
+\end{notation*}
+
+\pagebreak
+
+\section{Number fields}
+
+\begin{remark*}
+A lot of theory applies to other global fields, that is \textbf{function fields} $ K / \FF_p\br{t} $ that are finite extensions. These are less interesting, at least to number theorists, since there are no infinite places.
+\end{remark*}
+
+Let $ K $ be a \textbf{number field}, a finite extension of $ \QQ $, with \textbf{ring of integers} $ \OOO_K $, the integral closure of $ \ZZ $ in $ K $. A basic property is that $ \OOO_K $ is a Dedekind domain, that is
+\begin{enumerate}
+\item Noetherian, in fact, by finiteness of integral closure, $ \OOO_K $ is a finitely generated $ \ZZ $-module,
+\item integrally closed in $ K $, by definition, and
+\item every non-zero prime ideal is maximal, so Krull dimension at most one.
+\end{enumerate}
+
+\subsection{Dedekind domains}
+
+The following are basic results about Dedekind domains.
+
+\begin{theorem}
+\label{thm:2.1}
+\hfill
+\begin{enumerate}
+\item A local domain is Dedekind if and only if it is a DVR.
+\item For a domain $ R $, the following are equivalent.
+\begin{enumerate}
+\item $ R $ is Dedekind.
+\item $ R $ is Noetherian and for all non-zero prime $ \ppp \subset R $, $ R_\ppp $ is a DVR.
+\item Every fractional ideal of $ R $ is invertible.
+\end{enumerate}
+\item A Dedekind domain with only finitely many prime ideals, so \textbf{semi-local}, is a PID.
+\end{enumerate}
+\end{theorem}
+
+A \textbf{fractional ideal} of $ R $ is a non-zero $ R $-submodule $ I \subset K $ such that for some $ 0 \ne x \in R $, $ xI \subset R $ is an ideal, and $ I $ is \textbf{invertible} if there exists a fractional ideal $ I^{-1} $ such that $ II^{-1} = R $.
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item A DVR is a local PID. Proved in local fields. The forward direction is the hardest part.
+\item Let $ K = \Frac R $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ \br{a} \implies \br{b} $.] Enough to check \footnote{Exercise} that properties $ 1 $ to $ 3 $ are preserved under localisation, then use part $ 1 $.
+\item[$ \br{b} \implies \br{c} $.] To prove $ \br{c} $, may assume $ I \subset R $ is an ideal. Let
+$$ I^{-1} = \cbr{x \in K \st xI \subset R}. $$
+If $ 0 \ne y \in I $, then $ R \subset I^{-1} \subset y^{-1}R $, so $ I^{-1} $ is a fractional ideal and $ I^{-1}I \subset R $. Let $ \ppp \subset R $ be prime, so $ R_\ppp $ is a DVR. It suffices to prove $ I^{-1}I \not\subset \ppp $. Let $ I = \abr{a_1, \dots, a_n} $ for $ a_i \in R $. Without loss of generality, $ \v_\ppp\br{a_1} \le \v_\ppp\br{a_i} $ for all $ i $. Then $ IR_\ppp = a_1R_\ppp $, so for all $ i $, $ a_i / a_1 = x_i / y_i \in R_\ppp $ for $ x_i \in R $ and $ y_i \in R \setminus \ppp $. Then $ y = \prod_i y_i \notin \ppp $ as $ \ppp $ is prime, and $ ya_i / a_1 \in R $ for all $ i $, so $ y / a_1 \in I^{-1} $. Thus $ y \in II^{-1} \setminus \ppp $.
+\item[$ \br{c} \implies \br{a} $.] Check the following.
+\begin{itemize}
+\item $ R $ is Noetherian. Let $ I \subset R $ be an ideal. Then $ II^{-1} = R $, so $ 1 = \sum_{i = 1}^n a_ib_i $ for $ a_i \in I $ and $ b_i \in I^{-1} $. Let $ I' = \abr{a_1, \dots, a_n} \subset I $. Then $ I'I^{-1} = R = II^{-1} $, so $ I' = I $. So $ I $ is finitely generated.
+\item $ R $ is integrally closed. Let $ x \in K $, integral over $ R $. Then $ I = R\sbr{x} = \sum_{0 \le i < d} Rx^i \subset K $, where $ d $ is the degree of the polynomial of integral independence, is a fractional ideal. Obviously $ I^2 = I $, so $ I = I^2I^{-1} = II^{-1} = R $, that is $ x \in R $.
+\item Every non-zero prime is maximal. Let $ \cbr{0} \ne \qqq \subset \ppp \subsetneq R $ for $ \ppp $ and $ \qqq $ prime. Then $ R \subsetneq \ppp^{-1} \subset \qqq^{-1} $, so $ \qqq \subsetneq \ppp^{-1}\qqq \subset R $, and $ \ppp\br{\ppp^{-1}\qqq} = \qqq $, so as $ \qqq $ is prime and $ \ppp^{-1}\qqq \not\subset \qqq $, so $ \ppp \subset \qqq $, that is $ \ppp = \qqq $.
+\end{itemize}
+\end{itemize}
+
+\pagebreak
+
+\item Let $ R $ be semi-local Dedekind with non-zero primes $ \ppp_1, \dots, \ppp_n $. Choose $ x \in R $ with $ x \in \ppp_1 \setminus \ppp_1^2 $ and $ x \notin \ppp_2, \dots, \ppp_n $. Then $ \ppp_1 = \abr{x} $, and every ideal is a product of powers of $ \cbr{\ppp_i} $, by below, so $ R $ is a PID.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Let $ R $ be Dedekind. Then
+\begin{enumerate}
+\item the group of fractional ideals is freely generated by the non-zero prime ideals, and
+$$ I = \prod_\ppp \ppp^{\v_\ppp\br{I}}, \qquad \v_\ppp\br{I} = \inf \cbr{\v_\ppp\br{x} \st x \in I}, $$
+\item if $ \br{R : I} < \infty $ for all $ I \ne \cbr{0} $, then for all $ I $ and $ J $,
+$$ \br{R : IJ} = \br{R : I}\br{R : J}. $$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item If $ I \ne R $, then $ I \subset \ppp $ for some prime ideal $ \ppp $. Then $ I = \ppp I' $ where $ I' = I\ppp^{-1} \supsetneq I $ then by Noetherian induction, using the ascending chain condition on ideals, $ I $ is a product of powers of prime ideals, $ I = \prod_\ppp \ppp^{a_\ppp} $. Then get the same for fractional ideals $ J = x^{-1}I $. Consider the homomorphisms
+$$ \function{\cbr{\text{fractional ideals of} \ R}}{\cbr{\text{fractional ideals of} \ R_\ppp}}{I}{IR_\ppp}, \qquad \function{\cbr{\text{fractional ideals of} \ R_\ppp}}{\ZZ}{\abr{\pi^n}}{n}. $$
+The composition is $ I \mapsto \v_\ppp\br{I} $, and if $ \qqq \ne \ppp $ then $ \v_\ppp\br{\qqq} = 0 $. So
+$$ \function[\br{\v_\ppp}_\ppp]{\cbr{\text{fractional ideals of} \ R}}{\bigoplus_\ppp \ZZ}{\prod_\ppp \ppp^{a_\ppp}}{\br{a_\ppp}_\ppp}. $$
+So $ a_\ppp $ are unique and $ \br{\v_\ppp}_\ppp $ is an isomorphism.
+
+\lecture{3}{Tuesday}{26/01/21}
+
+\item By unique factorisation of ideals in $ 1 $,
+$$ \prod_\ppp \ppp^{a_\ppp} \cap \prod_\ppp \ppp^{b_\ppp} = \prod_\ppp \ppp^{\max\br{a_\ppp, b_\ppp}}, $$
+so if $ I + J = R $, then $ IJ = I \cap J $, so by CRT, $ R / IJ \cong R / I \times R / J $ so the result holds if $ I + J = R $. So reduced to showing that $ \br{R : \ppp^{n + 1}} = \br{R : \ppp}\br{R : \ppp^n} $. Now $ R / \ppp^n \cong R_\ppp / \ppp^nR_\ppp $, so without loss of generality, $ R $ is local, so a DVR, $ \ppp = \abr{\pi} $, and
+$$ \cdot \pi : R / \abr{\pi^n} \xrightarrow{\sim} \abr{\pi} / \abr{\pi^{n + 1}}, $$
+hence $ \br{R : \ppp^{n + 1}} = \br{R : \ppp}\br{\ppp : \ppp^{n + 1}} = \br{R : \ppp}\br{R : \ppp^n} $.
+\end{enumerate}
+\end{proof}
+
+The quotient group
+$$ \Cl R = \cbr{\text{fractional ideals of} \ R} / \cbr{\text{principal fractional ideals} \ aR \ \text{for} \ a \in K^\times} $$
+is the \textbf{class group} of $ R $, or the \textbf{Picard group} $ \Pic R $. If $ K $ is a number field, write $ \Cl K = \Cl \OOO_K $, the \textbf{ideal class group} of $ K $.
+
+\begin{fact*}
+For a number field $ K $, $ \Cl K $ is finite.
+\end{fact*}
+
+\pagebreak
+
+\subsection{Places of number fields}
+
+Recall that $ \V_\QQ = \cbr{p \mid p \ \text{prime}} \cup \cbr{\infty} $. Let $ K $ be a number field. Let $ \ppp \subset \OOO_K $ be non-zero prime. Then $ \ppp $ determines a discrete valuation $ \v_\ppp $ of $ K $ and so a non-archimedean AV $ \abs{x}_\ppp = r^{-\v_\ppp\br{x}} $ for $ r > 1 $.
+
+\begin{theorem}
+This gives a bijection
+$$ \cbr{\text{non-zero primes of} \ \OOO_K} \xrightarrow{\sim} \V_{K, \f}. $$
+\end{theorem}
+
+\begin{proof}
+Let $ \ppp \ne \qqq $. Then there exists $ x \in \ppp \setminus \qqq $, and then $ \abs{x}_\ppp < 1 = \abs{x}_\qqq $, so $ \abs{\cdot}_\ppp $ and $ \abs{\cdot}_\qqq $ are inequivalent, so the map is injective. Let $ \abs{\cdot} $ be a non-archimedean AV on $ K $, with valuation ring $ R = \cbr{x \in K \st \abs{x} \le 1} $. As $ \abs{\cdot} $ is non-archimedean, $ \ZZ \subset R $, hence $ R \supset \OOO_K $, as $ R $ is integrally closed, and so $ R \supset \OOO_{K, \ppp} $ for some prime $ \ppp = \mmm_R \cap \OOO_K $. Thus $ R = \OOO_{K, \ppp} $, since by \ref{lem:1.1} $ \OOO_{K, \ppp} $ is a maximal subring of $ K $, so $ \abs{\cdot} $ and $ \abs{\cdot}_\ppp $ are equivalent.
+\end{proof}
+
+\begin{notation*}
+If $ v \in \V_{K, \f} $, then
+\begin{itemize}
+\item $ \ppp_v $ is the corresponding prime ideal of $ \OOO_K $,
+\item $ K_v $ is a complete discretely valued field, the completion of $ K $,
+\item $ \OOO_v = \OOO_{K_v} \subset K_v $ is the valuation ring, not to be confused with $ \OOO_{K, \ppp_v} $,
+\item $ \pi_v \in \OOO_v $ is any generator of the maximal ideal, the \textbf{uniformiser}, often assuming $ \pi_v \in K $,
+\item $ v : K^\times \twoheadrightarrow \ZZ $ is the \textbf{normalised discrete valuation} such that $ v\br{\pi_v} = 1 $,
+\item $ \kappa_v = \OOO_K / \ppp_v \cong \OOO_v / \abr{\pi_v} $ is finite of order $ \q_v = p^{\f_v} $ for a prime $ p $ such that $ v \mid p $, and
+\item $ \abs{x}_v = \q_v^{-v\br{x}} $ is the \textbf{normalised AV}, so $ \abs{\pi_v}_v = 1 / \q_v $.
+\end{itemize}
+\end{notation*}
+
+Recall that if $ L / K $ is a finite separable field extension and $ v $ is a place of $ K $, then $ L \otimes_K K_v \cong \prod_{w \mid v} L_w $. There is a unique infinite place $ \infty $ of $ \QQ $ and $ \QQ_\infty = \RR $. So
+$$ K \otimes_\QQ \RR \xrightarrow{\sim} \prod_{v \in \V_{K, \infty}} K_v. $$
+Each $ K_v $ is a finite extension of $ \RR $, so either $ K_v = \RR $, and $ v $ is \textbf{real}, or $ K_v \cong \CC $, and $ v $ is \textbf{complex}. In the second case, as $ K \subset K_v $ is dense, $ K \not\subset \RR $. On the other hand, by Galois theory, $ \Sigma_K = \cbr{\text{homomorphisms} \ \sigma : K \hookrightarrow \CC} $ has order $ n = \sbr{K : \QQ} $ and there is an isomorphism
+\begin{equation}
+\label{eq:1}
+\function{K \otimes_\QQ \CC}{\prod_{\sigma \in \Sigma_K} \CC}{x \otimes z}{\br{\sigma\br{x}z}_\sigma}.
+\end{equation}
+Complex conjugation acts on both sides by $ x \otimes z \mapsto x \otimes \overline{z} $ and $ \br{z_\sigma}_\sigma \mapsto \br{\overline{z_{\overline{\sigma}}}}_\sigma $. Let
+$$ \sigma_1, \dots, \sigma_{\r_1} : K \hookrightarrow \RR, \qquad \sigma_{\r_1 + 1} = \overline{\sigma_{\r_1 + \r_2 + 1}}, \dots, \sigma_{\r_1 + \r_2} = \overline{\sigma_{\r_1 + 2\r_2}} : K \hookrightarrow \CC, \qquad \r_1 + 2\r_2 = n. $$
+Then taking fixed points under complex conjugation of $ \br{\ref{eq:1}} $,
+$$ K \otimes_\QQ \RR \xrightarrow{\sim} \prod_{\sigma \ \text{real}} \RR \times \prod_{\br{\sigma, \overline{\sigma}}, \ \sigma \ne \overline{\sigma}} \cbr{\br{z, \overline{z}} \in \CC \times \CC} \cong \RR^{\r_1} \times \CC^{\r_2}. $$
+Therefore the following holds.
+
+\begin{theorem}
+There is a bijection
+$$ \function{\Sigma_K / \br{\sigma \sim \overline{\sigma}}}{\V_{K, \infty}}{\sigma}{\text{class of AV} \ \abs{\sigma\br{\cdot}} \ \text{in} \ \RR \ \text{or} \ \CC}. $$
+\end{theorem}
+
+\pagebreak
+
+\begin{notation*}
+Define
+$$ K_\infty = K \otimes_\QQ \RR \cong \prod_{v \in \V_{K, \infty}} K_v \cong \RR^{\cbr{\text{real} \ v}} \times \CC^{\cbr{\text{complex} \ v}}, $$
+where for $ v $ complex, $ K_v \cong \CC $ is well-defined up to complex conjugation. For normalised AVs,
+\begin{itemize}
+\item $ v $ real corresponds to $ \sigma : K \hookrightarrow \RR $ and $ \abs{x}_v = \abs{\sigma\br{x}}_\infty $ is the Euclidean AV, and
+\item $ v $ complex corresponds to $ \sigma \ne \overline{\sigma} : K \hookrightarrow \CC $ and $ \abs{x}_v = \sigma\br{x}\overline{\sigma}\br{x} = \abs{\sigma\br{x}}_\infty^2 $ is the square of modulus.
+\end{itemize}
+\end{notation*}
+
+\subsection{Extensions of places of number fields}
+
+Let $ L / K $ be an extension of number fields, and let $ w \mid v $. If $ v $ is finite, $ L_w / K_v $ is a finite extension of non-archimedean local fields and $ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v} $. If $ v $ is infinite,
+$$ L_w / K_v \cong
+\begin{cases}
+\RR / \RR & \f = \e = 1 \\
+\CC / \CC & \f = \e = 1 \\
+\CC / \RR & \e = 2, \ \f = 1
+\end{cases}.
+$$
+
+\lecture{4}{Thursday}{28/01/21}
+
+\begin{proposition}
+Let $ x \in L $ and $ v \in \V_K $. Then
+$$ \abs{\N_{L / K}\br{x}}_v = \prod_{w \mid v} \abs{x}_w. $$
+\end{proposition}
+
+\begin{proof}
+$ \N_{L / K}\br{x} = \prod_{w \mid v} \N_{L_w / K_v}\br{x} $ so it is enough to show $ \abs{\N_{L_w / K_v}\br{x}}_v = \abs{x}_w $. If $ v $ is finite, it is enough to take $ x = \pi_w \in L $, and
+$$ \abs{\N_{L_w / K_v}\br{\pi_w}}_v = \abs{u\pi_v^{\f\br{w \mid v}}}_v = \q_v^{-\f\br{w \mid v}} = \q_w^{-1} = \abs{\pi_w}_w, \qquad u \in \OOO_K^\times. $$
+If $ v $ is infinite, need only consider $ L_w / K_v \cong \CC / \RR $ and $ \N_{\CC / \RR}\br{z} = z\overline{z} $.
+\end{proof}
+
+\begin{theorem}[Product formula]
+Let $ x \in K^\times $. Then $ \abs{x}_v = 1 $ for all but finitely many $ v $ and
+$$ \prod_{v \in \V_K} \abs{x}_v = 1. $$
+\end{theorem}
+
+\begin{proof}
+Let $ x = a / b $ for $ a, b \in \OOO_K \setminus \cbr{0} $. Then
+$$ \cbr{v \in \V_K \st \abs{x}_v \ne 1} \subset \V_{K, \infty} \cup \cbr{v \in \V_{K, \f} \st v\br{a} > 0 \ \text{or} \ v\br{b} > 0} $$
+is a finite set. Now
+$$ \prod_{v \in \V_K} \abs{x}_v = \prod_{p \le \infty} \prod_{v \mid p} \abs{x}_v = \prod_{p \le \infty} \abs{\N_{K / \QQ}\br{x}}_p. $$
+So it is enough to prove for $ K = \QQ $, and by multiplicativity, reduce to
+\begin{itemize}
+\item $ x = q $ prime, where
+$$ \abs{q}_p =
+\begin{cases}
+\dfrac{1}{q} & p = q \\
+1 & p \ne q, \infty \\
+q & p = \infty
+\end{cases},
+$$
+\item $ x = -1 $, where $ \abs{-1}_p = 1 $ for all $ p \le \infty $.
+\end{itemize}
+\end{proof}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item $ \RR $, with standard measure $ \d x $, transforms under $ a \in \RR^\times $ by $ \d\br{ax} = \abs{a}\d x $.
+\item $ \CC $, with standard measure $ \d x\d y $, transforms under $ a \in \CC^\times $ by $ \d\br{ax}\d\br{ay} = \abs{a}^2\d x\d y $, with the normalised AV on $ \CC $.
+\end{itemize}
+\end{remark*}
+
+\begin{fact*}
+On $ K_v $, for any $ v $, there is a translation-invariant measure, the Haar measure, $ \d_v\br{x} $, and for all $ a \in K_v^\times $, $ \d_v\br{ax} = \abs{a}_v\d_v\br{x} $ where $ \abs{\cdot}_v $ is the normalised AV.
+\end{fact*}
+
+\pagebreak
+
+\section{Different and discriminant}
+
+\subsection{Discriminant}
+
+Let $ R \subset S $ be rings, commutative with unity, such that $ S $ is a free $ R $-module of finite rank $ n \ge 1 $. Then we have a trace map given by
+$$ \function[\Tr_{S / R}]{S}{R}{x}{\Tr\br{y \mapsto xy}}, $$
+the trace of the $ R $-linear map $ S \to S \cong R^n $. If $ x_1, \dots, x_n \in S $, define
+$$ \disc_{S / R} \br{x_i} = \disc \br{x_i} = \det \br{\Tr_{S / R}\br{x_ix_j}} \in R. $$
+If $ y_i = \sum_{j = 1}^n r_{ji}x_j $ for $ r_{ji} \in R $, then $ \Tr_{S / R}\br{y_iy_j} = \sum_{k, l} r_{ki}r_{lj}\Tr_{S / R}\br{x_kx_l} $, so
+\begin{equation}
+\label{eq:2}
+\disc \br{y_i} = \det \br{r_{ij}}^2 \disc \br{x_i}.
+\end{equation}
+
+\begin{definition*}
+Let $ S = \bigoplus_{i = 1}^n Re_i $. Then the \textbf{discriminant}
+$$ \disc\br{S / R} = \disc_{S / R} \br{e_i}R \subset R $$
+is an ideal of $ R $, independent of the basis by $ \br{\ref{eq:2}} $.
+\end{definition*}
+
+The following are obvious properties.
+\begin{itemize}
+\item If $ S = S_1 \times S_2 $ for $ S_i $ free over $ R $, then
+$$ \disc\br{S / R} = \disc\br{S_1 / R}\disc\br{S_2 / R}. $$
+\item If $ f : R \to R' $ is a ring homomorphism, then
+$$ \disc\br{S \otimes_R R' / R'} = f\br{\disc\br{S / R}}R'. $$
+\item If $ R $ is a field, then $ \disc\br{S / R} = R $ or $ \disc\br{S / R} = \cbr{0} $ and $ \disc\br{S / R} = R $ if and only if the $ R $-bilinear form
+$$ \function{S \times S}{R}{\br{x, y}}{\Tr_{S / R}\br{xy}} $$
+is non-degenerate, that is there is a duality of the $ R $-vector space $ S $ with itself.
+\end{itemize}
+By field theory, if $ L / K $ is a finite field extension, then $ \disc\br{L / K} = K $ if and only if the trace form is non-degenerate, if and only if there exists $ x \in L $ with $ \Tr_{L / K}\br{x} \ne 0 $, if and only if $ L / K $ is separable. More generally is the following.
+
+\begin{theorem}
+\label{thm:3.1}
+Let $ k $ be a field, and let $ A $ be a finite-dimensional $ k $-algebra. Then $ \disc\br{A / k} \ne 0 $, so $ \disc\br{A / k} = k $, if and only if $ A = \prod_i K_i $ for $ K_i / k $ a finite separable field extension.
+\end{theorem}
+
+\begin{proof}
+Write $ A = \prod_{i = 1}^m A_i $ where $ A_i $ are indecomposable $ k $-algebras, so $ A_i $ is local. So may assume $ A $ is local with maximal ideal $ \mmm $. If $ \mmm = 0 $, that is $ A $ is a field, reduced to the previous statement. If not, then every element of $ \mmm $ is nilpotent, since $ \dim_k A < \infty $. So there exists $ x \in \mmm \setminus \cbr{0} $ nilpotent. So the endomorphism $ y \mapsto xy $ of $ A $ is nilpotent and for all $ r \in A $, so is $ y \mapsto \br{rx}y $, so for all $ r \in A $, $ \Tr_{A / k}\br{rx} = 0 $. So the trace form is degenerate, and the discriminant is zero. See Atiyah-Macdonald chapter on Artinian rings for an explanation of $ A = \prod_i A_i $.
+\end{proof}
+
+\lecture{5}{Saturday}{30/01/21}
+
+Let $ R $ be a Dedekind domain, let $ K = \Frac R $, let $ L / K $ be finite separable, and let $ S $ be the integral closure of $ R $ in $ L $. Say $ S / R $ is an \textbf{extension of Dedekind domains}. Then $ S $ is a finitely generated $ R $-module, but need not be free.
+
+\begin{proposition}
+$ S $ is \textbf{locally free} $ R $-module of rank $ n = \sbr{L : K} $, that is for all $ \ppp \subset R $, $ S_\ppp \cong R_\ppp^n $.
+\end{proposition}
+
+\begin{proof}
+$ S \subset L $ so $ S $ is torsion-free, hence so is $ S_\ppp $, and $ R_\ppp $ is a PID, so $ S_\ppp $ is free, clearly of rank $ \dim_K L = n $.
+\end{proof}
+
+\pagebreak
+
+\begin{lemma}
+If $ x \in S $, then $ \Tr_{L / K}\br{x} \in R $.
+\end{lemma}
+
+\begin{proof}
+If $ R $ is local, then $ S $ is a free $ R $-module so $ \Tr_{L / K}\br{x} = \Tr_{S \otimes_R K / K}\br{x \otimes 1} = \Tr_{S / R}\br{x} \in R $. So in general, for all $ 0 \ne \ppp \subset R $, $ y = \Tr_{L / K}\br{x} \in R_\ppp $ and
+$$ \bigcap_\ppp R_\ppp = \cbr{x \in K \st \forall \ppp, \ \v_p\br{x} \ge 0} = R. $$
+\end{proof}
+
+Then there are two equivalent definitions of $ \disc\br{S / R} $.
+
+\begin{definition*}
+$ \disc\br{S / R} $ is defined to be the ideal of $ R $ generated by
+$$ \cbr{\disc_{L / K} \br{x_1, \dots, x_n} \st x_1, \dots, x_n \in S}. $$
+\end{definition*}
+
+If $ S / R $ is free, this gives the previous definition. As $ S \otimes_R K = L $ is separable over $ K $, $ \disc\br{L / K} = K \ne 0 $ and so $ \disc\br{S / R} \ne 0 $. This is how we prove that $ S / R $ is finitely generated.
+
+\begin{proposition}
+\label{prop:3.4}
+$ \disc\br{S / R}R_\ppp = \disc\br{S_\ppp / R_\ppp} $ for all $ \ppp $.
+\end{proposition}
+
+\begin{proof}
+Claim there exist $ x_1, \dots, x_n \in S $ which is an $ R_\ppp $-basis for $ S_\ppp $. Certainly there exist $ e_1, \dots, e_n \in S_\ppp $ which is an $ R_\ppp $-basis. Let
+$$ \QQQ = \cbr{\text{primes} \ \qqq \subset S \st \exists i, \ \v_\qqq\br{e_i} < 0} $$
+be a finite set. By CRT, there exist $ a_i \in S $ such that $ \v_\qqq\br{a_i} + \v_\qqq\br{e_i} \ge 0 $ for all $ \qqq \in \QQQ $ and $ a_i - 1 \in \ppp S $. Then $ x_i = a_ie_i \in S $ and $ x_i \equiv e_i \mod \ppp S $. So $ \br{x_i} $ is an $ R / \ppp $-basis for $ S / \ppp S = S_\ppp / \ppp S_\ppp $, so $ \br{x_i} $ is an $ R_\ppp $-basis for $ S_\ppp $. Thus $ \disc\br{S_\ppp / R_\ppp} = \disc \br{x_i}R_\ppp $, and $ \disc \br{x_i} \in \disc\br{S / R} $. So $ \disc \br{S_\ppp / R_\ppp} \subset \disc\br{S / R}R_\ppp $ and the other inclusion is obvious.
+\end{proof}
+
+There is an alternative definition of $ \disc\br{S / R} $. If $ x_1, \dots, x_n \in S $ is a $ K $-basis for $ L $, then $ \disc_{L / K} \br{x_i} \ne 0 $. Let
+$$ \PPP = \cbr{\ppp \subset R \st \v_\ppp\br{\disc_{L / K} \br{x_i}} > 0} $$
+be a finite set. So for all $ \ppp \notin \PPP $, $ \disc\br{S_\ppp / R_\ppp} = R_\ppp $.
+
+\begin{definition*}
+Define
+$$ \disc\br{S / R} = \prod_{\ppp \in \PPP} \ppp^{\v_\ppp\br{\disc\br{S_\ppp / R_\ppp}}}, $$
+which is equivalent by \ref{prop:3.4} to the previous definition.
+\end{definition*}
+
+\begin{theorem}
+\label{thm:3.5}
+$ \v_\ppp\br{\disc\br{S / R}} = 0 $ if and only if $ \ppp $ is unramified in $ S $ and for all $ \qqq \subset S $ over $ \ppp $, the residue field extension $ \br{S / \qqq} / \br{R / \ppp} $ is separable.
+\end{theorem}
+
+\begin{proof}
+May assume $ R $ is local, so $ S $ is free over $ R $. Have $ \ppp S = \prod_\qqq \qqq^{e_\qqq} $, so
+$$ S \otimes_R \br{R / \ppp} \cong S / \ppp S \cong \prod_\qqq S / \qqq^{e_\qqq}. $$
+So $ \v_\ppp\br{\disc\br{S / R}} = 0 $ if and only if $ \disc\br{\br{S / \ppp S} / \br{R / \ppp}} = R / \ppp $, if and only if each $ S / \qqq^{e_\qqq} $ is a finite separable field extension of $ R / \ppp $ by \ref{thm:3.1}, if and only if for all $ \qqq $, $ e_\qqq = 1 $ and $ \br{S / \qqq} / \br{R / \ppp} $ is separable.
+\end{proof}
+
+\begin{corollary}
+In an extension $ S / R $ of Dedekind domains, only finitely many primes are ramified, just the $ \ppp $ such that $ \v_\ppp\br{\disc\br{S / R}} > 0 $.
+\end{corollary}
+
+\begin{proposition}
+Let $ \ppp \subset R $. Then
+$$ \v_\ppp\br{\disc\br{S / R}} = \sum_{\qqq \supset \ppp} \v_\ppp\br{\disc\br{\widehat{S_\qqq} / \widehat{R_\ppp}}}. $$
+\end{proposition}
+
+\begin{proof}
+By \ref{prop:3.4} may assume $ R $ is local, so $ S $ is a free $ R $-module, and $ S \otimes_R \widehat{R} \cong \prod_{\qqq \subset S} \widehat{S_\qqq} $ so
+$$ \v_\ppp\br{\disc\br{S / R}} = \v_\ppp\br{\disc\br{S \otimes_R \widehat{R} / \widehat{R}}} = \sum_\qqq \v_\ppp\br{\disc\br{\widehat{S_\qqq} / \widehat{R}}}. $$
+\end{proof}
+
+\pagebreak
+
+\subsection{Different}
+
+There is a finer invariant of ramification.
+
+\begin{definition*}
+The \textbf{inverse different} $ \DDD_{S / R}^{-1} $ of an extension $ S / R $ of Dedekind domains is
+$$ \DDD_{S / R}^{-1} = \cbr{x \in L \st \forall y \in S, \ \Tr_{L / K}\br{xy} \in R}. $$
+\end{definition*}
+
+This is the dual of $ S $ with respect to the trace form $ \br{x, y} \mapsto \Tr_{L / K}\br{xy} $, which is non-degenerate and clearly an $ S $-submodule of $ L $. If $ \bigoplus_{i = 1}^n Rx_i \subset S $, let $ \br{y_i} $ be the dual basis to $ \br{x_i} $ for the trace form, that is $ \Tr_{L / K}\br{x_iy_j} = \delta_{ij} $. Then $ S \subset \DDD_{S / R}^{-1} \subset \bigoplus_{i = 1}^n Ry_i $, so $ \DDD_{S / R}^{-1} $ is a fractional ideal, since it is finitely generated.
+
+\begin{definition*}
+$ \DDD_{S / R} $ is an ideal of $ S $, the \textbf{different}.
+\end{definition*}
+
+\begin{proposition}
+\label{prop:3.8}
+\hfill
+\begin{enumerate}
+\item If $ \ppp \subset R $, then $ \DDD_{S_\ppp / R_\ppp} = \DDD_{S / R}S_\ppp $.
+\item $ \N_{L / K}\br{\DDD_{S / R}} = \disc\br{S / R} $.
+\item Let $ \qqq \subset S $ lying over $ \ppp \subset R $. Then $ \v_\qqq\br{\DDD_{S / R}} = \v_\qqq\br{\DDD_{\widehat{S_\qqq} / \widehat{R_\ppp}}} $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Exercise. \footnote{Exercise: the same idea as \ref{prop:3.4}}
+\item By $ 1 $ and \ref{prop:3.4}, can suppose $ R $ is local. Then $ S $ is a PID by \ref{thm:2.1}.$ 3 $. So $ \DDD_{S / R}^{-1} = x^{-1}S $ for some $ 0 \ne x \in S $. Let $ \br{e_i} $ be a basis for $ S $ over $ R $. Then there exists a basis $ \br{e_i'} $ for $ S $ over $ R $ such that $ \Tr_{L / K}\br{e_ix^{-1}e_j'} = \delta_{ij} $. Let $ x^{-1}e_j' = \sum_k b_{kj}e_k $ for $ b_{kj} \in K $. Then
+$$ \abr{1} = \abr{\det \br{\Tr_{L / K}\br{e_ix^{-1}e_j'}}} = \abr{\det \br{\Tr_{L / K}\br{e_ie_j}}\det \br{b_{ij}}} = \det \br{b_{ij}}\disc\br{S / R}. $$
+But $ \N_{L / K}\br{x^{-1}} $ is $ \det \br{b_{ij}} $ times some unit in $ R $. So $ \abr{1} = \abr{\N_{L / K}\br{x^{-1}}}\disc\br{S / R} $.
+
+\lecture{6}{Tuesday}{02/02/21}
+
+\item Assume $ R $ is local and $ \ppp = \abr{\pi_\ppp} $. Write $ \widehat{K} = \Frac \widehat{R} $ and for $ \qqq = \abr{\pi_\qqq} \subset S $ write $ \widehat{L_\qqq} = \Frac \widehat{S_\qqq} $. So say
+$$ L \otimes_K \widehat{K} \supset S \otimes_R \widehat{R} \xrightarrow{\sim} \prod_\qqq \widehat{S_\qqq} \subset \prod_\qqq \widehat{L_\qqq}, $$
+and
+\begin{equation}
+\label{eq:3}
+\Tr_{L \otimes_K \widehat{K} / \widehat{K}}\br{x} = \sum_\qqq \Tr_{\widehat{L_\qqq} / \widehat{K}}\br{x}.
+\end{equation}
+Let $ S = \bigoplus_{i = 1}^n Rx_i $, and $ \prod_\qqq \pi_\qqq^{-a_\qqq}S = \DDD_{S / R}^{-1} = \bigoplus_{i = 1}^n Ry_i $ for some $ a_\qqq \ge 0 $ and $ y_i \in L $, the dual basis to $ x_i $. Then as $ S \otimes_R \widehat{R} = \bigoplus_{i = 1}^n \widehat{R}\br{x_i \otimes 1} $,
+\begin{align*}
+\DDD_{S \otimes_R \widehat{R} / \widehat{R}}^{-1}
+& = \cbr{x \in L \otimes_K \widehat{K} \st \forall y \in S \otimes_R \widehat{R}, \ \Tr_{L \otimes_K \widehat{K} / \widehat{K}}\br{xy} \in \widehat{R}} \\
+& = \bigoplus_{i = 1}^n \widehat{R}\br{y_i \otimes 1}
+= \DDD_{S / R}^{-1}\br{S \otimes_R \widehat{R}}
+= \prod_\qqq \pi_\qqq^{-a_\qqq}\br{S \otimes_R \widehat{R}}
+\subset L \otimes_K \widehat{K},
+\end{align*}
+since $ \Tr_{L / K}\br{x_iy_j} = \delta_{ij} $ and trace commutes with base change. On the other hand, by $ \br{\ref{eq:3}} $ and the definitions
+$$ \DDD_{S \otimes_R \widehat{R} / \widehat{R}}^{-1} \cong \prod_\qqq \DDD_{\widehat{S_\qqq} / \widehat{R}}^{-1} \subset \prod_\qqq \widehat{L_\qqq}, $$
+so
+$$ \DDD_{\widehat{S_\qqq} / \widehat{R}}^{-1} = \prod_{\qqq'} \pi_{\qqq'}^{-a_{\qqq'}}\widehat{S_\qqq} = \pi_\qqq^{-a_\qqq}\widehat{S_\qqq}, $$
+as $ \v_\qqq\br{\pi_{\qqq'}} = 0 $ if $ \qqq' \ne \qqq $.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+Use this to prove the following.
+
+\begin{theorem}
+Assume all extensions of residue fields are separable. Let $ \ppp S = \prod_{i = 1}^g \qqq_i^{e_i} \subset S $. Then
+\begin{enumerate}
+\item $ \qqq_i \mid \DDD_{S / R} $ if and only if $ e_i > 1 $, and
+\item $ \qqq_i^{e_i - 1} \mid \DDD_{S / R} $.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First assume $ R $ is complete local and $ \ppp = \abr{\pi_R} $. Then $ S $ is also local, and complete, with unique prime $ \qqq = \abr{\pi_S} $, so $ g = 1 $.
+\begin{enumerate}
+\item So $ \DDD_{S / R} = \abr{\pi_S}^d $ for $ d \ge 0 $. By \ref{prop:3.8}.$ 2 $, $ \disc\br{S / R} = \abr{\N_{L / K}\br{\pi_S}^d} = \abr{\pi_R}^{d\f} $. So as $ \v_\ppp\br{\disc\br{S / R}} = 0 $ if and only if $ \ppp $ is unramified by \ref{thm:3.5}, get the first statement.
+\item Claim $ \Tr_{L / K}\br{\qqq} \subset \ppp $. Let $ x \in \qqq $. Then multiplication by $ x $ is a nilpotent endomorphism of $ S \otimes_R \br{R / \ppp} \cong S / \qqq^\e $, so $ \Tr_{S \otimes_R \br{R / \ppp} / \br{R / \ppp}}\br{x \otimes 1} = 0 $, that is $ \Tr_{L / K}\br{x} = \Tr_{S / R}\br{x} \in \ppp $. Hence the claim. Therefore $ \Tr_{L / K}\br{\qqq^{1 - \e}} = \Tr_{L / K}\br{\pi_R^{-1}\qqq} \subset R $, so $ \qqq^{1 - \e} \subset \DDD_{S / R}^{-1} $, that is $ \qqq^{\e - 1} \mid \DDD_{S / R} $.
+\end{enumerate}
+For the general case, apply the above to $ \widehat{S_{\qqq_i}} / \widehat{R_\ppp} $ and use \ref{prop:3.8}.$ 3 $.
+\end{proof}
+
+\begin{fact*}
+\hfill
+\begin{itemize}
+\item If $ \ppp \nmid e_i $ then $ \v_{\qqq_i}\br{\DDD_{S / R}} = e_i - 1 $. If $ \ppp \mid e_i $ then $ \v_{\qqq_i}\br{\DDD_{S / R}} \ge e_i $. More precisely, $ \v_{\qqq_i}\br{\DDD_{S / R}} $ is determined by the orders of the higher ramification groups, for a Galois closure of $ L / K $. See for example Serre, Local fields, Chapter $ 4 $, Section $ 1 $, Proposition $ 4 $.
+\item If $ S = R\sbr{x} $, and $ x $ has minimal polynomial $ f \in R\sbr{T} $ then $ \DDD_{S / R} = \abr{f'\br{x}} $ where $ f' $ is the derivative. See example sheet $ 1 $. This means that $ \DDD_{S / R} $ is the annihilator of the cyclic $ S $-module $ \Omega_{S / R} $ of K\"ahler differentials, generated by $ \d x $.
+\end{itemize}
+\end{fact*}
+
+For an extension $ L / K $ of number fields write
+$$ \DDD_{L / K} = \DDD_{\OOO_L / \OOO_K} \subset \OOO_L, \qquad \delta_{L / K} = \disc\br{\OOO_L / \OOO_K} \subset \OOO_K. $$
+
+\begin{remark*}
+Let $ K / \QQ $, and let $ \br{e_i} $ be a $ \ZZ $-basis for $ \OOO_K $. Then $ \delta_{K / \QQ} \subset \ZZ $ is $ \abr{\disc \br{e_i}} $ and if $ \br{e_i'} $ is another basis such that $ e_i' = \sum_{i, j} a_{ji}e_j $, then $ \disc \br{e_i'} = \br{\det \br{a_{ij}}}^2\disc \br{e_i} = \disc \br{e_i} $, since $ \det \br{a_{ij}} = \pm 1 $. So the integer $ \disc \br{e_i} $ is independent of the basis, not just the ideal it generates. This is called the \textbf{absolute discriminant} $ \d_K \in \ZZ \setminus \cbr{0} $ of $ K $. The sign is significant.
+\end{remark*}
+
+\begin{theorem}[Kummer-Dedekind criterion]
+Let $ S / R $ be an extension of Dedekind domains, and let $ x \in S $ such that $ L = K\br{x} $. Suppose $ \ppp \subset R $ such that $ S_\ppp = R_\ppp\sbr{x} $. Let $ g \in R\sbr{T} $ be the minimal polynomial of $ x $ and $ g = \prod_i \overline{g_i}^{e_i} \in \br{R / \ppp}\sbr{T} $ the factorisation of reduction of $ g $ into powers of distinct monic irreducibles $ \overline{g_i} $. Let $ g_i \in R\sbr{T} $ be any monic lifting of $ \overline{g_i} $ and $ f_i = \deg g_i = \deg \overline{g_i} $. Then $ \qqq_i = \ppp S + \abr{g_i\br{x}} \subset S $ is prime with
+$$ \sbr{S / \qqq_i : R / \ppp} = f_i, \qquad \forall i \ne j, \ \qqq_i \ne \qqq_j, \qquad \ppp S = \prod_i \qqq_i^{e_i}. $$
+\end{theorem}
+
+\begin{proof}
+Can assume $ R $ is local, so then $ S = R\sbr{x} $. Set $ \ppp = \abr{\pi} $ and $ R / \ppp = \kappa $. Then $ \qqq_i $ is prime with residue degree $ f_i $, since $ S / \qqq_i \cong \kappa\sbr{T} / \abr{\overline{g_i}} $, and $ \overline{g_i} $ is irreducible of degree $ f_i $. Claim that $ \qqq_i \ne \qqq_j $. If $ i \ne j $, there exist $ a, b \in R\sbr{T} $ such that $ \overline{a}\overline{g_i} + \overline{b}\overline{g_j} = 1 \in \kappa\sbr{T} $, so $ 1 = ag_i + bg_j + \pi c $ for some $ c \in R\sbr{T} $, so $ 1 \in \abr{\pi, g_i\br{x}, g_j\br{x}} = \qqq_i + \qqq_j $. Let $ g = \prod_i g_i^{e_i} + \pi h $ for $ h \in R\sbr{T} $. Then
+$$ \prod_i \qqq_i^{e_i} = \prod_i \abr{\pi, g_i\br{x}}^{e_i} \subset \prod_i \abr{\pi, g_i\br{x}^{e_i}} \subset \abr{\pi, \prod_i g_i\br{x}^{e_i}} = \abr{\pi, \pi h\br{x}} \subset \ppp S = \abr{\pi}. $$
+Now $ \dim_\kappa \br{S / \ppp S} = n = \sbr{L : K} $, and
+$$ \dim_\kappa \br{S / \qqq_i^{e_i}} = \sum_{j = 0}^{e_i - 1} \dim_\kappa \br{\qqq_i^j / \qqq_i^{j + 1}} = e_i\dim_\kappa \br{S / \qqq_i} = e_if_i, $$
+so $ \prod_i \qqq_i^{e_i} \subset \ppp S $ gives $ \sum_i e_if_i \ge n $. As $ \sum_i e_if_i = \sum_i e_i\deg \overline{g_i} = \deg \overline{g} = n $, have equality.
+\end{proof}
+
+\pagebreak
+
+\section{Examples}
+
+\subsection{Quadratic fields}
+
+\lecture{7}{Thursday}{04/02/21}
+
+Let $ K = \QQ\br{\sqrt{d}} $ for $ d \in \QQ^\times $ not a square. Multiplying $ d $ by a square, can assume $ d \in \ZZ \setminus \cbr{0, 1} $ is squarefree. Then $ \OOO_K \supset \ZZ\sbr{\sqrt{d}} = \ZZ \oplus \ZZ\sqrt{d} $.
+\begin{itemize}
+\item Since $ \Tr_{K / \QQ}\br{1} = 2 $ and $ \Tr_{K / \QQ}\br{\sqrt{d}} = 0 $, $ \disc \br{1, \sqrt{d}} = 4d $, so
+\begin{itemize}
+\item either $ \d_K = 4d $, and $ \OOO_K = \ZZ\sbr{\sqrt{d}} $,
+\item or $ \d_K = d $, and $ \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} = 2 $.
+\end{itemize}
+The latter holds if and only if there exist $ m, n \in \ZZ $ not both even with $ \tfrac{m + n\sqrt{d}}{2} \in \OOO_K $, if and only if $ \tfrac{1 + \sqrt{d}}{2} \in \OOO_K $ since obviously $ \tfrac{1}{2}, \tfrac{\sqrt{d}}{2} \notin \OOO_K $, if and only if $ d \equiv 1 \mod 4 $ since the minimal polynomial of $ \tfrac{1 + \sqrt{d}}{2} $ is $ \br{T - \tfrac{1}{2}}^2 - \tfrac{d}{4} = T^2 - T - \tfrac{d - 1}{4} $, in which case $ \OOO_K = \ZZ \oplus \ZZ\tfrac{1 + \sqrt{d}}{2} = \ZZ\sbr{\tfrac{1 + \sqrt{d}}{2}} $.
+\item The dual basis of $ \br{1, \sqrt{d}} $ for the trace form is $ \br{\tfrac{1}{2}, \tfrac{1}{2\sqrt{d}}} $, so
+$$ \DDD_{K / \QQ} =
+\begin{cases}
+\abr{2\sqrt{d}} & d \not\equiv 1 \mod 4 \\
+\abr{\sqrt{d}} & d \equiv 1 \mod 4
+\end{cases}.
+$$
+\item Decomposition of $ \abr{p} \subset \OOO_K $ by Kummer-Dedekind.
+\begin{itemize}
+\item If $ p \ne 2 $ or $ d \not\equiv 1 \mod 4 $ then $ p \nmid \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} $. So applying the criterion to $ T^2 - d $, see that
+\begin{itemize}
+\item $ \abr{p} = \ppp^2 $ is ramified if $ p \mid d $, so $ \ppp = \abr{p, \sqrt{d}} $,
+\item $ \abr{p} = \ppp  $ is inert if $ \br{\tfrac{d}{p}} = -1 $, and
+\item $ \abr{p} = \ppp\ppp' $ is split if $ \br{\tfrac{d}{p}} = 1 $, so if $ d \equiv a^2 \mod p $ then $ \ppp = \abr{p, \sqrt{d} - a} \ne \abr{p, \sqrt{d} + a} = \ppp' $.
+\end{itemize}
+\item The remaining case is $ p = 2 $ and $ d \equiv 1 \mod 4 $. Factoring $ T^2 - T - \tfrac{d - 1}{4} $ modulo two, get
+\begin{itemize}
+\item $ \abr{2} $ is inert if $ d \equiv 5 \mod 8 $, and
+\item $ \abr{2} = \ppp\ppp' $ is split if $ d \equiv 1 \mod 8 $ and $ \ppp = \abr{2, \tfrac{\sqrt{d} + 1}{2}} \ne \abr{2, \tfrac{\sqrt{d} - 1}{2}} = \ppp' $.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+Go through the calculations if you have not seen them before. \footnote{Exercise}
+
+\subsection{Cyclotomic fields}
+
+Recall some Galois theory. Let $ n > 1 $, and let $ K $ be a field of characteristic zero or characteristic $ p \nmid n $. Suppose $ L = K\br{\zeta_n} $, where $ \zeta_n \in L $ is a primitive $ n $-th root of unity, that is $ \zeta_n^m \ne 1 $ for all $ 1 \le m < n $. Equivalently, $ \zeta_n $ is a root of the $ n $-th cyclotomic polynomial $ \Phi_n \in \ZZ\sbr{T} $ of degree $ \phi\br{n} $, defined recursively by
+$$ T^n - 1 = \prod_{d \mid n} \Phi_d\br{T}. $$
+Then $ L / K $ is Galois, with abelian Galois group, and
+$$ \function{\Gal\br{L / K}}{\br{\ZZ / n\ZZ}^\times}{g}{\text{unique} \ a \mod n \ \text{such that} \ g\br{\zeta_n} = \zeta_n^a}. $$
+is an injective homomorphism.
+
+\pagebreak
+
+\begin{theorem}
+\label{thm:4.1}
+Let $ L = \QQ\br{\zeta_n} $. Then
+\begin{enumerate}
+\item $ \Gal\br{L / \QQ} \xrightarrow{\sim} \br{\ZZ / n\ZZ}^\times $,
+\item $ p $ ramifies in $ L $ if and only if $ p \mid n $, and
+\item $ \OOO_L = \ZZ\sbr{\zeta_n} $.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark*}
+$ 1 $ if and only if $ \Phi_n $ is irreducible over $ \QQ $, if and only if $ \sbr{L : \QQ} = \phi\br{n} $.
+\end{remark*}
+
+\begin{proof}
+Let $ n = p^rm $ for $ r \ge 1 $ and $ p \nmid m $ prime. Let $ \zeta_m = \zeta_n^{p^r} $ and $ \zeta_{p^r} = \zeta_n^m $. Then there exist $ a, b \in \ZZ $ such that $ p^ra + mb = 1 $, so $ \zeta_n = \zeta_m^a\zeta_{p^r}^b $. Let $ K = \QQ\br{\zeta_m} $. Then $ L = K\br{\zeta_{p^r}} $. Will prove that
+\begin{itemize}
+\item $ \Phi_{p^r} $ is irreducible over $ K $,
+\item if $ v \in \V_{K, \f} $ and $ v \nmid p $ then $ v $ is unramified in $ L / K $,
+\item if $ v \mid p $ then $ v $ is totally ramified in $ L / K $, and
+\item $ \OOO_L = \OOO_K\sbr{\zeta_{p^r}} $.
+\end{itemize}
+This proves \ref{thm:4.1} by induction on $ n $. For a place $ w $ of $ L $, write $ x_w \in L_w $ for the image of $ \zeta_{p^r} $ under $ L \hookrightarrow L_w $. Suppose $ v \mid p $. By induction, $ p $ is unramified in $ K / \QQ $, so $ v\br{p} = 1 $. Then
+$$ \Phi_{p^r}\br{T + 1} = \dfrac{\br{T + 1}^{p^r} - 1}{\br{T + 1}^{p^{r - 1}} - 1} $$
+is an Eisenstein polynomial in $ \OOO_{K_v}\sbr{T} $. Indeed $ \Phi_{p^r}\br{T + 1} \equiv T^{p^{r - 1}\br{p - 1}} \mod p $, and the constant coefficient is $ p $, so has valuation one. Then from local fields,
+\begin{itemize}
+\item $ \Phi_{p^r} $ is irreducible over $ K_v $, hence over $ K $,
+\item $ L / K $ is totally ramified at $ v $, and
+\item if $ w $ is the unique place of $ L $ over $ v $, then $ \OOO_{L_w} = \OOO_{K_v}\sbr{\pi_w} $ where $ \pi_w = x_w - 1 $ is the root of $ \Phi_{p^r}\br{T + 1} $ in $ L_w $.
+\end{itemize}
+Now let $ v \mid q \ne p $. Then $ \Phi_{p^r} $ is separable modulo $ q $. Have
+$$ K_v \otimes_K L \cong \prod_{w \mid v} L_w = \prod_{w \mid v} K_v\br{x_w}. $$
+Let $ f_w \in \OOO_{K_v}\sbr{T} $ be the minimal polynomial of $ x_w $ over $ K_v $. Then
+\begin{itemize}
+\item $ \prod_{w \mid v} f_w = \Phi_{p^r} $, so the reduction of $ f_w $ at $ v $ is separable, hence $ L_w / K_v $ is unramified, and
+\item by local fields again, $ \OOO_{L_w} = \OOO_{K_v}\sbr{x_w} $.
+\end{itemize}
+Thus for all $ v \in \V_{K, \f} $,
+$$ \OOO_{K_v} \otimes_{\OOO_K} \OOO_K\sbr{\zeta_{p^r}} \cong \OOO_{K_v}\sbr{T} / \abr{\Phi_{p^r}} \cong \prod_{w \mid v} \OOO_{K_v}\sbr{T} / \abr{f_w} = \prod_{w \mid v} \OOO_{L_w} \cong \OOO_{K_v} \otimes_{\OOO_K} \OOO_L, $$
+by CRT, so must have $ \OOO_K\sbr{\zeta_{p^r}} = \OOO_L $.
+\end{proof}
+
+\pagebreak
+
+\subsection{Frobenius elements}
+
+Recall Frobenius elements. Let $ L / K $ be a Galois extension of number fields, let $ w \mid v $ be finite places, and let $ G = \Gal\br{L / W} \supset G_w \cong \Gal\br{L_w / K_v} $ be the decomposition group of $ w $. Then
+$$ 1 \to \I_w \to G_w \to \Gal\br{\ell_w / \kappa_v} \to 1, $$
+where $ \I_w $ is the inertia subgroup. Suppose $ w $ is unramified in $ L / K $, if and only if $ v $ is unramified in $ L / K $. Then $ \I_w = \cbr{1} $.
+
+\begin{definition*}
+Define the \textbf{Frobenius} at $ w $ to be the unique element $ \sigma_w \in G_w $ mapping to the generator $ x \mapsto x^{\q_v} $ of $ \Gal\br{\ell_w / \kappa_v} $.
+\end{definition*}
+
+So $ \ord \sigma_w = \f\br{w \mid v} = \sbr{\ell_w : \kappa_v} = \sbr{\ell_{w'} : \kappa_v} $ for any $ w' \mid v $, as $ G $ acts transitively on $ \cbr{w'} $. In particular, $ \sigma_w = 1 $ if and only if $ v $ splits completely in $ L / K $, that is there exist $ \sbr{L : K} $ places of $ L $ over $ v $. Suppose $ G $ is abelian. Then $ G_w $ and $ \sigma_w $ are independent of $ w $, so depends only on $ v $.
+
+\begin{notation*}
+$ \sigma_v = \sigma_{L / K, v} = \sigma_w $ is the \textbf{arithmetic Frobenius} at $ v $. There are other notations, such as $ \phi_{L / K, v} $ or $ \br{v, L / K} $, the \textbf{norm residue symbol}.
+\end{notation*}
+
+\begin{remark*}
+Let $ L / F / K $ where $ L / K $ is abelian. Then $ \eval{\sigma_{L / K}}_F = \sigma_{F / K} $ by definition.
+\end{remark*}
+
+\subsection{Quadratic reciprocity}
+
+Let $ L = \QQ\br{\zeta_n} $, let $ K = \QQ $, and let $ n > 2 $. Have an isomorphism
+$$ \function[\lambda]{\br{\ZZ / n\ZZ}^\times}{\Gal\br{L / \QQ}}{a \mod n}{\br{\zeta_n \mapsto \zeta_n^a}}. $$
+Claim that
+$$ \sigma_p = \sigma_{L / \QQ, p} = \lambda\br{p \mod n} = \br{\zeta_n \mapsto \zeta_n^p} \in \Gal\br{L / \QQ}, $$
+if $ p \nmid n $. Indeed, $ \sigma_p $ is characterised by for all $ v \mid p $, $ \sigma_p $ induces $ x \mapsto x^p $ on the residue field $ \ZZ\sbr{\zeta_n} / \ppp_v $, whereas $ \lambda\br{p} $ induces $ x \mapsto x^p $ over $ \ZZ\sbr{\zeta_n} / \abr{p} $.
+
+\lecture{8}{Saturday}{06/02/21}
+
+\begin{remark*}
+\hfill
+\begin{itemize}
+\item These elements $ \sigma_p $ generate $ \Gal\br{L / \QQ} $, since every integer prime to $ n $ is a product of $ p \nmid n $, so gives, with some thought, another proof that $ \Gal\br{L / \QQ} \cong \br{\ZZ / n\ZZ}^\times $.
+\item If $ \sigma : L \hookrightarrow \CC $ is any embedding, then $ \overline{\sigma\br{\zeta_n}} = \sigma\br{\zeta_n^{-1}} $. So $ \lambda\br{-1 \mod n} $ is complex conjugation, for any $ \sigma : L \hookrightarrow \CC $.
+\end{itemize}
+\end{remark*}
+
+Specialise to the case $ n = q > 2 $ is prime. Then $ \Gal\br{L / \QQ} = \br{\ZZ / q\ZZ}^\times $ is cyclic of order $ q - 1 $, so has a unique index two subgroup $ H \cong \br{\br{\ZZ / q\ZZ}^\times}^2 $. Let $ K = L^H $ be a quadratic extension of $ \QQ $. Every $ p \ne q $ is unramified in $ L $, hence also in $ K $. So $ K = \QQ\br{\sqrt{\pm q}} $, and as $ \abr{2} $ is unramified in $ K $, must have
+$$ K = \QQ\br{\sqrt{q^*}}, \qquad q^* =
+\begin{cases}
+q & q \equiv 1 \mod 4 \\
+-q & q \equiv 3 \mod 4
+\end{cases},
+\qquad \d_K = q^*. $$
+Now let $ p \ne q $ be an odd prime. Then
+$$ \sigma_{K / \QQ, p} = 1 \qquad \iff \qquad \sigma_{L / \QQ, p} = \lambda\br{p} \in H \qquad \iff \qquad \br{\tfrac{p}{q}} = 1. $$
+But
+$$ \sigma_{K / \QQ, p} = 1 \qquad \iff \qquad p \ \text{splits completely in} \ K \qquad \iff \qquad \br{\tfrac{q^*}{p}} = 1. $$
+That is, $ \br{\tfrac{p}{q}} = \br{\tfrac{q^*}{p}} $. Combine with $ \br{\tfrac{-1}{q}} = \br{-1}^{\br{p - 1} / 2} $ to get the quadratic reciprocity law. In algebraic number theory, quadratic reciprocity says that splitting of $ p $ in $ K / \QQ $ depends only on the congruence class of $ p $ modulo something. Class field theory tells us that a similar thing holds for any abelian extension of number fields, since there is a law describing the decomposition of primes in an abelian extension which is just a congruence condition.
+
+\pagebreak
+
+\section{Ideles and adeles}
+
+To study congruences modulo $ p^n $ for $ n \ge 1 $ Hensel introduced $ \ZZ_p $ and $ \QQ_p $ such that $ \QQ \hookrightarrow \ZZ_p $. For congruences to arbitrary moduli, or to study local-global problems in general, it would be nice to simultaneously embed $ \QQ \hookrightarrow \QQ_p $ for all $ p \le \infty $, which are locally compact. The first guess is $ \QQ \hookrightarrow \prod_{p \le \infty} \QQ_p $, but this product is not nice, for example not locally compact. Better is to notice that if $ x \in \QQ $, then the image of $ x $ lies in $ \ZZ_p $ for all but finitely many $ p $. So Chevalley introduced a small product with better properties, for any number field $ K $, the ring of adeles or valuation vectors $ \AA_K $ of $ K $ and the group of ideles $ \JJ_K = \AA_K^\times $ of $ K $. These are topological rings and groups respectively. They are highly disconnected, that is have plenty of open subgroups. Open subgroups are closed, so if $ H \subset G $ is an open subgroup, then $ G / H $ is discrete, that is $ G = \bigsqcup_x xH $ is a topological disjoint union.
+
+\subsection{Ring of adeles}
+
+\begin{definition*}
+Let $ K $ be a number field, let $ \V_K = \V_{K, \infty} \sqcup \V_{K, \f} $, and let $ K_v $ be its completions. If $ v \in \V_{K, \f} $, have $ \OOO_v = \cbr{x \st \abs{x}_v \le 1} \subset K_v $. The \textbf{ring of adeles} is
+$$ \AA_K = \cbr{\br{x_v} \in \prod_{v \in \V_K} K_v \st \text{for all but finitely many} \ v, \ x_v \in \OOO_v} = \bigcup_{\text{finite} \ S \subset \V_{K, \f}} \U_{K, S} \subset \prod_{v \in \V_K} K_v, $$
+where
+$$ \U_{K, S} = \prod_{v \in \V_{K, \infty}} K_v \times \prod_{v \in S} K_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v. $$
+\end{definition*}
+
+\begin{notation*}
+Let
+$$ K_\infty = \prod_{v \in \V_{K, \infty}} K_v = K \otimes_\QQ \RR \cong \RR^{\r_1} \times \CC^{\r_2}. $$
+\end{notation*}
+
+Then $ \AA_K $ is a ring. The topology on $ \AA_K $ is generated by all open $ V \subset \U_{K, S} $ as $ S $ varies, and where $ \U_{K, S} $ has the product topology. This means in particular that every $ \U_{K, S} \subset \AA_K $ is open, so $ \U_{K, \emptyset} = K_\infty \times \prod_{v \in \V_{K, \f}} \OOO_v $ is open and has the product topology. This completely determines the topology on $ \AA_K $. See example sheet $ 1 $ exercise $ 1 $(ii).
+
+\begin{example*}
+Let $ K = \QQ $. Then
+$$ \AA_\QQ = \RR \times \cbr{\br{x_p}_p \in \prod_{p < \infty} \QQ_p \st \text{for all but finitely many} \ p, \ x_p \in \ZZ_p}. $$
+So, letting $ m \in \ZZ_{> 0} $ be the product of the denominators $ p^i $ of $ x_p $ see that $ m\br{x_p}_p \in \prod_{p < \infty} \ZZ_p = \widehat{\ZZ} $, that is $ \br{x_p}_p \in \br{1 / m}\widehat{\ZZ} \subset \prod_p \QQ_p $. Let $ \widehat{\QQ} = \bigcup_{m \ge 1} \br{1 / m}\widehat{\ZZ} \cong \widehat{\ZZ} \otimes_\ZZ \QQ $. \footnote{Exercise: easy} Then $ \AA_\QQ = \RR \times \widehat{\QQ} $.
+\end{example*}
+
+\begin{proposition}
+$ \AA_K $ is Hausdorff and locally compact, so every point has a compact neighbourhood.
+\end{proposition}
+
+\begin{proof}
+If $ \widehat{\OOO_K} $ is the profinite completion, then $ \U_{K, \emptyset} = K_\infty \times \prod_{v \nmid \infty} \OOO_v = K_\infty \times \widehat{\OOO_K} $ is Hausdorff, and is locally compact, since $ K_\infty $ is locally compact and $ \widehat{\OOO_K} $ is compact, and it is an open neighbourhood of zero. So by translation, $ \AA_K $ is Hausdorff and locally compact.
+\end{proof}
+
+There is a diagonal embedding $ K \hookrightarrow \AA_K $.
+
+\begin{proposition}
+$ K $ is discrete in $ \AA_K $.
+\end{proposition}
+
+\begin{proof}
+Find a neighbourhood of zero containing only $ 0 \in K $. Let
+$$ U = \cbr{x = \br{x_v} \in \AA_K \st \begin{array}{l} \forall v \in \V_{K, \f}, \ \abs{x_v}_v \le 1 \\ \forall v \in \V_{K, \infty}, \ \abs{x_v}_v < 1 \end{array}}. $$
+Then $ U \subset \AA_K $ is open. If $ x \in K \cap U $, then $ \abs{x_v}_v \le 1 $ for all $ v \nmid \infty $ implies that $ x \in \OOO_K $, and $ \abs{x_v}_v < 1 $ for all $ v \mid \infty $ implies that $ \abs{\N_{K / \QQ}\br{x}} < 1 $, that is $ x = 0 $. So zero is isolated in $ K $. Thus $ K $ is discrete.
+\end{proof}
+
+\end{document}
