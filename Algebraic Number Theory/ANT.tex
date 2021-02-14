@@ -1,5 +1,5 @@
 \def\module{Algebraic Number Theory}
-\def\lecturer{Dr Anthony Scholl}
+\def\lecturer{Professor Anthony Scholl}
 \def\term{Lent 2020}
 \def\cover{}
 \def\syllabus{}
@@ -197,15 +197,14 @@ $$ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v}. $$
 A lot of theory applies to other global fields, that is \textbf{function fields} $ K / \FF_p\br{t} $ that are finite extensions. These are less interesting, at least to number theorists, since there are no infinite places.
 \end{remark*}
 
+\subsection{Dedekind domains}
+
 Let $ K $ be a \textbf{number field}, a finite extension of $ \QQ $, with \textbf{ring of integers} $ \OOO_K $, the integral closure of $ \ZZ $ in $ K $. A basic property is that $ \OOO_K $ is a Dedekind domain, that is
 \begin{enumerate}
 \item Noetherian, in fact, by finiteness of integral closure, $ \OOO_K $ is a finitely generated $ \ZZ $-module,
 \item integrally closed in $ K $, by definition, and
 \item every non-zero prime ideal is maximal, so Krull dimension at most one.
 \end{enumerate}
-
-\subsection{Dedekind domains}
-
 The following are basic results about Dedekind domains.
 
 \begin{theorem}
@@ -280,10 +279,10 @@ hence $ \br{R : \ppp^{n + 1}} = \br{R : \ppp}\br{\ppp : \ppp^{n + 1}} = \br{R : 
 
 The quotient group
 $$ \Cl R = \cbr{\text{fractional ideals of} \ R} / \cbr{\text{principal fractional ideals} \ aR \ \text{for} \ a \in K^\times} $$
-is the \textbf{class group} of $ R $, or the \textbf{Picard group} $ \Pic R $. If $ K $ is a number field, write $ \Cl K = \Cl \OOO_K $, the \textbf{ideal class group} of $ K $.
+is the \textbf{class group} of $ R $, or the \textbf{Picard group} $ \Pic R $. If $ K $ is a number field, write $ \Cl\br{K} = \Cl \OOO_K $, the \textbf{ideal class group} of $ K $.
 
 \begin{fact*}
-For a number field $ K $, $ \Cl K $ is finite.
+For a number field $ K $, $ \Cl\br{K} $ is finite.
 \end{fact*}
 
 \pagebreak
@@ -339,8 +338,8 @@ Define
 $$ K_\infty = K \otimes_\QQ \RR \cong \prod_{v \in \V_{K, \infty}} K_v \cong \RR^{\cbr{\text{real} \ v}} \times \CC^{\cbr{\text{complex} \ v}}, $$
 where for $ v $ complex, $ K_v \cong \CC $ is well-defined up to complex conjugation. For normalised AVs,
 \begin{itemize}
-\item $ v $ real corresponds to $ \sigma : K \hookrightarrow \RR $ and $ \abs{x}_v = \abs{\sigma\br{x}}_\infty $ is the Euclidean AV, and
-\item $ v $ complex corresponds to $ \sigma \ne \overline{\sigma} : K \hookrightarrow \CC $ and $ \abs{x}_v = \sigma\br{x}\overline{\sigma}\br{x} = \abs{\sigma\br{x}}_\infty^2 $ is the square of modulus.
+\item $ v $ real corresponds to $ \sigma : K \hookrightarrow \RR $ and $ \abs{x}_v = \abs{\sigma\br{x}} $ is the Euclidean AV, and
+\item $ v $ complex corresponds to $ \sigma \ne \overline{\sigma} : K \hookrightarrow \CC $ and $ \abs{x}_v = \sigma\br{x}\overline{\sigma}\br{x} = \abs{\sigma\br{x}}^2 $ is the square of modulus.
 \end{itemize}
 \end{notation*}
 
@@ -467,7 +466,7 @@ If $ x \in S $, then $ \Tr_{L / K}\br{x} \in R $.
 
 \begin{proof}
 If $ R $ is local, then $ S $ is a free $ R $-module so $ \Tr_{L / K}\br{x} = \Tr_{S \otimes_R K / K}\br{x \otimes 1} = \Tr_{S / R}\br{x} \in R $. So in general, for all $ 0 \ne \ppp \subset R $, $ y = \Tr_{L / K}\br{x} \in R_\ppp $ and
-$$ \bigcap_\ppp R_\ppp = \cbr{x \in K \st \forall \ppp, \ \v_p\br{x} \ge 0} = R. $$
+$$ \bigcap_\ppp R_\ppp = \cbr{x \in K \st \forall \ppp, \ \v_\ppp\br{x} \ge 0} = R. $$
 \end{proof}
 
 Then there are two equivalent definitions of $ \disc\br{S / R} $.
@@ -663,7 +662,7 @@ $$
 \item If $ p \ne 2 $ or $ d \not\equiv 1 \mod 4 $ then $ p \nmid \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} $. So applying the criterion to $ T^2 - d $, see that
 \begin{itemize}
 \item $ \abr{p} = \ppp^2 $ is ramified if $ p \mid d $, so $ \ppp = \abr{p, \sqrt{d}} $,
-\item $ \abr{p} = \ppp  $ is inert if $ \br{\tfrac{d}{p}} = -1 $, and
+\item $ \abr{p} = \ppp $ is inert if $ \br{\tfrac{d}{p}} = -1 $, and
 \item $ \abr{p} = \ppp\ppp' $ is split if $ \br{\tfrac{d}{p}} = 1 $, so if $ d \equiv a^2 \mod p $ then $ \ppp = \abr{p, \sqrt{d} - a} \ne \abr{p, \sqrt{d} + a} = \ppp' $.
 \end{itemize}
 \item The remaining case is $ p = 2 $ and $ d \equiv 1 \mod 4 $. Factoring $ T^2 - T - \tfrac{d - 1}{4} $ modulo two, get
@@ -784,12 +783,14 @@ That is, $ \br{\tfrac{p}{q}} = \br{\tfrac{q^*}{p}} $. Combine with $ \br{\tfrac{
 
 \section{Ideles and adeles}
 
-To study congruences modulo $ p^n $ for $ n \ge 1 $ Hensel introduced $ \ZZ_p $ and $ \QQ_p $ such that $ \QQ \hookrightarrow \ZZ_p $. For congruences to arbitrary moduli, or to study local-global problems in general, it would be nice to simultaneously embed $ \QQ \hookrightarrow \QQ_p $ for all $ p \le \infty $, which are locally compact. The first guess is $ \QQ \hookrightarrow \prod_{p \le \infty} \QQ_p $, but this product is not nice, for example not locally compact. Better is to notice that if $ x \in \QQ $, then the image of $ x $ lies in $ \ZZ_p $ for all but finitely many $ p $. So Chevalley introduced a small product with better properties, for any number field $ K $, the ring of adeles or valuation vectors $ \AA_K $ of $ K $ and the group of ideles $ \JJ_K = \AA_K^\times $ of $ K $. These are topological rings and groups respectively. They are highly disconnected, that is have plenty of open subgroups. Open subgroups are closed, so if $ H \subset G $ is an open subgroup, then $ G / H $ is discrete, that is $ G = \bigsqcup_x xH $ is a topological disjoint union.
+To study congruences modulo $ p^n $ for $ n \ge 1 $ Hensel introduced $ \ZZ_p $ and $ \QQ_p $ such that $ \QQ \hookrightarrow \ZZ_p $. For congruences to arbitrary moduli, or to study local-global problems in general, it would be nice to simultaneously embed $ \QQ \hookrightarrow \QQ_p $ for all $ p \le \infty $, which are locally compact. The first guess is $ \QQ \hookrightarrow \prod_{p \le \infty} \QQ_p $, but this product is not nice, for example not locally compact. Better is to notice that if $ x \in \QQ $, then the image of $ x $ lies in $ \ZZ_p $ for all but finitely many $ p $. So Chevalley introduced a small product with better properties, for any number field $ K $, the ring of adeles or valuation vectors $ \AA_K $ of $ K $ and the group of ideles $ \JJJ_K = \AA_K^\times $ of $ K $. These are topological rings and groups respectively. They are highly disconnected, that is have plenty of open subgroups. Open subgroups are closed, so if $ H \subset G $ is an open subgroup, then $ G / H $ is discrete, that is $ G = \bigsqcup_x xH $ is a topological disjoint union.
 
-\subsection{Ring of adeles}
+\subsection{Adeles}
+
+Let $ K $ be a number field, let $ \V_K = \V_{K, \infty} \sqcup \V_{K, \f} $, and let $ K_v $ be its completions. If $ v \in \V_{K, \f} $, have $ \OOO_v = \OOO_{K_v} = \cbr{x \st \abs{x}_v \le 1} \subset K_v $.
 
 \begin{definition*}
-Let $ K $ be a number field, let $ \V_K = \V_{K, \infty} \sqcup \V_{K, \f} $, and let $ K_v $ be its completions. If $ v \in \V_{K, \f} $, have $ \OOO_v = \cbr{x \st \abs{x}_v \le 1} \subset K_v $. The \textbf{ring of adeles} is
+The \textbf{adele ring} of $ K $ is
 $$ \AA_K = \cbr{\br{x_v} \in \prod_{v \in \V_K} K_v \st \text{for all but finitely many} \ v, \ x_v \in \OOO_v} = \bigcup_{\text{finite} \ S \subset \V_{K, \f}} \U_{K, S} \subset \prod_{v \in \V_K} K_v, $$
 where
 $$ \U_{K, S} = \prod_{v \in \V_{K, \infty}} K_v \times \prod_{v \in S} K_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v. $$
@@ -800,20 +801,28 @@ Let
 $$ K_\infty = \prod_{v \in \V_{K, \infty}} K_v = K \otimes_\QQ \RR \cong \RR^{\r_1} \times \CC^{\r_2}. $$
 \end{notation*}
 
-Then $ \AA_K $ is a ring. The topology on $ \AA_K $ is generated by all open $ V \subset \U_{K, S} $ as $ S $ varies, and where $ \U_{K, S} $ has the product topology. This means in particular that every $ \U_{K, S} \subset \AA_K $ is open, so $ \U_{K, \emptyset} = K_\infty \times \prod_{v \in \V_{K, \f}} \OOO_v $ is open and has the product topology. This completely determines the topology on $ \AA_K $. See example sheet $ 1 $ exercise $ 1 $(ii).
+Then $ \AA_K $ is a ring. The topology on $ \AA_K $ is generated by all open $ V \subset \U_{K, S} $ as $ S $ varies, and where $ \U_{K, S} $ has the product topology, so
+$$ V = \prod_{v \in S} X_v \times \prod_{v \notin S} \OOO_{K_v}, $$
+where $ S $ is finite, containing $ \V_{K, \infty} $, and $ X_v $ is open in $ K_v $. This means in particular that every $ \U_{K, S} \subset \AA_K $ is open, so
+$$ \U_{K, \emptyset} = K_\infty \times \prod_{v \in \V_{K, \f}} \OOO_v = K_\infty \times \widehat{\OOO_K}, $$
+where $ \widehat{\OOO_K} $ is the profinite completion, is open and has the product topology. This completely determines the topology on $ \AA_K $. See example sheet $ 1 $ exercise $ 1 $(ii).
 
 \begin{example*}
 Let $ K = \QQ $. Then
 $$ \AA_\QQ = \RR \times \cbr{\br{x_p}_p \in \prod_{p < \infty} \QQ_p \st \text{for all but finitely many} \ p, \ x_p \in \ZZ_p}. $$
-So, letting $ m \in \ZZ_{> 0} $ be the product of the denominators $ p^i $ of $ x_p $ see that $ m\br{x_p}_p \in \prod_{p < \infty} \ZZ_p = \widehat{\ZZ} $, that is $ \br{x_p}_p \in \br{1 / m}\widehat{\ZZ} \subset \prod_p \QQ_p $. Let $ \widehat{\QQ} = \bigcup_{m \ge 1} \br{1 / m}\widehat{\ZZ} \cong \widehat{\ZZ} \otimes_\ZZ \QQ $. \footnote{Exercise: easy} Then $ \AA_\QQ = \RR \times \widehat{\QQ} $.
+So, letting $ m \in \ZZ_{> 0} $ be the product of the denominators $ p^i $ of $ x_p $ see that $ m\br{x_p}_p \in \prod_{p < \infty} \ZZ_p = \widehat{\ZZ} $, that is $ \br{x_p}_p \in \br{1 / m}\widehat{\ZZ} \subset \prod_p \QQ_p $. Let \footnote{Exercise: easy}
+$$ \widehat{\QQ} = \bigcup_{m \ge 1} \dfrac{1}{m}\widehat{\ZZ} \cong \widehat{\ZZ} \otimes_\ZZ \QQ. $$
+Then $ \AA_\QQ = \RR \times \widehat{\QQ} $.
 \end{example*}
+
+\pagebreak
 
 \begin{proposition}
 $ \AA_K $ is Hausdorff and locally compact, so every point has a compact neighbourhood.
 \end{proposition}
 
 \begin{proof}
-If $ \widehat{\OOO_K} $ is the profinite completion, then $ \U_{K, \emptyset} = K_\infty \times \prod_{v \nmid \infty} \OOO_v = K_\infty \times \widehat{\OOO_K} $ is Hausdorff, and is locally compact, since $ K_\infty $ is locally compact and $ \widehat{\OOO_K} $ is compact, and it is an open neighbourhood of zero. So by translation, $ \AA_K $ is Hausdorff and locally compact.
+$ \U_{K, \emptyset} $ is Hausdorff, and is locally compact, since $ K_\infty $ is locally compact and $ \widehat{\OOO_K} $ is compact, and it is an open neighbourhood of zero. So by translation, $ \AA_K $ is Hausdorff and locally compact.
 \end{proof}
 
 There is a diagonal embedding $ K \hookrightarrow \AA_K $.
@@ -826,6 +835,314 @@ $ K $ is discrete in $ \AA_K $.
 Find a neighbourhood of zero containing only $ 0 \in K $. Let
 $$ U = \cbr{x = \br{x_v} \in \AA_K \st \begin{array}{l} \forall v \in \V_{K, \f}, \ \abs{x_v}_v \le 1 \\ \forall v \in \V_{K, \infty}, \ \abs{x_v}_v < 1 \end{array}}. $$
 Then $ U \subset \AA_K $ is open. If $ x \in K \cap U $, then $ \abs{x_v}_v \le 1 $ for all $ v \nmid \infty $ implies that $ x \in \OOO_K $, and $ \abs{x_v}_v < 1 $ for all $ v \mid \infty $ implies that $ \abs{\N_{K / \QQ}\br{x}} < 1 $, that is $ x = 0 $. So zero is isolated in $ K $. Thus $ K $ is discrete.
+\end{proof}
+
+\lecture{9}{Tuesday}{09/02/21}
+
+Let $ L / K $ be an extension of number fields. For all $ v \in \V_K $, $ K_v \hookrightarrow \prod_{w \mid v} L_w $ induces an inclusion of rings $ \AA_K \hookrightarrow \AA_L $ visibly continuous.
+
+\begin{proposition}
+\label{prop:5.3}
+Let $ \br{a_1, \dots, a_n} $ be a $ K $-basis for $ L $. Consider
+$$
+\begin{array}{ccccc}
+\AA_K^n & \xrightarrow{f} & \AA_K \otimes_K L & \xrightarrow{g} & \AA_L \\
+\displaystyle\br{x^{\br{i}}}_{1 \le i \le n} & \longmapsto & \displaystyle\sum_i x^{\br{i}} \otimes a_i & \longmapsto & \displaystyle\sum_i a_ix^{\br{i}}
+\end{array},
+$$
+viewing $ x^{\br{i}} \in \AA_K \hookrightarrow \AA_L $ as above. Then $ g $ is a ring isomorphism, $ f $ is an $ \AA_K $-module isomorphism, and $ g \circ f $ is a homeomorphism. This then defines a unique topology on $ \AA_K \otimes_K L $ such that $ g $ is an isomorphism of topological rings.
+\end{proposition}
+
+\begin{proof}
+Since $ L = \bigoplus_i Ka_i \cong K^n $, $ f $ is an $ \AA_K $-module isomorphism. By definition, $ g $ is a ring homomorphism. So it suffices to prove $ g \circ f $ is bijective, and that it maps $ X^n = \br{K_\infty \times \widehat{\OOO_K}}^n $ homeomorphically to an open subgroup of $ \AA_L $. Note that multiplication by any $ x \in K^\times $ is a self-homeomorphism of $ \AA_K $ with itself, since the inverse is multiplication by $ x^{-1} $. Similarly for $ \AA_L $. So may replace $ \br{a_i} $ by non-zero $ K $-multiples, so without loss of generality, $ a_i \in \OOO_L $. Let
+$$ S = \cbr{v \in \V_{K, \f} \st v\br{\br{\OOO_L : \sum_i a_i\OOO_K}} > 0} $$
+be a finite subset of $ \V_{K, \f} $. Then for all $ v \in \V_{K, \f} \setminus S $,
+$$ \br{a_i} : \OOO_{K_v}^n \xrightarrow{\sim} \prod_{w \mid v} \OOO_{L_w} \cong \OOO_{K_v} \otimes_{\OOO_K} \OOO_L, $$
+and for all $ v \in S $, $ \sum_i a_i\OOO_{K_v} = M_v $ is an open $ \OOO_{K_v} $-submodule of $ \prod_{w \mid v} \OOO_{L_w} $. Then
+$$ g \circ f : \br{K_\infty \times \widehat{\OOO_K}}^n \xrightarrow{\sim} L_\infty \times \prod_{v \notin S} \prod_{w \mid v} \OOO_{L_w} \times \prod_{v \in S} M_v $$
+is a homeomorphism onto an open subgroup in $ \AA_L $. Moreover, for any finite $ S' \supset S \cup \V_{K, \infty} $,
+$$ g \circ f : \U_{K, S'} = \br{\prod_{v \in S'} K_v \times \prod_{v \notin S'} \OOO_{K_v}}^n \xrightarrow{\sim} \prod_{w \mid v \in S'} L_w \times \prod_{w \mid v \notin S'} \OOO_{L_w}. $$
+So $ g \circ f $ is bijective.
+\end{proof}
+
+In particular, $ \AA_K = \AA_\QQ \otimes_\QQ K $.
+
+\pagebreak
+
+\begin{corollary}
+$ \AA_L $ is a free $ \AA_K $-module of rank $ \sbr{L : K} $, and the diagram
+$$
+\begin{tikzcd}
+\displaystyle\prod_{w \mid v} L_w \arrow[hookrightarrow]{r} \arrow{d}{\sum_w \Tr_{L_w / K_v}} & \AA_L \arrow{d}{\Tr_{\AA_L / \AA_K}} & \AA_K \otimes_K L \arrow{l}[swap]{\sim} \arrow{d}{\id \otimes \Tr_{L / K}} & L \arrow[hookrightarrow]{l} \arrow{d}{\Tr_{L / K}} \\
+K_v \arrow[hookrightarrow]{r} & \AA_K & \AA_K \otimes_K K \arrow{l}{\sim} & K \arrow[hookrightarrow]{l}
+\end{tikzcd}
+$$
+commutes, where the left hand inclusions are
+$$ \br{x_w}_{w \mid v} \mapsto \br{y_w}, \qquad y_w =
+\begin{cases}
+x_w & w \mid v \\
+0 & \text{otherwise}
+\end{cases}.
+$$
+\end{corollary}
+
+\begin{proof}
+Exercise. \footnote{Exercise}
+\end{proof}
+
+\begin{theorem}
+$ \AA_K / K $ is compact Hausdorff.
+\end{theorem}
+
+\begin{proof}
+Since $ K $ is closed in $ \AA_K $ and $ \AA_K $ is Hausdorff, $ \AA_K / K $ is Hausdorff. By \ref{prop:5.3}, $ \AA_K / K \cong \br{\AA_\QQ / \QQ}^{\sbr{K : \QQ}} $ as topological groups, so may assume $ K = \QQ $. Let $ X = \sbr{0, 1} \times \widehat{\ZZ} \subset \AA_\QQ $. Then $ X $ is compact. So it is enough to show that $ X + \QQ = \AA_\QQ $, as then $ X \twoheadrightarrow \AA_\QQ / \QQ $. Let $ x = \br{x_p}_{p \le \infty} \in \AA_\QQ $. Let
+$$ S = \cbr{p < \infty \st x_p \notin \ZZ_p} $$
+be a finite set. There exists $ r_p \in \ZZ\sbr{1 / p} $ such that $ x_p - r_p \in \ZZ_p $ for all $ p \in S $. Let $ r = \sum_{p \in S} r_p \in \QQ $. For all $ p < \infty $, $ x_p - r \in \ZZ_p $, that is $ x - r \in \RR \times \widehat{\ZZ} $, and then for suitable $ m \in \ZZ $, $ x - \br{r + m} \in \sbr{0, 1} \times \widehat{\ZZ} $.
+\end{proof}
+
+From \ref{prop:5.3} also get $ \AA_K = K_\infty \times \widehat{K} $ where
+$$ \widehat{K} = \widehat{\OOO_K} \otimes_\ZZ \QQ = \widehat{\OOO_K} \otimes_{\OOO_K} K, $$
+where $ \widehat{\OOO_K} \cong \prod_\ppp \widehat{\OOO_{K, \ppp}} = \prod_{v \nmid \infty} \OOO_{K_v} $ is the profinite completion of $ \OOO_K $.
+
+\subsection{Ideles}
+
+\begin{definition*}
+The \textbf{idele group} of $ K $ is the group of units of $ \AA_K $,
+$$ \JJJ_K = \AA_K^\times = \cbr{\br{x_v} \in \prod_{v \in \V_K} K_v^\times \st \text{for all but finitely many finite} \ v, \ x_v \in \OOO_v^\times} = \bigcup_{\text{finite} \ S \subset \V_{K, \f}} \JJJ_{K, S}, $$
+where
+$$ \JJJ_{K, S} = K_\infty^\times \times \prod_{v \in S} K_v^\times \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v^\times. $$
+\end{definition*}
+
+The topology on $ \JJJ_K $ is generated by open subsets of $ \JJJ_{K, S} $, as $ S $ varies, and $ \JJJ_{K, S} $ is given the product topology. In particular, $ K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times $ is an open subgroup, and has the product topology.
+
+\begin{remark*}
+$ \JJJ_K \hookrightarrow \AA_K $ is continuous, by the definitions, but is not a homeomorphism onto its image, since $ x \mapsto x^{-1} $ on $ \AA_K^\times $ is not continuous for the $ \AA_K $-topology, by example sheet $ 1 $ exercise $ 8 $, but
+$$ \function{\JJJ_K}{\AA_K \times \AA_K}{x}{\br{x, x^{-1}}} $$
+is a homeomorphism of $ \JJJ_K $ onto the closed subset $ \cbr{xy = 1} \subset \AA_K^2 $. In geometry, $ \GL_n K \subset \AA^{n^2} $ and
+$$ \function{\GL_n K}{\AA^{n^2 + 1}}{\br{a_{ij}}}{\br{a_{ij}, \det \br{a_{ij}}^{-1}}} $$
+has closed image.
+\end{remark*}
+
+\pagebreak
+
+Then $ K^\times \hookrightarrow \JJJ_K $ since if $ x \in K^\times $ then $ \abs{x}_v = 1 $ for all but finitely many $ v $. The image is discrete, since $ \JJJ_K \hookrightarrow \AA_K $ is continuous and $ K \subset \AA_K $ is discrete.
+
+\lecture{10}{Thursday}{11/02/21}
+
+\begin{definition*}
+$ \CCC_K = \JJJ_K / K^\times $ is the \textbf{idele class group} of $ K $.
+\end{definition*}
+
+This is a Hausdorff and locally compact topological group. There are two important homomorphisms.
+
+\begin{definition*}
+Let $ x = \br{x_v} \in \JJJ_K $. Then for all $ v $, $ \abs{x_v}_v \ne 0 $, and for all but finitely many $ v $, $ \abs{x_v}_v = 1 $. So can define the \textbf{idele norm} homomorphism
+$$ \function[\abs{\cdot}_\AA]{\JJJ_K}{\RR_{> 0}}{\br{x_v}}{\prod_{v \in \V_K} \abs{x_v}_v}, $$
+\end{definition*}
+
+This is continuous, since the restriction to $ \JJJ_{K, S} $ is $ \prod_v \abs{\cdot}_v : \JJJ_{K, S} \to \prod_{v \in S \cup \V_{K, \infty}} K_v^\times \to \RR_{> 0} $. Clearly $ \abs{\cdot}_\AA $ is surjective, since $ K_\infty^\times \subset \JJJ_K $. A key fact is that for all $ x \in K^\times $, $ \abs{x}_\AA = 1 $ by the product formula, so $ \abs{\cdot}_\AA : \JJJ_K \to \CCC_K \to \RR_{> 0} $.
+
+\begin{definition*}
+Let
+$$ \JJJ_K^1 = \cbr{x \in \JJJ_K \st \abs{x}_\AA = 1}, \qquad \CCC_K^1 = \JJJ_K^1 / K^\times. $$
+\end{definition*}
+
+\begin{proposition}
+$$ \JJJ_K \cong \JJJ_K^1 \times \RR_{> 0}, \qquad \CCC_K \cong \CCC_K^1 \times \RR_{> 0}. $$
+\end{proposition}
+
+\begin{proof}
+Have $ \abs{\cdot}_\AA : \JJJ_K \twoheadrightarrow \RR_{> 0} $. Consider
+$$ \function[\i]{\RR_{> 0}}{K_\infty^\times \subset \JJJ_K}{x}{\br{x^{\tfrac{1}{n}}}_{v \mid \infty}}. $$
+Because $ \abs{x}_v $ is the Euclidean AV if $ v $ is real and the square of modulus if $ v $ is complex, this homomorphism is a right inverse to $ \abs{\cdot}_\AA $. So defines a splitting $ \JJJ_K \cong \JJJ_K^1 \times \RR_{> 0} $. As $ \i\br{\RR_{> 0}} \cap K^\times = \cbr{1} $, also have $ \CCC_K \cong \CCC_K^1 \times \RR_{> 0} $.
+\end{proof}
+
+Recall $ \ppp_v $ is the prime ideal corresponding to a finite place $ v $. Write $ v $ also for the corresponding normalised discrete valuation.
+
+\begin{definition*}
+Let
+$$ \I\br{K} = \cbr{\text{group of fractional ideals of} \ K} \cong \cbr{\text{free abelian group generated by} \ \V_{K, \f}}. $$
+The \textbf{content map} is
+$$ \function[\c]{\JJJ_K}{\I\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f}} \ppp_v^{v\br{x_v}}}. $$
+\end{definition*}
+
+This is a continuous homomorphism, for the discrete topology on $ \I\br{K} $, since $ \ker \c = \JJJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times $ is open. If $ x \in K^\times $ then $ \c\br{x} $ is the principal fractional ideal $ \abr{x} $. So $ \c $ descends to a homomorphism
+$$ \c : \CCC_K = \JJJ_K / K^\times \to \Cl\br{K} = \I\br{K} / \P\br{K}, $$
+where $ \P\br{K} $ is the group of principal fractional ideals. The image of the inclusion $ K^\times \hookrightarrow \JJJ_K $ is called the subgroup of \textbf{principal ideles}. Then $ \c $ is clearly surjective, since $ v : K_v^\times \twoheadrightarrow \ZZ $. So $ \CCC_K \twoheadrightarrow \Cl\br{K} $. As $ \c \circ \i : \RR_{> 0} \to \Cl\br{K} $ is zero, have a continuous surjection $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $. Now prove that $ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact. A corollary is that $ \Cl\br{K} $ is finite, since compact and discrete. The following is a variant.
+
+\begin{definition*}
+Let $ S \subset \V_{K, \f} $ be a finite subset, and let
+$$ \I^S\br{K} = \cbr{\text{fractional ideals prime to} \ S} = \cbr{I \st \forall v \in S, \ v\br{I} = 0}. $$
+Define
+$$ \function[\c^S]{\JJJ_K}{\I^S\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f} \setminus S} \ppp_v^{v\br{x_v}}}. $$
+\end{definition*}
+
+This will be useful later on.
+
+\pagebreak
+
+\section{Geometry of numbers}
+
+\subsection{Minkowski's theorem}
+
+Classically, embed
+$$ \sigma : K \hookrightarrow K_\infty = \prod_{v \mid \infty} K_v \cong \RR^{\r_1} \times \CC^{\r_2} \cong \RR^n, $$
+and study the image $ \sigma\br{I} \subset \RR^n $ for $ I $ a fractional ideal.
+
+\begin{definition*}
+Let $ U $ be a finite-dimensional real vector space. A \textbf{lattice} $ \Lambda \subset U $ is a discrete subgroup such that $ U / \Lambda $ is compact.
+\end{definition*}
+
+\begin{proposition}
+A subgroup $ \Lambda \subset U $ is a lattice if and only if $ \Lambda = \bigoplus_{1 \le i \le n} \ZZ e_i $, where $ \br{e_i} $ is an $ \RR $-basis for $ U $ where $ n = \dim_\RR U $.
+\end{proposition}
+
+\begin{proof}
+Example sheet.
+\end{proof}
+
+\begin{theorem}[Minkowski's theorem]
+\label{thm:6.2}
+Let $ \Lambda \subset \RR^n $ be a lattice, and let $ \mu_\Lambda = \vol\br{\RR^n / \Lambda} $, the \textbf{covolume} of $ \Lambda $. Let $ X \subset \RR^n $ be a compact subset, which is
+\begin{itemize}
+\item convex, that is if $ t \in \sbr{0, 1} $ and $ x, y \in X $ then $ tx + \br{1 - t}y \in X $, and
+\item symmetric about the origin, that is if $ x \in X $ then $ -x \in X $.
+\end{itemize}
+If $ \vol\br{X} > 2^n\mu_\Lambda $, then $ X \cap \Lambda \ne \cbr{0} $.
+\end{theorem}
+
+\begin{remark*}
+$ \RR^n $ has a Lebesgue measure, and $ \vol\br{X} $ is the measure of $ X $. The Lebesgue measure defines a measure on $ \RR^n / \Lambda $, and $ \mu_\Lambda $ is the measure of $ \RR^n / \Lambda $. Naively, if $ \Lambda = \bigoplus_i \ZZ e_i $ for $ \br{e_i} $ linearly independent over $ \RR $ and $ \PPP = \cbr{\sum_i x_ie_i \st 0 \le x_i < 1} $, then $ \PPP $ is a set of coset representatives for $ \Lambda \subset \RR^n $, and $ \mu_\Lambda = \vol\br{\PPP} = \abs{\det \br{e_{ij}}} $, which is independent of the basis.
+\end{remark*}
+
+\begin{proof}
+Let $ \pi : \RR^n \to \RR^n / 2\Lambda $. Then
+$$ \vol\br{\pi\br{X}} \le \vol\br{\RR^n / 2\Lambda} = 2^n\vol\br{\RR^n / \Lambda} < \vol\br{X}. $$
+So $ X \to \pi\br{X} $ is not one-to-one, so there exists $ x \ne y $ in $ X $ such that $ x - y = 2\lambda \in 2\Lambda $. Then $ 0 \ne \lambda = \br{x - y} / 2 = \tfrac{1}{2}x + \tfrac{1}{2}\br{-y} \in X $ as $ -y \in X $, by symmetry, and $ X $ is convex.
+\end{proof}
+
+\begin{theorem}
+\label{thm:6.3}
+There exists a constant $ \r_K > 0 $ such that, if $ \br{d_v}_{v \in K} $ are positive reals with
+\begin{itemize}
+\item $ d_v \in \abs{K_v^\times}_v = \cbr{\abs{x}_v \st x \in K_v^\times} \subset \RR_{> 0} $ for all $ v $,
+\item $ d_v = 1 $ for all but finitely many $ v $, and
+\item $ \prod_{v \in \V_K} d_v > \r_K $,
+\end{itemize}
+then $ \cbr{x \in K \st \forall v, \ \abs{x}_v \le d_v} \ne \cbr{0} $.
+\end{theorem}
+
+\begin{proof}
+For $ v \nmid \infty $, write $ d_v = \q_v^{-n_v} $ for $ n_v \in \ZZ $. Let
+$$ I = \cbr{x \in K \st \forall v \nmid \infty, \ \abs{x}_v \le d_v} = \prod_v \ppp_v^{n_v} $$
+be a fractional ideal of $ K $. Then $ mI \subset \OOO_K $ for $ m > 0 $, so
+\begin{equation}
+\label{eq:4}
+\mu_{\sigma\br{I}} = m^{-n}\mu_{\sigma\br{mI}} = m^{-n}\mu_{\sigma\br{\OOO_K}}\br{\sigma\br{\OOO_K} : \sigma\br{mI}} = m^{-n}\mu_{\sigma\br{\OOO_K}}\N\br{mI} = \mu_{\sigma\br{\OOO_K}}\prod_v \q_v^{n_v},
+\end{equation}
+and $ \sigma\br{I} $ is a lattice in $ \RR^n $, by the non-vanishing of the discriminant. Let
+$$ X = \cbr{x \in \prod_{v \in \infty} K_v \cong \RR^n \st \forall v, \ \abs{x_v}_v \le d_v} = \prod_{v \ \text{real}} \sbr{-d_v, d_v} \times \prod_{v \ \text{complex}} \cbr{\abs{z}^2 \le d_v} \subset K_\infty \cong \RR^{\r_1} \times \CC^{\r_2}. $$
+
+\pagebreak
+
+This is convex, compact, symmetric, and
+$$ \vol\br{X} = 2^{\r_1}\pi^{\r_2}\prod_{v \mid \infty} d_v > 2^n\prod_{v \nmid \infty} d_v^{-1}\mu_{\sigma\br{\OOO_K}} = 2^n\mu_{\sigma\br{I}}, $$
+by $ \br{\ref{eq:4}} $, provided
+$$ \prod_v d_v > \r_K = \br{\dfrac{4}{\pi}}^{\r_2}\mu_{\sigma\br{\OOO_K}} = \br{\dfrac{2}{\pi}}^{\r_2}\abs{\d_K}^{\tfrac{1}{2}}. $$
+Then applying \ref{thm:6.2}, $ X \cap \sigma\br{I} \ne \cbr{0} $ and any $ x \in X \cap \sigma\br{I} $ has $ \abs{x}_v \le d_v $ for all $ v $.
+\end{proof}
+
+This is the translation of a classical result that if $ 0 \ne I $ is an ideal then there exists $ x \in I \setminus \cbr{0} $ such that $ \abs{\N_{K / \QQ}\br{x}} < \r_K\N\br{I} $.
+
+\lecture{11}{Saturday}{13/02/21}
+
+\begin{remark*}
+Used Minkowski's theorem, with convex symmetric set $ X = \sbr{-d_v, d_v}^{\r_1} \times \cbr{\abs{z}^2 \le d_v}^{\r_2} $ and obtained $ \r_K = \br{4 / \pi}^{\r_2}\mu_{\sigma\br{\OOO_K}} $. Using better chosen $ X $, can get a better bound, the Minkowski bound $ \c_K $, which is useful for computation.
+\end{remark*}
+
+\subsection{Compactness of idele class group}
+
+\begin{theorem}
+\label{thm:6.4}
+$ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact.
+\end{theorem}
+
+Recall $ K^\times \subset \JJJ_K^1 = \ker \br{\abs{\cdot}_\AA : \JJJ_K \to \RR_{> 0}} $ is discrete. Based on \ref{thm:6.3} and the following.
+
+\begin{proposition}
+\label{prop:6.5}
+Let $ \rho_v > 0 $ for $ v \in \V_K $, with $ \rho_v = 1 $ for all but finitely many $ v $. Then
+$$ X = \cbr{x \in \JJJ_K^1 \st \forall v, \ \abs{x_v}_v \le \rho_v} $$
+is compact.
+\end{proposition}
+
+This is false for $ \JJJ_K $. Note that $ \abs{x_v}_v \le \rho_v $ for all $ v $ defines a compact subset of $ \AA_K $.
+
+\begin{proof}
+Let $ R = \prod_v \rho_v $, and let
+$$ S = \V_{K, \infty} \cup \cbr{v \st \rho_v \ne 1} \cup \cbr{v \in \V_{K, \f} \st \q_v \le R} $$
+be a finite set of places, since the last set is contained in $ \cbr{v \mid p \st p \le R} $, which is finite. If $ v \notin S $, and $ x \in X $, since $ \rho_v = 1 $,
+$$ 1 \ge \abs{x_v}_v = \prod_{w \ne v} \abs{x_w}_w^{-1} \ge \prod_{w \ne v} \rho_w^{-1} = R^{-1}. $$
+As $ \q_v > R $, this forces $ \abs{x_v}_v = 1 $. So $ X = X' \times \prod_{v \notin S} \OOO_v^\times $, where
+$$ X' = \cbr{\br{x_v} \in \prod_{v \in S} K_v^\times \st \prod_{v \in S} \abs{x_v}_v = 1, \ \forall v \in S, \ \abs{x_v}_v \le \rho_v}, $$
+which is a closed subset of
+$$ X'' = \cbr{\br{x_v} \in \prod_{v \in S} K_v^\times \st \forall v \in S, \ \dfrac{\rho_v}{R} \le \abs{x_v}_v \le \rho_v}, $$
+which is compact. So $ X' $ is compact, hence so is $ X $, since $ \prod_{v \notin S} \OOO_v^\times $ is compact.
+\end{proof}
+
+\begin{proof}[Proof of \ref{thm:6.4}]
+Let $ \r_K $ be as in \ref{thm:6.3}. Pick any $ y \in \JJJ_K $ with $ \abs{y}_\AA > \r_K $, and let
+$$ X = \cbr{x \in \JJJ_K^1 \st \forall v \in \V_K, \ \abs{x_v}_v \le \abs{y_v}_v}, $$
+which is compact by \ref{prop:6.5}. Show that
+$$ \JJJ_K^1 = K^\times X = \cbr{ax \st a \in K^\times, \ x \in X}. $$
+Let $ z \in \JJJ_K^1 $. Then $ \prod_v \abs{y_vz_v}_v = \abs{y}_\AA > \r_K $. So by \ref{thm:6.3}, there exists $ b \in K^\times $ such that for all $ v \in \V_K $, $ \abs{b}_v \le \abs{y_vz_v}_v $. Therefore $ bz^{-1} \in X $, that is $ z^{-1} \in b^{-1}X \subset K^\times X $.
+\end{proof}
+
+\pagebreak
+
+\subsection{Finiteness of ideal class group and \texorpdfstring{$ S $}{S}-unit theorem}
+
+The following are two corollaries.
+
+\begin{corollary}
+The ideal class group $ \Cl\br{K} $ is finite.
+\end{corollary}
+
+\begin{proof}
+$ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $ by the content map, which is continuous, so $ \Cl\br{K} $ is discrete and compact, therefore finite.
+\end{proof}
+
+\begin{corollary}[$ S $-unit theorem]
+\label{cor:6.7}
+Let $ S \subset \V_{K, \f} $ be finite, possibly empty, and let
+$$ \OOO_{K, S} = \cbr{x \in K \st \forall v \in \V_{K, \f} \setminus S, \ \abs{x}_v \le 1} $$
+be the \textbf{$ S $-integers} of $ K $, sometimes written $ \OOO_K\sbr{1 / S} $. Then
+$$ \OOO_{K, S}^\times = \mu\br{K} \times \ZZ^{\r_1 + \r_2 - 1 + \#S}, $$
+where $ \mu\br{K} = \cbr{\text{roots of unity in} \ K} $ is finite.
+\end{corollary}
+
+The case $ S = \emptyset $ is Dirichlet's unit theorem,
+$$ \OOO_K^\times = \mu\br{K} \times \ZZ^{\r_1 + \r_2 - 1}. $$
+
+\begin{proof}
+First explain the proof for $ S = \emptyset $. Recall
+$$ \JJJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times \supset \JJJ_{K, \emptyset}^1 = K_\infty^{\times, 1} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad K_\infty^{\times, 1} = \cbr{\br{x_v} \in K_\infty^\times \st \prod_{v \mid \infty} \abs{x_v}_v = 1}. $$
+Then $ \JJJ_{K, \emptyset} \cap K^\times = \JJJ_{K, \emptyset}^1 \cap K^\times = \OOO_K^\times $ is discrete in $ \JJJ_{K, \emptyset}^1 $ and by \ref{thm:6.4}, the closed $ \JJJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $ is compact. Let
+$$ \function[\lambda]{\JJJ_{K, \emptyset}}{\LLL_K = \prod_{v \mid \infty} \RR \cong \RR^{\r_1 + \r_2}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}} $$
+be the \textbf{logarithm map}, such that
+$$ \lambda : \JJJ_{K, \emptyset}^1 \to \LLL_K^0 = \cbr{\br{l_v} \in \LLL_K \st \sum_v l_v = 0}. $$
+Then
+$$ \ker \lambda = \cbr{\br{x_v} \in \JJJ_K \st \forall v, \ \abs{x_v}_v = 1} = \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad \U\br{1} = \cbr{z \in \CC \st \abs{z} = 1} $$
+is compact. So $ \ker \lambda \cap \OOO_K^\times $ is discrete and compact, hence finite. Obviously $ \mu\br{K} \subset \ker \lambda $, so $ \mu\br{K} $ is finite and equals $ \ker \lambda \cap \OOO_K^\times $. Next, show $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 \cong \RR^{\r_1 + \r_2 - 1} $ is a lattice. Then we get
+$$ 1 \to \mu\br{K} \to \OOO_K^\times \to \lambda\br{\OOO_K^\times} \cong \ZZ^{\r_1 + \r_2 - 1} \to 0, $$
+which gives \ref{cor:6.7}. Now
+$$
+\begin{tikzcd}
+\JJJ_{K, \emptyset} \arrow[cong]{r} \arrow{d}[swap]{\lambda} & \displaystyle\prod_{v \mid \infty} \RR_{> 0} \times \ker \lambda \arrow{d}{\pi_1} \\
+\LLL_K & \displaystyle\prod_{v \mid \infty} \RR_{> 0} \arrow{l}{\log}[swap]{\sim}
+\end{tikzcd},
+$$
+where $ \RR_{> 0} \hookrightarrow K_v^\times \subset \CC^\times $ for all $ v \mid \infty $. Hence $ \lambda $ has the property that for all compact $ Y $ in its target, $ \lambda^{-1}\br{Y} $ is compact, so $ \lambda $ is a proper map. A simple fact is if $ f : X \to Y $ is a continuous proper map of topological spaces, with $ Y $ locally compact and Hausdorff, then if $ Z \subset X $ is discrete then $ f\br{Z} $ is discrete. \footnote{Exercise: a hint is to take a compact neighbourhood $ V $ of some $ f\br{z} $ for $ z \in Z $ and use compactness of $ f^{-1}\br{V} $} Hence $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 $ is discrete. Finally, $ \lambda : \JJJ_{K, \emptyset}^1 / \OOO_K^\times \twoheadrightarrow \LLL_K^0 / \lambda\br{\OOO_K^\times} $, so $ \LLL_K^0 / \lambda\br{\OOO_K} $ is compact, by \ref{thm:6.4}. Thus $ \lambda\br{\OOO_K} $ is a lattice.
 \end{proof}
 
 \end{document}
