@@ -37,7 +37,7 @@ A solution is to try to find an invariant, which is
 \item preserved under isomorphism.
 \end{itemize}
 
-\begin{example*}
+\begin{example}
 \hfill
 \begin{itemize}
 \item Cardinality of a set.
@@ -45,7 +45,7 @@ A solution is to try to find an invariant, which is
 \item For an algebraic field extension $ K $ over $ \QQ $, the degree $ \sbr{K : \QQ} $ and the Galois group $ \Gal\br{K / \QQ} $.
 \item For a topological space $ X $, compactness, connectedness, simplicial homology groups $ \H_\bullet\br{X} $, and the fundamental group $ \pi_1\br{X} $.
 \end{itemize}
-\end{example*}
+\end{example}
 
 \begin{theorem}
 There is no algorithm that decides whether a finite presentation represents the trivial group.
@@ -63,7 +63,7 @@ How often does this work?
 \item More generally, a limit of finite groups is called a \textbf{profinite group}.
 \end{itemize}
 
-\begin{example*}
+\begin{example}
 \hfill
 \begin{itemize}
 \item In Galois theory, let $ K = \bigcup_{N \in \NN} K_N $ be the extension of $ \QQ $ adjoining all $ p^N $-th roots of unity for $ p $ a fixed prime and $ N \in \NN $, which gives a short exact sequence of Galois groups
@@ -71,7 +71,7 @@ $$ \Gal\br{K / K_N} \to \Gal\br{K / \QQ} \twoheadrightarrow \Gal\br{K_N / \QQ}. 
 Then $ \Gal\br{K_N / \QQ} = \br{\ZZ / p^N\ZZ}^\times $ and $ \Gal\br{K / \QQ} = \varprojlim_N \br{\ZZ / p^N\ZZ}^\times = \ZZ_p^\times $.
 \item In algebraic geometry, \'etale fundamental groups are profinite groups.
 \end{itemize}
-\end{example*}
+\end{example}
 
 The second part of the course is \textbf{group cohomology}, which is another invariant, with the following applications.
 \begin{itemize}
@@ -117,7 +117,7 @@ B \arrow{r}[swap]{i_B} \arrow[bend right=30]{drr}[swap]{j_B} & A \sqcup_C B \arr
 \end{tikzcd}.
 $$
 
-\begin{definition*}
+\begin{definition}
 A \textbf{category} $ \CCC $ consists of
 \begin{itemize}
 \item a collection of \textbf{objects} $ \Obj \CCC $,
@@ -130,11 +130,11 @@ such that
 \item if $ f : X \to Y $, then $ \id_Y \circ f = f = f \circ \id_X $, and
 \item if $ f : W \to X $, $ g : X \to Y $, and $ h : Y \to Z $, then $ h \circ \br{g \circ f} = \br{h \circ g} \circ f $.
 \end{itemize}
-\end{definition*}
+\end{definition}
 
 \pagebreak
 
-\begin{example*}
+\begin{example}
 \hfill
 \begin{itemize}
 \item In $ \Set $, objects are sets and morphisms are functions.
@@ -142,9 +142,9 @@ such that
 \item In $ \Grp_{\text{fin}} $, objects are finite groups.
 \item In $ \Grp_{\text{inj}} $, morphisms are injective group homomorphisms.
 \end{itemize}
-\end{example*}
+\end{example}
 
-\begin{definition*}
+\begin{definition}
 A \textbf{partial ordering} on a set $ J $ is a binary relation $ \le $ such that
 \begin{itemize}
 \item $ i \le i $,
@@ -152,11 +152,11 @@ A \textbf{partial ordering} on a set $ J $ is a binary relation $ \le $ such tha
 \item if $ i \le j $ and $ j \le k $, then $ i \le k $.
 \end{itemize}
 A \textbf{poset} is a pair $ \br{J, \le} $, which is a \textbf{total ordering} if for all $ i, j \in J $ either $ i \le j $ or $ j \le i $. The \textbf{poset category} $ \JJJ $ has objects $ \Obj \JJJ = J $ and morphisms $ \Mor \JJJ = \cbr{i \to j \st i \le j} $.
-\end{definition*}
+\end{definition}
 
 \lecture{2}{Saturday}{23/01/21}
 
-\begin{definition*}
+\begin{definition}
 Let $ \CCC $ be a category. A \textbf{product} of $ A, B \in \Obj \CCC $ is an object $ P $, equipped with morphisms $ p_A : P \to A $ and $ p_B : P \to B $, such that for all $ Z \in \Obj \CCC $ and for all $ q_A : Z \to A $ and $ q_B : Z \to B $, there exists a unique $ f : Z \to P $ such that $ p_A \circ f = q_A $ and $ p_B \circ f = q_B $, so
 $$
 \begin{tikzcd}
@@ -164,11 +164,11 @@ $$
 A & P \arrow{l}{p_A} \arrow{r}[swap]{p_B} & B
 \end{tikzcd}.
 $$
-\end{definition*}
+\end{definition}
 
-\begin{definition*}
+\begin{definition}
 Objects $ A $ and $ B $ in a category $ \CCC $ are \textbf{isomorphic} if there exist $ f : A \to B $ and $ g : B \to A $ such that $ g \circ f = \id_A $ and $ f \circ g = \id_B $.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 If a product of $ A $ and $ B $ in $ \CCC $ exists, then it is unique up to a unique isomorphism.
@@ -186,11 +186,11 @@ $$
 Consider $ f \circ g : P \to P $. Then $ p_A \circ f \circ g = p_A' \circ g = p_A $ and $ p_B \circ f \circ g = p_B' \circ g = p_B $. By uniqueness, $ f \circ g = \id_P $. Similarly, $ g \circ f = \id_{P'} $.
 \end{proof}
 
-\begin{notation*}
+\begin{notation}
 Define $ P = A \times B $.
-\end{notation*}
+\end{notation}
 
-\begin{definition*}
+\begin{definition}
 Let $ \CCC $ be a category and $ A, B \in \Obj \CCC $. Then a \textbf{coproduct} is an object $ A \sqcup B $, together with maps $ i_A : A \to A \sqcup B $ and $ i_B : B \to A \sqcup B $, with the universal property
 $$
 \begin{tikzcd}
@@ -198,27 +198,27 @@ A \arrow{r}{i_A} \arrow{dr}[swap]{j_A} & A \sqcup B \arrow[dashed]{d}{\exists !f
 & Z &
 \end{tikzcd}.
 $$
-\end{definition*}
+\end{definition}
 
 Products are examples of limits and coproducts are examples of colimits.
 
 \pagebreak
 
-\begin{definition*}
+\begin{definition}
 Let $ \CCC $ and $ \DDD $ be categories. A \textbf{functor} $ F : \CCC \to \DDD $ associates an object $ F\br{X} \in \Obj \DDD $ to each $ X \in \Obj \CCC $, and a morphism $ F\br{f} : F\br{X} \to F\br{Y} $ for each $ f : X \to Y $ in $ \CCC $, such that
 \begin{itemize}
 \item $ F\br{\id_X} = \id_{F\br{X}} $, and
 \item $ F\br{g \circ f} = F\br{g} \circ F\br{f} $.
 \end{itemize}
-\end{definition*}
+\end{definition}
 
-\begin{definition*}
+\begin{definition}
 Let $ \JJJ $ and $ \CCC $ be categories. A \textbf{diagram of shape $ \JJJ $ in $ \CCC $} is a functor $ X : \JJJ \to \CCC $. Often write $ X\br{j} = X_j $, for $ j \in \Obj \JJJ $.
-\end{definition*}
+\end{definition}
 
 Very often, $ \JJJ $ is a poset category. In that case, if $ i \le j $, there exists a unique arrow $ f : i \to j $ and then denote $ X\br{f} = \phi_{ij} $.
 
-\begin{definition*}
+\begin{definition}
 A \textbf{cone} on a diagram $ X : \JJJ \to \CCC $ is an object $ Z \in \Obj \CCC $, together with maps $ p_j : Z \to X_j = X\br{j} $ for all $ j \in \Obj \JJJ $ such that for all $ f : i \to j $, $ X\br{f} \circ p_i = p_j $, so
 $$
 \begin{tikzcd}
@@ -235,9 +235,9 @@ X_i \arrow{rr}[swap]{X\br{f}} & & X_j
 \end{tikzcd},
 $$
 for $ f : i \to j $. \textbf{Colimits} are as limits, but arrows are reversed.
-\end{definition*}
+\end{definition}
 
-\begin{example*}
+\begin{example}
 \hfill
 \begin{itemize}
 \item If $ \JJJ $ is the category
@@ -267,7 +267,7 @@ B &
 $$
 The colimit is the pushout.
 \end{itemize}
-\end{example*}
+\end{example}
 
 \begin{proposition}
 Limits and colimits are unique up to unique isomorphism.
@@ -281,11 +281,8 @@ Let $ G $ be a group. Let $ \NNN $ be the poset category whose objects are $ \cb
 $$ \function[X]{\NNN}{\Grp}{N}{X_N = G / N}. $$
 If $ N_1 \le N_2 $, then $ X\br{N_1 \to N_2} $ is the quotient map $ \phi_{N_1N_2} : G / N_1 \to G / N_2 $, the transition maps.
 
-\begin{definition*}
-Let $ G $ be a group. The \textbf{profinite completion} of $ G $ is the limit of this diagram, denoted $ \widehat{G} $.
-\end{definition*}
-
-Then $ G $ comes with projections $ p_N : \widehat{G} \to G / N $ for all $ N \triangleleft_\f G $ such that
+\begin{definition}
+Let $ G $ be a group. The \textbf{profinite completion} of $ G $ is the limit of this diagram, denoted $ \widehat{G} $. Then $ G $ comes with \textbf{projections} $ p_N : \widehat{G} \to G / N $ for all $ N \triangleleft_\f G $ such that
 \begin{itemize}
 \item if $ N_1 \subseteq N_2 $, then $ \phi_{N_1N_2} \circ p_{N_1} = p_{N_2} $, and
 \item if $ Z $ is a group, with $ q_N : Z \to G / N $ such that $ \phi_{N_1N_2} \circ q_{N_1} = q_{N_2} $, there exists a unique $ f : Z \to \widehat{G} $ such that $ p_N \circ f = q_N $ for all $ N $.
@@ -299,14 +296,15 @@ G / N_1 \arrow{rr} & & G / N_2
 \end{tikzcd}.
 $$
 In particular, $ Z = G $ works, so there is a unique morphism $ \iota_G : G \to \widehat{G} $, the \textbf{canonical morphism}, such that the diagrams commute.
+\end{definition}
 
-\begin{definition*}
+\begin{definition}
 A poset $ \br{J, \le} $ is an \textbf{inverse system} if for all $ i, j \in J $ there exists $ k \in J $ such that $ k \le i $ and $ k \le j $. An \textbf{inverse system of groups} consists of an inverse system $ \br{J, \le} $ and a diagram of shape $ \JJJ $ in $ \Grp $, so $ G : \JJJ \to \Grp $. Thus an inverse system is a group $ G_j $ for all $ j \in J $ and transition maps $ \phi_{ij} : G_i \to G_j $ if $ i \le j $ such that $ \phi_{ii} = \id $ and $ \phi_{jk} \circ \phi_{ij} = \phi_{ik} $ for all $ i \le j \le k $. The \textbf{inverse limit} of this inverse system of groups $ G_j $ is the limit of this diagram, denoted $ \varprojlim_j G_j $.
-\end{definition*}
+\end{definition}
 
-\begin{definition*}
+\begin{definition}
 A \textbf{profinite group} is the inverse limit of an inverse system of groups, all of which are finite.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 Let $ \br{G_j}_{j \in J} $ be an inverse system of groups. Then the inverse limit exists, and is given by the explicit description
@@ -314,7 +312,7 @@ $$ \varprojlim_j G_j = \cbr{\br{g_j}_{j \in J} \in \prod_{j \in J} G_j \st \fora
 \end{proposition}
 
 \begin{proof}
-This is a group. We have $ p_j : \varprojlim_j G_j \to G_j $, restricted from $ \prod_{j \in J} G_j \to G_j $, so $ g_j = p_j\br{\br{g_j}_{j \in J}} $. Take a cone $ Z $ on the system. Define
+This is a group. We have $ p_j : \varprojlim_j G_j \to G_j $, restricted from $ \prod_{j \in J} G_j \to G_j $. Take a cone $ Z $ on the system. Define
 $$ \function[f]{Z}{\varprojlim_j G_j}{z}{\br{q_j\br{z}}_{j \in J}}. $$
 Then $ \phi_{ij}\br{q_i\br{z}} = q_j\br{z} $, so
 $$
@@ -328,11 +326,11 @@ $$
 
 \pagebreak
 
-\lecture{3}{Tuesday}{27/01/21}
+\lecture{3}{Tuesday}{26/01/21}
 
-\begin{definition*}
+\begin{definition}
 Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups. Give each $ G_j $ the discrete topology. Give $ \prod_j G_j $ the product topology. Then $ \varprojlim_j G_j \le \prod_j G_j $ gets the subspace topology.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 $ \varprojlim_j G_j $ is compact Hausdorff.
@@ -383,7 +381,7 @@ Let $ G $ be a finitely generated group. For each $ n \in \NN $, there are only 
 \end{lemma}
 
 \begin{proof}
-For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \SSS_n $, since by labelling cosets $ H, \dots, g_nH $ by symbols $ 1, \dots, n $, $ G $ permutes these right cosets by $ g \cdot g_iH = \br{gg_i}H $ and $ H $ is recovered from this as the stabiliser of $ 1 $. So there are at most as many subgroups $ H $ as homomorphisms to $ \SSS_n $, and there are only finitely many.
+For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \Sym n $, since by labelling cosets $ H, \dots, g_nH $ by symbols $ 1, \dots, n $, $ G $ permutes these right cosets by $ g \cdot g_iH = \br{gg_i}H $ and $ H $ is recovered from this as the stabiliser of $ 1 $. So there are at most as many subgroups $ H $ as homomorphisms to $ \Sym n $, and there are only finitely many.
 \end{proof}
 
 \begin{corollary}
@@ -398,9 +396,9 @@ $$ \function[\m]{G \times G}{G}{\br{g, h}}{gh}, \qquad \function[\i]{G}{G}{g}{g^
 are continuous.
 \end{proposition}
 
-\begin{definition*}
+\begin{definition}
 Let $ G $ and $ H $ be topological groups. We say $ G $ and $ H $ are \textbf{isomorphic as topological groups} if and only if there exists $ f : G \to H $ which is both an isomorphism of groups and a homeomorphism.
-\end{definition*}
+\end{definition}
 
 Recall that if $ G $ and $ H $ are profinite, this is the same as there exists $ f $ a continuous isomorphism.
 
@@ -494,17 +492,17 @@ The quotient maps $ G \twoheadrightarrow G / U $ are a cone on the inverse syste
 
 \subsection{Change of inverse system}
 
-\begin{definition*}
+\begin{definition}
 Let $ \br{J, \le} $ be an inverse system. A \textbf{cofinal subsystem} of $ J $ is a subset $ I \subseteq J $ such that for all $ j \in J $ there exists $ i \in I $ such that $ i \le j $.
-\end{definition*}
+\end{definition}
 
 Then $ I $ is an inverse system.
 
-\begin{example*}
+\begin{example}
 If $ k \in J $, then the set
 $$ J_{\le k} = \cbr{j \in J \st j \le k}, $$
 the \textbf{principal cofinal subsystem}, is cofinal in $ J $.
-\end{example*}
+\end{example}
 
 \begin{proposition}
 Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups, and let $ I \subseteq J $ be cofinal. Then $ H = \varprojlim_{i \in I} G_i $ is topologically isomorphic to $ G = \varprojlim_{j \in J} G_j $.
@@ -524,9 +522,9 @@ Finally, $ f\br{g} = h $, since $ g_i = \phi_{ii}\br{h_i} = h_i $ for all $ i \i
 
 \pagebreak
 
-\begin{definition*}
+\begin{definition}
 An inverse system of groups is \textbf{surjective} if all transition maps are surjective.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 Let $ \br{X_j}_{j \in J} $ be an inverse system of finite sets where all transition maps are surjective. Then the projection maps $ p_j : \varprojlim_j X_j \to X_j $ are surjective.
@@ -541,9 +539,9 @@ Let $ \br{G_j}_{j \in J} $ be an inverse system of finite groups. Then there exi
 Let $ p_j : G = \varprojlim_j G_j \to G_j $ be the projection. Define $ G_j' = p_j\br{G} $. Since $ \phi_{ij} \circ p_i = p_j $, $ \br{G_j'} $ is an inverse system with $ \eval{\phi_{ij}}_{G_i'} : G_i' \to G_j' $, and $ \eval{\phi_{ij}}_{G_i'} $ is surjective. If $ g = \br{g_j} \in G $ then $ g_j = p_j\br{g} \in G_j' $, so $ g \in \varprojlim_j G_j' \le G \le \prod_j G_j $. Thus $ \varprojlim_j G_j' = G $.
 \end{proof}
 
-\begin{definition*}
+\begin{definition}
 An inverse system $ \br{J, \le} $ is \textbf{linearly ordered} if there exists a bijection $ f : J \to \NN $ such that $ i \le j $ if and only if $ f\br{i} \ge f\br{j} $, the \textbf{wrong-way ordering} on $ \NN $.
-\end{definition*}
+\end{definition}
 
 Thus cofinal if and only if increasing subsequence.
 
@@ -568,9 +566,9 @@ Thus $ \alpha \in \ZZ_p $ is a sequence $ \br{a_n}_{n \in \NN} $ of integers mod
 $$ \function[p_n]{\ZZ_p}{\ZZ / p^n\ZZ}{\alpha}{a_n = \alpha \mod p^n}. $$
 Given $ a \in \ZZ $, setting $ a_n = a \mod p^n $ gives an element $ \iota\br{a} \in \ZZ_p $ for $ \iota : \ZZ \to \ZZ_p $. Then $ \iota $ is injective, since if $ a \in \ZZ $, and $ p^n > \abs{a} $ then $ a \not\equiv 0 \mod p^n $, so $ \iota\br{a} \ne 0 $ in $ \ZZ_p $. Often $ \ZZ \le \ZZ_p $.
 
-\begin{definition*}
+\begin{definition}
 Let $ \alpha = \br{a_n}, \beta = \br{b_n} \in \ZZ_p $. If $ \alpha = \beta $ then $ \d\br{\alpha, \beta} = 0 $. If $ \alpha \ne \beta $, take the smallest $ n $ such that $ a_n \ne b_n $, and set $ \d\br{\alpha, \beta} = p^{-n} $, the \textbf{$ p $-adic metric on $ \ZZ_p $}. The restriction of $ \d $ to $ \iota\br{\ZZ} $ is the \textbf{$ p $-adic metric on $ \ZZ $}.
-\end{definition*}
+\end{definition}
 
 Thus $ \alpha $ and $ \beta $ are close if $ \br{a_n} $ and $ \br{b_n} $ agree modulo $ p^n $ for all but large $ n $. Since
 $$ \B\br{0, r} = \cbr{\alpha = \br{a_n} \st \forall n \le -\log_p r, \ a_n = 0} = \ker \br{\ZZ_p \to \ZZ / p^{\fbr{-\log_p r}}\ZZ}, $$
@@ -584,15 +582,15 @@ open balls are the subgroups $ p^n\ZZ_p \le \ZZ_p $.
 
 Thus $ \ZZ_p $ is a completion of $ \ZZ $, but is not the profinite completion of $ \ZZ $.
 
-\begin{definition*}
+\begin{definition}
 Let $ p $ be a prime. A \textbf{$ p $-group} is a finite group of order $ p^n $ for $ n \ge 0 $. A \textbf{pro $ p $-group} is an inverse limit of $ p $-groups.
-\end{definition*}
+\end{definition}
 
-\begin{definition*}
+\begin{definition}
 Let $ G $ be a group and $ p $ prime. The set of normal subgroups $ N \triangleleft G $ such that $ \sbr{G : N} = p^n $ for some $ n $ form an inverse system $ \NNN_p $. Since $ G / N_1 \times G / N_2 $ are $ p $-groups, $ N_1 \cap N_2 = \ker \br{G \to G / N_1 \times G / N_2} $ is a $ p $-group. The \textbf{pro-$ p $ completion} is
 $$ \widehat{G_{\br{p}}} = \varprojlim_{N \in \NNN_p} G / N, $$
 where $ G / N_1 \to G / N_2 $ if $ N_1 \le N_2 $.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 The additive group $ \ZZ_p $ is abelian and torsionfree.
@@ -702,9 +700,9 @@ since $ \Mat_{N \times N} \widehat{\ZZ} = \prod_p \Mat_{N \times N} \ZZ_p $, and
 $$ \SL_N \ZZ \le \SL_N \ZZ_p, \qquad \SL_N \ZZ \le \SL_N \widehat{\ZZ} = \varprojlim_n \SL_N \ZZ / n\ZZ $$
 are dense. See problem sheet $ 2 $.
 
-\begin{example*}
+\begin{example}
 $ \twobytwosmall{7}{9}{4}{9} \in \SL_2 \ZZ / 13\ZZ $ is in the image of $ \SL_2 \ZZ $.
-\end{example*}
+\end{example}
 
 \pagebreak
 
@@ -720,13 +718,13 @@ $$ H' = \varprojlim_j H_j = \cbr{\br{g_j} \in \prod_{j \in J} G_j \st \forall i 
 Show that $ H = H' $. If $ h = \br{h_j} \in H $, by definition $ h_j = p_j\br{h} \in H_j $, so $ H \le H' $. Suppose $ g = \br{g_j} \notin H $. Since $ H $ is closed, $ G \setminus H $ is open, so there exists a basic open set containing $ g $, which does not intersect $ H $. There exists $ j \in J $ such that $ gU_j = p_j^{-1}\br{\cbr{g_j}} \le G \setminus H $. Therefore for all $ h \in H $, $ p_j\br{h} \ne g_j $, since then $ h \in H \cap p_j^{-1}\br{\cbr{g_j}} $, so $ g_j \notin H_j $, so $ g \notin H' $. So $ H = H' $.
 \end{proof}
 
-\begin{remark*}
+\begin{remark}
 \hfill
 \begin{itemize}
 \item The two topologies on $ H $ agree by $ \id : \br{H, \tau_{\text{profinite}}} \to \br{H, \tau_{\text{subspace}}} $, which is continuous by Proposition \ref{prop:1.2.25}.
 \item A better name for $ H' $ is $ \overline{H} $, the closure. Actually proved that $ H' = \overline{H} = H $.
 \end{itemize}
-\end{remark*}
+\end{remark}
 
 \begin{proposition}
 Let $ G = \varprojlim_j G_j $ and $ H \le G $. Set $ H_j = p_j\br{H} \le G_j $. Then the closure of $ H $ is $ \overline{H} = \varprojlim_j H_j $.
@@ -765,7 +763,7 @@ This is the first isomorphism theorem for profinite groups.
 
 \lecture{7}{Thursday}{04/02/21}
 
-\begin{definition*}
+\begin{definition}
 Let $ \br{G_j}_{j \in J} $ and $ \br{H_j}_{j \in J} $ be inverse systems of finite groups, over the same poset $ J $. A \textbf{morphism of inverse systems} $ \br{f_j} $ is a family of homomorphisms $ f_j : G_j \to H_j $, such that for all $ i \le j $,
 $$
 \begin{tikzcd}
@@ -774,7 +772,7 @@ G_j \arrow{r}[swap]{f_j} & H_j
 \end{tikzcd}
 $$
 commutes, so $ \phi_{ij}^H \circ f_i = f_j \circ \phi_{ij}^G $.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 Let $ \br{f_j} : \br{G_j} \to \br{H_j} $ be a morphism of inverse systems. Then there is a unique continuous homomorphism $ f : G = \varprojlim_j G_j \to H = \varprojlim_j H_j $ such that
@@ -818,15 +816,15 @@ Then $ \ker \br{G \to G_{n + 1}} \le \ker \br{G \to G_n} $, so without loss of g
 
 \subsection{Generators of profinite groups}
 
-\begin{definition*}
-Let $ G $ be a topological group, and let $ S $ be a subset of $ G $. Then $ S $ is a \textbf{topological generating set (TGS)} for $ G $ if the subgroup $ \abr{S} $ is dense in $ G $, and $ G $ is \textbf{topologically finitely generated (TFG)} if it has some finite TGS $ S $.
-\end{definition*}
+\begin{definition}
+Let $ G $ be a topological group, and let $ S $ be a subset of $ G $. Then $ S $ is a \textbf{topological generating set} for $ G $ if the subgroup $ \abr{S} $ is dense in $ G $, and $ G $ is \textbf{topologically finitely generated} if it has some finite topological generating set $ S $.
+\end{definition}
 
 \pagebreak
 
-\begin{definition*}
+\begin{definition}
 Let $ G $ be a topological group and $ S \subseteq G $. The \textbf{closed subgroup of $ G $ topologically generated by $ S $} is the smallest closed subgroup of $ G $ which contains $ S $. Denoted $ \overline{\abr{S}} $.
-\end{definition*}
+\end{definition}
 
 \begin{proposition}
 Let $ G $ be a topological group and $ H $ a subgroup of $ G $. Then $ \overline{H} $ is a subgroup of $ G $. Hence for $ S \subseteq G $, the closed subgroup of $ G $ generated by $ S $ is equal to the closure of $ \abr{S} $.
@@ -841,15 +839,15 @@ A finite index subgroup of a finitely generated group is finitely generated.
 \end{lemma}
 
 \begin{proposition}
-If a profinite group $ G $ is TFG and $ U $ is an open subgroup of $ G $ then $ U $ is TFG.
+If a profinite group $ G $ is topologically finitely generated and $ U $ is an open subgroup of $ G $ then $ U $ is topologically finitely generated.
 \end{proposition}
 
 \begin{proof}
-Let $ S $ be a finite set such that $ \abr{S} $ is dense in $ G $. Then $ \Gamma = U \cap \abr{S} $ is finite index in $ \abr{S} $, hence $ \Gamma $ is finitely generated, so $ \Gamma = \abr{S'} $ for $ S' $ finite. Since $ U $ is open, and $ \abr{S} $ is dense, $ \abr{S'} = U \cap \abr{S} $ is dense in $ U $. So $ U $ is TFG.
+Let $ S $ be a finite set such that $ \abr{S} $ is dense in $ G $. Then $ \Gamma = U \cap \abr{S} $ is finite index in $ \abr{S} $, hence $ \Gamma $ is finitely generated, so $ \Gamma = \abr{S'} $ for $ S' $ finite. Since $ U $ is open, and $ \abr{S} $ is dense, $ \abr{S'} = U \cap \abr{S} $ is dense in $ U $. So $ U $ is topologically finitely generated.
 \end{proof}
 
 \begin{proposition}
-Let $ \br{G_j} $ be a surjective inverse system of finite groups with $ G = \varprojlim_j G_j $. Let $ S \subseteq G $. Then $ S $ is a TGS for $ G $ if and only if $ p_j\br{S} $ generates $ G_j $ for all $ j $.
+Let $ \br{G_j} $ be a surjective inverse system of finite groups with $ G = \varprojlim_j G_j $. Let $ S \subseteq G $. Then $ S $ is a topological generating set for $ G $ if and only if $ p_j\br{S} $ generates $ G_j $ for all $ j $.
 \end{proposition}
 
 \begin{proof}
@@ -857,18 +855,19 @@ By Corollary \ref{cor:1.2.30}, $ \abr{S} $ is dense in $ G $ if and only if $ G_
 \end{proof}
 
 \begin{lemma}
-Let $ G $ be a TFG profinite group. Then $ G $ may be written as the inverse limit of a countable inverse system of finite groups.
+Let $ G $ be a topologically finitely generated profinite group. Then $ G $ may be written as the inverse limit of a countable inverse system of finite groups.
 \end{lemma}
 
 \begin{proof}
-A continuous homomorphism from $ G $ to a finite group is determined by the image of a TGS $ S $, since a function on $ S $ determines all of a homomorphism from $ \abr{S} $ and continuity gives the behaviour on all of $ G $. So there are only countably many continuous homomorphisms from $ G $ to $ \SSS_n $ for $ n \in \NN $. Every open normal subgroup of $ G $ is the kernel of such a continuous homomorphism. So there are only countably many open normal subgroups of $ G $. Then $ \UUU = \cbr{U \triangleleft_\o G} $ is a neighbourhood base of the identity, so by Proposition \ref{prop:1.2.33}, $ G = \varprojlim_{U \in \UUU} G / U $.
+A continuous homomorphism from $ G $ to a finite group is determined by the image of a topological generating set $ S $, since a function on $ S $ determines all of a homomorphism from $ \abr{S} $ and continuity gives the behaviour on all of $ G $. So there are only countably many continuous homomorphisms from $ G $ to $ \Sym n $ for $ n \in \NN $. Every open normal subgroup of $ G $ is the kernel of such a continuous homomorphism. So there are only countably many open normal subgroups of $ G $. Then $ \UUU = \cbr{U \triangleleft_\o G} $ is a neighbourhood base of the identity, so by Proposition \ref{prop:1.2.33}, $ G = \varprojlim_{U \in \UUU} G / U $.
 \end{proof}
 
-\begin{example*}
-Let $ G $ be a TFG profinite group. Then there are only finitely many open subgroups of $ G $ of index at most $ n $. See Lemma \ref{lem:1.2.18}. Define
+\begin{example}
+\label{eg:2.5.9}
+Let $ G $ be a topologically finitely generated profinite group. Then there are only finitely many open subgroups of $ G $ of index at most $ n $. See Lemma \ref{lem:1.2.18}. Define
 $$ G_n = \bigcap \cbr{U \st U \le_\o G, \ \sbr{G : U} \le n}. $$
 Then $ G_n \triangleleft G $, and $ G_n $ is open in $ G $. And $ \cbr{G_n} $ is a neighbourhood base of the identity. So $ G = \varprojlim_{n \in \NN} G / G_n $.
-\end{example*}
+\end{example}
 
 \begin{proposition}
 \label{prop:2.5.10}
@@ -881,7 +880,7 @@ For the last part, $ a_n $ is the image of $ \alpha $, since it is a surjective 
 
 \lecture{8}{Saturday}{06/02/21}
 
-\begin{remark*}
+\begin{remark}
 $ \ZZ_p^\times $ is the set of units in the ring $ \ZZ_p $.
 \begin{itemize}[leftmargin=0.5in]
 \item[$ \impliedby $] If $ \alpha $ is a unit, then $ \alpha \mod p^n $ is a unit in $ \ZZ / p^n\ZZ $, so generates $ \ZZ / p^n\ZZ $. Then $ \alpha $ topologically generates $ \ZZ_p $.
@@ -889,15 +888,15 @@ $ \ZZ_p^\times $ is the set of units in the ring $ \ZZ_p $.
 $$ \function[f]{\ZZ_p}{\ZZ_p}{x}{\alpha x}, $$
 which is continuous as multiplication in a ring is continuous. So $ \im f $ is a closed subgroup of $ \ZZ_p $, containing $ \alpha $. Then $ \alpha $ generates $ \ZZ_p $, so the only closed subgroup containing $ \alpha $ is $ \ZZ_p $ itself. So $ 1 \in \im f $, so there exists $ \beta $ such that $ \alpha\beta = 1 $.
 \end{itemize}
-Thus $ \alpha $ is a unit if and only if $ \cbr{\alpha} $ is a TGS for $ \ZZ_p $.
-\end{remark*}
+Thus $ \alpha $ is a unit if and only if $ \cbr{\alpha} $ is a topological generating set for $ \ZZ_p $.
+\end{remark}
 
 \pagebreak
 
-\begin{example*}
+\begin{example}
 If $ p \ne 2 $, then $ 2 $ is invertible in $ \ZZ_p $, so $ 2^{-1} $ exists. If $ p = 3 $,
 $$ 2^{-1} = \br{\dots, 5, 2} \in \ZZ_3 \le \prod_{n \in \NN} \ZZ / 3^n\ZZ. $$
-\end{example*}
+\end{example}
 
 \begin{proposition}
 $ \alpha \in \widehat{\ZZ}^\times $ if and only if $ \alpha \mod n \in \br{\ZZ / n\ZZ}^\times $ for all $ n $. For any $ n $, and every $ k \in \br{\ZZ / n\ZZ}^\times $ there exists a generator $ \alpha \in \widehat{\ZZ}^\times $ such that $ \alpha \equiv k \mod n $.
@@ -924,7 +923,7 @@ Thus $ N_G\br{\underline{y}} = \abs{\ker f}^d - \sum_{C \in \CCC} N_C\br{\underl
 \end{proof}
 
 \begin{theorem}[Gaschutz's lemma for profinite groups]
-Let $ f : G \to H $ be a continuous surjective homomorphism of profinite groups. Suppose $ G $ has a TGS of size $ d $. Then for any TGS $ \cbr{z_1, \dots, z_d} $ of $ H $, there is a TGS $ \cbr{x_1, \dots, x_d} $ of $ G $ such that $ f\br{x_i} = z_i $ for all $ i $.
+Let $ f : G \to H $ be a continuous surjective homomorphism of profinite groups. Suppose $ G $ has a topological generating set of size $ d $. Then for any topological generating set $ \cbr{z_1, \dots, z_d} $ of $ H $, there is a topological generating set $ \cbr{x_1, \dots, x_d} $ of $ G $ such that $ f\br{x_i} = z_i $ for all $ i $.
 \end{theorem}
 
 \begin{proof}
@@ -935,16 +934,9 @@ G \arrow[twoheadrightarrow]{r}{f} \arrow[twoheadrightarrow]{d}[swap]{p_j^G} & H 
 G_j \arrow[twoheadrightarrow]{r}[swap]{f_j} & H_j
 \end{tikzcd}.
 $$
-Let $ \underline{z} $ be the given TGS of $ H $. Set $ \underline{z}_j $ for $ j \in J $ to be the image of $ \underline{z} $ in $ H_j $. Then $ \underline{z}_j = p_j^H\br{\underline{z}} $ is a generating vector of $ H_j $. Consider the finite sets
+Let $ \underline{z} $ be the given topological generating set of $ H $. Set $ \underline{z}_j $ for $ j \in J $ to be the image of $ \underline{z} $ in $ H_j $, so $ \underline{z}_j = p_j^H\br{\underline{z}} $ is a generating vector of $ H_j $. Consider the finite sets
 $$ X_j = \cbr{\text{generating vectors} \ \underline{x}_j \in G_j^d \st f_j\br{\underline{x}_j} = \underline{z}_j} \ne \emptyset, $$
-by Gaschutz. The $ X_j $ form an inverse system, so $ \phi_{ij}\br{X_i} \subseteq X_j $, since
-$$
-\begin{tikzcd}
-G_i \arrow{r} \arrow{d} & H_i \arrow{d} \\
-G_j \arrow{r} & H_j
-\end{tikzcd}.
-$$
-Therefore $ \varprojlim_j X_j $ is non-empty. If $ \underline{x} \in \varprojlim_j X_j \subseteq G^d $ such that $ p_j^G\br{\underline{x}} \in X_j $, then $ \underline{x} $ is a TGS of $ G $ and $ p_j^H\br{f\br{\underline{x}}} = \underline{z}_j $ for all $ j $, so $ f\br{\underline{x}} = \underline{z} $.
+by Gaschutz. The $ X_j $ form an inverse system, since $ \phi_{ij}\br{X_i} \subseteq X_j $. Therefore $ \varprojlim_j X_j $ is non-empty. If $ \underline{x} \in \varprojlim_j X_j \subseteq G^d $ such that $ p_j^G\br{\underline{x}} \in X_j $, then $ \underline{x} $ is a topological generating set of $ G $ and $ p_j^H\br{f\br{\underline{x}}} = \underline{z}_j $ for all $ j $, so $ f\br{\underline{x}} = \underline{z} $.
 \end{proof}
 
 \pagebreak
@@ -953,11 +945,11 @@ Therefore $ \varprojlim_j X_j $ is non-empty. If $ \underline{x} \in \varprojlim
 
 \subsection{Residual finiteness}
 
-\begin{notation*}
+\begin{notation}
 Discrete abstract groups will be Greek letters and profinite groups will be Roman letters.
-\end{notation*}
+\end{notation}
 
-Given an abstract group $ \Gamma $ and an inverse system $ \NNN = \cbr{N \triangleleft_\f \Gamma} $, there is an inverse system of finite groups $ \Gamma / N $. Then $ \widehat{\Gamma} = \varprojlim_{N \in \NNN} \Gamma / N $, where $ \Gamma / N_1 \to \Gamma / N_2 $ if $ N_1 \le N_2 $. Also had a canonical morphism $ \iota_\Gamma = \iota : \Gamma \to \widehat{\Gamma} $. The image of $ \iota $ is dense by Corollary \ref{cor:1.2.30}. Also implies for any finite generating set $ S \subseteq \Gamma $, $ \iota\br{S} $ is a TGS of $ \widehat{\Gamma} $, so if $ \Gamma $ is finitely generated, then $ \widehat{\Gamma} $ is TFG.
+Given an abstract group $ \Gamma $ and an inverse system $ \NNN = \cbr{N \triangleleft_\f \Gamma} $, there is an inverse system of finite groups $ \Gamma / N $. Then $ \widehat{\Gamma} = \varprojlim_{N \in \NNN} \Gamma / N $, where $ \Gamma / N_1 \to \Gamma / N_2 $ if $ N_1 \le N_2 $. Also had a canonical morphism $ \iota_\Gamma = \iota : \Gamma \to \widehat{\Gamma} $. The image of $ \iota $ is dense by Corollary \ref{cor:1.2.30}. Also implies for any finite generating set $ S \subseteq \Gamma $, $ \iota\br{S} $ is a topological generating set of $ \widehat{\Gamma} $, so if $ \Gamma $ is finitely generated, then $ \widehat{\Gamma} $ is topologically finitely generated.
 
 \begin{proposition}
 \label{prop:3.1.2}
@@ -993,13 +985,344 @@ $$
 & \Gamma / N &
 \end{tikzcd},
 $$
-and
-$$ p_N \circ \widehat{f} \circ \iota_\Delta = q_N \circ \iota_\Delta = p_N \circ \iota_\Gamma \circ f. $$
+and $ p_N \circ \widehat{f} \circ \iota_\Delta = q_N \circ \iota_\Delta = p_N \circ \iota_\Gamma \circ f $.
 \end{enumerate}
 \end{proof}
 
 \begin{corollary}
 $ \widehat{\cdot} $ is a functor.
 \end{corollary}
+
+\pagebreak
+
+\lecture{9}{Tuesday}{09/02/21}
+
+\begin{definition}
+Let $ \Gamma $ be an abstract group. Then $ \Gamma $ is \textbf{residually finite} if for every $ \gamma \in \Gamma \setminus \cbr{1} $, there exists $ N \triangleleft_\f \Gamma $ such that $ \gamma \notin N $, if and only if $ \gamma N \ne 1 $ in $ \Gamma / N $, if and only if there exists $ \phi : \Gamma \to G $ finite such that $ \phi\br{\gamma} \ne 1 $.
+\end{definition}
+
+\begin{proposition}
+$ \Gamma $ is residually finite if and only if $ \iota : \Gamma \to \widehat{\Gamma} $ is injective.
+\end{proposition}
+
+\begin{proof}
+$$ \function[\iota]{\Gamma}{\widehat{\Gamma} \subseteq \prod_N \Gamma / N}{\gamma}{\br{\gamma N}}. $$
+\end{proof}
+
+\begin{proposition}
+Any subgroup of a residually finite group is residually finite.
+\end{proposition}
+
+\begin{proposition}
+Let $ \Gamma $ be an abstract group, and let $ \Delta \le \Gamma $ be finite index. If $ \Delta $ is residually finite, then $ \Gamma $ is residually finite.
+\end{proposition}
+
+\begin{proof}
+Let $ \gamma \in \Gamma \setminus \cbr{1} $.
+\begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
+\item If $ \gamma \notin \Delta $, consider
+$$ \gamma \notin N = \Core_\Gamma \Delta = \bigcap_{g \in \Gamma} g\Delta g^{-1} \triangleleft_\f \Gamma, $$
+which has finitely many distinct terms, since if $ g\Delta = g'\Delta $ then $ g = g'\delta $ so $ g\Delta g^{-1} = g'\delta\Delta\delta^{-1}g'^{-1} = g'\Delta g'^{-1} $.
+\item If $ \gamma \in \Delta $, there exists $ N \triangleleft_\f \Delta $ such that $ \gamma \notin N $. Now $ \gamma \notin \Core_\Gamma N \triangleleft_\f \Gamma $.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Finitely generated abelian groups are residually finite.
+\end{proposition}
+
+\begin{proof}
+Exercise. \footnote{Exercise: classification of finitely generated abelian groups}
+\end{proof}
+
+\begin{proposition}
+The groups $ \SL_N \ZZ \le_\f \GL_N \ZZ $ are residually finite for all $ N $.
+\end{proposition}
+
+\begin{proof}
+For $ A \in \GL_N \ZZ \setminus \cbr{\I} $. Take a prime $ p $ larger than the absolute value of all entries of $ A $. Then we have the homomorphism
+$$ \function{\GL_N \ZZ}{\GL_N \ZZ / p\ZZ}{A}{A_p \ne \I}. $$
+\end{proof}
+
+These linear groups have as subgroups many important groups, such as free groups in $ \SL_2 \ZZ $.
+
+\begin{theorem}[Malcev's theorem]
+Let $ \Gamma $ be a finitely generated subgroup of $ \GL_N K $ where $ K $ is a field. Then $ \Gamma $ is residually finite.
+\end{theorem}
+
+\begin{proof}
+The entries of a generating set of $ \Gamma $ generate a finitely generated subring $ R $ of $ K $. Commutative algebra says that $ R $ has many maximal ideals $ \ppp \subseteq R $, such that $ R / \ppp $ is a finite field. Use maps $ \GL_N R \to \GL_N R / \ppp $ to show residual finiteness.
+\end{proof}
+
+\begin{proposition}
+The fundamental group of a surface is residually finite.
+\end{proposition}
+
+\begin{proof}
+Surface groups, via geometry, are subgroups of $ \Isom \HH^2 \cong \PSL_2 \RR $.
+\end{proof}
+
+\pagebreak
+
+\begin{lemma}
+Let $ \Gamma $ be an abstract group. The open subgroups of $ \widehat{\Gamma} $ are exactly $ \overline{\iota\br{\Delta}} $ for $ \Delta \le_\f \Gamma $.
+\end{lemma}
+
+\begin{proof}
+If $ \Delta \le_\f \Gamma $ is finite index, take a finite set of coset representatives $ \cbr{\gamma_i} $ of $ \Delta $ in $ \Gamma $, so $ \Gamma = \bigcup_i \gamma_i\Delta $. Then
+$$ \widehat{\Gamma} = \overline{\iota\br{\Gamma}} = \overline{\bigcup_i \iota\br{\gamma_i\Delta}} = \bigcup_i \iota\br{\gamma_i}\overline{\iota\br{\Delta}}, $$
+so $ \overline{\iota\br{\Delta}} $ is closed, and finite index, if and only if open. If $ U \le_\o \widehat{\Gamma} $, then $ \iota\br{\Gamma} $ is dense, so $ U = \overline{\iota\br{\Gamma} \cap U} $. Set $ \Delta = \iota^{-1}\br{U} \le_\f \Gamma $, and $ \iota\br{\Delta} = \iota\br{\Gamma} \cap U $. Thus $ U = \overline{\iota\br{\Delta}} $.
+\end{proof}
+
+\begin{theorem}
+Let $ G $ and $ H $ be topologically finitely generated profinite groups. Suppose the sets of isomorphism types of continuous finite quotients of $ G $ and $ H $ are equal. Then $ G $ and $ H $ are isomorphic profinite groups.
+\end{theorem}
+
+Topologically finitely generated is necessary since $ \br{\ZZ / 2\ZZ}^\NN \not\cong \br{\ZZ / 2\ZZ}^\RR $. Continuous is not actually necessary by a hard theorem by Nikolov and Segal.
+
+\begin{proof}
+Let $ G_n $ be the intersection of all open subgroups of $ G $ of index at most $ n $. Similarly, $ H_n $. By Example \ref{eg:2.5.9}, $ G = \varprojlim_n G / G_n $ and $ H = \varprojlim_n H / H_n $. By assumption there exists $ V \triangleleft_\o H $, such that $ G / G_n \cong H / V $. The intersection of index at most $ n $ subgroups of $ G / G_n $ is trivial, and the intersection of index at most $ n $ subgroups of $ H / V $ is trivial. Taking preimages, there exist index at most $ n $ open subgroups of $ H $ whose intersection is contained in $ V $. Then $ H_n \le V $, so $ \abs{G / G_n} = \abs{H / V} \le \abs{H / H_n} $. By symmetry, $ \abs{G / G_n} \ge \abs{H / H_n} $, so equality holds and $ V = H_n $. So $ G / G_n \cong H / H_n $ for all $ n $. We want a morphism of inverse systems, so commuting diagrams
+$$
+\begin{tikzcd}
+G / G_n \arrow{r} \arrow{d} & H / H_n \arrow{d} \\
+G / G_{n - 1} \arrow{r} & H / H_{n - 1}
+\end{tikzcd}.
+$$
+Let
+$$ S_n = \cbr{\text{isomorphisms} \ f_n : G / G_n \to H / H_n} \ne \emptyset. $$
+If $ f_n \in S_n $, then $ f_n $ takes an index at most $ n - 1 $ subgroup of $ G / G_n $ to an index at most $ n - 1 $ subgroup of $ H / H_n $. The intersection of such subgroups is $ G_{n - 1} / G_n $. So $ f_n $ maps $ G_{n - 1} / G_n $ to $ H_{n - 1} / H_n $. So there is a well-defined quotient map such that the diagram
+$$
+\begin{tikzcd}
+G / G_{n - 1} \arrow{r}{\phi_{n, n - 1}\br{f_n}}[swap]{\sim} & H / H_{n - 1} \\
+G / G_n \arrow{r}{\sim}[swap]{f_n} \arrow{u} & H / H_n \arrow{u}
+\end{tikzcd}
+$$
+commutes. The $ \phi_{n, n - 1} : S_n \to S_{n - 1} $ make $ \br{S_n} $ into an inverse system. Then $ \varprojlim_n S_n $ is non-empty, and an element of $ \varprojlim_n S_n \le \prod_n S_n $ is a sequence of $ f_n $ such that all diagrams commute. Thus there is an isomorphism of inverse systems, so $ G \cong H $.
+\end{proof}
+
+\begin{theorem}
+Let $ \Gamma $ and $ \Delta $ be finitely generated abstract groups. Suppose the sets of isomorphism types of finite quotients of $ \Gamma $ and $ \Delta $ are equal. Then $ \widehat{\Gamma} \cong \widehat{\Delta} $.
+\end{theorem}
+
+\lecture{10}{Thursday}{11/02/21}
+
+\begin{definition}
+A property $ \PPP $ of groups is a \textbf{profinite invariant} if, whenever two finitely generated residually finite groups $ G $ and $ H $ have $ \widehat{G} \cong \widehat{H} $, $ G $ has $ \PPP $ if and only if $ H $ has $ \PPP $.
+\end{definition}
+
+\begin{proposition}
+Being abelian is a profinite invariant.
+\end{proposition}
+
+\begin{proof}
+Let $ G $ and $ H $ be finitely generated residually finite groups such that $ \widehat{G} \cong \widehat{H} $, with $ H $ abelian. Every quotient group of $ H $ is abelian, so every finite quotient of $ G $ is abelian. Suppose $ G $ is not abelian. There exist $ g_1, g_2 \in G $ such that $ \sbr{g_1, g_2} \ne 1 $. Since $ G $ is residually finite, there exists a finite quotient $ Q $ of $ G $ and $ \phi : G \twoheadrightarrow Q $, such that $ \sbr{\phi\br{g_1}, \phi\br{g_2}} = \phi\br{\sbr{g_1, g_2}} \ne 1 $. But $ Q $ is abelian, a contradiction.
+\end{proof}
+
+\pagebreak
+
+\begin{proposition}
+Let $ G $ and $ H $ be finitely generated groups with $ \widehat{G} \cong \widehat{H} $. Then the abelianisations $ G_{\ab} = G / \sbr{G, G} $ and $ H_{\ab} = H / \sbr{H, H} $ are isomorphic.
+\end{proposition}
+
+\begin{proof}
+Suppose $ \widehat{G} \cong \widehat{H} $. We claim $ \widehat{G_{\ab}} \cong \widehat{H_{\ab}} $. Since $ G $ and $ H $ have the same finite quotients they have the same abelian finite quotients, which are the finite quotients of $ G_{\ab} $ and $ H_{\ab} $, since
+$$
+\begin{tikzcd}
+G \arrow[twoheadrightarrow]{rr} \arrow[twoheadrightarrow]{dr} & & G / \sbr{G, G} \arrow[twoheadrightarrow]{dl} \\
+& A &
+\end{tikzcd}.
+$$
+It remains to show, if $ A $ and $ A' $ are finitely generated abelian groups with $ \widehat{A} \cong \widehat{A'} $ then $ A \cong A' $. By the classification, $ A = \ZZ^r \times T $ and $ A' \cong \ZZ^s \times T' $ for $ r, s \in \NN $ and $ T $ and $ T' $ finite. We can see $ r $ and $ T $ from finite quotients, since
+$$ r = \max \cbr{k \st \forall n, \ A \twoheadrightarrow \br{\ZZ / n\ZZ}^k} = \max \cbr{k \st \forall n, \ A' \twoheadrightarrow \br{\ZZ / n\ZZ}^k} = s. $$
+Having found $ r $, $ T $ is the largest finite group such that $ A \twoheadrightarrow \br{\ZZ / n\ZZ}^r \times T $ for all $ n $, which is $ T' $.
+\end{proof}
+
+\begin{corollary}
+If $ G $ is abelian, the property of being isomorphic to $ G $ is a profinite invariant.
+\end{corollary}
+
+\begin{example}
+Let
+$$ \function[\phi]{\CCC_{25}}{\CCC_{25}}{t}{t^6} $$
+be an automorphism, where $ \CCC_{25} = \ZZ / 25\ZZ = \abr{t} $. Form semidirect products
+$$ G_1 = \CCC_{25} \rtimes_\phi \ZZ, \qquad \br{t^a, s^b} *_1 \br{t^c, s^d} = \br{t^a\phi^b\br{t^c}, s^{b + d}}, $$
+$$ G_2 = \CCC_{25} \rtimes_{\phi^2} \ZZ, \qquad \br{t^a, s^b} *_2 \br{t^c, s^d} = \br{t^a\phi^{2b}\br{t^c}, s^{b + d}}, $$
+where $ \ZZ = \abr{s} $. Note that $ \phi $ is of order five, so $ \phi^5 = \id $ and $ \phi^k = \phi^l $ if and only if $ k \equiv l \mod 5 $.
+\begin{itemize}
+\item Claim that $ G_1 $ is not isomorphic to $ G_2 $. Suppose $ \Phi : G_2 \to G_1 $ is an isomorphism. Each $ G_i $ has a unique order $ 25 $ subgroup. So $ \Phi\br{\CCC_{25}} = \CCC_{25} $ and $ \Phi\br{t, 1} = \br{t^a, 1} $ for some $ a $ coprime to $ 25 $. Set $ \Phi\br{1, s} = \br{t^b, s^c} $, and $ s^c $ generates $ \ZZ $, so $ c = \pm 1 $. A contradiction comes from the computation of
+\begin{align*}
+\br{\phi^2\br{t}^a, 1}
+& = \Phi\br{\phi^2\br{t}, 1}
+= \Phi\br{\br{1, s} *_2 \br{t, 1} *_2 \br{1, s^{-1}}}
+= \Phi\br{1, s} *_1 \Phi\br{t, 1} *_1 \Phi\br{1, s^{-1}} \\
+& = \br{t^b, s^c} *_1 \br{t^a, 1} *_1 \br{\phi^{-c}\br{t^{-b}}, s^{-c}}
+= \br{\phi^c\br{t^a}, 1},
+\end{align*}
+and since $ \phi^2\br{t^a} = \phi^c\br{t^a} $, $ \phi^2 = \phi^c $, so $ c \equiv 2 \mod 5 $.
+\item Consider finite quotients of $ G_1 $. Let $ f : G_1 \to Q $ be a finite quotient map. If $ \im \br{\ZZ \to G_1 \to Q} $ has order $ m $, then $ \ker f \ge 5m\ZZ $. Then $ f $ factors through the quotient $ \CCC_{25} \rtimes_\phi \ZZ / 5m\ZZ $, which is cofinal, so
+$$ \widehat{G_1} = \varprojlim_m \CCC_{25} \rtimes_\phi \ZZ / 5m\ZZ = \CCC_{25} \rtimes_\phi \widehat{\ZZ}. $$
+By Gaschutz lemma, there exists $ \kappa \in \widehat{\ZZ}^\times $ such that $ \kappa \equiv 2 \mod 5 $. We may now build an isomorphism defined by
+$$ \function[\Omega]{\widehat{G_2}}{\widehat{G_1}}{\br{t^b, s^\lambda}}{\br{t^b, s^{\lambda\kappa}}}. $$
+This is a continuous bijection, and can compute it is a group homomorphism.
+\end{itemize}
+\end{example}
+
+\begin{question}[Remeslennikov's question]
+Let $ F $ be a finitely generated free group, and $ G $ a finitely generated residually finite group. Is it true that $ \widehat{F} \cong \widehat{G} $ implies that $ F \cong G $?
+\end{question}
+
+\begin{question}
+Does there exist $ G $ a finitely generated residually finite group, other than a free group, and an integer $ n $ such that a finite group $ Q $ is a quotient of $ G $ if and only if $ Q $ has a generating set with $ n $ elements?
+\end{question}
+
+\pagebreak
+
+\begin{proposition}
+Let $ F $ and $ F' $ be finitely generated free groups. If $ \widehat{F} \cong \widehat{F'} $ then $ F \cong F' $.
+\end{proposition}
+
+\begin{proof}
+From earlier, if $ \widehat{F} \cong \widehat{F'} $ then $ \ZZ^{\rk F} = F_{\ab} \cong F_{\ab}' = \ZZ^{\rk F'} $. Thus $ \rk F = \rk F' $, so $ F \cong F' $.
+\end{proof}
+
+How about surface groups? If $ \S_g $ is the fundamental group of an orientable surface of genus $ g $, then
+$$ \S_g = \abr{a_1, b_1, \dots, a_g, b_g \st \sbr{a_1, b_1} \dots \sbr{a_g, b_g} = 1}. $$
+Then the abelianisation of $ \S_g $ is $ \ZZ^{2g} $. Hence $ \widehat{\S_g} \not\cong \widehat{\F_r} $, unless possibly $ r = 2g $.
+
+\begin{theorem}[Basic correspondence]
+Let $ G_1 $ and $ G_2 $ be finitely generated residually finite groups, and suppose $ \phi : \widehat{G_1} \cong \widehat{G_2} $. Then there is a bijection
+$$ \psi : \cbr{\text{finite index subgroups of} \ G_1} \to \cbr{\text{finite index subgroups of} \ G_2}, $$
+which do not depend on any homomorphism $ G_1 \to G_2 $, such that, if $ K \le_\f H \le_\f G_1 $, then
+\begin{itemize}
+\item $ \psi\br{K} \le \psi\br{H} $ and $ \sbr{H : K} = \sbr{\psi\br{H} : \psi\br{K}} $,
+\item $ K \triangleleft H $ if and only if $ \psi\br{K} \triangleleft \psi\br{H} $,
+\item if $ K \triangleleft H $, then $ H / K \cong \psi\br{H} / \psi\br{K} $, and
+\item $ \widehat{H} \cong \widehat{\psi\br{H}} $.
+\end{itemize}
+\end{theorem}
+
+By the Nielsen-Schreier theorem, $ \F_{2g} $ has an index two subgroup, which is free of rank $ 4g - 1 $, so has abelianisation odd rank. Any finite index subgroup of a surface group is a surface group, so it has even rank abelianisation, contradicting the basic correspondence, so $ \widehat{\F_{2g}} \not\cong \widehat{\S_g} $.
+
+\lecture{11}{Saturday}{13/02/21}
+
+\begin{remark}
+Residually finite is not actually necessary, by replacing $ G_1 $ by $ G_1 / \ker \iota_{G_1} $ for $ \iota : G_1 \to \widehat{G_1} $.
+\end{remark}
+
+\begin{proposition}
+Let $ G $ be a finitely generated residually finite group. Let $ \psi $ be the function
+$$ \function[\psi]{\cbr{\text{finite index subgroups} \ H \le G}}{\cbr{\text{open subgroups of} \ \widehat{G}}}{H}{\overline{H}}. $$
+Then, if $ K \le_\f H \le_\f G $,
+\begin{enumerate}
+\item $ \psi $ is a bijection,
+\item $ \sbr{H : K} = \sbr{\overline{H} : \overline{K}} $,
+\item $ K \triangleleft H $ if and only if $ \overline{K} \triangleleft \overline{H} $,
+\item if $ K \triangleleft H $, then $ H / K \cong \overline{H} / \overline{K} $, and
+\item $ \overline{H} \cong \widehat{H} $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Let $ H \le_\f G $ and take coset representatives $ \cbr{g_i} $ of $ H $ in $ G $. Since $ \widehat{G} = \overline{\bigcup_i g_iH} = \bigcup_i g_i\overline{H} $, $ \overline{H} $ is finite index, so open. Conversely, if $ U \le_\o \widehat{G} $ then $ U = \overline{G \cap U} $, since $ G $ is dense and $ U $ is open and closed, so let $ H = G \cap U $. So $ \psi $ is surjective. To show $ \psi $ is injective, we show $ \overline{H} \cap G = H $. Considering the action of $ G $ on $ G / H $, gives a continuous homomorphism
+$$
+\begin{tikzcd}[row sep=tiny]
+G \arrow{r} \arrow[subset]{d} & \Sym \br{G / H} \\
+\widehat{G} \arrow{ur} &
+\end{tikzcd}.
+$$
+Then $ H $ fixes the coset $ 1H $. By continuity of the action, $ \overline{H} $ fixes $ 1H $. But if $ g \in G \setminus H $, then $ g \cdot 1H = gH \ne 1H $, so $ g \notin \overline{H} $. So $ \overline{H} \cap G = H $.
+
+\pagebreak
+
+\item Let $ \cbr{g_i} $ be a set of coset representatives. We know that the $ g_i\overline{H} $ cover $ \widehat{G} $. They are distinct cosets, since if $ g_i\overline{H} = g_j\overline{H} $, then $ g_i^{-1}g_j \in \overline{H} \cap G = H $. So $ g_iH = g_jH $, so $ g_i = g_j $, so $ \sbr{\widehat{G} : \overline{H}} = \sbr{G : H} $. Also, there is a natural bijection of coset spaces $ G / H \to \widehat{G} / \overline{H} $.
+\item If $ \overline{K} = \overline{H} $ then $ K = \overline{K} \cap H \triangleleft \overline{H} \cap G = H $. Conversely, if $ K \triangleleft H $, consider the action of $ \overline{H} $ on $ \Sym \br{\overline{H} / \overline{K}} = \Sym \br{H / K} \subseteq \Sym \br{G / K} $. Then $ K \triangleleft H $ if and only if $ K $ acts trivially on $ H / K $, since $ k \cdot hK = hK $ if and only if $ h^{-1}kh \in K $. By continuity of the action, $ \overline{K} $ acts trivially, so $ \overline{K} \triangleleft \overline{H} $.
+\item If $ K \triangleleft H $, we already have our bijection $ H / K \to \overline{H} / \overline{K} $, and this is an isomorphism of groups.
+\item $ \overline{H} $ maps onto all finite quotients $ H / K $ in a natural way, so we get a continuous homomorphism $ \overline{H} \to \widehat{H} $. This is surjective because $ H $ is dense in $ \widehat{H} $. For injectivity, if $ h \in \overline{H} $, then there is $ U \triangleleft_\o \widehat{G} $ such that $ h \notin U $, and the map
+$$
+\begin{tikzcd}
+\overline{H} \arrow{rr} \arrow{dr} & & H / \br{U \cap H} \\
+& \widehat{H} \arrow{ur} &
+\end{tikzcd}
+$$
+shows that $ h \not\mapsto 1 \in \widehat{H} $.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+A topological group $ G $ is \textbf{Hopfian}, or \textbf{has the Hopf property}, if every continuous surjection from $ G $ to itself is an isomorphism of topological groups.
+\end{definition}
+
+\begin{example}
+Finite groups, by the pigeonhole principle.
+\end{example}
+
+\begin{proposition}
+Let $ G $ be a topologically finitely generated profinite group. Let $ f : G \to G $ be a continuous surjection. Then $ f $ is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+Let $ G_n $ be the intersection of open subgroups of $ G $ of index at most $ n $. Then $ G_n \triangleleft_\o G $, and $ G \cong \varprojlim_n G / G_n $. Since $ f $ is a surjection, $ \sbr{G : f^{-1}\br{U}} = \sbr{G : U} $ for all $ U \le_\o G $. If $ U $ has index at most $ n $, then $ f^{-1}\br{U} $ has index at most $ n $, so $ f^{-1}\br{U} \supseteq G_n $, so $ f^{-1}\br{G_n} \supseteq G_n $, so $ f\br{G_n} \subseteq G_n $. So we have a quotient map $ f_n : G / G_n \twoheadrightarrow G / G_n $, which are surjections, hence isomorphisms. So $ \br{f_n} $ are a morphism of inverse systems giving $ f $, so $ f = \varprojlim_n f_n $ is an isomorphism. Or, if $ g \in G \setminus \cbr{1} $, then $ g \notin G_n $ for some $ n $ and then $ p_n\br{f\br{g}} = f_n\br{p_n\br{g}} \ne 1 $ so $ g \notin \ker f $.
+\end{proof}
+
+\begin{corollary}
+Finitely generated residually finite groups are Hopfian.
+\end{corollary}
+
+\begin{proof}
+Let $ f : G \to G $ be a surjection where $ G $ is finitely generated residually finite. By Proposition \ref{prop:3.1.2}, we get an induced map
+$$
+\begin{tikzcd}
+\widehat{G} \arrow{r}{\widehat{f}} & \widehat{G} \\
+G \arrow{u} \arrow{r}[swap]{f} & G \arrow{u}
+\end{tikzcd}.
+$$
+Then $ \widehat{f} $ is surjective, so it is an isomorphism. Thus $ f $ is injective.
+\end{proof}
+
+\begin{proposition}
+Let $ G $ be a Hopfian topological group and let $ H $ be a topological group. Suppose there exist continuous surjections $ f : G \to H $ and $ f' : H \to G $. Then $ f $ and $ f' $ are isomorphisms of topological groups.
+\end{proposition}
+
+\begin{proof}
+$ f' \circ f : G \to G $ is a surjection, hence an isomorphism, and a homeomorphism. So $ f $ is injective and $ f' $ is injective, because $ f $ is a surjection, so isomorphisms. Also $ f^{-1} = \br{f' \circ f}^{-1} \circ f' $ and $ \br{f'}^{-1} = f \circ \br{f' \circ f}^{-1} $ are continuous.
+\end{proof}
+
+\pagebreak
+
+Let $ \d $ be the minimum size of a generating set.
+
+\begin{proposition}
+Let $ G $ be a finitely generated residually finite group. Assume there is a finite quotient $ Q $ of $ G $ such that $ \d\br{Q} = \d\br{G} $. If $ \widehat{G} $ is isomorphic to $ \widehat{F} $ for $ F $ a free group, then $ G \le F $.
+\end{proposition}
+
+\begin{proof}
+Assume $ \widehat{G} \cong \widehat{F} $. Then $ Q $ is a quotient of $ F $, so $ \d\br{F} \ge \d\br{Q} = \d\br{G} $. So there is a surjection $ f : F \to G $. This induces $ \widehat{f} : \widehat{F} \to \widehat{G} $. Then $ \widehat{f} $ is surjective, so by the Hopf property, since $ \widehat{F} \cong \widehat{G} $, $ \widehat{f} $ is an isomorphism. Thus $ f $ is an isomorphism, since
+$$
+\begin{tikzcd}
+F \arrow{r}{f} \arrow[hookrightarrow]{d} & G \arrow[hookrightarrow]{d} \\
+\widehat{F} \arrow{r}[swap]{\sim} & \widehat{G}
+\end{tikzcd}.
+$$
+\end{proof}
+
+\begin{corollary}
+$ \widehat{\S_g} \not\cong \widehat{\F_{2g}} $.
+\end{corollary}
+
+\begin{proof}
+$ \S_g $ has rank $ 2g $, and maps onto $ Q = \br{\ZZ / 2\ZZ}^{2g} $.
+\end{proof}
+
+\begin{example}
+Let $ n $ and $ m $ be coprime integers such that $ \abs{n}, \abs{m} > 1 $. Define
+$$ \BS\br{n, m} = \abr{a, t \st ta^nt^{-1} = a^m}, $$
+a HNN extension. Define
+$$ \functions[f]{\BS\br{n, m}}{\BS\br{n, m}}{t}{t}{a}{a^n}. $$
+This is well-defined, since
+$$ f : ta^nt^{-1}a^{-m} \mapsto ta^{n^2}t^{-1}a^{mn} = \br{ta^nt^{-1}}^na^{-mn} = a^{mn}a^{-mn} = 1. $$
+Then $ f $ is surjective, since $ \im f \ni a^n, t $ and so $ \im f \ni ta^nt^{-1} = a^m $, so $ \im f \ni a $, since there exist $ r $ and $ s $ such that $ nr + ms = 1 $ so $ a = \br{a^n}^r\br{a^m}^s $. But $ f $ is not injective, since $ tat^{-1} $ does not commute with $ a $, by Britton's lemma. So $ \sbr{tat^{-1}, a} \ne 1 $. But $ f\br{\sbr{tat^{-1}, a}} = \sbr{ta^nt^{-1}, a^n} = \sbr{a^m, a^n} = 1 $. So $ \BS\br{m, n} $ is not Hopfian, hence not residually finite.
+\end{example}
 
 \end{document}
