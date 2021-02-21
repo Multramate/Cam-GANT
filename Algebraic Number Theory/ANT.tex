@@ -7,6 +7,9 @@
 
 \input{../style/header}
 
+% Macros
+\newcommand{\mods}{\mod\!\!^*\ }
+
 \begin{document}
 
 \input{../style/cover}
@@ -923,14 +926,15 @@ $$ \function{\GL_n K}{\AA^{n^2 + 1}}{\br{a_{ij}}}{\br{a_{ij}, \det \br{a_{ij}}^{
 has closed image.
 \end{remark*}
 
-\pagebreak
-
 Then $ K^\times \hookrightarrow \JJJ_K $ since if $ x \in K^\times $ then $ \abs{x}_v = 1 $ for all but finitely many $ v $. The image is discrete, since $ \JJJ_K \hookrightarrow \AA_K $ is continuous and $ K \subset \AA_K $ is discrete.
+
+\pagebreak
 
 \lecture{10}{Thursday}{11/02/21}
 
 \begin{definition*}
-$ \CCC_K = \JJJ_K / K^\times $ is the \textbf{idele class group} of $ K $.
+The \textbf{idele class group} of $ K $ is
+$$ \CCC_K = \JJJ_K / K^\times. $$
 \end{definition*}
 
 This is a Hausdorff and locally compact topological group. There are two important homomorphisms.
@@ -1125,12 +1129,14 @@ The case $ S = \emptyset $ is Dirichlet's unit theorem,
 $$ \OOO_K^\times = \mu\br{K} \times \ZZ^{\r_1 + \r_2 - 1}. $$
 
 \begin{proof}
-First explain the proof for $ S = \emptyset $. Recall
+\hfill
+\begin{itemize}
+\item First explain the proof for $ S = \emptyset $. Recall
 $$ \JJJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times \supset \JJJ_{K, \emptyset}^1 = K_\infty^{\times, 1} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad K_\infty^{\times, 1} = \cbr{\br{x_v} \in K_\infty^\times \st \prod_{v \mid \infty} \abs{x_v}_v = 1}. $$
 Then $ \JJJ_{K, \emptyset} \cap K^\times = \JJJ_{K, \emptyset}^1 \cap K^\times = \OOO_K^\times $ is discrete in $ \JJJ_{K, \emptyset}^1 $ and by \ref{thm:6.4}, the closed $ \JJJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $ is compact. Let
-$$ \function[\lambda]{\JJJ_{K, \emptyset}}{\LLL_K = \prod_{v \mid \infty} \RR \cong \RR^{\r_1 + \r_2}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}} $$
+$$ \function[\lambda]{\JJJ_{K, \emptyset}}{\LLL_K = \prod_{v \mid \infty} \RR \cong \RR^{\r_1 + \r_2}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}_v} $$
 be the \textbf{logarithm map}, such that
-$$ \lambda : \JJJ_{K, \emptyset}^1 \to \LLL_K^0 = \cbr{\br{l_v} \in \LLL_K \st \sum_v l_v = 0}. $$
+$$ \lambda\br{\JJJ_{K, \emptyset}^1} \subset \LLL_K^0 = \cbr{\br{l_v} \in \LLL_K \st \sum_v l_v = 0}. $$
 Then
 $$ \ker \lambda = \cbr{\br{x_v} \in \JJJ_K \st \forall v, \ \abs{x_v}_v = 1} = \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad \U\br{1} = \cbr{z \in \CC \st \abs{z} = 1} $$
 is compact. So $ \ker \lambda \cap \OOO_K^\times $ is discrete and compact, hence finite. Obviously $ \mu\br{K} \subset \ker \lambda $, so $ \mu\br{K} $ is finite and equals $ \ker \lambda \cap \OOO_K^\times $. Next, show $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 \cong \RR^{\r_1 + \r_2 - 1} $ is a lattice. Then we get
@@ -1142,7 +1148,307 @@ $$
 \LLL_K & \displaystyle\prod_{v \mid \infty} \RR_{> 0} \arrow{l}{\log}[swap]{\sim}
 \end{tikzcd},
 $$
-where $ \RR_{> 0} \hookrightarrow K_v^\times \subset \CC^\times $ for all $ v \mid \infty $. Hence $ \lambda $ has the property that for all compact $ Y $ in its target, $ \lambda^{-1}\br{Y} $ is compact, so $ \lambda $ is a proper map. A simple fact is if $ f : X \to Y $ is a continuous proper map of topological spaces, with $ Y $ locally compact and Hausdorff, then if $ Z \subset X $ is discrete then $ f\br{Z} $ is discrete. \footnote{Exercise: a hint is to take a compact neighbourhood $ V $ of some $ f\br{z} $ for $ z \in Z $ and use compactness of $ f^{-1}\br{V} $} Hence $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 $ is discrete. Finally, $ \lambda : \JJJ_{K, \emptyset}^1 / \OOO_K^\times \twoheadrightarrow \LLL_K^0 / \lambda\br{\OOO_K^\times} $, so $ \LLL_K^0 / \lambda\br{\OOO_K} $ is compact, by \ref{thm:6.4}. Thus $ \lambda\br{\OOO_K} $ is a lattice.
+
+\pagebreak
+
+where $ \RR_{> 0} \hookrightarrow K_v^\times \subset \CC^\times $ for all $ v \mid \infty $. Hence $ \lambda $ has the property that for all compact $ Y $ in its target, $ \lambda^{-1}\br{Y} $ is compact, so $ \lambda $ is a proper map. A simple fact is if $ f : X \to Y $ is a continuous proper map of topological spaces, with $ Y $ locally compact and Hausdorff, then if $ Z \subset X $ is discrete then $ f\br{Z} $ is discrete. \footnote{Exercise: a hint is to take a compact neighbourhood $ V $ of some $ f\br{z} $ for $ z \in Z $ and use compactness of $ f^{-1}\br{V} $} Hence $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 $ is discrete. Finally,
+$$ \lambda : \JJJ_{K, \emptyset}^1 / \OOO_K^\times \twoheadrightarrow \LLL_K^0 / \lambda\br{\OOO_K^\times}, $$
+so $ \LLL_K^0 / \lambda\br{\OOO_K} $ is compact, by \ref{thm:6.4}. Thus $ \lambda\br{\OOO_K} $ is a lattice.
+
+\lecture{12}{Tuesday}{16/02/21}
+
+\item For the general case, the difference is mainly notational. Let $ S_\infty = S \cup \V_{K, \infty} $, so
+$$ \JJJ_{K, S} = \prod_{v \in S_\infty} K_v^\times \times \prod_{v \notin S_\infty} \OOO_v^\times, \qquad \LLL_{K, S} = \prod_{v \mid \infty} \RR \times \prod_{v \in S} \log \q_v\ZZ \cong \RR^{\r_1 + \r_2} \times \ZZ^{\#S}. $$
+Let
+$$ \function[\lambda_S]{\JJJ_{K, S}}{\LLL_{K, S}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}_{v \in S_\infty}} $$
+be the \textbf{$ S $-logarithm map}, such that
+$$ \lambda_S\br{\JJJ_{K, S}^1} \subset \LLL_{K, S}^0 = \cbr{\br{l_v} \in \LLL_{K, S} \st \sum_v l_v = 0}. $$
+Note that $ \LLL_{K, S}^0 \cong \RR^{\r_1 + \r_2 - 1} \times \ZZ^{\#S} $ since
+$$
+\begin{tikzcd}
+\LLL_{K, S}^0 \arrow[twoheadrightarrow]{r}{\pi_2} & \prod_{v \in S} \log \q_v\ZZ \arrow[cong]{d} \\
+& \ZZ^{\#S} \arrow[dashed]{ul}
+\end{tikzcd}
+$$
+is surjective with kernel $ \RR^{\r_1 + \r_2 - 1} $, so there exists a splitting as $ \ZZ^{\#S} $ is free. Then
+$$ \ker \lambda_S \cong \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \in \V_{K, \f}} \OOO_v^\times, $$
+as before, and
+$$ \JJJ_{K, S} = \prod_{v \mid \infty} \RR_{> 0} \times \prod_{v \in S} \abr{\pi_v} \times \ker \lambda_S \cong \prod_{v \mid \infty} \RR_{> 0} \times \ZZ^{\#S} \times \ker \lambda_S, $$
+where $ \pi_v \in K_v^\times $ such that $ v\br{\pi_v} = 1 $, so $ \lambda_S $ is proper and surjective, so $ \JJJ_{K, S} \cap K^\times = \JJJ_{K, S}^1 \cap K^\times = \OOO_{K, S}^\times $ is discrete and closed in $ \JJJ_{K, S}^1 $. As before, $ \ker \lambda_S \cap \OOO_{K, S}^\times = \mu\br{K} $, since it is discrete and compact, and $ \lambda_S\br{\OOO_{K, S}^\times} \subset \LLL_{K, S}^0 $ is discrete and cocompact. Then prove that if $ G \cong \RR^m \times \ZZ^{\#S} \supset H $ is a discrete and cocompact subgroup then $ H \cong \ZZ^{m + \#S} $. \footnote{Exercise} Then
+$$ 1 \to \mu\br{K} \to \OOO_{K, S}^\times \to \lambda_S\br{\OOO_{K, S}^\times} \cong \ZZ^{\r_1 + \r_2 - 1 + \#S} \to 0, $$
+and so done.
+\end{itemize}
 \end{proof}
+
+Let $ T \subset \V_K $ be finite, not necessarily containing $ \V_{K, \infty} $. What can we say about the group
+$$ \cbr{x \in K^\times \st \forall v \notin T, \ \abs{x}_v = 1}? $$
+The answer is non-trivial and depends on $ K $. See example sheet.
+
+\pagebreak
+
+\subsection{Strong approximation theorem}
+
+Earlier, weak approximation implies that $ K $ is dense in any finite product of $ K_v $'s. Also, $ K \hookrightarrow \AA_K $ is discrete.
+
+\begin{theorem}[Strong approximation]
+\label{thm:6.8}
+Let $ T \subset \V_K $ be finite, and set
+$$ \AA_K^T = \cbr{x = \br{x_v} \in \prod_{v \notin T} K_v \st \text{for all but finitely many} \ v, \ \abs{x_v}_v \le 1}, $$
+so $ \AA_K = \prod_{v \in T} K_v \times \AA_K^T $, with the adelic topology. Then if $ T \ne \emptyset $, then $ K $ is dense in $ \AA_K^T $.
+\end{theorem}
+
+There are various ways to rewrite this.
+\begin{itemize}
+\item If $ T \ne \emptyset $, then $ K + \prod_{v \in T} K_v $ is dense in $ \AA_K $, where $ K \hookrightarrow \AA_K $ is the diagonal inclusion and $ K_v \subset \AA_K $ by
+$$ y \mapsto \br{x_w}, \qquad x_w =
+\begin{cases}
+y & w = v \\
+0 & w \ne v
+\end{cases}.
+$$
+\end{itemize}
+It is enough to prove \ref{thm:6.8} for $ T = \cbr{v_0} $. Will actually prove the following.
+\begin{itemize}
+\item Let $ S \subset \V_K $ be finite such that $ v_0 \notin S $, let $ y_v \in K_v $ for all $ v \in S $, and let $ \epsilon > 0 $. Then there exists $ x \in K $ such that
+\begin{itemize}
+\item for all $ v \in S $, $ \abs{x - y_v}_v \le \epsilon $, and
+\item for all $ v \notin S $ such that $ v \ne v_0 $, $ \abs{x}_v \le 1 $.
+\end{itemize}
+\end{itemize}
+Take $ y \in \AA_K $ with component $ y_v $ at $ v \in S $ and zero elsewhere. This is equivalent to strong approximation for $ T = \cbr{v_0} $, by definition of the topology.
+
+\begin{proof}
+Free to enlarge $ S $. Then by the proof of compactness of $ \AA_K / K $, there exists $ R > 0 $ such that if
+$$ X = \cbr{\br{x_v} \in \AA_K \st \begin{array}{l} \forall v \in S, \ \abs{x_v}_v \le R \\ \forall v \notin S, \ \abs{x_v}_v \le 1 \end{array}}, $$
+then $ X + K = \AA_K $. For example, assume $ S \supset \V_{K, \infty} $ and let $ \OOO_K = \bigoplus_i \ZZ e_i $, then $ \AA_K = \bigoplus_i \AA_\QQ e_i $ and $ \AA_\QQ = \sbr{0, 1} \times \widehat{\ZZ} + \QQ $. Claim that there exists $ z \in K \setminus \cbr{0} $ such that
+$$ \abs{z}_v \le
+\begin{cases}
+\dfrac{\epsilon}{R} & v \in S \\
+1 & v \notin S, \ v \ne v_0
+\end{cases}.
+$$
+Apply Minkowski \ref{thm:6.3} with
+\begin{itemize}
+\item $ d_v = 1 $ for all $ v \notin S \cup \cbr{v_0} $,
+\item $ d_v \le \epsilon / R $ for all $ v \in S $, and
+\item $ d_{v_0} > \r_K\br{\prod_{v \in S} d_v}^{-1} $.
+\end{itemize}
+This defines a box in $ \AA_K $ whose intersection with $ K $ is not $ \cbr{0} $, since $ \prod_v d_v > \r_K $. Now write $ z^{-1}y = a + t $ for $ a \in X $ and $ t \in K $. Then $ x = zt = y - za $ has
+$$ \abs{x - y_v}_v = \abs{zt - y_v}_v = \abs{za_v}_v \le
+\begin{cases}
+\dfrac{\epsilon}{R} \cdot R = \epsilon & v \in S \\
+1 \cdot 1 = 1 & v \notin S, \ v \ne v_0
+\end{cases},
+$$
+so done.
+\end{proof}
+
+In the special case $ T = \V_{K, \infty} $, $ \AA_K^T $ are the finite adeles. Then \ref{thm:6.8} says
+$$ K \hookrightarrow \AA_K^T = \widehat{K} = \widehat{\OOO_K} \otimes_\ZZ \QQ $$
+is dense, which is equivalent to the density of
+$$ \OOO_K \hookrightarrow \widehat{\OOO_K} = \prod_{v \nmid \infty} \OOO_{K_v} = \prod_{v \nmid \infty} \varprojlim_r \OOO_K / \ppp_v^r \cong \varprojlim_{I \subset \OOO_K} \OOO_K / I, $$
+by CRT. So strong approximation is a generalisation of CRT.
+
+\pagebreak
+
+\section{Idele class group and class field theory}
+
+\lecture{13}{Thursday}{18/02/21}
+
+Recall if $ L = \QQ\br{\zeta_m} $, then there is an isomorphism
+$$ \function{\Gal\br{L / \QQ}}{\br{\ZZ / m\ZZ}^\times}{\sigma_p}{p \mod m}, \qquad p \nmid m, $$
+given by the action on $ \zeta_m $. In particular, $ \sigma_p $ depends only on the congruence class of $ p \mod m $, which implies quadratic reciprocity. As $ \sigma_p $ determines the decomposition of $ \abr{p} $ in $ L $, since $ \f\br{v \mid p} = \ord \D_v = \ord \sigma_p $, this says that the decomposition of $ \abr{p} $ in $ L $ depends only on $ p \mod m $. A consequence is if $ g \in \Gal\br{L / \QQ} $, then there exist infinitely many $ p $ such that $ g = \sigma_p $, by Dirichlet's theorem on primes in arithmetic progressions. The following is a general problem. Let $ L / K $ be a Galois extension of number fields, and let $ v $ be a finite place of $ K $, unramified in $ L $. Then
+$$ \Sigma_v = \cbr{\sigma_w \st w \in \V_{L, \f}, \ w \mid v} $$
+is a conjugacy class in $ G = \Gal\br{L / K} $, and $ \Sigma_v $ describes the decomposition of $ v $ in $ L $.
+\begin{itemize}
+\item How does $ \Sigma_v $ depend on $ v $?
+\item Can it be any conjugacy class in $ G $?
+\end{itemize}
+
+For the first question, do not know the answer for general $ L / K $. This is non-abelian class field theory or the Langlands programme. The second question is answered by the Chebotarev density theorem in the 1920s. Let $ C \subset G $ be a conjugacy class. Then there exist infinitely many $ v $ for which $ C = \Sigma_v $.
+
+\begin{example*}
+Let $ C = \cbr{1} $. There exist infinitely many $ v $ such that $ \Sigma_v = \cbr{1} $, that is such that $ v $ splits completely in $ L / K $.
+\end{example*}
+
+Class field theory answers the first question completely for $ L / K $ abelian.
+
+\subsection{Artin reciprocity law}
+
+Let $ L / K $ be an abelian extension of number fields. Then there exists a unique continuous homomorphism
+$$ \Art_{L / K} : \CCC_K = \JJJ_K / K^\times \to \Gal\br{L / K}, $$
+such that for all unramified $ v \in \V_{K, \f} $,
+$$ \function[\Art_{L / K}]{K_v^\times \hookrightarrow \CCC_K}{\Gal\br{L / K}}{x}{\sigma_v^{-v\br{x}}}. $$
+Moreover, $ \Art_{L / K} $ is surjective with kernel $ K^\times \N_{L / K}\br{\JJJ_L} $. How does this generalise the cyclotomic theory? Since $ \CC^\times $ is connected, the only open subgroup is $ \CC^\times $, and the only open subgroups of $ \RR^\times $ are $ \RR^\times $ and $ \RR_{> 0} $. Then $ \ker \Art_{L / K} $ is open, so contains some $ K^\times U $, where
+$$ U = \prod_{v \ \text{complex}} K_v^\times \times \prod_{v \ \text{real}} \RR_{> 0} \times \prod_{v \in S} U_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v^\times, \qquad U_v = \cbr{x \in \OOO_v^\times \st v\br{x - 1} \ge m_v}, \qquad m_v > 0, $$
+where say $ S $ contains all ramified places. If $ w \notin S $ is unramified,
+$$ \Art_{L / K} : K^\times\br{\dots, 1, 1, \pi_w^{-1}, 1, 1, \dots} = K^\times\br{\dots, \pi_w, \pi_w, 1, \pi_w, \pi_w, \dots} \mapsto \sigma_w, $$
+where $ \pi_w \in \OOO_K $ such that $ w\br{\pi_w} = 1 $ is a uniformiser at $ w $. So if
+\begin{enumerate}
+\item $ \sigma\br{\pi_w} > 0 $ for all $ \sigma : K \hookrightarrow \RR $,
+\item $ v\br{\pi_w - 1} \ge m_v $ for all $ v \in S $, and
+\item $ \pi_w \in \OOO_v^\times $ for all $ v \notin S $ such that $ v \ne w $,
+\end{enumerate}
+which are congruence conditions on $ w $, then $ \sigma_w = 1 $. In particular, if $ \ppp_w = \abr{\pi_w} $ is principal, then $ 3 $ is automatic. So just a congruence condition on $ \pi_w $ modulo some ideal divisible only by primes in $ S $, and positivity.
+
+\pagebreak
+
+\begin{example*}
+Let $ L = \QQ\br{\zeta_m} / K = \QQ $. Then
+$$
+\begin{tikzcd}
+\br{\RR^\times \times \widehat{\QQ}^\times} / \QQ^\times \arrow[cong]{d} & \br{\RR^\times \times \widehat{\ZZ}^\times} / \cbr{\pm 1} \arrow{l}[swap]{\sim} \arrow[cong]{d} & \RR_{> 0} \times \widehat{\ZZ}^\times \arrow{l}[swap]{\sim} \arrow{r} \arrow{d} & \prod_{q \mid m} \ZZ_q^\times \arrow{d} \\
+\JJJ_\QQ / \QQ^\times \arrow[dashed]{dr} & \JJJ_{\QQ, \emptyset} / \cbr{\pm 1} \arrow{l}{\sim} & \br{\ZZ / m\ZZ}^\times \arrow{dl}{\sim} & \prod_{q \mid m} \br{\ZZ_q / q\ZZ_q}^\times \arrow{l}{\sim} \\
+& \Gal\br{L / \QQ} & &
+\end{tikzcd}.
+$$
+Claim this is $ \Art_{L / \QQ} $. Let $ \QQ^\times\br{\dots, 1, 1, p^{-1}, 1, 1, \dots} = \QQ^\times\br{\dots, p, p, 1, p, p, \dots} \in \JJJ_\QQ / \QQ^\times $ for $ p \nmid m $. Then
+$$
+\begin{array}{ccccccc}
+\JJJ_\QQ / \QQ^\times & \longleftarrow & \RR_{> 0} \times \widehat{\ZZ}^\times & \longrightarrow & \br{\ZZ / m\ZZ}^\times & \longrightarrow & \Gal\br{L / \QQ} \\
+\QQ^\times\br{\dots, p, p, 1, p, p, \dots} & \longmapsfrom & \br{\dots, p, p, 1, p, p, \dots} & \longmapsto & p \mod m & \longmapsto & \sigma_p
+\end{array}.
+$$
+So via $ \JJJ_\QQ / \QQ^\times \cong \RR_{> 0} \times \widehat{\ZZ}^\times $, $ \Art_{L / \QQ} $ is just the cyclotomic map.
+\end{example*}
+
+\subsection{Finite quotients of idele class group}
+
+\begin{proposition}
+\label{prop:7.1}
+Let $ G $ be a discrete group.
+\begin{enumerate}
+\item Any continuous homomorphism $ \alpha : \CCC_K \to G $ has finite image.
+\item There is a bijection
+$$ \correspondence{\text{continuous homomorphisms} \\ \alpha : \JJJ_K \to G}{\text{families} \ \br{\alpha_v : K_v^\times \to G}_{v \in \V_K} \\ \text{such that} \ \alpha_v\br{\OOO_v^\times} = \cbr{1} \\ \text{for all but finitely many} \ v \in \V_{K, \f}}. $$
+\end{enumerate}
+\end{proposition}
+
+\begin{notation*}
+$ \alpha_v : K_v^\times \to G $ is \textbf{unramified} if $ \alpha_v\br{\OOO_v^\times} = \cbr{1} $. See local class field theory, where $ \OOO_v^\times $ corresponds to the inertia.
+\end{notation*}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item $ \JJJ_K \cong \RR_{> 0} \times \JJJ_K^1 $, and $ \alpha\br{\RR_{> 0}} = \cbr{1} $ so $ \alpha\br{\CCC_K} = \alpha\br{\CCC_K^1} $, which is compact and discrete so finite.
+\item The subgroup
+$$ \bigoplus_v K_v^\times = \cbr{\br{x_v} \st x_v = 1 \ \text{for all but finitely many} \ v} \subset \JJJ_K $$
+is dense, since $ \bigoplus_v \OOO_v^\times \subset \prod_v \OOO_v^\times $ is dense for the product topology. So a continuous $ \alpha : \JJJ_K \to G $ is determined by its restrictions $ \alpha_v = \eval{\alpha}_{K_v^\times} : K_v^\times \to G $. As $ \ker \alpha $ is open, $ \alpha_v\br{\OOO_v^\times} = \cbr{1} $ for all but finitely many $ v $. So have $ \cbr{\alpha} \hookrightarrow \cbr{\br{\alpha_v}_v} $. Conversely, if $ \br{\alpha_v : K_v^\times \to G}_v $ is such a family, then $ \alpha\br{\br{x_v}} = \prod_v \alpha_v\br{x_v} $ is a finite product for any $ \br{x_v} \in \JJJ_K $, as $ x_v \in \OOO_v^\times $ and $ \alpha_v\br{\OOO_v^\times} = \cbr{1} $ for all but finitely many $ v $, and defines a continuous homomorphism $ \alpha : \JJJ_K \to G $.
+\end{enumerate}
+\end{proof}
+
+\lecture{14}{Saturday}{20/02/21}
+
+\begin{proposition}
+\label{prop:7.2}
+Let $ \alpha, \alpha' : \CCC_K \to G $ be continuous homomorphisms, where $ G $ is finite, unramified at all $ v \in \V_{K, \f} \setminus S $, where $ S $ is finite. Then if $ \alpha_v = \alpha_v' $ for all $ v \notin S $ such that $ v $ is finite, that is $ \alpha_v\br{\pi_v} = \alpha_v'\br{\pi_v} $, have $ \alpha = \alpha' $.
+\end{proposition}
+
+\begin{proof}
+Look at $ \alpha / \alpha' $, so without loss of generality $ \alpha' = 1 $. Then $ \alpha : \JJJ_K / K^\times \to G $ satisfies for all $ v \in \V_{K, \f} \setminus S $, $ \alpha_v = 1 $. Let $ w \in S_\infty = \V_{K, \infty} \cup S $ and $ y \in K_w^\times $. Then by weak approximation, for any $ \epsilon > 0 $, there exists $ x \in K^\times $ such that $ \abs{x - y}_w < \epsilon $ and $ \abs{x - 1}_v < \epsilon $ for all $ v \in S_\infty \setminus \cbr{w} $. Hence $ \alpha_v\br{x} = 1 $ for all $ v \in S_\infty \setminus \cbr{w} $, so $ \alpha_v\br{x} = 1 $ for all $ v \ne w $. Since $ \alpha\br{K^\times} = 1 $, $ \alpha_w\br{x} = 1 $, so $ \alpha_w\br{y} = 1 $. So $ \alpha_w = 1 $, so $ \alpha = 1 $.
+\end{proof}
+
+\pagebreak
+
+\begin{definition*}
+A \textbf{modulus} is a finite formal sum
+$$ \mmm = \sum_{v \in \V_K} \m_v\br{v}, \qquad \m_v \ge 0. $$
+The \textbf{support} and \textbf{finite support} of $ \mmm $ are
+$$ \supp \mmm = \cbr{v \in \V_K \st \m_v > 0}, \qquad \supp_\f \mmm = \supp \mmm \cap \V_{K, \f}. $$
+We may use also $ \mmm_\f = \sum_{v \in \V_{K, \f}} \m_v\br{v} $, the finite part of $ \mmm $, can think of as an ideal of $ \OOO_K $. Define
+$$ \U_{K, \mmm} = \prod_{v \in \V_K} \U_v^{\m_v}, \qquad K_v^\times \supset \U_v^m =
+\begin{cases}
+\OOO_v^\times & v \in \V_{K, \f}, \ m = 0 \\
+1 + \pi_v^m\OOO_v & v \in \V_{K, \f}, \ m > 0 \\
+\RR^\times & v \ \text{real}, \ m = 0 \\
+\RR_{> 0} & v \ \text{real}, \ m > 0 \\
+\CC^\times & v \ \text{complex}
+\end{cases}.
+$$
+\end{definition*}
+
+Note that in the definition of the modulus, we may as well forget about $ v $ complex, and for $ v $ real, take $ \m_v \in \cbr{0, 1} $. Then $ \U_{K, \mmm} \subset \JJJ_K $ is an open subgroup, and every open subgroup of $ \JJJ_K $ contains some $ \U_{K, \mmm} $.
+
+\begin{proposition}
+$ \JJJ_K / K^\times\U_{K, \mmm} $ is finite.
+\end{proposition}
+
+\begin{proof}
+$ \JJJ_K / K^\times \to \JJJ_K / K^\times\U_{K, \mmm} $ with discrete image, since $ \U_{K, \mmm} $ is open. So by \ref{prop:7.1}.$ 1 $, the image is finite.
+\end{proof}
+
+So every finite quotient of $ \CCC_K $ is a quotient of some $ \JJJ_K / K^\times\U_{K, \mmm} $.
+
+\begin{definition*}
+The \textbf{ray class group} of $ K $ modulo $ \mmm $ is
+$$ \Cl_\mmm\br{K} = \JJJ_K / K^\times\U_{K, \mmm}. $$
+\end{definition*}
+
+If $ \mmm = 0 $, then $ \U_{K, \mmm} = \ker \c $, where $ \c : \JJJ_K \to \I\br{K} $ is the content map, and $ \Cl_\mmm\br{K} = \Cl\br{K} $. Now relate to ideals.
+
+\begin{notation*}
+Let $ x \in K^\times $. Write $ x \equiv 1 \mods \mmm $ if
+\begin{itemize}
+\item for all $ v \in \supp_\f \mmm $, $ v\br{x - 1} \ge \m_v $, and
+\item for all real $ v \in \supp \mmm $, $ x \in \br{K_v^\times}^+ = \RR_{> 0} $.
+\end{itemize}
+Let
+\begin{align*}
+K_\mmm^\times & = \cbr{x \in K^\times \st x \equiv 1 \mods \mmm}, \\
+\I_\mmm\br{K} & = \cbr{\text{fractional ideals prime to} \ \supp_\f \mmm} \cong \cbr{\text{free abelian group on} \ \V_{K, \f} \setminus \supp_\f \mmm}, \\
+\P_\mmm\br{K} & = \cbr{x\OOO_K \st x \in K_\mmm^\times} \subset \I_\mmm\br{K}.
+\end{align*}
+\end{notation*}
+
+\begin{theorem}
+$$ \Cl_\mmm\br{K} \cong \I_\mmm\br{K} / \P_\mmm\br{K}. $$
+\end{theorem}
+
+\begin{example*}
+Assume $ K $ has real places, and let $ \mmm = \sum_{v \ \text{real}} \br{v} $. Then $ \I_\mmm\br{K} = \I\br{K} $ and $ \P_\mmm\br{K} $ is the group of principal fractional ideals $ x\OOO_K $ where $ x $ is \textbf{totally positive}, that is for all $ \sigma : K \hookrightarrow \RR $, $ \sigma\br{x} > 0 $. Then $ \Cl_\mmm\br{K} $ is called the \textbf{narrow ideal class group} of $ K $, also written $ \Cl^+\br{K} $. Obviously $ \Cl^+\br{K} \twoheadrightarrow \Cl\br{K} $ with kernel killed by two.
+\end{example*}
+
+Precisely is the following.
+
+\begin{theorem}
+Let $ S \subset \V_{K, \f} $ be finite, containing $ \supp_\f \mmm $. Then there exists a unique continuous homomorphism
+$$ \alpha = \br{\alpha_v} : \JJJ_K / K^\times \to \I_\mmm\br{K} / \P_\mmm\br{K}, $$
+such that for all $ v \in \V_{K, \f} \setminus S $, $ \alpha_v\br{\OOO_v^\times} = \cbr{1} $ and $ \alpha_v\br{\pi_v} \in \ppp_v^{-1} $. Moreover, $ \alpha $ induces an isomorphism
+$$ \JJJ_K / K^\times\U_{K, \mmm} \xrightarrow{\sim} \I_\mmm\br{K} / \P_\mmm\br{K}. $$
+\end{theorem}
+
+\pagebreak
+
+\begin{proof}
+By \ref{prop:7.2}, $ \alpha $ is unique. For existence, let
+$$ \JJJ_{K, \mmm} = \cbr{\br{x_v} \in \JJJ_K \st \forall v \in \supp \mmm, \ x_v \in \U_v^{\m_v}}, $$
+the open subgroup generated by $ \U_{K, \mmm} $ and $ \cbr{K_v^\times \st v \notin \supp \mmm} $. Then by weak approximation, $ K^\times\JJJ_{K, \mmm} = \JJJ_K $, and by definition, $ K_\mmm^\times = K^\times \cap \JJJ_{K, \mmm} $, so
+$$ \iota : \JJJ_K / K^\times\U_{K, \mmm} \xleftarrow{\sim} \JJJ_{K, \mmm} / K_\mmm^\times\U_{K, \mmm}. $$
+Also, there is an isomorphism
+$$ \function[\c^S]{\JJJ_{K, \mmm} / \U_{K, \mmm}}{\I_\mmm\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f}, \ v \notin \supp_\f \mmm} \ppp_v^{v\br{x_v}}}. $$
+Then
+$$ \JJJ_K / K^\times\U_{K, \mmm} \xleftarrow{\iota} \JJJ_{K, \mmm} / K_\mmm^\times\U_{K, \mmm} \xrightarrow{\c^S} \I_\mmm\br{K} / \P_\mmm\br{K}, $$
+and this is the map $ x \mapsto \alpha\br{x^{-1}} $.
+\end{proof}
+
+\begin{remark*}
+The isomorphism $ \JJJ_K / K^\times\U_{K, \mmm} \to \I_\mmm\br{K} / \P_\mmm\br{K} $ is not induced by the $ S $-content map $ \JJJ_K \to \I_\mmm\br{K} $ but only on the subgroup $ \JJJ_{K, \mmm} $. Fr\"ohlich called this the fundamental mistake of class field theory.
+\end{remark*}
+
+\begin{example*}
+Let $ K = \QQ $, let $ m > 1 $, and let $ \mmm = \br{m}\infty = \sum_{p \mid m} \v_p\br{m}\br{p} + \br{\infty} $. If $ I \in \I_\mmm\br{\QQ} $, then $ I = \br{a / b}\ZZ $ for unique positive coprime $ a, b \in \ZZ $ with $ \br{ab, m} = 1 $. Set
+$$ \function[\Theta]{\I_\mmm\br{\QQ}}{\br{\ZZ / m\ZZ}^\times}{I}{\dfrac{a}{b} \mod m}. $$
+This clearly defines an isomorphism such that
+$$
+\begin{tikzcd}
+p\ZZ \in \I_\mmm\br{\QQ} / \P_\mmm\br{\QQ} \arrow{r}{\Theta}[swap]{\sim} & \br{\ZZ / m\ZZ}^\times \ni p \mod m \\
+\QQ^\times\br{\dots, 1, 1, p^{-1}, 1, 1, \dots} \in \JJJ_\QQ / \QQ^\times \arrow{u}{\alpha} \arrow{r}{\sim} & \RR_{> 0} \times \widehat{\ZZ}^\times \arrow{u} \ni \br{\dots, p, p, 1, p, p, \dots}
+\end{tikzcd}
+$$
+commutes.
+\end{example*}
+
+This is the reason for using $ \ppp_v^{-1} $, and $ \sigma_v^{-1} $ in the reciprocity law, since it means that for $ \QQ\br{\zeta_m} / \QQ $, recover the usual map $ \Gal\br{\QQ\br{\zeta_m} / \QQ} \cong \br{\ZZ / m\ZZ}^\times $. Older treatments of class field theory use $ \sigma_v $ and end up with the inverse of the usual map. Another reason is that the inverse $ \Fr_v = \F_v = \sigma_v^{-1} $, the so-called \textbf{geometric Frobenius}, is what occurs naturally in algebraic geometry. The modern normalisation of class field theory maps a uniformiser at an unramified $ v $ to the geometric Frobenius $ \sigma_v^{-1} $.
 
 \end{document}
