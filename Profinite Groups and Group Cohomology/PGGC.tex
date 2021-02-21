@@ -254,8 +254,8 @@ $$
 \fill (0, 0) circle (0.05);
 \fill (1, 0) circle (0.05);
 \fill (0, -1) circle (0.05);
-\draw [->] (0, 0) to (1, 0);
-\draw [->] (0, 0) to (0, -1);
+\draw (0, 0) to node{$ > $} (1, 0);
+\draw (0, 0) to node{$ \vee $} (0, -1);
 \end{tikzpicture},
 $$
 then a diagram of shape $ \JJJ $ in $ \Grp $ would be
@@ -381,7 +381,7 @@ Let $ G $ be a finitely generated group. For each $ n \in \NN $, there are only 
 \end{lemma}
 
 \begin{proof}
-For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \Sym n $, since by labelling cosets $ H, \dots, g_nH $ by symbols $ 1, \dots, n $, $ G $ permutes these right cosets by $ g \cdot g_iH = \br{gg_i}H $ and $ H $ is recovered from this as the stabiliser of $ 1 $. So there are at most as many subgroups $ H $ as homomorphisms to $ \Sym n $, and there are only finitely many.
+For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \Sym n $, since by labelling cosets $ H, \dots, g_nH $ by symbols $ 1, \dots, n $, $ G $ permutes these right cosets by $ g \cdot g_iH = \br{gg_i}H $ and $ H $ is recovered from this as $ \Stab 1 $. So there are at most as many subgroups $ H $ as homomorphisms to $ \Sym n $, and there are only finitely many.
 \end{proof}
 
 \begin{corollary}
@@ -675,7 +675,7 @@ Both are profinite groups.
 
 \begin{lemma}
 For all $ N \ge 1 $ and $ p $ prime,
-$$ \GL_N \ZZ_p = \varprojlim_n \GL_N \ZZ / p^n\ZZ, \qquad \SL_N \ZZ_p = \varprojlim_n \SL_N \ZZ / p^n\ZZ. $$
+$$ \GL_N \ZZ_p = \varprojlim_n \GL_N \br{\ZZ / p^n\ZZ}, \qquad \SL_N \ZZ_p = \varprojlim_n \SL_N \br{\ZZ / p^n\ZZ}. $$
 \end{lemma}
 
 \begin{proof}
@@ -688,20 +688,20 @@ $$
 $$
 commute.
 \begin{itemize}
-\item $ A \in \GL_N \ZZ_p $ if and only if $ \det A \in \ZZ_p^\times $, if and only if $ \det A_n \in \br{\ZZ / p^n\ZZ}^\times $ for all $ n $, if and only if $ A_n \in \GL_N \ZZ / p^n\ZZ $ for all $ n $.
-\item $ A \in \SL_N \ZZ_p $ if and only if $ \det A = 1 $, if and only if $ \det A_n = 1 $ for all $ n $, if and only if $ A_n \in \SL_N \ZZ / p^n\ZZ $ for all $ n $.
+\item $ A \in \GL_N \ZZ_p $ if and only if $ \det A \in \ZZ_p^\times $, if and only if $ \det A_n \in \br{\ZZ / p^n\ZZ}^\times $ for all $ n $, if and only if $ A_n \in \GL_N \br{\ZZ / p^n\ZZ} $ for all $ n $.
+\item $ A \in \SL_N \ZZ_p $ if and only if $ \det A = 1 $, if and only if $ \det A_n = 1 $ for all $ n $, if and only if $ A_n \in \SL_N \br{\ZZ / p^n\ZZ} $ for all $ n $.
 \end{itemize}
 \end{proof}
 
 Also have matrices over $ \widehat{\ZZ} $. A warning is that $ \widehat{\ZZ} $ is not an integral domain. Analogously,
-$$ \GL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A \in \widehat{\ZZ}^\times} = \varprojlim_n \GL_N \ZZ / n\ZZ = \prod_p \GL_N \ZZ_p, $$
-$$ \SL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A = 1} = \varprojlim_n \SL_N \ZZ / n\ZZ = \prod_p \SL_N \ZZ_p, $$
+$$ \GL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A \in \widehat{\ZZ}^\times} = \varprojlim_n \GL_N \br{\ZZ / n\ZZ} = \prod_p \GL_N \ZZ_p, $$
+$$ \SL_N \widehat{\ZZ} = \cbr{A \in \Mat_{N \times N} \widehat{\ZZ} \st \det A = 1} = \varprojlim_n \SL_N \br{\ZZ / n\ZZ} = \prod_p \SL_N \ZZ_p, $$
 since $ \Mat_{N \times N} \widehat{\ZZ} = \prod_p \Mat_{N \times N} \ZZ_p $, and
-$$ \SL_N \ZZ \le \SL_N \ZZ_p, \qquad \SL_N \ZZ \le \SL_N \widehat{\ZZ} = \varprojlim_n \SL_N \ZZ / n\ZZ $$
+$$ \SL_N \ZZ \le \SL_N \ZZ_p, \qquad \SL_N \ZZ \le \SL_N \widehat{\ZZ} = \varprojlim_n \SL_N \br{\ZZ / n\ZZ} $$
 are dense. See problem sheet $ 2 $.
 
 \begin{example}
-$ \twobytwosmall{7}{9}{4}{9} \in \SL_2 \ZZ / 13\ZZ $ is in the image of $ \SL_2 \ZZ $.
+$ \twobytwosmall{7}{9}{4}{9} \in \SL_2 \br{\ZZ / 13\ZZ} $ is in the image of $ \SL_2 \ZZ $.
 \end{example}
 
 \pagebreak
@@ -800,7 +800,7 @@ Thus $ f $ is \textbf{induced} by the $ f_j $ by passing to an inverse limit.
 
 \begin{proposition}
 \label{prop:2.4.11}
-Let $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{i \in I} H_i $ be inverse limits of finite groups, where $ I $ and $ J $ are countable inverse systems with no minimum element. Let $ f : G \to H $ be a continuous homomorphism. Then there exist cofinal subsystems $ J' \subseteq J $ and $ I' \subseteq I $, an order-preserving bijection $ J' \cong I' $, and a morphism of inverse systems $ \br{f_j} : \br{G_j}_{j \in J'} \to \br{H_i}_{i \in I'} $ inducing $ f $.
+Let $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{i \in I} H_i $ be inverse limits of finite groups, where $ I $ and $ J $ are countable inverse systems with no minimal element. Let $ f : G \to H $ be a continuous homomorphism. Then there exist cofinal subsystems $ J' \subseteq J $ and $ I' \subseteq I $, an order-preserving bijection $ J' \cong I' $, and a morphism of inverse systems $ \br{f_j} : \br{G_j}_{j \in J'} \to \br{H_i}_{i \in I'} $ inducing $ f $.
 \end{proposition}
 
 \begin{proof}
@@ -1006,7 +1006,7 @@ $ \Gamma $ is residually finite if and only if $ \iota : \Gamma \to \widehat{\Ga
 \end{proposition}
 
 \begin{proof}
-$$ \function[\iota]{\Gamma}{\widehat{\Gamma} \subseteq \prod_N \Gamma / N}{\gamma}{\br{\gamma N}}. $$
+$$ \function[\iota]{\Gamma}{\widehat{\Gamma} \le \prod_N \Gamma / N}{\gamma}{\br{\gamma N}}. $$
 \end{proof}
 
 \begin{proposition}
@@ -1041,7 +1041,7 @@ The groups $ \SL_N \ZZ \le_\f \GL_N \ZZ $ are residually finite for all $ N $.
 
 \begin{proof}
 For $ A \in \GL_N \ZZ \setminus \cbr{\I} $. Take a prime $ p $ larger than the absolute value of all entries of $ A $. Then we have the homomorphism
-$$ \function{\GL_N \ZZ}{\GL_N \ZZ / p\ZZ}{A}{A_p \ne \I}. $$
+$$ \function{\GL_N \ZZ}{\GL_N \br{\ZZ / p\ZZ}}{A}{A_p \ne \I}. $$
 \end{proof}
 
 These linear groups have as subgroups many important groups, such as free groups in $ \SL_2 \ZZ $.
@@ -1050,8 +1050,8 @@ These linear groups have as subgroups many important groups, such as free groups
 Let $ \Gamma $ be a finitely generated subgroup of $ \GL_N K $ where $ K $ is a field. Then $ \Gamma $ is residually finite.
 \end{theorem}
 
-\begin{proof}
-The entries of a generating set of $ \Gamma $ generate a finitely generated subring $ R $ of $ K $. Commutative algebra says that $ R $ has many maximal ideals $ \ppp \subseteq R $, such that $ R / \ppp $ is a finite field. Use maps $ \GL_N R \to \GL_N R / \ppp $ to show residual finiteness.
+\begin{proof}[Proof (non-examinable)]
+The entries of a generating set of $ \Gamma $ generate a finitely generated subring $ R $ of $ K $. Commutative algebra says that $ R $ has many maximal ideals $ \ppp \subseteq R $, such that $ R / \ppp $ is a finite field. Use maps $ \GL_N R \to \GL_N \br{R / \ppp} $ to show residual finiteness.
 \end{proof}
 
 \begin{proposition}
@@ -1192,7 +1192,7 @@ Then the abelianisation of $ \S_g $ is $ \ZZ^{2g} $. Hence $ \widehat{\S_g} \not
 \begin{theorem}[Basic correspondence]
 Let $ G_1 $ and $ G_2 $ be finitely generated residually finite groups, and suppose $ \phi : \widehat{G_1} \cong \widehat{G_2} $. Then there is a bijection
 $$ \psi : \cbr{\text{finite index subgroups of} \ G_1} \to \cbr{\text{finite index subgroups of} \ G_2}, $$
-which do not depend on any homomorphism $ G_1 \to G_2 $, such that, if $ K \le_\f H \le_\f G_1 $, then
+such that, if $ K \le_\f H \le_\f G_1 $, then
 \begin{itemize}
 \item $ \psi\br{K} \le \psi\br{H} $ and $ \sbr{H : K} = \sbr{\psi\br{H} : \psi\br{K}} $,
 \item $ K \triangleleft H $ if and only if $ \psi\br{K} \triangleleft \psi\br{H} $,
@@ -1206,7 +1206,11 @@ By the Nielsen-Schreier theorem, $ \F_{2g} $ has an index two subgroup, which is
 \lecture{11}{Saturday}{13/02/21}
 
 \begin{remark}
-Residually finite is not actually necessary, by replacing $ G_1 $ by $ G_1 / \ker \iota_{G_1} $ for $ \iota : G_1 \to \widehat{G_1} $.
+\hfill
+\begin{itemize}
+\item Residually finite is not actually necessary, by replacing $ G_1 $ by $ G_1 / \ker \iota_{G_1} $ for $ \iota : G_1 \to \widehat{G_1} $.
+\item $ \phi $ and $ \psi $ do not depend on any homomorphism $ G_1 \to G_2 $.
+\end{itemize}
 \end{remark}
 
 \begin{proposition}
@@ -1237,9 +1241,9 @@ Then $ H $ fixes the coset $ 1H $. By continuity of the action, $ \overline{H} $
 \pagebreak
 
 \item Let $ \cbr{g_i} $ be a set of coset representatives. We know that the $ g_i\overline{H} $ cover $ \widehat{G} $. They are distinct cosets, since if $ g_i\overline{H} = g_j\overline{H} $, then $ g_i^{-1}g_j \in \overline{H} \cap G = H $. So $ g_iH = g_jH $, so $ g_i = g_j $, so $ \sbr{\widehat{G} : \overline{H}} = \sbr{G : H} $. Also, there is a natural bijection of coset spaces $ G / H \to \widehat{G} / \overline{H} $.
-\item If $ \overline{K} = \overline{H} $ then $ K = \overline{K} \cap H \triangleleft \overline{H} \cap G = H $. Conversely, if $ K \triangleleft H $, consider the action of $ \overline{H} $ on $ \Sym \br{\overline{H} / \overline{K}} = \Sym \br{H / K} \subseteq \Sym \br{G / K} $. Then $ K \triangleleft H $ if and only if $ K $ acts trivially on $ H / K $, since $ k \cdot hK = hK $ if and only if $ h^{-1}kh \in K $. By continuity of the action, $ \overline{K} $ acts trivially, so $ \overline{K} \triangleleft \overline{H} $.
+\item If $ \overline{K} \triangleleft \overline{H} $ then $ K = \overline{K} \cap G \triangleleft \overline{H} \cap G = H $. Conversely, if $ K \triangleleft H $, consider the action of $ \overline{H} $ on $ \Sym \br{\overline{H} / \overline{K}} = \Sym \br{H / K} \le \Sym \br{G / K} $. Then $ K \triangleleft H $ if and only if $ K $ acts trivially on $ H / K $, since $ k \cdot hK = hK $ if and only if $ h^{-1}kh \in K $. By continuity of the action, $ \overline{K} $ acts trivially, so $ \overline{K} \triangleleft \overline{H} $.
 \item If $ K \triangleleft H $, we already have our bijection $ H / K \to \overline{H} / \overline{K} $, and this is an isomorphism of groups.
-\item $ \overline{H} $ maps onto all finite quotients $ H / K $ in a natural way, so we get a continuous homomorphism $ \overline{H} \to \widehat{H} $. This is surjective because $ H $ is dense in $ \widehat{H} $. For injectivity, if $ h \in \overline{H} $, then there is $ U \triangleleft_\o \widehat{G} $ such that $ h \notin U $, and the map
+\item $ \overline{H} $ maps onto all finite quotients $ H / K $ in a natural way, so we get a continuous homomorphism $ \overline{H} \to \widehat{H} $. This is surjective because $ H $ is dense in $ \widehat{H} $. For injectivity, if $ h \in \overline{H} \setminus \cbr{1} $, then there is $ U \triangleleft_\o \widehat{G} $ such that $ h \notin U $, and the map
 $$
 \begin{tikzcd}
 \overline{H} \arrow{rr} \arrow{dr} & & H / \br{U \cap H} \\
@@ -1249,6 +1253,10 @@ $$
 shows that $ h \not\mapsto 1 \in \widehat{H} $.
 \end{enumerate}
 \end{proof}
+
+\begin{remark}
+$ \overline{H} \cap G = H $ and $ \overline{H} \cong \widehat{H} $ are not always true if $ H $ is not of finite index.
+\end{remark}
 
 \begin{definition}
 A topological group $ G $ is \textbf{Hopfian}, or \textbf{has the Hopf property}, if every continuous surjection from $ G $ to itself is an isomorphism of topological groups.
@@ -1263,7 +1271,7 @@ Let $ G $ be a topologically finitely generated profinite group. Let $ f : G \to
 \end{proposition}
 
 \begin{proof}
-Let $ G_n $ be the intersection of open subgroups of $ G $ of index at most $ n $. Then $ G_n \triangleleft_\o G $, and $ G \cong \varprojlim_n G / G_n $. Since $ f $ is a surjection, $ \sbr{G : f^{-1}\br{U}} = \sbr{G : U} $ for all $ U \le_\o G $. If $ U $ has index at most $ n $, then $ f^{-1}\br{U} $ has index at most $ n $, so $ f^{-1}\br{U} \supseteq G_n $, so $ f^{-1}\br{G_n} \supseteq G_n $, so $ f\br{G_n} \subseteq G_n $. So we have a quotient map $ f_n : G / G_n \twoheadrightarrow G / G_n $, which are surjections, hence isomorphisms. So $ \br{f_n} $ are a morphism of inverse systems giving $ f $, so $ f = \varprojlim_n f_n $ is an isomorphism. Or, if $ g \in G \setminus \cbr{1} $, then $ g \notin G_n $ for some $ n $ and then $ p_n\br{f\br{g}} = f_n\br{p_n\br{g}} \ne 1 $ so $ g \notin \ker f $.
+Let $ G_n $ be the intersection of open subgroups of $ G $ of index at most $ n $. Then $ G_n \triangleleft_\o G $, and $ G \cong \varprojlim_n G / G_n $. Since $ f $ is a surjection, $ \sbr{G : f^{-1}\br{U}} = \sbr{G : U} $ for all $ U \le_\o G $. If $ U $ has index at most $ n $, then $ f^{-1}\br{U} $ has index at most $ n $, so $ f^{-1}\br{U} \ge G_n $, so $ f^{-1}\br{G_n} \ge G_n $, so $ f\br{G_n} \le G_n $. So we have a quotient map $ f_n : G / G_n \twoheadrightarrow G / G_n $, which are surjections, hence isomorphisms. So $ \br{f_n} $ are a morphism of inverse systems giving $ f $, so $ f = \varprojlim_n f_n $ is an isomorphism. Or, if $ g \in G \setminus \cbr{1} $, then $ g \notin G_n $ for some $ n $ and then $ p_n\br{f\br{g}} = f_n\br{p_n\br{g}} \ne 1 $ so $ g \notin \ker f $.
 \end{proof}
 
 \begin{corollary}
@@ -1275,7 +1283,7 @@ Let $ f : G \to G $ be a surjection where $ G $ is finitely generated residually
 $$
 \begin{tikzcd}
 \widehat{G} \arrow{r}{\widehat{f}} & \widehat{G} \\
-G \arrow{u} \arrow{r}[swap]{f} & G \arrow{u}
+G \arrow[hookrightarrow]{u} \arrow{r}[swap]{f} & G \arrow[hookrightarrow]{u}
 \end{tikzcd}.
 $$
 Then $ \widehat{f} $ is surjective, so it is an isomorphism. Thus $ f $ is injective.
@@ -1286,15 +1294,15 @@ Let $ G $ be a Hopfian topological group and let $ H $ be a topological group. S
 \end{proposition}
 
 \begin{proof}
-$ f' \circ f : G \to G $ is a surjection, hence an isomorphism, and a homeomorphism. So $ f $ is injective and $ f' $ is injective, because $ f $ is a surjection, so isomorphisms. Also $ f^{-1} = \br{f' \circ f}^{-1} \circ f' $ and $ \br{f'}^{-1} = f \circ \br{f' \circ f}^{-1} $ are continuous.
+$ f' \circ f : G \to G $ is a surjection, hence an isomorphism, and a homeomorphism. So $ f $ is injective and $ f' $ is injective, because $ f $ is a surjection, so isomorphisms. Also $ f^{-1} = \br{f' \circ f}^{-1} \circ f' $ and $ f'^{-1} = f \circ \br{f' \circ f}^{-1} $ are continuous.
 \end{proof}
 
 \pagebreak
 
-Let $ \d $ be the minimum size of a generating set.
+Let $ \d $ be the minimal size of a generating set.
 
 \begin{proposition}
-Let $ G $ be a finitely generated residually finite group. Assume there is a finite quotient $ Q $ of $ G $ such that $ \d\br{Q} = \d\br{G} $. If $ \widehat{G} $ is isomorphic to $ \widehat{F} $ for $ F $ a free group, then $ G \le F $.
+Let $ G $ be a finitely generated residually finite group. Assume there is a finite quotient $ Q $ of $ G $ such that $ \d\br{Q} = \d\br{G} $. If $ \widehat{G} $ is isomorphic to $ \widehat{F} $ for $ F $ a free group, then $ G \cong F $.
 \end{proposition}
 
 \begin{proof}
@@ -1322,7 +1330,499 @@ a HNN extension. Define
 $$ \functions[f]{\BS\br{n, m}}{\BS\br{n, m}}{t}{t}{a}{a^n}. $$
 This is well-defined, since
 $$ f : ta^nt^{-1}a^{-m} \mapsto ta^{n^2}t^{-1}a^{mn} = \br{ta^nt^{-1}}^na^{-mn} = a^{mn}a^{-mn} = 1. $$
-Then $ f $ is surjective, since $ \im f \ni a^n, t $ and so $ \im f \ni ta^nt^{-1} = a^m $, so $ \im f \ni a $, since there exist $ r $ and $ s $ such that $ nr + ms = 1 $ so $ a = \br{a^n}^r\br{a^m}^s $. But $ f $ is not injective, since $ tat^{-1} $ does not commute with $ a $, by Britton's lemma. So $ \sbr{tat^{-1}, a} \ne 1 $. But $ f\br{\sbr{tat^{-1}, a}} = \sbr{ta^nt^{-1}, a^n} = \sbr{a^m, a^n} = 1 $. So $ \BS\br{m, n} $ is not Hopfian, hence not residually finite.
+\begin{itemize}
+\item $ f $ is surjective. Since $ \im f \ni a^n, t $, $ \im f \ni ta^nt^{-1} = a^m $, and so $ \im f \ni a $, since there exist $ r $ and $ s $ such that $ nr + ms = 1 $ so $ a = \br{a^n}^r\br{a^m}^s $.
+\item But $ f $ is not injective. By Britton's lemma, $ tat^{-1} $ does not commute with $ a $, so $ \sbr{tat^{-1}, a} \ne 1 $. But $ f\br{\sbr{tat^{-1}, a}} = \sbr{ta^nt^{-1}, a^n} = \sbr{a^m, a^n} = 1 $.
+\end{itemize}
+So $ \BS\br{m, n} $ is not Hopfian, hence not residually finite.
 \end{example}
+
+\subsection{Finite quotients of free groups}
+
+\lecture{12}{Tuesday}{16/02/21}
+
+\begin{theorem}
+Free groups are residually finite.
+\end{theorem}
+
+Previously, $ \F_2 \hookrightarrow \SL_2 \ZZ \to \SL_2 \br{\ZZ / n\ZZ} $.
+
+\begin{remark}
+This is true for infinitely generated free groups. If $ F = \abr{a_i}_{i \in I} $, take some $ g \in F \setminus \cbr{1} $. Then $ g $ can be written as a finite product of $ a_i^{\pm 1} $, so you need only finitely many $ a_i $. Factoring out the others gives $ F \twoheadrightarrow F' \twoheadrightarrow Q $, where $ F' $ is a finitely generated free group in which $ g $ is mapped to a non-trivial element.
+\end{remark}
+
+Residual finiteness if and only if $ \iota : G \hookrightarrow \widehat{G} $. Residual $ p $-finiteness, stronger than residual finiteness, is $ \iota : G \hookrightarrow \widehat{G_{\br{p}}} $, if and only if for all $ g \in G \setminus \cbr{1} $, there exists $ \phi : G \to Q $ where $ \abs{Q} = p^m $ such that $ \phi\br{g} \ne 1 $.
+
+\begin{proof}[Proof 1 (non-examinable)]
+Let $ p $ be a prime. Let $ X $ be a wedge of $ k $ circles, and $ F = \pi_1\br{X} $. Construct $ F_n \triangleleft F $ inductively, by
+$$ F_1 = F, \qquad F_{n + 1} = \bigcap \cbr{\ker f \st f : F_n \to \ZZ / p\ZZ} = \ker \br{F_n \to \prod_f \ZZ / p\ZZ}. $$
+
+\pagebreak
+
+Then $ F_n $ are characteristic subgroups, so normal, and $ \sbr{F : F_n} $ is a power of $ p $, by induction. Let $ X_n \to X $ be the cover corresponding to $ F_n \triangleleft F $. Claim that $ \girth X_{n + 1} > \girth X_n $, so $ \girth X_n \ge n $. Let $ l $ be any loop in $ X_n $ of minimal length, $ \girth X_n $. We show $ l $ does not lift to $ X_{n + 1} $. Because $ l $ is minimal length, there exists an edge $ e $ which it crosses once exactly. Collapsing everything except $ e $,
+$$ \function{F_n = \pi_1\br{X_n}}{\pi_1\br{\S^1} = \ZZ}{\sbr{l}}{1}. $$
+So we have a homomorphism
+$$ \function{F_n}{\ZZ / p\ZZ}{\sbr{l}}{1 \ne 0}, $$
+so $ \sbr{l} \notin F_{n + 1} $, hence $ l $ does not lift to $ X_{n + 1} $. Let $ g \in F \setminus \cbr{1} $. Write $ g $ as a loop in $ X $. Let $ n $ be the number of edges of $ l $. Then $ l $ cannot lift to $ X_{n + 1} $, with girth at least $ n + 1 $. So $ g \notin F_{n + 1} $.
+\end{proof}
+
+\begin{proof}[Proof 2]
+Let $ F = \abr{a_1, \dots, a_k} $ be a free group. Let $ X $ be a bouquet of $ k $ circles with $ \pi_1\br{X} = F $. Let $ g \in F \setminus \cbr{1} $. Write $ g $ as a product $ g = s_1 \dots s_m $ where $ s_i $ is $ a_j^{\pm 1} $. Let $ Y $ be a line segment labelled $ s_1 \dots s_m $. We add edges to $ Y $ to make it a covering space of $ X $. This covering space $ \widetilde{X} $ does not lift $ g $, so $ g \notin \pi_1\br{\widetilde{X}} $.
+\end{proof}
+
+\begin{example}
+Let $ F = \abr{a, b} $, and let $ X $ be
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.05);
+\draw (0, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ a $} (0, 0);
+\draw (0, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ b $} (0, 0);
+\end{tikzpicture}.
+$$
+If $ g = aba^{-1}b $, then $ \widetilde{X} $ is
+$$
+\begin{tikzpicture}
+\fill (1, 0) circle (0.05) node[above]{$ 1 $};
+\fill (2, 0) circle (0.05) node[above]{$ 2 $};
+\fill (3, 0) circle (0.05) node[above]{$ 3 $};
+\fill (4, 0) circle (0.05) node[above]{$ 4 $};
+\fill (5, 0) circle (0.05) node[above]{$ 5 $};
+\draw (1, 0) to node{$ > $} node[above]{$ a $} (2, 0);
+\draw (2, 0) to node{$ > $} node[above]{$ b $} (3, 0);
+\draw (3, 0) to node{$ < $} node[above]{$ a $} (4, 0);
+\draw (4, 0) to node{$ > $} node[above]{$ b $} (5, 0);
+\draw [dashed] (1, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ b $} (1, 0);
+\draw [dashed] (1, 0) to [in=-90, out=-90] node{$ < $} node[below]{$ a $} (2, 0);
+\draw [dashed] (2, 0) to [in=-90, out=-90] node{$ < $} node[below]{$ b $} (3, 0);
+\draw [dashed] (3, 0) to [in=-90, out=-90] node{$ > $} node[below]{$ a $} (4, 0);
+\draw [dashed] (4, 0) to [in=-90, out=-90] node{$ < $} node[below]{$ b $} (5, 0);
+\draw [dashed] (5, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ a $} (5, 0);
+\end{tikzpicture}.
+$$
+We get a homomorphism
+$$ \functions[\phi]{F}{\Sym 5}{a}{\br{12}\br{34}\br{5}}{b}{\br{1}\br{23}\br{45}}, $$
+acting on the right. Then
+$$ \phi\br{g} : \qquad 1 \mapsto 5, \qquad 2 \mapsto 3, \qquad 3 \mapsto 4, \qquad 4 \mapsto 1, \qquad 5 \mapsto 2, $$
+so $ \phi\br{g} = \br{15234} $.
+\end{example}
+
+We can also answer stronger questions.
+\begin{itemize}
+\item Given $ S \subseteq F $, does $ S $ generate $ F $? Given $ g \in F \setminus \cbr{1} $, does $ g \in \abr{S} $?
+\item Does $ \cbr{abcb^2cb^{-1}c^{-1}b^{-1}a^{-1}, bc^{-1}b^{-1}abc, bcb^{-1}} $ or $ \cbr{abcb^2cb^{-1}c^{-1}b^{-1}a^{-1}, bc^{-1}b^{-1}a^{-1}bc, bcb^{-1}} $ generate $ \abr{a, b, c} $?
+\end{itemize}
+
+\begin{theorem}[Marshall Hall's theorem]
+\label{thm:3.2.7}
+Let $ S $ be a finite subset of a finitely generated free group $ F $. Let $ y \notin \abr{S} $. Then there exists a finite group $ Q $ and $ f : F \to Q $ such that $ f\br{y} \notin f\br{\abr{S}} $.
+\end{theorem}
+
+\begin{corollary}
+A finite subset $ S \subset F $ generates $ F $ if and only if $ S $ topologically generates $ \widehat{F} $.
+\end{corollary}
+
+\begin{proof}
+If $ S $ generates $ F $, it generates $ \widehat{F} $ topologically since $ \abr{S} = F $ is dense in $ \widehat{F} $. If $ \abr{S} \ne F $, there exists $ y \notin \abr{S} $. Take a finite group $ Q $ and $ f : F \to Q $ as in Theorem \ref{thm:3.2.7}. Then $ f\br{y} \notin f\br{\abr{S}} $, so $ f\br{\abr{S}} \ne f\br{F} $. Thus $ \abr{S} $ is not dense in $ \widehat{F} $.
+\end{proof}
+
+Marshall Hall's theorem says there exists $ H \le_\f F $ such that $ H = \abr{S} * H' $.
+
+\pagebreak
+
+\lecture{13}{Thursday}{18/02/21}
+
+\begin{example}
+Let $ F = \abr{a, b} $, and let $ S = \cbr{aba, ba^2b} $. We will show $ \abr{S} \ne F $. Start by writing the elements of $ S $ as loops
+$$
+\begin{tikzpicture}
+\draw (0, 2) node{$ Y $};
+\fill (0, 0) circle (0.1);
+\fill (-1, 1) circle (0.05);
+\fill (-1, -1) circle (0.05);
+\fill (1, -1) circle (0.05);
+\fill (1, 1) circle (0.05);
+\fill (2, 0) circle (0.05);
+\draw (0, 0) to node{\rotatebox{45}{$ \wedge $}} node[above right]{$ a $} (-1, 1);
+\draw (-1, 1) to node{$ \vee $} node[right]{$ b $} (-1, -1);
+\draw (-1, -1) to node{\rotatebox{45}{$ > $}} node[below right]{$ a $} (0, 0);
+\draw (0, 0) to node{\rotatebox{45}{$ > $}} node[above left]{$ b $} (1, 1);
+\draw (1, 1) to node{\rotatebox{45}{$ \vee $}} node[above right]{$ a $} (2, 0);
+\draw (2, 0) to node{\rotatebox{45}{$ < $}} node[below right]{$ a $} (1, -1);
+\draw (1, -1) to node{\rotatebox{45}{$ \wedge $}} node[below left]{$ b $} (0, 0);
+\draw [->] (4, 0) to (5, 0);
+\draw (7, 1) node{$ X $};
+\fill (7, 0) circle (0.1);
+\draw (7, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ a $} (7, 0);
+\draw (7, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ b $} (7, 0);
+\end{tikzpicture},
+$$
+such that $ \pi_1\br{Y} \to \abr{S} \le \pi_1\br{X} $. Now add edges to make a covering space
+$$
+\begin{tikzpicture}
+\draw (0, 2) node{$ Y $};
+\fill (0, 0) circle (0.1) node[right]{$ 1 $};
+\fill (-1, 1) circle (0.05) node[above]{$ 2 $};
+\fill (-1, -1) circle (0.05) node[below]{$ 3 $};
+\fill (1, -1) circle (0.05) node[below]{$ 4 $};
+\fill (1, 1) circle (0.05) node[above]{$ 5 $};
+\fill (2, 0) circle (0.05) node[right]{$ 6 $};
+\draw (0, 0) to node{\rotatebox{45}{$ \wedge $}} node[above right]{$ a $} (-1, 1);
+\draw (-1, 1) to node{$ \vee $} node[right]{$ b $} (-1, -1);
+\draw (-1, -1) to node{\rotatebox{45}{$ > $}} node[below right]{$ a $} (0, 0);
+\draw (0, 0) to node{\rotatebox{45}{$ > $}} node[above left]{$ b $} (1, 1);
+\draw (1, 1) to node{\rotatebox{45}{$ \vee $}} node[above right]{$ a $} (2, 0);
+\draw (2, 0) to node{\rotatebox{45}{$ < $}} node[below right]{$ a $} (1, -1);
+\draw (1, -1) to node{\rotatebox{45}{$ \wedge $}} node[below left]{$ b $} (0, 0);
+\draw [dashed] (-1, 1) to [in=135, out=-135] node{$ \vee $} node[left]{$ a $} (-1, -1);
+\draw [dashed] (1, -1) to node{$ \vee $} node[right]{$ a $} (1, 1);
+\draw [dashed] (1, 1) to node{$ < $} node[above]{$ b $} (-1, 1);
+\draw [dashed] (-1, -1) to node{$ > $} node[below]{$ b $} (1, -1);
+\draw [dashed] (2, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ b $} (2, 0);
+\draw [->] (4, 0) to (5, 0);
+\draw (7, 1) node{$ X $};
+\fill (7, 0) circle (0.1);
+\draw (7, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ a $} (7, 0);
+\draw (7, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ b $} (7, 0);
+\end{tikzpicture}.
+$$
+The explicit homomorphism to a finite group is
+$$ \functions[\phi]{F}{\Sym 6}{a}{\br{123}\br{456}}{b}{\br{15234}\br{6}}. $$
+Note that $ \phi\br{\abr{S}} \le \Stab 1 $ and $ \phi\br{a} \notin \Stab 1 $.
+\end{example}
+
+A \textbf{Stallings fold} is an operation on oriented, labelled graphs.
+
+\begin{example}
+Let $ F = \abr{a, b} $, and let $ S = \cbr{a^3, ab^2aba^{-1}, ab^{-1}ab^3} $. Then
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1);
+\fill (-0.5, -1) circle (0.05);
+\fill (0.5, -1) circle (0.05);
+\fill (-1, 0) circle (0.05);
+\fill (-2, 0.5) circle (0.05);
+\fill (-2.5, 1.5) circle (0.05);
+\fill (-1.5, 1.5) circle (0.05);
+\fill (-0.5, 1) circle (0.05);
+\fill (0.5, 1) circle (0.05);
+\fill (1.5, 1.5) circle (0.05);
+\fill (2.5, 1.5) circle (0.05);
+\fill (2, 0.5) circle (0.05);
+\fill (1, 0) circle (0.05);
+\draw (0, 0) to node{\rotatebox{60}{$ < $}} node[left]{$ a $} (-0.5, -1);
+\draw (-0.5, -1) to node{$ > $} node[below]{$ a $} (0.5, -1);
+\draw (0.5, -1) to node{\rotatebox{30}{$ \wedge $}} node[right]{$ a $} (0, 0);
+\draw (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{60}{$ \wedge $}} node[below]{$ b $} (-2, 0.5);
+\draw (-2, 0.5) to node{\rotatebox{30}{$ \wedge $}} node[left]{$ b $} (-2.5, 1.5);
+\draw (-2.5, 1.5) to node{$ > $} node[above]{$ a $} (-1.5, 1.5);
+\draw (-1.5, 1.5) to node{\rotatebox{60}{$ \vee $}} node[above]{$ b $} (-0.5, 1);
+\draw (0, 0) to node{\rotatebox{30}{$ \wedge $}} node[left]{$ a $} (-0.5, 1);
+\draw (0, 0) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0.5, 1);
+\draw (1.5, 1.5) to node{\rotatebox{30}{$ < $}} node[above]{$ b $} (0.5, 1);
+\draw (1.5, 1.5) to node{$ > $} node[above]{$ a $} (2.5, 1.5);
+\draw (2.5, 1.5) to node{\rotatebox{60}{$ < $}} node[right]{$ b $} (2, 0.5);
+\draw (2, 0.5) to node{\rotatebox{30}{$ < $}} node[below]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\end{tikzpicture}.
+$$
+Folding,
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1);
+\fill (-1, 0) circle (0.05);
+\fill (-0.5, -1) circle (0.05);
+\fill (-2, 0) circle (0.05);
+\fill (-2.5, 1) circle (0.05);
+\fill (-1.5, 1) circle (0.05);
+\fill (-0.5, 1) circle (0.05);
+\fill (0.5, 1) circle (0.05);
+\fill (1.5, 1) circle (0.05);
+\fill (1, 0) circle (0.05);
+\draw [very thick] (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{30}{$ \vee $}} node[left]{$ a $} (-0.5, -1);
+\draw (-0.5, -1) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0, 0);
+\draw (-1, 0) to node{$ < $} node[below]{$ b $} (-2, 0);
+\draw (-2, 0) to node{\rotatebox{30}{$ \wedge $}} node[left]{$ b $} (-2.5, 1);
+\draw (-2.5, 1) to node{$ > $} node[above]{$ a $} (-1.5, 1);
+\draw (-1.5, 1) to node{\rotatebox{30}{$ \vee $}} node[left]{$ b $} (-1, 0);
+\draw (-0.5, 1) to node{\rotatebox{60}{$ < $}} node[right]{$ b $} (-1, 0);
+\draw (-0.5, 1) to node{$ > $} node[above]{$ a $} (0.5, 1);
+\draw (0.5, 1) to node{$ > $} node[above]{$ b $} (1.5, 1);
+\draw (1.5, 1) to node{\rotatebox{60}{$ < $}} node[right]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\end{tikzpicture}.
+$$
+
+\pagebreak
+
+Folding,
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1);
+\fill (-1, 0) circle (0.05);
+\fill (-0.5, -1) circle (0.05);
+\fill (-2, 0) circle (0.05);
+\fill (-2, 1) circle (0.05);
+\fill (-1, 1) circle (0.05);
+\fill (0, 1) circle (0.05);
+\fill (1, 1) circle (0.05);
+\fill (1, 0) circle (0.05);
+\draw (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{30}{$ \vee $}} node[left]{$ a $} (-0.5, -1);
+\draw (-0.5, -1) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0, 0);
+\draw (-1, 0) to node{$ < $} node[below]{$ b $} (-2, 0);
+\draw (-2, 0) to node{$ \wedge $} node[left]{$ b $} (-2, 1);
+\draw (-2, 1) to node{$ > $} node[above]{$ a $} (-1, 1);
+\draw [very thick] (-1, 1) to node{$ \vee $} node[right]{$ b $} (-1, 0);
+\draw (-1, 1) to node{$ > $} node[above]{$ a $} (0, 1);
+\draw (0, 1) to node{$ > $} node[above]{$ b $} (1, 1);
+\draw (1, 1) to node{$ \vee $} node[right]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\end{tikzpicture}.
+$$
+Now can add edges to make a covering
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1) node[below right]{$ 1 $};
+\fill (-1, 0) circle (0.05) node[below left]{$ 7 $};
+\fill (-0.5, -1) circle (0.05) node[below]{$ 9 $};
+\fill (-2, 0) circle (0.05) node[below]{$ 6 $};
+\fill (-2, 1) circle (0.05) node[above left]{$ 2 $};
+\fill (-1, 1) circle (0.05) node[above]{$ 3 $};
+\fill (0, 1) circle (0.05) node[above right]{$ 4 $};
+\fill (1, 1) circle (0.05) node[above]{$ 5 $};
+\fill (1, 0) circle (0.05) node[below]{$ 8 $};
+\draw (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{30}{$ \vee $}} node[left]{$ a $} (-0.5, -1);
+\draw (-0.5, -1) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0, 0);
+\draw (-1, 0) to node{$ < $} node[below]{$ b $} (-2, 0);
+\draw (-2, 0) to node{$ \wedge $} node[left]{$ b $} (-2, 1);
+\draw (-2, 1) to node{$ > $} node[above]{$ a $} (-1, 1);
+\draw (-1, 1) to node{$ \vee $} node[right]{$ b $} (-1, 0);
+\draw (-1, 1) to node{$ > $} node[above]{$ a $} (0, 1);
+\draw (0, 1) to node{$ > $} node[above]{$ b $} (1, 1);
+\draw (1, 1) to node{$ \vee $} node[right]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\draw [dashed] (0, 0) to node{$ \wedge $} node[right]{$ b $} (0, 1);
+\draw [dashed] (-2, 1) to [in=-135, out=-45] node{$ > $} node[below]{$ b $} (-1, 1);
+\draw [dashed] (0, 1) to [in=90, out=90] node{$ < $} node[above]{$ a $} (-2, 1);
+\draw [dashed] (1, 1) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ a $} (1, 1);
+\draw [dashed] (-2, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ a $} (-2, 0);
+\draw [dashed] (1, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ a $} (1, 0);
+\draw [dashed] (-0.5, -1) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ b $} (-0.5, -1);
+\end{tikzpicture}.
+$$
+The homomorphism to $ \Sym 9 $ is
+$$ \functions[\phi]{F}{\Sym 9}{a}{\br{179}\br{234}\br{5}\br{6}\br{8}}{b}{\br{1458}\br{2376}\br{9}}. $$
+Then $ \phi\br{\abr{S}} \le \Stab 1 $ and $ \phi\br{a} \notin \Stab 1 $, so $ \phi\br{\abr{S}} \ne \phi\br{F} $. Thus $ \abr{S} \ne F $. The other case is that folding gives a one-vertex graph, then $ \abr{S} $ is generated by some standard generators of $ F $.
+\end{example}
+
+What if we want to know if a specific $ y $ lies in $ \abr{S} $? Add $ y $ into starting graph as a line.
+
+\begin{example}
+Let $ y = a^{-1}ba $. Then
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1);
+\fill (-0.5, -1) circle (0.05);
+\fill (0.5, -1) circle (0.05);
+\fill (-1, 0) circle (0.05);
+\fill (-2, 0.5) circle (0.05);
+\fill (-2.5, 1.5) circle (0.05);
+\fill (-1.5, 1.5) circle (0.05);
+\fill (-0.5, 1) circle (0.05);
+\fill (0.5, 1) circle (0.05);
+\fill (1.5, 1.5) circle (0.05);
+\fill (2.5, 1.5) circle (0.05);
+\fill (2, 0.5) circle (0.05);
+\fill (1, 0) circle (0.05);
+\fill (1.5, -1) circle (0.05);
+\fill (2.5, -1) circle (0.05);
+\fill (3.5, -1) circle (0.05);
+\draw (0, 0) to node{\rotatebox{60}{$ < $}} node[left]{$ a $} (-0.5, -1);
+\draw (-0.5, -1) to node{$ > $} node[below]{$ a $} (0.5, -1);
+\draw (0.5, -1) to node{\rotatebox{30}{$ \wedge $}} node[right]{$ a $} (0, 0);
+\draw (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{60}{$ \wedge $}} node[below]{$ b $} (-2, 0.5);
+\draw (-2, 0.5) to node{\rotatebox{30}{$ \wedge $}} node[left]{$ b $} (-2.5, 1.5);
+\draw (-2.5, 1.5) to node{$ > $} node[above]{$ a $} (-1.5, 1.5);
+\draw (-1.5, 1.5) to node{\rotatebox{60}{$ \vee $}} node[above]{$ b $} (-0.5, 1);
+\draw (0, 0) to node{\rotatebox{30}{$ \wedge $}} node[left]{$ a $} (-0.5, 1);
+\draw (0, 0) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0.5, 1);
+\draw (1.5, 1.5) to node{\rotatebox{30}{$ < $}} node[above]{$ b $} (0.5, 1);
+\draw (1.5, 1.5) to node{$ > $} node[above]{$ a $} (2.5, 1.5);
+\draw (2.5, 1.5) to node{\rotatebox{60}{$ < $}} node[right]{$ b $} (2, 0.5);
+\draw (2, 0.5) to node{\rotatebox{30}{$ < $}} node[below]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\draw (1.5, -1) to node{\rotatebox{50}{$ \wedge $}} node[right]{$ a $} (0, 0);
+\draw (1.5, -1) to node{$ > $} node[below]{$ b $} (2.5, -1);
+\draw (2.5, -1) to node{$ > $} node[below]{$ a $} (3.5, -1);
+\end{tikzpicture}.
+$$
+Folding gives a covering space
+$$
+\begin{tikzpicture}
+\fill (0, 0) circle (0.1) node[below right]{$ 1 $};
+\fill (-1, 0) circle (0.05) node[below left]{$ 7 $};
+\fill (-0.5, -1) circle (0.05) node[below]{$ 9 $};
+\fill (-2, 0) circle (0.05) node[below]{$ 6 $};
+\fill (-2, 1) circle (0.05) node[above left]{$ 2 $};
+\fill (-1, 1) circle (0.05) node[above]{$ 3 $};
+\fill (0, 1) circle (0.05) node[above right]{$ 4 $};
+\fill (1, 1) circle (0.05) node[above]{$ 5 $};
+\fill (1, 0) circle (0.05) node[below]{$ 8 $};
+\fill (0.5, -1) circle (0.05) node[below]{$ 10 $};
+\fill (1.5, -1) circle (0.05) node[below]{$ 11 $};
+\draw (0, 0) to node{$ < $} node[below]{$ a $} (-1, 0);
+\draw (-1, 0) to node{\rotatebox{30}{$ \vee $}} node[left]{$ a $} (-0.5, -1);
+\draw [very thick] (-0.5, -1) to node{\rotatebox{60}{$ > $}} node[right]{$ a $} (0, 0);
+\draw (-1, 0) to node{$ < $} node[below]{$ b $} (-2, 0);
+\draw (-2, 0) to node{$ \wedge $} node[left]{$ b $} (-2, 1);
+\draw (-2, 1) to node{$ > $} node[above]{$ a $} (-1, 1);
+\draw (-1, 1) to node{$ \vee $} node[right]{$ b $} (-1, 0);
+\draw (-1, 1) to node{$ > $} node[above]{$ a $} (0, 1);
+\draw (0, 1) to node{$ > $} node[above]{$ b $} (1, 1);
+\draw (1, 1) to node{$ \vee $} node[right]{$ b $} (1, 0);
+\draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
+\draw (-0.5, -1) to node{$ > $} node[above]{$ b $} (0.5, -1);
+\draw (0.5, -1) to node{$ > $} node[above]{$ a $} (1.5, -1);
+\draw [dashed] (0, 0) to node{$ \wedge $} node[right]{$ b $} (0, 1);
+\draw [dashed] (-2, 1) to [in=-135, out=-45] node{$ > $} node[below]{$ b $} (-1, 1);
+\draw [dashed] (0, 1) to [in=90, out=90] node{$ < $} node[above]{$ a $} (-2, 1);
+\draw [dashed] (1, 1) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ a $} (1, 1);
+\draw [dashed] (-2, 0) to [in=-135, out=135, distance=45] node{$ \vee $} node[left]{$ a $} (-2, 0);
+\draw [dashed] (1, 0) to [in=-45, out=45, distance=45] node{$ \vee $} node[right]{$ a $} (1, 0);
+\draw [dashed] (0.5, -1) to [in=-45, out=-135] node{$ < $} node[below]{$ b $} (-0.5, -1);
+\draw [dashed] (1.5, -1) to [in=-45, out=-135] node{$ < $} node[below]{$ a $} (0.5, -1);
+\end{tikzpicture}.
+$$
+Thus $ \phi\br{\abr{S}} \le \Stab 1 $ and $ y : \br{1 \mapsto 11} \notin \Stab 1 $. The other option is that $ y $ gets folded into being a loop, then $ y \in \abr{S} $.
+\end{example}
+
+\pagebreak
+
+\section{Pro-\texorpdfstring{$ p $}{p} groups}
+
+Recall that a pro-$ p $ group is an inverse limit of finite $ p $-groups, groups of order $ p^n $ for $ p $ a fixed prime. For example, the pro-$ p $ completion of a group such as $ \ZZ_p = \widehat{\ZZ_{\br{p}}} $.
+
+\subsection{Generators of pro-\texorpdfstring{$ p $}{p} groups}
+
+\begin{definition}
+Let $ G $ be a finite group. The \textbf{Frattini subgroup} of $ G $, denoted $ \Phi\br{G} $, is
+$$ \Phi\br{G} = \bigcap \cbr{M \st M \ \text{is a maximal proper subgroup of} \ G}, $$
+such that if $ M \le H \le G $ then $ M = H $ or $ H = G $.
+\end{definition}
+
+Importantly, if $ G $ is finite, then every proper subgroup is contained in a maximal proper subgroup.
+
+\begin{proposition}
+For $ G $ a finite group and $ S \subseteq G $, the following are equivalent.
+\begin{enumerate}
+\item $ S $ generates $ G $.
+\item $ S\Phi\br{G} $ generates $ G $, so $ \Phi\br{G} $ are non-generators.
+\item The image of $ S $ in $ G / \Phi\br{G} $ generates $ G / \Phi\br{G} $.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}[leftmargin=0.5in]
+\item[$ 1 \implies 2 $.] Trivial.
+\item[$ 2 \implies 3 $.] Trivial.
+\item[$ 3 \implies 1 $.] Suppose $ S $ does not generate $ G $. Then $ \abr{S} $ is a proper subgroup, so, since $ G $ is finite, $ \abr{S} $ is contained in a maximal proper subgroup $ M $ of $ G $. Since $ \Phi = \Phi\br{G} \le M $, $ M / \Phi \ne G / \Phi $, so $ S\Phi / \Phi \le M / \Phi \ne G / \Phi $, so $ S\Phi / \Phi $ does not generate $ G / \Phi $.
+\end{itemize}
+\end{proof}
+
+\lecture{14}{Saturday}{20/02/21}
+
+\begin{proposition}
+Let $ f : G \to H $ be a surjection of finite groups. Then $ f\br{\Phi\br{G}} \le \Phi\br{H} $. Hence, $ \Phi\br{G} $ is a characteristic subgroup of $ G $.
+\end{proposition}
+
+\begin{remark}
+Surjection is necessary. For example, let $ \ZZ / 4\ZZ = \CCC_4 \hookrightarrow \Sym 5 $. Then $ \Phi\br{\ZZ / 4\ZZ} = 2\ZZ / 4\ZZ = \abr{2} $ and $ \Phi\br{\Sym 5} = 1 $, since $ \AAA_5 $ is ruled out by $ \Stab 1 $, a maximal proper subgroup not containing $ \AAA_5 $.
+\end{remark}
+
+\begin{proof}
+Let $ M $ be a maximal proper subgroup of $ H $. We claim $ f^{-1}\br{M} $ is a maximal proper subgroup of $ G $. Properness follows from surjectivity. If $ \ker f \le f^{-1}\br{M} < G' \le G $, then $ M < f\br{G'} \le H = f\br{G} $. Since $ M $ is maximal, $ f\br{G'} = H $. Then $ G' = G $, since if $ g \in G $, then $ f\br{g} = f\br{g'} \in H $, for some $ g' \in G' $, then $ gg'^{-1} \in \ker f $, so $ g \in g'\ker f \le G' $. Thus $ \Phi\br{G} \le f^{-1}\br{M} $, so $ f\br{\Phi\br{G}} \le M $, so $ f\br{\Phi\br{G}} \le \Phi\br{H} $.
+\end{proof}
+
+\begin{definition}
+Let $ G $ be a group and $ H, K \le G $. Let $ m $ be an integer. Define
+$$ \sbr{H, K} = \abr{\cbr{\sbr{h, k} \st h \in H, \ k \in K}}, \qquad H^m = \abr{\cbr{h^m \st h \in H}}, \qquad HK = \cbr{hk \st h \in H, \ k \in K}. $$
+\end{definition}
+
+If $ H \triangleleft G $ then $ HK $ is a subgroup and $ H^m $ is normal. If $ H \triangleleft G $ and $ K \triangleleft G $ then $ HK \triangleleft G $ and $ H \cap K \ge \sbr{H, K} \triangleleft G $.
+
+\begin{proposition}
+Let $ G $ be a finite $ p $-group. Then
+$$ \Phi\br{G} = \sbr{G, G}G^p = \abr{\cbr{\sbr{g_1, g_2}g_3^p \st g_1, g_2, g_3 \in G}} = \ker \br{G \to G_{\ab} \to G_{\ab} / pG_{\ab}}, $$
+where $ \H_1\br{G, \FF_p} = G_{\ab} / pG_{\ab} $ is a vector space $ \FF_p^{\d\br{G}} $ over $ \FF_p $.
+\end{proposition}
+
+\begin{proof}
+On example sheet $ 3 $.
+\end{proof}
+
+\pagebreak
+
+\begin{definition}
+Let $ G $ be a profinite group. Define the \textbf{Frattini subgroup}
+$$ \Phi\br{G} = \bigcap \cbr{M \st M \ \text{is a maximal proper closed subgroup of} \ G}, $$
+which is closed, where if $ M \le_\c H \le_\c G $ then $ H = M $ or $ H = G $.
+\end{definition}
+
+\begin{proposition}
+Any proper closed subgroup of a profinite group $ G $ is contained in a proper open subgroup. Hence a maximal proper closed subgroup is open, and any closed subgroup is contained in a maximal proper closed subgroup.
+\end{proposition}
+
+\begin{proof}
+Let $ H \le_\c G $ such that $ H \ne G $. Then by Corollary \ref{cor:1.2.30}, there exists $ p : G \to Q $ for $ Q $ finite such that $ p\br{H} \ne p\br{G} $. Then $ p^{-1}\br{p\br{H}} $ is open and proper, and contains $ H $. Open subgroups have finite index, so maximal if and only if smallest index.
+\end{proof}
+
+\begin{proposition}
+Let $ f : G \to H $ be a surjective continuous homomorphism of profinite groups. Then $ f\br{\Phi\br{G}} \le \Phi\br{H} $.
+\end{proposition}
+
+\begin{proposition}
+Let $ G $ be profinite and $ S \subseteq G $. Then the following are equivalent.
+\begin{itemize}
+\item $ S $ topologically generates $ G $.
+\item $ S\Phi\br{G} $ topologically generates $ G $.
+\item $ S\Phi\br{G} / \Phi\br{G} $ topologically generates $ G / \Phi\br{G} $.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Let $ \br{G_j}_{j \in J} $ be a surjective inverse system of finite groups and $ G = \varprojlim_j G_j $. Then $ \Phi\br{G} = \varprojlim_j \Phi\br{G_j} $.
+\end{proposition}
+
+\begin{proof}
+$ \Phi\br{G} = \varprojlim_j p_j\br{\Phi\br{G}} \le \varprojlim_j \Phi\br{G_j} $. Let $ M $ be a maximal proper closed subgroup of $ G $. Since $ M $ is open, there exists $ i \in J $ such that $ \ker p_i \le M $. This implies $ \ker p_j \le M $ for $ j \le i $. Then $ p_j\br{M} $ is a maximal proper subgroup of $ G_j $ for all $ j \le i $, so $ \Phi\br{G_j} \le p_j\br{M} $ for all $ j \le i $. Pass to the cofinal subsystem $ \cbr{j \le i} $. Now $ \varprojlim_j \Phi\br{G_j} \le \varprojlim_j p_j\br{M} = M $. So $ \varprojlim_{j \in J} \Phi\br{G_j} \le M $ for all $ M $, so $ \varprojlim_{j \in J} \Phi\br{G_j} \le \Phi\br{G} $.
+\end{proof}
+
+\begin{proposition}
+Let $ G $ be a topologically finitely generated pro-$ p $ group. Then
+$$ \Phi\br{G} = \overline{\sbr{G, G}G^p} = \H_1\br{G, \FF_p}, \qquad G / \Phi\br{G} \cong \FF_p^d, $$
+where $ d = \d\br{G} $ is the minimal size of a topological generating set of $ G $.
+\end{proposition}
+
+\begin{proof}
+Write $ G = \varprojlim_j G_j $ as a surjective inverse system of finite $ p $-groups. We know $ \Phi\br{G} = \varprojlim_j \sbr{G_j, G_j}G_j^p $. For any $ \sbr{g_1, g_2}g_3^p $ for $ g_1, g_2, g_3 \in G $ we have $ p_j\br{\sbr{g_1, g_2}g_3^p} = \sbr{p_j\br{g_1}, p_j\br{g_2}}p_j\br{g_3}^p \in \sbr{G_j, G_j}G_j^p $, so $ \overline{\sbr{G, G}G^p} \le \varprojlim_j \sbr{G_j, G_j}G_j^p = \Phi\br{G} $. Since $ G / \overline{\sbr{G, G}G^p} $ is topologically finitely generated, abelian, and every element has order $ p $, it is finite and equal to $ \FF_p^d $ for some $ d $. But $ \Phi\br{\FF_p^d} = \cbr{0} $, so $ \Phi\br{G} \le \overline{\sbr{G, G}G^p} $.
+\end{proof}
+
+\begin{example}
+Generation of $ \widehat{F_{\br{p}}} $ is easy. Let $ F = \abr{a, b} $. Then
+$$ \functions{\widehat{F_{\br{p}}}}{\widehat{F_{\br{p}}} / \Phi = \FF_p^2}{a}{\br{1, 0}}{b}{\br{0, 1}}. $$
+\end{example}
+
+\begin{corollary}
+Let $ f : G \to H $ be a continuous homomorphism of topologically finitely generated pro-$ p $ groups. Then $ f\br{\Phi\br{G}} \le \Phi\br{H} $. So $ f $ induces a map $ f_* : G / \Phi\br{G} \to H / \Phi\br{H} $ and $ f $ is surjective if and only if $ f_* $ is surjective.
+\end{corollary}
+
+\begin{proof}
+$ f\br{\sbr{g_1, g_2}g_3^p} = \sbr{f\br{g_1}, f\br{g_2}}f\br{g_3}^p \in \Phi\br{H} $ for all $ g_1, g_2, g_3 \in G $. Then $ f\br{\sbr{G, G}G^p} \le \Phi\br{H} $, so $ f\br{\Phi\br{G}} = f\br{\overline{\sbr{G, G}G^p}} \le \Phi\br{H} $. If $ f_* $ is surjective, then the image of $ f\br{G} $ in $ H / \Phi\br{H} $ generates $ H / \Phi\br{H} $, so $ f\br{G} $ topologically generates $ H $. So $ f\br{G} = H $.
+\end{proof}
 
 \end{document}
