@@ -366,7 +366,7 @@ $$ \abs{\N_{L / K}\br{x}}_v = \prod_{w \mid v} \abs{x}_w. $$
 
 \begin{proof}
 $ \N_{L / K}\br{x} = \prod_{w \mid v} \N_{L_w / K_v}\br{x} $ so it is enough to show $ \abs{\N_{L_w / K_v}\br{x}}_v = \abs{x}_w $. If $ v $ is finite, it is enough to take $ x = \pi_w \in L $, and
-$$ \abs{\N_{L_w / K_v}\br{\pi_w}}_v = \abs{u\pi_v^{\f\br{w \mid v}}}_v = \q_v^{-\f\br{w \mid v}} = \q_w^{-1} = \abs{\pi_w}_w, \qquad u \in \OOO_K^\times. $$
+$$ \abs{\N_{L_w / K_v}\br{\pi_w}}_v = \abs{u\pi_v^{\f\br{w \mid v}}}_v = \q_v^{-\f\br{w \mid v}} = \q_w^{-1} = \abs{\pi_w}_w, \qquad u \in \OOO_{K_v}^\times. $$
 If $ v $ is infinite, need only consider $ L_w / K_v \cong \CC / \RR $ and $ \N_{\CC / \RR}\br{z} = z\overline{z} $.
 \end{proof}
 
@@ -639,28 +639,29 @@ so $ \prod_i \qqq_i^{e_i} \subset \ppp S $ gives $ \sum_i e_if_i \ge n $. As $ \
 
 \pagebreak
 
-\section{Examples}
-
-\subsection{Quadratic fields}
+\section{Example: quadratic fields}
 
 \lecture{7}{Thursday}{04/02/21}
 
 Let $ K = \QQ\br{\sqrt{d}} $ for $ d \in \QQ^\times $ not a square. Multiplying $ d $ by a square, can assume $ d \in \ZZ \setminus \cbr{0, 1} $ is squarefree. Then $ \OOO_K \supset \ZZ\sbr{\sqrt{d}} = \ZZ \oplus \ZZ\sqrt{d} $.
-\begin{itemize}
-\item Since $ \Tr_{K / \QQ}\br{1} = 2 $ and $ \Tr_{K / \QQ}\br{\sqrt{d}} = 0 $, $ \disc \br{1, \sqrt{d}} = 4d $, so
-\begin{itemize}
-\item either $ \d_K = 4d $, and $ \OOO_K = \ZZ\sbr{\sqrt{d}} $,
-\item or $ \d_K = d $, and $ \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} = 2 $.
-\end{itemize}
-The latter holds if and only if there exist $ m, n \in \ZZ $ not both even with $ \tfrac{m + n\sqrt{d}}{2} \in \OOO_K $, if and only if $ \tfrac{1 + \sqrt{d}}{2} \in \OOO_K $ since obviously $ \tfrac{1}{2}, \tfrac{\sqrt{d}}{2} \notin \OOO_K $, if and only if $ d \equiv 1 \mod 4 $ since the minimal polynomial of $ \tfrac{1 + \sqrt{d}}{2} $ is $ \br{T - \tfrac{1}{2}}^2 - \tfrac{d}{4} = T^2 - T - \tfrac{d - 1}{4} $, in which case $ \OOO_K = \ZZ \oplus \ZZ\tfrac{1 + \sqrt{d}}{2} = \ZZ\sbr{\tfrac{1 + \sqrt{d}}{2}} $.
-\item The dual basis of $ \br{1, \sqrt{d}} $ for the trace form is $ \br{\tfrac{1}{2}, \tfrac{1}{2\sqrt{d}}} $, so
+
+\subsection{Discriminant and different}
+
+Since $ \Tr_{K / \QQ}\br{1} = 2 $ and $ \Tr_{K / \QQ}\br{\sqrt{d}} = 0 $, $ \disc \br{1, \sqrt{d}} = 4d $, so either $ \d_K = 4d $, and
+$$ \OOO_K = \ZZ\sbr{\sqrt{d}}, $$
+or $ \d_K = d $, and $ \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} = 2 $. This holds if and only if there exist $ m, n \in \ZZ $ not both even with $ \tfrac{m + n\sqrt{d}}{2} \in \OOO_K $, if and only if $ \tfrac{1 + \sqrt{d}}{2} \in \OOO_K $ since obviously $ \tfrac{1}{2}, \tfrac{\sqrt{d}}{2} \notin \OOO_K $, if and only if $ d \equiv 1 \mod 4 $ since the minimal polynomial of $ \tfrac{1 + \sqrt{d}}{2} $ is $ \br{T - \tfrac{1}{2}}^2 - \tfrac{d}{4} = T^2 - T - \tfrac{d - 1}{4} $, in which case
+$$ \OOO_K = \ZZ \oplus \ZZ\tfrac{1 + \sqrt{d}}{2} = \ZZ\sbr{\tfrac{1 + \sqrt{d}}{2}}. $$
+The dual basis of $ \br{1, \sqrt{d}} $ for the trace form is $ \br{\tfrac{1}{2}, \tfrac{1}{2\sqrt{d}}} $, so
 $$ \DDD_{K / \QQ} =
 \begin{cases}
 \abr{2\sqrt{d}} & d \not\equiv 1 \mod 4 \\
 \abr{\sqrt{d}} & d \equiv 1 \mod 4
 \end{cases}.
 $$
-\item Decomposition of $ \abr{p} \subset \OOO_K $ by Kummer-Dedekind.
+
+\subsection{Decomposition of primes}
+
+By Kummer-Dedekind.
 \begin{itemize}
 \item If $ p \ne 2 $ or $ d \not\equiv 1 \mod 4 $ then $ p \nmid \br{\OOO_K : \ZZ\sbr{\sqrt{d}}} $. So applying the criterion to $ T^2 - d $, see that
 \begin{itemize}
@@ -674,10 +675,11 @@ $$
 \item $ \abr{2} = \ppp\ppp' $ is split if $ d \equiv 1 \mod 8 $ and $ \ppp = \abr{2, \tfrac{\sqrt{d} + 1}{2}} \ne \abr{2, \tfrac{\sqrt{d} - 1}{2}} = \ppp' $.
 \end{itemize}
 \end{itemize}
-\end{itemize}
 Go through the calculations if you have not seen them before. \footnote{Exercise}
 
-\subsection{Cyclotomic fields}
+\pagebreak
+
+\section{Example: cyclotomic fields}
 
 Recall some Galois theory. Let $ n > 1 $, and let $ K $ be a field of characteristic zero or characteristic $ p \nmid n $. Suppose $ L = K\br{\zeta_n} $, where $ \zeta_n \in L $ is a primitive $ n $-th root of unity, that is $ \zeta_n^m \ne 1 $ for all $ 1 \le m < n $. Equivalently, $ \zeta_n $ is a root of the $ n $-th cyclotomic polynomial $ \Phi_n \in \ZZ\sbr{T} $ of degree $ \phi\br{n} $, defined recursively by
 $$ T^n - 1 = \prod_{d \mid n} \Phi_d\br{T}. $$
@@ -685,10 +687,10 @@ Then $ L / K $ is Galois, with abelian Galois group, and
 $$ \function{\Gal\br{L / K}}{\br{\ZZ / n\ZZ}^\times}{g}{\text{unique} \ a \mod n \ \text{such that} \ g\br{\zeta_n} = \zeta_n^a}. $$
 is an injective homomorphism.
 
-\pagebreak
+\subsection{Cyclotomic fields}
 
 \begin{theorem}
-\label{thm:4.1}
+\label{thm:5.1}
 Let $ L = \QQ\br{\zeta_n} $. Then
 \begin{enumerate}
 \item $ \Gal\br{L / \QQ} \xrightarrow{\sim} \br{\ZZ / n\ZZ}^\times $,
@@ -709,7 +711,7 @@ Let $ n = p^rm $ for $ r \ge 1 $ and $ p \nmid m $ prime. Let $ \zeta_m = \zeta_
 \item if $ v \mid p $ then $ v $ is totally ramified in $ L / K $, and
 \item $ \OOO_L = \OOO_K\sbr{\zeta_{p^r}} $.
 \end{itemize}
-This proves \ref{thm:4.1} by induction on $ n $. For a place $ w $ of $ L $, write $ x_w \in L_w $ for the image of $ \zeta_{p^r} $ under $ L \hookrightarrow L_w $. Suppose $ v \mid p $. By induction, $ p $ is unramified in $ K / \QQ $, so $ v\br{p} = 1 $. Then
+This proves \ref{thm:5.1} by induction on $ n $. For a place $ w $ of $ L $, write $ x_w \in L_w $ for the image of $ \zeta_{p^r} $ under $ L \hookrightarrow L_w $. Suppose $ v \mid p $. By induction, $ p $ is unramified in $ K / \QQ $, so $ v\br{p} = 1 $. Then
 $$ \Phi_{p^r}\br{T + 1} = \dfrac{\br{T + 1}^{p^r} - 1}{\br{T + 1}^{p^{r - 1}} - 1} $$
 is an Eisenstein polynomial in $ \OOO_{K_v}\sbr{T} $. Indeed $ \Phi_{p^r}\br{T + 1} \equiv T^{p^{r - 1}\br{p - 1}} \mod p $, and the constant coefficient is $ p $, so has valuation one. Then from local fields,
 \begin{itemize}
@@ -724,24 +726,19 @@ Let $ f_w \in \OOO_{K_v}\sbr{T} $ be the minimal polynomial of $ x_w $ over $ K_
 \item $ \prod_{w \mid v} f_w = \Phi_{p^r} $, so the reduction of $ f_w $ at $ v $ is separable, hence $ L_w / K_v $ is unramified, and
 \item by local fields again, $ \OOO_{L_w} = \OOO_{K_v}\sbr{x_w} $.
 \end{itemize}
+
+\pagebreak
+
 Thus for all $ v \in \V_{K, \f} $,
 $$ \OOO_{K_v} \otimes_{\OOO_K} \OOO_K\sbr{\zeta_{p^r}} \cong \OOO_{K_v}\sbr{T} / \abr{\Phi_{p^r}} \cong \prod_{w \mid v} \OOO_{K_v}\sbr{T} / \abr{f_w} = \prod_{w \mid v} \OOO_{L_w} \cong \OOO_{K_v} \otimes_{\OOO_K} \OOO_L, $$
 by CRT, so must have $ \OOO_K\sbr{\zeta_{p^r}} = \OOO_L $.
 \end{proof}
 
-\pagebreak
-
-\subsection{Frobenius elements}
+\subsection{Quadratic reciprocity}
 
 Recall Frobenius elements. Let $ L / K $ be a Galois extension of number fields, let $ w \mid v $ be finite places, and let $ G = \Gal\br{L / W} \supset G_w \cong \Gal\br{L_w / K_v} $ be the decomposition group of $ w $. Then
 $$ 1 \to \I_w \to G_w \to \Gal\br{\ell_w / \kappa_v} \to 1, $$
-where $ \I_w $ is the inertia subgroup. Suppose $ w $ is unramified in $ L / K $, if and only if $ v $ is unramified in $ L / K $. Then $ \I_w = \cbr{1} $.
-
-\begin{definition*}
-Define the \textbf{Frobenius} at $ w $ to be the unique element $ \sigma_w \in G_w $ mapping to the generator $ x \mapsto x^{\q_v} $ of $ \Gal\br{\ell_w / \kappa_v} $.
-\end{definition*}
-
-So $ \ord \sigma_w = \f\br{w \mid v} = \sbr{\ell_w : \kappa_v} = \sbr{\ell_{w'} : \kappa_v} $ for any $ w' \mid v $, as $ G $ acts transitively on $ \cbr{w'} $. In particular, $ \sigma_w = 1 $ if and only if $ v $ splits completely in $ L / K $, that is there exist $ \sbr{L : K} $ places of $ L $ over $ v $. Suppose $ G $ is abelian. Then $ G_w $ and $ \sigma_w $ are independent of $ w $, so depends only on $ v $.
+where $ \I_w $ is the inertia subgroup. Suppose $ w $ is unramified in $ L / K $, if and only if $ v $ is unramified in $ L / K $. Then $ \I_w = \cbr{1} $. Define the \textbf{Frobenius} at $ w $ to be the unique element $ \sigma_w \in G_w $ mapping to the generator $ x \mapsto x^{\q_v} $ of $ \Gal\br{\ell_w / \kappa_v} $. So $ \ord \sigma_w = \f\br{w \mid v} = \sbr{\ell_w : \kappa_v} = \sbr{\ell_{w'} : \kappa_v} $ for any $ w' \mid v $, as $ G $ acts transitively on $ \cbr{w'} $. In particular, $ \sigma_w = 1 $ if and only if $ v $ splits completely in $ L / K $, that is there exist $ \sbr{L : K} $ places of $ L $ over $ v $. Suppose $ G $ is abelian. Then $ G_w $ and $ \sigma_w $ are independent of $ w $, so depends only on $ v $.
 
 \begin{notation*}
 $ \sigma_v = \sigma_{L / K, v} = \sigma_w $ is the \textbf{arithmetic Frobenius} at $ v $. There are other notations, such as $ \phi_{L / K, v} $ or $ \br{v, L / K} $, the \textbf{norm residue symbol}.
@@ -750,8 +747,6 @@ $ \sigma_v = \sigma_{L / K, v} = \sigma_w $ is the \textbf{arithmetic Frobenius}
 \begin{remark*}
 Let $ L / F / K $ where $ L / K $ is abelian. Then $ \eval{\sigma_{L / K}}_F = \sigma_{F / K} $ by definition.
 \end{remark*}
-
-\subsection{Quadratic reciprocity}
 
 Let $ L = \QQ\br{\zeta_n} $, let $ K = \QQ $, and let $ n > 2 $. Have an isomorphism
 $$ \function[\lambda]{\br{\ZZ / n\ZZ}^\times}{\Gal\br{L / \QQ}}{a \mod n}{\br{\zeta_n \mapsto \zeta_n^a}}. $$
@@ -845,7 +840,7 @@ Then $ U \subset \AA_K $ is open. If $ x \in K \cap U $, then $ \abs{x_v}_v \le 
 Let $ L / K $ be an extension of number fields. For all $ v \in \V_K $, $ K_v \hookrightarrow \prod_{w \mid v} L_w $ induces an inclusion of rings $ \AA_K \hookrightarrow \AA_L $ visibly continuous.
 
 \begin{proposition}
-\label{prop:5.3}
+\label{prop:6.3}
 Let $ \br{a_1, \dots, a_n} $ be a $ K $-basis for $ L $. Consider
 $$
 \begin{array}{ccccc}
@@ -860,7 +855,7 @@ viewing $ x^{\br{i}} \in \AA_K \hookrightarrow \AA_L $ as above. Then $ g $ is a
 Since $ L = \bigoplus_i Ka_i \cong K^n $, $ f $ is an $ \AA_K $-module isomorphism. By definition, $ g $ is a ring homomorphism. So it suffices to prove $ g \circ f $ is bijective, and that it maps $ X^n = \br{K_\infty \times \widehat{\OOO_K}}^n $ homeomorphically to an open subgroup of $ \AA_L $. Note that multiplication by any $ x \in K^\times $ is a self-homeomorphism of $ \AA_K $ with itself, since the inverse is multiplication by $ x^{-1} $. Similarly for $ \AA_L $. So may replace $ \br{a_i} $ by non-zero $ K $-multiples, so without loss of generality, $ a_i \in \OOO_L $. Let
 $$ S = \cbr{v \in \V_{K, \f} \st v\br{\br{\OOO_L : \sum_i a_i\OOO_K}} > 0} $$
 be a finite subset of $ \V_{K, \f} $. Then for all $ v \in \V_{K, \f} \setminus S $,
-$$ \br{a_i} : \OOO_{K_v}^n \xrightarrow{\sim} \prod_{w \mid v} \OOO_{L_w} \cong \OOO_{K_v} \otimes_{\OOO_K} \OOO_L, $$
+$$ \br{a_i} : \OOO_{K_v}^n \xrightarrow{\sim} \OOO_{K_v} \otimes_{\OOO_K} \OOO_L \cong \prod_{w \mid v} \OOO_{L_w}, $$
 and for all $ v \in S $, $ \sum_i a_i\OOO_{K_v} = M_v $ is an open $ \OOO_{K_v} $-submodule of $ \prod_{w \mid v} \OOO_{L_w} $. Then
 $$ g \circ f : \br{K_\infty \times \widehat{\OOO_K}}^n \xrightarrow{\sim} L_\infty \times \prod_{v \notin S} \prod_{w \mid v} \OOO_{L_w} \times \prod_{v \in S} M_v $$
 is a homeomorphism onto an open subgroup in $ \AA_L $. Moreover, for any finite $ S' \supset S \cup \V_{K, \infty} $,
@@ -898,12 +893,12 @@ $ \AA_K / K $ is compact Hausdorff.
 \end{theorem}
 
 \begin{proof}
-Since $ K $ is closed in $ \AA_K $ and $ \AA_K $ is Hausdorff, $ \AA_K / K $ is Hausdorff. By \ref{prop:5.3}, $ \AA_K / K \cong \br{\AA_\QQ / \QQ}^{\sbr{K : \QQ}} $ as topological groups, so may assume $ K = \QQ $. Let $ X = \sbr{0, 1} \times \widehat{\ZZ} \subset \AA_\QQ $. Then $ X $ is compact. So it is enough to show that $ X + \QQ = \AA_\QQ $, as then $ X \twoheadrightarrow \AA_\QQ / \QQ $. Let $ x = \br{x_p}_{p \le \infty} \in \AA_\QQ $. Let
+Since $ K $ is closed in $ \AA_K $ and $ \AA_K $ is Hausdorff, $ \AA_K / K $ is Hausdorff. By \ref{prop:6.3}, $ \AA_K / K \cong \br{\AA_\QQ / \QQ}^{\sbr{K : \QQ}} $ as topological groups, so may assume $ K = \QQ $. Let $ X = \sbr{0, 1} \times \widehat{\ZZ} \subset \AA_\QQ $. Then $ X $ is compact. So it is enough to show that $ X + \QQ = \AA_\QQ $, as then $ X \twoheadrightarrow \AA_\QQ / \QQ $. Let $ x = \br{x_p}_{p \le \infty} \in \AA_\QQ $. Let
 $$ S = \cbr{p < \infty \st x_p \notin \ZZ_p} $$
 be a finite set. There exists $ r_p \in \ZZ\sbr{1 / p} $ such that $ x_p - r_p \in \ZZ_p $ for all $ p \in S $. Let $ r = \sum_{p \in S} r_p \in \QQ $. For all $ p < \infty $, $ x_p - r \in \ZZ_p $, that is $ x - r \in \RR \times \widehat{\ZZ} $, and then for suitable $ m \in \ZZ $, $ x - \br{r + m} \in \sbr{0, 1} \times \widehat{\ZZ} $.
 \end{proof}
 
-From \ref{prop:5.3} also get $ \AA_K = K_\infty \times \widehat{K} $ where
+From \ref{prop:6.3} also get $ \AA_K = K_\infty \times \widehat{K} $ where
 $$ \widehat{K} = \widehat{\OOO_K} \otimes_\ZZ \QQ = \widehat{\OOO_K} \otimes_{\OOO_K} K, $$
 where $ \widehat{\OOO_K} \cong \prod_\ppp \widehat{\OOO_{K, \ppp}} = \prod_{v \nmid \infty} \OOO_{K_v} $ is the profinite completion of $ \OOO_K $.
 
@@ -972,7 +967,7 @@ $$ \function[\c]{\JJJ_K}{\I\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f}} \ppp_v^{v\
 
 This is a continuous homomorphism, for the discrete topology on $ \I\br{K} $, since $ \ker \c = \JJJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times $ is open. If $ x \in K^\times $ then $ \c\br{x} $ is the principal fractional ideal $ \abr{x} $. So $ \c $ descends to a homomorphism
 $$ \c : \CCC_K = \JJJ_K / K^\times \to \Cl\br{K} = \I\br{K} / \P\br{K}, $$
-where $ \P\br{K} $ is the group of principal fractional ideals. The image of the inclusion $ K^\times \hookrightarrow \JJJ_K $ is called the subgroup of \textbf{principal ideles}. Then $ \c $ is clearly surjective, since $ v : K_v^\times \twoheadrightarrow \ZZ $. So $ \CCC_K \twoheadrightarrow \Cl\br{K} $. As $ \c \circ \i : \RR_{> 0} \to \Cl\br{K} $ is zero, have a continuous surjection $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $. Now prove that $ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact. A corollary is that $ \Cl\br{K} $ is finite, since compact and discrete. The following is a variant.
+where $ \P\br{K} $ is the group of principal fractional ideals. The image of the inclusion $ K^\times \hookrightarrow \JJJ_K $ is called the \textbf{subgroup of principal ideles}. Then $ \c $ is clearly surjective, since $ v : K_v^\times \twoheadrightarrow \ZZ $. So $ \CCC_K \twoheadrightarrow \Cl\br{K} $. As $ \c \circ \i : \RR_{> 0} \to \Cl\br{K} $ is zero, have a continuous surjection $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $. Now prove that $ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact. A corollary is that $ \Cl\br{K} $ is finite, since compact and discrete. The following is a variant.
 
 \begin{definition*}
 Let $ S \subset \V_{K, \f} $ be a finite subset, and let
@@ -1006,27 +1001,27 @@ Example sheet.
 \end{proof}
 
 \begin{theorem}[Minkowski's theorem]
-\label{thm:6.2}
-Let $ \Lambda \subset \RR^n $ be a lattice, and let $ \mu_\Lambda = \vol\br{\RR^n / \Lambda} $, the \textbf{covolume} of $ \Lambda $. Let $ X \subset \RR^n $ be a compact subset, which is
+\label{thm:7.2}
+Let $ \Lambda \subset \RR^n $ be a lattice, and let $ \mu_\Lambda = \meas\br{\RR^n / \Lambda} $, the \textbf{covolume} of $ \Lambda $. Let $ X \subset \RR^n $ be a compact subset, which is
 \begin{itemize}
 \item convex, that is if $ t \in \sbr{0, 1} $ and $ x, y \in X $ then $ tx + \br{1 - t}y \in X $, and
 \item symmetric about the origin, that is if $ x \in X $ then $ -x \in X $.
 \end{itemize}
-If $ \vol\br{X} > 2^n\mu_\Lambda $, then $ X \cap \Lambda \ne \cbr{0} $.
+If $ \meas\br{X} > 2^n\mu_\Lambda $, then $ X \cap \Lambda \ne \cbr{0} $.
 \end{theorem}
 
 \begin{remark*}
-$ \RR^n $ has a Lebesgue measure, and $ \vol\br{X} $ is the measure of $ X $. The Lebesgue measure defines a measure on $ \RR^n / \Lambda $, and $ \mu_\Lambda $ is the measure of $ \RR^n / \Lambda $. Naively, if $ \Lambda = \bigoplus_i \ZZ e_i $ for $ \br{e_i} $ linearly independent over $ \RR $ and $ \PPP = \cbr{\sum_i x_ie_i \st 0 \le x_i < 1} $, then $ \PPP $ is a set of coset representatives for $ \Lambda \subset \RR^n $, and $ \mu_\Lambda = \vol\br{\PPP} = \abs{\det \br{e_{ij}}} $, which is independent of the basis.
+$ \RR^n $ has a Lebesgue measure, and $ \meas\br{X} $ is the measure of $ X $. The Lebesgue measure defines a measure on $ \RR^n / \Lambda $, and $ \mu_\Lambda $ is the measure of $ \RR^n / \Lambda $. Naively, if $ \Lambda = \bigoplus_i \ZZ e_i $ for $ \br{e_i} $ linearly independent over $ \RR $ and $ \PPP = \cbr{\sum_i x_ie_i \st 0 \le x_i < 1} $, then $ \PPP $ is a set of coset representatives for $ \Lambda \subset \RR^n $, and $ \mu_\Lambda = \meas\br{\PPP} = \abs{\det \br{e_{ij}}} $, which is independent of the basis.
 \end{remark*}
 
 \begin{proof}
 Let $ \pi : \RR^n \to \RR^n / 2\Lambda $. Then
-$$ \vol\br{\pi\br{X}} \le \vol\br{\RR^n / 2\Lambda} = 2^n\vol\br{\RR^n / \Lambda} < \vol\br{X}. $$
+$$ \meas\br{\pi\br{X}} \le \meas\br{\RR^n / 2\Lambda} = 2^n\meas\br{\RR^n / \Lambda} < \meas\br{X}. $$
 So $ X \to \pi\br{X} $ is not one-to-one, so there exists $ x \ne y $ in $ X $ such that $ x - y = 2\lambda \in 2\Lambda $. Then $ 0 \ne \lambda = \br{x - y} / 2 = \tfrac{1}{2}x + \tfrac{1}{2}\br{-y} \in X $ as $ -y \in X $, by symmetry, and $ X $ is convex.
 \end{proof}
 
 \begin{theorem}
-\label{thm:6.3}
+\label{thm:7.3}
 There exists a constant $ \r_K > 0 $ such that, if $ \br{d_v}_{v \in K} $ are positive reals with
 \begin{itemize}
 \item $ d_v \in \abs{K_v^\times}_v = \cbr{\abs{x}_v \st x \in K_v^\times} \subset \RR_{> 0} $ for all $ v $,
@@ -1050,10 +1045,10 @@ $$ X = \cbr{x \in \prod_{v \in \infty} K_v \cong \RR^n \st \forall v, \ \abs{x_v
 \pagebreak
 
 This is convex, compact, symmetric, and
-$$ \vol\br{X} = 2^{\r_1}\pi^{\r_2}\prod_{v \mid \infty} d_v > 2^n\prod_{v \nmid \infty} d_v^{-1}\mu_{\sigma\br{\OOO_K}} = 2^n\mu_{\sigma\br{I}}, $$
+$$ \meas\br{X} = 2^{\r_1}\pi^{\r_2}\prod_{v \mid \infty} d_v > 2^n\prod_{v \nmid \infty} d_v^{-1}\mu_{\sigma\br{\OOO_K}} = 2^n\mu_{\sigma\br{I}}, $$
 by $ \br{\ref{eq:4}} $, provided
 $$ \prod_v d_v > \r_K = \br{\dfrac{4}{\pi}}^{\r_2}\mu_{\sigma\br{\OOO_K}} = \br{\dfrac{2}{\pi}}^{\r_2}\abs{\d_K}^{\tfrac{1}{2}}. $$
-Then applying \ref{thm:6.2}, $ X \cap \sigma\br{I} \ne \cbr{0} $ and any $ x \in X \cap \sigma\br{I} $ has $ \abs{x}_v \le d_v $ for all $ v $.
+Then applying \ref{thm:7.2}, $ X \cap \sigma\br{I} \ne \cbr{0} $ and any $ x \in X \cap \sigma\br{I} $ has $ \abs{x}_v \le d_v $ for all $ v $.
 \end{proof}
 
 This is the translation of a classical result that if $ 0 \ne I $ is an ideal then there exists $ x \in I \setminus \cbr{0} $ such that $ \abs{\N_{K / \QQ}\br{x}} < \r_K\N\br{I} $.
@@ -1066,15 +1061,10 @@ Used Minkowski's theorem, with convex symmetric set $ X = \sbr{-d_v, d_v}^{\r_1}
 
 \subsection{Compactness of idele class group}
 
-\begin{theorem}
-\label{thm:6.4}
-$ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact.
-\end{theorem}
-
-Recall $ K^\times \subset \JJJ_K^1 = \ker \br{\abs{\cdot}_\AA : \JJJ_K \to \RR_{> 0}} $ is discrete. Based on \ref{thm:6.3} and the following.
+Recall $ K^\times \subset \JJJ_K^1 = \ker \br{\abs{\cdot}_\AA : \JJJ_K \to \RR_{> 0}} $ is discrete. Based on \ref{thm:7.3} and the following.
 
 \begin{proposition}
-\label{prop:6.5}
+\label{prop:7.5}
 Let $ \rho_v > 0 $ for $ v \in \V_K $, with $ \rho_v = 1 $ for all but finitely many $ v $. Then
 $$ X = \cbr{x \in \JJJ_K^1 \st \forall v, \ \abs{x_v}_v \le \rho_v} $$
 is compact.
@@ -1094,12 +1084,17 @@ $$ X'' = \cbr{\br{x_v} \in \prod_{v \in S} K_v^\times \st \forall v \in S, \ \df
 which is compact. So $ X' $ is compact, hence so is $ X $, since $ \prod_{v \notin S} \OOO_v^\times $ is compact.
 \end{proof}
 
-\begin{proof}[Proof of \ref{thm:6.4}]
-Let $ \r_K $ be as in \ref{thm:6.3}. Pick any $ y \in \JJJ_K $ with $ \abs{y}_\AA > \r_K $, and let
+\begin{theorem}
+\label{thm:7.4}
+$ \CCC_K^1 = \JJJ_K^1 / K^\times $ is compact.
+\end{theorem}
+
+\begin{proof}
+Let $ \r_K $ be as in \ref{thm:7.3}. Pick any $ y \in \JJJ_K $ with $ \abs{y}_\AA > \r_K $, and let
 $$ X = \cbr{x \in \JJJ_K^1 \st \forall v \in \V_K, \ \abs{x_v}_v \le \abs{y_v}_v}, $$
-which is compact by \ref{prop:6.5}. Show that
+which is compact by \ref{prop:7.5}. Show that
 $$ \JJJ_K^1 = K^\times X = \cbr{ax \st a \in K^\times, \ x \in X}. $$
-Let $ z \in \JJJ_K^1 $. Then $ \prod_v \abs{y_vz_v}_v = \abs{y}_\AA > \r_K $. So by \ref{thm:6.3}, there exists $ b \in K^\times $ such that for all $ v \in \V_K $, $ \abs{b}_v \le \abs{y_vz_v}_v $. Therefore $ bz^{-1} \in X $, that is $ z^{-1} \in b^{-1}X \subset K^\times X $.
+Let $ z \in \JJJ_K^1 $. Then $ \prod_v \abs{y_vz_v}_v = \abs{y}_\AA > \r_K $. So by \ref{thm:7.3}, there exists $ b \in K^\times $ such that for all $ v \in \V_K $, $ \abs{b}_v \le \abs{y_vz_v}_v $. Therefore $ bz^{-1} \in X $, that is $ z^{-1} \in b^{-1}X \subset K^\times X $.
 \end{proof}
 
 \pagebreak
@@ -1117,7 +1112,7 @@ $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $ by the content map, which is continuou
 \end{proof}
 
 \begin{corollary}[$ S $-unit theorem]
-\label{cor:6.7}
+\label{cor:7.7}
 Let $ S \subset \V_{K, \f} $ be finite, possibly empty, and let
 $$ \OOO_{K, S} = \cbr{x \in K \st \forall v \in \V_{K, \f} \setminus S, \ \abs{x}_v \le 1} $$
 be the \textbf{$ S $-integers} of $ K $, sometimes written $ \OOO_K\sbr{1 / S} $. Then
@@ -1133,7 +1128,7 @@ $$ \OOO_K^\times = \mu\br{K} \times \ZZ^{\r_1 + \r_2 - 1}. $$
 \begin{itemize}
 \item First explain the proof for $ S = \emptyset $. Recall
 $$ \JJJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times \supset \JJJ_{K, \emptyset}^1 = K_\infty^{\times, 1} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad K_\infty^{\times, 1} = \cbr{\br{x_v} \in K_\infty^\times \st \prod_{v \mid \infty} \abs{x_v}_v = 1}. $$
-Then $ \JJJ_{K, \emptyset} \cap K^\times = \JJJ_{K, \emptyset}^1 \cap K^\times = \OOO_K^\times $ is discrete in $ \JJJ_{K, \emptyset}^1 $ and by \ref{thm:6.4}, the closed $ \JJJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $ is compact. Let
+Then $ \JJJ_{K, \emptyset} \cap K^\times = \JJJ_{K, \emptyset}^1 \cap K^\times = \OOO_K^\times $ is discrete in $ \JJJ_{K, \emptyset}^1 $ and by \ref{thm:7.4}, the closed $ \JJJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $ is compact. Let
 $$ \function[\lambda]{\JJJ_{K, \emptyset}}{\LLL_K = \prod_{v \mid \infty} \RR \cong \RR^{\r_1 + \r_2}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}_v} $$
 be the \textbf{logarithm map}, such that
 $$ \lambda\br{\JJJ_{K, \emptyset}^1} \subset \LLL_K^0 = \cbr{\br{l_v} \in \LLL_K \st \sum_v l_v = 0}. $$
@@ -1141,7 +1136,7 @@ Then
 $$ \ker \lambda = \cbr{\br{x_v} \in \JJJ_K \st \forall v, \ \abs{x_v}_v = 1} = \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad \U\br{1} = \cbr{z \in \CC \st \abs{z} = 1} $$
 is compact. So $ \ker \lambda \cap \OOO_K^\times $ is discrete and compact, hence finite. Obviously $ \mu\br{K} \subset \ker \lambda $, so $ \mu\br{K} $ is finite and equals $ \ker \lambda \cap \OOO_K^\times $. Next, show $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 \cong \RR^{\r_1 + \r_2 - 1} $ is a lattice. Then we get
 $$ 1 \to \mu\br{K} \to \OOO_K^\times \to \lambda\br{\OOO_K^\times} \cong \ZZ^{\r_1 + \r_2 - 1} \to 0, $$
-which gives \ref{cor:6.7}. Now
+which gives \ref{cor:7.7}. Now
 $$
 \begin{tikzcd}
 \JJJ_{K, \emptyset} \arrow[cong]{r} \arrow{d}[swap]{\lambda} & \displaystyle\prod_{v \mid \infty} \RR_{> 0} \times \ker \lambda \arrow{d}{\pi_1} \\
@@ -1153,7 +1148,7 @@ $$
 
 where $ \RR_{> 0} \hookrightarrow K_v^\times \subset \CC^\times $ for all $ v \mid \infty $. Hence $ \lambda $ has the property that for all compact $ Y $ in its target, $ \lambda^{-1}\br{Y} $ is compact, so $ \lambda $ is a proper map. A simple fact is if $ f : X \to Y $ is a continuous proper map of topological spaces, with $ Y $ locally compact and Hausdorff, then if $ Z \subset X $ is discrete then $ f\br{Z} $ is discrete. \footnote{Exercise: a hint is to take a compact neighbourhood $ V $ of some $ f\br{z} $ for $ z \in Z $ and use compactness of $ f^{-1}\br{V} $} Hence $ \lambda\br{\OOO_K^\times} \subset \LLL_K^0 $ is discrete. Finally,
 $$ \lambda : \JJJ_{K, \emptyset}^1 / \OOO_K^\times \twoheadrightarrow \LLL_K^0 / \lambda\br{\OOO_K^\times}, $$
-so $ \LLL_K^0 / \lambda\br{\OOO_K} $ is compact, by \ref{thm:6.4}. Thus $ \lambda\br{\OOO_K} $ is a lattice.
+so $ \LLL_K^0 / \lambda\br{\OOO_K} $ is compact, by \ref{thm:7.4}. Thus $ \lambda\br{\OOO_K} $ is a lattice.
 
 \lecture{12}{Tuesday}{16/02/21}
 
@@ -1191,7 +1186,7 @@ The answer is non-trivial and depends on $ K $. See example sheet.
 Earlier, weak approximation implies that $ K $ is dense in any finite product of $ K_v $'s. Also, $ K \hookrightarrow \AA_K $ is discrete.
 
 \begin{theorem}[Strong approximation]
-\label{thm:6.8}
+\label{thm:7.8}
 Let $ T \subset \V_K $ be finite, and set
 $$ \AA_K^T = \cbr{x = \br{x_v} \in \prod_{v \notin T} K_v \st \text{for all but finitely many} \ v, \ \abs{x_v}_v \le 1}, $$
 so $ \AA_K = \prod_{v \in T} K_v \times \AA_K^T $, with the adelic topology. Then if $ T \ne \emptyset $, then $ K $ is dense in $ \AA_K^T $.
@@ -1207,7 +1202,7 @@ y & w = v \\
 \end{cases}.
 $$
 \end{itemize}
-It is enough to prove \ref{thm:6.8} for $ T = \cbr{v_0} $. Will actually prove the following.
+It is enough to prove \ref{thm:7.8} for $ T = \cbr{v_0} $. Will actually prove the following.
 \begin{itemize}
 \item Let $ S \subset \V_K $ be finite such that $ v_0 \notin S $, let $ y_v \in K_v $ for all $ v \in S $, and let $ \epsilon > 0 $. Then there exists $ x \in K $ such that
 \begin{itemize}
@@ -1227,7 +1222,7 @@ $$ \abs{z}_v \le
 1 & v \notin S, \ v \ne v_0
 \end{cases}.
 $$
-Apply Minkowski \ref{thm:6.3} with
+Apply Minkowski \ref{thm:7.3} with
 \begin{itemize}
 \item $ d_v = 1 $ for all $ v \notin S \cup \cbr{v_0} $,
 \item $ d_v \le \epsilon / R $ for all $ v \in S $, and
@@ -1243,7 +1238,7 @@ $$
 so done.
 \end{proof}
 
-In the special case $ T = \V_{K, \infty} $, $ \AA_K^T $ are the finite adeles. Then \ref{thm:6.8} says
+In the special case $ T = \V_{K, \infty} $, $ \AA_K^T $ are the finite adeles. Then \ref{thm:7.8} says
 $$ K \hookrightarrow \AA_K^T = \widehat{K} = \widehat{\OOO_K} \otimes_\ZZ \QQ $$
 is dense, which is equivalent to the density of
 $$ \OOO_K \hookrightarrow \widehat{\OOO_K} = \prod_{v \nmid \infty} \OOO_{K_v} = \prod_{v \nmid \infty} \varprojlim_r \OOO_K / \ppp_v^r \cong \varprojlim_{I \subset \OOO_K} \OOO_K / I, $$
@@ -1275,11 +1270,15 @@ Class field theory answers the first question completely for $ L / K $ abelian.
 
 \subsection{Artin reciprocity law}
 
+\begin{theorem*}[Artin reciprocity law]
 Let $ L / K $ be an abelian extension of number fields. Then there exists a unique continuous homomorphism
 $$ \Art_{L / K} : \CCC_K = \JJJ_K / K^\times \to \Gal\br{L / K}, $$
 such that for all unramified $ v \in \V_{K, \f} $,
 $$ \function[\Art_{L / K}]{K_v^\times \hookrightarrow \CCC_K}{\Gal\br{L / K}}{x}{\sigma_v^{-v\br{x}}}. $$
-Moreover, $ \Art_{L / K} $ is surjective with kernel $ K^\times \N_{L / K}\br{\JJJ_L} $. How does this generalise the cyclotomic theory? Since $ \CC^\times $ is connected, the only open subgroup is $ \CC^\times $, and the only open subgroups of $ \RR^\times $ are $ \RR^\times $ and $ \RR_{> 0} $. Then $ \ker \Art_{L / K} $ is open, so contains some $ K^\times U $, where
+Moreover, $ \Art_{L / K} $ is surjective with kernel $ K^\times \N_{L / K}\br{\JJJ_L} $.
+\end{theorem*}
+
+How does this generalise the cyclotomic theory? Since $ \CC^\times $ is connected, the only open subgroup is $ \CC^\times $, and the only open subgroups of $ \RR^\times $ are $ \RR^\times $ and $ \RR_{> 0} $. Then $ \ker \Art_{L / K} $ is open, so contains some $ K^\times U $, where
 $$ U = \prod_{v \ \text{complex}} K_v^\times \times \prod_{v \ \text{real}} \RR_{> 0} \times \prod_{v \in S} U_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v^\times, \qquad U_v = \cbr{x \in \OOO_v^\times \st v\br{x - 1} \ge m_v}, \qquad m_v > 0, $$
 where say $ S $ contains all ramified places. If $ w \notin S $ is unramified,
 $$ \Art_{L / K} : K^\times\br{\dots, 1, 1, \pi_w^{-1}, 1, 1, \dots} = K^\times\br{\dots, \pi_w, \pi_w, 1, \pi_w, \pi_w, \dots} \mapsto \sigma_w, $$
@@ -1315,7 +1314,7 @@ So via $ \JJJ_\QQ / \QQ^\times \cong \RR_{> 0} \times \widehat{\ZZ}^\times $, $ 
 \subsection{Finite quotients of idele class group}
 
 \begin{proposition}
-\label{prop:7.1}
+\label{prop:8.1}
 Let $ G $ be a discrete group.
 \begin{enumerate}
 \item Any continuous homomorphism $ \alpha : \CCC_K \to G $ has finite image.
@@ -1341,7 +1340,7 @@ is dense, since $ \bigoplus_v \OOO_v^\times \subset \prod_v \OOO_v^\times $ is d
 \lecture{14}{Saturday}{20/02/21}
 
 \begin{proposition}
-\label{prop:7.2}
+\label{prop:8.2}
 Let $ \alpha, \alpha' : \CCC_K \to G $ be continuous homomorphisms, where $ G $ is finite, unramified at all $ v \in \V_{K, \f} \setminus S $, where $ S $ is finite. Then if $ \alpha_v = \alpha_v' $ for all $ v \notin S $ such that $ v $ is finite, that is $ \alpha_v\br{\pi_v} = \alpha_v'\br{\pi_v} $, have $ \alpha = \alpha' $.
 \end{proposition}
 
@@ -1375,7 +1374,7 @@ $ \JJJ_K / K^\times\U_{K, \mmm} $ is finite.
 \end{proposition}
 
 \begin{proof}
-$ \JJJ_K / K^\times \to \JJJ_K / K^\times\U_{K, \mmm} $ with discrete image, since $ \U_{K, \mmm} $ is open. So by \ref{prop:7.1}.$ 1 $, the image is finite.
+$ \JJJ_K / K^\times \to \JJJ_K / K^\times\U_{K, \mmm} $ with discrete image, since $ \U_{K, \mmm} $ is open. So by \ref{prop:8.1}.$ 1 $, the image is finite.
 \end{proof}
 
 So every finite quotient of $ \CCC_K $ is a quotient of some $ \JJJ_K / K^\times\U_{K, \mmm} $.
@@ -1385,7 +1384,11 @@ The \textbf{ray class group} of $ K $ modulo $ \mmm $ is
 $$ \Cl_\mmm\br{K} = \JJJ_K / K^\times\U_{K, \mmm}. $$
 \end{definition*}
 
-If $ \mmm = 0 $, then $ \U_{K, \mmm} = \ker \c $, where $ \c : \JJJ_K \to \I\br{K} $ is the content map, and $ \Cl_\mmm\br{K} = \Cl\br{K} $. Now relate to ideals.
+\begin{example*}
+If $ \mmm = 0 $, then $ \U_{K, \mmm} = \ker \c $, where $ \c : \JJJ_K \to \I\br{K} $ is the content map, and $ \Cl_\mmm\br{K} = \Cl\br{K} $.
+\end{example*}
+
+Now relate to ideals.
 
 \begin{notation*}
 Let $ x \in K^\times $. Write $ x \equiv 1 \mods \mmm $ if
@@ -1421,7 +1424,7 @@ $$ \JJJ_K / K^\times\U_{K, \mmm} \xrightarrow{\sim} \I_\mmm\br{K} / \P_\mmm\br{K
 \pagebreak
 
 \begin{proof}
-By \ref{prop:7.2}, $ \alpha $ is unique. For existence, let
+By \ref{prop:8.2}, $ \alpha $ is unique. For existence, let
 $$ \JJJ_{K, \mmm} = \cbr{\br{x_v} \in \JJJ_K \st \forall v \in \supp \mmm, \ x_v \in \U_v^{\m_v}}, $$
 the open subgroup generated by $ \U_{K, \mmm} $ and $ \cbr{K_v^\times \st v \notin \supp \mmm} $. Then by weak approximation, $ K^\times\JJJ_{K, \mmm} = \JJJ_K $, and by definition, $ K_\mmm^\times = K^\times \cap \JJJ_{K, \mmm} $, so
 $$ \iota : \JJJ_K / K^\times\U_{K, \mmm} \xleftarrow{\sim} \JJJ_{K, \mmm} / K_\mmm^\times\U_{K, \mmm}. $$
@@ -1433,7 +1436,7 @@ and this is the map $ x \mapsto \alpha\br{x^{-1}} $.
 \end{proof}
 
 \begin{remark*}
-The isomorphism $ \JJJ_K / K^\times\U_{K, \mmm} \to \I_\mmm\br{K} / \P_\mmm\br{K} $ is not induced by the $ S $-content map $ \JJJ_K \to \I_\mmm\br{K} $ but only on the subgroup $ \JJJ_{K, \mmm} $. Fr\"ohlich called this the fundamental mistake of class field theory.
+The isomorphism $ \JJJ_K / K^\times\U_{K, \mmm} \to \I_\mmm\br{K} / \P_\mmm\br{K} $ is not induced by the $ S $-content map $ \JJJ_K \to \I_\mmm\br{K} $ but only on the subgroup $ \JJJ_{K, \mmm} $. Fr\"ohlich called this the \textbf{fundamental mistake of class field theory}.
 \end{remark*}
 
 \begin{example*}
@@ -1450,5 +1453,344 @@ commutes.
 \end{example*}
 
 This is the reason for using $ \ppp_v^{-1} $, and $ \sigma_v^{-1} $ in the reciprocity law, since it means that for $ \QQ\br{\zeta_m} / \QQ $, recover the usual map $ \Gal\br{\QQ\br{\zeta_m} / \QQ} \cong \br{\ZZ / m\ZZ}^\times $. Older treatments of class field theory use $ \sigma_v $ and end up with the inverse of the usual map. Another reason is that the inverse $ \Fr_v = \F_v = \sigma_v^{-1} $, the so-called \textbf{geometric Frobenius}, is what occurs naturally in algebraic geometry. The modern normalisation of class field theory maps a uniformiser at an unramified $ v $ to the geometric Frobenius $ \sigma_v^{-1} $.
+
+\subsection{Uniqueness}
+
+\lecture{15}{Tuesday}{23/02/21}
+
+By \ref{prop:8.2}, $ \Art_{L / K} $ is unique. A consequence is if $ L' / K' $ is an abelian extension, and have isomorphisms
+$$
+\begin{tikzcd}
+L \arrow{r}{\widetilde{\tau}}[swap]{\sim} & L' \\
+K \arrow[hookrightarrow]{u} \arrow{r}{\sim}[swap]{\tau} & K' \arrow[hookrightarrow]{u}
+\end{tikzcd},
+$$
+then get isomorphisms
+$$ \function[\tau]{\Gal\br{L / K}}{\Gal\br{L' / K'}}{g}{\widetilde{\tau} \circ g \circ \widetilde{\tau}^{-1}}. $$
+
+\pagebreak
+
+As extensions are abelian, any other $ \widetilde{\tau}' $ with $ \eval{\widetilde{\tau}'}_K = \tau $ is $ \widetilde{\tau}' = \widetilde{\tau} \circ h $ for $ h \in \Gal\br{L / K} $, so $ \widetilde{\tau}' \circ g \circ \widetilde{\tau}'^{-1} = \widetilde{\tau} \circ h \circ g \circ h^{-1} \circ \widetilde{\tau}^{-1} = \widetilde{\tau} \circ g \circ \widetilde{\tau}^{-1} $. So this isomorphism depends only on $ \tau $. Then
+$$
+\begin{tikzcd}
+\CCC_K \arrow{r}{\Art_{L / K}} \arrow{d}{\sim}[swap]{\tau} & \Gal\br{L / K} \arrow{d}{\tau}[swap]{\sim} \\
+\CCC_{K'} \arrow{r}[swap]{\Art_{L' / K'}} & \Gal\br{L' / K'}
+\end{tikzcd}
+$$
+commutes, by uniqueness. This sort of argument is often called \textbf{transport of structure}.
+
+\begin{example*}
+Suppose $ L / K / F $ is Galois such that $ L / K $ is abelian and $ K / F $ is Galois. Take $ \tau = g \in \Gal\br{K / F} $. As $ L / K $ is abelian, $ \Gal\br{K / F} $ acts by conjugation on $ \Gal\br{L / K} $. Let $ K = K' $ and $ L = L' $. Then
+\begin{equation}
+\label{eq:5}
+\Art_{L / K}\br{gx} = g \circ \Art_{L / K}\br{x} \circ g^{-1}, \qquad g \in \Gal\br{K / F}, \qquad x \in \CCC_K.
+\end{equation}
+\end{example*}
+
+\subsection{Norms}
+
+\begin{proposition}
+Suppose $ L / K $ and $ L' / K' $ are abelian such that $ L \subset L' $ and $ K \subset K' $. Then
+$$
+\begin{tikzcd}
+\Gal\br{L' / K'} \arrow{r}{g \mapsto \eval{g}_L} & \Gal\br{L / K} \\
+\CCC_{K'} \arrow{u}{\Art_{L' / K'}} \arrow{r}[swap]{\N_{K' / K}} & \CCC_K \arrow{u}[swap]{\Art_{L / K}}
+\end{tikzcd}
+$$
+commutes.
+\end{proposition}
+
+\begin{proof}
+It is enough to check for $ \pi_w \in K_w'^\times \subset \CCC_{K'} $ for $ w $ outside a finite set. Assume $ w $ is unramified in $ L' / K' $ such that $ w \mid v \in \V_{K, \f} $ where $ v $ is unramified in $ L / K $. If $ \sigma_w \in \D_w \subset \Gal\br{L' / K'} $, then
+$$ \eval{\sigma_w}_L = \eval{\br{x \mapsto x^{\q_w}}}_L = \br{x \mapsto x^{\q_v}}^{\f\br{w \mid v}} = \sigma_v^{\f\br{w \mid v}}. $$
+If $ \pi_w \in K_w'^\times $ is a uniformiser, then
+$$ \N_{K_w' / K_v}\br{\pi_w} = u\pi_v^{\f\br{w \mid v}}, \qquad u \in \OOO_{K_v}^\times, $$
+since $ \pi_v^{\sbr{K_w' : K_v}} = \N_{K_w' / K_v}\br{\pi_v} $ and $ \pi_v = u\pi_w^{\e\br{w \mid v}} $.
+\end{proof}
+
+\begin{example*}
+A special case is $ K' = L = L' $. Then $ 1 = \Art_{L / L}\br{x} = \Art_{L / K}\br{\N_{L / K}\br{x}} $ for $ x \in \JJJ_L $, so
+$$ \N_{L / K}\br{\JJJ_L} \subset \ker \Art_{L / K}. $$
+\end{example*}
+
+\subsection{Existence theorem}
+
+By the reciprocity law, there is a map from abelian extensions of $ K $ to finite quotients of $ \CCC_K $.
+
+\begin{theorem*}[Existence theorem]
+Let $ U \subset \JJJ_K $ be an open subgroup. Then there exists an abelian extension $ L / K $ with
+$$ \ker \Art_{L / K} = UK^\times. $$
+\end{theorem*}
+
+Combining with the reciprocity law,
+$$ \varprojlim_{\text{open subgroups} \ U \subset \JJJ_K} \JJJ_K / K^\times U \xrightarrow{\sim} \Gal\br{K^{\ab} / K}. $$
+In particular, if $ \mmm $ is a modulus, and $ U = \U_{K, \mmm} $, there is a corresponding abelian extension of $ K $, called the \textbf{ray class field}.
+
+\begin{example*}
+Let $ K = \QQ $ with $ \mmm = \br{m}\infty $. Then the ray class field is $ \QQ\br{\zeta_m} $. So should think of ray class fields as analogues of cyclotomic fields. Maybe later will discuss ray class fields for $ \QQ\br{\sqrt{-d}} $, which correspond to elliptic curves.
+\end{example*}
+
+\pagebreak
+
+\subsection{Relation with local class field theory}
+
+Let $ L / K $ be abelian, let $ v \in \V_K $, and let $ w \mid v $. Then
+$$
+\begin{tikzcd}
+\JJJ_K / K^\times \arrow{r}{\Art_{L / K}} & \Gal\br{L / K} \\
+K_v^\times \arrow[hookrightarrow]{u} \arrow{r}[swap]{\psi_v} & \D_v = \Gal\br{L_w / K_v} \arrow[subset]{u}
+\end{tikzcd}.
+$$
+Indeed, in the proof of the reciprocity law, it is usual to start with local Artin maps $ \psi_v $.
+
+\begin{example*}
+Let $ v \mid \infty $. If $ K_v = L_w $, then $ \psi_v = 1 $. If $ K_v = \RR $ and $ L_w \cong \CC $, then $ \psi_v = \sign : \RR^\times \to \cbr{\pm 1} \cong \Gal\br{L_w / K_v} $ with kernel $ \RR_{> 0} = \N_{\CC / \RR}\br{\CC^\times} $.
+\end{example*}
+
+The $ \br{\psi_v} $ combine to give
+$$
+\begin{tikzcd}
+\JJJ_K / \N_{L / K}\br{\JJJ_L} \arrow{r}{\Art_{L / K}} & \Gal\br{L / K} \\
+\displaystyle\bigoplus_v K_v^\times / \N_{L_w / K_v}\br{L_w^\times} \arrow{u}{\sim} \arrow{r}[swap]{\sim} & \displaystyle\bigoplus_v \D_v \arrow[subset]{u}
+\end{tikzcd}.
+$$
+So the fact that $ \Art_{L / K}\br{K^\times} = \cbr{1} $, the hard part of the reciprocity law, is equivalent to knowing the relations between the various $ \D_v \subset \Gal\br{L / K} $. Why are ideles better than ideals?
+\begin{itemize}
+\item Ideals only will tell you about relations between $ \D_v $ for $ v $ unramified.
+\item Need ideles to understand properly ramification.
+\end{itemize}
+
+\subsection{Hilbert class field}
+
+Let $ K $ be arbitrary with modulus $ \mmm = 0 $. Then $ \Cl_\mmm\br{K} = \Cl\br{K} $. By the existence theorem, there is a corresponding abelian extension $ H / K $, the \textbf{Hilbert class field}, with
+$$ \Art_{H / K} : \Cl\br{K} \xrightarrow{\sim} \Gal\br{H / K}. $$
+Then $ H / K $ satisfies the following.
+\begin{itemize}
+\item It is abelian.
+\item For all $ v \in \V_{K, \f} $, it is unramified at $ v $, since $ \OOO_v^\times \subset \U_{K, \mmm} $ for all $ v $.
+\item At an infinite place $ v $, $ \U_{K, \mmm} \supset K_v^\times $, so the local decomposition group at $ v $ is trivial, that is if $ v $ is a real place of $ K $, then if $ w \mid v $ then $ w $ is also real.
+\end{itemize}
+Thus $ H / K $ is unramified at all places of $ K $, and $ H $ is the maximal extension with these properties.
+
+\begin{example*}
+Let $ K = \QQ\br{\sqrt{-23}} $, so $ \OOO_K = \ZZ\sbr{\tfrac{1 + \sqrt{-23}}{2}} $. By standard computation, $ \Cl\br{K} \cong \ZZ / 3\ZZ $ is generated by $ \sbr{\ppp} $ for $ \ppp = \abr{2, \tfrac{1 + \sqrt{-23}}{2}} $. Let $ \tau \in \Gal\br{K / \QQ} $ be complex conjugation. Then $ \tau\br{\ppp} = \abr{2, \tfrac{1 - \sqrt{-23}}{2}} $ and $ \ppp \cdot \tau\br{\ppp} = \abr{2} $, that is $ \tau\br{\sbr{\ppp}} = \sbr{\ppp}^{-1} $, so $ \tau $ acts as $ -1 $ on $ \Cl\br{K} $. Let $ H $ be the Hilbert class field of $ K $, which is the maximal abelian extension of $ K $ which is unramified at all $ v \in \V_{K, \f} $, that is $ \delta_{H / K} = \OOO_K $. Then $ \sbr{H : K} = 3 $ and Galois. By $ \br{\ref{eq:5}} $ above, $ \tau $ acts as $ -1 $ on $ \Gal\br{H / K} $, so $ H / \QQ $ is an $ \SSS_3 $-extension. Show that $ H $ is the splitting field of $ f = T^3 - T + 1 $ with discriminant $ -23 $. \footnote{Exercise}
+\end{example*}
+
+\pagebreak
+
+\subsection{Another example}
+
+\lecture{16}{Thursday}{25/02/21}
+
+A research problem is to show there is no $ \SSS_3 $-extension $ L / \QQ $, so Galois with group $ \SSS_3 $, which is unramified outside $ 2, 7, \infty $, with quadratic subfield $ K = \QQ\br{\sqrt{-7}} $ or $ K = \QQ\br{\sqrt{2}} $. Let
+$$ \Art_{L / K} : \JJJ_K / K^\times \twoheadrightarrow \Gal\br{L / K} \cong \ZZ / 3\ZZ. $$
+The condition that $ L / \QQ $ is Galois with group $ \SSS_3 $ is $ \Art_{L / K}\br{\tau\br{x}} = \Art_{L / K}\br{x^{-1}} $, by $ \br{\ref{eq:5}} $, since $ \Gal\br{K / \QQ} = \abr{\tau} $ acts on $ \Gal\br{L / K} $ by conjugation non-trivially. For both $ \QQ\br{\sqrt{-7}} $ and $ \QQ\br{\sqrt{2}} $, $ \Cl\br{K} = 1 $. So
+$$ \JJJ_K / K^\times \xleftarrow{\sim} \JJJ_{K, \emptyset} / \OOO_K^\times = \br{K_\infty^\times \times \widehat{\OOO_K}^\times} / \OOO_K^\times. $$
+Then $ \Art_{L / K} : K_\infty^\times = \br{\RR^\times}^{\r_1} \times \br{\CC^\times}^{\r_2} \hookrightarrow \JJJ_{K, \emptyset} \to \ZZ / 3\ZZ $ is trivial on $ \CC^\times $ and $ \RR_{> 0} $, and even on $ \RR^\times $, since there is no non-zero continuous homomorphism $ \RR^\times \to \ZZ / 3\ZZ $. So $ \Art_{L / K} $ factors through $ \widehat{\OOO_K}^\times / \OOO_K $, and since $ L / K $ is unramified at $ v \nmid 14 $, factors further by
+$$
+\begin{tikzcd}
+\JJJ_K / K^\times \cong \JJJ_{K, \emptyset} / \OOO_K^\times \arrow{r} \arrow[twoheadrightarrow]{d}[swap]{\Art_{L / K}} & \widehat{\OOO_K}^\times / \OOO_K^\times \arrow{d} \\
+\Gal\br{L / K} \cong \ZZ / 3\ZZ & \br{\displaystyle\prod_{v \mid 14} \OOO_v^\times} / \OOO_K^\times \arrow[twoheadrightarrow]{l}{\psi}
+\end{tikzcd},
+$$
+since $ \Art_{L / K}\br{\OOO_v^\times} = 1 $ for all $ v \nmid 14 $. Thus
+\begin{equation}
+\label{eq:6}
+\psi \circ \tau = -\psi.
+\end{equation}
+\begin{itemize}
+\item Let $ K = \QQ\br{\sqrt{-7}} $, so $ \OOO_K^\times = \cbr{\pm 1} $.
+\begin{itemize}
+\item Since $ -7 \equiv 1 \mod 8 $, $ 2 $ splits in $ K $, so $ \prod_{v \mid 2} \OOO_v^\times = \ZZ_2^\times \times \ZZ_2^\times $ is a pro-$ 2 $ group, so $ \psi\br{\prod_{v \mid 2} \OOO_v^\times} = 0 $.
+\item $ 7 $ ramifies, so if $ v \mid 7 $, then $ \OOO_v^\times = \FF_7^\times \times \br{1 + \pi_v\OOO_v} $, where $ \FF_7^\times $ is the Teichm\"uller and $ 1 + \pi_v\OOO_v $ is a pro-$ 7 $ group.
+\end{itemize}
+So $ \psi $ factors through $ \FF_7^\times $, and $ \tau \in \Gal\br{K / \QQ} $ acts trivially on $ \FF_7 $. So by $ \br{\ref{eq:6}} $, there is no possible $ \psi $. There does exist a $ \psi $ with $ \psi \circ \tau = \psi $, unique up to inverse, corresponding to an abelian $ L / \QQ $, which has to be $ \QQ\br{\zeta_7} $.
+\item Let $ K = \QQ\br{\sqrt{2}} $, so $ \OOO_K^\times = \abr{-1, \epsilon = 1 + \sqrt{2}} $.
+\begin{itemize}
+\item $ 2 $ ramifies, so if $ v \mid 2 $, then $ \OOO_v^\times = 1 + \pi_v\OOO_v $ is a pro-$ 2 $ group and $ \psi\br{\OOO_v^\times} = 0 $.
+\item Since $ 7 = \br{3 + \sqrt{2}}\br{3 - \sqrt{2}} $, $ \prod_{v \mid 7} \OOO_v^\times = \ZZ_7^\times \times \ZZ_7^\times \cong \FF_7^\times \times \FF_7^\times \times \br{1 + 7\ZZ_7}^2 $, where $ 1 + 7\ZZ_7 $ is a pro-$ 7 $ group, so $ \psi\br{1 + 7\ZZ_7} = 0 $.
+\end{itemize}
+So $ \psi $ factors through $ \psi : \br{\FF_7^\times \times \FF_7^\times} / \OOO_K^\times \twoheadrightarrow \ZZ / 3\ZZ $. Then $ \tau : \br{x, y} \mapsto \br{y, x} $, so
+\begin{equation}
+\label{eq:7}
+\psi\br{x, x} = 0,
+\end{equation}
+by $ \br{\ref{eq:6}} $. Now
+$$ \epsilon = 1 + \sqrt{2} \equiv
+\begin{cases}
+-2 & \mod 3 + \sqrt{2} \\
+4 & \mod 3 - \sqrt{2}
+\end{cases},
+$$
+that is $ \psi\br{-2, 4} = 0 $. By this and $ \br{\ref{eq:7}} $, $ \psi = 0 $.
+\end{itemize}
+
+\pagebreak
+
+\subsection{Galois group of maximal abelian extension}
+
+Fix $ K \subset \overline{\QQ} $. Then
+$$ \Art_K : \CCC_K \to \Gal\br{K^{\ab} / K} = \varprojlim_{L / K \ \text{finite abelian} \ L \subset \overline{\QQ}} \Gal\br{L / K}, $$
+where $ K^{\ab} $ is the \textbf{maximal abelian extension} of $ K $ in $ \overline{\QQ} $, the union of all finite abelian $ L / K $, and $ \Gal\br{K^{\ab} / K} $ is profinite. As $ \CCC_K^1 \twoheadrightarrow \Gal\br{L / K} $ for all $ L $ and $ \CCC_K^1 $ is compact, $ \CCC_K^1 \twoheadrightarrow \Gal\br{K^{\ab} / K} $, since the image is dense and compact. The existence theorem is equivalent to the statement that $ \Gal\br{K^{\ab} / K} $ is the maximal profinite quotient of $ \CCC_K $, or of $ \CCC_K^1 $. There is a diagram
+$$
+\begin{tikzcd}
+1 \arrow{r} & \JJJ_{K, \emptyset} / \OOO_K^\times \arrow{r} \arrow[twoheadrightarrow]{d} & \CCC_K \arrow{r}{\c} \arrow[twoheadrightarrow]{d}[swap]{\Art_K} & \Cl\br{K} \arrow{r} \arrow{d}{\sim} & 1 \\
+1 \arrow{r} & \Gal\br{K^{\ab} / H} \arrow{r} & \Gal\br{K^{\ab} / K} \arrow{r} & \Gal\br{H / K} \arrow{r} & 1
+\end{tikzcd},
+$$
+where $ H $ is the Hilbert class field. What is the kernel of the vertical maps?
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item If $ K = \QQ $, then $ \CCC_K \cong \RR_{> 0} \times \widehat{\ZZ}^\times \twoheadrightarrow \widehat{\ZZ}^\times = \Gal\br{\QQ^{\ab} / \QQ} $.
+\item If $ K = \QQ\br{\sqrt{-d}} $, then $ \JJJ_{K, \emptyset} / \OOO_K^\times \cong \br{\CC^\times \times \widehat{\OOO_K}^\times} / \mu\br{K} $, where $ \mu\br{K} $ is finite, so the maximal profinite quotient is $ \widehat{\OOO_K}^\times / \mu\br{K} $.
+\item If $ K = \QQ\br{\sqrt{2}} $ is real quadratic, then $ \OOO_K^\times = \abr{-1, \epsilon = 1 + \sqrt{2}} $ and $ \Cl\br{K} = 1 $, where $ \N_{K / \QQ}\br{\epsilon} = -1 $ and $ \epsilon $ has signature $ \br{1, -1} $. Let $ \epsilon_+ = \epsilon^2 $ be the least totally positive unit. Then
+$$
+\begin{tikzcd}[row sep=tiny]
+\CCC_K = \JJJ_{K, \emptyset} / \OOO_K^\times \arrow{r}{\sim} & \br{\br{\RR^\times}^2 \times \widehat{\OOO_K}^\times} / \abr{-1, \epsilon} & \br{\RR_{> 0}^2 \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}[swap]{\sim} \\
+\CCC_K^1 = \JJJ_{K, \emptyset}^1 / \OOO_K^\times \arrow[subset]{u} & \br{\RR_{> 0} \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}{\sim} \arrow[twoheadrightarrow]{r}[swap]{\pi} & \widehat{\OOO_K}^\times / \overline{\abr{\epsilon_+}}
+\end{tikzcd},
+$$
+so $ \ker \pi = \br{\RR_{> 0} \times \overline{\abr{\epsilon_+}}} / \abr{\epsilon_+} $. If $ G = \varprojlim_i G_i $ is a profinite group and $ g \in G $, there exists a unique continuous $ \phi : \widehat{\ZZ} \to G $ such that $ \phi\br{1} = g $. \footnote{Exercise: easy} So have
+$$ \function{\widehat{\ZZ}}{\overline{\abr{\epsilon_+}} \subset \widehat{\OOO_K}^\times}{1}{\epsilon_+}. $$
+One can show that $ \widehat{\ZZ} \xrightarrow{\sim} \overline{\abr{\epsilon_+}} $, so there is an isomorphism $ \ker \pi \cong \br{\RR \times \widehat{\ZZ}} / \ZZ = \AA_\QQ / \QQ $, that is have
+$$ 1 \to \AA_\QQ / \QQ \to \CCC_K^1 \to \Gal\br{K^{\ab} / K} \to 1, $$
+where $ \AA_\QQ / \QQ $ is compact and connected.
+\end{itemize}
+\end{example*}
+
+For general $ K $, what happens is that
+$$
+\begin{tikzcd}[row sep=tiny]
+1 \arrow{r} & \CCC_K^0 \arrow{r} \arrow[cong]{d} & \CCC_K \arrow{r} \arrow{d} & \Gal\br{K^{\ab} / K} \arrow{r} & 1 \\
+1 \arrow{r} & \CCC_K^0 \arrow{r} & \JJJ_{K, \emptyset} / \OOO_K^\times \arrow[subset]{u} \arrow{r} & \Gal\br{K^{\ab} / H} \arrow[subset]{u} \arrow{r} \arrow[cong]{d} & 1 \\
+& & & \br{\cbr{\pm 1}^{\r_1} \times \widehat{\OOO_K}^\times} / \overline{\OOO_K^\times} &
+\end{tikzcd},
+$$
+where the maximal connected subgroup of $ \CCC_K $, the closure of $ \RR_{> 0}^{\r_1} \times \br{\CC^\times}^{\r_2} $, is $ \CCC_K^0 = \RR_{> 0} \times \U\br{1}^{\r_2} \times \AA_\QQ^{\r_1 + \r_2 - 1} $.
+
+\pagebreak
+
+\section{\texorpdfstring{$ \zeta $}{Zeta}-functions and \texorpdfstring{$ \L $}{L}-functions}
+
+\subsection{Riemann \texorpdfstring{$ \zeta $}{zeta}-function}
+
+\lecture{17}{Saturday}{27/02/21}
+
+The \textbf{Riemann $ \zeta $-function} is
+$$ \zeta\br{s} = \sum_{n \ge 1} \dfrac{1}{n^s} = \prod_p \dfrac{1}{1 - p^{-s}}, \qquad s \in \CC, \qquad \Re s > 1, $$
+by unique factorisation in $ \ZZ $. Define
+$$ \Z\br{s} = \pi^{-\tfrac{s}{2}}\Gamma\br{\dfrac{s}{2}}\zeta\br{s}. $$
+
+\begin{theorem}
+\label{thm:9.1}
+$ \Z\br{s} = \Z\br{1 - s} $, with analytic continuation to $ \CC $ except for simple poles at $ s = 0, 1 $ with residues $ \pm 1 $.
+\end{theorem}
+
+\begin{proof}
+There are three steps.
+\begin{enumerate}[leftmargin=0.5in, label=Step \arabic*.]
+\item The \textbf{Mellin transform} of $ \tfrac{1}{2}\br{\Theta\br{y} - 1} $ is
+$$ \Z\br{2s} = \pi^{-s}\sum_{n \ge 1} \dfrac{1}{n^{2s}}\intd{0}{\infty}{e^{-t}t^{s - 1}}{t} = \intd{0}{\infty}{\sum_{n = 1}^\infty e^{-\pi n^2y}y^{s - 1}}{y} = \intd{0}{\infty}{\dfrac{1}{2}\br{\Theta\br{y} - 1}\dfrac{y^s}{y}}{y}, $$
+where $ \Theta $ is the \textbf{theta function}
+$$ \Theta\br{y} = \sum_{n = -\infty}^\infty e^{-\pi n^2y}. $$
+\item If $ f : \RR \to \CC $ is nice, then the \textbf{Poisson summation formula} is
+$$ \sum_{n = -\infty}^\infty f\br{n} = \sum_{n = -\infty}^\infty \widehat{f}\br{n}, $$
+where $ \widehat{f} $ is the \textbf{Fourier transform}
+$$ \widehat{f}\br{u} = \intd{-\infty}{\infty}{e^{-2\pi iux}f\br{x}}{x}. $$
+Take $ f\br{x} = e^{-\pi x^2y} $. Then $ \widehat{f}\br{u} = y^{-1 / 2}e^{\pi u^2 / y} $, so $ \Theta\br{y} = y^{-1 / 2}\Theta\br{1 / y} $.
+\item In step $ 1 $, split
+$$ \intd{0}{\infty}{\dfrac{1}{2}\br{\Theta\br{y} - 1}\dfrac{y^s}{y}}{y} = \intd{1}{\infty}{\dfrac{1}{2}\br{\Theta\br{y} - 1}\dfrac{y^s}{y}}{y} + \intd{0}{1}{\dfrac{1}{2}\br{\Theta\br{y} - 1}\dfrac{y^s}{y}}{y}, $$
+and in the second term, use step $ 2 $ to make into
+$$ \intd{0}{1}{\dfrac{1}{2}\br{\Theta\br{y} - 1}\dfrac{y^s}{y}}{y} = \intd{1}{\infty}{\dfrac{1}{2}\br{\Theta\br{\dfrac{1}{y}} - 1}\dfrac{y^{-s}}{y}}{y}, $$
+by $ y \mapsto 1 / y $. Get that
+$$ \Z\br{2s} = \dfrac{1}{2}\intd{1}{\infty}{\br{\Theta\br{y} - 1}\br{y^s + y^{\tfrac{1}{2} - s}}\dfrac{1}{y}}{y} + \dfrac{1}{2s - 1} - \dfrac{1}{2s}, $$
+where the first term is an entire function of $ s $ since $ \Theta\br{y} - 1 \to 0 $ rapidly as $ y \to \infty $, so $ \Z\br{2s} = \Z\br{1 - 2s} $.
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\subsection{Dedekind \texorpdfstring{$ \zeta $}{zeta}-function}
+
+Let $ K $ be a number field. The \textbf{Dedekind $ \zeta $-function of $ K $} is
+$$ \zeta_K\br{s} = \sum_{0 \ne \aaa \subset \OOO_K \ \text{ideals}} \dfrac{1}{\N\br{\aaa}^s}. $$
+
+\begin{proposition}[Euler product]
+$$ \zeta_K\br{s} = \prod_{v \in \V_{K, \f}} \dfrac{1}{1 - \q_v^{-s}}, $$
+absolutely convergent for $ \Re s > 1 $.
+\end{proposition}
+
+\begin{proof}
+Formally, if $ \aaa \subset \OOO_K $ such that $ \aaa = \prod_v \ppp_v^{n_v} $ then $ \N\br{\aaa}^{-s} = \prod_v \q_v^{-n_vs} $, so
+$$ \zeta_K\br{s} = \prod_v \br{1 + \q_v^{-s} + \dots} = \prod_v \dfrac{1}{1 - \q_v^{-s}}. $$
+Now $ \#\cbr{v \mid p} \le n = \sbr{K : \QQ} $, and if $ v \mid p $ then $ \q_v \ge p $, so the product converges by comparison with $ \prod_p \br{1 - p^{-s}}^{-n} = \zeta\br{s}^n $.
+\end{proof}
+
+The $ 1 / \br{1 - \q_v^{-s}} $ are \textbf{Euler factors at $ v $}. Define
+$$ \Gamma_\RR\br{s} = \pi^{-\tfrac{s}{2}}\Gamma\br{\dfrac{s}{2}}, \qquad \Gamma_\CC\br{s} = 2\br{2\pi}^{-s}\Gamma\br{s}, $$
+the Euler factors for the infinite places, and
+$$ \Z_K\br{s} = \abs{\d_K}^{\tfrac{s}{2}}\Gamma_\RR\br{s}^{\r_1}\Gamma_\CC\br{s}^{\r_2}\zeta_K\br{s}. $$
+The following is a generalisation of \ref{thm:9.1}.
+
+\begin{theorem}
+\hfill
+\begin{enumerate}
+\item $ \Z_K\br{s} $ has an analytic continuation to $ \CC $, apart from simple poles at $ s = 0, 1 $, and $ \Z_K\br{1 - s} = \Z_K\br{s} $.
+\item $ \zeta_K\br{s} $ has a simple zero of order $ r = \r_1 + \r_2 - 1 $ at $ s = 0 $, and
+\begin{equation}
+\label{eq:8}
+\lim_{s \to 0} \dfrac{1}{s^r}\zeta_K\br{s} = -\dfrac{\h_K\R_K}{\w_K},
+\end{equation}
+the \textbf{analytic class number formula}.
+\end{enumerate}
+\end{theorem}
+
+Here, $ \h_K = \#\Cl\br{K} $ is the class number, $ \w_K = \#\mu\br{K} $ is the number of roots of unity in $ K $, and $ \R_K $ is the \textbf{regulator} of $ K $. If $ \epsilon_1, \dots, \epsilon_r $ are generators for $ \OOO_K^\times / \mu\br{K} \cong \ZZ^r $, by the unit theorem, $ \R_K $ is the absolute value of any $ \br{r \times r} $-minor of the matrix
+$$ \br{\log \abs{\epsilon_j}_v}_{1 \le j \le r, \ v \in \V_{K, \infty}}. $$
+Note that by the product formula, the sum of the columns of this matrix is zero, so minors are equal up to sign. Then $ \R_K \ne 0 $ by the proof of the unit theorem. More usual to write $ \br{\ref{eq:8}} $ at $ s = 1 $ but more complicated.
+
+\begin{example*}
+If $ K = \QQ $, then $ \zeta\br{0} = -\tfrac{1}{2} $.
+\end{example*}
+
+There are two ways to prove this.
+\begin{itemize}
+\item Hecke, using theta functions.
+\item Tate, using adeles. Generalises much more easily to other $ \L $-functions, such as $ \L $-functions of characters of $ \CCC_K $.
+\end{itemize}
+
+\pagebreak
+
+Tate's proof is an adelic version of \ref{thm:9.1}. The idea is to first interpret $ \zeta_K\br{s} $, or $ \Z_K\br{s} $, as an adelic integral. Assuming we know how to integrate on $ \QQ_p $,
+$$ \intd{\ZZ_p \setminus \cbr{0}}{}{\abs{x}_p^{s - 1}}{x} = \sum_{n \ge 0} \intd{p^n\ZZ_p \setminus p^{n + 1}\ZZ_p}{}{p^{-n\br{s - 1}}}{x} = \sum_{n \ge 0} p^{-n\br{s - 1}}\meas\br{p^n\ZZ_p \setminus p^{n + 1}\ZZ_p}. $$
+Then
+$$ \ZZ_p = \bigsqcup_{a = 0}^{p^n - 1} a + p^n\ZZ_p, \qquad \meas\br{a + p^n\ZZ_p} = \dfrac{1}{p^n}\meas\br{\ZZ_p}, $$
+so
+$$ \intd{\ZZ_p \setminus \cbr{0}}{}{\abs{x}_p^{s - 1}}{x} = \sum_{n \ge 0} p^{-n\br{s - 1}}\br{\dfrac{1}{p^n} - \dfrac{1}{p^{n + 1}}}\meas\br{\ZZ_p} = \br{1 - p^{-1}}\meas\br{\ZZ_p}\dfrac{1}{1 - p^{-s}}, $$
+where $ 1 / \br{1 - p^{-s}} $ is the Euler factor at $ p $ in $ \zeta\br{s} $. Suggests that $ \zeta\br{s} $ is a product of $ p $-adic integrals, an adelic integral.
+\begin{itemize}
+\item The $ \Gamma $-factor will be an integral at an infinite place.
+\item Have to normalise measure to get $ 1 / \br{1 - p^{-s}} $ for almost all $ p $.
+\item The functional equation will come from a Fourier transform.
+\end{itemize}
+
+\subsection{Fourier analysis}
+
+On $ \RR $,
+$$ \widehat{f}\br{y} = \intd{-\infty}{\infty}{e^{-2\pi ixy}f\br{x}}{x}, $$
+which has three ingredients. Define $ \widehat{f} $ replacing $ \RR $ by any local field $ F $, of characteristic zero.
+\begin{itemize}
+\item An \textbf{additive character} is a continuous $ 1 \ne \psi : F \to \U\br{1} = \cbr{\abs{z} = 1} \subset \CC^\times $.
+\begin{itemize}
+\item If $ F = \RR $, then $ \psi\br{x} = e^{-2\pi ix} $.
+\item If $ F = \CC $, then $ \psi\br{z} = e^{-2\pi i\br{z + \overline{z}}} $.
+\item Let $ F / \QQ_p $ be finite. Since $ \QQ_p = \ZZ\sbr{1 / p} + \ZZ_p $, define
+$$ \function[\psi_p]{\QQ_p / \ZZ_p}{\U\br{1}}{x}{e^{2\pi iy}}, \qquad y \in \ZZ\sbr{\dfrac{1}{p}}, \qquad x - y \in \ZZ_p, $$
+which is well-defined. Let $ \psi = \psi_p \circ \Tr_{F / \QQ_p} : F \to \U\br{1} $.
+\end{itemize}
+Why the sign in the case $ F = \RR $ or $ F = \CC $? If $ x \in \QQ $, then $ \psi_\infty\br{x}\prod_p \psi_p\br{x} = 1 $.
+\end{itemize}
 
 \end{document}
