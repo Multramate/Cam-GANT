@@ -8,6 +8,20 @@
 \input{../style/header}
 
 % Macros
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\dA}{\dif_\AA}
+\newcommand{\dF}{\dif_F}
+\newcommand{\dJ}{\dif_\JJJ}
+\newcommand{\dJI}{\dif_{\JJJ^1}}
+\newcommand{\dv}{\dif_v}
+\newcommand{\hathat}[1]{\widehat{\widehat{#1\ }}\!\!}
+\newcommand{\intA}[3][]{\int_{\ifstrempty{#1}{\AA_K}{#1}} #2 \, \dA #3}
+\newcommand{\intF}[3][]{\int_{\ifstrempty{#1}{F}{#1}} #2 \, \dF #3}
+\newcommand{\intFX}[3][]{\int_{\ifstrempty{#1}{F^\times}{#1}} #2 \, \dF^\times #3}
+\newcommand{\intJ}[3][]{\int_{\ifstrempty{#1}{\JJJ_K}{#1}} #2 \, \dJ #3}
+\newcommand{\intJI}[3][]{\int_{\ifstrempty{#1}{\JJJ_K^1}{#1}} #2 \, \dJI #3}
+\newcommand{\intv}[3][]{\int_{\ifstrempty{#1}{K_v}{#1}} #2 \, \dv #3}
+\newcommand{\intvX}[3][]{\int_{\ifstrempty{#1}{K_v^\times}{#1}} #2 \, \dv^\times #3}
 \newcommand{\mods}{\mod\!\!^*\ }
 
 \begin{document}
@@ -403,7 +417,7 @@ $$
 \end{remark*}
 
 \begin{fact*}
-On $ K_v $, for any $ v $, there is a translation-invariant measure, the Haar measure, $ \d_v\br{x} $, and for all $ a \in K_v^\times $, $ \d_v\br{ax} = \abs{a}_v\d_v\br{x} $ where $ \abs{\cdot}_v $ is the normalised AV.
+On $ K_v $, for any $ v $, there is a translation-invariant measure, the Haar measure, $ \dv x $, and for all $ a \in K_v^\times $, $ \dv\br{ax} = \abs{a}_v\dv x $ where $ \abs{\cdot}_v $ is the normalised AV.
 \end{fact*}
 
 \pagebreak
@@ -1056,10 +1070,10 @@ This is the translation of a classical result that if $ 0 \ne I $ is an ideal th
 \lecture{11}{Saturday}{13/02/21}
 
 \begin{remark*}
-Used Minkowski's theorem, with convex symmetric set $ X = \sbr{-d_v, d_v}^{\r_1} \times \cbr{\abs{z}^2 \le d_v}^{\r_2} $ and obtained $ \r_K = \br{4 / \pi}^{\r_2}\mu_{\sigma\br{\OOO_K}} $. Using better chosen $ X $, can get a better bound, the Minkowski bound $ \c_K $, which is useful for computation.
+Used Minkowski's theorem, with convex symmetric set $ X = \sbr{-d_v, d_v}^{\r_1} \times \cbr{\abs{z}^2 \le d_v}^{\r_2} $ and obtained $ \r_K = \br{\tfrac{4}{\pi}}^{\r_2}\mu_{\sigma\br{\OOO_K}} $. Using better chosen $ X $, can get a better bound, the Minkowski bound $ \c_K $, which is useful for computation.
 \end{remark*}
 
-\subsection{Compactness of idele class group}
+\subsection{Compactness of \texorpdfstring{$ \CCC_K^1 $}{norm one idele class group}}
 
 Recall $ K^\times \subset \JJJ_K^1 = \ker \br{\abs{\cdot}_\AA : \JJJ_K \to \RR_{> 0}} $ is discrete. Based on \ref{thm:7.3} and the following.
 
@@ -1099,7 +1113,7 @@ Let $ z \in \JJJ_K^1 $. Then $ \prod_v \abs{y_vz_v}_v = \abs{y}_\AA > \r_K $. So
 
 \pagebreak
 
-\subsection{Finiteness of ideal class group and \texorpdfstring{$ S $}{S}-unit theorem}
+\subsection{Finiteness of \texorpdfstring{$ \Cl\br{K} $}{ideal class group} and \texorpdfstring{$ S $}{S}-unit theorem}
 
 The following are two corollaries.
 
@@ -1311,7 +1325,7 @@ $$
 So via $ \JJJ_\QQ / \QQ^\times \cong \RR_{> 0} \times \widehat{\ZZ}^\times $, $ \Art_{L / \QQ} $ is just the cyclotomic map.
 \end{example*}
 
-\subsection{Finite quotients of idele class group}
+\subsection{Finite quotients of \texorpdfstring{$ \CCC_K $}{idele class group}}
 
 \begin{proposition}
 \label{prop:8.1}
@@ -1454,7 +1468,7 @@ commutes.
 
 This is the reason for using $ \ppp_v^{-1} $, and $ \sigma_v^{-1} $ in the reciprocity law, since it means that for $ \QQ\br{\zeta_m} / \QQ $, recover the usual map $ \Gal\br{\QQ\br{\zeta_m} / \QQ} \cong \br{\ZZ / m\ZZ}^\times $. Older treatments of class field theory use $ \sigma_v $ and end up with the inverse of the usual map. Another reason is that the inverse $ \Fr_v = \F_v = \sigma_v^{-1} $, the so-called \textbf{geometric Frobenius}, is what occurs naturally in algebraic geometry. The modern normalisation of class field theory maps a uniformiser at an unramified $ v $ to the geometric Frobenius $ \sigma_v^{-1} $.
 
-\subsection{Uniqueness}
+\subsection{Uniqueness of \texorpdfstring{$ \Art_{L / K} $}{the Artin map}}
 
 \lecture{15}{Tuesday}{23/02/21}
 
@@ -1487,7 +1501,7 @@ Suppose $ L / K / F $ is Galois such that $ L / K $ is abelian and $ K / F $ is 
 \end{equation}
 \end{example*}
 
-\subsection{Norms}
+\subsection{Norm functoriality}
 
 \begin{proposition}
 Suppose $ L / K $ and $ L' / K' $ are abelian such that $ L \subset L' $ and $ K \subset K' $. Then
@@ -1544,7 +1558,11 @@ $$
 Indeed, in the proof of the reciprocity law, it is usual to start with local Artin maps $ \psi_v $.
 
 \begin{example*}
-Let $ v \mid \infty $. If $ K_v = L_w $, then $ \psi_v = 1 $. If $ K_v = \RR $ and $ L_w \cong \CC $, then $ \psi_v = \sign : \RR^\times \to \cbr{\pm 1} \cong \Gal\br{L_w / K_v} $ with kernel $ \RR_{> 0} = \N_{\CC / \RR}\br{\CC^\times} $.
+Let $ v \mid \infty $.
+\begin{itemize}
+\item If $ K_v = L_w $, then $ \psi_v = 1 $.
+\item If $ K_v = \RR $ and $ L_w \cong \CC $, then $ \psi_v = \sign : \RR^\times \to \cbr{\pm 1} \cong \Gal\br{L_w / K_v} $ with kernel $ \RR_{> 0} = \N_{\CC / \RR}\br{\CC^\times} $.
+\end{itemize}
 \end{example*}
 
 The $ \br{\psi_v} $ combine to give
@@ -1573,7 +1591,7 @@ Then $ H / K $ satisfies the following.
 Thus $ H / K $ is unramified at all places of $ K $, and $ H $ is the maximal extension with these properties.
 
 \begin{example*}
-Let $ K = \QQ\br{\sqrt{-23}} $, so $ \OOO_K = \ZZ\sbr{\tfrac{1 + \sqrt{-23}}{2}} $. By standard computation, $ \Cl\br{K} \cong \ZZ / 3\ZZ $ is generated by $ \sbr{\ppp} $ for $ \ppp = \abr{2, \tfrac{1 + \sqrt{-23}}{2}} $. Let $ \tau \in \Gal\br{K / \QQ} $ be complex conjugation. Then $ \tau\br{\ppp} = \abr{2, \tfrac{1 - \sqrt{-23}}{2}} $ and $ \ppp \cdot \tau\br{\ppp} = \abr{2} $, that is $ \tau\br{\sbr{\ppp}} = \sbr{\ppp}^{-1} $, so $ \tau $ acts as $ -1 $ on $ \Cl\br{K} $. Let $ H $ be the Hilbert class field of $ K $, which is the maximal abelian extension of $ K $ which is unramified at all $ v \in \V_{K, \f} $, that is $ \delta_{H / K} = \OOO_K $. Then $ \sbr{H : K} = 3 $ and Galois. By $ \br{\ref{eq:5}} $ above, $ \tau $ acts as $ -1 $ on $ \Gal\br{H / K} $, so $ H / \QQ $ is an $ \SSS_3 $-extension. Show that $ H $ is the splitting field of $ f = T^3 - T + 1 $ with discriminant $ -23 $. \footnote{Exercise}
+Let $ K = \QQ\br{\sqrt{-23}} $, so $ \OOO_K = \ZZ\sbr{\tfrac{1 + \sqrt{-23}}{2}} $. By a standard computation, $ \Cl\br{K} \cong \ZZ / 3\ZZ $ is generated by $ \sbr{\ppp} $ for $ \ppp = \abr{2, \tfrac{1 + \sqrt{-23}}{2}} $. Let $ \tau \in \Gal\br{K / \QQ} $ be complex conjugation. Then $ \tau\br{\ppp} = \abr{2, \tfrac{1 - \sqrt{-23}}{2}} $ and $ \ppp \cdot \tau\br{\ppp} = \abr{2} $, that is $ \tau\br{\sbr{\ppp}} = \sbr{\ppp}^{-1} $, so $ \tau $ acts as $ -1 $ on $ \Cl\br{K} $. Let $ H $ be the Hilbert class field of $ K $, which is the maximal abelian extension of $ K $ which is unramified at all $ v \in \V_{K, \f} $, that is $ \delta_{H / K} = \OOO_K $. Then $ \sbr{H : K} = 3 $ and Galois. By $ \br{\ref{eq:5}} $ above, $ \tau $ acts as $ -1 $ on $ \Gal\br{H / K} $, so $ H / \QQ $ is an $ \SSS_3 $-extension. Show that $ H $ is the splitting field of $ f = T^3 - T + 1 $ with discriminant $ -23 $. \footnote{Exercise}
 \end{example*}
 
 \pagebreak
@@ -1582,9 +1600,18 @@ Let $ K = \QQ\br{\sqrt{-23}} $, so $ \OOO_K = \ZZ\sbr{\tfrac{1 + \sqrt{-23}}{2}}
 
 \lecture{16}{Thursday}{25/02/21}
 
-A research problem is to show there is no $ \SSS_3 $-extension $ L / \QQ $, so Galois with group $ \SSS_3 $, which is unramified outside $ 2, 7, \infty $, with quadratic subfield $ K = \QQ\br{\sqrt{-7}} $ or $ K = \QQ\br{\sqrt{2}} $. Let
+The following arose in a research problem.
+
+\begin{proposition}
+There is no $ \SSS_3 $-extension $ L / \QQ $, so Galois with group $ \SSS_3 $, which is unramified outside $ 2, 7, \infty $, with quadratic subfield $ K = \QQ\br{\sqrt{-7}} $ or $ K = \QQ\br{\sqrt{2}} $.
+\end{proposition}
+
+\begin{proof}
+Let
 $$ \Art_{L / K} : \JJJ_K / K^\times \twoheadrightarrow \Gal\br{L / K} \cong \ZZ / 3\ZZ. $$
-The condition that $ L / \QQ $ is Galois with group $ \SSS_3 $ is $ \Art_{L / K}\br{\tau\br{x}} = \Art_{L / K}\br{x^{-1}} $, by $ \br{\ref{eq:5}} $, since $ \Gal\br{K / \QQ} = \abr{\tau} $ acts on $ \Gal\br{L / K} $ by conjugation non-trivially. For both $ \QQ\br{\sqrt{-7}} $ and $ \QQ\br{\sqrt{2}} $, $ \Cl\br{K} = 1 $. So
+The condition that $ L / \QQ $ is Galois with group $ \SSS_3 $ is
+$$ \Art_{L / K}\br{\tau\br{x}} = \Art_{L / K}\br{x^{-1}}, $$
+by $ \br{\ref{eq:5}} $, since $ \Gal\br{K / \QQ} = \abr{\tau} $ acts on $ \Gal\br{L / K} $ by conjugation non-trivially. For both $ \QQ\br{\sqrt{-7}} $ and $ \QQ\br{\sqrt{2}} $, $ \Cl\br{K} = 1 $. So
 $$ \JJJ_K / K^\times \xleftarrow{\sim} \JJJ_{K, \emptyset} / \OOO_K^\times = \br{K_\infty^\times \times \widehat{\OOO_K}^\times} / \OOO_K^\times. $$
 Then $ \Art_{L / K} : K_\infty^\times = \br{\RR^\times}^{\r_1} \times \br{\CC^\times}^{\r_2} \hookrightarrow \JJJ_{K, \emptyset} \to \ZZ / 3\ZZ $ is trivial on $ \CC^\times $ and $ \RR_{> 0} $, and even on $ \RR^\times $, since there is no non-zero continuous homomorphism $ \RR^\times \to \ZZ / 3\ZZ $. So $ \Art_{L / K} $ factors through $ \widehat{\OOO_K}^\times / \OOO_K $, and since $ L / K $ is unramified at $ v \nmid 14 $, factors further by
 $$
@@ -1624,14 +1651,15 @@ $$ \epsilon = 1 + \sqrt{2} \equiv
 $$
 that is $ \psi\br{-2, 4} = 0 $. By this and $ \br{\ref{eq:7}} $, $ \psi = 0 $.
 \end{itemize}
+\end{proof}
 
 \pagebreak
 
-\subsection{Galois group of maximal abelian extension}
+\subsection{Comparing \texorpdfstring{$ \CCC_K $}{idele class group} and \texorpdfstring{$ \Gal\br{K^{\ab} / K} $}{Galois group of maximal abelian extension}}
 
-Fix $ K \subset \overline{\QQ} $. Then
-$$ \Art_K : \CCC_K \to \Gal\br{K^{\ab} / K} = \varprojlim_{L / K \ \text{finite abelian} \ L \subset \overline{\QQ}} \Gal\br{L / K}, $$
-where $ K^{\ab} $ is the \textbf{maximal abelian extension} of $ K $ in $ \overline{\QQ} $, the union of all finite abelian $ L / K $, and $ \Gal\br{K^{\ab} / K} $ is profinite. As $ \CCC_K^1 \twoheadrightarrow \Gal\br{L / K} $ for all $ L $ and $ \CCC_K^1 $ is compact, $ \CCC_K^1 \twoheadrightarrow \Gal\br{K^{\ab} / K} $, since the image is dense and compact. The existence theorem is equivalent to the statement that $ \Gal\br{K^{\ab} / K} $ is the maximal profinite quotient of $ \CCC_K $, or of $ \CCC_K^1 $. There is a diagram
+Fix $ K \subset \overline{\QQ} $. Let
+$$ \Art_K : \CCC_K \to \Gal\br{K^{\ab} / K} = \varprojlim_{\text{finite abelian} \ K \subset L \subset \overline{\QQ}} \Gal\br{L / K}, $$
+where $ K^{\ab} $ is the \textbf{maximal abelian extension} of $ K $ in $ \overline{\QQ} $, the union of all finite abelian $ L / K $, so $ \Gal\br{K^{\ab} / K} $ is profinite. As $ \CCC_K^1 \twoheadrightarrow \Gal\br{L / K} $ for all $ L $ and $ \CCC_K^1 $ is compact, $ \CCC_K^1 \twoheadrightarrow \Gal\br{K^{\ab} / K} $, since the image is dense and compact. The existence theorem is equivalent to the statement that $ \Gal\br{K^{\ab} / K} $ is the maximal profinite quotient of $ \CCC_K $, or of $ \CCC_K^1 $. There is a diagram
 $$
 \begin{tikzcd}
 1 \arrow{r} & \JJJ_{K, \emptyset} / \OOO_K^\times \arrow{r} \arrow[twoheadrightarrow]{d} & \CCC_K \arrow{r}{\c} \arrow[twoheadrightarrow]{d}[swap]{\Art_K} & \Cl\br{K} \arrow{r} \arrow{d}{\sim} & 1 \\
@@ -1639,36 +1667,35 @@ $$
 \end{tikzcd},
 $$
 where $ H $ is the Hilbert class field. What is the kernel of the vertical maps?
-
-\begin{example*}
-\hfill
 \begin{itemize}
-\item If $ K = \QQ $, then $ \CCC_K \cong \RR_{> 0} \times \widehat{\ZZ}^\times \twoheadrightarrow \widehat{\ZZ}^\times = \Gal\br{\QQ^{\ab} / \QQ} $.
-\item If $ K = \QQ\br{\sqrt{-d}} $, then $ \JJJ_{K, \emptyset} / \OOO_K^\times \cong \br{\CC^\times \times \widehat{\OOO_K}^\times} / \mu\br{K} $, where $ \mu\br{K} $ is finite, so the maximal profinite quotient is $ \widehat{\OOO_K}^\times / \mu\br{K} $.
-\item If $ K = \QQ\br{\sqrt{2}} $ is real quadratic, then $ \OOO_K^\times = \abr{-1, \epsilon = 1 + \sqrt{2}} $ and $ \Cl\br{K} = 1 $, where $ \N_{K / \QQ}\br{\epsilon} = -1 $ and $ \epsilon $ has signature $ \br{1, -1} $. Let $ \epsilon_+ = \epsilon^2 $ be the least totally positive unit. Then
+\item If $ K = \QQ $, then
+$$ \Art_\QQ : \CCC_\QQ \cong \RR_{> 0} \times \widehat{\ZZ}^\times \twoheadrightarrow \widehat{\ZZ}^\times = \Gal\br{\QQ^{\ab} / \QQ}. $$
+\item If $ K = \QQ\br{\sqrt{-d}} $, then $ \mu\br{K} $ is finite, so the maximal profinite quotient is
+$$ \Art_K : \JJJ_{K, \emptyset} / \OOO_K^\times \cong \br{\CC^\times \times \widehat{\OOO_K}^\times} / \mu\br{K} \twoheadrightarrow \widehat{\OOO_K}^\times / \mu\br{K} = \Gal\br{K^{\ab} / K}. $$
+\item Let $ K = \QQ\br{\sqrt{2}} $, so $ \Cl\br{K} = 1 $ and $ \OOO_K^\times = \abr{-1, \epsilon = 1 + \sqrt{2}} $. Then $ \N_{K / \QQ}\br{\epsilon} = -1 $ and $ \epsilon $ has signature $ \br{1, -1} $. Let $ \epsilon_+ = \epsilon^2 $ be the least totally positive unit. Then the maximal profinite quotient is
 $$
 \begin{tikzcd}[row sep=tiny]
-\CCC_K = \JJJ_{K, \emptyset} / \OOO_K^\times \arrow{r}{\sim} & \br{\br{\RR^\times}^2 \times \widehat{\OOO_K}^\times} / \abr{-1, \epsilon} & \br{\RR_{> 0}^2 \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}[swap]{\sim} \\
-\CCC_K^1 = \JJJ_{K, \emptyset}^1 / \OOO_K^\times \arrow[subset]{u} & \br{\RR_{> 0} \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}{\sim} \arrow[twoheadrightarrow]{r}[swap]{\pi} & \widehat{\OOO_K}^\times / \overline{\abr{\epsilon_+}}
-\end{tikzcd},
+\CCC_K = \JJJ_{K, \emptyset} / \OOO_K^\times & \br{\RR_{> 0}^2 \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}[swap]{\sim} & \\
+\CCC_K^1 = \JJJ_{K, \emptyset}^1 / \OOO_K^\times \arrow[subset]{u} & \br{\RR_{> 0} \times \widehat{\OOO_K}^\times} / \abr{\epsilon_+} \arrow{l}{\sim} \arrow[twoheadrightarrow]{r}[swap]{\Art_K^1} & \widehat{\OOO_K}^\times / \overline{\abr{\epsilon_+}} = \Gal\br{K^{\ab} / K}
+\end{tikzcd}.
 $$
-so $ \ker \pi = \br{\RR_{> 0} \times \overline{\abr{\epsilon_+}}} / \abr{\epsilon_+} $. If $ G = \varprojlim_i G_i $ is a profinite group and $ g \in G $, there exists a unique continuous $ \phi : \widehat{\ZZ} \to G $ such that $ \phi\br{1} = g $. \footnote{Exercise: easy} So have
+If $ G = \varprojlim_i G_i $ is a profinite group and $ g \in G $, there exists a unique continuous $ \phi : \widehat{\ZZ} \to G $ such that $ \phi\br{1} = g $. \footnote{Exercise: easy} So have
 $$ \function{\widehat{\ZZ}}{\overline{\abr{\epsilon_+}} \subset \widehat{\OOO_K}^\times}{1}{\epsilon_+}. $$
-One can show that $ \widehat{\ZZ} \xrightarrow{\sim} \overline{\abr{\epsilon_+}} $, so there is an isomorphism $ \ker \pi \cong \br{\RR \times \widehat{\ZZ}} / \ZZ = \AA_\QQ / \QQ $, that is have
-$$ 1 \to \AA_\QQ / \QQ \to \CCC_K^1 \to \Gal\br{K^{\ab} / K} \to 1, $$
-where $ \AA_\QQ / \QQ $ is compact and connected.
-\end{itemize}
-\end{example*}
-
-For general $ K $, what happens is that
+One can show that $ \widehat{\ZZ} \xrightarrow{\sim} \overline{\abr{\epsilon_+}} $, so there is an isomorphism
+$$ \ker \Art_K^1 = \br{\RR_{> 0} \times \overline{\abr{\epsilon_+}}} / \abr{\epsilon_+} \cong \br{\RR \times \widehat{\ZZ}} / \ZZ = \AA_\QQ / \QQ, $$
+where $ \AA_\QQ / \QQ $ is compact and connected, that is have
+$$ 1 \to \AA_\QQ / \QQ \to \CCC_K^1 \to \Gal\br{K^{\ab} / K} \to 1. $$
+\item For general $ K $, what happens is that
 $$
 \begin{tikzcd}[row sep=tiny]
-1 \arrow{r} & \CCC_K^0 \arrow{r} \arrow[cong]{d} & \CCC_K \arrow{r} \arrow{d} & \Gal\br{K^{\ab} / K} \arrow{r} & 1 \\
+1 \arrow{r} & \CCC_K^0 \arrow{r} \arrow[cong]{d} & \CCC_K \arrow{r}{\Art_K} \arrow{d} & \Gal\br{K^{\ab} / K} \arrow{r} & 1 \\
 1 \arrow{r} & \CCC_K^0 \arrow{r} & \JJJ_{K, \emptyset} / \OOO_K^\times \arrow[subset]{u} \arrow{r} & \Gal\br{K^{\ab} / H} \arrow[subset]{u} \arrow{r} \arrow[cong]{d} & 1 \\
 & & & \br{\cbr{\pm 1}^{\r_1} \times \widehat{\OOO_K}^\times} / \overline{\OOO_K^\times} &
 \end{tikzcd},
 $$
-where the maximal connected subgroup of $ \CCC_K $, the closure of $ \RR_{> 0}^{\r_1} \times \br{\CC^\times}^{\r_2} $, is $ \CCC_K^0 = \RR_{> 0} \times \U\br{1}^{\r_2} \times \AA_\QQ^{\r_1 + \r_2 - 1} $.
+where the maximal connected subgroup of $ \CCC_K $, the closure of $ \RR_{> 0}^{\r_1} \times \br{\CC^\times}^{\r_2} $, is
+$$ \CCC_K^0 \cong \RR_{> 0} \times \U\br{1}^{\r_2} \times \br{\AA_\QQ / \QQ}^{\r_1 + \r_2 - 1}. $$
+\end{itemize}
 
 \pagebreak
 
@@ -1685,7 +1712,8 @@ $$ \Z\br{s} = \pi^{-\tfrac{s}{2}}\Gamma\br{\dfrac{s}{2}}\zeta\br{s}. $$
 
 \begin{theorem}
 \label{thm:9.1}
-$ \Z\br{s} = \Z\br{1 - s} $, with analytic continuation to $ \CC $ except for simple poles at $ s = 0, 1 $ with residues $ \pm 1 $.
+$$ \Z\br{s} = \Z\br{1 - s}, $$
+with analytic continuation to $ \CC $ except for simple poles at $ s = 0, 1 $ with residues $ \pm 1 $.
 \end{theorem}
 
 \begin{proof}
@@ -1718,6 +1746,7 @@ Let $ K $ be a number field. The \textbf{Dedekind $ \zeta $-function of $ K $} i
 $$ \zeta_K\br{s} = \sum_{0 \ne \aaa \subset \OOO_K \ \text{ideals}} \dfrac{1}{\N\br{\aaa}^s}. $$
 
 \begin{proposition}[Euler product]
+\label{prop:9.2}
 $$ \zeta_K\br{s} = \prod_{v \in \V_{K, \f}} \dfrac{1}{1 - \q_v^{-s}}, $$
 absolutely convergent for $ \Re s > 1 $.
 \end{proposition}
@@ -1737,7 +1766,8 @@ The following is a generalisation of \ref{thm:9.1}.
 \begin{theorem}
 \hfill
 \begin{enumerate}
-\item $ \Z_K\br{s} $ has an analytic continuation to $ \CC $, apart from simple poles at $ s = 0, 1 $, and $ \Z_K\br{1 - s} = \Z_K\br{s} $.
+\item $ \Z_K\br{s} $ has an analytic continuation to $ \CC $, apart from simple poles at $ s = 0, 1 $, and
+$$ \Z_K\br{1 - s} = \Z_K\br{s}. $$
 \item $ \zeta_K\br{s} $ has a simple zero of order $ r = \r_1 + \r_2 - 1 $ at $ s = 0 $, and
 \begin{equation}
 \label{eq:8}
@@ -1776,13 +1806,14 @@ where $ 1 / \br{1 - p^{-s}} $ is the Euler factor at $ p $ in $ \zeta\br{s} $. S
 \item The functional equation will come from a Fourier transform.
 \end{itemize}
 
-\subsection{Fourier analysis}
+\subsection{Local Fourier analysis}
 
 On $ \RR $,
 $$ \widehat{f}\br{y} = \intd{-\infty}{\infty}{e^{-2\pi ixy}f\br{x}}{x}, $$
 which has three ingredients. Define $ \widehat{f} $ replacing $ \RR $ by any local field $ F $, of characteristic zero.
-\begin{itemize}
-\item An \textbf{additive character} is a continuous $ 1 \ne \psi : F \to \U\br{1} = \cbr{\abs{z} = 1} \subset \CC^\times $.
+
+\begin{definition*}
+The \textbf{additive character} is a continuous $ 1 \ne \psi : F \to \U\br{1} = \cbr{\abs{z} = 1} \subset \CC^\times $.
 \begin{itemize}
 \item If $ F = \RR $, then $ \psi\br{x} = e^{-2\pi ix} $.
 \item If $ F = \CC $, then $ \psi\br{z} = e^{-2\pi i\br{z + \overline{z}}} $.
@@ -1790,7 +1821,417 @@ which has three ingredients. Define $ \widehat{f} $ replacing $ \RR $ by any loc
 $$ \function[\psi_p]{\QQ_p / \ZZ_p}{\U\br{1}}{x}{e^{2\pi iy}}, \qquad y \in \ZZ\sbr{\dfrac{1}{p}}, \qquad x - y \in \ZZ_p, $$
 which is well-defined. Let $ \psi = \psi_p \circ \Tr_{F / \QQ_p} : F \to \U\br{1} $.
 \end{itemize}
-Why the sign in the case $ F = \RR $ or $ F = \CC $? If $ x \in \QQ $, then $ \psi_\infty\br{x}\prod_p \psi_p\br{x} = 1 $.
+\end{definition*}
+
+Why the sign in the case $ F / \RR $? If $ x \in \QQ $, then $ \psi_\infty\br{x}\prod_p \psi_p\br{x} = 1 $.
+
+\lecture{18}{Tuesday}{02/03/21}
+
+\begin{definition*}
+The \textbf{Haar measure $ \dF x $} is translation-invariant.
+\begin{itemize}
+\item If $ F = \RR $, then $ \dF x $ is the usual Lebesgue measure $ \d x $.
+\item If $ F = \CC $, then $ \dF z = 2\d x\d y $ for $ z = x + iy $, which is twice the Lebesgue measure.
+\item Let $ F / \QQ_p $. Our functions will be locally constant, that is sums of multiples of characteristic functions of $ a + \pi^n\OOO_F $ for $ a \in F $ and $ n \in \ZZ $. If $ n \ge 0 $, then $ \OOO_F = \bigsqcup_a a + \pi^n\OOO_F $ is a disjoint union of $ q^n $ cosets, so
+$$ \meas\br{a + \pi^n\OOO_F} = \meas\br{\pi^n\OOO_F} = \dfrac{1}{q^n}\meas\br{\OOO_F}, $$
+and will normalise $ \meas\br{\OOO_F} = q^{-\delta / 2} $ where $ \delta = \delta_{F / \QQ_p} = \v\br{\DDD_{F / \QQ_p}} $, that is
+$$ \intF{\1_{a + \pi^n\OOO_F}}{x} = \meas\br{a + \pi^n\OOO_F} = q^{-n - \tfrac{\delta}{2}}. $$
 \end{itemize}
+\end{definition*}
+
+In each case, $ \dF\br{ax} = \abs{a}_F\dF x $ for $ a \in F^\times $.
+
+\pagebreak
+
+\begin{definition*}
+The class of functions to integrate is the \textbf{Schwartz space} $ \SSS\br{F} $.
+\begin{itemize}
+\item If $ F = \RR $, then
+$$ \SSS\br{F} = \cbr{\text{$ \C^\infty $-functions} \ f : F \to \CC \st \forall n \ge 0, \ \forall \alpha \in \NN, \ \lim_{\abs{x} \to \infty} \br{\abs{x}^n\abs{\dod[\alpha]{f}{x}}} = 0}. $$
+For example, $ e^{-c\abs{x}^2} $ for $ c > 0 $.
+\item If $ F = \CC $, then
+$$ \SSS\br{F} = \cbr{\text{$ \C^\infty $-functions} \ f : F \to \CC \st \forall n \ge 0, \ \forall \alpha \in \NN^2, \ \lim_{\abs{z} \to \infty} \br{\abs{z}^n\abs{\dmd{f}{\alpha}{x}{\alpha_1}{y}{\alpha_2}}} = 0}. $$
+\item If $ F / \QQ_p $, then
+\begin{align*}
+\SSS\br{F}
+& = \cbr{\text{locally constant} \ f : F \to \CC \ \text{of compact support}} \\
+& = \cbr{\text{span of characteristic functions} \ \1_{a + \pi^n\OOO_F}}.
+\end{align*}
+\end{itemize}
+\end{definition*}
+
+If $ f \in \SSS\br{F} $, write
+$$ \intF{f\br{x}}{x} $$
+for the integral. If $ F / \QQ_p $ and $ f = \1_{a + \pi^n\OOO_F} $, then
+$$ \intF{f\br{x}}{x} = \meas\br{a + \pi^n\OOO_F}, $$
+that is $ p $-adic integrals are basically just finite sums. Also write
+$$ \intF[U]{f\br{x}}{x} = \intF{\1_Uf\br{x}}{x}, $$
+for $ U \subset F $ compact open.
+
+\begin{lemma}
+\label{lem:9.4}
+Let $ F / \QQ_p $, and let $ \aaa \subset F $ be a fractional ideal. Then
+$$ \intF[\aaa]{\psi\br{x}}{x} = \intF{\1_\aaa\psi\br{x}}{x} =
+\begin{cases}
+\meas\br{\aaa} & \aaa \subset \DDD_{F / \QQ_p}^{-1} \\
+0 & \text{otherwise}
+\end{cases},
+$$
+where $ \1_\aaa\psi \in \SSS\br{F} $.
+\end{lemma}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item If $ \aaa \subset \DDD_{F / \QQ_p}^{-1} $, then $ \Tr_{F / \QQ_p}\br{\aaa} \subset \ZZ_p $ so $ \eval{\psi}_\aaa = 1 $, as $ \eval{\psi_p}_{\ZZ_p} = 1 $.
+\item If $ \aaa \not\subset \DDD_{F / \QQ_p}^{-1} $, there exists $ x \in \aaa $ such that $ \Tr_{F / \QQ_p}\br{x} \notin \ZZ_p $, so $ \psi\br{x} \ne 1 $. As $ x + \aaa = \aaa $, and $ \dF\br{x + y} = \dF y $,
+$$ \intF[\aaa]{\psi\br{y}}{y} = \intF[\aaa]{\psi\br{x + y}}{y} = \psi\br{x}\intF[\aaa]{\psi\br{y}}{y}, $$
+so the integral is zero.
+\end{itemize}
+\end{proof}
+
+Compare to
+$$ \sum_{g \in G} \chi\br{g} =
+\begin{cases}
+\#G & g = e \\
+0 & \text{otherwise}
+\end{cases},
+$$
+for $ G $ finite abelian.
+
+\begin{definition*}
+Let $ f \in \SSS\br{F} $. Define the \textbf{Fourier transform}
+$$ \widehat{f}\br{y} = \intF{\psi\br{xy}f\br{x}}{x}, $$
+where $ \psi\br{xy}f\br{x} \in \SSS\br{F} $.
+\end{definition*}
+
+\pagebreak
+
+\begin{proposition}
+\label{prop:9.5}
+\hfill
+\begin{enumerate}
+\item If $ F = \RR $ and $ f\br{x} = e^{-\pi x^2} $, then $ \widehat{f} = f $.
+\item If $ F = \CC $ and $ f\br{z} = \tfrac{1}{\pi}e^{-2\pi z\overline{z}} $, then $ \widehat{f} = f $.
+\item If $ F / \QQ_p $ and $ f = \1_{\pi^n\OOO_F} $, then
+$$ \widehat{f} = q^{-n - \tfrac{\delta}{2}}\1_{\pi^{-n}\DDD_{F / \QQ_p}^{-1}} = q^{-n - \tfrac{\delta}{2}}\1_{\pi^{-n - \delta}\OOO_F}. $$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Changing the contour of $ f $,
+$$ \widehat{f}\br{y} = \intd{-\infty}{\infty}{e^{-2\pi ixy - \pi x^2}}{x} = e^{-\pi y^2}\intd{-\infty}{\infty}{e^{-\pi\br{x + iy}^2}}{x} = e^{-\pi y^2}\intd{-\infty}{\infty}{e^{-\pi x^2}}{x} = e^{-\pi y^2}. $$
+\item Exercise. \footnote{Exercise}
+\item By \ref{lem:9.4},
+$$ \widehat{f}\br{y} = \intF[\pi^n\OOO_F]{\psi\br{xy}}{x} =
+\begin{cases}
+\meas\br{\pi^n\OOO_F} & y \in \pi^{-n}\DDD_{F / \QQ_p}^{-1} \\
+0 & y \notin \pi^{-n}\DDD_{F / \QQ_p}^{-1}
+\end{cases},
+$$
+which gives the answer.
+\end{enumerate}
+\end{proof}
+
+\begin{fact*}
+If $ f \in \SSS\br{F} $, then $ \widehat{f} \in \SSS\br{F} $.
+\begin{itemize}
+\item For $ F / \RR $, this is standard analysis, using $ \widehat{f^{\br{n}}}\br{y} = \br{2\pi iy}^n\widehat{f}\br{y} $.
+\item For $ F / \QQ_p $, this is an exercise in sheet $ 3 $.
+\end{itemize}
+\end{fact*}
+
+\begin{proposition}[Inversion formula]
+$$ \hathat{f}\br{x} = f\br{-x}. $$
+\end{proposition}
+
+\begin{proof}
+\hfill
+\begin{itemize}
+\item For $ F = \RR $, this is standard analysis.
+\item For $ F = \CC $, notice that if $ f\br{z} = f\br{x + iy} = g\br{x, y} $, then $ \widehat{f}\br{w} = \widehat{f}\br{u + iv} = 2\widehat{g}\br{2u, -2v} $ since $ zw + \overline{zw} = 2\br{ux - vy} $, so $ \hathat{f}\br{z} = f\br{-z} $ easily.
+\item For $ F / \QQ_p $, if $ f = \1_{\OOO_F} $, then
+$$ \hathat{f} = q^{-\tfrac{\delta}{2}}\widehat{\1_{\DDD_{F / \QQ_p}^{-1}}} = q^{-\tfrac{\delta}{2}}q^{\delta - \tfrac{\delta}{2}}\1_{\OOO_F}, $$
+by \ref{prop:9.5}.$ 3 $ twice. \footnote{Exercise: the rest is in example sheet}
+\end{itemize}
+\end{proof}
+
+This explains the choice of constants in $ \dF x $, a \textbf{self-dual} Haar measure, otherwise we would get $ \hathat{f}\br{x} = cf\br{-x} $.
+
+\begin{lemma}
+\label{lem:9.7}
+Let $ c \in F^\times $, and let $ g\br{x} = f\br{cx} $. Then
+$$ \widehat{g}\br{y} = \abs{c}_F^{-1}\widehat{f}\br{c^{-1}y}. $$
+\end{lemma}
+
+\begin{proof}
+By $ x = c^{-1}t $,
+$$ \widehat{g}\br{y} = \intF{\psi\br{xy}f\br{cx}}{x} = \intF{\psi\br{c^{-1}ty}f\br{t}}{\br{c^{-1}t}} = \abs{c}_F^{-1}\intF{\psi\br{tc^{-1}y}f\br{t}}{t} = \abs{c}_F^{-1}\widehat{f}\br{c^{-1}y}. $$
+\end{proof}
+
+\pagebreak
+
+\subsection{Local \texorpdfstring{$ \zeta $}{zeta}-integrals}
+
+\lecture{19}{Thursday}{04/03/21}
+
+\begin{definition*}
+Define the \textbf{Haar measure $ \dF^\times x $ on the multiplicative group $ F^\times $} by
+$$ \dF^\times x =
+\begin{cases}
+\dfrac{1}{\abs{x}_F}\dF x & F / \RR \\
+\dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\dfrac{1}{\abs{x}_F}\dF x & F / \QQ_p
+\end{cases},
+$$
+where $ q $ is the residue field order and $ \delta = \v\br{\DDD_{F / \QQ_p}} $.
+\end{definition*}
+
+Since $ \dF\br{ax} = \abs{a}_F\dF x $, $ \dF^\times\br{ax} = \dF^\times x $. If $ F / \QQ_p $, then
+$$ \meas \OOO_F^\times = \intFX[\OOO_F^\times]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\intF[\OOO_F \setminus \pi\OOO_F]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\br{q^{-\tfrac{\delta}{2}} - q^{-1 - \tfrac{\delta}{2}}} = 1. $$
+This is the reason to normalise in this way.
+
+\begin{definition*}
+Let $ f \in \SSS\br{F} $, and let $ s \in \CC $. Define \textbf{local $ \zeta $-integrals}, or \textbf{local Euler factors},
+$$ \zeta\br{f, s} = \intFX{f\br{x}\abs{x}_F^s}{x} = c\lim_{\epsilon \to 0} \intF[\cbr{x \in F \st \abs{x}_F \ge \epsilon}]{f\br{x}\abs{x}_F^{s - 1}}{x}, \qquad c =
+\begin{cases}
+1 & F / \RR \\
+\dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}} & F / \QQ_p
+\end{cases}.
+$$
+\end{definition*}
+
+If $ F / \QQ_p $, this is just a finite sum. Since $ f $ is continuous and tends rapidly to zero as $ \abs{x}_F \to \infty $ if $ F / \RR $ and has compact support if $ F / \QQ_p $, the limit exists for $ \Re s \ge 1 $.
+
+\begin{proposition}
+\hfill
+\begin{enumerate}
+\item If $ F = \RR $ and $ f\br{x} = e^{-\pi x^2} $, then $ \zeta\br{f, s} = \Gamma_\RR\br{s} $.
+\item If $ F = \CC $ and $ f\br{z} = \tfrac{1}{\pi}e^{-2\pi z\overline{z}} $, then $ \zeta\br{f, s} = \Gamma_\CC\br{s} $.
+\item If $ F / \QQ_p $ and $ f = \1_{\pi^n\OOO_F} $, then
+$$ \zeta\br{f, s} = \dfrac{q^{-ns}}{1 - q^{-s}}. $$
+\end{enumerate}
+\end{proposition}
+
+Recall
+$$ \Gamma\br{s} = \intd{0}{\infty}{e^{-t}\dfrac{t^s}{t}}{t}, \qquad \Gamma_\RR\br{s} = \pi^{-\tfrac{s}{2}}\Gamma\br{\dfrac{s}{2}}, \qquad \Gamma_\CC\br{s} = 2\br{2\pi}^{-s}\Gamma\br{s}. $$
+
+\begin{proof}
+\hfill
+\begin{enumerate}
+\item Follows from the definition of $ \Gamma\br{s} $ after a change of variables.
+\item Follows from the definition of $ \Gamma\br{s} $ after a change of variables and polar coordinates.
+\item
+\begin{align*}
+\zeta\br{\1_{\pi^n\OOO_F}, s}
+& = \intFX[\pi^n\OOO_F \setminus \cbr{0}]{\abs{x}_F^s}{x}
+= \sum_{m = n}^\infty \intF[\pi^m\OOO_F \setminus \pi^{m + 1}\OOO_F]{\dfrac{q^{-ms}}{q^{-m}}\dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}}{x} \\
+& = \sum_{m = n}^\infty q^{m\br{1 - s} + \tfrac{\delta}{2}}\dfrac{1}{1 - q^{-1}}\meas\br{\pi^m\OOO_F \setminus \pi^{m + 1}\OOO_F} \\
+& = \sum_{m = n}^\infty q^{m\br{1 - s} + \tfrac{\delta}{2}}\dfrac{1}{1 - q^{-1}}q^{-\tfrac{\delta}{2}}\br{\dfrac{1}{q^m} - \dfrac{1}{q^{m + 1}}}
+= \sum_{m = n}^\infty q^{-ms}
+= \dfrac{q^{-ns}}{1 - q^{-s}}.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\pagebreak
+
+\begin{example*}
+$ \zeta\br{\1_{\OOO_F}, s} = 1 / \br{1 - q^{-s}} $.
+\end{example*}
+
+A variant is to also consider, for a continuous homomorphism $ \chi : F^\times \to \CC^\times $,
+$$ \zeta\br{\chi, f, s} = \intFX{f\br{x}\chi\br{x}\abs{x}_F^s}{x}, $$
+defined as a limit in the same way.
+
+\subsection{Global Fourier analysis}
+
+Let $ K $ be a number field with completions $ K_v $, and let $ \psi_v : K_v \to \U\br{1} $, $ \dv x $, $ \dv^\times x $, $ \SSS\br{K_v} $, and $ \delta_v $ be the objects defined above for $ F = K_v $. Let
+$$ \V_{K, \r} = \cbr{v \in \V_{K, \f} \st v \ \text{ramified in} \ F / \QQ_p} = \cbr{v \in \V_{K, \f} \st \delta_v \ne 0}. $$
+Then
+$$ \AA_K = \bigcup_S \br{\prod_{v \in S} K_v \times \prod_{v \notin S} \OOO_v}, $$
+where $ S \subset \V_K $ is finite containing $ \V_{K, \infty} $.
+
+\begin{definition*}
+Let $ f_v \in \SSS\br{K_v} $ for $ v \in \V_K $ such that for all but finitely many $ v \in \V_{K, \f} $, $ f_v = \1_{\OOO_v} $. Then if $ x = \br{x_v} \in \AA_K $, for all but finitely many $ v $, $ f_v\br{x_v} = 1 $. So can define
+$$ f\br{x} = \prod_{v \in \V_K} f_v\br{x_v}, $$
+and write $ f = \prod_v f_v $, or better, $ f = \bigotimes_v f_v $. Then the \textbf{global Schwartz space} $ \SSS\br{\AA_K} $ is the space of finite linear combinations of $ f $ of this type.
+\end{definition*}
+
+\begin{definition*}
+Let $ f = \bigotimes_v f_v \in \SSS\br{\AA_K} $ where $ f_v = \1_{\OOO_v} $ for all $ v \notin S $ for a finite set $ S \supset \V_{K, \infty} \cup \V_{K, \r} $. Then $ f = 0 $ outside $ \prod_{v \in S} K_v \times \prod_{v \notin S} \OOO_v $ and can define the \textbf{global integral}
+$$ \intA{f\br{x}}{x} = \prod_v \intv{f_v\br{x}}{x} = \prod_{v \in S} \intv{f_v\br{x}}{x}, $$
+since if $ v \notin S $,
+$$ \intv{f_v\br{x}}{x} = \intv[\OOO_v]{}{x} = 1. $$
+\end{definition*}
+
+\begin{definition*}
+Let the \textbf{global additive character} be
+$$ \function[\psi_\AA = \prod_v \psi_v]{\AA_K}{\U\br{1}}{\br{x_v}}{\prod_v \psi_v\br{x_v}}, $$
+which is a finite product, since for all but finitely many $ v \in \V_{K, \f} $, $ x_v \in \OOO_v $ so $ \psi_v\br{x_v} = \psi_p\br{\Tr_{K_v / \QQ_p}\br{x_v}} = 1 $.
+\end{definition*}
+
+\begin{proposition}
+$ \psi_\AA $ is continuous, and $ \psi_\AA\br{x} = 1 $ if $ x \in K $.
+\end{proposition}
+
+\begin{proof}
+Take a finite $ S \supset \V_{K, \infty} $. The restriction of $ \psi_\AA $ to $ \prod_{v \in S} K_v \times \prod_{v \notin S} \OOO_v $ factors through $ \prod_{v \in S} \psi_v : \prod_{v \in S} K_v \to \U\br{1} $, which is continuous. Now $ \psi_\AA\br{x} = \psi_{\AA_\QQ}\br{\Tr_{K / \QQ}\br{x}} $, as $ \Tr_{K / \QQ}\br{x} = \sum_{v \mid p} \Tr_{K_v / \QQ_p}\br{x} $ for all $ p \le \infty $, so it is enough to consider $ K = \QQ $. Write $ x \in \QQ $ as partial fractions $ x = \sum_i y_i / p_i^{k_i} $ for $ y_i \in \ZZ $ and $ k_i \ge 0 $. Then $ \psi_{p_i}\br{x} = e^{2\pi iy_i / p_i^{k_i}} $ as for $ j \ne i $, $ y_j / p_j^{k_j} \in \ZZ_{p_i} $, and $ \psi_p\br{x} = 1 $ if $ p \notin \cbr{p_i} $. Thus $ \prod_{p < \infty} \psi_p\br{x} = e^{2\pi ix} = \psi_\infty\br{x}^{-1} $.
+\end{proof}
+
+\begin{definition*}
+Define the \textbf{global Fourier transform} of $ f \in \SSS\br{\AA_K} $ as
+$$ \widehat{f}\br{y} = \intA{\psi_\AA\br{xy}f\br{x}}{x} = \prod_v \widehat{f_v}\br{y_v}, \qquad f = \bigotimes_v f_v. $$
+\end{definition*}
+
+Note that for all but finitely many $ v $, $ f_v = \1_{\OOO_v} = \widehat{f_v} $.
+
+\pagebreak
+
+\subsection{Global \texorpdfstring{$ \zeta $}{zeta}-integrals}
+
+\begin{definition*}
+Let $ f = \bigotimes_v f_v \in \SSS\br{\AA_K} $. Define the \textbf{global $ \zeta $-integral}
+$$ \zeta\br{f, s} = \intJ{f\br{x}\abs{x}_\AA^s}{x} = \prod_{v \in \V_K} \intvX{f_v\br{x}\abs{x}_v^s}{x} = \prod_{v \in \V_K} \zeta\br{f_v, s}, $$
+which really is a genuine infinite product.
+\end{definition*}
+
+\lecture{20}{Saturday}{06/03/21}
+
+If $ a \in \JJJ_K $, then there is an isomorphism
+$$ \function[a]{\AA_K}{\AA_K}{x}{ax}, $$
+so if $ f \in \SSS\br{\AA_K} $ then $ f\br{ax} \in \SSS\br{\AA_K} $. Then $ \dA\br{ax} = \abs{a}_\AA\dA x $, since holds locally, and $ \dJ\br{ax} = \dJ x $.
+
+\begin{proposition}
+The product $ \zeta\br{f, s} $ converges absolutely for $ \Re s > 1 $.
+\end{proposition}
+
+\begin{proof}
+Assume $ f = \bigotimes_v f_v $ such that $ f_v = \1_{\OOO_v} $ for all $ v \notin S $. Then $ \zeta\br{f_v, s} = 1 / \br{1 - \q_v^{-s}} $ for $ v \notin S $, which gives convergence by \ref{prop:9.2}, the product for $ \zeta_K\br{s} $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:9.11}
+$ \zeta\br{f, s} $ has a meromorphic continuation to $ \CC $, with at worst simple poles at $ s = 0, 1 $. Moreover,
+$$ \zeta\br{f, s} = \zeta\br{\widehat{f}, 1 - s}, $$
+with
+$$ \Res \zeta\br{f, s} =
+\begin{cases}
+\widehat{f}\br{0}\kappa & s = 1 \\
+-f\br{0}\kappa & s = 0
+\end{cases},
+\qquad \kappa = \meas\br{\JJJ_K^1 / K^\times} > 0. $$
+\end{theorem}
+
+Let $ n = \sbr{K : \QQ} $. Then
+$$ \function[\i]{\RR_{> 0}}{K_\infty^\times = \prod_{v \mid \infty} K_v^\times \hookrightarrow \JJJ_K}{t}{\br{t^{\tfrac{1}{n}}}_v}, $$
+so $ \abs{\i\br{t}}_\AA = t $. So there is an isomorphism
+$$ \function{\RR_{> 0} \times \JJJ_K^1}{\JJJ_K}{\br{t, x}}{\i\br{t}x}. $$
+Write $ t $ in place of $ \i\br{t} $. Use this to define a measure $ \dJI x $ on $ \JJJ_K^1 $ such that
+\begin{equation}
+\label{eq:9}
+\intJ{f\br{x}}{x} = \intd{0}{\infty}{\br{\intJI{f\br{tx}}{x}}\dfrac{1}{t}}{t}.
+\end{equation}
+The most concrete way to do this is to pick $ \phi : \RR_{> 0} \to \RR $, $ \C^\infty $ of compact support such that
+$$ \intd{0}{\infty}{\dfrac{\phi\br{t}}{t}}{t} = 1. $$
+Given $ f $ on $ \JJJ_K^1 $, let
+$$ \function[\widetilde{f_\phi}]{\JJJ_K}{\CC}{tx}{\phi\br{t}f\br{x}}, $$
+and define
+$$ \intJI{f\br{x}}{x} = \intJ{\widetilde{f_\phi}\br{y}}{y}. $$
+
+\pagebreak
+
+\begin{lemma}
+\hfill
+\begin{enumerate}
+\item This is independent of $ \phi $.
+\item The identity $ \br{\ref{eq:9}} $ holds.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $ y \in \JJJ_K $ such that $ y = tx $ for $ t > 0 $ and $ x \in \JJJ_K^1 $, then $ x = y / \abs{y}_\AA $ and $ t = \abs{y}_\AA $.
+\begin{enumerate}
+\item So $ \widetilde{f_\phi}\br{y} = \phi\br{\abs{y}_\AA}f\br{y / \abs{y}_\AA} $. Putting $ s' = \abs{y}_\AA $ and $ y' = sy / s' $, so $ \abs{y'}_\AA = s $,
+\begin{align*}
+\intJI{f\br{x}}{x}
+& = \intd{0}{\infty}{\dfrac{\psi\br{s}}{s}}{s}\intJ{\widetilde{f_\phi}\br{y}}{y} \\
+& = \intd{0}{\infty}{\br{\intJ{\psi\br{s}\phi\br{\abs{y}_\AA}f\br{\dfrac{y}{\abs{y}_\AA}}}{y}}\dfrac{1}{s}}{s} \\
+& = \intd{0}{\infty}{\br{\intJ{\psi\br{\abs{y'}_\AA}\phi\br{s'}f\br{\dfrac{y'}{\abs{y'}_\AA}}}{y'}}\dfrac{1}{s'}}{s'} \\
+& = \intd{0}{\infty}{\dfrac{\phi\br{s'}}{s'}}{s'}\intJ{\widetilde{f_\psi}\br{y}}{y}
+= \intJI{f\br{x}}{x}.
+\end{align*}
+\item If $ g_t\br{x} = f\br{tx} $, then $ \widetilde{g_t}\br{y} = \phi\br{\abs{y}_\AA}f\br{ty / \abs{y}_\AA} $, so putting $ s = \abs{y}_\AA $ and $ x = ty / s $,
+\begin{align*}
+\intd{0}{\infty}{\br{\intJI{f\br{tx}}{x}}\dfrac{1}{t}}{t}
+& = \intd{0}{\infty}{\br{\intJ{\phi\br{\abs{y}_\AA}f\br{\dfrac{ty}{\abs{y}_\AA}}}{y}}\dfrac{1}{s}}{s} \\
+& = \intd{0}{\infty}{\dfrac{\phi\br{s}}{s}}{s}\intJ{f\br{x}}{x}
+= \intJ{f\br{x}}{x}.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+So
+$$ \zeta\br{f, s} = \intd{0}{\infty}{\dfrac{\zeta_t\br{f, s}}{t}}{t}, \qquad \zeta_t\br{f, s} = t^s\intJI{f\br{tx}}{x}. $$
+Recall that $ \JJJ_K^1 / K^\times = \CCC_K^1 $ is compact. Will show next time that there exists a \textbf{fundamental domain} $ E \subset \JJJ_K^1 $ with $ \meas\br{E} < \infty $ and $ \overline{E} $ compact such that
+$$ \JJJ_K^1 = \bigsqcup_{a \in K^\times} aE. $$
+Let $ \kappa = \meas\br{E} $.
+
+\begin{proposition}[Functional equation for $ \zeta_t $]
+\label{prop:9.13}
+$$ \zeta_t\br{f, s} + \kappa f\br{0}t^s = \zeta_{\tfrac{1}{t}}\br{\widehat{f}, 1 - s} + \kappa\widehat{f}\br{0}t^{s - 1}. $$
+\end{proposition}
+
+This is an analogue of the functional equation of $ \Theta\br{t} = \sum_{n \in \ZZ} e^{-\pi n^2t} $. The proof uses the following.
+
+\begin{theorem}[Poisson summation formula]
+\label{thm:9.14}
+Let $ f \in \SSS\br{\AA_K} $. Then
+$$ \sum_{a \in K} f\br{a} = \sum_{a \in K} \widehat{f}\br{a}, $$
+and both sums are absolutely convergent.
+\end{theorem}
+
+\begin{corollary}
+\label{cor:9.15}
+Let $ x \in \JJJ_K $. Then
+$$ \sum_{a \in K} f\br{xa} = \abs{x}_\AA^{-1}\sum_{a \in K} \widehat{f}\br{x^{-1}a}. $$
+\end{corollary}
+
+\begin{proof}
+Apply \ref{thm:9.14} to $ f \circ x $ and use \ref{lem:9.7}.
+\end{proof}
+
+\pagebreak
+
+\begin{proof}[Proof of \ref{prop:9.13}]
+Write the integral over $ \JJJ_K^1 $ as an integral over $ E $ of a sum over $ K^\times $. By \ref{cor:9.15},
+\begin{align*}
+\zeta_t\br{f, s} + \kappa f\br{0}t^s
+& = t^s\intJI{f\br{tx}}{x} \\
+& = t^s\intJI[E]{\sum_{a \in K^\times} f\br{atx}}{x} + \kappa f\br{0}t^s
+= t^s\intJI[E]{\sum_{a \in K} f\br{atx}}{x} \\
+& = t^s\intJI[E]{\sum_{a \in K} \abs{tx}_\AA^{-1}\widehat{f}\br{t^{-1}x^{-1}a}}{x}
+= t^{s - 1}\intJI[E]{\sum_{a \in K^\times} \widehat{f}\br{t^{-1}x^{-1}a}}{x} + \kappa\widehat{f}\br{0}t^{s - 1} \\
+& = t^{s - 1}\intJI{\widehat{f}\br{t^{-1}x^{-1}}}{x} + \kappa\widehat{f}\br{0}t^{s - 1}
+= \zeta_{\tfrac{1}{t}}\br{\widehat{f}, 1 - s} + \kappa\widehat{f}\br{0}t^{s - 1},
+\end{align*}
+since $ \abs{x}_\AA = 1 $ on $ E $.
+\end{proof}
+
+\begin{proof}[Proof of \ref{thm:9.11}]
+Now, if $ \Re s > 1 $,
+\begin{align*}
+\zeta\br{f, s}
+= \intd{0}{\infty}{\dfrac{\zeta_t\br{f, s}}{t}}{t}
+& = \intd{1}{\infty}{\dfrac{\zeta_t\br{f, s}}{t}}{t} + \intd{0}{1}{\dfrac{\zeta_t\br{f, s}}{t}}{t}
+= \intd{1}{\infty}{\dfrac{\zeta_t\br{f, s} + \zeta_{\tfrac{1}{t}}\br{f, s}}{t}}{t} \\
+& = \intd{1}{\infty}{\dfrac{\zeta_t\br{f, s} + \zeta_t\br{\widehat{f}, 1 - s} - \kappa f\br{0}t^{-s} + \kappa\widehat{f}\br{0}t^{1 - s}}{t}}{t} \\
+& = \intd{1}{\infty}{\dfrac{\zeta_t\br{f, s} + \zeta_t\br{\widehat{f}, 1 - s}}{t}}{t} + \kappa\br{\dfrac{\widehat{f}\br{0}}{s - 1} - \dfrac{f\br{0}}{s}}.
+\end{align*}
+Now since $ f\br{tx} \to 0 $ rapidly as $ t \to \infty $ as $ f \in \SSS\br{\AA_K} $, $ \intd{1}{\infty}{\br{\zeta_t\br{f, s} / t}}{t} $ is an entire function of $ s \in \CC $, which gives a meromorphic continuation of $ \zeta\br{f, s} $ with poles at $ s = 0, 1 $, and $ \zeta\br{f, s} = \zeta\br{\widehat{f}, 1 - s} $.
+\end{proof}
+
+Morally, $ \zeta_t\br{f, s} $ is $ \Theta $ deprived of the constant term.
 
 \end{document}
