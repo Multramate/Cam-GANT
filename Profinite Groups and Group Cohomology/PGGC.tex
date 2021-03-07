@@ -1056,7 +1056,7 @@ These linear groups have as subgroups many important groups, such as free groups
 Let $ \Gamma $ be a finitely generated subgroup of $ \GL_N K $ where $ K $ is a field. Then $ \Gamma $ is residually finite.
 \end{theorem}
 
-\begin{proof}[Proof (non-examinable)]
+\begin{proof}
 The entries of a generating set of $ \Gamma $ generate a finitely generated subring $ R $ of $ K $. Commutative algebra says that $ R $ has many maximal ideals $ \ppp \subseteq R $, such that $ R / \ppp $ is a finite field. Use maps $ \GL_N R \to \GL_N \br{R / \ppp} $ to show residual finiteness.
 \end{proof}
 
@@ -1359,7 +1359,7 @@ This is true for infinitely generated free groups. If $ F = \abr{a_i}_{i \in I} 
 
 Residual finiteness if and only if $ \iota : G \hookrightarrow \widehat{G} $. Residual $ p $-finiteness, stronger than residual finiteness, is $ \iota : G \hookrightarrow \widehat{G_{\br{p}}} $, if and only if for all $ g \in G \setminus \cbr{1} $, there exists $ \phi : G \to Q $ where $ \abs{Q} = p^m $ such that $ \phi\br{g} \ne 1 $.
 
-\begin{proof}[Proof 1 (non-examinable)]
+\begin{proof}[Proof 1]
 Let $ p $ be a prime. Let $ X $ be a wedge of $ k $ circles, and $ F = \pi_1\br{X} $. Construct $ F_n \triangleleft F $ inductively, by
 $$ F_1 = F, \qquad F_{n + 1} = \bigcap \cbr{\ker f \st f : F_n \to \ZZ / p\ZZ} = \ker \br{F_n \to \prod_f \ZZ / p\ZZ}. $$
 
@@ -2154,7 +2154,8 @@ $ \GL_N^{\br{1}} \ZZ_p $ and $ \SL_N^{\br{1}} \ZZ_p $ are pro-$ p $ groups.
 \end{proposition}
 
 \begin{proof}
-$ \SL_N^{\br{1}} \ZZ_p \le \GL_N^{\br{1}} \ZZ_p = \varprojlim_m \GL_N^{\br{1}} \br{\ZZ / p^m\ZZ} $ and $ \abs{\GL_N^{\br{1}} \br{\ZZ / p^m\ZZ}} = p^{\br{m - 1}N^2} $.
+$ \abs{\GL_N^{\br{1}} \br{\ZZ / p^m\ZZ}} = p^{\br{m - 1}N^2} $, and
+$$ \SL_N^{\br{1}} \ZZ_p \le \GL_N^{\br{1}} \ZZ_p = \varprojlim_m \GL_N^{\br{1}} \br{\ZZ / p^m\ZZ}. $$
 \end{proof}
 
 \begin{remark}
@@ -2200,7 +2201,7 @@ Let $ H $ be any closed subgroup of $ \GL_N^{\br{1}} \ZZ_p $. Then $ \d\br{H} \l
 Compare to a free group as a subgroup of $ \SL_2 \ZZ $.
 
 \begin{theorem}
-If $ G $ is a pro-$ p $ group, such that $ \d\br{H} \le R $ for all $ H \le_\c G $. Then
+If $ G $ is a pro-$ p $ group, such that $ \d\br{H} \le R $ for all $ H \le_\c G $, then
 $$ G / \ZZ_p^a \hookrightarrow \GL_R \ZZ_p \times F, $$
 where $ F $ is finite.
 \end{theorem}
@@ -2211,7 +2212,7 @@ where $ F $ is finite.
 
 \lecture{17}{Saturday}{27/02/21}
 
-In the homology of spaces, a simplicial complex $ X $ gives a family of abelian groups $ \H_n\br{X} $ with $ \ZZ $ coefficients. In the cohomology of groups, a group $ G $ gives a family of abelian groups $ \H^n\br{G; M} $ with $ M $ coefficients.
+In the homology of spaces, a simplicial complex $ X $ gives a family of abelian groups $ \H_n\br{X} $ with $ \ZZ $ coefficients. In the cohomology of groups, a group $ G $ gives a family of abelian groups $ \H^n\br{G, M} $ with $ M $ coefficients.
 
 \subsection{Group rings and chain complexes}
 
@@ -2262,14 +2263,13 @@ M_1 \arrow{rr}{f} \arrow[dashed]{dr}[swap]{f^*\alpha} & & M_2 \arrow{dl}{\alpha}
 & N &
 \end{tikzcd}.
 $$
-
-\pagebreak
-
 Submodules and quotients are the obvious things.
 
 \begin{definition}
 Let $ M $ be a $ G $-module. Then a \textbf{$ G $-submodule} is a subgroup $ N \le M $ such that $ g \cdot n \in N $ for all $ g \in G $ and $ n \in N $. If $ N $ is a submodule, we have a \textbf{quotient module} $ M / N $, the abelian group $ M / N $, with the $ G $-action $ g \cdot \br{m + N} = g \cdot m + N $.
 \end{definition}
+
+\pagebreak
 
 \begin{definition}
 A \textbf{chain complex of $ G $-modules} $ \br{M_n} = \br{M_n, d_n}_{t \le n \le s} $ is a sequence of $ G $-modules
@@ -2326,13 +2326,13 @@ $$ \function[\overline{\beta}]{\ZZ G\cbr{X}}{M_1}{x}{m_x}, $$
 and extend linearly, so $ \overline{\beta}\br{\sum_{x \in X} r_xx} = \sum_{x \in X} r_xm_x $.
 \end{proof}
 
-\pagebreak
-
 \begin{definition}
 A \textbf{projective resolution of $ \ZZ $ by $ \ZZ G $-modules} is an exact sequence
 $$ \dots \xrightarrow{d_2} F_1 \xrightarrow{d_1} F_0 \xrightarrow{d_0} \ZZ \to 0, $$
 where each $ F_n $ is projective, and $ \ZZ $ has trivial $ G $-action.
 \end{definition}
+
+\pagebreak
 
 \begin{definition}
 Take a projective resolution as above. Let $ M $ be a $ G $-module. Apply the functor $ \Hom_G\br{-, M} $ to get a sequence
@@ -2347,6 +2347,405 @@ $$
 Elements of $ \ker d^{n + 1} $ are called \textbf{$ n $-cocycles}. Elements of $ \im d^n $ are called \textbf{$ n $-coboundaries}.
 \end{definition}
 
-Where do these come from? From topology.
+\lecture{18}{Tuesday}{02/03/21}
+
+Where do these come from? From topology. Consider a connected simplicial complex $ X $ whose universal cover $ \widetilde{X} $ is contractible, with $ \pi_1\br{X} = G $. Let $ X_n $ be the set of $ n $-simplices of $ X $. Then $ G $ acts on $ \widetilde{X} $ with quotient $ X $, and without fixing any points. Therefore the $ n $-simplices of $ \widetilde{X} $ are in bijection with $ G \times X_n $. The simplicial chain complex of $ \widetilde{X} $ is of the form
+$$ \dots \xrightarrow{d_2} \ZZ G\cbr{X_1} \xrightarrow{d_1} \ZZ G\cbr{X_0} \to \ZZ \to 0. $$
+Since $ \widetilde{X} $ is contractible, $ \H_n\br{\widetilde{X}} = 0 $ for $ n > 0 $, so exact at $ \ZZ G\cbr{X_n} $ for $ n > 0 $, and $ \H_0\br{\widetilde{X}} \cong \ZZ $. So we get a free resolution of $ \ZZ $. Applying $ \Hom_G\br{-, M} $ gives $ \Hom_G\br{\ZZ G\cbr{X_n}, M} $. Take the case $ M = \ZZ $. Then $ \Hom_G\br{\ZZ G\cbr{X_n}, M} \cong \Hom\br{\ZZ\cbr{X_n}, \ZZ} $, so
+$$ \dots \gets \Hom\br{\ZZ\cbr{X_1}, \ZZ} \gets \Hom\br{\ZZ\cbr{X_0}, \ZZ}, $$
+which gives $ \H^n\br{G, \ZZ} $. The dual is
+$$ \dots \to \ZZ\cbr{X_1} \to \ZZ\cbr{X_0}, $$
+which gives $ \H_n\br{X} $.
+
+\begin{example}
+Let $ G = \ZZ = \abr{t} $. Consider the sequence
+$$ 0 \to \ZZ G \xrightarrow{d_1} \ZZ G \xrightarrow{\epsilon} \ZZ \to 0, $$
+where $ d_1\br{x} = x\br{t - 1} $ and
+$$ \epsilon\br{\sum_{g \in G} n_gg} = \sum_{g \in G} n_g $$
+is the \textbf{augmentation map}. Claim that this is a free resolution of $ \ZZ $.
+\begin{itemize}
+\item $ \epsilon $ is obviously surjective.
+\item $ \ker \epsilon \ge \im d_1 $. If $ x = \sum_g n_gg $, then
+$$ \epsilon\br{d_1\br{x}} = \epsilon\br{x\br{t - 1}} = \epsilon\br{xt} - \epsilon\br{x} = \epsilon\br{\sum_g n_g\br{gt}} - \epsilon\br{\sum_g n_gg} = \sum_g n_g - \sum_g n_g = 0. $$
+\item $ \ker \epsilon \le \im d_1 $. Let $ x = \sum_g n_gg $ such that $ \sum_g n_g = 0 $. Relabel each $ g = t^k $ for some $ k $, so rewriting,
+\begin{align*}
+x
+= \sum_k n_kt^k
+& = n_Lt^L + \dots + n_Kt^K \\
+& = n_Lt^{L - 1}\br{t - 1} + \dots + \br{n_L + \dots + n_{K - 2}}t^{K - 1}\br{t - 1} + \br{n_L + \dots + n_K}t^K \\
+& = \br{n_Lt^{L - 1} + \dots + \br{n_L + \dots + n_{K - 2}}t^{K - 1}}\br{t - 1}
+\in \im d_1.
+\end{align*}
+\item $ d_1 $ is injective. Let $ x = \sum_k n_kt^k = n_Lt^L + \dots $ for $ n_L \ne 0 $. Then $ x\br{t - 1} $ has highest coefficient $ n_Lt^{L + 1} \ne 0 $.
+\end{itemize}
+
+\pagebreak
+
+Let $ M $ be a $ G $-module. Then
+$$
+\begin{tikzcd}
+0 & \Hom_G\br{\ZZ G, M} \arrow{l} \arrow{d}{\sim}[swap]{\iota} & \Hom_G\br{\ZZ G, M} \arrow{l}[swap]{d^1} \arrow{d}{\iota}[swap]{\sim} \\
+0 & M \arrow{l} & M \arrow{l}
+\end{tikzcd},
+$$
+where $ \iota\br{\phi} = \phi\br{1} $. Let $ m \in M $, and let $ \phi \in \Hom_G\br{\ZZ G, M} $ such that $ \iota\br{\phi} = \phi\br{1} = m $. Then
+$$ \iota\br{d^1\br{\phi}} = d^1\br{\phi}\br{1} = \phi\br{d_1\br{1}} = \phi\br{t - 1} = \br{t - 1}\phi\br{1} = \br{t - 1}m. $$
+Thus
+\begin{itemize}
+\item $ \H^0\br{G, M} = \cbr{m \in M \st tm = m} = M^G $ are the \textbf{invariants}, the elements on which $ G $ acts trivially,
+\item $ \H^1\br{G, M} = M / \br{t - 1}M = M_G $ are the \textbf{coinvariants}, and
+\item $ \H^n\br{G, M} = 0 $ for $ n \ge 2 $.
+\end{itemize}
+\end{example}
+
+Let $ \alpha : \ZZ G\cbr{X} \to \ZZ G\cbr{Y} $ be $ G $-linear for $ X = \cbr{x_1, \dots, x_n} $ and $ Y = \cbr{y_1, \dots, y_m} $ finite, so $ \ZZ G\cbr{X} \cong \br{\ZZ G}^n $ and $ \ZZ G\cbr{Y} \cong \br{\ZZ G}^m $. Then $ \alpha $ can be written as a matrix multiplication
+$$ \alpha\br{x_i} = \sum_j a_{ij}y_j, \qquad a_{ij} \in \ZZ G. $$
+If $ \br{r_1, \dots, r_n} $ is a row vector corresponding to $ \sum_i r_ix_i $, then
+$$ \alpha\br{r_1, \dots, r_n} = \br{\sum_i r_ia_{i1}, \dots, \sum_i r_ia_{im}} = \br{r_1, \dots, r_n}\threebythree{a_{11}}{\dots}{a_{1m}}{\vdots}{\ddots}{\vdots}{a_{n1}}{\dots}{a_{nm}}. $$
+Now if $ M $ is a $ G $-module, we have
+$$ \function[\iota_X]{\Hom_G\br{\ZZ G\cbr{X}, M}}{M^n}{\psi}{\threebyone{\psi\br{x_1}}{\vdots}{\psi\br{x_n}}}, \qquad \function[\iota_Y]{\Hom_G\br{\ZZ G\cbr{Y}, M}}{M^m}{\phi}{\threebyone{\phi\br{y_1}}{\vdots}{\phi\br{y_m}}}. $$
+Then
+$$
+\begin{tikzcd}
+\Hom_G\br{\ZZ G\cbr{X}, M} \arrow{d}{\sim}[swap]{\iota_X} & \Hom_G\br{\ZZ G\cbr{Y}, M} \arrow{l}[swap]{\alpha^*} \arrow{d}{\iota_Y}[swap]{\sim} \\
+M^n & M^m \arrow{l}{\widetilde{\alpha}}
+\end{tikzcd}.
+$$
+Let $ \br{b_1, \dots, b_m}^\intercal \in M^m $, and let $ \phi \in \Hom_G\br{\ZZ G\cbr{Y}, M} $ such that $ \iota_Y\br{\phi} = \br{b_1, \dots, b_m}^\intercal $, so $ \phi\br{y_i} = b_i $. Then
+\begin{align*}
+\widetilde{\alpha}\br{b_1, \dots, b_m}
+& = \iota_X\br{\alpha^*\br{\phi}}
+= \threebyone{\alpha^*\br{\phi}\br{x_1}}{\vdots}{\alpha^*\br{\phi}\br{x_n}}
+= \threebyone{\phi\br{\alpha\br{x_1}}}{\vdots}{\phi\br{\alpha\br{x_n}}}
+= \threebyone{\phi\br{\displaystyle\sum_j a_{1j}y_j}}{\vdots}{\phi\br{\displaystyle\sum_j a_{nj}y_j}} \\
+& = \threebyone{\displaystyle\sum_j a_{1j}\phi\br{y_j}}{\vdots}{\displaystyle\sum_j a_{nj}\phi\br{y_j}}
+= \threebyone{\displaystyle\sum_j a_{1j}b_j}{\vdots}{\displaystyle\sum_j a_{nj}b_j}
+= \threebythree{a_{11}}{\dots}{a_{1m}}{\vdots}{\ddots}{\vdots}{a_{n1}}{\dots}{a_{nm}}\threebyone{b_1}{\vdots}{b_m}.
+\end{align*}
+
+\pagebreak
+
+\begin{proposition}
+Let $ G $ be a finitely generated free group. If $ n \ge 2 $ then $ \H^n\br{G, M} = 0 $ for all $ G $-modules $ M $.
+\end{proposition}
+
+\begin{proof}
+Let $ X $ be a wedge of circles with $ \pi_1\br{X} = G $. Then $ \widetilde{X} $ is a tree, so contractible, which gives a free resolution of $ G $
+$$ 0 \to \ZZ G\cbr{X_1} \to \ZZ G\cbr{X_0} \to \ZZ \to 0, $$
+where $ \abs{X_0} = 1 $ and $ \abs{X_1} = \rk G $. Thus $ \H^n\br{G, M} = 0 $ for all $ n \ge 2 $.
+\end{proof}
+
+\begin{definition}
+A group $ G $ has \textbf{cohomological dimension} $ n $ if $ \H^m\br{G, M} = 0 $ for all $ m > n $ and all $ G $-modules $ M $ but there exists $ M $ such that $ \H^n\br{G, M} \ne 0 $. If no $ n $ exists then the cohomological dimension of $ G $ is infinity.
+\end{definition}
+
+Free groups have cohomological dimension one. By Stallings, groups with cohomological dimension one are free.
+
+\begin{definition}
+Let $ \br{A_n, \alpha_n} $ and $ \br{B_n, \beta_n} $ be chain complexes. A \textbf{chain map} $ \br{f_n} $ is a sequence of $ G $-linear maps $ f_n : A_n \to B_n $ such that $ f_{n - 1} \circ \alpha_n = \beta_n \circ f_n $, so
+$$
+\begin{tikzcd}
+A_n \arrow{r}{\alpha_n} \arrow{d}[swap]{f_n} & A_{n - 1} \arrow{d}{f_{n - 1}} \\
+B_n \arrow{r}[swap]{\beta_n} & B_{n - 1}
+\end{tikzcd}
+$$
+commutes.
+\end{definition}
+
+\begin{proposition}
+If $ \br{f_n} $ is a chain map, then $ \br{f_n} $ gives induced maps
+$$ \br{f_*}_n : \H_n\br{A_\bullet} \to \H_n\br{B_\bullet}. $$
+These maps are functorial, so if $ \br{g_n} : \br{B_n} \to \br{C_n} $ then $ \br{g_*}_n \circ \br{f_*}_n = \br{\br{g \circ f}_*}_n : \H_n\br{A_\bullet} \to \H_n\br{C_\bullet} $.
+\end{proposition}
+
+\begin{proof}
+Take $ x \in \ker \alpha_n $. Define
+$$ \br{f_*}_n\br{\sbr{x}} = \sbr{f_n\br{x}}, \qquad \sbr{x} = x + \im \alpha_{n + 1} \in \H_n\br{A_\bullet}. $$
+Then $ \beta_n\br{f_n\br{x}} = f_{n - 1}\br{\alpha_n\br{x}} = 0 $, so $ f_n\br{x} \in \ker \beta_n $. The choice of $ x $ does not matter, since if $ x' = x + \alpha_{n + 1}\br{y} $, then
+$$ f_n\br{x'} + \im \beta_{n + 1} = f_n\br{x} + f_n\br{\alpha_{n + 1}\br{y}} + \im \beta_{n + 1} = f_n\br{x} + \beta_{n + 1}\br{f_{n + 1}\br{y}} + \im \beta_{n + 1} = f_n\br{x} + \im \beta_{n + 1}. $$
+\end{proof}
+
+\begin{corollary}
+Let $ f : M \to N $ be a map of $ G $-modules. Then we get maps
+$$ \function[\br{f_*}_n]{\Hom_G\br{F_n, M}}{\Hom_G\br{F_n, N}}{\phi}{f \circ \phi}. $$
+These are chain maps, so we have
+$$ \br{f_*}_n : \H^n\br{G, M} \to \H^n\br{G, N}. $$
+\end{corollary}
+
+\lecture{19}{Thursday}{04/03/21}
+
+\begin{lemma}[Snake lemma]
+If
+$$ 0 \to A_\bullet \xrightarrow{f_\bullet} B_\bullet \xrightarrow{g_\bullet} C_\bullet \to 0 $$
+is a short exact sequence of chain complexes, where $ f_\bullet $ and $ g_\bullet $ are chain maps and each
+$$ 0 \to A_n \to B_n \to C_n \to 0 $$
+is exact. Then there exists $ \delta_n : \H_{n + 1}\br{C_\bullet} \to \H_n\br{A_\bullet} $ such that
+$$ \dots \to \H_{n + 1}\br{C_\bullet} \xrightarrow{\delta_n} \H_n\br{A_\bullet} \xrightarrow{\br{f_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{g_*}_n} \H_n\br{C_\bullet} \to \dots. $$
+\end{lemma}
+
+\begin{proof}
+See algebraic topology.
+\end{proof}
+
+\pagebreak
+
+\begin{proposition}
+Let
+$$ 0 \to M_1 \xrightarrow{\alpha} M_2 \xrightarrow{\beta} M_3 \to 0 $$
+be a short exact sequence of $ G $-modules. There is a \textbf{long exact sequence}
+$$ \dots \to \H^n\br{G, M_1} \xrightarrow{\br{\alpha_*}_n} \H^n\br{G, M_2} \xrightarrow{\br{\beta_*}_n} \H^n\br{G, M_3} \xrightarrow{\delta} \H^{n + 1}\br{G, M_1} \to \dots, $$
+where $ \delta $ are \textbf{connecting homomorphisms}.
+\end{proposition}
+
+\begin{proof}
+Apply the snake lemma to
+$$ 0 \to \Hom_G\br{F_\bullet, M_1} \xrightarrow{\br{\alpha_*}_\bullet} \Hom_G\br{F_\bullet, M_2} \xrightarrow{\br{\beta_*}_\bullet} \Hom_G\br{F_\bullet, M_3} \to 0, $$
+where $ F_\bullet $ is a projective resolution of $ \ZZ $ by $ G $-modules. It remains to prove
+$$ 0 \to \Hom_G\br{F_n, M_1} \xrightarrow{\br{\alpha_*}_n} \Hom_G\br{F_n, M_2} \xrightarrow{\br{\beta_*}_n} \Hom_G\br{F_n, M_3} \to 0 $$
+is exact for each $ n $.
+\begin{itemize}
+\item $ \ker \br{\alpha_*}_n = 0 $. Let $ \phi : F_n \to M_1 $. If $ \br{\alpha_*}_n\br{\phi} = 0 $ then $ 0 = \alpha \circ \phi $, so for all $ x \in F_n $, $ 0 = \alpha\br{\phi\br{x}} $, so $ 0 = \phi\br{x} $ for all $ x $, so $ \phi = 0 $.
+\item $ \ker \br{\beta_*}_n = \im \br{\alpha_*}_n $. Let $ \phi : F_n \to M_2 $ be in the kernel of $ \br{\beta_*}_n $. Then $ \beta\br{\phi\br{x}} = 0 $ for all $ x \in F_n $, so $ \phi\br{x} \in \ker \beta = \im \alpha $, so there exists a unique $ y_x \in M_1 $ such that $ \alpha\br{y_x} = \phi\br{x} $. Declare
+$$ \function[\psi]{F_n}{M_1}{x}{y_x}. $$
+Then $ \br{\alpha_*}_n\br{\psi} = \phi $, and $ \psi $ is $ G $-linear follows from uniqueness of $ y_x $, since $ \alpha\br{gy_x} = g\alpha\br{y_x} = g\phi\br{x} = \phi\br{gx} $ implies that $ gy_x = y_{gx} $.
+\item $ \br{\beta_*}_n $ is surjective. Exactly the definition of $ F_n $ projective.
+\end{itemize}
+\end{proof}
+
+\subsection{Different projective resolutions}
+
+\begin{theorem}
+\label{thm:5.2.1}
+The definition of $ \H^n\br{G, M} $ is independent of the choice of projective resolution.
+\end{theorem}
+
+\begin{proof}
+Take two projective resolutions $ \br{F_n, d_n} $ and $ \br{F_n', d_n'} $ of $ \ZZ $ by $ G $-modules. Suppose we construct chain maps
+\begin{itemize}
+\item $ f_n : F_n \to F_n' $ such that $ f_{n - 1} \circ d_n = d_n' \circ f_n $,
+\item $ g_n : F_n' \to F_n $ such that $ g_{n - 1} \circ d_n' = d_n \circ g_n $,
+\item $ s_n : F_n \to F_{n + 1} $ such that $ d_{n + 1} \circ s_n + s_{n - 1} \circ d_n = g_n \circ f_n - \id $, and
+\item $ s_n' : F_n' \to F_{n + 1}' $ such that $ d_{n + 1}' \circ s_n' + s_{n - 1}' \circ d_n' = f_n \circ g_n - \id $.
+\end{itemize}
+These maps prove Theorem \ref{thm:5.2.1}. Take a $ G $-module $ M $. Chain maps $ \br{f_n} $ and $ \br{g_n} $ give homomorphisms $ f_n^* : \Hom_G\br{F_n', M} \to \Hom_G\br{F_n, M} $, which give homomorphisms $ f_n^* : \H_{F_n'}^n\br{G, M} \to \H_{F_n}^n\br{G, M} $. Take $ \phi : F_n \to M $ such that $ \phi \in \ker d^{n + 1} $. Then
+\begin{align*}
+f_n^*\br{g_n^*\br{\phi}}
+& = \phi \circ g_n \circ f_n
+= \phi \circ \br{\id + d_{n + 1} \circ s_n + s_{n - 1} \circ d_n}
+= \phi + \phi \circ d_{n + 1} \circ s_n + \phi \circ s_{n - 1} \circ d_n \\
+& = \phi + s_n^*\br{d^{n + 1}\br{\phi}} + d^n\br{s_{n - 1}^*\br{\phi}}
+= \phi + d^n\br{s_{n - 1}^*\br{\phi}}
+\in \phi + \im d^n.
+\end{align*}
+So $ f_n^*\br{g_n^*\br{\phi + \im d^n}} = \phi + \im d^n $, that is $ f_n^* \circ g_n^* = \id $, on cohomology.
+
+\pagebreak
+
+Construct $ f_n $, inductively.
+\begin{itemize}
+\item Start with the identity $ f_{-1} : \ZZ \to \ZZ $ and $ f_{-2} : 0 \to 0 $.
+\item Suppose we have $ f_n $ and $ f_{n - 1} $. Build $ f_{n + 1} $. Since $ d_n' \circ f_n \circ d_{n + 1} = f_{n - 1} \circ d_n \circ d_{n + 1} = 0 $, there exists $ f_{n + 1} : F_{n + 1} \to F_{n + 1}' $ such that $ d_{n + 1}' \circ f_{n + 1} = f_n \circ d_{n + 1} $, so
+$$
+\begin{tikzcd}
+& F_{n + 1} \arrow{r}{d_{n + 1}} \arrow[dashed]{dl}[swap]{f_{n + 1}} \arrow{d}{f_n \circ d_{n + 1}} & F_n \arrow{r}{d_n} \arrow{d}{f_n} & F_{n - 1} \arrow{d}{f_{n - 1}} \\
+F_{n + 1}' \arrow[twoheadrightarrow]{r}[swap]{d_{n + 1}'} & \ker d_n' = \im d_{n + 1}' \arrow[subset]{r} & F_n' \arrow{r}[swap]{d_n'} & F_{n - 1}'
+\end{tikzcd}.
+$$
+\end{itemize}
+Construct $ s_n $ such that $ d_{n + 1} \circ s_n + s_{n - 1} \circ d_n = g_n \circ f_n - \id = h_n $.
+\begin{itemize}
+\item Start with the zero map $ s_{-1} : \ZZ \to F_0 $.
+\item Assume $ s_{n - 1} $ and $ s_{n - 2} $ are constructed. Define $ t_n = h_n - s_{n - 1} \circ d_n $. Since
+$$ d_n \circ t_n = d_n \circ h_n - d_n \circ s_{n - 1} \circ d_n = h_{n - 1} \circ d_n - \br{-s_{n - 2} \circ d_{n - 1} + h_{n - 1}} \circ d_n = s_{n - 2} \circ d_{n - 1} \circ d_n = 0, $$
+there exists $ s_n $ such that $ d_{n + 1} \circ s_n = t_n = h_n - s_{n - 1} \circ d_n $, so
+$$
+\begin{tikzcd}
+& F_n \arrow{rr}{d_n} \arrow[dashed]{dl}[swap]{s_n} \arrow{d}{t_n} \arrow{dr}{h_n} & & F_{n - 1} \arrow{r}{d_{n - 1}} \arrow{dl}[swap]{s_{n - 1}} \arrow{d}[swap]{h_{n - 1}} & F_{n - 2} \arrow{dl}[swap]{s_{n - 2}} \arrow{d}[swap]{h_{n - 2}} \\
+F_{n + 1} \arrow[twoheadrightarrow]{r}[swap]{d_{n + 1}} & \ker d_n = \im d_{n + 1} \arrow[subset]{r} & F_n \arrow{r}[swap]{d_n} & F_{n - 1} \arrow{r}[swap]{d_{n - 1}} & F_{n - 2}
+\end{tikzcd}.
+$$
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+Let
+$$ G^{\br{n}} = \cbr{\sbr{g_1 \mid \dots \mid g_n} : g_1, \dots, g_n \in G}, \qquad G^{\br{0}} = \cbr{\sbr{}}. $$
+The \textbf{bar resolution} is $ \F_n = \ZZ G\cbr{G^{\br{n}}} $, the free module with basis $ G^{\br{n}} $, with
+$$ \function[\d_n]{\F_n}{\F_{n - 1}}{\sbr{g_1 \mid \dots \mid g_n}}{
+\begin{array}{rl}
+& g_1\sbr{g_2 \mid \dots \mid g_n} \\
+- & \sbr{g_1g_2 \mid \dots \mid g_n} \\
++ & \dots \\
++ & \br{-1}^{n - 1}\sbr{g_1 \mid \dots \mid g_{n - 1}g_n} \\
++ & \br{-1}^n\sbr{g_1 \mid \dots \mid g_{n - 1}}
+\end{array}
+}, $$
+and the augmentation map
+$$ \function[\epsilon]{\F_0 = \ZZ G\cbr{\sbr{}}}{\ZZ}{g\sbr{}}{1}. $$
+\end{definition}
+
+\begin{fact*}
+This is a chain complex, so $ \d_{n - 1} \circ \d_n = 0 $.
+\end{fact*}
+
+\begin{proposition}
+The bar resolution is exact.
+\end{proposition}
+
+\begin{proof}
+Forget the $ G $-action. Then $ \F_n $ is free abelian on the set $ G \times G^{\br{n}} = \cbr{g\sbr{g_1 \mid \dots \mid g_n}} $. Define abelian group homomorphisms
+$$ \function[s_n]{\F_n}{\F_{n + 1}}{g\sbr{g_1 \mid \dots \mid g_n}}{\sbr{g \mid g_1 \mid \dots \mid g_{n + 1}}}. $$
+By a calculation, $ \d_{n + 1} \circ s_n + s_{n - 1} \circ \d_n = \id_{\F_n} $. If $ x \in \ker \d_n $, then
+$$ x = \id\br{x} = \d_{n + 1}\br{s_n\br{x}} + s_{n - 1}\br{\d_n\br{x}} = \d_{n + 1}\br{s_n\br{x}} \in \im \d_{n + 1}, $$
+so $ \ker \d_n = \im \d_{n + 1} $.
+\end{proof}
+
+\pagebreak
+
+Let $ M $ be a $ G $-module. The \textbf{cochain group} is
+$$ \C^n\br{G, M} = \cbr{\text{functions} \ \phi : G^n \to M} \cong \Hom_G\br{\F_n, M}. $$
+The dual of the $ \d_n $ in the bar resolution is
+$$ \function[\d^n]{\C^{n - 1}\br{G, M}}{\C^n\br{G, M}}{\phi}{\br{\br{g_1, \dots, g_n} \mapsto
+\begin{array}{rl}
+& g_1\phi\br{g_2, \dots, g_n} \\
+- & \phi\br{g_1g_2, \dots, g_n} \\
++ & \dots \\
++ & \br{-1}^{n - 1}\phi\br{g_1, \dots, g_{n - 1}g_n} \\
++ & \br{-1}^n\phi\br{g_1, \dots, g_{n - 1}}
+\end{array}
+}}. $$
+The \textbf{group of $ n $-cocycles} is
+$$ \Z^n\br{G, M} = \ker \d^{n + 1} \le \C^n\br{G, M}. $$
+The \textbf{group of $ n $-coboundaries} is
+$$ \B^n\br{G, M} = \im \d^n \le \C^n\br{G, M}. $$
+Then
+$$ \H^n\br{G, M} = \Z^n\br{G, M} / \B^n\br{G, M}. $$
+
+\lecture{20}{Saturday}{06/03/21}
+
+\begin{corollary}
+Let $ G $ be a group and $ M $ a $ G $-module. Then
+$$ \H^0\br{G, M} = \Z^0\br{G, M} = \ker \d^1 = \cbr{m \in M \st \forall g, \ gm = m} = M^G, $$
+the invariants. A function $ \phi : G \to M $ is a \textbf{crossed homomorphism} if $ \phi\br{gh} = g\phi\br{h} + \phi\br{g} $, and a \textbf{principal crossed homomorphism} if $ \phi\br{g} = gm - m $ for some $ m \in M $. Then
+$$ \H^1\br{G, M} = \cbr{\text{crossed homomorphisms}} / \cbr{\text{principal crossed homomorphisms}}, $$
+which is $ \Hom\br{G, M} $ if $ M $ is trivial.
+\end{corollary}
+
+\begin{proof}
+Take $ \phi \in \C^0\br{G, M} $ such that $ \phi\br{1} = m $. Then
+$$ \d^1\br{\phi}\br{g} = g\phi\br{1} - \phi\br{1} = gm - m. $$
+Let $ \phi \in \C^1\br{G, M} $. Then
+$$ \d^2\br{\phi}\br{g, h} = g\phi\br{h} - \phi\br{gh} + \phi\br{g}, $$
+so $ \phi \in \ker \d^2 $ if and only if $ \phi\br{gh} = g\phi\br{h} + \phi\br{g} $. If $ M $ has trivial $ G $-action, $ \phi $ is a homomorphism $ G \to M $.
+\end{proof}
+
+\begin{proposition}
+Let $ \alpha : G_1 \to G_2 $ be a group homomorphism. Let $ M $ be a $ G_2 $-module and make $ M $ into a $ G_1 $-module via
+$$ g_1 \cdot m = \alpha\br{g_1}m, \qquad g_1 \in G_1, \qquad m \in M. $$
+Then there is a natural homomorphism
+$$ \alpha^* : \H^n\br{G_2, M} \to \H^n\br{G_1, M}. $$
+If $ \beta : G_0 \to G_1 $ then $ \br{\alpha \circ \beta}^* = \beta^* \circ \alpha^* $.
+\end{proposition}
+
+\begin{proof}
+Define maps by
+$$ \function[\alpha^*]{\C^n\br{G_2, M}}{\C^n\br{G_1, M}}{\phi}{\br{\br{g_1, \dots, g_n} \mapsto \phi\br{\alpha\br{g_1}, \dots, \alpha\br{g_2}}}}. $$
+Then $ \d^n \circ \alpha^* = \alpha^* \circ \d^n $, so
+$$
+\begin{tikzcd}
+\C^n\br{G_2, M} \arrow{r}{\alpha^*} \arrow{d}[swap]{\d^n} & \C^n\br{G_1, M} \arrow{d}{\d^n} \\
+\C^{n + 1}\br{G_2, M} \arrow{r}[swap]{\alpha^*} & \C^{n + 1}\br{G_1, M}
+\end{tikzcd}.
+$$
+Thus $ \alpha^* $ induce maps on cohomology.
+\end{proof}
+
+\pagebreak
+
+We might like a sequence of groups
+$$ 1 \to H \to G \to Q \to 1, \qquad H \triangleleft G, \qquad G / H = Q $$
+to give a long exact sequence in cohomology. This is false.
+
+\begin{example}
+Let
+$$ 1 \to \ZZ \to \ZZ^2 \to \ZZ \to 1. $$
+Then
+$$
+\begin{tikzcd}[row sep=tiny]
+\dots \arrow{r} & \H^2\br{\ZZ, M} \arrow{r} \arrow[cong]{d} & \H^2\br{\ZZ^2, M} \arrow{r} & \H^2\br{\ZZ, M} \arrow{r} \arrow[cong]{d} & \dots \\
+& 0 & & 0 &
+\end{tikzcd},
+$$
+and there exists $ M $ such that $ \H^2\br{\ZZ^2, M} \ne 0 $.
+\end{example}
+
+\begin{lemma}
+Let $ H \triangleleft G $. Let $ M $ be a $ G $-module. Let $ G $ act on $ \C^n\br{H, M} $ by
+$$ g \cdot \phi = \br{\br{h_1, \dots, h_n} \mapsto g\phi\br{g^{-1}h_1g, \dots, g^{-1}h_ng}}. $$
+Then this descends to an action of $ G $ on $ \H^n\br{H, M} $, and $ H $ acts trivially, so this is an action of $ G / H $.
+\end{lemma}
+
+\begin{proof}
+We want $ g \cdot \d^n\br{\phi} = \d^n\br{g \cdot \phi} $, which holds by direct computation. So the action of $ G $ is by chain maps, so gives an action on cohomology. For $ H $ acts trivially, we will just do $ n = 1 $. Take $ \phi \in \Z^1\br{H, M} $ and let $ \eta, h \in H $. Then
+\begin{align*}
+\br{\eta \cdot \phi}\br{h} - \phi\br{h}
+& = \eta\phi\br{\eta^{-1}h\eta} - \phi\br{h}
+= \eta\br{\eta^{-1}\phi\br{h\eta} + \phi\br{\eta^{-1}}} - \phi\br{h}
+= \phi\br{h\eta} + \eta\phi\br{\eta^{-1}} - \phi\br{h} \\
+& = h\phi\br{\eta} + \phi\br{h} + \eta\phi\br{\eta^{-1}} - \phi\br{h}
+= h\phi\br{\eta} + \eta\phi\br{\eta^{-1}}
+= h\phi\br{\eta} - \phi\br{\eta}
+= \d^1\br{\phi\br{\eta}}\br{h},
+\end{align*}
+since $ \phi\br{1 \cdot 1} = 1\phi\br{1} + \phi\br{1} $ so $ \phi\br{1} = 0 $ and $ 0 = \phi\br{1} = \phi\br{\eta\eta^{-1}} = \eta\phi\br{\eta^{-1}} + \phi\br{\eta} $.
+\end{proof}
+
+The useful case is $ n = 1 $. If $ \phi : H \to M $ is a crossed homomorphism $ \br{g \cdot \phi}\br{h} = g\phi\br{g^{-1}hg} $. If $ M $ is trivial, this reads $ \br{g \cdot \phi}\br{h} = \phi\br{g^{-1}hg} $ so the homomorphism $ \phi $ is $ G $-invariant.
+
+\begin{theorem}[Five-term inflation-restriction exact sequence]
+Let $ H \triangleleft G $ and $ Q = G / H $ and let $ M $ be a $ G $-module. There is exact sequence
+$$ 0 \to \H^1\br{Q, M^H} \to \H^1\br{G, M} \to \H^1\br{H, M}^Q \to \H^2\br{Q, M^H} \to \H^2\br{G, M}. $$
+\end{theorem}
+
+\begin{proof}
+Just define the maps.
+\begin{itemize}
+\item \textbf{Restriction maps}
+$$ \function[\Res]{\H^k\br{G, M}}{\H^k\br{H, M}^Q}{\br{f : G^k \to M}}{\br{\Res f : H^k \le G^k \xrightarrow{f} M}}. $$
+\item \textbf{Inflation maps}
+$$ \function[\Inf]{\H^k\br{Q, M^H}}{\H^k\br{G, M}}{\br{f : Q^k \to M^H}}{\br{\Inf f : G^k \twoheadrightarrow Q^k \xrightarrow{f} M^H \le M}}. $$
+\item \textbf{Transgression maps}. Let $ s : Q \to G $ be a set-theoretic section, so $ \br{Q \to G \to Q} = \id_Q $, with $ s\br{1} = 1 $. Define
+$$ \function[\rho]{G}{H}{g}{gs\br{gH}^{-1}}. $$
+If $ f : H \to M $ represents a $ Q $-invariant cohomology class define
+$$ \function[\Tg]{\H^1\br{H, M}^Q}{\H^2\br{Q, M^H}}{f}{\br{\br{g_1, g_2} \mapsto f\br{\rho\br{g_1}\rho\br{g_2}} - f\br{\rho\br{g_1g_2}}}}. $$
+\end{itemize}
+\end{proof}
+
+\pagebreak
+
+If $ G $ is a free group, $ \H^2\br{G, M} = 0 $ for all $ M $.
+
+\begin{corollary}[Hopf's formula]
+Let $ F $ be a free group and $ R \triangleleft F $ and $ Q = F / R $. Let $ A $ be an abelian group, viewed as a trivial module. Then
+$$ \H^2\br{Q, A} \cong \cbr{\text{$ F $-invariant homomorphisms} \ R \to A} / \cbr{\text{homomorphisms} \ F \to A}. $$
+\end{corollary}
+
+\begin{proof}
+There is an exact sequence
+$$ \Hom\br{F, A} \to \Hom\br{R, A}^F \to \H^2\br{Q, A} \to 0. $$
+\end{proof}
+
+If $ Q = \abr{x_1, \dots, x_d \st r_1, \dots, r_m} $ is a presentation, then $ F = \abr{x_1, \dots, x_d} $ is free and $ R = \abr{\abr{r_1, \dots, r_m}} $ is a normal subgroup generated by $ r_i $. Then $ \d\br{\H^1\br{Q, \ZZ}} = \d\br{\Hom\br{Q, \ZZ}} \le d $. An $ F $-invariant homomorphism $ R \to \ZZ $ is determined by images of $ r_i $, so $ \d\br{\H^2\br{Q, \ZZ}} \le m $.
+
+\begin{example*}
+Let $ Q = \ZZ / 3\ZZ $ and let $ Q $ act on $ M = \ZZ^2 $ via the order three matrix $ A = \twobytwosmall{-1}{1}{-1}{0} $. Consider the short exact sequence of groups
+$$
+\begin{tikzcd}[row sep=tiny]
+1 \arrow{r} & H \arrow{r} \arrow[cong]{d} & G \arrow{r} \arrow[cong]{d} & Q \arrow{r} \arrow[cong]{d} & 1 \\
+& \ZZ & \ZZ & \ZZ / 3\ZZ &
+\end{tikzcd}.
+$$
+Since $ H $ acts trivially on $ M $, $ \H^1\br{H, M} = \Hom\br{H, M} \cong \ZZ^2 $ by $ f \mapsto f\br{1} $. Then $ f \in \H^1\br{H, M}^Q $ if and only if $ f\br{1} $ is $ Q $-invariant, if and only if $ Af\br{1} = f\br{1} $. If $ Ax = x $, then $ x = 0 $, so $ \H^1\br{H, M}^Q = 0 $ and $ \H^2\br{G, M} = 0 $. By the five-term exact sequence, $ \H^2\br{Q, M} = 0 $.
+\end{example*}
 
 \end{document}
