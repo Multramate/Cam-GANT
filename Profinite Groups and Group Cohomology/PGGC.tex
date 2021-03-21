@@ -1986,9 +1986,9 @@ Finite $ p $-groups $ G $ are nilpotent.
 
 \begin{proof}
 Proof by induction on $ \abs{G} $.
-\begin{itemize}[leftmargin=1in]
-\item[Base case.] $ \gamma_2\br{\FF_p} = 1 $.
-\item[Inductive step.] There exists $ z \in \Z\br{G} \setminus \cbr{1} $. Then $ G / \abr{z} $ is nilpotent, so $ \gamma_{c + 1}\br{G / \abr{z}} = 1 $ for some $ c $. Thus $ \gamma_{c + 1}\br{G} \le \abr{z} $, so $ \gamma_{c + 2}\br{G} = \sbr{G, \gamma_{c + 1}\br{G}} = 1 $.
+\begin{itemize}
+\item $ \gamma_2\br{\FF_p} = 1 $.
+\item There exists $ z \in \Z\br{G} \setminus \cbr{1} $. Then $ G / \abr{z} $ is nilpotent, so $ \gamma_{c + 1}\br{G / \abr{z}} = 1 $ for some $ c $. Thus $ \gamma_{c + 1}\br{G} \le \abr{z} $, so $ \gamma_{c + 2}\br{G} = \sbr{G, \gamma_{c + 1}\br{G}} = 1 $.
 \end{itemize}
 \end{proof}
 
@@ -2041,9 +2041,9 @@ $$ g = \sbr{a_1, x_1} \dots \sbr{a_d, x_d}, \qquad x_1, \dots, x_d \in G. $$
 
 \begin{proof}
 We induct on the nilpotency class $ c $ of $ G $.
-\begin{itemize}[leftmargin=1in]
-\item[Base case.] If $ c = 1 $, then $ 1 = \gamma_2\br{G} = \sbr{G, G} $, so $ G $ is abelian, which is trivial.
-\item[Inductive step.] The result is true for $ G / \gamma_c\br{G} $. So there exist $ x_1, \dots, x_d \in G $ and $ u \in \gamma_c\br{G} = \sbr{G, \gamma_{c - 1}\br{G}} $ such that
+\begin{itemize}
+\item If $ c = 1 $, then $ 1 = \gamma_2\br{G} = \sbr{G, G} $, so $ G $ is abelian, which is trivial.
+\item The result is true for $ G / \gamma_c\br{G} $. So there exist $ x_1, \dots, x_d \in G $ and $ u \in \gamma_c\br{G} = \sbr{G, \gamma_{c - 1}\br{G}} $ such that
 $$ g = \sbr{a_1, x_1} \dots \sbr{a_d, x_d}u. $$
 Seek a nice form of $ u $. There are commutator relations
 $$ \sbr{xy, z} = \sbr{x, z}^y\sbr{y, z}, \qquad \sbr{x, yz} = \sbr{x, z}\sbr{x, y}^z. $$
@@ -2400,8 +2400,8 @@ Thus
 
 Let $ \alpha : \ZZ G\cbr{X} \to \ZZ G\cbr{Y} $ be $ G $-linear for $ X = \cbr{x_1, \dots, x_n} $ and $ Y = \cbr{y_1, \dots, y_m} $ finite, so $ \ZZ G\cbr{X} \cong \br{\ZZ G}^n $ and $ \ZZ G\cbr{Y} \cong \br{\ZZ G}^m $. Then $ \alpha $ can be written as a matrix multiplication
 $$ \alpha\br{x_i} = \sum_j a_{ij}y_j, \qquad a_{ij} \in \ZZ G. $$
-If $ \br{r_1, \dots, r_n} $ is a row vector corresponding to $ \sum_i r_ix_i $, then
-$$ \alpha\br{r_1, \dots, r_n} = \br{\sum_i r_ia_{i1}, \dots, \sum_i r_ia_{im}} = \br{r_1, \dots, r_n}\threebythree{a_{11}}{\dots}{a_{1m}}{\vdots}{\ddots}{\vdots}{a_{n1}}{\dots}{a_{nm}}. $$
+If $ \onebythree{r_1}{\dots}{r_n} $ is a row vector corresponding to $ \sum_i r_ix_i $, then
+$$ \alpha\br{\onebythree{r_1}{\dots}{r_n}} = \onebythree{\displaystyle\sum_i r_ia_{i1}}{\dots}{\displaystyle\sum_i r_ia_{im}} = \onebythree{r_1}{\dots}{r_n}\threebythree{a_{11}}{\dots}{a_{1m}}{\vdots}{\ddots}{\vdots}{a_{n1}}{\dots}{a_{nm}}. $$
 Now if $ M $ is a $ G $-module, we have
 $$ \function[\iota_X]{\Hom_G\br{\ZZ G\cbr{X}, M}}{M^n}{\psi}{\threebyone{\psi\br{x_1}}{\vdots}{\psi\br{x_n}}}, \qquad \function[\iota_Y]{\Hom_G\br{\ZZ G\cbr{Y}, M}}{M^m}{\phi}{\threebyone{\phi\br{y_1}}{\vdots}{\phi\br{y_m}}}. $$
 Then
@@ -2411,9 +2411,9 @@ $$
 M^n & M^m \arrow{l}{\widetilde{\alpha}}
 \end{tikzcd}.
 $$
-Let $ \br{b_1, \dots, b_m}^\intercal \in M^m $, and let $ \phi \in \Hom_G\br{\ZZ G\cbr{Y}, M} $ such that $ \iota_Y\br{\phi} = \br{b_1, \dots, b_m}^\intercal $, so $ \phi\br{y_i} = b_i $. Then
+Let $ \onebythree{b_1}{\dots}{b_m}^\intercal \in M^m $, and let $ \phi \in \Hom_G\br{\ZZ G\cbr{Y}, M} $ such that $ \iota_Y\br{\phi} = \onebythree{b_1}{\dots}{b_m}^\intercal $, so $ \phi\br{y_i} = b_i $. Then
 \begin{align*}
-\widetilde{\alpha}\br{b_1, \dots, b_m}
+\widetilde{\alpha}\br{\threebyone{b_1}{\vdots}{b_m}}
 & = \iota_X\br{\alpha^*\br{\phi}}
 = \threebyone{\alpha^*\br{\phi}\br{x_1}}{\vdots}{\alpha^*\br{\phi}\br{x_n}}
 = \threebyone{\phi\br{\alpha\br{x_1}}}{\vdots}{\phi\br{\alpha\br{x_n}}}
@@ -2436,7 +2436,7 @@ where $ \abs{X_0} = 1 $ and $ \abs{X_1} = \rk G $. Thus $ \H^n\br{G, M} = 0 $ fo
 \end{proof}
 
 \begin{definition}
-A group $ G $ has \textbf{cohomological dimension} $ n $ if $ \H^m\br{G, M} = 0 $ for all $ m > n $ and all $ G $-modules $ M $ but there exists $ M $ such that $ \H^n\br{G, M} \ne 0 $. If no $ n $ exists then the cohomological dimension of $ G $ is infinity.
+A group $ G $ has \textbf{cohomological dimension} $ \cd G = n $ if $ \H^m\br{G, M} = 0 $ for all $ m > n $ and all $ G $-modules $ M $ but there exists $ M $ such that $ \H^n\br{G, M} \ne 0 $. If no $ n $ exists then $ \cd G = \infty $.
 \end{definition}
 
 Free groups have cohomological dimension one. By Stallings, groups with cohomological dimension one are free.
@@ -2490,6 +2490,7 @@ See algebraic topology.
 \pagebreak
 
 \begin{proposition}
+\label{prop:5.1.28}
 Let
 $$ 0 \to M_1 \xrightarrow{\alpha} M_2 \xrightarrow{\beta} M_3 \to 0 $$
 be a short exact sequence of $ G $-modules. There is a \textbf{long exact sequence}
@@ -2584,9 +2585,9 @@ and the augmentation map
 $$ \function[\epsilon]{\F_0 = \ZZ G\cbr{\sbr{}}}{\ZZ}{g\sbr{}}{1}. $$
 \end{definition}
 
-\begin{fact*}
+\begin{fact}
 This is a chain complex, so $ \d_{n - 1} \circ \d_n = 0 $.
-\end{fact*}
+\end{fact}
 
 \begin{proposition}
 The bar resolution is exact.
@@ -2737,7 +2738,7 @@ $$ \Hom\br{F, A} \to \Hom\br{R, A}^F \to \H^2\br{Q, A} \to 0. $$
 
 If $ Q = \abr{x_1, \dots, x_d \st r_1, \dots, r_m} $ is a presentation, then $ F = \abr{x_1, \dots, x_d} $ is free and $ R = \abr{\abr{r_1, \dots, r_m}} $ is a normal subgroup generated by $ r_i $. Then $ \d\br{\H^1\br{Q, \ZZ}} = \d\br{\Hom\br{Q, \ZZ}} \le d $. An $ F $-invariant homomorphism $ R \to \ZZ $ is determined by images of $ r_i $, so $ \d\br{\H^2\br{Q, \ZZ}} \le m $.
 
-\begin{example*}
+\begin{example}
 Let $ Q = \ZZ / 3\ZZ $ and let $ Q $ act on $ M = \ZZ^2 $ via the order three matrix $ A = \twobytwosmall{-1}{1}{-1}{0} $. Consider the short exact sequence of groups
 $$
 \begin{tikzcd}[row sep=tiny]
@@ -2746,6 +2747,486 @@ $$
 \end{tikzcd}.
 $$
 Since $ H $ acts trivially on $ M $, $ \H^1\br{H, M} = \Hom\br{H, M} \cong \ZZ^2 $ by $ f \mapsto f\br{1} $. Then $ f \in \H^1\br{H, M}^Q $ if and only if $ f\br{1} $ is $ Q $-invariant, if and only if $ Af\br{1} = f\br{1} $. If $ Ax = x $, then $ x = 0 $, so $ \H^1\br{H, M}^Q = 0 $ and $ \H^2\br{G, M} = 0 $. By the five-term exact sequence, $ \H^2\br{Q, M} = 0 $.
-\end{example*}
+\end{example}
+
+\subsection{Cohomology and group extensions}
+
+\lecture{21}{Tuesday}{09/03/21}
+
+Take a group $ E $, with an abelian normal subgroup $ M $. Let $ E / M = G $. Then $ E $ is an \textbf{extension of $ G $ by $ M $}, and $ E $ and $ E' $ are \textbf{equivalent} extensions if there is a commuting diagram
+$$
+\begin{tikzcd}[row sep=tiny]
+& & E \arrow{dr}{\pi} \arrow{dd}{\sim} & & \\
+1 \arrow{r} & M \arrow{ur} \arrow{dr} & & G \arrow{r} & 1 \\
+& & E' \arrow{ur} & &
+\end{tikzcd}.
+$$
+The action of $ G $ on $ M $ is by conjugation in $ E $. If $ m \in M $ and $ e \in E $, then $ eme^{-1} \in M $, which gives an action of $ E $ on $ M $, and $ M $ is abelian, so $ M $ acts trivially on itself, which gives an action of $ G $ on $ M $. If $ g \in G $, take $ e $ such that $ \pi\br{e} = g $ and set
+$$ g \bullet m = eme^{-1}. $$
+If this action is trivial, then $ E $ is a \textbf{central extension}. Given $ G $ and a $ G $-module $ M $, can construct the semidirect product $ M \rtimes G $, where the set of elements is $ M \times G $ with multiplication
+$$ \br{m_1, g_1} * \br{m_2, g_2} = \br{m_1 + g_1 \bullet m_2, g_1g_2}. $$
+Then $ M \triangleleft M \rtimes G $, with the correct action, and quotient $ G $. So $ M \rtimes G $ is an extension, called the \textbf{split extension}
+$$ 1 \to M \to M \rtimes G \to G \to 1, $$
+where the \textbf{splitting} is the group homomorphism
+$$ \function{G}{M \rtimes G}{g}{\br{0, g}}. $$
+
+\begin{notation}
+$ M $ is a $ G $-module, written additively, and $ M \le E $, which is non-abelian.
+\end{notation}
+
+\begin{proposition}
+Let $ E $ be an extension of $ G $ by $ M $. Assume there exists a splitting $ s : G \to E $, a group homomorphism such that $ \pi \circ s = \id_G $. Then $ E $ is equivalent to $ M \rtimes G $.
+\end{proposition}
+
+\begin{proof}
+Write down the equivalence $ \br{m, g} \mapsto ms\br{g} $, which is a group homomorphism.
+\end{proof}
+
+\pagebreak
+
+\begin{theorem}
+We have a bijection
+$$ \correspondence{\text{equivalence classes of} \\ \text{extensions of} \ G \ \text{by} \ M}{\sbr{\phi} \in \H^2\br{G, M}}. $$
+\end{theorem}
+
+\begin{proof}
+Let $ E $ be an extension of $ G $ by $ M $. Let $ \pi : E \to G $ be the quotient. Choose a set-theoretic section $ s : G \to E $, a function such that $ \pi \circ s = \id_G $, so $ \pi\br{s\br{g}} = g $. Choose $ s\br{1} = 1 $. Consider the function
+$$ \function[\phi]{G^2}{M}{\br{g_1, g_2}}{s\br{g_1}s\br{g_2}s\br{g_1g_2}^{-1}}, $$
+since $ \pi\br{s\br{g_1}s\br{g_2}s\br{g_1g_2}^{-1}} = g_1g_2\br{g_1g_2}^{-1} = 1 $, and $ \phi \equiv 1 $ if and only if $ s $ is a homomorphism.
+\begin{itemize}
+\item The $ 2 $-cochain $ \phi \in \C^2\br{G, M} $ is a cocycle, that is $ \d^3\br{\phi} = 0 $. Since $ s\br{g_1}s\br{g_2} = \phi\br{g_1, g_2}s\br{g_1g_2} $,
+\begin{align*}
+\phi\br{g_1, g_2}\phi\br{g_1g_2, g_3}s\br{g_1g_2g_3}
+& = \phi\br{g_1, g_2}s\br{g_1g_2}s\br{g_3}
+= s\br{g_1}s\br{g_2}s\br{g_3} \\
+& = s\br{g_1}\phi\br{g_2, g_3}s\br{g_2g_3}
+= s\br{g_1}\phi\br{g_2, g_3}s\br{g_1}^{-1}s\br{g_1}s\br{g_2g_3} \\
+& = s\br{g_1}\phi\br{g_2, g_3}s\br{g_1}^{-1}\phi\br{g_1, g_2g_3}s\br{g_1g_2g_3}.
+\end{align*}
+Rewriting in $ M $,
+$$ \phi\br{g_1, g_2} + \phi\br{g_1g_2, g_3} = g_1 \bullet \phi\br{g_2, g_3} + \phi\br{g_1, g_2g_3}, $$
+so
+$$ 0 = g_1 \bullet \phi\br{g_2, g_3} - \phi\br{g_1g_2, g_3} + \phi\br{g_1, g_2g_3} - \phi\br{g_1, g_2} = \d^3\br{\phi}\br{g_1, g_2, g_3}. $$
+Thus $ \phi $ is a cocycle, and it is a \textbf{normalised cocycle}, since $ \phi\br{1, g} = \phi\br{g, 1} = 0 $ for all $ g \in G $.
+\item Let $ s' : G \to E $ be another section, with $ s'\br{1} = 1 $. Then $ \pi\br{s'\br{g}s\br{g}^{-1}} = 1 $ so define
+$$ \function[\psi]{G}{M}{g}{s'\br{g}s\br{g}^{-1}}. $$
+Now let us compute the cocycle $ \phi' $ coming from $ s' $. Since $ s'\br{g} = \psi\br{g}s\br{g} $,
+\begin{align*}
+s'\br{g_1}s'\br{g_2}
+& = \psi\br{g_1}s\br{g_1}\psi\br{g_2}s\br{g_2}
+= \psi\br{g_1}s\br{g_1}\psi\br{g_2}s\br{g_1}^{-1}s\br{g_1}s\br{g_2} \\
+& = \psi\br{g_1}s\br{g_1}\psi\br{g_2}s\br{g_1}^{-1}\phi\br{g_1, g_2}s\br{g_1g_2} \\
+& = \psi\br{g_1}s\br{g_1}\psi\br{g_2}s\br{g_1}^{-1}\phi\br{g_1, g_2}\psi\br{g_1g_2}^{-1}s'\br{g_1g_2}
+\end{align*}
+Back to $ M $,
+$$ \phi'\br{g_1, g_2} = \psi\br{g_1} + g_1 \bullet \psi\br{g_2} + \phi\br{g_1, g_2} - \psi\br{g_1g_2} = \phi\br{g_1, g_2} + \d^2\br{\psi}\br{g_1, g_2}, $$
+so $ \sbr{\phi} = \phi + \im \d^2 = \phi' + \im \d^2 = \sbr{\phi'} \in \H^2\br{G, M} $.
+\end{itemize}
+It remains to show that equivalent extensions give the same cohomology class, to construct an inverse, and show it is the inverse. Let $ \zeta \in \H^2\br{G, M} $ and choose a normalised cocycle $ \phi $ such that $ \zeta = \sbr{\phi} $. Can always choose normalised. \footnote{Exercise: if $ \phi \in \Z^2\br{G, M} $, set $ \psi\br{g} = -\phi\br{1, g} $ and then $ \phi + \d^2\br{\psi} $ turns out to be normalised} Define $ E_\phi $, where the set is $ M \times G $ with group operation
+$$ \br{m_1, g_1} *_\phi \br{m_2, g_2} = \br{m_1 + g_1 \bullet m_2 + \phi\br{g_1, g_2}, g_1g_2}. $$
+\begin{itemize}
+\item If $ s\br{g} = \br{0, g} $, then $ s\br{g_1} *_\phi s\br{g_2} = \br{\phi\br{g_1, g_2}, 1} *_\phi s\br{g_1g_2} $.
+\begin{itemize}
+\item Associativity since $ \phi $ is a cocycle.
+\item $ \br{0, 1} $ is an identity since $ \phi $ is normalised.
+\item Existence of inverses since $ \phi $ is a normalised cocycle.
+\end{itemize}
+Then $ E_\phi $ is an extension, since $ M \triangleleft E_\phi $, with the right action, and $ E_\phi / M = G $.
+
+\pagebreak
+
+\item If $ \sbr{\phi} = \sbr{\phi'} $, where $ \phi' $ is also normalised, then $ \phi - \phi' = \d^2\br{\psi} $ for some $ \psi $. Define
+$$ \function{E_\phi}{E_{\phi'}}{\br{m, g}}{\br{m + \psi\br{g}, g}}, $$
+which is an equivalence of extensions.
+\end{itemize}
+\end{proof}
+
+Back to Hopf's formula. Suppose $ G = \abr{x_1, \dots, x_n \st r_1, \dots, r_m} $. Take an abelian group $ A $, a trivial $ G $-module. Let $ E $ be a central extension of $ G $ by $ A $. Then $ E $ is generated by $ A $, and some choices $ \overline{x_1}, \dots, \overline{x_n} $ of preimages of the $ x_i $. Define $ \overline{r_i} $ as $ r_i $ with bars on top. Then in $ E $, $ \overline{r_i} = a_i \in A $. Writing a presentation of $ E $,
+$$ \overline{E} = \abr{\overline{x_1}, \dots, \overline{x_n}, A \st \overline{r_1}a_1^{-1}, \dots, \overline{r_m}a_m^{-1}, \ A \ \text{central}, \ \text{relations of} \ A}. $$
+Then
+$$
+\begin{tikzcd}
+& A \arrow{r} \arrow[cong]{d} & \overline{E} \arrow[twoheadrightarrow]{r} \arrow{d} & G \arrow[cong]{d} & \\
+1 \arrow{r} & A \arrow{r} & E \arrow{r} & G \arrow{r} & 1
+\end{tikzcd},
+$$
+so $ A \hookrightarrow \overline{E} $, and $ \overline{E} \cong E $. Set $ F = \abr{\overline{x_1}, \dots, \overline{x_n}} $ and $ R = \ker \br{F \to G} = \abr{\abr{\overline{r_1}, \dots, \overline{r_m}}} $. Define an $ F $-invariant homomorphism
+$$ \function{R}{A}{\overline{r_i}}{a_i}, $$
+since $ E $ is an extension. If we choose $ \overline{x_i}' $ instead of $ \overline{x_i} $, then $ \overline{x_i}' = \overline{x_i}b_i $ for some $ b_i \in A $. Then
+$$ \function{F}{A}{\overline{x_i}}{b_i} $$
+is a homomorphism, and the homomorphism $ R \to A $ is changed by subtracting the restriction of $ F \to A $. Thus
+$$ \H^2\br{G, A} = \cbr{\text{$ F $-invariant homomorphisms} \ R \to A} / \cbr{\text{restrictions of homomorphisms} \ F \to A}. $$
+
+\begin{example}
+\label{eg:5.3.5}
+Let $ G = \abr{x_1, x_2 \st x_1x_2x_1^{-1}x_2^{-1}x_1} $. Any extension of $ G $ by $ \ZZ $ has a presentation
+$$ E = \abr{\overline{x_1}, \overline{x_2}, a \st \overline{x_1}\overline{x_2}\overline{x_1}^{-1}\overline{x_2}^{-1}\overline{x_1} = a^k, \ a \ \text{central}}. $$
+Then $ E $ is equivalent to the direct product, since by $ \overline{x_1} \mapsto \overline{x_1}' = \overline{x_1}a^k $,
+$$ E \cong \abr{\overline{x_1}', \overline{x_2}, a \st \overline{x_1}'\overline{x_2}\overline{x_1}'^{-1}\overline{x_2}^{-1}\overline{x_1}' = 1, \ a \ \text{central}} \cong \ZZ \times G. $$
+Thus $ \H^2\br{G, \ZZ} = 0 $.
+\end{example}
+
+\subsubsection{Worked example: extensions of \texorpdfstring{$ \ZZ^2 $}{Z2} by \texorpdfstring{$ \ZZ $}{Z}}
+
+\lecture{22}{Thursday}{11/03/21}
+
+Let $ T = \ZZ^2 = \abr{a, b} $. Take the free resolution of $ \ZZ $ by $ \ZZ T $-modules
+$$ 0 \to \ZZ T \xrightarrow{\beta} \ZZ T^2 \xrightarrow{\alpha} \ZZ T \xrightarrow{\epsilon} \ZZ \to 0, $$
+where $ \epsilon $ is the augmentation $ \epsilon\br{g} = 1 $ for all $ g \in T $, and
+$$ \alpha\br{x, y} = x\br{a - 1} + y\br{b - 1} = \onebytwo{x}{y}\twobyone{a - 1}{b - 1}, \qquad \beta\br{z} = \onebytwo{z\br{1 - b}}{z\br{a - 1}} = z\onebytwo{1 - b}{a - 1}. $$
+Exactness comes from topology, since it is the chain complex for the square tiling of the plane. Applying $ \Hom_T\br{-, \ZZ} $,
+$$
+\begin{tikzcd}
+0 & \Hom_T\br{\ZZ T, \ZZ} \arrow{l} \arrow{d}{\phi \mapsto \phi\br{1}}[swap]{\sim} & \Hom_T\br{\ZZ T^2, \ZZ} \arrow{l}[swap]{\beta^*} \arrow{d}{\phi \mapsto \br{\phi\br{1, 0}, \phi\br{0, 1}}}[swap]{\sim} & \Hom_T\br{\ZZ T, \ZZ} \arrow{l}[swap]{\alpha^*} \arrow{d}{\phi \mapsto \phi\br{1}}[swap]{\sim} \\
+0 & \ZZ \arrow{l} & \ZZ^2 \arrow{l}{\beta^*} & \ZZ \arrow{l}{\alpha^*}
+\end{tikzcd}.
+$$
+
+\pagebreak
+
+Then
+$$ \alpha^*\br{z} = \twobyone{a - 1}{b - 1}z = 0, \qquad \beta^*\br{\twobyone{x}{y}} = \onebytwo{1 - b}{a - 1}\twobyone{x}{y} = 0, $$
+so
+$$ \H^n\br{T, \ZZ} =
+\begin{cases}
+\ZZ & n = 0, 2 \\
+\ZZ^2 & n = 1 \\
+0 & n > 2
+\end{cases}.
+$$
+Comparing the bar resolution and the topological resolution,
+$$
+\begin{tikzcd}
+\dots \arrow{r} & \ZZ T\cbr{T^{\br{2}}} \arrow{r}{\d_2} \arrow{d}{f_2} & \ZZ T\cbr{T^{\br{1}}} \arrow{r}{\d_1} \arrow{d}{f_1} & \ZZ T\cbr{T^{\br{0}}} \arrow{r}{\epsilon} \arrow{d}{f_0} & \ZZ \arrow{r} \arrow{d}{\id} & 0 \\
+0 \arrow{r} & \ZZ T \arrow{r}[swap]{\beta} & \ZZ T^2 \arrow{r}[swap]{\alpha} & \ZZ T \arrow{r}[swap]{\epsilon} & \ZZ \arrow{r} & 0
+\end{tikzcd}.
+$$
+\begin{itemize}
+\item $ f_0\br{\sbr{}} = 1 $.
+\item Let $ \sbr{a^rb^s} \in T^{\br{1}} $ for $ r, s \in \ZZ $. We want to set $ f_1\br{\sbr{a^rb^s}} = \br{x_{r, s}, y_{r, s}} \in \ZZ T^2 $ such that $ \alpha\br{x_{r, s}, y_{r, s}} = f_0\br{\d_1\br{\sbr{a^rb^s}}} $, and
+$$ x_{r, s}\br{a - 1} + y_{r, s}\br{b - 1} = f_0\br{a^rb^s\sbr{} - \sbr{}} = a^rb^s - 1 = \br{a^r - 1}b^s + b^s - 1. $$
+Set
+$$ \S\br{a, r} =
+\begin{cases}
+1 + \dots + a^{r - 1} & r > 0 \\
+0 & r = 0 \\
+-a^{-1} - \dots - a^r & r < 0
+\end{cases},
+$$
+so $ \S\br{a, r}\br{a - 1} = a^r - 1 $. Then $ x_{r, s} = \S\br{a, r}b^s $ and $ y_{r, s} = \S\br{b, s} $, so
+$$ f_1\br{\sbr{a^rb^s}} = \br{\S\br{a, r}b^s, \S\br{b, s}}. $$
+\item We want $ f_2\br{\sbr{a^rb^s \mid a^tb^u}} = z_{r, s, t, u} $ such that $ \beta\br{z_{r, s, t, u}} = f_1\br{\d_2\br{\sbr{a^rb^s \mid a^tb^u}}} $, and
+\begin{align*}
+& \br{\br{1 - b}z_{r, s, t, u}, \br{a - 1}z_{r, s, t, u}} \\
+= \ & f_1\br{a^rb^s\sbr{a^tb^u} - \sbr{a^{r + t}b^{s + u}} + \sbr{a^rb^s}} \\
+= \ & \br{a^rb^s\S\br{a, t}b^u - \S\br{a, r + t}b^{s + u} + \S\br{a, r}b^s, a^rb^s\S\br{b, u} - \S\br{b, s + u} + \S\br{b, s}}.
+\end{align*}
+By computation, $ z_{r, s, t, u} = \S\br{a, r}b^s\S\br{b, u} $, so
+$$ f_2\br{\sbr{a^rb^s \mid a^tb^u}} = \S\br{a, r}b^s\S\br{b, u}. $$
+\end{itemize}
+A useful fact is that $ \epsilon $ is a ring homomorphism, and $ \epsilon\br{\S\br{a, r}} = r $, so the cochain representing $ p \in \ZZ \cong \H^2\br{T, \ZZ} $ is
+$$
+\begin{array}{ccccc}
+T^{\br{2}} \subseteq \ZZ T\cbr{T^{\br{2}}} & \xrightarrow{f_2} & \ZZ T & \xrightarrow{p\epsilon} & \ZZ \\
+\sbr{a^rb^s \mid a^tb^u} & \longmapsto & \S\br{a, r}b^s\S\br{b, u} & \longmapsto & pru
+\end{array}.
+$$
+The corresponding central extension of $ T $ by $ \ZZ $ is the set $ \ZZ \times T $ with group operation
+$$ \br{m, a^rb^s} * \br{n, a^tb^u} = \br{m + n + pru, a^{r + t}b^{s + u}}, $$
+which is
+$$ \threebythree{1}{pr}{m}{0}{1}{s}{0}{0}{1}\threebythree{1}{pt}{n}{0}{1}{u}{0}{0}{1} = \threebythree{1}{p\br{r + t}}{m + n + pru}{0}{1}{s + u}{0}{0}{1}. $$
+Thus the extension is isomorphic to
+$$ \cbr{\threebythree{1}{pr}{m}{0}{1}{s}{0}{0}{1} \st r, m, s \in \ZZ}. $$
+
+\pagebreak
+
+\subsection{Cohomology of profinite groups}
+
+\begin{definition}
+Let $ G $ be a profinite group. A \textbf{finite $ G $-module} is a finite abelian group with an action
+$$ \function{G \times M}{M}{\br{g, m}}{g \cdot m}, $$
+which is continuous.
+\end{definition}
+
+\begin{definition}
+Let
+$$ \C^n\br{G, M} = \cbr{\text{continuous functions} \ G^n \to M}, $$
+with $ \d^n : \C^{n - 1}\br{G, M} \to \C^n\br{G, M} $ by the same formula, and let
+$$ \Z^n\br{G, M} = \ker \d^{n + 1}, \qquad \B^n\br{G, M} = \im \d^n, \qquad \H^n\br{G, M} = \Z^n\br{G, M} / \B^n\br{G, M}. $$
+\end{definition}
+
+\begin{theorem}[Course convention]
+All general results from section $ 5.1 $ to section $ 5.3 $ and from example sheet $ 4 $, can be applied to profinite groups, with substitutions groups to profinite groups, functions to continuous functions, and modules to finite modules.
+\end{theorem}
+
+If $ E $ and $ E' $ are profinite groups, then extensions
+$$
+\begin{tikzcd}[row sep=tiny]
+& & E \arrow{dr} \arrow{dd} & & \\
+1 \arrow{r} & M \arrow{ur} \arrow{dr} & & G \arrow{r} & 1 \\
+& & E' \arrow{ur} & &
+\end{tikzcd}
+$$
+correspond to $ \H^2\br{G, M} $.
+
+\begin{remark}
+Let $ G = \widehat{\ZZ} $. Consider the short exact sequence of modules
+$$ 0 \to \ZZ \to \QQ \to \QQ / \ZZ \to 0. $$
+By the course convention, $ \H^1\br{G, M} = \Hom\br{G, M} $ and there is a long exact sequence in cohomology. By common sense, $ \H^2\br{\widehat{\ZZ}, M} = 0 $. Then $ \H^1\br{\widehat{\ZZ}, \ZZ} = \H^1\br{\widehat{\ZZ}, \QQ} = 0 $, since any continuous homomorphism $ \widehat{\ZZ} \to \QQ $ has compact image, so must be trivial. There is an isomorphism
+$$ \function{\H^1\br{\widehat{\ZZ}, \QQ / \ZZ}}{\QQ / \ZZ}{a + n\ZZ}{\dfrac{am}{n} + \ZZ}. $$
+Thus
+$$
+\begin{tikzcd}[row sep=tiny]
+\H^1\br{\widehat{\ZZ}, \QQ} \arrow{r} \arrow[cong]{d} & \H^1\br{\widehat{\ZZ}, \QQ / \ZZ} \arrow{r} \arrow[cong]{d} & \H^2\br{\widehat{\ZZ}, \ZZ} \\
+0 & \QQ / \ZZ &
+\end{tikzcd},
+$$
+so $ \H^2\br{\widehat{\ZZ}, \ZZ} $ would be infinite, which is silly.
+\end{remark}
+
+\subsubsection{Pro-\texorpdfstring{$ p $}{p} groups of cohomological dimension one}
+
+\lecture{23}{Saturday}{13/03/21}
+
+\begin{definition}
+A profinite group $ G $ has \textbf{cohomological dimension} $ \cd G = n $ if $ \H^m\br{G, M} = 0 $ for all $ m > n $ and for all finite modules $ M $ but there exists $ M $ such that $ \H^n\br{G, M} \ne 0 $.
+\end{definition}
+
+\begin{theorem}
+Let $ G $ be a pro-$ p $ group. Then
+$$ \cd G = \max\cbr{n \st \H^n\br{G, \FF_p} \ne 0}. $$
+\end{theorem}
+
+\begin{corollary}
+If $ G \ne 1 $, then $ \cd G = 1 $ if and only if $ \H^2\br{G, \FF_p} = 0 $.
+\end{corollary}
+
+\begin{proof}
+$ \H^1\br{G, \FF_p} = \Hom\br{G, \FF_p} \ne 0 $.
+\end{proof}
+
+\pagebreak
+
+\begin{definition}
+A $ G $-module $ M $ is \textbf{simple} if the only $ G $-submodules of $ M $ are zero and $ M $.
+\end{definition}
+
+\begin{proposition}
+Let $ G $ be a profinite group. Suppose $ \H^n\br{G, S} = 0 $ for all finite simple modules $ S $. Then $ \H^n\br{G, M} = 0 $ for all finite $ M $.
+\end{proposition}
+
+\begin{proof}
+Suppose not, and let $ M $ be the smallest $ G $-module such that $ \H^n\br{G, M} \ne 0 $. Since $ M $ is not simple, there exists a non-trivial submodule $ N \subsetneq G $. Then we have a short exact sequence of $ G $-modules
+$$ 0 \to N \to M \to M / N \to 0. $$
+By Proposition \ref{prop:5.1.28}, there is a long exact sequence, of which part is
+$$
+\begin{tikzcd}[row sep=tiny]
+\dots \arrow{r} & \H^n\br{G, N} \arrow{r} \arrow[cong]{d} & \H^n\br{G, M} \arrow{r} & \H^n\br{G, M / N} \arrow{r} \arrow[cong]{d} & \dots \\
+& 0 & & 0 &
+\end{tikzcd},
+$$
+so $ \H^n\br{G, M} = 0 $, a contradiction.
+\end{proof}
+
+\begin{definition}
+Let $ M $ be a finite $ G $-module. For a prime $ p $, $ M $ is called \textbf{$ p $-primary} if $ \abs{M} $ is a power of $ p $.
+\end{definition}
+
+If $ M $ is finite, then
+$$ M = \bigoplus_{p \ \text{prime}} M_p, $$
+where $ M_p $ are $ p $-Sylow subgroups or $ p $-primary components, in a unique way, so this decomposition is invariant under $ G $, so all $ M_p $ are $ G $-submodules of $ M $.
+
+\begin{proposition}
+Let $ G $ be a pro-$ p $ group and let $ M $ be a finite $ G $-module. Then
+$$ \H^n\br{G, M} = \H^n\br{G, M_p}, \qquad n \ge 1. $$
+\end{proposition}
+
+\begin{proof}
+Write $ M = M_p \oplus M' $. Then
+$$ \H^n\br{G, M} = \H^n\br{G, M_p} \oplus \H^n\br{G, M'}. $$
+So we need $ \H^n\br{G, M'} = 0 $.
+\begin{enumerate}[leftmargin=0.5in, label=Part \arabic*.]
+\item If $ G $ is finite, this is on exercise sheet $ 4 $, since $ \abs{G} $ and $ \abs{M'} $ are coprime.
+\item Let $ G $ be a pro-$ p $ group. Let $ \phi : G^n \to M' $ be a continuous function. We will find $ K \triangleleft_\o G $ such that $ K $ acts trivially on $ M' $, and such that $ \phi $ factors through $ \br{G / K}^n $, so $ \phi\br{g_1, \dots, g_n} = \phi\br{g_1k_1, \dots, g_nk_n} $. Then
+$$ \function{0 = \H^n\br{G / K, M'}}{\H^n\br{G, M'}}{\overline{\phi}}{\phi}. $$
+The preimages of $ m \in M' $ are closed and open subsets of $ G^n $, so they are unions of basic open subsets, cosets of open subgroups $ K_{i, m}^n $ where $ K_{i, m} \triangleleft G $. By compactness, for each $ m $ only finitely many $ K_{i, m} $ are needed. Take the intersection of all of these to get the required $ K $. All preimages of $ m \in M' $ are now unions of cosets of $ K^n $, so $ \phi $ factors through $ \br{G / K}^n $. Making $ K $ smaller, by intersecting with the kernel of $ G \to \Aut M' $, makes $ K $ act trivially. Now
+$$ \phi : G^n \xrightarrow{\pi} \br{G / K}^n \xrightarrow{\overline{\phi}} M'. $$
+If $ \d^{n + 1}\br{\phi} = 0 $, then $ \overline{\phi} = \d^n\br{\psi} $ for some $ \psi : \br{G / K}^{n - 1} \to M' $, by part $ 1 $. It follows that $ \phi = \d^n\br{\psi \circ \pi} $.
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+In proving that all cocycles factor through some $ \br{G / K}^n $, we really show that
+$$ \H^n\br{G, M} = \H^n\br{\varprojlim_{K \triangleleft_\o G, \ K \ \text{acts trivially}} G / K, M} = \varinjlim_K \H^n\br{G / K, M}. $$
+\end{remark}
+
+\pagebreak
+
+\begin{proposition}
+Let $ G $ be a pro-$ p $ group. The only finite simple $ p $-primary $ G $-module is $ \FF_p $.
+\end{proposition}
+
+\begin{proposition}
+Let $ G $ be a pro-$ p $ group. If $ \H^n\br{G, \FF_p} = 0 $ for some $ n $, then $ \H^n\br{G, M} = 0 $ for all finite $ G $-modules $ M $.
+\end{proposition}
+
+\begin{proposition}
+Suppose there exists $ N \ge 1 $ such that $ \H^N\br{G, M} = 0 $ for all finite $ G $-modules $ M $. Then $ \cd G \le N - 1 $.
+\end{proposition}
+
+Proof for abstract groups, then apply course convention.
+
+\begin{proof}
+We show $ \H^{N + 1}\br{G, M} = 0 $ for all $ M $, then induct. Consider the \textbf{coinduced module}
+$$ \Coind_G^K M = \Hom_K\br{\ZZ G, M}, \qquad K \le G. $$
+By Shapiro's lemma,
+$$ \H^n\br{G, \Coind_G^K M} = \H^n\br{K, M}, $$
+since $ \Hom_G\br{F, \Coind_G^K M} \cong \Hom_K\br{F, M} $ for $ F $ a $ G $-module. Consider $ K = 1 $. Consider
+$$ \function[\alpha]{M}{\Coind_G^1 M}{m}{\br{x \mapsto xm}}, \qquad x \in \ZZ G, $$
+which is injective and $ G $-linear. So there exists a short exact sequence of modules
+$$ 0 \to M \xrightarrow{\alpha} \Coind_G^1 M \to M' \to 0, $$
+which gives a long exact sequence
+$$
+\begin{tikzcd}[row sep=tiny]
+\H^n\br{G, \Coind_G^1 M} \arrow{r} \arrow[cong]{d} & \H^n\br{G, M'} \arrow{r}{\sim} & \H^{n + 1}\br{G, M} \arrow{r} & \H^{n + 1}\br{G, \Coind_G^1 M} \arrow[cong]{d} \\
+\H^n\br{1, M} = 0 & & & \H^{n + 1}\br{1, M} = 0,
+\end{tikzcd},
+\qquad n \ge 1.
+$$
+Since $ \H^N\br{G, M'} = 0 $ for all $ M' $ by hypothesis, $ \H^{N + 1}\br{G, M} = 0 $.
+\end{proof}
+
+We have now proved the following.
+
+\begin{theorem}
+Let $ G $ be a pro-$ p $ group. If $ \H^n\br{G, \FF_p} = 0 $ then $ \cd G \le n - 1 $.
+\end{theorem}
+
+\begin{corollary}
+Topologically finitely generated free pro-$ p $ groups have cohomological dimension one.
+\end{corollary}
+
+\begin{proof}
+To show $ \H^2\br{G, \FF_p} = 0 $, if and only if every extension is a split extension. Let
+$$ 1 \to \FF_p \to E \to G \to 1. $$
+
+If $ \cbr{x_1, \dots, x_d} $ is a generating set of $ G $, choose preimages $ e_i $ of $ x_i $ in $ E $. Then the function $ x_i \mapsto e_i $ extends to a continuous homomorphism $ G \to E $ by freeness. So $ E $ is a split extension, and $ \H^2\br{G, \FF_p} = 0 $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:5.4.20}
+Let $ f : G \to G' $ be a continuous homomorphism of topologically finitely generated pro-$ p $ groups. Assume that
+$$ f_1^* : \H^1\br{G', \FF_p} \to \H^1\br{G, \FF_p} $$
+is an isomorphism and
+$$ f_2^* : \H^2\br{G', \FF_p} \to \H^2\br{G, \FF_p} $$
+is injective. Then $ f $ is an isomorphism.
+\end{theorem}
+
+If $ G = \Gamma $ and $ G' = \Gamma' $ are finitely generated abstract groups, then $ f $ yields an isomorphism of pro-$ p $ completions $ \widehat{\Gamma_{\br{p}}} \to \widehat{\Gamma_{\br{p}}'} $.
+
+\pagebreak
+
+\begin{corollary}
+Let $ G $ be a topologically finitely generated pro-$ p $ group of cohomological dimension one. Then $ G $ is free.
+\end{corollary}
+
+\begin{proof}
+If $ \d\br{G} = d $, there is a surjection $ f : F \twoheadrightarrow G $ where $ F $ is free of rank $ d $. Then $ F $ gives an isomorphism $ f_* : F / \Phi\br{F} \xrightarrow{\sim} G / \Phi\br{G} \cong \FF_p^d $. Since $ \H^1\br{G, \FF_p} = \Hom\br{G, \FF_p} = \Hom\br{G / \Phi\br{G}, \FF_p} $, the dual spaces are
+$$ f_1^* : \Hom\br{G / \Phi\br{G}, \FF_p} = \H^1\br{G, \FF_p} \xrightarrow{\sim} \Hom\br{F / \Phi\br{F}, \FF_p} = \H^1\br{F, \FF_p}, $$
+and $ f_2^* : \H^2\br{G, \FF_p} = 0 \to \H^2\br{F, \FF_p} $ is an injection. Thus $ f $ is an isomorphism.
+\end{proof}
+
+\lecture{24}{Tuesday}{16/03/21}
+
+\begin{proof}[Proof of Theorem \ref{thm:5.4.20}]
+Let $ G_n = \gamma_n^{\br{p}}\br{G} $ be the lower central $ p $-series, where $ G_1 = G $ and $ G_{n + 1} = \overline{\sbr{G, G_n}G_n^p} $, which are open in $ G $. Since $ f\br{G_n} \le G_n' $, $ f_n : G / G_n \to G' / G_n' $. We show all $ f_n $ are isomorphisms, so $ f = \varprojlim_n f_n $ is an isomorphism, by induction.
+\begin{itemize}
+\item $ n = 1 $ is trivial.
+\item Consider $ G_n / G_{n + 1} $, which is a finite-dimensional vector space over $ \FF_p $. Then $ f $ induces an isomorphism $ G_n / G_{n + 1} \to G_n' / G_{n + 1}' $ if and only if $ f^* : \Hom\br{G_n' / G_{n + 1}', \FF_p} \to \Hom\br{G_n / G_{n + 1}, \FF_p} $ is an isomorphism. A continuous homomorphism $ \phi : G_n \to \FF_p $ factors through $ G_{n + 1} $ if and only if $ \phi\br{\sbr{g, g_n}} = 0 $ for all $ g \in G $ and $ g_n \in G_n $, if and only if $ \phi\br{g_n} = \phi\br{g^{-1}g_ng} $, that is $ \phi $ is $ G $-invariant. Then $ \Hom\br{G_n / G_{n + 1}, \FF_p} \cong \Hom\br{G_n, \FF_p}^G = \H^1\br{G_n, \FF_p}^G $. For the short exact sequence
+$$ 1 \to G_n \to G \to G / G_n \to 1, $$
+we have a five-term exact sequence
+$$
+\begin{tikzcd}[column sep=small]
+0 \arrow{r} & \H^1\br{G / G_n, \FF_p} \arrow{r} & \H^1\br{G, \FF_p} \arrow{r} & \H^1\br{G_n, \FF_p}^G \arrow{r} & \H^2\br{G / G_n, \FF_p} \arrow{r} & \H^2\br{G, \FF_p} \\
+0 \arrow{r} & \H^1\br{G' / G_n', \FF_p} \arrow{u}{\sim} \arrow{r} & \H^1\br{G', \FF_p} \arrow{u}{\sim} \arrow{r} & \H^1\br{G_n', \FF_p}^{G'} \arrow{u} \arrow{r} & \H^2\br{G' / G_n', \FF_p} \arrow{u}{\sim} \arrow{r} & \H^2\br{G', \FF_p} \arrow{u}{\hookrightarrow}
+\end{tikzcd}.
+$$
+By the five lemma, the middle map is an isomorphism, so $ G_n / G_{n + 1} \xrightarrow{\sim} G_n' / G_{n + 1}' $. Then
+$$
+\begin{tikzcd}
+1 \arrow{r} & G_n / G_{n + 1} \arrow{r} \arrow{d}{\sim} & G / G_{n + 1} \arrow{r} \arrow{d} & G / G_n \arrow{r} \arrow{d}{\sim} & 1 \\
+1 \arrow{r} & G_n' / G_{n + 1}' \arrow{r} & G' / G_{n + 1}' \arrow{r} & G' / G_n' \arrow{r} & 1
+\end{tikzcd}.
+$$
+By the five lemma, $ G / G_{n + 1} \xrightarrow{\sim} G' / G_{n + 1}' $.
+\end{itemize}
+\end{proof}
+
+\begin{example}
+Let $ \Gamma = \abr{x_1, x_2 \st x_1x_2x_1^{-1}x_2^{-1}x_1} $. By Example \ref{eg:5.3.5}, $ \H^2\br{\Gamma, \FF_p} = 0 $. Then $ \Gamma_{\ab} \cong \ZZ $, generated by $ x_2 $, and $ \H^1\br{\Gamma, \FF_p} \cong \FF_p $, generated by $ \br{x_1, x_2} \mapsto \br{0, 1} $. Let
+$$ \function[f]{\ZZ}{\Gamma}{1}{x_2}. $$
+Since $ f_1^* : \H^1\br{\Gamma, \FF_p} \to \H^1\br{\ZZ, \FF_p} $ is an isomorphism and $ f_2^* : \H^2\br{\Gamma, \FF_p} \to \H^2\br{\ZZ, \FF_p} $ is an injection, $ \widehat{\Gamma_{\br{p}}} \cong \ZZ_p $.
+\end{example}
+
+\pagebreak
+
+\subsubsection{Presentations of pro-\texorpdfstring{$ p $}{p} groups}
+
+\begin{definition}
+Let $ X $ be a finite set and $ F $ the free pro-$ p $ group on the set $ X $. Let $ R \subseteq F $. The pro-$ p $ group with presentation $ G = \fbr{X \st R}_p $ is defined to be $ G = F / \overline{\abr{\abr{R}}} $.
+\end{definition}
+
+\begin{lemma}
+Let $ F' \subseteq \widehat{F_{\br{p}}} = F $ be the free abstract group on $ X $, and $ R \subseteq F' $. Let $ \Gamma = \abr{X \st R} $ be an abstract group, and let $ G = \fbr{X \st R}_p $. Then $ G = \widehat{F_{\br{p}}} $.
+\end{lemma}
+
+\begin{proof}
+Since $ F' \xrightarrow{\subseteq} F $ such that $ \abr{\abr{R}} \to \overline{\abr{\abr{R}}} $,
+$$ F' / \abr{\abr{R}} \to \widehat{\abr{X \st R}_{\br{p}}} \twoheadrightarrow \fbr{X \st R}_{\br{p}}. $$
+There exists $ F \to \widehat{\abr{X \st R}_{\br{p}}} $ sending $ X \to X $ such that $ R \to 1 $, so $ \fbr{X \st R}_{\br{p}} \to \widehat{\abr{X \st R}_{\br{p}}} $ is a surjection. By the Hopf property, surjections are isomorphisms.
+\end{proof}
+
+How many generators does a pro-$ p $ group need? Since
+$$ \H^1\br{G, \FF_p} \cong \Hom\br{G, \FF_p} \cong \Hom\br{G / \Phi\br{G}, \FF_p} \cong \Hom\br{\FF_p^d, \FF_p}, $$
+the minimal number of generators is $ \dim_{\FF_p} \H^1\br{G, \FF_p} $.
+
+\begin{theorem}
+\label{thm:5.4.28}
+Let $ G $ be a topologically finitely generated pro-$ p $ group, and let $ X $ be a finite topological generating set for $ G $, so $ \F\br{X} \twoheadrightarrow G $. Let $ \r_X $ be the minimal size of a set $ R \subseteq \F\br{X} $ such that $ G = \fbr{X \st R}_p $. Then
+$$ \abs{X} - \r_X = \dim_{\FF_p} \H^1\br{G, \FF_p} - \dim_{\FF_p} \H^2\br{G, \FF_p}. $$
+\end{theorem}
+
+\begin{remark}
+\hfill
+\begin{itemize}
+\item Not true for abstract groups, since $ \abs{X} - \rho_X $ is not a constant for abstract groups, where $ \rho_X $ is the minimal size of $ R $ such that $ \Gamma = \abr{X \st R} $, and different $ X $'s need different numbers of relators.
+\item If $ G $ is a finite $ p $-group, then $ \r_X \le \rho_X $. Not known if equality holds.
+\end{itemize}
+\end{remark}
+
+\begin{lemma}
+\label{lem:5.4.32}
+Let $ F $ be a pro-$ p $ group and $ N \triangleleft_\c F $. Then there exists $ R \subseteq F $ of size $ r $ such that $ N = \overline{\abr{\abr{R}}} $ if and only if $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} \le r $.
+\end{lemma}
+
+\begin{proof}
+If $ N = \overline{\abr{\abr{R}}} $, then any $ \phi $ is determined by $ \phi\br{r} $ for $ r \in R $, so there is an injection $ \H^1\br{N, \FF_p}^{F / N} \hookrightarrow \FF_p^{\abs{R}} $, so $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} \le \abs{R} $. Suppose $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} = r $, so there exists $ R \subseteq N $ such that an $ F $-invariant $ \phi : N \to \FF_p $ vanishes if and only if $ \phi $ vanishes on $ R $. Let $ N' = \overline{\abr{\abr{R}}} \subseteq N $. Suppose $ N' \ne N $. Then $ N'\Phi\br{N} \ne N $, so $ M = N / N'\Phi\br{N} $ is a non-trivial abelian pro-$ p $ group, and $ F $ acts by conjugation. So \footnote{Exercise: pure topology} there exists an $ F $-invariant $ M \twoheadrightarrow \FF_p $, since the only simple $ F $-module is $ \FF_p $, a contradiction.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:5.4.28}]
+By Lemma \ref{lem:5.4.32}, $ \r_X = \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} $. By the five-term exact sequence,
+$$
+\begin{tikzcd}[row sep=tiny]
+0 \arrow{r} & \H^1\br{G, \FF_p} \arrow{r} & \H^1\br{F, \FF_p} \arrow{r}{\alpha} \arrow[cong]{d} & \H^1\br{N, \FF_p}^{F / N} \arrow{r}{\beta} & \H^2\br{G, \FF_p} \arrow{r} & \H^2\br{F, \FF_p} \arrow[cong]{d} \\
+& & \FF_p^{\abs{X}} & & & 0
+\end{tikzcd},
+$$
+where $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} = \r_X $. Then
+$$ \dim_{\FF_p} \im \alpha = \dim_{\FF_p} \H^1\br{F, \FF_p} - \dim_{\FF_p} \H^1\br{G, \FF_p} = \abs{X} - \dim_{\FF_p} \H^1\br{G, \FF_p}, $$
+and
+$$ \dim_{\FF_p} \ker \beta = \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} - \dim_{\FF_p} \H^2\br{G, \FF_p} = \r_X - \dim_{\FF_p} \H^2\br{G, \FF_p}. $$
+Thus
+$$ \abs{X} - \r_X = \dim_{\FF_p} \H^1\br{G, \FF_p} - \dim_{\FF_p} \H^2\br{G, \FF_p}. $$
+\end{proof}
 
 \end{document}
