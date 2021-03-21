@@ -21,3 +21,9 @@ This is my third year at lecture scribing, so errors and typos are definitely pr
 [Algebraic Topology](https://github.com/Multramate/Cam-GANT/raw/master/Algebraic%20Topology/AT.pdf)
 
 [Elliptic Curves](https://github.com/Multramate/Cam-GANT/raw/master/Elliptic%20Curves/EC.pdf)
+
+### Lent (January 2021 to March 2021)
+
+[Profinite Groups and Group Cohomology](https://github.com/Multramate/Cam-GANT/raw/master/Profinite%20Groups%20and%20Group%20Cohomology/PGGC.pdf)
+
+[Algebraic Number Theory](https://github.com/Multramate/Cam-GANT/raw/master/Algebraic%20Number%20Theory/ANT.pdf)
