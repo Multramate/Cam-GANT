@@ -39,7 +39,7 @@ We say $ \br{K, \abs{\cdot}} $ is a \textbf{valued field}.
 \begin{example*}
 \hfill
 \begin{itemize}
-\item Let $ K = \RR, \CC $ with the usual absolute value. Write $ \abs{\cdot}_\infty $ for this absolute value.
+\item Let $ K = \RR $ or $ K = \CC $ with the usual absolute value. Write $ \abs{\cdot}_\infty $ for this absolute value.
 \item Let $ K $ be any field. The \textbf{trivial absolute value} on $ K $ is defined by
 $$ \abs{x} =
 \begin{cases}
@@ -456,7 +456,7 @@ If $ K $ is as in Proposition \ref{prop:3.5}.$ 2 $, then every $ x \in K $ can b
 \end{corollary}
 
 \begin{proof}
-Use $ K = \OOO_K\sbr{1 / \pi} $.
+Use $ K = \OOO_K\sbr{\tfrac{1}{\pi}} $.
 \end{proof}
 
 \begin{corollary}
@@ -495,11 +495,13 @@ For complete valued fields, there is a nice way to produce solutions in $ \OOO_K
 
 \begin{theorem}[Hensel's lemma version $ 1 $]
 \label{thm:4.1}
-Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. Let $ f\br{X} \in \OOO_K\sbr{X} $ and assume there exists $ a \in \OOO_K $ such that $ \abs{f\br{a}} < \abs{f'\br{a}}^2 $, where $ f'\br{a} $ is the \textbf{formal derivative} such that if $ f\br{X} = X^n $ then $ f'\br{X} = nX^{n - 1} $. Then there exists a unique $ x \in \OOO_K $ such that $ f\br{x} = 0 $ and $ \abs{x - a} < \abs{f'\br{a}} $.
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. Let $ f\br{X} \in \OOO_K\sbr{X} $ and assume there exists $ a \in \OOO_K $ such that $ \abs{f\br{a}} < \abs{f'\br{a}}^2 $, where $ f'\br{a} $ is the formal derivative such that if $ f\br{X} = X^n $ then $ f'\br{X} = nX^{n - 1} $. Then there exists a unique $ x \in \OOO_K $ such that $ f\br{x} = 0 $ and $ \abs{x - a} < \abs{f'\br{a}} $.
 \end{theorem}
 
 \begin{proof}
-Let $ \pi \in \OOO_K $ be a uniformiser and let $ r = v\br{f'\br{a}} $ for $ v $ a normalised valuation, so $ v\br{\pi} = 1 $. We construct a sequence $ \br{x_n}_{n = 1}^\infty $ in $ \OOO_K $ such that
+Let $ \pi \in \OOO_K $ be a uniformiser and let $ r = v\br{f'\br{a}} $ for $ v $ a normalised valuation, so $ v\br{\pi} = 1 $.
+\begin{itemize}
+\item We construct a sequence $ \br{x_n}_{n = 1}^\infty $ in $ \OOO_K $ such that
 \begin{enumerate}
 \item $ f\br{x_n} \equiv 0 \mod \pi^{n + 2r} $, and
 \item $ x_{n + 1} \equiv x_n \mod \pi^{n + r} $.
@@ -509,14 +511,17 @@ $$ x_{n + 1} = x_n - \dfrac{f\br{x_n}}{f'\br{x_n}}. $$
 \begin{itemize}
 \item[$ 2 $.] Since $ x_n \equiv x_1 \mod \pi^{1 + r} $, $ v\br{f'\br{x_n}} = r $ and hence $ f\br{x_n} / f'\br{x_n} \equiv 0 \mod \pi^{n + r} $ by $ 1 $. It follows that $ x_{n + 1} \equiv x_n \mod \pi^{n + r} $ so $ 2 $ holds.
 \item[$ 1 $.] Note that for $ X $ and $ Y $ indeterminates,
-$$ f\br{X + Y} = f_0\br{X} + f_1\br{X}Y + \dots, \qquad f_i\br{X} \in \OOO_K\sbr{X}, \qquad f_0\br{X} = f\br{X}, \qquad f_1\br{X} = f'\br{X}. $$
+$$ f\br{X + Y} = f^{\br{0}}\br{X} + f^{\br{1}}\br{X}Y + \dots, \qquad f^{\br{i}}\br{X} \in \OOO_K\sbr{X}. $$
 Thus
 $$ f\br{x_{n + 1}} = f\br{x_n} + f'\br{x_n}c + \dots, \qquad c = -\dfrac{f\br{x_n}}{f'\br{x_n}}. $$
-Since $ c \equiv 0 \mod \pi^{n + r} $ and $ v\br{f_i\br{x_n}} \ge 0 $, we have $ f\br{x_{n + 1}} \equiv f\br{x_n} + f'\br{x_n}c \equiv 0 \mod \pi^{n + 2r + 1} $, so $ 1 $ holds.
+Since $ c \equiv 0 \mod \pi^{n + r} $ and $ v\br{f^{\br{i}}\br{x_n}} \ge 0 $, we have $ f\br{x_{n + 1}} \equiv f\br{x_n} + f'\br{x_n}c \equiv 0 \mod \pi^{n + 2r + 1} $, so $ 1 $ holds.
 \end{itemize}
-This gives the construction of $ \br{x_n}_{n = 1}^\infty $.
+This gives the construction of $ \br{x_n}_{n = 1}^\infty $. By property $ 2 $, $ \br{x_n}_{n = 1}^\infty $ is Cauchy, so let $ x \in \OOO_K $ such that $ x_n \to x $.
 \begin{itemize}
-\item By property $ 2 $, $ \br{x_n}_{n = 1}^\infty $ is Cauchy, so let $ x \in \OOO_K $ such that $ x_n \to x $. Then $ f\br{x} = \lim_{n \to \infty} f\br{x_n} = 0 $ by $ 1 $. Moreover $ 2 $ implies $ a = x_1 \equiv x_n \mod \pi^{1 + r} $ for all $ n $, so $ a \equiv x \mod \pi^{1 + r} $, so $ \abs{x - a} < \abs{f'\br{a}} $. This proves existence.
+\item Then $ f\br{x} = \lim_{n \to \infty} f\br{x_n} = 0 $ by $ 1 $.
+\item Moreover $ 2 $ implies $ a = x_1 \equiv x_n \mod \pi^{1 + r} $ for all $ n $, so $ a \equiv x \mod \pi^{1 + r} $, so $ \abs{x - a} < \abs{f'\br{a}} $.
+\end{itemize}
+This proves existence.
 \item For uniqueness, suppose $ x' $ also satisfies $ f\br{x'} = 0 $ and $ \abs{x' - a} < \abs{f'\br{a}} $. Set $ \delta = x' - x \ne 0 $. Then $ \abs{x' - a} < \abs{f'\br{a}} $, $ \abs{x - a} < \abs{f'\br{a}} $, and the ultrametric inequality implies $ \abs{\delta} = \abs{x - x'} < \abs{f'\br{a}} = \abs{f'\br{x}} $. But
 $$ 0 = f\br{x'} = f\br{x + \delta} = f\br{x} + f'\br{x}\delta + \underbrace{\dots}_{\abs{\cdot} \le \abs{\delta}^2}, $$
 where $ f\br{x} = 0 $. Hence $ \abs{f'\br{x}\delta} \le \abs{\delta}^2 $, so $ \abs{f'\br{x}} \le \abs{\delta} $, a contradiction.
@@ -613,7 +618,7 @@ A field $ K $ is perfect if and only if any finite extension of $ K $ is separab
 Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field such that $ \kappa = \OOO_K / \mmm $ is a perfect field of characteristic $ p $. Then there exists a unique map $ \sbr{\cdot} : \kappa \to \OOO_K $ such that
 \begin{enumerate}
 \item $ a \equiv \sbr{a} \mod \mmm $ for all $ a \in \kappa $, and
-\item $ \sbr{ab} \equiv \sbr{a}\sbr{b} \mod \mmm $ for all $ a, b \in \kappa $.
+\item $ \sbr{ab} = \sbr{a}\sbr{b} $ for all $ a, b \in \kappa $.
 \end{enumerate}
 Moreover if $ \ch \OOO_K = p $, then $ \sbr{\cdot} $ is a ring homomorphism.
 \end{theorem}
@@ -638,7 +643,9 @@ Since $ \OOO_K / \pi\OOO_K $ has characteristic $ p $, we have $ p \in \abr{\pi}
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{thm:5.2}]
-Let $ a \in \kappa $. For each $ i \ge 0 $ we choose a lift $ y_i \in \OOO_K $ of $ a^{1 / p^i} $, and we define
+Let $ a \in \kappa $.
+\begin{itemize}
+\item For each $ i \ge 0 $ we choose a lift $ y_i \in \OOO_K $ of $ a^{1 / p^i} $, and we define
 $$ x_i = y_i^{p^i}. $$
 Then $ x_i \equiv y_i^{p^i} \equiv \br{a^{1 / p^i}}^{p^i} \equiv a \mod \pi $. We claim that $ \br{x_i}_{i = 1}^\infty $ is a Cauchy sequence, and its limit $ x_i \to x $ is independent of the choice of $ y_i $.
 \begin{itemize}
@@ -662,17 +669,18 @@ Then $ \br{x_i''}_{i = 1}^\infty $ is Cauchy and $ x_i'' \to x $ and $ x_i'' \to
 We define $ \sbr{a} = x $.
 \begin{enumerate}
 \item $ x \equiv a \mod \pi $, so $ 1 $ is satisfied.
-\item We let $ b \in \kappa $ and we choose $ u_i \in \OOO_K $ a lift of $ b^{1 / p^i} $, and let $ z_i = u_i^{p^i} $. Then $ \lim_{i \to \infty} z_i = \sbr{b} $. Now $ u_iy_i $ is a lift of $ \br{ab}^{1 / p^i} $, hence
-$$ \sbr{ab} = \lim_{i \to \infty} x_iz_i = \lim_{i \to \infty} x_i\lim_{i \to \infty} z_i = \sbr{a}\sbr{b}, $$
-so $ 2 $ is satisfied.
-\end{enumerate}
 
 \pagebreak
 
-If $ \ch \OOO_K = p $, then $ y_i + u_i $ is a lift of $ a^{1 / p^i} + b^{1 / p^i} = \br{a + b}^{1 / p^i} $. Then
+\item We let $ b \in \kappa $ and we choose $ u_i \in \OOO_K $ a lift of $ b^{1 / p^i} $, and let $ z_i = u_i^{p^i} $. Then $ \lim_{i \to \infty} z_i = \sbr{b} $. Now $ u_iy_i $ is a lift of $ \br{ab}^{1 / p^i} $, hence
+$$ \sbr{ab} = \lim_{i \to \infty} x_iz_i = \lim_{i \to \infty} x_i\lim_{i \to \infty} z_i = \sbr{a}\sbr{b}, $$
+so $ 2 $ is satisfied. If $ \ch \OOO_K = p $, then $ y_i + u_i $ is a lift of $ a^{1 / p^i} + b^{1 / p^i} = \br{a + b}^{1 / p^i} $. Then
 $$ \sbr{a + b} = \lim_{i \to \infty} \br{y_i + u_i}^{p^i} = \lim_{i \to \infty} \br{y_i^{p^i} + u_i^{p^i}} = \lim_{i \to \infty} \br{x_i + z_i} = \sbr{a} + \sbr{b}. $$
-It is easy to check that $ \sbr{0} = 0 $ and $ \sbr{1} = 1 $, so $ \sbr{\cdot} $ is a ring homomorphism. For uniqueness, let $ \phi : \kappa \to \OOO_K $ be another such map. Then for $ a \in \kappa $, $ \phi\br{a^{1 / p^i}} $ is a lift of $ a^{1 / p^i} $, it follows that
+It is easy to check that $ \sbr{0} = 0 $ and $ \sbr{1} = 1 $, so $ \sbr{\cdot} $ is a ring homomorphism.
+\end{enumerate}
+\item For uniqueness, let $ \phi : \kappa \to \OOO_K $ be another such map. Then for $ a \in \kappa $, $ \phi\br{a^{1 / p^i}} $ is a lift of $ a^{1 / p^i} $, it follows that
 $$ \sbr{a} = \lim_{i \to \infty} \phi\br{a^{1 / p^i}}^{p^i} = \lim_{i \to \infty} \phi\br{a} = \phi\br{a}. $$
+\end{itemize}
 \end{proof}
 
 \begin{example}
@@ -691,7 +699,7 @@ If $ a \in \kappa $, then $ a \in \FF_{p^n} $ for some $ n $, so $ \sbr{a}^{p^n 
 
 \begin{theorem}
 \label{thm:5.7}
-Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field with $ \ch \kappa = p > 0 $. Assume $ \kappa $ is perfect, then $ K \cong \kappa\br{\br{t}} $.
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field with $ \ch K = p > 0 $. Assume $ \kappa $ is perfect, then $ K \cong \kappa\br{\br{t}} $.
 \end{theorem}
 
 \begin{proof}
@@ -738,7 +746,7 @@ Let $ \br{K, \abs{\cdot}} $ be a non-archimedean valued field and $ V $ a vector
 \end{definition}
 
 \begin{example*}
-If $ V $ is finite dimensional and $ e_1, \dots, e_n $ is a basis of $ V $, the \textbf{sup norm} on $ V $ is defined by
+If $ V $ is finite-dimensional and $ e_1, \dots, e_n $ is a basis of $ V $, the \textbf{sup norm} on $ V $ is defined by
 $$ \norm{x}_{\sup} = \max_i \abs{x_i}, \qquad x = \sum_{i = 1}^n x_ie_i. $$
 \end{example*}
 
@@ -747,7 +755,7 @@ $ \norm{\cdot}_{\sup} $ is a norm.
 \end{exercise*}
 
 \begin{definition}
-Two norms $ \norm{\cdot}_1 $ and $ \norm{\cdot}_2 $ on $ V $ are \textbf{equivalent} if there exists $ C, D > 0 $ such that
+Two norms $ \norm{\cdot}_1 $ and $ \norm{\cdot}_2 $ on $ V $ are \textbf{equivalent} if there exist $ C, D > 0 $ such that
 $$ C\norm{x}_1 \le \norm{x}_2 \le D\norm{x}_1, \qquad x \in V. $$
 \end{definition}
 
@@ -756,7 +764,7 @@ A norm defines a topology on $ V $, and equivalent norms induce the same topolog
 \end{fact*}
 
 \begin{proposition}
-Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite dimensional vector space over $ K $. Then $ V $ is complete with respect to $ \norm{\cdot}_{\sup} $.
+Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite-dimensional vector space over $ K $. Then $ V $ is complete with respect to $ \norm{\cdot}_{\sup} $.
 \end{proposition}
 
 \begin{proof}
@@ -765,7 +773,7 @@ Let $ \br{v_i}_{i = 1}^\infty $ be a Cauchy sequence in $ V $ and $ e_1, \dots, 
 
 \begin{theorem}
 \label{thm:6.5}
-Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite dimensional vector space over $ K $. Then any two norms on $ V $ are equivalent. In particular $ V $ is complete with respect to any norm.
+Let $ \br{K, \abs{\cdot}} $ be complete non-archimedean and $ V $ a finite-dimensional vector space over $ K $. Then any two norms on $ V $ are equivalent. In particular $ V $ is complete with respect to any norm.
 \end{theorem}
 
 \begin{proof}
@@ -815,15 +823,16 @@ Let $ x \in K $ be integral over $ \OOO_K $, and without loss of generality $ x 
 \begin{enumerate}[label=\arabic*.]
 \item $ \abs{y}_L = 0 $ if and only if $ \abs{\N_{L / K}\br{y}}^{1 / n} = 0 $, if and only if $ \N_{L / K}\br{y} = 0 $, if and only if $ y = 0 $, by property of $ \N_{L / K} $.
 \item $ \abs{y_1y_2}_L^n = \abs{\N_{L / K}\br{y_1y_2}} = \abs{\N_{L / K}\br{y_1}\N_{L / K}\br{y_2}} = \abs{\N_{L / K}\br{y_1}}\abs{\N_{L / K}\br{y_2}} = \abs{y_1}_L^n\abs{y_2}_L^n $.
-\item Set $ \OOO_L = \cbr{y \in L \st \abs{y}_L \le 1} $. Claim that $ \OOO_L $ is the integral closure of $ \OOO_K $ inside $ L $.
+\item Set
+$$ \OOO_L = \cbr{y \in L \st \abs{y}_L \le 1}. $$
+Claim that $ \OOO_L $ is the integral closure of $ \OOO_K $ inside $ L $.
 \begin{itemize}
 \item Let $ 0 \ne y \in \OOO_L $ and let $ f\br{X} = X^n + a_{n - 1}X^{n - 1} + \dots + a_0 \in K\sbr{X} $ be the minimal polynomial of $ y $. By property of $ \N_{L / K} $, there exists $ m \ge 1 $ such that $ \N_{L / K}\br{y} = \pm a_0^m $. By Corollary \ref{cor:4.5}, we have $ \abs{a_i} \le \max\br{\abs{\N_{L / K}\br{y}}^{1 / m}, 1} = 1 $, since $ \abs{\N_{L / K}\br{y}} \le 1 $. Thus $ a_i \in \OOO_K $ for all $ i $, so $ f \in \OOO_K\sbr{X} $, so $ y $ is integral over $ \OOO_K $.
-\item Conversely let $ y \in L $ be integral over $ \OOO_K $. Again by property of $ \N_{L / K} $, we have
-$$ \N_{L / K}\br{y} = \br{\prod_{\sigma : L \to \overline{K}} \sigma\br{y}}^d, \qquad d \ge 1, $$
-where $ \overline{K} $ is an algebraic closure of $ K $ and $ \sigma $ runs over $ K $-algebra homomorphisms. For all such $ \sigma : L \to \overline{K} $, $ \sigma\br{y} $ is integral over $ \OOO_K $. Thus $ \N_{L / K}\br{y} \in K $ is integral over $ \OOO_K $. By Lemma \ref{lem:6.8}, $ \N_{L / K}\br{y} \in \OOO_K $, so $ \abs{\N_{L / K}\br{y}} \le 1 $, so $ y \in \OOO_L $.
+\item Conversely let $ y \in L $ be integral over $ \OOO_K $. Again by property of $ \N_{L / K} $, we have $ \N_{L / K}\br{y} = \br{\prod_{\sigma : L \to \overline{K}} \sigma\br{y}}^d $ for $ d \ge 1 $, where $ \overline{K} $ is an algebraic closure of $ K $ and $ \sigma $ runs over $ K $-algebra homomorphisms. For all such $ \sigma : L \to \overline{K} $, $ \sigma\br{y} $ is integral over $ \OOO_K $. Thus $ \N_{L / K}\br{y} \in K $ is integral over $ \OOO_K $. By Lemma \ref{lem:6.8}, $ \N_{L / K}\br{y} \in \OOO_K $, so $ \abs{\N_{L / K}\br{y}} \le 1 $, so $ y \in \OOO_L $.
 \end{itemize}
-Thus $ \OOO_K^{\Int L} = \OOO_L $ and proves the claim. Now we prove $ 3 $. Let $ x, y \in L $. Without loss of generality assume $ \abs{x}_L \le \abs{y}_L $, then $ \abs{x / y}_L \le 1 $, so $ x / y \in \OOO_L $. Since $ 1 \in \OOO_L = \OOO_K^{\Int L} $, we have $ 1 + x / y \in \OOO_L $ and hence $ \abs{1 + x / y}_L \le 1 $, so $ \abs{x + y}_L \le \abs{y}_L = \max\br{\abs{y}_L, \abs{x}_L} $. Thus $ 3 $ is satisfied. To check $ \abs{\cdot}_L $ extends $ \abs{\cdot} $ use $ \N_{L / K}\br{x} = x^n $ for $ x \in K $. If $ \abs{\cdot}_L' $ is another absolute value on $ L $ extending $ \abs{\cdot} $, then note that $ \abs{\cdot}_L $ and $ \abs{\cdot}_L' $ are norms on $ L $. By Theorem \ref{thm:6.5}, $ \abs{\cdot}_L' $ and $ \abs{\cdot}_L $ induce the same topology on $ L $, so $ \abs{\cdot}_L' = \abs{\cdot}_L^c $ for some $ c > 0 $. Since $ \abs{\cdot}_L' $ extends $ \abs{\cdot} $, we have $ c = 1 $.
+Thus $ \OOO_K^{\Int L} = \OOO_L $ and proves the claim. Now we prove $ 3 $. Let $ x, y \in L $. Without loss of generality assume $ \abs{x}_L \le \abs{y}_L $, then $ \abs{x / y}_L \le 1 $, so $ x / y \in \OOO_L $. Since $ 1 \in \OOO_L $ and $ \OOO_K^{\Int L} = \OOO_L $, we have $ 1 + x / y \in \OOO_L $ and hence $ \abs{1 + x / y}_L \le 1 $, so $ \abs{x + y}_L \le \abs{y}_L = \max\br{\abs{y}_L, \abs{x}_L} $. Thus $ 3 $ is satisfied.
 \end{enumerate}
+To check $ \abs{\cdot}_L $ extends $ \abs{\cdot} $ use $ \N_{L / K}\br{x} = x^n $ for $ x \in K $. If $ \abs{\cdot}_L' $ is another absolute value on $ L $ extending $ \abs{\cdot} $, then note that $ \abs{\cdot}_L $ and $ \abs{\cdot}_L' $ are norms on $ L $. By Theorem \ref{thm:6.5}, $ \abs{\cdot}_L' $ and $ \abs{\cdot}_L $ induce the same topology on $ L $, so $ \abs{\cdot}_L' = \abs{\cdot}_L^c $ for some $ c > 0 $. Since $ \abs{\cdot}_L' $ extends $ \abs{\cdot} $, we have $ c = 1 $.
 \item Since $ \abs{\cdot}_L $ defines a norm on $ K $, Theorem \ref{thm:6.5} implies $ L $ is complete with respect to $ \abs{\cdot}_L $.
 \end{enumerate}
 \end{proof}
@@ -842,7 +851,7 @@ Let $ \br{K, \abs{\cdot}} $ be a complete non-archimedean discretely valued fiel
 \hfill
 \begin{enumerate}
 \item Let $ v $ be a valuation on $ K $, and let $ v_L $ be a valuation on $ L $ such that $ v_L $ extends $ v $. If $ y \in L^\times $, then $ \abs{y}_L = \abs{\N_{L / K}\br{y}}^{1 / n} $ for $ n = \sbr{L : K} $, so $ v_L\br{y} = \br{1 / n}v\br{\N_{L / K}\br{y}} $. Thus $ v_L\br{L^\times} \subseteq \br{1 / n}v\br{K^\times} $, so $ v_L $ is discrete.
-\item Proved in in the last lecture.
+\item Proved in the last lecture.
 \end{enumerate}
 \end{proof}
 
@@ -855,7 +864,7 @@ If $ x \in \overline{K} $, then $ x \in L $ for some $ L / K $ finite. Define $ 
 \end{proof}
 
 \begin{remark*}
-$ \abs{\cdot}_{\overline{K}} $ on $ \overline{K} $ is never discrete. For example, if $ K = \QQ_p $, then $ \sqrt[n]{p} \in \overline{\QQ_p} $ for all $ n \in \NN_{> 0} $, so $ \v_p\br{\sqrt[n]{p}} = \br{1 / n}\v_p\br{p} = 1 / n $. Then $ \overline{\QQ_p} $ is not complete with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $. By example sheet $ 2 $, if $ \CC_p $ is the completion of $ \overline{\QQ_p} $ with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $, then $ \CC_p $ is algebraically closed.
+$ \abs{\cdot}_{\overline{K}} $ on $ \overline{K} $ is never discrete. For example, if $ K = \QQ_p $, then $ \sqrt[n]{p} \in \overline{\QQ_p} $ for all $ n \in \NN_{> 0} $. Then $ \v_p\br{\sqrt[n]{p}} = \br{1 / n}\v_p\br{p} = 1 / n $, so $ \overline{\QQ_p} $ is not complete with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $. By example sheet $ 2 $, if $ \CC_p $ is the completion of $ \overline{\QQ_p} $ with respect to $ \abs{\cdot}_{\overline{\QQ_p}} $, then $ \CC_p $ is algebraically closed.
 \end{remark*}
 
 \pagebreak
@@ -885,7 +894,7 @@ Let $ \br{K, \abs{\cdot}} $ be a non-archimedean complete valued field. The foll
 \hfill
 \begin{itemize}[leftmargin=0.5in]
 \item[$ 1 \implies 2 $.] Let $ U \ni 0 $ be a compact neighbourhood of zero. Then there exists $ x \in \OOO_K $ such that $ x\OOO_K \subseteq U $. Since $ x\OOO_K $ is closed, $ x\OOO_K $ is compact, so $ \OOO_K $ is compact, since $ x^{-1} : x\OOO_K \to \OOO_K $ is homeomorphism.
-\item[$ 2 \implies 1 $.] If $ \OOO_K $ is compact, then $ a + \OOO_K $ compact for all $ a \in K $, so $ K $ is locally compact.
+\item[$ 2 \implies 1 $.] If $ \OOO_K $ is compact, then $ a + \OOO_K $ is compact for all $ a \in K $, so $ K $ is locally compact.
 \item[$ 2 \implies 3 $.] Let $ x \in \mmm $, and $ A_x \subseteq \OOO_K $ be a set of coset representatives for $ \OOO_K / x\OOO_K $. Then
 $$ \OOO_K = \bigcup_{y \in A_x} \br{y + x\OOO_K} $$
 is a disjoint open cover, so $ A_x $ is finite by compactness of $ \OOO_K $, so $ \OOO_K / x\OOO_K $ is finite, so $ \OOO_K / \mmm $ is finite. Suppose $ v $ is not discrete. Let $ x = x_1, x_2, \dots $ such that $ v\br{x_1} > v\br{x_2} > \dots > 0 $. Then $ x_1\OOO_K \subsetneq x_2\OOO_K \subsetneq \dots \subsetneq \OOO_K $. But $ \OOO_K / x\OOO_K $ is finite so can only have finitely many subgroups, a contradiction.
@@ -946,7 +955,7 @@ By Theorem \ref{thm:6.1}, $ L $ is complete and discretely valued. It suffices t
 \label{thm:8.2}
 Let $ K $ be a local field. Then either
 \begin{itemize}
-\item $ K \cong \RR, \CC $,
+\item $ K \cong \RR $ or $ K \cong \CC $,
 \item $ K $ is a finite extension of $ \QQ_p $, or
 \item $ K \cong \FF_{p^n}\br{\br{t}} $ for $ p $ prime and $ n \ge 1 $.
 \end{itemize}
@@ -977,7 +986,7 @@ For motivation, consider $ \ZZ_p $. Let $ x = \sum_{i = 0}^\infty \sbr{x_i}p^i \
 $$ x_0 + y_0 = s_0 \in \FF_p, $$
 so $ s_0 $ is determined by $ x_0 $ and $ y_0 $. What about $ s_1 $? Reducing modulo $ p^2 $, $ \sbr{x_0} + \sbr{y_0} + p\sbr{x_1} + p\sbr{y_1} \equiv \sbr{s_0} + p\sbr{s_1} \mod p^2 $, so
 $$ p\sbr{s_1} \equiv \sbr{x_0} + \sbr{y_0} - \sbr{s_0} + p\sbr{x_1} + p\sbr{y_1} \mod p^2, $$
-and $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} \in p\ZZ_p $. So we need $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} $ modulo $ p^2 $. Note $ \sbr{x_0^{1 / p}} + \sbr{y_0^{1 / p}} \equiv \sbr{s_0^{1 / p}} \mod p $, so by Lemma \ref{lem:5.4}
+and $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} \in p\ZZ_p $. So we need $ \sbr{x_0} + \sbr{y_0} - \sbr{s_0} \mod p^2 $. Note $ \sbr{x_0^{1 / p}} + \sbr{y_0^{1 / p}} \equiv \sbr{s_0^{1 / p}} \mod p $, so by Lemma \ref{lem:5.4}
 $$ \sbr{s_0} \equiv \br{\sbr{x_0^{\tfrac{1}{p}}} + \sbr{y_0^{\tfrac{1}{p}}}}^p \equiv \sbr{x_0} + \sbr{y_0} + \sum_{d = 1}^{p - 1} \binom{p}{d}\sbr{x_0^{\tfrac{d}{p}}}\sbr{y_0^{\tfrac{p - d}{p}}} \mod p^2. $$
 Thus
 $$ s_1 = x_1 + y_1 - \sum_{d = 1}^{p - 1} \dfrac{1}{p}\binom{p}{d}\sbr{x_0^{\tfrac{d}{p}}}\sbr{y_0^{\tfrac{p - d}{p}}}. $$
@@ -1136,8 +1145,8 @@ An absolute value $ \abs{\cdot} $ on a field is non-archimedean if and only if $
 \item[$ \impliedby $] Suppose $ \abs{n} \le B $ for all $ n \in \ZZ $. Let $ x, y \in K $ with $ \abs{x} \le \abs{y} $. Then we have
 $$ \abs{x + y}^m = \abs{\sum_{i = 0}^m \binom{m}{i}x^iy^{m - i}} \le \sum_{i = 0}^m \abs{\binom{m}{i}x^iy^{m - i}} \le \abs{y}^m\br{m + 1}B. $$
 Taking $ m $-th roots gives
-$$ \abs{x + y} \le \abs{y}\abs{\br{m + 1}B}^{\tfrac{1}{m}}, $$
-and $ \abs{\br{m + 1}B}^{1 / m} \to 1 $ as $ m \to \infty $. Thus $ \abs{x + y} \le \abs{y} = \max\br{\abs{x}, \abs{y}} $.
+$$ \abs{x + y} \le \abs{y}\br{\br{m + 1}B}^{\tfrac{1}{m}} \to \abs{y}, \qquad m \to \infty. $$
+Thus $ \abs{x + y} \le \abs{y} = \max\br{\abs{x}, \abs{y}} $.
 \end{itemize}
 \end{proof}
 
@@ -1154,8 +1163,8 @@ Any non-trivial absolute value on $ \QQ $ is equivalent to either the usual abso
 \hfill
 \begin{enumerate}[leftmargin=0.5in, label=Case \arabic*.]
 \item $ \abs{\cdot} $ is archimedean. We fix $ b > 1 $ an integer such that $ \abs{b} > 1 $, which exists by Lemma \ref{lem:9.3}. Let $ a > 1 $ be an integer and write $ b^n $ in base $ a $, so $ b^n = c_ma^m + \dots + c_0 $ for $ 0 \le c_i < a $. Let $ B = \max_{0 \le c < a} \abs{c} $, then we have $ \abs{b^n} \le \br{m + 1}B\max\br{\abs{a}^m, 1} $, so
-$$ \abs{b} \le \br{\br{n\log_a b + 1}B}^{\tfrac{1}{n}}\max\br{\abs{a}^{\log_a b}, 1}, $$
-and $ \br{\br{n\log_a b + 1}B}^{1 / n} \to 1 $ as $ n \to \infty $, so $ \abs{b} \le \max\br{\abs{a}^{\log_a b}, 1} $. Then $ \abs{a} > 1 $ and
+$$ \abs{b} \le \br{\br{n\log_a b + 1}B}^{\tfrac{1}{n}}\max\br{\abs{a}^{\log_a b}, 1} \to \max\br{\abs{a}^{\log_a b}, 1}, \qquad n \to \infty, $$
+so $ \abs{b} \le \max\br{\abs{a}^{\log_a b}, 1} $. Then $ \abs{b} > 1 $ and
 \begin{equation}
 \label{eq:1}
 \abs{b} \le \abs{a}^{\log_a b}.
@@ -1177,7 +1186,7 @@ using $ \log_a b = \log b / \log a $, so $ \abs{a} = a^\lambda $ for all $ a \in
 
 \begin{theorem}
 \label{thm:9.6}
-Let $ \br{K, \abs{\cdot}} $ be an archimedean local field. Then $ K = \RR, \CC $ and $ \abs{\cdot} $ is equivalent to the usual absolute value $ \abs{\cdot}_\infty $.
+Let $ \br{K, \abs{\cdot}} $ be an archimedean local field. Then $ K = \RR $ or $ K = \CC $ and $ \abs{\cdot} $ is equivalent to the usual absolute value $ \abs{\cdot}_\infty $.
 \end{theorem}
 
 \begin{proof}
@@ -1242,9 +1251,9 @@ Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field and $ f\br{X} 
 \end{proposition}
 
 \begin{proof}
-Let $ \alpha = \alpha_1, \dots, \alpha_n \in \overline{K} $ be the roots of $ f $ which are necessarily distinct. Then $ f'\br{\alpha} \ne 0 $. We choose $ \epsilon $ sufficiently small such that $ \abs{g\br{\alpha_1}} < \abs{f'\br{\alpha_1}}^2 $ and $ \abs{f'\br{\alpha_1} - g'\br{\alpha_1}} < \abs{f'\br{\alpha_1}} $. Then we have $ \abs{g\br{\alpha_1}} < \abs{f'\br{\alpha_1}}^2 = \abs{g'\br{\alpha_1}}^2 $. By Hensel's lemma applied to the field $ K\br{\alpha_1} $, there exists $ \beta \in K\br{\alpha_1} $ such that $ g\br{\beta} = 0 $ and $ \abs{\beta - \alpha_1} < \abs{g'\br{\alpha_1}} $. Then
-$$ \abs{g'\br{\alpha_1}} = \abs{f'\br{\alpha_1}} = \prod_{i = 2}^n \abs{\alpha_1 - \alpha_i} \le \abs{\alpha_1 - \alpha_i}, \qquad i = 2, \dots, n, $$
-using $ \abs{\alpha_1 - \alpha_i} \le 1 $. Since $ \abs{\beta - \alpha_1} < \abs{g'\br{\alpha_1}} = \abs{f'\br{\alpha_1}} \le \abs{\alpha_1 - \alpha_i} = \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $, by Krasner's lemma, $ \alpha \in K\br{\beta} $, so $ K\br{\alpha} = K\br{\beta} $.
+Let $ \alpha = \alpha_1, \dots, \alpha_n \in \overline{K} $ be the roots of $ f $ which are necessarily distinct. Then $ f'\br{\alpha} \ne 0 $. We choose $ \epsilon $ sufficiently small such that $ \abs{g\br{\alpha}} < \abs{f'\br{\alpha}}^2 $ and $ \abs{f'\br{\alpha} - g'\br{\alpha}} < \abs{f'\br{\alpha}} $. Then we have $ \abs{g\br{\alpha}} < \abs{f'\br{\alpha}}^2 = \abs{g'\br{\alpha}}^2 $. By Hensel's lemma applied to the field $ K\br{\alpha} $, there exists $ \beta \in K\br{\alpha} $ such that $ g\br{\beta} = 0 $ and $ \abs{\beta - \alpha} < \abs{g'\br{\alpha}} $. Then
+$$ \abs{g'\br{\alpha}} = \abs{f'\br{\alpha}} = \prod_{i = 2}^n \abs{\alpha - \alpha_i} \le \abs{\alpha - \alpha_i}, \qquad i = 2, \dots, n, $$
+using $ \abs{\alpha - \alpha_i} \le 1 $. Since $ \abs{\beta - \alpha} < \abs{g'\br{\alpha}} = \abs{f'\br{\alpha}} \le \abs{\alpha - \alpha_i} = \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $, by Krasner's lemma, $ \alpha \in K\br{\beta} $, so $ K\br{\alpha} = K\br{\beta} $.
 \end{proof}
 
 \begin{theorem}
@@ -1388,21 +1397,21 @@ Here, $ 0 < \alpha_i \le \beta_i $, and the second case follows from Corollary \
 
 \subsection{Extensions of Dedekind domains}
 
-Let $ L / K $ be a finite extension. For $ x \in L $ we write $ \Tr_{L / K} x \in K $ for the trace of the $ K $-linear map
+Let $ L / K $ be a finite extension. For $ x \in L $ we write $ \Tr_{L / K}\br{x} \in K $ for the trace of the $ K $-linear map
 $$ \function{L}{L}{y}{xy}. $$
 If $ L / K $ is separable such that $ \sbr{L : K} = n $ and $ \sigma_1, \dots, \sigma_n : L \to \overline{K} $ denote the embeddings of $ L $ into a separable closure $ K^{\sep} $, then
-$$ \Tr_{L / K} x = \sum_{i = 1}^n \sigma_i\br{x}. $$
+$$ \Tr_{L / K}\br{x} = \sum_{i = 1}^n \sigma_i\br{x}. $$
 
 \pagebreak
 
 \begin{lemma}
 Let $ L / K $ be a finite separable extension of fields. Then the symmetric bilinear pairing
-$$ \function[\br{,}]{L \times L}{K}{\br{x, y}}{\Tr_{L / K} xy} $$
+$$ \function[\br{,}]{L \times L}{K}{\br{x, y}}{\Tr_{L / K}\br{xy}} $$
 is non-degenerate.
 \end{lemma}
 
 \begin{proof}
-By the primitive element theorem, $ L = K\br{\alpha} $ for some $ \alpha \in L $. We consider the matrix $ A $ for $ \br{,} $ in the $ K $-basis for $ L $ given by $ 1, \dots, \alpha^{n - 1} $. Then $ A_{ij} = \Tr_{L / K} \alpha^{i + j} = \sbr{BB^\intercal}_{ij} $ where $ B $ is the $ n \times n $ matrix with
+By the primitive element theorem, $ L = K\br{\alpha} $ for some $ \alpha \in L $. We consider the matrix $ A $ for $ \br{,} $ in the $ K $-basis for $ L $ given by $ 1, \dots, \alpha^{n - 1} $. Then $ A_{ij} = \Tr_{L / K}\br{\alpha^{i + j}} = \sbr{BB^\intercal}_{ij} $ where $ B $ is the $ n \times n $ matrix with
 $$ B = \threebythree{1}{\dots}{1}{\vdots}{\ddots}{\vdots}{\sigma_1\br{\alpha^{n - 1}}}{\dots}{\sigma_n\br{\alpha^{n - 1}}}, $$
 so the Vandermonde determinant is
 $$ \det A = \br{\det B}^2 = \sbr{\prod_{1 \le i < j \le n} \br{\sigma_i\br{\alpha} - \sigma_j\br{\alpha}}}^2 \ne 0, $$
@@ -1421,9 +1430,9 @@ Let $ \OOO_K $ be a Dedekind domain and $ L $ a finite separable extension of $ 
 \begin{proof}
 Since $ \OOO_L \subseteq L $, it is an integral domain. We need to show the following.
 \begin{itemize}
-\item $ \OOO_L $ is Noetherian. Let $ e_1, \dots, e_n \in L $ be a $ K $-basis for $ L $. Upon scaling by $ K $, we may assume $ e_i \in \OOO_L $, for all $ i $. Let $ f_i \in L $ be the dual basis with respect to the trace form $ \br{,} $. Let $ x \in \OOO_L $ and write $ x = \sum_{i = 1}^n \lambda_if_i $ for $ \lambda_i \in K $. Then $ \lambda_i = \Tr_{L / K} xe_i \in \OOO_K $, since for any $ z \in \OOO_L $, $ \Tr_{L / K} z $ is a sum of elements which are integral over $ \OOO_K $, so $ \Tr_{L / K} z $ is integral over $ \OOO_K $, so $ \Tr_{L / K} z \in \OOO_K $. Thus $ \OOO_L \subseteq \OOO_Kf_1 + \dots + \OOO_Kf_n $. Since $ \OOO_K $ is Noetherian, $ \OOO_L $ is finitely generated as an $ \OOO_K $-module, hence $ \OOO_L $ is Noetherian.
+\item $ \OOO_L $ is Noetherian. Let $ e_1, \dots, e_n \in L $ be a $ K $-basis for $ L $. Upon scaling by $ K $, we may assume $ e_i \in \OOO_L $, for all $ i $. Let $ f_i \in L $ be the dual basis with respect to the trace form $ \br{,} $. Let $ x \in \OOO_L $ and write $ x = \sum_{i = 1}^n \lambda_if_i $ for $ \lambda_i \in K $. Then $ \lambda_i = \Tr_{L / K}\br{xe_i} \in \OOO_K $, since for any $ z \in \OOO_L $, $ \Tr_{L / K}\br{z} $ is a sum of elements which are integral over $ \OOO_K $, so $ \Tr_{L / K}\br{z} $ is integral over $ \OOO_K $, so $ \Tr_{L / K}\br{z} \in \OOO_K $. Thus $ \OOO_L \subseteq \OOO_Kf_1 + \dots + \OOO_Kf_n $. Since $ \OOO_K $ is Noetherian and $ \OOO_L $ is finitely generated as an $ \OOO_K $-module, hence $ \OOO_L $ is Noetherian.
 \item $ \OOO_L $ is integrally closed in $ L $. Example sheet $ 2 $.
-\item Every non-zero prime ideal $ \pp $ in $ \OOO_L $ is maximal. Let $ \pp $ be a non-zero prime ideal of $ \OOO_L $, and define $ \ppp = \pp \cap \OOO_K $ a prime ideal of $ \OOO_K $. Let $ x \in \pp $, then $ x $ satisfies an equation $ x^n + a_{n - 1}x^{n - 1} + \dots + a_0 = 0 $ for $ a_i \in \OOO_K $ with $ a_0 \ne 0 $. Then $ a_0 \in \pp \cap \OOO_K $ is a non-zero element of $ \ppp $, so $ \ppp $ is non-zero, so $ \ppp $ is maximal. We have $ \OOO_K / \ppp \hookrightarrow \OOO_L / \pp $, and $ \OOO_L / \pp $ is a finite dimensional vector space over $ \OOO_K / \ppp $. Since $ \OOO_L / \pp $ is an integral domain, it is a field, using the rank-nullity theorem applied to the map $ y \mapsto zy $.
+\item Every non-zero prime ideal $ \pp $ in $ \OOO_L $ is maximal. Let $ \pp $ be a non-zero prime ideal of $ \OOO_L $, and define $ \ppp = \pp \cap \OOO_K $ a prime ideal of $ \OOO_K $. Let $ x \in \pp $, then $ x $ satisfies an equation $ x^n + a_{n - 1}x^{n - 1} + \dots + a_0 = 0 $ for $ a_i \in \OOO_K $ with $ a_0 \ne 0 $. Then $ a_0 \in \pp \cap \OOO_K $ is a non-zero element of $ \ppp $, so $ \ppp $ is non-zero, so $ \ppp $ is maximal. We have $ \OOO_K / \ppp \hookrightarrow \OOO_L / \pp $, and $ \OOO_L / \pp $ is a finite-dimensional vector space over $ \OOO_K / \ppp $. Since $ \OOO_L / \pp $ is an integral domain, it is a field, using the rank-nullity theorem applied to the map $ y \mapsto zy $.
 \end{itemize}
 \end{proof}
 
@@ -1436,7 +1445,7 @@ The ring of integers inside a number field is a Dedekind domain.
 \end{corollary}
 
 By convention, if $ \OOO_K $ is the ring of integers of a number field and $ \ppp \subseteq \OOO_K $ is a non-zero prime ideal, we normalise $ \abs{\cdot}_\ppp $, the absolute value associated to $ \v_\ppp $, by
-$$ \abs{x}_\ppp = \N_\ppp^{-\v_\ppp\br{x}}, \qquad \N_\ppp = \#\br{\OOO_K / \ppp}. $$
+$$ \abs{x}_\ppp = \N\br{\ppp}^{-\v_\ppp\br{x}}, \qquad \N\br{\ppp} = \#\br{\OOO_K / \ppp}. $$
 
 \lecture{12}{Wednesday}{04/11/20}
 
@@ -1465,7 +1474,9 @@ Let $ \OOO_K $ be a Dedekind domain and $ L $ a finite separable extension of $ 
 \end{theorem}
 
 \begin{proof}
-By Lemma \ref{lem:12.1}, for any $ x \in \OOO_K $ and $ i = 1, \dots, r $, we have $ \v_{\pp_i}\br{x} = e_i\v_\ppp\br{x} $. Hence up to equivalence, $ \abs{\cdot}_{\pp_i} $ extends $ \abs{\cdot}_\ppp $. Now suppose $ \abs{\cdot} $ is an absolute value on $ L $ extending $ \abs{\cdot}_\ppp $. Then $ \abs{\cdot} $ is bounded on $ \ZZ $, hence $ \abs{\cdot} $ is non-archimedean. Let $ R = \cbr{x \in L \st \abs{x} \le 1} \subseteq L $ be the valuation ring for $ L $ with respect to $ \abs{\cdot} $. Then $ \OOO_K \subseteq R $, and since $ R $ is integrally closed in $ L $, by lecture $ 6 $, we have $ \OOO_L \subseteq R $. Set
+By Lemma \ref{lem:12.1}, for any $ x \in \OOO_K $ and $ i = 1, \dots, r $, we have $ \v_{\pp_i}\br{x} = e_i\v_\ppp\br{x} $. Hence up to equivalence, $ \abs{\cdot}_{\pp_i} $ extends $ \abs{\cdot}_\ppp $. Now suppose $ \abs{\cdot} $ is an absolute value on $ L $ extending $ \abs{\cdot}_\ppp $. Then $ \abs{\cdot} $ is bounded on $ \ZZ $, hence $ \abs{\cdot} $ is non-archimedean. Let
+$$ R = \cbr{x \in L \st \abs{x} \le 1} \subseteq L $$
+be the valuation ring for $ L $ with respect to $ \abs{\cdot} $. Then $ \OOO_K \subseteq R $, and since $ R $ is integrally closed in $ L $, by lecture $ 6 $, we have $ \OOO_L \subseteq R $. Set
 \begin{equation}
 \label{eq:3}
 \pp = \cbr{x \in \OOO_L \st \abs{x} < 1}.
@@ -1619,7 +1630,7 @@ The action of $ \Gal\br{L / K} $ on $ \cbr{\pp_1, \dots, \pp_r} $ is transitive.
 \begin{proof}
 Suppose not, so that there exist $ i \ne j $ such that $ \sigma\br{\pp_i} \ne \pp_j $ for all $ \sigma \in \Gal\br{L / K} $. By CRT, we may choose $ x \in \OOO_L $ such that $ x \equiv 0 \mod \pp_i $ and $ x \equiv 1 \mod \sigma\br{\pp_j} $ for all $ \sigma \in \Gal\br{L / K} $. Then
 $$ \N_{L / K}\br{x} = \prod_{\sigma \in \Gal\br{L / K}} \sigma\br{x} \in \OOO_K \cap \pp_i = \ppp \subseteq \pp_j. $$
-Since $ \pp_j $ is prime, there exists $ \tau \in \Gal\br{L / K} $ such that $ \tau\br{x} \in \pp_j $, so $ x \in \tau^{-1}\br{\pp_j} $, that is $ x \equiv 0 \mod \tau^{-1}\br{\pp_i} $, a contradiction.
+Since $ \pp_j $ is prime, there exists $ \tau \in \Gal\br{L / K} $ such that $ \tau\br{x} \in \pp_j $, so $ x \in \tau^{-1}\br{\pp_j} $, that is $ x \equiv 0 \mod \tau^{-1}\br{\pp_j} $, a contradiction.
 \end{proof}
 
 \pagebreak
@@ -1735,7 +1746,7 @@ Moreover $ \sbr{K_0 : K} = \f_{L / K} $ and $ \sbr{L : K_0} = \e_{L / K} $, and 
 \begin{proof}
 Let $ \kappa = \FF_q $, so that $ \kappa_L = \FF_{q^\f} $ for $ \f = \f_{L / K} $. Set $ m = q^\f - 1 $. Let $ \sbr{\cdot} : \FF_{q^\f}^\times \to L^\times $ be the Teichm\"uller map for $ L $ and let $ \zeta_m = \sbr{a} $ where $ a $ is a generator of $ \FF_{q^\f}^\times $. Then $ \zeta_m $ is a primitive $ m $-th root of unity, by lecture $ 5 $. We set
 $$ K_0 = K\br{\zeta_m} \subseteq L. $$
-Then $ K_0 $ is the splitting field of the separable polynomial $ f\br{X} = X^m - 1 \in K\sbr{X} $, hence $ K_0 / K $ is Galois. Since $ \abs{\zeta_m} = 1 $, we have $ \zeta_m \in \OOO_{K_0}^\times $. Since $ X^m - 1 $ is separable over $ \FF_q $, $ \zeta_m $ is a primitive $ m $-th root of unity in $ \kappa_0 = \OOO_{K_0} / \mmm_0 $, so $ \kappa_0 = \FF_{q^\f} \cong \kappa_L $. Now $ \Gal\br{K_0 / K} $ preserves $ \OOO_{K_0} $ and $ \mmm_0 $, using $ \abs{x} = \abs{\sigma\br{x}} $ for all $ x \in K_0 $ and $ \sigma \in \Gal\br{K_0 / K} $. Thus there is a natural map
+Then $ K_0 $ is the splitting field of the separable polynomial $ f\br{X} = X^m - 1 \in K\sbr{X} $, hence $ K_0 / K $ is Galois. Since $ \abs{\zeta_m} = 1 $, we have $ \zeta_m \in \OOO_{K_0}^\times $. Since $ X^m - 1 $ is separable over $ \FF_q $, $ \zeta_m $ is a primitive $ m $-th root of unity in $ \kappa_0 = \OOO_{K_0} / \mmm_0 $, so $ \kappa_0 \cong \FF_{q^\f} = \kappa_L $. Now $ \Gal\br{K_0 / K} $ preserves $ \OOO_{K_0} $ and $ \mmm_0 $, using $ \abs{x} = \abs{\sigma\br{x}} $ for all $ x \in K_0 $ and $ \sigma \in \Gal\br{K_0 / K} $. Thus there is a natural map
 $$ \res : \Gal\br{K_0 / K} \to \Gal\br{\kappa_0 / \kappa}. $$
 For $ \sigma \in \Gal\br{K_0 / K} $ we have $ \sigma\br{\zeta_m} = \zeta_m $ if $ \sigma\br{\zeta_m} \equiv \zeta_m \mod \mmm_0 $. This follows from the fact that $ \sigma\br{\zeta_m} = \sbr{\br{\res \sigma}\br{\zeta_m \mod \mmm_0}} $. Thus $ \res $ is injective. It follows that $ \abs{\Gal\br{K_0 / K}} \le \abs{\Gal\br{\kappa_0 / \kappa}} = \f = \f_{L / K} $, so $ \sbr{K_0 : K} = \f_{L / K} $ and $ \res $ is an isomorphism. Thus $ K_0 / K $ is unramified. Since $ \kappa_0 \cong \kappa_L $, $ \f_{L / K_0} = 1 $ and hence $ L / K_0 $ is totally ramified.
 \end{proof}
@@ -1852,7 +1863,7 @@ We have
 \item Reduction modulo $ \pi $ gives a natural surjection $ \OOO_K^\times \to \kappa^\times $. The kernel is $ 1 + \pi\OOO_K = \U_K^{\br{1}} $.
 \item Define
 $$ \function[f]{\U_K^{\br{s}}}{\kappa}{1 + \pi^sx}{x \mod \pi}. $$
-Then $ \br{1 + \pi^sx}\br{1 + \pi^sy} = \br{1 + \pi^s\br{x + y + \pi^sxy}} $ and $ x + y + \pi^sxy \equiv x + y \mod \pi $, hence $ f $ is a group homomorphism. It is easy to see $ f $ is surjective and $ \ker f = \U_K^{\br{s + 1}} $.
+Then $ \br{1 + \pi^sx}\br{1 + \pi^sy} = 1 + \pi^s\br{x + y + \pi^sxy} $ and $ x + y + \pi^sxy \equiv x + y \mod \pi $, hence $ f $ is a group homomorphism. It is easy to see $ f $ is surjective and $ \ker f = \U_K^{\br{s + 1}} $.
 \end{enumerate}
 \end{proof}
 
@@ -1896,7 +1907,7 @@ $$ \G_0\br{L / K} = \cbr{\sigma \in \Gal\br{L / K} \st \forall x \in \OOO_L, \ \
 
 Note that for $ s \in \ZZ_{\ge 0} $
 $$ \G_s\br{L / K} = \ker \br{\Gal\br{L / K} \to \Aut \br{\OOO_L / \pi_L^{s + 1}\OOO_L}}, $$
-hence $ \G_s\br{L / K} $ is normal in $ G $. We have for $ s \in \ZZ_{\ge -1} $
+hence $ \G_s\br{L / K} $ is normal in $ \Gal\br{L / K} $. We have for $ s \in \ZZ_{\ge -1} $
 $$ \dots \subseteq \G_s \subseteq \dots \subseteq \G_0 \subseteq \G_{-1} = \Gal\br{L / K}. $$
 
 \begin{remark*}
@@ -1910,7 +1921,9 @@ $ \G_s $ only changes at the integers. The definition for $ s \in \RR_{\ge -1} $
 \item Let $ \pi_L \in \OOO_L $ be a uniformiser. For $ s \ge 0 $,
 $$ \G_s = \cbr{\sigma \in \G_0 \st \v_L\br{\sigma\br{\pi_L} - \pi_L} \ge s + 1}. $$
 \item $ \bigcap_{n = 0}^\infty \G_n = \cbr{1} $.
-\item Let $ s \in \ZZ_{\ge 0} $. There is an injective group homomorphism $ \G_s / \G_{s + 1} \hookrightarrow \U_L^{\br{s}} / \U_L^{\br{s + 1}} $ induced by the map $ \sigma \mapsto \sigma\br{\pi_L} / \pi_L $. This map is independent of the choice of $ \pi_L $.
+\item Let $ s \in \ZZ_{\ge 0} $. There is an injective group homomorphism induced by the map
+$$ \function{\G_s / \G_{s + 1}}{\U_L^{\br{s}} / \U_L^{\br{s + 1}}}{\sigma}{\dfrac{\sigma\br{\pi_L}}{\pi_L}}. $$
+This map is independent of the choice of $ \pi_L $.
 \end{enumerate}
 \end{theorem}
 
@@ -1920,10 +1933,10 @@ Let $ K_0 \subseteq L $ be the maximal unramified extension of $ K $ contained i
 \item By Theorem \ref{thm:14.8}, $ \OOO_L = \OOO_K\sbr{\pi_L} $. Suppose $ \v_L\br{\sigma\br{\pi_L} - \pi_L} \ge s + 1 $. Let $ x \in \OOO_L $, then $ x = f\br{\pi_L} $ for $ f\br{X} \in \OOO_K\sbr{X} $. Then
 $$ \sigma\br{x} - x = \sigma\br{f\br{\pi_L}} - f\br{\pi_L} = f\br{\sigma\br{\pi_L}} - f\br{\pi_L} = \br{\sigma\br{\pi_L} - \pi_L}g\br{\pi_L}, $$
 where $ g\br{X} \in \OOO_K\sbr{X} $, using $ X^n - Y^n = \br{X - Y}\br{X^{n - 1} + \dots + Y^{n - 1}} $. Thus $ \v_L\br{\sigma\br{x} - x} = \v_L\br{\sigma\br{\pi_L} - \pi_L} + \v_L\br{g\br{\pi_L}} \ge s + 1 $.
-\item Suppose $ \sigma \in \Gal\br{L / K} $ such that $ \sigma \ne \id $. Then $ \sigma\br{\pi_L} \ne \pi_L $ because $ L = K\br{\pi_L} $, and hence $ \v_L\br{\sigma\br{\pi_L} - \pi_L} < \infty $. Thus $ \sigma \notin \G_s $ for $ s \gg 0 $.
 
 \pagebreak
 
+\item Suppose $ \sigma \in \Gal\br{L / K} $ such that $ \sigma \ne \id $. Then $ \sigma\br{\pi_L} \ne \pi_L $ because $ L = K\br{\pi_L} $, and hence $ \v_L\br{\sigma\br{\pi_L} - \pi_L} < \infty $. Thus $ \sigma \notin \G_s $ for $ s \gg 0 $.
 \item Note that for $ \sigma \in \G_s $ and $ s \in \ZZ_{\ge 0} $, $ \sigma\br{\pi_L} \in \pi_L + \pi_L^{s + 1}\OOO_L $, so $ \sigma\br{\pi_L} / \pi_L \in 1 + \pi_L^s\OOO_L $. We claim
 $$ \function[\phi]{\G_s}{\U_L^{\br{s}} / \U_L^{\br{s + 1}}}{\sigma}{\dfrac{\sigma\br{\pi_L}}{\pi_L}} $$
 is a group homomorphism with kernel $ \G_{s + 1} $. For $ \sigma, \tau \in \G_s $, let $ \tau\br{\pi_L} = u\pi_L $ for $ u \in \OOO_L^\times $. Then
@@ -1944,7 +1957,7 @@ Let $ L / K $ be a finite Galois extension of non-archimedean local fields. Then
 \end{corollary}
 
 \begin{proof}
-By Proposition \ref{prop:15.3}, Theorem \ref{thm:15.6}, and Theorem \ref{thm:14.4}, for $ s \in \ZZ_{\ge 1} $
+By Proposition \ref{prop:15.3}, Theorem \ref{thm:15.6}, and Theorem \ref{thm:14.4}, for $ s \in \ZZ_{\ge -1} $
 $$ \G_s / \G_{s + 1} \hookrightarrow
 \begin{cases}
 \Gal\br{\kappa_L / \kappa} & s = -1 \\
@@ -1983,7 +1996,7 @@ is the minimal polynomial of $ \zeta_{p^n} $. By example sheet $ 3 $,
 \item $ \pi = \zeta_{p^n} - 1 $ is a uniformiser of $ \OOO_L $, and hence $ \OOO_L = \ZZ_p\sbr{\zeta_{p^n} - 1} = \ZZ_p\sbr{\zeta_{p^n}} $.
 \end{itemize}
 We have an isomorphism of abelian groups
-$$ \function{\br{\ZZ / p^n\ZZ}^\times}{\Gal\br{L / \QQ_p}}{m}{\sigma_m : \zeta_{p^n} \mapsto \zeta_{p^n}^m}. $$
+$$ \function{\br{\ZZ / p^n\ZZ}^\times}{\Gal\br{L / \QQ_p}}{m}{\br{\sigma_m : \zeta_{p^n} \mapsto \zeta_{p^n}^m}}. $$
 Thus $ \sigma_m\br{\pi} - \pi = \zeta_{p^n}^m - \zeta_{p^n} = \br{\zeta_{p^n}^{m - 1} - 1}\zeta_{p^n} $. Let $ k $ be maximal such that $ p^k \mid m - 1 $. Then $ \zeta_{p^n}^{m - 1} $ is a primitive $ p^{n - k} $-th root of unity, and hence $ \zeta_{p^n}^{m - 1} - 1 $ is a uniformiser $ \pi' $ in $ L' = \QQ_p\br{\zeta_{p^n}^{m - 1}} $. Thus
 $$ \v_L\br{\sigma_m\br{\pi} - \pi} = \v_L\br{\pi'} = \e_{L / L'} = \dfrac{\e_{L / \QQ_p}}{\e_{L' / \QQ_p}} = \dfrac{\sbr{L : \QQ_p}}{\sbr{L' : \QQ_p}} = \dfrac{p^{n - 1}\br{p - 1}}{p^{n - k - 1}\br{p - 1}} = p^k. $$
 By Theorem \ref{thm:15.6}.$ 1 $, $ \sigma_m \in \G_i $ if and only if $ p^k \ge i + 1 $. Thus
@@ -2008,7 +2021,7 @@ $$ \G_s\br{L / F} = \G_s\br{L / K} \cap \Gal\br{L / F}. $$
 \end{proposition}
 
 \begin{proof}
-$ \G_s\br{L / F} = \cbr{\sigma \in \Gal\br{L / F} \st \forall x \in \OOO_L, \ \v_L\br{\sigma\br{x} - x} \ge s + 1} = \Gal\br{L / F} \cap \G_s\br{L / K} $.
+$$ \G_s\br{L / F} = \cbr{\sigma \in \Gal\br{L / F} \st \forall x \in \OOO_L, \ \v_L\br{\sigma\br{x} - x} \ge s + 1} = \Gal\br{L / F} \cap \G_s\br{L / K}. $$
 \end{proof}
 
 However $ \G_s $ behaves badly with respect to taking quotients. Fix this by renumbering. Let $ L / K $ be finite Galois. Define a function by
@@ -2022,13 +2035,14 @@ s & m = -1 \\
 \dfrac{1}{\abs{\G_0}}\br{\abs{\G_1} + \dots + \abs{\G_m} + \br{s - m}\abs{\G_{m + 1}}} & m \ge 0
 \end{cases}.
 $$
+
+\pagebreak
+
 Thus
 \begin{itemize}
 \item $ \phi $ is continuous and piecewise linear, and
 \item $ \phi $ is strictly increasing.
 \end{itemize}
-
-\pagebreak
 
 \begin{notation*}
 Let $ L / F / K $ be finite extensions of non-archimedean local fields with $ L / K $ and $ F / K $ Galois, and let $ \G = \Gal\br{L / K} $ and $ \H = \Gal\br{L / F} $, so $ \G / \H = \Gal\br{F / K} $. If $ s \in \RR_{\ge -1} $, then $ \G_s $, $ \H_s $, and $ \br{\G / \H}_s $ are the $ s $-th higher ramification groups for $ \G $, $ \H $, and $ \G / \H $ respectively.
@@ -2067,7 +2081,7 @@ $$ \phi_{L / K}'\br{s} = \dfrac{\abs{\G_s}}{\abs{\G_0}} = \dfrac{\abs{\H_s}\abs{
 
 \begin{corollary}
 \label{cor:16.7}
-For $ t \in \intoc{-1, \infty} $
+For $ t \in \intco{-1, \infty} $
 $$ \G^t\H / \H = \br{\G / \H}^t. $$
 \end{corollary}
 
@@ -2123,9 +2137,9 @@ And
 $$ \sum_{\tau \in \H} \i_{L / K}\br{\sigma\tau} = \sum_{\tau \in \H} \v_L\br{\sigma\tau\br{y} - y} = \v_L\br{\prod_{\tau \in \H} \br{\sigma\tau\br{y} - y}} = \v_L\br{b}. $$
 Need to show $ \v_L\br{a} = \v_L\br{b} $. We show that $ a \mid b $ and $ b \mid a $ in $ \OOO_L $.
 \begin{itemize}
-\item $ a \mid b $. Let $ f \in \OOO_F\sbr{X} $ be the minimal polynomial for $ y $ over $ \OOO_F $. Then $ f\br{X} = \prod_{\tau \in \H} \br{X - \tau\br{y}} $ and $ \sigma\br{f}\br{X} = \prod_{\tau \in \H} \br{X - \sigma\tau\br{y}} $. Since $ \OOO_F = \OOO_K\sbr{x} $, $ a = \sigma\br{x} - x $ divides $ \sigma\br{z} - z $ for all $ z \in \OOO_F $, by Lemma \ref{lem:17.2}. Thus $ a $ divides all coefficients of $ \sigma\br{f}\br{X} - f\br{X} $, so
+\item[$ a \mid b $.] Let $ f \in \OOO_F\sbr{X} $ be the minimal polynomial for $ y $ over $ \OOO_F $. Then $ f\br{X} = \prod_{\tau \in \H} \br{X - \tau\br{y}} $ and $ \sigma\br{f}\br{X} = \prod_{\tau \in \H} \br{X - \sigma\tau\br{y}} $. Since $ \OOO_F = \OOO_K\sbr{x} $, $ a = \sigma\br{x} - x $ divides $ \sigma\br{z} - z $ for all $ z \in \OOO_F $, by Lemma \ref{lem:17.2}. Thus $ a $ divides all coefficients of $ \sigma\br{f}\br{X} - f\br{X} $, so
 $$ a \mid \sigma\br{f}\br{y} - f\br{y} = \sigma\br{f}\br{y} = \pm b. $$
-\item $ b \mid a $. Let $ g \in \OOO_K\sbr{X} $ such that $ x = g\br{y} $. Then $ g\br{X} - x \in \OOO_F\sbr{X} $ has $ y $ as a root, so $ g\br{X} - x = f\br{X}h\br{X} $ for some $ h \in \OOO_F\sbr{X} $. Applying $ \sigma $ and evaluating at $ y $ gives
+\item[$ b \mid a $.] Let $ g \in \OOO_K\sbr{X} $ such that $ x = g\br{y} $. Then $ g\br{X} - x \in \OOO_F\sbr{X} $ has $ y $ as a root, so $ g\br{X} - x = f\br{X}h\br{X} $ for some $ h \in \OOO_F\sbr{X} $. Applying $ \sigma $ and evaluating at $ y $ gives
 $$ \sigma\br{g}\br{y} - \sigma\br{x} = \sigma\br{f}\br{y}\sigma\br{h}\br{y} = \pm b\sigma\br{h}\br{y}, $$
 where $ \sigma\br{h}\br{y} \in \OOO_L $. But $ \sigma\br{g}\br{y} = g\br{y} = x $ and hence $ b \mid a $.
 \end{itemize}
@@ -2286,7 +2300,7 @@ Moreover, $ F / K $ is finite if and only if $ \Gal\br{L / F} $ is open, and $ F
 Omit.
 \end{proof}
 
-\subsection{Weil groups}
+\subsection{The Weil group}
 
 Let $ K $ be a local field and $ L / K $ a separable algebraic extension.
 
@@ -2312,7 +2326,7 @@ $$
 \end{tikzcd}.
 $$
 By Theorem \ref{thm:14.4} and Proposition \ref{prop:18.3},
-$$ \varprojlim_{F / K \ \text{finite}, \ F \subseteq L} \Gal\br{\kappa_F / \kappa} \cong \varprojlim_{\lambda / \kappa \ \text{finite}, \ \lambda \subseteq \kappa_L} \Gal\br{\lambda / \kappa} \cong \Gal\br{\kappa_L / \kappa}, $$
+$$ \varprojlim_{F / K \ \text{finite}, \ F \subseteq L} \Gal\br{\kappa_F / \kappa} \cong \varprojlim_{\ell / \kappa \ \text{finite}, \ \ell \subseteq \kappa_L} \Gal\br{\ell / \kappa} \cong \Gal\br{\kappa_L / \kappa}, $$
 so $ i $ is an isomorphism.
 \end{proof}
 
@@ -2463,7 +2477,7 @@ $$ \G^s\br{K^{\ab} / K} \subseteq \I_{K^{\ab} / K} \subseteq \W\br{K^{\ab} / K},
 
 Recall that
 $$ \QQ_p^{\ur} = \bigcup_{m = 1}^\infty \QQ_p\br{\zeta_{p^m - 1}} = \bigcup_{p \nmid m} \QQ_p\br{\zeta_m}. $$
-By example sheet $ 3 $, $ \QQ_p\br{\zeta_{p^n}} / \QQ_p $ is totally ramified of degree $ p^{n - 1}\br{p - 1} $, with $ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}}} \cong \br{\ZZ / p^n\ZZ}^\times $. For $ n \ge m \ge 1 $, there is a diagram
+By example sheet $ 3 $, $ \QQ_p\br{\zeta_{p^n}} / \QQ_p $ is totally ramified of degree $ p^{n - 1}\br{p - 1} $, with $ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \cong \br{\ZZ / p^n\ZZ}^\times $. For $ n \ge m \ge 1 $, there is a diagram
 $$
 \begin{tikzcd}
 \Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \arrow[twoheadrightarrow]{r} \arrow{d}{\sim}[swap]{\theta_n} & \Gal\br{\QQ_p\br{\zeta_{p^m}} / \QQ_p} \arrow{d}{\theta_n}[swap]{\sim} \\
@@ -2482,10 +2496,6 @@ $$ \Gal\br{\QQ_p\br{\zeta_{p^\infty}}\QQ_p^{\ur} / \QQ_p} \cong \widehat{\ZZ} \t
 $$ \QQ_p^{\ab} = \QQ_p^{\ur}\QQ_p\br{\zeta_{p^\infty}}. $$
 \end{theorem}
 
-\begin{proof}
-Later.
-\end{proof}
-
 \pagebreak
 
 The Artin map can now be constructed as follows. We have an isomorphism
@@ -2498,7 +2508,7 @@ The definition of $ \Art_{\QQ_p} $ involves the choice of a totally ramified $ \
 \end{remark*}
 
 Thus $ \Art_{\QQ_p} $ was constructed by constructing a totally ramified extension $ \QQ_p\br{\zeta_{p^n}} $ with
-$$ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \xrightarrow{\sim} \br{\ZZ / p^n\ZZ}^\times \cong \U_{\QQ_p}^{\br{0}} / \U_{\QQ_p}^{\br{n}}. $$
+$$ \theta_n : \Gal\br{\QQ_p\br{\zeta_{p^n}} / \QQ_p} \xrightarrow{\sim} \br{\ZZ / p^n\ZZ}^\times \cong \OOO_{\QQ_p}^\times / \U_{\QQ_p}^{\br{n}}. $$
 In general, let $ K $ be a local field, and let $ \pi $ be a uniformiser of $ K $. We construct for $ n \ge 1 $ a totally ramified Galois extension $ K_{\pi, n} / K $ satisfying
 \begin{enumerate}
 \item $ K \subseteq K_{\pi, 1} \subseteq K_{\pi, 2} \subseteq \dots $,
@@ -2512,7 +2522,7 @@ $$
 \item setting $ K_{\pi, \infty} = \bigcup_{n = 1}^\infty K_{\pi, n} $, we have
 $$ K^{\ab} = K^{\ur}K_{\pi, \infty}. $$
 \end{enumerate}
-Since $ \OOO_K^\times = \U_K^{\br{0}} \cong \varprojlim_n \OOO_K^\times / \U_K^{\br{n}} $, by $ 2 $, there exists an isomorphism
+Since $ \OOO_K^\times \cong \varprojlim_n \OOO_K^\times / \U_K^{\br{n}} $, by $ 2 $, there exists an isomorphism
 $$ \psi : \Gal\br{K_{\pi, \infty} / K} \cong \OOO_K^\times. $$
 Can define $ \Art_K $ by
 $$ \function{K^\times \cong \ZZ \times \OOO_K^\times}{\Gal\br{K^{\ur} / K} \times \Gal\br{K_{\pi, \infty} / K} \cong \Gal\br{K^{\ab} / K}}{\pi^nu \leftrightarrow \br{n, u}}{\br{\Fr_{K^{\ur} / K}^n, \psi^{-1}\br{u}}}. $$
@@ -2666,14 +2676,14 @@ $$ f \circ \br{F_m + h} \equiv f \circ F_m + \pi h \mod \deg \br{m + 2}, $$
 since $ f\br{X} \equiv \pi X \mod X^2 $, such as using $ f\br{X + Y} = f\br{X} + f'\br{X}Y + \dots $. Similarly,
 $$ \br{F_m + h} \circ g \equiv F_m \circ g + h\br{\pi X_1, \dots, \pi X_n} \equiv F_m \circ g + \pi^{m + 1}h \mod \deg \br{m + 2}, $$
 since $ g\br{X} \equiv \pi X \mod X^2 $. Thus $ 1' $, $ 2' $, and $ 3' $ are satisfied for $ h $ if and only if
-$$ f \circ F_m - F_m \circ g \equiv \br{\pi - \pi^{m + 1}}h \mod \deg \br{m + 2}. $$
+$$ f \circ F_m - F_m \circ g \equiv \br{\pi^{m + 1} - \pi}h \mod \deg \br{m + 2}. $$
 
 \pagebreak
 
 But $ f\br{X} \equiv g\br{X} \equiv X^q \mod \pi $. Thus
 $$ f \circ F_m - F_m \circ g \equiv F_m\br{X_1, \dots, X_n}^q - F_m\br{X_1^q, \dots, X_n^q} \equiv 0 \mod \pi. $$
 Thus $ f \circ F_m - F_m \circ g \in \pi\OOO_K\sbr{X_1, \dots, X_n} $. Let $ r\br{X_1, \dots, X_n} $ be the degree $ m + 1 $ terms in $ f \circ F_m - F_m \circ g $. Then set
-$$ h = \dfrac{1}{\pi\br{1 - \pi^m}}r \in \OOO_K\sbr{X_1, \dots, X_n}, $$
+$$ h = \dfrac{1}{\pi\br{\pi^m - 1}}r \in \OOO_K\sbr{X_1, \dots, X_n}, $$
 so that $ F_{m + 1} $ satisfies $ 1' $, $ 2' $, and $ 3' $. Unique since $ h $ is determined by property $ 1' $. Set $ F = \lim_{m \to \infty} F_m $, then $ F\br{X_1, \dots, X_n} $ satisfies $ 1 $ and $ 2 $. Uniqueness of $ F $ follows from uniqueness of $ F_m $.
 \end{proof}
 
@@ -2700,7 +2710,7 @@ thus $ \F_f\br{X, \F_f\br{Y, Z}} = \F_f\br{\F_f\br{X, Y}, Z} $ by uniqueness in 
 \item $ F\br{X, 0} = X $ and $ F\br{0, Y} = Y $, by uniqueness.
 \end{itemize}
 \item By Lemma \ref{lem:20.8}, for $ a \in \OOO_K $, there exists $ \sbr{a}_{\F_f} \in \OOO_K\sbr{\sbr{X}} $ such that $ \sbr{a}_{\F_f}\br{X} \equiv aX \mod X^2 $ and $ f \circ \sbr{a}_{\F_f} = \sbr{a}_{\F_f} \circ f $. Then,
-$$ \sbr{a}_f \circ \F_f \equiv aX + aY \equiv \F_f \circ \sbr{a}_{\F_f} \mod \deg 2, $$
+$$ \sbr{a}_{F_f} \circ \F_f \equiv aX + aY \equiv \F_f \circ \sbr{a}_{\F_f} \mod \deg 2, $$
 and
 $$ f \circ \sbr{a}_{\F_f} \circ \F_f = \sbr{a}_{\F_f} \circ f \circ \F_f = \sbr{a}_{\F_f} \circ \F_f \circ f, \qquad f \circ \F_f \circ \sbr{a}_{\F_f} = \F_f \circ f \circ \sbr{a}_{\F_f} = \F_f \circ \sbr{a}_{\F_f} \circ f, $$
 so $ \sbr{a}_{\F_f} \circ \F_f = \F_f \circ \sbr{a}_{\F_f} $, that is $ \sbr{a}_{\F_f} \in \End_{\OOO_K} \F_f $. We have
@@ -2709,7 +2719,7 @@ so $ \sbr{a}_{\F_f} \circ \F_f = \F_f \circ \sbr{a}_{\F_f} $, that is $ \sbr{a}_
 \item $ \F_f $ is a formal $ \OOO_K $-module, and
 \item $ \sbr{\pi}_{\F_f} = f $, by uniqueness.
 \end{itemize}
-\item If $ g $ is another Lubin-Tate series for $ \pi $, let $ \theta \in \OOO_K\sbr{\sbr{X}} $ be the unique power series such that $ f\br{\theta\br{X}} = \theta\br{g\br{X}} $ and $ \theta\br{X} \equiv X \mod X^2 $. Then $ \theta \circ \F_g = \F_f \circ \theta $, by uniqueness. Thus $ \theta \in \Hom_{\OOO_K}\br{\F_g, \F_f} $. Reversing the roles of $ f $ and $ g $, obtain $ \theta^{-1} \in \OOO_K\sbr{\sbr{X}} $ such that $ \theta^{-1} \in \Hom_{\OOO_K}\br{\F_f, \F_g} $ with $ g\br{\theta^{-1}\br{X}} = \theta^{-1}\br{f\br{X}} $. Then $ \theta^{-1}\br{\theta\br{X}} = X $ and $ \theta\br{\theta^{-1}\br{X}} = X $, by uniqueness, so $ \theta $ is an isomorphism. By uniqueness, $ \theta\br{\sbr{a}_{\F_g}\br{X}} = \sbr{a}_{\F_f}\br{\theta\br{X}} $ for all $ a \in \OOO_K $ and hence $ \theta $ is an isomorphism of formal $ \OOO_K $-modules.
+\item If $ g $ is another Lubin-Tate series for $ \pi $, let $ \theta \in \OOO_K\sbr{\sbr{X}} $ be the unique power series such that $ \theta\br{f\br{X}} = g\br{\theta\br{X}} $ and $ \theta\br{X} \equiv X \mod X^2 $. Then $ \theta \circ \F_f = \F_g \circ \theta $, by uniqueness. Thus $ \theta \in \Hom_{\OOO_K}\br{\F_f, \F_g} $. Reversing the roles of $ f $ and $ g $, obtain $ \theta^{-1} \in \OOO_K\sbr{\sbr{X}} $ such that $ \theta^{-1} \in \Hom_{\OOO_K}\br{\F_g, \F_f} $ with $ \theta^{-1}\br{g\br{X}} = f\br{\theta^{-1}\br{X}} $. Then $ \theta^{-1}\br{\theta\br{X}} = X $ and $ \theta\br{\theta^{-1}\br{X}} = X $, by uniqueness, so $ \theta $ is an isomorphism. By uniqueness, $ \theta\br{\sbr{a}_{\F_f}\br{X}} = \sbr{a}_{\F_g}\br{\theta\br{X}} $ for all $ a \in \OOO_K $ and hence $ \theta $ is an isomorphism of formal $ \OOO_K $-modules.
 \end{enumerate}
 \end{proof}
 
@@ -2909,9 +2919,7 @@ $$
 \end{theorem}
 
 \begin{proof}
-Since the set of uniformisers in $ L^\times $ generate $ L^\times $, it suffices to show
-$$ \eval{\Art_L\br{\pi_L}}_{K^{\ab}} = \Art_K\br{\N_{L / K}\br{\pi_L}}, $$
-where $ \pi_L $ is a uniformiser in $ L $. Let $ \sigma \in \Gal\br{K^{\sep} / L} $ be a lift of $ \Art_L\br{\pi_L} $ and then $ K_\sigma = \br{K^{\sep}}^\sigma $. Let $ x = \Art_K^{-1}\br{\eval{\Art_L\br{\pi_L}}_{K^{\ab}}} \in K^\times $. Need to show $ x = \N_{L / K}\br{\pi_L} $. Then by Proposition \ref{prop:22.4}, we have $ \N\br{K_\sigma / L} = \abr{\pi_L} \subseteq L^\times $ and $ \N\br{K_\sigma / K} = \abr{x} \subseteq K^\times $. Thus
+Since the set of uniformisers in $ L^\times $ generate $ L^\times $, it suffices to show $ \eval{\Art_L\br{\pi_L}}_{K^{\ab}} = \Art_K\br{\N_{L / K}\br{\pi_L}} $ where $ \pi_L $ is a uniformiser in $ L $. Let $ \sigma \in \Gal\br{K^{\sep} / L} $ be a lift of $ \Art_L\br{\pi_L} $ and then $ K_\sigma = \br{K^{\sep}}^\sigma $. Let $ x = \Art_K^{-1}\br{\eval{\Art_L\br{\pi_L}}_{K^{\ab}}} \in K^\times $. Need to show $ x = \N_{L / K}\br{\pi_L} $. Then by Proposition \ref{prop:22.4}, we have $ \N\br{K_\sigma / L} = \abr{\pi_L} \subseteq L^\times $ and $ \N\br{K_\sigma / K} = \abr{x} \subseteq K^\times $. Thus
 $$ \abr{\N_{L / K}\br{\pi_L}} = \N_{L / K}\br{\abr{\pi_L}} = \N_{L / K}\br{\N\br{K_\sigma / L}} = \N\br{K_\sigma / K} = \abr{x} \subseteq K^\times. $$
 Thus $ \N_{L / K}\br{\pi_L} = x^{\pm 1} $. It suffices to show $ \v_K\br{x} > 0 $. Since $ \eval{\Art_L\br{\pi_L}}_{L^{\ur}} = \Fr_{L^{\ur} / L} $, $ \eval{\Art_L\br{\pi_L}}_{K^{\ur}} = \Fr_{K^{\ur} / K}^{\f_{L / K}} $, \footnote{Exercise: check on residue fields} so $ \v_K\br{x} > 0 $ by definition of $ \Art_K $.
 \end{proof}
@@ -2932,7 +2940,7 @@ $$ K^\times / \N_{L / K}\br{L^\times} \cong \W\br{K^{\ab} / K} / \W\br{K^{\ab} /
 
 \begin{proposition}
 Let $ K_{\pi, n} $ denote the Lubin-Tate extension of degree $ n $ associated to $ \pi $. The isomorphism
-$$ \psi_n : \G = \Gal\br{K_{\pi, n} / K} \cong \br{\OOO_K / \pi^n\OOO_K}^\times \cong \U_K^{\br{0}} / \U_K^{\br{n}} $$
+$$ \psi_n : \G = \Gal\br{K_{\pi, n} / K} \cong \br{\OOO_K / \pi^n\OOO_K}^\times \cong \OOO_K^\times / \U_K^{\br{n}} $$
 induces isomorphisms
 $$ \G_s \cong
 \begin{cases}
@@ -2946,7 +2954,9 @@ $$
 \begin{proof}
 If $ s \le 0 $, then $ \G_s = \G_{-1} $ since $ K_{\pi, n} / K $ is totally ramified. Let $ \v_n $ be the normalised valuation on $ K_{\pi, n} $. Recall that
 $$ \function[\i_{K_{\pi, n} / K}]{\G}{\ZZ \cup \cbr{\infty}}{\sigma}{\max \cbr{i \in \ZZ \st \sigma \in \G_{i - 1}}}. $$
-Let $ f\br{X} = \pi X + X^q $ and $ \alpha \in \mu_{f, n} \setminus \mu_{f, n - 1} $. Then $ \alpha $ is a uniformiser in $ \OOO_{K_{\pi, n}} $ and $ \OOO_{K_{\pi, n}} = \OOO_K\sbr{\alpha} $, so $ \i_{K_{\pi, n} / K}\br{\sigma} = \v_n\br{\sigma\br{\alpha} - \alpha} $. Fix $ \sigma \in \G $ and let $ \psi_n\br{\sigma} = u $, and let $ k = \max \cbr{r \st u \in \U_K^{\br{r}} / \U_K^{\br{n}}} $. Then $ u - 1 \in \pi^k\OOO_K \setminus \pi^{k + 1}\OOO_K $. By definition of $ \G_s $, it suffices to show $ \v_n\br{\sigma\br{\alpha} - \alpha} = q^k $. Since $ \sigma\br{\alpha} - \alpha = u \cdot_{\F_f} \alpha - \alpha = \br{u - 1} \cdot_{\F_f} \alpha $, we have $ \sigma\br{\alpha} - \alpha \in \mu_{f, n - k} \setminus \mu_{f, n - k - 1} $, so $ \sigma\br{\alpha} - \alpha $ is a uniformiser in $ K_{\pi, n - k} $. Since $ \e_{K_{\pi, n} / K_{\pi, n - k}} = q^k $, $ \v_n\br{\sigma\br{\alpha} - \alpha} = q^k $.
+Let $ f\br{X} = \pi X + X^q $ and $ \alpha \in \mu_{f, n} \setminus \mu_{f, n - 1} $. Then $ \alpha $ is a uniformiser in $ \OOO_{K_{\pi, n}} $ and $ \OOO_{K_{\pi, n}} = \OOO_K\sbr{\alpha} $, so $ \i_{K_{\pi, n} / K}\br{\sigma} = \v_n\br{\sigma\br{\alpha} - \alpha} $. Fix $ \sigma \in \G $ and let $ \psi_n\br{\sigma} = u $, and let $ k = \max \cbr{r \st u \in \U_K^{\br{r}} / \U_K^{\br{n}}} $. Then $ u - 1 \in \pi^k\OOO_K \setminus \pi^{k + 1}\OOO_K $. By definition of $ \G_s $, it suffices to show $ \v_n\br{\sigma\br{\alpha} - \alpha} = q^k $. Let $ \beta = \br{u - 1} \cdot_{\F_f} \alpha $. Then $ \beta \in \mu_{f, n - k} \setminus \mu_{f, n - k - 1} $ and hence $ \beta $ is a uniformiser in $ K_{\pi, n - k} $, so $ \v_n\br{\beta} = q^k $. We have
+$$ \sigma\br{\alpha} = u \cdot_{\F_f} \alpha = \br{u - 1} \cdot_{\F_f} \alpha +_{\F_f} \alpha \equiv \br{u - 1} \cdot_{\F_f} \alpha + \alpha \mod \alpha\beta. $$
+Thus $ \v_n\br{\sigma\br{\alpha} - \alpha} = \v_n\br{\br{u - 1} \cdot_{\F_f} \alpha} = q^k $.
 \end{proof}
 
 \begin{corollary}

@@ -85,7 +85,7 @@ $ R $ is a maximal subring of $ K $.
 \end{lemma}
 
 \begin{proof}
-Let $ x \in K \setminus R $. Then $ \abs{x} > 1 $. Then if $ y \in R $, there exists $ n \ge 0 $ such that $ \abs{yx^{-n}} = \abs{y} / \abs{x}^n \le 1 $, that is $ y \in x^nR $ for $ n \gg 0 $. So $ R\sbr{x} = K $, hence $ R $ is maximal.
+Let $ x \in K \setminus R $. Then $ \abs{x} > 1 $. Then if $ y \in K $, there exists $ n \ge 0 $ such that $ \abs{yx^{-n}} = \abs{y} / \abs{x}^n \le 1 $, that is $ y \in x^nR $ for $ n \gg 0 $. So $ R\sbr{x} = K $, hence $ R $ is maximal.
 \end{proof}
 
 \begin{remark*}
@@ -179,7 +179,7 @@ In the local fields course, proved this for finite places of number fields.
 \begin{proof}
 Let $ L = K\br{a} $, and let $ f \in K\sbr{T} $ be the minimal polynomial, which is separable. Factor $ f = \prod_i g_i $ for $ g_i \in K_v\sbr{T} $ irreducible and distinct. Let $ L_i = K_v\sbr{T} / \abr{g_i} $. Then $ L \otimes_K K_v = K_v\sbr{T} / \abr{f} \xrightarrow{\sim} \prod_i L_i $ by CRT. Let $ w \mid v $, inducing $ \iota_w : L \hookrightarrow L_w $. Let $ g_w \in K_v\sbr{T} $ be the minimal polynomial of $ \iota_w\br{a} $ over $ K_v $. Then $ g_w \mid f $ so $ g_w \in \cbr{g_i} $ and $ L_w = K_v\br{\iota_w\br{a}} $ is some $ L_i $. Conversely, $ K_v $ is complete and $ L_i / K_v $ is finite, so there exists a unique extension of $ v $ to $ L_i $, so there is a bijection $ \cbr{g_i} \leftrightarrow \cbr{w \mid v} $, and thus
 $$ L \otimes_K K_v \cong \prod_w L_w. $$
-Use that both sides are finite-dimensional normed $ K_v $-spaces. For the left hand side, choose a basis of $ L / K $ for $ L \otimes_K K_v \cong K_v^{\sbr{L : K}} $ with norm $ \norm{\br{x_i}} = \sup_i \abs{x_i}_v $, where $ \abs{\cdot}_v $ is an AV in class of $ v $ satisfying triangle inequality. For the right hand side, $ \norm{\br{y_w}} = \sup_w \abs{y_w}_w $, where $ \abs{\cdot}_w $ is the AV in class of $ w $ extending $ \abs{\cdot}_v $. A fact is that any two norms on a finite-dimensional vector space over a field complete with respect to an AV are equivalent. For local fields, exactly the same proof as for $ \RR $, and in general not much harder. See Cassels and Fr\"ohlich chapter II, section $ 8 $.
+For the topological isomorphism, use that both sides are finite-dimensional normed $ K_v $-spaces. For the left hand side, choose a basis of $ L / K $ for $ L \otimes_K K_v \cong K_v^{\sbr{L : K}} $ with norm $ \norm{\br{x_i}} = \sup_i \abs{x_i}_v $, where $ \abs{\cdot}_v $ is an AV in class of $ v $ satisfying triangle inequality. For the right hand side, $ \norm{\br{y_w}} = \sup_w \abs{y_w}_w $, where $ \abs{\cdot}_w $ is the AV in class of $ w $ extending $ \abs{\cdot}_v $. A fact is that any two norms on a finite-dimensional vector space over a field complete with respect to an AV are equivalent. For local fields, exactly the same proof as for $ \RR $, and in general not much harder. See Cassels and Fr\"ohlich, Chapter II, Section $ 8 $.
 \end{proof}
 
 \begin{corollary}
@@ -206,7 +206,7 @@ $$ \#G = \br{G : G_w}\#G_w \le \br{G : G_w}\sbr{L_w : K_v} = \sum_{g \in G / G_w
 by \ref{cor:1.6}. So have equality, hence $ \sbr{L_w : K_v} = \#G_w $, and so $ L_w / K_v $ is Galois with group $ \Gal\br{L_w / K_v} \xrightarrow{\sim} G_w \subset G $, and $ G $ acts transitively on places over $ v $.
 
 \begin{notation*}
-Suppose $ v $ is discrete valuation of $ L $, so a finite place, and the valuation ring is a DVR. Then so is any $ w \mid v $, and define $ \f\br{w \mid v} = \f_{L_w / K_v} $ to be the degree of residue class extension and $ \e\br{w \mid v} $ to be the ramification degree, and
+Suppose $ v $ is discrete valuation of $ L $, so a finite place, and the valuation ring is a DVR. Then so is any $ w \mid v $, and define $ \f\br{w \mid v} = \f_{L_w / K_v} $ to be the degree of residue class extension and $ \e\br{w \mid v} $ to be the ramification degree. Then
 $$ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v}. $$
 \end{notation*}
 
@@ -313,8 +313,8 @@ For a number field $ K $, $ \Cl\br{K} $ is finite.
 Recall that $ \V_\QQ = \cbr{p \mid p \ \text{prime}} \cup \cbr{\infty} $. Let $ K $ be a number field. Let $ \ppp \subset \OOO_K $ be non-zero prime. Then $ \ppp $ determines a discrete valuation $ \v_\ppp $ of $ K $ and so a non-archimedean AV $ \abs{x}_\ppp = r^{-\v_\ppp\br{x}} $ for $ r > 1 $.
 
 \begin{theorem}
-This gives a bijection
-$$ \cbr{\text{non-zero primes of} \ \OOO_K} \xrightarrow{\sim} \V_{K, \f}. $$
+There is a bijection
+$$ \function{\cbr{\text{non-zero primes of} \ \OOO_K}}{\V_{K, \f}}{\ppp}{\abs{\cdot}_\ppp}. $$
 \end{theorem}
 
 \begin{proof}
@@ -334,6 +334,12 @@ If $ v \in \V_{K, \f} $, then
 \end{itemize}
 \end{notation*}
 
+\begin{theorem}
+There is a bijection
+$$ \function{\cbr{\text{homomorphisms} \ \sigma : K \hookrightarrow \CC} / \br{\sigma \sim \overline{\sigma}}}{\V_{K, \infty}}{\sigma}{\abs{\sigma\br{\cdot}}}. $$
+\end{theorem}
+
+\begin{proof}
 Recall that if $ L / K $ is a finite separable field extension and $ v $ is a place of $ K $, then $ L \otimes_K K_v \cong \prod_{w \mid v} L_w $. There is a unique infinite place $ \infty $ of $ \QQ $ and $ \QQ_\infty = \RR $. So
 $$ K \otimes_\QQ \RR \xrightarrow{\sim} \prod_{v \in \V_{K, \infty}} K_v. $$
 Each $ K_v $ is a finite extension of $ \RR $, so either
@@ -341,23 +347,16 @@ Each $ K_v $ is a finite extension of $ \RR $, so either
 \item $ K_v = \RR $, and $ v $ is \textbf{real}, or
 \item $ K_v \cong \CC $, and $ v $ is \textbf{complex}.
 \end{itemize}
-In the second case, as $ K \subset K_v $ is dense, $ K \not\subset \RR $. On the other hand, by Galois theory,
-$$ \Sigma_K = \cbr{\text{homomorphisms} \ \sigma : K \hookrightarrow \CC} $$
-has order $ n = \sbr{K : \QQ} $ and there is an isomorphism
+In the second case, as $ K \subset K_v $ is dense, $ K \not\subset \RR $. On the other hand, by Galois theory, the group of homomorphisms $ \sigma : K \hookrightarrow \CC $ has order $ n = \sbr{K : \QQ} $ and there is an isomorphism
 \begin{equation}
 \label{eq:1}
-\function{K \otimes_\QQ \CC}{\prod_{\sigma \in \Sigma_K} \CC}{x \otimes z}{\br{\sigma\br{x}z}_\sigma}.
+\function{K \otimes_\QQ \CC}{\prod_{\sigma : K \hookrightarrow \CC} \CC}{x \otimes z}{\br{\sigma\br{x}z}_\sigma}.
 \end{equation}
-Complex conjugation acts on both sides by $ x \otimes z \mapsto x \otimes \overline{z} $ and $ \br{z_\sigma}_\sigma \mapsto \br{\overline{z_{\overline{\sigma}}}}_\sigma $. Let
+Complex conjugation acts on both sides of $ \br{\ref{eq:1}} $ by $ x \otimes z \mapsto x \otimes \overline{z} $ and $ \br{z_\sigma}_\sigma \mapsto \br{\overline{z_{\overline{\sigma}}}}_\sigma $. Let
 $$ \sigma_1, \dots, \sigma_{\r_1} : K \hookrightarrow \RR, \qquad \sigma_{\r_1 + 1} = \overline{\sigma_{\r_1 + \r_2 + 1}}, \dots, \sigma_{\r_1 + \r_2} = \overline{\sigma_{\r_1 + 2\r_2}} : K \hookrightarrow \CC, \qquad \r_1 + 2\r_2 = n. $$
 Then taking fixed points under complex conjugation of $ \br{\ref{eq:1}} $,
 $$ K \otimes_\QQ \RR \xrightarrow{\sim} \prod_{\sigma \ \text{real}} \RR \times \prod_{\br{\sigma, \overline{\sigma}}, \ \sigma \ne \overline{\sigma}} \cbr{\br{z, \overline{z}} \in \CC \times \CC} \cong \RR^{\r_1} \times \CC^{\r_2}. $$
-Therefore the following holds.
-
-\begin{theorem}
-There is a bijection
-$$ \function{\Sigma_K / \br{\sigma \sim \overline{\sigma}}}{\V_{K, \infty}}{\sigma}{\text{class of AV} \ \abs{\sigma\br{\cdot}} \ \text{in} \ \RR \ \text{or} \ \CC}. $$
-\end{theorem}
+\end{proof}
 
 \pagebreak
 
@@ -371,14 +370,11 @@ where for $ v $ complex, $ K_v \cong \CC $ is well-defined up to complex conjuga
 \end{itemize}
 \end{notation*}
 
-Let $ L / K $ be an extension of number fields, and let $ w \mid v $. If $ v $ is finite, $ L_w / K_v $ is a finite extension of non-archimedean local fields and $ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v} $. If $ v $ is infinite,
-$$ L_w / K_v \cong
-\begin{cases}
-\RR / \RR & \f = \e = 1 \\
-\CC / \CC & \f = \e = 1 \\
-\CC / \RR & \e = 2, \ \f = 1
-\end{cases}.
-$$
+Let $ L / K $ be an extension of number fields, and let $ w \mid v $.
+\begin{itemize}
+\item If $ L_w / K_v $ is a finite extension of non-archimedean local fields $ \sbr{L_w : K_v} = \e\br{w \mid v}\f\br{w \mid v} $.
+\item If $ L_w / K_v \cong \RR / \RR $ or $ L_w / K_v \cong \CC / \CC $, then $ \f = \e = 1 $. If $ L_w / K_v \cong \CC / \RR $, then $ v $ is ramified, and $ \e = 2 $ and $ \f = 1 $. Neukirch has a different terminology.
+\end{itemize}
 
 \lecture{4}{Thursday}{28/01/21}
 
@@ -457,7 +453,7 @@ The following are obvious properties.
 $$ \disc\br{S / R} = \disc\br{S_1 / R}\disc\br{S_2 / R}. $$
 \item If $ f : R \to R' $ is a ring homomorphism, then
 $$ \disc\br{S \otimes_R R' / R'} = f\br{\disc\br{S / R}}R'. $$
-\item If $ R $ is a field, then $ \disc\br{S / R} = R $ or $ \disc\br{S / R} = 0 $ and $ \disc\br{S / R} = R $ if and only if the $ R $-bilinear form
+\item If $ R $ is a field, then $ \disc\br{S / R} = R $ or $ \disc\br{S / R} = 0 $, and $ \disc\br{S / R} = R $ if and only if the $ R $-bilinear form
 $$ \function{S \times S}{R}{\br{x, y}}{\Tr_{S / R}\br{xy}} $$
 is non-degenerate, that is there is a duality of the $ R $-vector space $ S $ with itself.
 \end{itemize}
@@ -594,7 +590,7 @@ and
 \label{eq:3}
 \Tr_{L \otimes_K \widehat{K} / \widehat{K}}\br{x} = \sum_\qqq \Tr_{\widehat{L_\qqq} / \widehat{K}}\br{x}.
 \end{equation}
-Let $ S = \bigoplus_{i = 1}^n Rx_i $, and $ \prod_\qqq \pi_\qqq^{-a_\qqq}S = \DDD_{S / R}^{-1} = \bigoplus_{i = 1}^n Ry_i $ for some $ a_\qqq \ge 0 $ and $ y_i \in L $, the dual basis to $ x_i $. Then as $ S \otimes_R \widehat{R} = \bigoplus_{i = 1}^n \widehat{R}\br{x_i \otimes 1} $,
+Let $ S = \bigoplus_{i = 1}^n Rx_i $, and $ \bigoplus_{i = 1}^n Ry_i = \DDD_{S / R}^{-1} = \prod_\qqq \pi_\qqq^{-a_\qqq}S $ for some $ a_\qqq \ge 0 $ and $ y_i \in L $, the dual basis to $ x_i $. Then as $ S \otimes_R \widehat{R} = \bigoplus_{i = 1}^n \widehat{R}\br{x_i \otimes 1} $,
 \begin{align*}
 \DDD_{S \otimes_R \widehat{R} / \widehat{R}}^{-1}
 & = \cbr{x \in L \otimes_K \widehat{K} \st \forall y \in S \otimes_R \widehat{R}, \ \Tr_{L \otimes_K \widehat{K} / \widehat{K}}\br{xy} \in \widehat{R}} \\
@@ -616,20 +612,11 @@ as $ \v_\qqq\br{\pi_{\qqq'}} = 0 $ if $ \qqq' \ne \qqq $.
 Use this to prove the following.
 
 \begin{theorem}
-Assume all extensions of residue fields are separable. Let $ \ppp S = \prod_{i = 1}^g \qqq_i^{e_i} \subset S $. Then
-\begin{enumerate}
-\item $ \qqq_i \mid \DDD_{S / R} $ if and only if $ e_i > 1 $, and
-\item $ \qqq_i^{e_i - 1} \mid \DDD_{S / R} $.
-\end{enumerate}
+Assume all extensions of residue fields are separable. Let $ \ppp S = \prod_{i = 1}^g \qqq_i^{e_i} \subset S $. Then $ \qqq_i \mid \DDD_{S / R} $ if and only if $ e_i > 1 $, and $ \qqq_i^{e_i - 1} \mid \DDD_{S / R} $.
 \end{theorem}
 
 \begin{proof}
-First assume $ R $ is complete local and $ \ppp = \abr{\pi_\ppp} $. Then $ S $ is also local, and complete, with unique prime $ \qqq = \abr{\pi_\qqq} $, so $ g = 1 $.
-\begin{enumerate}
-\item So $ \DDD_{S / R} = \abr{\pi_\qqq}^d $ for $ d \ge 0 $. By \ref{prop:3.8}.$ 2 $, $ \disc\br{S / R} = \abr{\N_{L / K}\br{\pi_\qqq}^d} = \abr{\pi_\ppp}^{d\f} $. So as $ \v_\ppp\br{\disc\br{S / R}} = 0 $ if and only if $ \ppp $ is unramified by \ref{thm:3.5}, get the first statement.
-\item Claim $ \Tr_{L / K}\br{\qqq} \subset \ppp $. Let $ x \in \qqq $. Then multiplication by $ x $ is a nilpotent endomorphism of $ S \otimes_R \br{R / \ppp} \cong S / \qqq^\e $, so $ \Tr_{S \otimes_R \br{R / \ppp} / \br{R / \ppp}}\br{x \otimes 1} = 0 $, that is $ \Tr_{L / K}\br{x} = \Tr_{S / R}\br{x} \in \ppp $. Hence the claim. Therefore $ \Tr_{L / K}\br{\qqq^{1 - \e}} = \Tr_{L / K}\br{\pi_\ppp^{-1}\qqq} \subset R $, so $ \qqq^{1 - \e} \subset \DDD_{S / R}^{-1} $, that is $ \qqq^{\e - 1} \mid \DDD_{S / R} $.
-\end{enumerate}
-For the general case, apply the above to $ \widehat{S_{\qqq_i}} / \widehat{R_\ppp} $ and use \ref{prop:3.8}.$ 3 $.
+First assume $ R $ is complete local and $ \ppp = \abr{\pi_\ppp} $. Then $ S $ is also local, and complete, with unique prime $ \qqq = \abr{\pi_\qqq} $, so $ g = 1 $. So $ \DDD_{S / R} = \abr{\pi_\qqq}^d $ for $ d \ge 0 $. By \ref{prop:3.8}.$ 2 $, $ \disc\br{S / R} = \abr{\N_{L / K}\br{\pi_\qqq}^d} = \abr{\pi_\ppp}^{d\f} $. So as $ \v_\ppp\br{\disc\br{S / R}} = 0 $ if and only if $ \ppp $ is unramified by \ref{thm:3.5}, get the first statement. For the second, claim $ \Tr_{L / K}\br{\qqq} \subset \ppp $. Let $ x \in \qqq $. Then multiplication by $ x $ is a nilpotent endomorphism of $ S \otimes_R \br{R / \ppp} \cong S / \qqq^\e $, so $ \Tr_{S \otimes_R \br{R / \ppp} / \br{R / \ppp}}\br{x \otimes 1} = 0 $, that is $ \Tr_{L / K}\br{x} = \Tr_{S / R}\br{x} \in \ppp $. Hence the claim. Therefore $ \Tr_{L / K}\br{\qqq^{1 - \e}} = \Tr_{L / K}\br{\pi_\ppp^{-1}\qqq} \subset R $, so $ \qqq^{1 - \e} \subset \DDD_{S / R}^{-1} $, that is $ \qqq^{\e - 1} \mid \DDD_{S / R} $. For the general case, apply the above to $ \widehat{S_{\qqq_i}} / \widehat{R_\ppp} $ and use \ref{prop:3.8}.$ 3 $.
 \end{proof}
 
 \begin{fact*}
@@ -648,15 +635,21 @@ Let $ K / \QQ $, and let $ \br{e_i} $ be a $ \ZZ $-basis for $ \OOO_K $. Then $ 
 \end{remark*}
 
 \begin{theorem}[Kummer-Dedekind criterion]
-Let $ S / R $ be an extension of Dedekind domains, and let $ x \in S $ such that $ L = K\br{x} $. Suppose $ \ppp \subset R $ such that $ S_\ppp = R_\ppp\sbr{x} $. Let $ g \in R\sbr{T} $ be the minimal polynomial of $ x $ and $ g = \prod_i \overline{g_i}^{e_i} \in \br{R / \ppp}\sbr{T} $ the factorisation of reduction of $ g $ into powers of distinct monic irreducibles $ \overline{g_i} $. Let $ g_i \in R\sbr{T} $ be any monic lifting of $ \overline{g_i} $ and $ f_i = \deg g_i = \deg \overline{g_i} $. Then $ \qqq_i = \ppp S + \abr{g_i\br{x}} \subset S $ is prime with
-$$ \sbr{S / \qqq_i : R / \ppp} = f_i, \qquad \forall i \ne j, \ \qqq_i \ne \qqq_j, \qquad \ppp S = \prod_i \qqq_i^{e_i}. $$
+Let $ S / R $ be an extension of Dedekind domains, and let $ x \in S $ such that $ L = K\br{x} $. Suppose $ \ppp \subset R $ such that $ S_\ppp = R_\ppp\sbr{x} $. Let $ g \in R\sbr{T} $ be the minimal polynomial of $ x $ and $ g = \prod_i \overline{g_i}^{e_i} \in \br{R / \ppp}\sbr{T} $ the factorisation of reduction of $ g $ into powers of distinct monic irreducibles $ \overline{g_i} $. Let $ g_i \in R\sbr{T} $ be any monic lifting of $ \overline{g_i} $ and $ f_i = \deg g_i = \deg \overline{g_i} $. Then
+$$ \qqq_i = \ppp S + \abr{g_i\br{x}} \subset S $$
+is prime with $ \sbr{S / \qqq_i : R / \ppp} = f_i $, if $ i \ne j $ then $ \qqq_i \ne \qqq_j $, and $ \ppp S = \prod_i \qqq_i^{e_i} $.
 \end{theorem}
 
 \begin{proof}
-Can assume $ R $ is local, so then $ S = R\sbr{x} $. Set $ \ppp = \abr{\pi} $ and $ R / \ppp = \kappa $. Then $ \qqq_i $ is prime with residue degree $ f_i $, since $ S / \qqq_i \cong \kappa\sbr{T} / \abr{\overline{g_i}} $, and $ \overline{g_i} $ is irreducible of degree $ f_i $. Claim that $ \qqq_i \ne \qqq_j $. If $ i \ne j $, there exist $ a, b \in R\sbr{T} $ such that $ \overline{a}\overline{g_i} + \overline{b}\overline{g_j} = 1 \in \kappa\sbr{T} $, so $ 1 = ag_i + bg_j + \pi c $ for some $ c \in R\sbr{T} $, so $ 1 \in \abr{\pi, g_i\br{x}, g_j\br{x}} = \qqq_i + \qqq_j $. Let $ g = \prod_i g_i^{e_i} + \pi h $ for $ h \in R\sbr{T} $. Then
-$$ \prod_i \qqq_i^{e_i} = \prod_i \abr{\pi, g_i\br{x}}^{e_i} \subset \prod_i \abr{\pi, g_i\br{x}^{e_i}} \subset \abr{\pi, \prod_i g_i\br{x}^{e_i}} = \abr{\pi, \pi h\br{x}} \subset \ppp S = \abr{\pi}. $$
-Now $ \dim_\kappa \br{S / \ppp S} = n = \sbr{L : K} $, and
-$$ \dim_\kappa \br{S / \qqq_i^{e_i}} = \sum_{j = 0}^{e_i - 1} \dim_\kappa \br{\qqq_i^j / \qqq_i^{j + 1}} = e_i\dim_\kappa \br{S / \qqq_i} = e_if_i, $$
+Can assume $ R $ is local, so then $ S = R\sbr{x} $. Set $ \ppp = \abr{\pi} $ and $ R / \ppp = \kappa $.
+\begin{itemize}
+\item $ \qqq_i $ is prime with residue degree $ f_i $, since $ S / \qqq_i \cong \kappa\sbr{T} / \abr{\overline{g_i}} $, and $ \overline{g_i} $ is irreducible of degree $ f_i $.
+\item If $ i \ne j $, there exist $ a, b \in R\sbr{T} $ such that $ \overline{a}\overline{g_i} + \overline{b}\overline{g_j} = 1 \in \kappa\sbr{T} $, so $ 1 = ag_i + bg_j + \pi c $ for some $ c \in R\sbr{T} $. Then $ 1 \in \abr{\pi, g_i\br{x}, g_j\br{x}} = \qqq_i + \qqq_j $, so $ \qqq_i \ne \qqq_j $.
+\end{itemize}
+Let $ g = \prod_i g_i^{e_i} + \pi h $ for $ h \in R\sbr{T} $. Then
+$$ \prod_i \qqq_i^{e_i} = \prod_i \abr{\pi, g_i\br{x}}^{e_i} \subset \prod_i \abr{\pi, g_i\br{x}^{e_i}} \subset \abr{\pi, \prod_i g_i\br{x}^{e_i}} = \abr{\pi, \pi h\br{x}} \subset \abr{\pi} = \ppp S. $$
+Now
+$$ \dim_\kappa \br{S / \ppp S} = n = \sbr{L : K}, \qquad \dim_\kappa \br{S / \qqq_i^{e_i}} = \sum_{j = 0}^{e_i - 1} \dim_\kappa \br{\qqq_i^j / \qqq_i^{j + 1}} = e_i\dim_\kappa \br{S / \qqq_i} = e_if_i, $$
 so $ \prod_i \qqq_i^{e_i} \subset \ppp S $ gives $ \sum_i e_if_i \ge n $. As $ \sum_i e_if_i = \sum_i e_i\deg \overline{g_i} = \deg \overline{g} = n $, have equality.
 \end{proof}
 
@@ -750,7 +743,7 @@ $$ \OOO_{K_v} \otimes_{\OOO_K} \OOO_K\sbr{\zeta_{p^r}} \cong \OOO_{K_v}\sbr{T} /
 by CRT, so must have $ \OOO_K\sbr{\zeta_{p^r}} = \OOO_L $.
 \end{proof}
 
-Recall Frobenius elements. Let $ L / K $ be a Galois extension of number fields, let $ w \mid v $ be finite places, and let $ G = \Gal\br{L / W} \supset G_w \cong \Gal\br{L_w / K_v} $ be the decomposition group of $ w $. Then
+Recall Frobenius elements. Let $ L / K $ be a Galois extension of number fields, let $ w \mid v $ be finite places, and let $ G = \Gal\br{L / K} \supset G_w \cong \Gal\br{L_w / K_v} $ be the decomposition group of $ w $. Then
 $$ 1 \to \I_w \to G_w \to \Gal\br{\ell_w / \kappa_v} \to 1, $$
 where $ \I_w $ is the inertia subgroup. Suppose $ w $ is unramified in $ L / K $, if and only if $ v $ is unramified in $ L / K $. Then $ \I_w = 1 $. Define the \textbf{Frobenius} at $ w $ to be the unique element $ \sigma_w \in G_w $ mapping to the generator $ x \mapsto x^{\q_v} $ of $ \Gal\br{\ell_w / \kappa_v} $. So $ \ord \sigma_w = \f\br{w \mid v} = \sbr{\ell_w : \kappa_v} = \sbr{\ell_{w'} : \kappa_v} $ for any $ w' \mid v $, as $ G $ acts transitively on $ \cbr{w'} $. In particular, $ \sigma_w = 1 $ if and only if $ v $ splits completely in $ L / K $, that is there exist $ \sbr{L : K} $ places of $ L $ over $ v $. Suppose $ G $ is abelian. Then $ G_w $ and $ \sigma_w $ are independent of $ w $, so depends only on $ v $.
 
@@ -764,9 +757,9 @@ Let $ L / F / K $ where $ L / K $ is abelian. Then $ \eval{\sigma_{L / K}}_F = \
 
 Let $ L = \QQ\br{\zeta_n} $, let $ K = \QQ $, and let $ n > 2 $. Have an isomorphism
 $$ \function[\lambda]{\br{\ZZ / n\ZZ}^\times}{\Gal\br{L / \QQ}}{a \mod n}{\br{\zeta_n \mapsto \zeta_n^a}}. $$
-Claim that
-$$ \sigma_p = \sigma_{L / \QQ, p} = \lambda\br{p \mod n} = \br{\zeta_n \mapsto \zeta_n^p} \in \Gal\br{L / \QQ}, $$
-if $ p \nmid n $. Indeed, $ \sigma_p $ is characterised by for all $ v \mid p $, $ \sigma_p $ induces $ x \mapsto x^p $ on the residue field $ \ZZ\sbr{\zeta_n} / \ppp_v $, whereas $ \lambda\br{p} $ induces $ x \mapsto x^p $ over $ \ZZ\sbr{\zeta_n} / \abr{p} $.
+Claim that if $ p \nmid n $,
+$$ \sigma_p = \sigma_{L / \QQ, p} = \lambda\br{p \mod n} = \br{\zeta_n \mapsto \zeta_n^p} \in \Gal\br{L / \QQ}. $$
+Indeed, $ \sigma_p $ is characterised by for all $ v \mid p $, $ \sigma_p $ induces $ x \mapsto x^p $ on the residue field $ \ZZ\sbr{\zeta_n} / \ppp_v $, whereas $ \lambda\br{p} $ induces $ x \mapsto x^p $ over $ \ZZ\sbr{\zeta_n} / \abr{p} $.
 
 \lecture{8}{Saturday}{06/02/21}
 
@@ -789,7 +782,7 @@ Now let $ p \ne q $ be an odd prime. Then
 $$ \sigma_{K / \QQ, p} = 1 \qquad \iff \qquad \sigma_{L / \QQ, p} = \lambda\br{p} \in H \qquad \iff \qquad \br{\tfrac{p}{q}} = 1. $$
 But
 $$ \sigma_{K / \QQ, p} = 1 \qquad \iff \qquad p \ \text{splits completely in} \ K \qquad \iff \qquad \br{\tfrac{q^*}{p}} = 1. $$
-That is, $ \br{\tfrac{p}{q}} = \br{\tfrac{q^*}{p}} $. Combine with $ \br{\tfrac{-1}{q}} = \br{-1}^{\br{p - 1} / 2} $ to get the quadratic reciprocity law. In algebraic number theory, quadratic reciprocity says that splitting of $ p $ in $ K / \QQ $ depends only on the congruence class of $ p $ modulo something. Class field theory tells us that a similar thing holds for any abelian extension of number fields, since there is a law describing the decomposition of primes in an abelian extension which is just a congruence condition.
+That is, $ \br{\tfrac{p}{q}} = \br{\tfrac{q^*}{p}} $. Combine with $ \br{\tfrac{-1}{p}} = \br{-1}^{\br{p - 1} / 2} $ to get the quadratic reciprocity law. In algebraic number theory, quadratic reciprocity says that splitting of $ p $ in $ K / \QQ $ depends only on the congruence class of $ p $ modulo something. Class field theory tells us that a similar thing holds for any abelian extension of number fields, since there is a law describing the decomposition of primes in an abelian extension which is just a congruence condition.
 
 \pagebreak
 
@@ -907,7 +900,7 @@ $ \AA_K / K $ is compact Hausdorff.
 \end{theorem}
 
 \begin{proof}
-Since $ K $ is closed in $ \AA_K $ and $ \AA_K $ is Hausdorff, $ \AA_K / K $ is Hausdorff. By \ref{prop:6.3}, $ \AA_K / K \cong \br{\AA_\QQ / \QQ}^{\sbr{K : \QQ}} $ as topological groups, so may assume $ K = \QQ $. Let $ X = \sbr{0, 1} \times \widehat{\ZZ} \subset \AA_\QQ $. Then $ X $ is compact. So it is enough to show that $ X + \QQ = \AA_\QQ $, as then $ X \twoheadrightarrow \AA_\QQ / \QQ $. Let $ x = \br{x_p}_{p \le \infty} \in \AA_\QQ $. Let
+Since $ K $ is discrete in $ \AA_K $ and $ \AA_K $ is Hausdorff, $ K $ is closed in $ \AA_K $, so $ \AA_K / K $ is Hausdorff. By \ref{prop:6.3}, $ \AA_K / K \cong \br{\AA_\QQ / \QQ}^{\sbr{K : \QQ}} $ as topological groups, so may assume $ K = \QQ $. Let $ X = \sbr{0, 1} \times \widehat{\ZZ} \subset \AA_\QQ $. Then $ X $ is compact. So it is enough to show that $ X + \QQ = \AA_\QQ $, as then $ X \twoheadrightarrow \AA_\QQ / \QQ $. Let $ x = \br{x_p}_{p \le \infty} \in \AA_\QQ $. Let
 $$ S = \cbr{p < \infty \st x_p \notin \ZZ_p} $$
 be a finite set. There exists $ r_p \in \ZZ\sbr{1 / p} $ such that $ x_p - r_p \in \ZZ_p $ for all $ p \in S $. Let $ r = \sum_{p \in S} r_p \in \QQ $. For all $ p < \infty $, $ x_p - r \in \ZZ_p $, that is $ x - r \in \RR \times \widehat{\ZZ} $, and then for suitable $ m \in \ZZ $, $ x - \br{r + m} \in \sbr{0, 1} \times \widehat{\ZZ} $.
 \end{proof}
@@ -935,7 +928,7 @@ $$ \function{\GL_n K}{\AA^{n^2 + 1}}{\br{a_{ij}}}{\br{a_{ij}, \det \br{a_{ij}}^{
 has closed image.
 \end{remark*}
 
-Then $ K^\times \hookrightarrow \JJ_K $ since if $ x \in K^\times $ then $ \abs{x}_v = 1 $ for all but finitely many $ v $. The image is discrete, since $ \JJ_K \hookrightarrow \AA_K $ is continuous and $ K \subset \AA_K $ is discrete.
+Then $ K^\times \hookrightarrow \JJ_K $ since if $ x \in K^\times $ then $ \abs{x}_v = 1 $ for all but finitely many $ v $. The image is called the \textbf{subgroup of principal ideles}, which is discrete, since $ \JJ_K \hookrightarrow \AA_K $ is continuous and $ K \subset \AA_K $ is discrete.
 
 \pagebreak
 
@@ -953,7 +946,7 @@ Let $ x = \br{x_v} \in \JJ_K $. Then for all $ v $, $ \abs{x_v}_v \ne 0 $, and f
 $$ \function[\abs{\cdot}_\AA]{\JJ_K}{\RR_{> 0}}{\br{x_v}}{\prod_{v \in \V_K} \abs{x_v}_v}, $$
 \end{definition*}
 
-This is continuous, since the restriction to $ \JJ_{K, S} $ is $ \prod_v \abs{\cdot}_v : \JJ_{K, S} \to \prod_{v \in S \cup \V_{K, \infty}} K_v^\times \to \RR_{> 0} $. Clearly $ \abs{\cdot}_\AA $ is surjective, since $ K_\infty^\times \subset \JJ_K $. A key fact is that for all $ x \in K^\times $, $ \abs{x}_\AA = 1 $ by the product formula, so $ \abs{\cdot}_\AA : \JJ_K \to \CCC_K \to \RR_{> 0} $.
+This is continuous, since the restriction to $ \JJ_{K, S} $ is $ \prod_v \abs{\cdot}_v \circ \pi : \JJ_{K, S} \to \prod_{v \in S \cup \V_{K, \infty}} K_v^\times \to \RR_{> 0} $. Clearly $ \abs{\cdot}_\AA $ is surjective, since $ K_\infty^\times \subset \JJ_K $. A key fact is that for all $ x \in K^\times $, $ \abs{x}_\AA = 1 $ by the product formula, so $ \abs{\cdot}_\AA : \JJ_K \to \CCC_K \to \RR_{> 0} $.
 
 \begin{definition*}
 Let
@@ -973,21 +966,21 @@ Because $ \abs{x}_v $ is the Euclidean AV if $ v $ is real and the square of mod
 Recall $ \ppp_v $ is the prime ideal corresponding to a finite place $ v $. Write $ v $ also for the corresponding normalised discrete valuation.
 
 \begin{definition*}
-Let
-$$ \I\br{K} = \cbr{\text{group of fractional ideals of} \ K} \cong \cbr{\text{free abelian group generated by} \ \V_{K, \f}}. $$
 The \textbf{content map} is
-$$ \function[\c]{\JJ_K}{\I\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f}} \ppp_v^{v\br{x_v}}}. $$
+$$ \function[\c]{\JJ_K}{\I\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f}} \ppp_v^{v\br{x_v}}}, $$
+where
+$$ \I\br{K} = \cbr{\text{group of fractional ideals of} \ K} \cong \cbr{\text{free abelian group generated by} \ \V_{K, \f}}. $$
 \end{definition*}
 
 This is a continuous homomorphism, for the discrete topology on $ \I\br{K} $, since $ \ker \c = \JJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times $ is open. If $ x \in K^\times $ then $ \c\br{x} $ is the principal fractional ideal $ \abr{x} $. So $ \c $ descends to a homomorphism
 $$ \c : \CCC_K = \JJ_K / K^\times \to \Cl\br{K} = \I\br{K} / \P\br{K}, $$
-where $ \P\br{K} $ is the group of principal fractional ideals. The image of the inclusion $ K^\times \hookrightarrow \JJ_K $ is called the \textbf{subgroup of principal ideles}. Then $ \c $ is clearly surjective, since $ v : K_v^\times \twoheadrightarrow \ZZ $. So $ \CCC_K \twoheadrightarrow \Cl\br{K} $. As $ \c \circ \i : \RR_{> 0} \to \Cl\br{K} $ is zero, have a continuous surjection $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $. Now prove that $ \CCC_K^1 $ is compact. A corollary is that $ \Cl\br{K} $ is finite, since compact and discrete. The following is a variant.
+where $ \P\br{K} $ is the group of principal fractional ideals. Then $ \c $ is clearly surjective, since $ v : K_v^\times \twoheadrightarrow \ZZ $. So $ \CCC_K \twoheadrightarrow \Cl\br{K} $. As $ \c \circ \i : \RR_{> 0} \to \Cl\br{K} $ is zero, have a continuous surjection $ \CCC_K^1 \twoheadrightarrow \Cl\br{K} $. Now prove that $ \CCC_K^1 $ is compact. A corollary is that $ \Cl\br{K} $ is finite, since compact and discrete. The following is a variant.
 
 \begin{definition*}
-Let $ S \subset \V_{K, \f} $ be a finite subset, and let
+Let $ S \subset \V_{K, \f} $ be a finite subset. Define
+$$ \function[\c^S]{\JJ_K}{\I^S\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f} \setminus S} \ppp_v^{v\br{x_v}}}, $$
+where
 $$ \I^S\br{K} = \cbr{\text{fractional ideals prime to} \ S} = \cbr{I \st \forall v \in S, \ v\br{I} = 0}. $$
-Define
-$$ \function[\c^S]{\JJ_K}{\I^S\br{K}}{\br{x_v}}{\prod_{v \in \V_{K, \f} \setminus S} \ppp_v^{v\br{x_v}}}. $$
 \end{definition*}
 
 This will be useful later on.
@@ -996,11 +989,11 @@ This will be useful later on.
 
 \section{Geometry of numbers}
 
+\subsection{Minkowski's theorem}
+
 Classically, embed
 $$ \sigma : K \hookrightarrow K_\infty = \prod_{v \mid \infty} K_v \cong \RR^{\r_1} \times \CC^{\r_2} \cong \RR^n, $$
 and study the image $ \sigma\br{I} \subset \RR^n $ for $ I $ a fractional ideal.
-
-\subsection{Minkowski's theorem}
 
 \begin{definition*}
 Let $ U $ be a finite-dimensional real vector space. A \textbf{lattice} $ \Lambda \subset U $ is a discrete subgroup such that $ U / \Lambda $ is compact.
@@ -1031,7 +1024,7 @@ $ \RR^n $ has a Lebesgue measure, and $ \meas\br{X} $ is the measure of $ X $. T
 \begin{proof}
 Let $ \pi : \RR^n \to \RR^n / 2\Lambda $. Then
 $$ \meas\br{\pi\br{X}} \le \meas\br{\RR^n / 2\Lambda} = 2^n\meas\br{\RR^n / \Lambda} < \meas\br{X}. $$
-So $ X \to \pi\br{X} $ is not one-to-one, so there exists $ x \ne y $ in $ X $ such that $ x - y = 2\lambda \in 2\Lambda $. Then $ 0 \ne \lambda = \br{x - y} / 2 = \tfrac{1}{2}x + \tfrac{1}{2}\br{-y} \in X $ as $ -y \in X $, by symmetry, and $ X $ is convex.
+So $ X \to \pi\br{X} $ is not one-to-one, so there exist $ x \ne y $ in $ X $ such that $ x - y = 2\lambda \in 2\Lambda $. Then $ 0 \ne \lambda = \br{x - y} / 2 = \tfrac{1}{2}x + \tfrac{1}{2}\br{-y} \in X $ as $ -y \in X $, by symmetry, and $ X $ is convex.
 \end{proof}
 
 \begin{theorem}
@@ -1054,7 +1047,7 @@ be a fractional ideal of $ K $. Then $ mI \subset \OOO_K $ for $ m > 0 $, so
 \mu_{\sigma\br{I}} = m^{-n}\mu_{\sigma\br{mI}} = m^{-n}\mu_{\sigma\br{\OOO_K}}\br{\sigma\br{\OOO_K} : \sigma\br{mI}} = m^{-n}\mu_{\sigma\br{\OOO_K}}\N\br{mI} = \mu_{\sigma\br{\OOO_K}}\prod_v \q_v^{n_v},
 \end{equation}
 and $ \sigma\br{I} $ is a lattice in $ \RR^n $, by the non-vanishing of the discriminant. Let
-$$ X = \cbr{x \in \prod_{v \in \infty} K_v \cong \RR^n \st \forall v, \ \abs{x_v}_v \le d_v} = \prod_{v \ \text{real}} \sbr{-d_v, d_v} \times \prod_{v \ \text{complex}} \cbr{\abs{z}^2 \le d_v} \subset K_\infty \cong \RR^{\r_1} \times \CC^{\r_2}. $$
+$$ X = \cbr{x \in \prod_{v \mid \infty} K_v \cong \RR^n \st \forall v, \ \abs{x_v}_v \le d_v} = \prod_{v \ \text{real}} \sbr{-d_v, d_v} \times \prod_{v \ \text{complex}} \cbr{\abs{z}^2 \le d_v} \subset K_\infty \cong \RR^{\r_1} \times \CC^{\r_2}. $$
 
 \pagebreak
 
@@ -1141,7 +1134,7 @@ $$ \OOO_K^\times = \mu\br{K} \times \ZZ^{\r_1 + \r_2 - 1}. $$
 \hfill
 \begin{itemize}
 \item First explain the proof for $ S = \emptyset $. Recall
-$$ \JJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times \supset \JJ_{K, \emptyset}^1 = K_\infty^{\times, 1} \times \prod_{v \nmid \infty} \OOO_v^\times, \qquad K_\infty^{\times, 1} = \cbr{\br{x_v} \in K_\infty^\times \st \prod_{v \mid \infty} \abs{x_v}_v = 1}. $$
+$$ \JJ_{K, \emptyset} = K_\infty^\times \times \prod_{v \nmid \infty} \OOO_v^\times \supset K_\infty^{\times, 1} \times \prod_{v \nmid \infty} \OOO_v^\times = \JJ_{K, \emptyset}^1, \qquad K_\infty^{\times, 1} = \cbr{\br{x_v} \in K_\infty^\times \st \prod_{v \mid \infty} \abs{x_v}_v = 1}. $$
 Then $ \JJ_{K, \emptyset} \cap K^\times = \JJ_{K, \emptyset}^1 \cap K^\times = \OOO_K^\times $ is discrete in $ \JJ_{K, \emptyset}^1 $ and by \ref{thm:7.4}, the closed $ \JJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $ is compact. Let
 $$ \function[\lambda]{\JJ_{K, \emptyset}}{\LLL_K = \prod_{v \mid \infty} \RR \cong \RR^{\r_1 + \r_2}}{\br{x_v}_v}{\br{\log \abs{x_v}_v}_v} $$
 be the \textbf{logarithm map}, such that
@@ -1180,10 +1173,10 @@ $$
 \end{tikzcd}
 $$
 is surjective with kernel $ \RR^{\r_1 + \r_2 - 1} $, so there exists a splitting as $ \ZZ^{\#S} $ is free. Then
-$$ \ker \lambda_S \cong \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \in \V_{K, \f}} \OOO_v^\times, $$
+$$ \ker \lambda_S \cong \cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2} \times \prod_{v \nmid \infty} \OOO_v^\times, $$
 as before, and
 $$ \JJ_{K, S} = \prod_{v \mid \infty} \RR_{> 0} \times \prod_{v \in S} \abr{\pi_v} \times \ker \lambda_S \cong \prod_{v \mid \infty} \RR_{> 0} \times \ZZ^{\#S} \times \ker \lambda_S, $$
-where $ \pi_v \in K_v^\times $ such that $ v\br{\pi_v} = 1 $, so $ \lambda_S $ is proper and surjective, so $ \JJ_{K, S} \cap K^\times = \JJ_{K, S}^1 \cap K^\times = \OOO_{K, S}^\times $ is discrete and closed in $ \JJ_{K, S}^1 $. As before, $ \ker \lambda_S \cap \OOO_{K, S}^\times = \mu\br{K} $, since it is discrete and compact, and $ \lambda_S\br{\OOO_{K, S}^\times} \subset \LLL_{K, S}^0 $ is discrete and cocompact. Then prove that if $ G \cong \RR^m \times \ZZ^{\#S} \supset H $ is a discrete and cocompact subgroup then $ H \cong \ZZ^{m + \#S} $. \footnote{Exercise} Then
+where $ \pi_v \in K_v^\times $ such that $ v\br{\pi_v} = 1 $, so $ \lambda_S $ is proper and surjective. Then $ \JJ_{K, S} \cap K^\times = \JJ_{K, S}^1 \cap K^\times = \OOO_{K, S}^\times $ is discrete and closed in $ \JJ_{K, S}^1 $. As before, $ \ker \lambda_S \cap \OOO_{K, S}^\times = \mu\br{K} $, since it is discrete and compact, and $ \lambda_S\br{\OOO_{K, S}^\times} \subset \LLL_{K, S}^0 $ is discrete and cocompact. Then prove that if $ G \cong \RR^m \times \ZZ^{\#S} \supset H $ is a discrete and cocompact subgroup then $ H \cong \ZZ^{m + \#S} $. \footnote{Exercise} Then
 $$ 1 \to \mu\br{K} \to \OOO_{K, S}^\times \to \lambda_S\br{\OOO_{K, S}^\times} \cong \ZZ^{\r_1 + \r_2 - 1 + \#S} \to 0, $$
 and so done.
 \end{itemize}
@@ -1252,7 +1245,7 @@ $$
 so done.
 \end{proof}
 
-A special case is $ T = \V_{K, \infty} $, where $ \AA_K^T $ are the finite adeles. Then \ref{thm:7.8} says
+A special case is $ T = \V_{K, \infty} $, so $ \AA_K^T $ are the finite adeles. Then \ref{thm:7.8} says
 $$ K \hookrightarrow \AA_K^T = \widehat{K} = \widehat{\OOO_K} \otimes_\ZZ \QQ $$
 is dense, which is equivalent to the density of
 $$ \OOO_K \hookrightarrow \widehat{\OOO_K} = \prod_{v \nmid \infty} \OOO_{K_v} = \prod_{v \nmid \infty} \varprojlim_r \OOO_K / \ppp_v^r \cong \varprojlim_{I \subset \OOO_K} \OOO_K / I, $$
@@ -1274,7 +1267,11 @@ is a conjugacy class in $ G = \Gal\br{L / K} $, and $ \Sigma_v $ describes the d
 \item Can it be any conjugacy class in $ G $?
 \end{itemize}
 
-For the first question, do not know the answer for general $ L / K $. This is non-abelian class field theory or the Langlands programme. The second question is answered by the Chebotarev density theorem in the 1920s. Let $ C \subset G $ be a conjugacy class. Then there exist infinitely many $ v $ for which $ C = \Sigma_v $.
+For the first question, do not know the answer for general $ L / K $. This is non-abelian class field theory or the Langlands programme. The second question is answered in the 1920s.
+
+\begin{theorem*}[Chebotarev density theorem]
+Let $ C \subset G $ be a conjugacy class. Then there exist infinitely many $ v $ for which $ C = \Sigma_v $.
+\end{theorem*}
 
 \begin{example*}
 Let $ C = \cbr{1} $. There exist infinitely many $ v $ such that $ \Sigma_v = \cbr{1} $, that is such that $ v $ splits completely in $ L / K $.
@@ -1287,16 +1284,16 @@ Class field theory answers the first question completely for $ L / K $ abelian.
 \begin{theorem*}[Artin reciprocity law]
 Let $ L / K $ be an abelian extension of number fields. Then there exists a unique continuous homomorphism
 $$ \Art_{L / K} : \CCC_K \to \Gal\br{L / K}, $$
-such that for all unramified $ v \in \V_{K, \f} $,
+such that for all unramified $ v \in \V_{K, \f} $ in $ L / K $,
 $$ \function[\Art_{L / K}]{K_v^\times \hookrightarrow \CCC_K}{\Gal\br{L / K}}{x}{\sigma_v^{-v\br{x}}}. $$
 Moreover, $ \Art_{L / K} $ is surjective with kernel $ K^\times \N_{L / K}\br{\JJ_L} $.
 \end{theorem*}
 
 How does this generalise the cyclotomic theory? Since $ \CC^\times $ is connected, the only open subgroup is $ \CC^\times $, and the only open subgroups of $ \RR^\times $ are $ \RR^\times $ and $ \RR_{> 0} $. Then $ \ker \Art_{L / K} $ is open, so contains some $ K^\times U $, where
-$$ U = \prod_{v \ \text{complex}} K_v^\times \times \prod_{v \ \text{real}} \RR_{> 0} \times \prod_{v \in S} U_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v^\times, \qquad U_v = \cbr{x \in \OOO_v^\times \st v\br{x - 1} \ge m_v}, \qquad m_v > 0, $$
+$$ U = \prod_{v \ \text{complex}} \CC^\times \times \prod_{v \ \text{real}} \RR_{> 0} \times \prod_{v \in S} U_v \times \prod_{v \in \V_{K, \f} \setminus S} \OOO_v^\times, \qquad U_v = \cbr{x \in \OOO_v^\times \st v\br{x - 1} \ge m_v}, \qquad m_v > 0, $$
 where say $ S $ contains all ramified places. If $ w \notin S $ is unramified,
 $$ \Art_{L / K} : K^\times\br{\dots, 1, 1, \pi_w^{-1}, 1, 1, \dots} = K^\times\br{\dots, \pi_w, \pi_w, 1, \pi_w, \pi_w, \dots} \mapsto \sigma_w, $$
-where $ \pi_w \in \OOO_K $ such that $ w\br{\pi_w} = 1 $ is a uniformiser at $ w $. So if
+where $ \pi_w \in \OOO_K $ is a uniformiser at $ w $ such that $ w\br{\pi_w} = 1 $. So if
 \begin{enumerate}
 \item $ \sigma\br{\pi_w} > 0 $ for all $ \sigma : K \hookrightarrow \RR $,
 \item $ v\br{\pi_w - 1} \ge m_v $ for all $ v \in S $, and
@@ -1364,12 +1361,14 @@ Look at $ \alpha / \alpha' $, so without loss of generality $ \alpha' = 1 $. The
 
 \pagebreak
 
+\subsection{Specific open subgroups of \texorpdfstring{$ \CCC_K $}{idele class group}}
+
 \begin{definition*}
 A \textbf{modulus} is a finite formal sum
 $$ \mmm = \sum_{v \in \V_K} \m_v\br{v}, \qquad \m_v \ge 0. $$
 The \textbf{support} and \textbf{finite support} of $ \mmm $ are
 $$ \supp \mmm = \cbr{v \in \V_K \st \m_v > 0}, \qquad \supp_\f \mmm = \supp \mmm \cap \V_{K, \f}. $$
-We may use also $ \mmm_\f = \sum_{v \in \V_{K, \f}} \m_v\br{v} $, the finite part of $ \mmm $, can think of as an ideal of $ \OOO_K $. Define
+We may use also $ \mmm_\f = \sum_{v \in \V_{K, \f}} \m_v\br{v} $, the finite part of $ \mmm $, which can think of as an ideal of $ \OOO_K $. Define
 $$ \U_{K, \mmm} = \prod_{v \in \V_K} \U_v^{\m_v}, \qquad K_v^\times \supset \U_v^m =
 \begin{cases}
 \OOO_v^\times & v \in \V_{K, \f}, \ m = 0 \\
@@ -1513,8 +1512,8 @@ Suppose $ L / K / F $ is Galois such that $ L / K $ is abelian and $ K / F $ is 
 Suppose $ L / K $ and $ L' / K' $ are abelian such that $ L \subset L' $ and $ K \subset K' $. Then
 $$
 \begin{tikzcd}
-\Gal\br{L' / K'} \arrow{r}{g \mapsto \eval{g}_L} & \Gal\br{L / K} \\
-\CCC_{K'} \arrow{u}{\Art_{L' / K'}} \arrow{r}[swap]{\N_{K' / K}} & \CCC_K \arrow{u}[swap]{\Art_{L / K}}
+\CCC_{K'} \arrow{r}{\Art_{L' / K'}} \arrow{d}[swap]{\N_{K' / K}} & \Gal\br{L' / K'} \arrow{d}{g \mapsto \eval{g}_L} \\
+\CCC_K \arrow{r}[swap]{\Art_{L / K}} & \Gal\br{L / K}
 \end{tikzcd}
 $$
 commutes.
@@ -1560,7 +1559,7 @@ K_v^\times \arrow[hookrightarrow]{u} \arrow{r}[swap]{\psi_v} & \D_v = \Gal\br{L_
 $$
 \end{theorem}
 
-Indeed, in the proof of the reciprocity law, it is usual to start with local Artin maps $ \psi_v $.
+Indeed, in the proof of the reciprocity law, it is usual to start with the local Artin maps $ \psi_v $.
 
 \begin{example*}
 Let $ v \mid \infty $.
@@ -1574,7 +1573,7 @@ The $ \br{\psi_v} $ combine to give
 $$
 \begin{tikzcd}
 \JJ_K / \N_{L / K}\br{\JJ_L} \arrow{r}{\Art_{L / K}} & \Gal\br{L / K} \\
-\displaystyle\bigoplus_v K_v^\times / \N_{L_w / K_v}\br{L_w^\times} \arrow{u}{\sim} \arrow{r}[swap]{\sim} & \displaystyle\bigoplus_v \D_v \arrow[subset]{u}
+\displaystyle\bigoplus_v K_v^\times / \N_{L_w / K_v}\br{L_w^\times} \arrow{u}{\sim} \arrow{r}[swap]{\sim} & \displaystyle\bigoplus_v \D_v \arrow{u}[swap]{\D_v \subset \Gal\br{L / K}}
 \end{tikzcd}.
 $$
 So the fact that $ \Art_{L / K}\br{K^\times} = 1 $, the hard part of the reciprocity law, is equivalent to knowing the relations between the various $ \D_v \subset \Gal\br{L / K} $. Why are ideles better than ideals?
@@ -1583,7 +1582,7 @@ So the fact that $ \Art_{L / K}\br{K^\times} = 1 $, the hard part of the recipro
 \item Need ideles to understand properly ramification.
 \end{itemize}
 
-\subsection{Hilbert class field}
+\subsection{Examples}
 
 Let $ K $ be arbitrary with modulus $ \mmm = 0 $. Then $ \Cl_\mmm\br{K} = \Cl\br{K} $. By the existence theorem, there is a corresponding abelian extension $ H / K $, the \textbf{Hilbert class field}, with
 $$ \Art_{H / K} : \Cl\br{K} \xrightarrow{\sim} \Gal\br{H / K}. $$
@@ -1591,7 +1590,7 @@ Then $ H / K $ satisfies the following.
 \begin{itemize}
 \item It is abelian.
 \item For all $ v \in \V_{K, \f} $, it is unramified at $ v $, since $ \OOO_v^\times \subset \U_{K, \mmm} $ for all $ v $.
-\item At an infinite place $ v $, $ \U_{K, \mmm} \supset K_v^\times $, so the local decomposition group at $ v $ is trivial, that is if $ v $ is a real place of $ K $, then if $ w \mid v $ then $ w $ is also real.
+\item At an infinite place $ v $, $ K_v^\times \subset \U_{K, \mmm} $, so the local decomposition group at $ v $ is trivial, that is if $ v $ is a real place of $ K $, then if $ w \mid v $ then $ w $ is also real.
 \end{itemize}
 Thus $ H / K $ is unramified at all places of $ K $, and $ H $ is the maximal extension with these properties.
 
@@ -1600,8 +1599,6 @@ Let $ K = \QQ\br{\sqrt{-23}} $, so $ \OOO_K = \ZZ\sbr{\tfrac{1 + \sqrt{-23}}{2}}
 \end{example*}
 
 \pagebreak
-
-\subsection{Another example}
 
 \lecture{16}{Thursday}{25/02/21}
 
@@ -1618,7 +1615,7 @@ The condition that $ L / \QQ $ is Galois with group $ \SSS_3 $ is
 $$ \Art_{L / K}\br{\tau\br{x}} = \Art_{L / K}\br{x^{-1}}, $$
 by $ \br{\ref{eq:5}} $, since $ \Gal\br{K / \QQ} = \abr{\tau} $ acts on $ \Gal\br{L / K} $ by conjugation non-trivially. For both $ \QQ\br{\sqrt{-7}} $ and $ \QQ\br{\sqrt{2}} $, $ \Cl\br{K} = 1 $. So
 $$ \CCC_K \xleftarrow{\sim} \JJ_{K, \emptyset} / \OOO_K^\times = \br{K_\infty^\times \times \widehat{\OOO_K}^\times} / \OOO_K^\times. $$
-Then $ \Art_{L / K} : K_\infty^\times = \br{\RR^\times}^{\r_1} \times \br{\CC^\times}^{\r_2} \hookrightarrow \JJ_{K, \emptyset} \to \ZZ / 3\ZZ $ is trivial on $ \CC^\times $ and $ \RR_{> 0} $, and even on $ \RR^\times $, since there is no non-zero continuous homomorphism $ \RR^\times \to \ZZ / 3\ZZ $. So $ \Art_{L / K} $ factors through $ \widehat{\OOO_K}^\times / \OOO_K $, and since $ L / K $ is unramified at $ v \nmid 14 $, factors further by
+Then $ \Art_{L / K} : K_\infty^\times = \br{\RR^\times}^{\r_1} \times \br{\CC^\times}^{\r_2} \hookrightarrow \JJ_{K, \emptyset} \to \ZZ / 3\ZZ $ is trivial on $ \CC^\times $ and $ \RR_{> 0} $, and even on $ \RR^\times $, since there is no non-zero continuous homomorphism $ \RR^\times \to \ZZ / 3\ZZ $. So $ \Art_{L / K} $ factors through $ \widehat{\OOO_K}^\times / \OOO_K^\times $, and since $ L / K $ is unramified at $ v \nmid 14 $, factors further by
 $$
 \begin{tikzcd}
 \CCC_K \cong \JJ_{K, \emptyset} / \OOO_K^\times \arrow{r} \arrow[twoheadrightarrow]{d}[swap]{\Art_{L / K}} & \widehat{\OOO_K}^\times / \OOO_K^\times \arrow{d} \\
@@ -1764,7 +1761,7 @@ Now $ \#\cbr{v \mid p} \le n = \sbr{K : \QQ} $, and if $ v \mid p $ then $ \q_v 
 
 The $ 1 / \br{1 - \q_v^{-s}} $ are \textbf{Euler factors at $ v $}. Define
 $$ \Gamma_\RR\br{s} = \pi^{-\tfrac{s}{2}}\Gamma\br{\dfrac{s}{2}}, \qquad \Gamma_\CC\br{s} = 2\br{2\pi}^{-s}\Gamma\br{s}, $$
-the Euler factors for the infinite places, and
+the \textbf{Euler factors for the infinite places}, and
 $$ \Z_K\br{s} = \abs{\d_K}^{\tfrac{s}{2}}\Gamma_\RR\br{s}^{\r_1}\Gamma_\CC\br{s}^{\r_2}\zeta_K\br{s}. $$
 The following is a generalisation of \ref{thm:9.1}.
 
@@ -1804,7 +1801,7 @@ Then
 $$ \ZZ_p = \bigsqcup_{a = 0}^{p^n - 1} a + p^n\ZZ_p, \qquad \meas\br{a + p^n\ZZ_p} = \dfrac{1}{p^n}\meas\br{\ZZ_p}, $$
 so
 $$ \intd{\ZZ_p \setminus \cbr{0}}{}{\abs{x}_p^{s - 1}}{x} = \sum_{n \ge 0} p^{-n\br{s - 1}}\br{\dfrac{1}{p^n} - \dfrac{1}{p^{n + 1}}}\meas\br{\ZZ_p} = \br{1 - p^{-1}}\meas\br{\ZZ_p}\dfrac{1}{1 - p^{-s}}, $$
-where $ 1 / \br{1 - p^{-s}} $ is the Euler factor at $ p $ in $ \zeta\br{s} $. Suggests that $ \zeta\br{s} $ is a product of $ p $-adic integrals, an adelic integral.
+where $ 1 / \br{1 - p^{-s}} $ is the Euler factor at $ p $ in $ \zeta\br{s} $. Suggests that $ \zeta\br{s} $ is a product of $ p $-adic integrals over all $ p $, an adelic integral.
 \begin{itemize}
 \item The $ \Gamma $-factor will be an integral at an infinite place.
 \item Have to normalise measure to get $ 1 / \br{1 - p^{-s}} $ for almost all $ p $.
@@ -1818,10 +1815,10 @@ $$ \widehat{f}\br{y} = \intd{-\infty}{\infty}{e^{-2\pi ixy}f\br{x}}{x}, $$
 which has three ingredients. Define $ \widehat{f} $ replacing $ \RR $ by any local field $ F $, of characteristic zero.
 
 \begin{definition*}
-The \textbf{additive character} is a continuous $ 1 \ne \psi : F \to \U\br{1} = \cbr{\abs{z} = 1} \subset \CC^\times $.
+The \textbf{additive character} is a continuous homomorphism $ 1 \ne \psi : F \to \U\br{1} = \cbr{\abs{z} = 1} \subset \CC^\times $.
 \begin{itemize}
 \item If $ F = \RR $, then $ \psi\br{x} = e^{-2\pi ix} $.
-\item If $ F = \CC $, then $ \psi\br{z} = e^{-2\pi i\br{z + \overline{z}}} $.
+\item If $ F = \CC $, then $ \psi\br{z} = e^{-2\pi i\Tr_{\CC / \RR}\br{z}} = e^{-2\pi i\br{z + \overline{z}}} $.
 \item Let $ F / \QQ_p $ be finite. Since $ \QQ_p = \ZZ\sbr{1 / p} + \ZZ_p $, define
 $$ \function[\psi_p]{\QQ_p / \ZZ_p}{\U\br{1}}{x}{e^{2\pi iy}}, \qquad y \in \ZZ\sbr{\dfrac{1}{p}}, \qquad x - y \in \ZZ_p, $$
 which is well-defined. Let $ \psi = \psi_p \circ \Tr_{F / \QQ_p} : F \to \U\br{1} $.
@@ -1996,11 +1993,11 @@ where $ q $ is the residue field order and $ \delta = \v\br{\DDD_{F / \QQ_p}} $.
 \end{definition*}
 
 Since $ \dF\br{ax} = \abs{a}_F\dF x $, $ \dF^\times\br{ax} = \dF^\times x $. If $ F / \QQ_p $, then
-$$ \meas \OOO_F^\times = \intFX[\OOO_F^\times]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\intF[\OOO_F \setminus \pi\OOO_F]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\br{q^{-\tfrac{\delta}{2}} - q^{-1 - \tfrac{\delta}{2}}} = 1. $$
+$$ \meas\br{\OOO_F^\times} = \intFX[\OOO_F^\times]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\intF[\OOO_F \setminus \pi\OOO_F]{}{x} = \dfrac{q^{\tfrac{\delta}{2}}}{1 - q^{-1}}\br{q^{-\tfrac{\delta}{2}} - q^{-1 - \tfrac{\delta}{2}}} = 1. $$
 This is the reason to normalise in this way.
 
 \begin{definition*}
-Let $ f \in \SSS\br{F} $, and let $ s \in \CC $. Define \textbf{local $ \zeta $-integrals}, or \textbf{local Euler factors},
+Let $ f \in \SSS\br{F} $, and let $ s \in \CC $. Define \textbf{local $ \zeta $-integrals}
 $$ \zeta\br{f, s} = \intFX{f\br{x}\abs{x}_F^s}{x} = c\lim_{\epsilon \to 0} \intF[\cbr{x \in F \st \abs{x}_F \ge \epsilon}]{f\br{x}\abs{x}_F^{s - 1}}{x}, \qquad c =
 \begin{cases}
 1 & F / \RR \\
@@ -2190,7 +2187,7 @@ so since $ c^2 = 1 $, $ c = 1 $. If you like, it is easy to reduce to the comput
 
 So
 $$ \zeta\br{f, s} = \intd{0}{\infty}{\dfrac{\zeta_t\br{f, s}}{t}}{t}, \qquad \zeta_t\br{f, s} = t^s\intJI{f\br{tx}}{x}. $$
-Recall that $ \CCC_K^1 $ is compact. Will show next time that there exists a \textbf{fundamental domain} $ E \subset \JJ_K^1 $ with $ \meas\br{E} < \infty $ and $ \overline{E} $ compact such that
+Recall that $ \CCC_K^1 $ is compact. Will show next time that there exists $ E \subset \JJ_K^1 $, the \textbf{fundamental domain}, with $ \meas\br{E} < \infty $ and $ \overline{E} $ compact such that
 $$ \JJ_K^1 = \bigsqcup_{a \in K^\times} aE. $$
 Let $ \kappa = \meas\br{E} $.
 
@@ -2283,7 +2280,9 @@ with proof the same as for $ \br{\RR, \ZZ} $. Apply with $ G = \AA_K $ and $ H =
 The following is a more basic proof.
 
 \begin{proof}[Proof of \ref{thm:9.14}]
-Let $ V $ be a real vector space with $ \dim V < \infty $ and $ \d x $ an invariant measure, let $ \Lambda \subset V $ be a lattice with $ \mu = \meas\br{V / \Lambda} < \infty $, and let
+\hfill
+\begin{itemize}
+\item Let $ V $ be a real vector space with $ \dim V < \infty $ and $ \d x $ an invariant measure, let $ \Lambda \subset V $ be a lattice with $ \mu = \meas\br{V / \Lambda} < \infty $, and let
 $$ V' = \Hom\br{V, \RR} \supset \Lambda' = \Hom\br{\Lambda, \ZZ} = \cbr{y \in V' \st \forall x \in \Lambda, \ \abr{x, y} \in \ZZ}. $$
 If $ f \in \SSS\br{V} $, then $ \widehat{f} \in \SSS\br{V'} $ and
 $$ \widehat{f}\br{y} = \intd{V}{}{e^{-2\pi i\abr{x, y}}}{x}. $$
@@ -2293,7 +2292,6 @@ since scaling $ \d x $, may assume $ \mu = 1 $, then fix $ \ZZ^k \xrightarrow{\s
 
 \pagebreak
 
-\begin{itemize}
 \item A special case is a fractional ideal $ \aaa \subset K $. Suppose $ f \in \SSS\br{\AA_K} $ such that $ f = f_\infty \otimes f_\aaa $ for $ f_\infty \in \SSS\br{K_\infty} $ and $ f_\aaa : \widehat{K} \to \CC $ the characteristic function of $ \aaa\widehat{\OOO_K} = \prod_{v \nmid \infty} \aaa\OOO_v \subset \prod_{v \nmid \infty} K_v $. Then
 $$ \widehat{f} = \widehat{f_\infty} \otimes \abs{\d_K}^{-\tfrac{1}{2}}\N\br{\aaa}^{-1}f_\bbb, \qquad \bbb = \DDD_{K / \QQ}^{-1}\aaa^{-1}, $$
 by the local computation of $ \widehat{\1_{\pi^n\OOO_F}} $. Now $ \sigma : \aaa \hookrightarrow K_\infty $. On $ K_\infty $ we have the trace form $ \Tr_{K_\infty / \RR}\br{xy} $ identifying $ K_\infty $ with its dual, and by definition of $ \DDD_{K / \QQ} $, the dual of $ \aaa $ is $ \bbb $. Moreover, the covolume of $ \sigma\br{\aaa} $ is $ \abs{\d_K}^{1 / 2}\N\br{\aaa} $. So
@@ -2309,7 +2307,7 @@ as $ \eval{\psi_\AA}_K = 1 $.
 
 \subsection{Proof of functional equation and analytic class number formula}
 
-Now use the functional equation of $ \zeta\br{f, s} $ to deduce the same for $ \zeta_K\br{s} $. A criticism is that this method only tells us about $ \zeta_K\br{s} $, as for almost all $ v $, $ f_v = \1_{\OOO_v} $ and $ \zeta\br{f_v, s} = 1 / \br{1 - \q_v^{-s}} $. Next generalise to $ \L $-functions.
+Now use the functional equation of $ \zeta\br{f, s} $ to deduce the same for $ \zeta_K\br{s} $.
 
 \begin{proof}[Proof of \ref{thm:9.3}.$ 1 $]
 Choose
@@ -2346,15 +2344,7 @@ For part $ 2 $, have to compute $ \kappa = \meas\br{\CCC_K^1} $.
 $$ \kappa = \dfrac{2^{\r_1}\br{2\pi}^{\r_2}\h_K\R_K}{\w_K}. $$
 \end{theorem}
 
-\begin{proof}[Proof of \ref{thm:9.3}.$ 2 $]
-Since $ f_\CC\br{z} = \tfrac{1}{\pi}e^{-2\pi z\overline{z}} $,
-$$ -\pi^{-\r_2}\kappa = -f\br{0}\kappa = \Res_{s = 0} \zeta\br{f, s} = \Res_{s = 0} \Z_K\br{s} = \lim_{s \to 0} s\br{\dfrac{2}{s}}^{\r_1 + \r_2}\zeta_K\br{s}, $$
-as $ \Gamma_\RR\br{s} \sim 2 / s \sim \Gamma_\CC\br{s} $ since $ \Gamma\br{s} \sim 1 / s $ at $ s = 0 $, so
-$$ \lim_{s \to 0} s^{-r}\zeta_K\br{s} = -2^{-\r_1}\br{2\pi}^{-\r_2}\kappa = -\dfrac{\h_K\R_K}{\w_K}, \qquad r = \r_1 + \r_2 - 1, $$
-by \ref{thm:9.16}.
-\end{proof}
-
-\begin{proof}[Proof of \ref{thm:9.16}]
+\begin{proof}
 Replacing $ \JJ_K^1 $ by $ \JJ_K = \JJ_K^1 \times \i\br{\RR_{> 0}} $, by \ref{lem:9.12}.$ 2 $,
 \begin{align*}
 \meas\br{\CCC_K^1}
@@ -2364,7 +2354,7 @@ Replacing $ \JJ_K^1 $ by $ \JJ_K = \JJ_K^1 \times \i\br{\RR_{> 0}} $, by \ref{le
 & = \dfrac{\h_K}{\w_K}\meas\br{\JJ_{K, \emptyset} / \abr{\epsilon_1, \dots, \epsilon_r, \i\br{e}}} & \OOO_K^\times = \mu\br{K} \times \abr{\epsilon_1, \dots, \epsilon_r} \\
 & = \dfrac{\h_K}{\w_K}\meas\br{K_\infty^\times / \abr{\epsilon_1, \dots, \epsilon_r, \i\br{e}}} & \meas\br{\widehat{\OOO_K}^\times} = \prod_{v \nmid \infty} \meas\br{\OOO_v^\times} = 1.
 \end{align*}
-Then $ K_\infty = \prod_{v \mid \infty} K_v^\times $.
+Let $ K_\infty = \prod_{v \mid \infty} K_v^\times $.
 \begin{itemize}
 \item If $ v $ is real, there is an isomorphism
 $$ \functions{K_v^\times = \RR^\times}{\cbr{\pm 1} \times \RR}{x}{\br{\sign x, \log \abs{x}_v}}{\dv^\times x}{\mu \times \d y}, $$
@@ -2386,9 +2376,6 @@ $$ \lambda\br{\i\br{e}} = \br{\log \abs{e^{\tfrac{1}{n}}}_v}_v = \br{\dfrac{\e_v
 2 & v \ \text{complex}
 \end{cases}.
 $$
-
-\pagebreak
-
 Then
 $$ \meas\br{\cbr{\pm 1}^{\r_1} \times \U\br{1}^{\r_2}} = 2^{\r_1}\br{2\pi}^{\r_2}, $$
 and $ \meas\br{\LLL_K / \Lambda} $ is the absolute value of the determinant of the $ \br{r + 1} \times \br{r + 1} $ matrix with rows
@@ -2397,11 +2384,25 @@ The sum of the rows is $ \br{1, 0, \dots, 0} $, as $ \abs{\epsilon_j}_\AA = 1 $.
 $$ \meas\br{\LLL_K / \Lambda} = \R_K. $$
 \end{proof}
 
+\pagebreak
+
+\begin{proof}[Proof of \ref{thm:9.3}.$ 2 $]
+Since $ f_\CC\br{z} = \tfrac{1}{\pi}e^{-2\pi z\overline{z}} $,
+$$ -\pi^{-\r_2}\kappa = -f\br{0}\kappa = \Res_{s = 0} \zeta\br{f, s} = \Res_{s = 0} \Z_K\br{s} = \lim_{s \to 0} s\br{\dfrac{2}{s}}^{\r_1 + \r_2}\zeta_K\br{s}, $$
+as $ \Gamma_\RR\br{s} \sim 2 / s \sim \Gamma_\CC\br{s} $ since $ \Gamma\br{s} \sim 1 / s $ at $ s = 0 $, so
+$$ \lim_{s \to 0} s^{-r}\zeta_K\br{s} = -2^{-\r_1}\br{2\pi}^{-\r_2}\kappa = -\dfrac{\h_K\R_K}{\w_K}, \qquad r = \r_1 + \r_2 - 1, $$
+by \ref{thm:9.16}.
+\end{proof}
+
+\begin{remark*}
+A criticism is that this method only tells us about $ \zeta_K\br{s} $, as for almost all $ v $, $ f_v = \1_{\OOO_v} $ and $ \zeta\br{f_v, s} = 1 / \br{1 - \q_v^{-s}} $. Next is to generalise to $ \L $-functions.
+\end{remark*}
+
 \subsection{Description of \texorpdfstring{$ E \subset \JJ_K^1 $}{the fundamental domain}}
 
 After the proof, exhibit an explicit $ E \subset \JJ_K^1 $ such that
 $$ \JJ_K^1 = \bigsqcup_{a \in K^\times} aE. $$
-Let $ y_1, \dots, y_h \in \JJ_K^1 $ where $ h = \h_K = \#\Cl\br{K} $ be coset representatives for $ \JJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $. We will find $ E_0 \subset \JJ_{K, \emptyset}^1 $ such that
+Let $ y_1, \dots, y_h \in \JJ_K^1 $, where $ h = \h_K = \#\Cl\br{K} $, be coset representatives for $ \JJ_{K, \emptyset}^1 / \OOO_K^\times \subset \CCC_K^1 $. We will find $ E_0 \subset \JJ_{K, \emptyset}^1 $ such that
 $$ \JJ_{K, \emptyset}^1 = \bigsqcup_{a \in \OOO_K^\times} aE_0. $$
 Then
 $$ E = \bigsqcup_{i = 1}^h y_iE_0 $$
@@ -2422,11 +2423,13 @@ A \textbf{Dirichlet character} is a homomorphism $ \phi : \br{\ZZ / N\ZZ}^\times
 $$ \L\br{\phi, s} = \sum_{n \ge 1, \ \br{n, N} = 1} \dfrac{\phi\br{n}}{n^s} = \prod_{p \nmid N} \dfrac{1}{1 - \phi\br{p}p^{-s}}, $$
 which occurs in the theorem on primes in arithmetic progressions. Then get a continuous
 $$ \chi : \CCC_\QQ \cong \RR_{> 0} \times \widehat{\ZZ}^\times \to \widehat{\ZZ}^\times \to \prod_{p \mid N} \br{\ZZ_p / N\ZZ_p}^\times \cong \br{\ZZ / N\ZZ}^\times \xrightarrow{\phi} \CC^\times, $$
-and \footnote{Exercise}
+\end{example*}
+
+\begin{exercise*}
 $$ \correspondence{\text{continuous} \ \chi : \CCC_\QQ \to \CC^\times \\ \text{of finite order}}{\text{Dirichlet characters} \ \phi : \br{\ZZ / N\ZZ}^\times \to \CC^\times \\ \text{which are primitive}}, $$
 where $ \phi $ is \textbf{primitive} if it does not factor
 $$ \br{\ZZ / N\ZZ}^\times \xrightarrow{\mod M} \br{\ZZ / M\ZZ}^\times \to \CC^\times, \qquad M \mid N, \qquad M < N. $$
-\end{example*}
+\end{exercise*}
 
 \subsection{Hecke characters}
 
@@ -2448,7 +2451,7 @@ Let $ G $ be a profinite group. Then any continuous homomorphism $ \chi : G \to 
 \end{proposition}
 
 \begin{proof}
-$ \chi\br{G} $ is compact so is in $ \U\br{1} $. Let
+$ \chi\br{G} $ is compact so $ \chi\br{G} \subset \U\br{1} $. Let
 $$ V = \cbr{e^{i\theta} \in \U\br{1} \st -\dfrac{\pi}{2} < \theta < \dfrac{\pi}{2}} = \U\br{1} \cap \cbr{\Re z > 0}. $$
 Then $ \chi^{-1}\br{V} \subset G $ is an open neighbourhood of the identity, so contains an open subgroup $ H \subset G $. Then $ \chi\br{H} \subset V \subset \U\br{1} $ is a subgroup. But this implies $ \chi\br{H} = 1 $, since if $ 1 \ne z \in \U\br{1} $, some integer power $ z^n $ has $ \Re z^n \le 0 $.
 \end{proof}
@@ -2474,9 +2477,9 @@ Then $ \chi^{-1}\br{V} \subset G $ is an open neighbourhood of the identity, so 
 \hfill
 \begin{enumerate}
 \item Apply \ref{prop:10.1} with $ G = \OOO_F^\times $.
-\item Apply \ref{prop:10.1} with $ G = \widehat{\OOO_K}^\times \subset \JJ_K $.
+\item \hfill
 \begin{enumerate}
-\item $ \chi = 1 $ on an open subgroup of $ \widehat{\OOO_K}^\times = \prod_{v \nmid \infty} \OOO_v^\times $, so $ \eval{\chi}_{\OOO_v^\times} = 1 $ for all but finitely many $ v \in \V_{K, \f} $.
+\item Apply \ref{prop:10.1} with $ G = \widehat{\OOO_K}^\times \subset \JJ_K $. Then $ \chi = 1 $ on an open subgroup of $ \widehat{\OOO_K}^\times = \prod_{v \nmid \infty} \OOO_v^\times $, so $ \eval{\chi}_{\OOO_v^\times} = 1 $ for all but finitely many $ v \in \V_{K, \f} $.
 \item The same as \ref{prop:8.1}.$ 2 $, for $ \JJ_K \to \CC^\times $ discrete.
 \end{enumerate}
 \end{enumerate}
@@ -2496,7 +2499,9 @@ $$ F^\times =
 \U\br{1} \times \RR_{> 0} & F = \CC
 \end{cases},
 $$
-and $ \Hom_{\cts}\br{\RR_{> 0}, \CC^\times} = \cbr{x \mapsto x^s \st s \in \CC} \cong \CC $. \footnote{Exercise} So continuous homomorphisms $ \chi : F^\times \to \CC^\times $ are
+and \footnote{Exercise}
+$$ \Hom_{\cts}\br{\RR_{> 0}, \CC^\times} = \cbr{x \mapsto x^s \st s \in \CC} \cong \CC. $$
+So continuous homomorphisms $ \chi : F^\times \to \CC^\times $ are
 $$ \chi =
 \begin{cases}
 x \mapsto \abs{x}^s \ \text{and} \ x \mapsto \sign x\abs{x}^s & F = \RR \\
@@ -2515,7 +2520,7 @@ Let $ \chi : \CCC_K \to \CC^\times $. There exists a unique $ \chi = \chi_1\abs{
 There exists a unique $ s \in \CC $ such that for all $ x \in \RR_{> 0} \subset \JJ_K $, $ \chi\br{x} = \abs{x}^s = \abs{x}_\AA^s $. Then $ \chi_1 = \chi\abs{\cdot}_\AA^{-s} $ is trivial on $ K^\times\RR_{> 0} $. As $ \CCC_K / \RR_{> 0} $ is compact, $ \chi_1\br{\JJ_K} \subset \U\br{1} $.
 \end{proof}
 
-The following is the relation between the local $ s_v $ and global $ s $.
+The following is the relation between the local $ s_v $ and the global $ s $.
 
 \begin{proposition}
 Let $ \chi = \prod_v \chi_v : \CCC_K \to \CC^\times $ such that $ \chi = \chi_1\abs{\cdot}_\AA^s $ and $ \chi_v = \chi_{v, 1}\abs{\cdot}_v^{s_v} $ as above. Then $ \Re s = \Re s_v $ for all $ v $.
@@ -2583,13 +2588,13 @@ where the \textbf{local $ \epsilon $-factors} are $ \epsilon_v\br{\chi_v, s} = 1
 If $ \chi = \abs{\cdot}_\AA^t $, then $ \Lambda\br{\chi, s} = \Z_K\br{s + t} $ and we know the poles, and residues.
 \end{remark*}
 
-\begin{itemize}
-\item Let $ K_v = \RR $. If $ \chi_v = \abs{\cdot}_v^t $, then $ a_v = t $ and $ \epsilon_v\br{\chi_v, s} = 1 $. If $ \chi_v = \sign\abs{\cdot}_v^t $, then $ a_v = t + 1 $ and $ \epsilon_v\br{\chi_v, s} = -i $.
-\item Let $ K_v = \CC $. If $ \chi_v = \br{z / \abs{z}_v^{1 / 2}}^n\abs{z}_v^t $ for $ n \in \ZZ $, then $ a_v = t + \abs{n} / 2 $ and $ \epsilon_v\br{\chi_v, s} = i^{-\abs{n}} $.
+\begin{itemize}[leftmargin=0.5in]
+\item[$ K_v = \RR $.] If $ \chi_v = \abs{\cdot}_v^t $, then $ a_v = t $ and $ \epsilon_v\br{\chi_v, s} = 1 $. If $ \chi_v = \sign\abs{\cdot}_v^t $, then $ a_v = t + 1 $ and $ \epsilon_v\br{\chi_v, s} = -i $.
+\item[$ K_v = \CC $.] If $ \chi_v = \br{z / \abs{z}_v^{1 / 2}}^n\abs{z}_v^t $ for $ n \in \ZZ $, then $ a_v = t + \abs{n} / 2 $ and $ \epsilon_v\br{\chi_v, s} = i^{-\abs{n}} $.
 
 \pagebreak
 
-\item Let $ K_v / \QQ_p $. If $ \chi_v $ is unramified,
+\item[$ K_v / \QQ_p $.] If $ \chi_v $ is unramified,
 $$ \epsilon_v\br{\chi_v, s} =
 \begin{cases}
 1 & K_v / \QQ_p \ \text{is unramified, so} \ \delta_v = 0 \\

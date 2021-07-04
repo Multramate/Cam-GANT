@@ -106,7 +106,7 @@ Since $ u \not\equiv v \mod 2 $ both $ c $ and $ d $ are odd. Then $ \br{\br{c +
 
 \subsection{A variant for polynomials}
 
-In this section, $ K $ is a field with $ \ch K \ne 2 $, with algebraic closure $ \overline{K} $.
+In this section, $ K $ is a field with $ \ch K \ne 2 $ and algebraic closure $ \overline{K} $.
 
 \begin{lemma}
 \label{lem:1.4}
@@ -119,13 +119,9 @@ Without loss of generality $ K = \overline{K} $. Changing coordinates on $ \PP^1
 
 \begin{definition}
 \label{def:1.5}
-\hfill
-\begin{itemize}
-\item An \textbf{elliptic curve} $ E / K $ is the projective closure of the plane affine curve $ y^2 = f\br{x} $ where $ f \in K\sbr{x} $ is a monic cubic polynomial with distinct roots in $ \overline{K} $.
-\item For $ L / K $ any field extension
+An \textbf{elliptic curve} $ E / K $ is the projective closure of the plane affine curve $ y^2 = f\br{x} $ where $ f \in K\sbr{x} $ is a monic cubic polynomial with distinct roots in $ \overline{K} $. For $ L / K $ any field extension
 $$ E\br{L} = \cbr{\br{x, y} \in L^2 \st y^2 = f\br{x}} \cup \cbr{\OOO}, $$
 where $ \OOO $ is the \textbf{point at infinity}.
-\end{itemize}
 \end{definition}
 
 \begin{fact*}
@@ -220,8 +216,8 @@ $$ \gamma x + \delta y \in K\br{C} \ \text{is a uniformiser at} \ p \qquad \iff 
 
 \begin{example}
 \label{eg:2.6}
-The projective closure of $ \cbr{y^2 = x\br{x - 1}\br{x - \lambda}} \subset \AA^2 $ for $ \lambda \ne 0, 1 $ is
-$$ \cbr{Y^2Z = X\br{X - Z}\br{X - \lambda Z}} \subset \PP^2, \qquad x = \dfrac{X}{Z}, \qquad y = \dfrac{Y}{Z}. $$
+By $ x = X / Z $ and $ y = Y / Z $, the projective closure of $ \cbr{y^2 = x\br{x - 1}\br{x - \lambda}} \subset \AA^2 $ for $ \lambda \ne 0, 1 $ is
+$$ \cbr{Y^2Z = X\br{X - Z}\br{X - \lambda Z}} \subset \PP^2. $$
 Let $ P = \br{0 : 1 : 0} $. We compute $ \ord_P x $ and $ \ord_P y $. Put $ t = X / Y $ and $ w = Z / Y $. Then
 \begin{equation}
 \label{eq:2}
@@ -293,14 +289,13 @@ It may be shown that the points of inflection on $ C = \cbr{F = 0} \subset \PP^2
 \begin{definition*}
 Let $ \phi : C_1 \to C_2 $ be a nonconstant morphism of smooth projective curves. Let
 $$ \function[\phi^*]{K\br{C_2}}{K\br{C_1}}{f}{f \circ \phi}. $$
-\begin{itemize}
-\item The \textbf{degree} of $ \phi $ is
-$$ \deg \phi = \sbr{K\br{C_1} : \phi^*K\br{C_2}}. $$
-\item $ \phi $ is \textbf{separable} if $ K\br{C_1} / \phi^*K\br{C_2} $ is a separable field extension, which is automatic if $ \ch K = 0 $.
-\item Suppose $ P \in C_1 $ and $ Q \in C_2 $ such that $ \phi : P \mapsto Q $. Let $ t \in K\br{C_2} $ be a uniformiser at $ Q $. The \textbf{ramification index} of $ \phi $ at $ P $ is
+The \textbf{degree} of $ \phi $ is
+$$ \deg \phi = \sbr{K\br{C_1} : \phi^*K\br{C_2}}, $$
+and $ \phi $ is \textbf{separable} if $ K\br{C_1} / \phi^*K\br{C_2} $ is a separable field extension, which is automatic if $ \ch K = 0 $. Suppose
+$$ \function[\phi]{C_1}{C_2}{P}{Q}. $$
+Let $ t \in K\br{C_2} $ be a uniformiser at $ Q $. The \textbf{ramification index} of $ \phi $ at $ P $ is
 $$ \e_\phi\br{P} = \ord_P \phi^*t, $$
 which is always at least one, and independent of $ t $.
-\end{itemize}
 \end{definition*}
 
 \begin{theorem}
@@ -570,7 +565,7 @@ $$ E\sbr{2} = \cbr{\OOO, \br{e_1, 0}, \br{e_2, 0}, \br{e_3, 0}} \cong \br{\ZZ / 
 Let $ P = \br{x, y} \in E $. Then $ \sbr{2}P = 0 $ if and only if $ P = -P $, if and only if $ \br{x, y} = \br{x, -y} $, if and only if $ y = 0 $.
 \end{proof}
 
-\subsection{Elliptic curves over \texorpdfstring{$ \CC $}{C}}
+\subsection{Elliptic curves over \texorpdfstring{$ \CC $}{C} and other fields}
 
 Let $ \Lambda = \cbr{a\omega_1 + b\omega_2 \st a, b \in \ZZ} $ for $ \omega_1 $ and $ \omega_2 $ a basis for $ \CC $ as an $ \RR $-vector space. Then
 $$ \correspondence{\text{meromorphic functions on} \\ \text{Riemann surface} \ \CC / \Lambda}{\text{$ \Lambda $-invariant meromorphic} \\ \text{functions on} \ \CC}. $$
@@ -594,11 +589,7 @@ For elliptic curves $ E / \CC $ we have
 \item $ E\sbr{n} \cong \br{\ZZ / n\ZZ}^2 $, and
 \item $ \deg \sbr{n} = n^2 $.
 \end{enumerate}
-We show $ 2 $ holds over any field $ K $ and $ 1 $ holds if $ \ch K \nmid n $.
-
-\subsection{Group structure over other fields}
-
-The following will be a summary of the results.
+We show $ 2 $ holds over any field $ K $ and $ 1 $ holds if $ \ch K \nmid n $. The following will be a summary of the results.
 \begin{enumerate}
 \item If $ K = \CC $, then
 $$ E\br{\CC} \cong \CC / \Lambda \cong \RR / \ZZ \times \RR / \ZZ. $$
@@ -620,17 +611,17 @@ Note that the isomorphisms in $ 1 $, $ 2 $, and $ 4 $ respect the relevant topol
 
 \section{Isogenies}
 
+\subsection{Isogenies}
+
 \lecture{6}{Wednesday}{21/10/20}
 
 \begin{definition*}
-Let $ E_1 $ and $ E_2 $ be elliptic curves.
-\begin{itemize}
-\item An \textbf{isogeny} $ \phi : E_1 \to E_2 $ is a nonconstant morphism with $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $, which is if and only if it is surjective on $ \overline{K} $-points, by Theorem \ref{thm:2.8}. We say $ E_1 $ and $ E_2 $ are \textbf{isogenous}.
-\item Let
+Let $ E_1 $ and $ E_2 $ be elliptic curves. An \textbf{isogeny} $ \phi : E_1 \to E_2 $ is a nonconstant morphism with $ \phi\br{\OOO_{E_1}} = \OOO_{E_2} $, which is if and only if it is surjective on $ \overline{K} $-points, by Theorem \ref{thm:2.8}. We say $ E_1 $ and $ E_2 $ are \textbf{isogenous}.
+\end{definition*}
+
+Let
 $$ \Hom\br{E_1, E_2} = \cbr{\text{isogenies} \ E_1 \to E_2} \cup \cbr{0}. $$
 This is a group under $ \br{\phi + \psi}\br{P} = \phi\br{P} + \psi\br{P} $. If $ \phi : E_1 \to E_2 $ and $ \psi : E_2 \to E_3 $ are isogenies then $ \psi \circ \phi $ is an isogeny. By the tower law, $ \deg \br{\psi \circ \phi} = \deg \phi\deg \psi $.
-\end{itemize}
-\end{definition*}
 
 \begin{lemma}
 If $ 0 \ne n \in \ZZ $ then $ \sbr{n} : E \to E $ is an isogeny.
@@ -646,8 +637,6 @@ Now use $ \sbr{mn} = \sbr{m} \circ \sbr{n} $. If $ \ch K = 2 $ then replace Lemm
 \end{proof}
 
 A corollary is that $ \Hom\br{E_1, E_2} $ is torsion free as a $ \ZZ $-module.
-
-\subsection{Isogenies}
 
 \begin{lemma}
 Let $ \phi : E_1 \to E_2 $ be an isogeny. Then
@@ -693,7 +682,7 @@ K\br{x_1} \arrow[dash]{dd}[swap]{\deg \xi} & \\
 K\br{x_2} &
 \end{tikzcd}.
 $$
-By the tower law, $ 2\deg \phi = 2\deg \xi $. Now
+By the tower law, $ 2\deg \phi = 2\deg \xi $, so $ \deg \phi = \deg \xi $. Now
 $$ \function[\phi^*]{K\br{x_2}}{K\br{x_1}}{x_2}{\xi\br{x_1} = \dfrac{r\br{x_1}}{s\br{x_1}}}, $$
 for $ r, s \in K\sbr{t} $ coprime. Claim that the minimal polynomial of $ x_1 $ over $ K\br{x_2} $ is
 $$ f\br{t} = r\br{t} - s\br{t}x_2 \in K\br{x_2}\sbr{t}. $$
@@ -732,7 +721,7 @@ $$ q\br{x + y} + q\br{x - y} = 2q\br{x} + 2q\br{y}, \qquad x, y \in A. $$
 \hfill
 \begin{itemize}
 \item[$ \implies $] Let $ \abr{x, y} = q\br{x + y} - q\br{x} - q\br{y} $. Then $ \abr{x, x} = q\br{2x} - 2q\br{x} = 2q\br{x} $ by $ 1 $ with $ n = 2 $. But by $ 2 $,
-$$ q\br{x + y} + q\br{x - y} = \tfrac{1}{2}\abr{x + y, x + y} + \tfrac{1}{2}\abr{x - y, x - y} = \abr{x, x} + \abr{y, y} = 2q\br{x} + 2q\br{y}. $$
+$$ q\br{x + y} + q\br{x - y} = \dfrac{1}{2}\abr{x + y, x + y} + \dfrac{1}{2}\abr{x - y, x - y} = \abr{x, x} + \abr{y, y} = 2q\br{x} + 2q\br{y}. $$
 \item[$ \impliedby $] On example sheet $ 2 $.
 \end{itemize}
 \end{proof}
@@ -824,7 +813,7 @@ The space of \textbf{differentials} $ \Omega_C $ is the $ K\br{C} $-vector space
 \begin{itemize}
 \item $ \d\br{f + g} = \d f + \d g $,
 \item $ \d\br{fg} = f\d g + g\d f $, and
-\item $ \d a $ for all $ a \in K $.
+\item $ \d a = 0 $ for all $ a \in K $.
 \end{itemize}
 \end{definition*}
 
@@ -848,8 +837,6 @@ Let
 $$ \div \omega = \sum_{P \in C} \br{\ord_P \omega}P \in \Div C, $$
 using here the fact that $ \ord_P \omega = 0 $ for all but finitely many $ P \in C $.
 \end{definition*}
-
-\subsection{Regular differentials}
 
 \begin{definition*}
 The \textbf{genus} is
@@ -937,8 +924,6 @@ to get $ \br{\phi + \psi}^*\omega = \phi^*\omega + \psi^*\omega $.
 
 \pagebreak
 
-\subsection{Separability criterion}
-
 \begin{lemma}
 Let $ \phi : C_1 \to C_2 $ be a nonconstant morphism. Then $ \phi $ is separable if and only if $ \phi^* : \Omega_{C_1} \to \Omega_{C_1} $ is nonzero.
 \end{lemma}
@@ -993,7 +978,7 @@ We may assume $ x \ne 0 $ otherwise the result is clear. Let $ m, n \in \ZZ $. T
 & \le q\br{mx + ny}
 = \dfrac{1}{2}\abr{mx + ny, mx + ny}
 = m^2q\br{x} + mn\abr{x, y} + n^2q\br{y} \\
-& = q\br{x}\br{m + \dfrac{\abr{x, y}}{2q\br{x}}n}^2 + n^2\br{q\br{y} - \dfrac{\abr{x, y}}{4q\br{x}}}.
+& = q\br{x}\br{m + \dfrac{\abr{x, y}}{2q\br{x}}n}^2 + n^2\br{q\br{y} - \dfrac{\abr{x, y}^2}{4q\br{x}}}.
 \end{align*}
 Taking $ m = \abr{x, y} $ and $ n = -2q\br{x} \ne 0 $ we deduce $ \abr{x, y}^2 \le 4q\br{x}q\br{y} $, so $ \abs{\abr{x, y}} \le 2\sqrt{q\br{x}q\br{y}} $.
 \end{proof}
@@ -1019,7 +1004,7 @@ For $ K $ a number field
 $$ \zeta_K\br{s} = \sum_{\aaa \subset \OOO_K} \dfrac{1}{\br{\N\aaa}^s} = \prod_{\ppp \subset \OOO_K, \ \ppp \ \text{prime}} \br{1 - \dfrac{1}{\br{\N\ppp}^s}}^{-1}. $$
 For $ K $ a \textbf{function field}, that is $ K = \FF_q\br{C} $ where $ C / \FF_q $ is a smooth projective curve,
 $$ \zeta_K\br{s} = \prod_{x \in \abs{C}} \br{1 - \dfrac{1}{\br{\N x}^s}}^{-1}, $$
-where $ \abs{C} $ are the \textbf{closed points} on $ C $, the orbits for the action of $ \Gal\br{\overline{\FF_q} / \FF_q} $ on $ C\br{\overline{\FF_q}} $, and $ \N x = q^{\deg x} $ where $ \deg x $ is the size of the orbit. We have $ \zeta_K\br{s} = F\br{q^{-s}} $ for some $ F \in Q\sbr{\sbr{T}} $, where
+where $ \abs{C} $ are the \textbf{closed points} on $ C $, the orbits for the action of $ \Gal\br{\overline{\FF_q} / \FF_q} $ on $ C\br{\overline{\FF_q}} $, and $ \N x = q^{\deg x} $ where $ \deg x $ is the size of the orbit. We have $ \zeta_K\br{s} = F\br{q^{-s}} $ for some $ F \in \QQ\sbr{\sbr{T}} $, where
 $$ F\br{T} = \prod_{x \in \abs{C}} \br{1 - T^{\deg x}}^{-1}. $$
 
 \pagebreak
@@ -1177,10 +1162,10 @@ $$ w\br{t} = \sum_{n = 2}^\infty A_{n - 2}t^{n + 1}, \qquad \lambda =
 \begin{cases}
 \dfrac{w\br{t_2} - w\br{t_1}}{t_2 - t_1} & t_1 \ne t_2 \\
 w'\br{t_1} & t_1 = t_2
-\end{cases}.
+\end{cases},
 $$
-If $ P_1, P_2 \in \widehat{E}\br{I} $, then $ t_1, t_2 \in I $, so
-$$ \lambda = \sum_{n = 2}^\infty A_{n - 2}\br{t_1^n + \dots + t_2^n} \in I, \qquad \nu = w_1 - \lambda t_1 \in I. $$
+where $ A_0 = 1 $. If $ P_1, P_2 \in \widehat{E}\br{I} $, then $ t_1, t_2 \in I $, so
+$$ \lambda = \sum_{n = 2}^\infty A_{n - 2}\br{t_1^n + t_1^{n - 1}t_2 + \dots + t_1t_2^{n - 1} + t_2^n} \in I, \qquad \nu = w_1 - \lambda t_1 \in I. $$
 Substituting $ w = \lambda t + \nu $ into $ w = f\br{t, w} $ gives
 $$ \lambda t + \nu = t^3 + a_1t\br{\lambda t + \nu} + a_2t^2\br{\lambda t + \nu} + a_3\br{\lambda t + \nu}^2 + a_4t\br{\lambda t + \nu}^2 + a_6\br{\lambda t + \nu}^3. $$
 Let
@@ -1189,8 +1174,6 @@ be the coefficient of $ t^3 $, and let
 $$ B = a_1\lambda + a_2\nu + a_3\lambda^2 + 2a_4\lambda\nu + 3a_6\lambda^2\nu $$
 be the coefficient of $ t^2 $. We have $ A \in R^\times $ and $ B \in I $, so $ t_3 = -B / A - t_1 - t_2 \in I $ and $ w_3 = \lambda t_3 + \nu \in I $.
 \end{proof}
-
-\subsection{Formal groups}
 
 Taking $ R = \ZZ\sbr{a_1, \dots, a_6}\sbr{\sbr{t}} $ and $ I = \abr{t} $, by Lemma \ref{lem:8.2}, there exists $ \iota \in \ZZ\sbr{a_1, \dots, a_6}\sbr{\sbr{t}} $ with $ \iota\br{0} = 0 $ such that
 $$ \sbr{-1}\br{t, w\br{t}} = \br{\iota\br{t}, w\br{\iota\br{t}}}. $$
@@ -1208,6 +1191,8 @@ By properties of the group law we deduce
 \item $ F\br{X, F\br{Y, Z}} = F\br{F\br{X, Y}, Z} $, and
 \item $ F\br{X, \iota\br{X}} = 0 $.
 \end{enumerate}
+
+\subsection{Formal groups}
 
 \begin{definition*}
 Let $ R $ be a ring. A \textbf{formal group} over $ R $ is a power series $ F\br{X, Y} \in R\sbr{\sbr{X, Y}} $ satisfying $ 1 $, $ 2 $, and $ 3 $.
@@ -1230,7 +1215,7 @@ Show that for any formal group there exists a unique $ \iota\br{X} = -X + \dots 
 Let $ \FFF $ and $ \GGG $ be formal groups over $ R $ given by power series $ F $ and $ G $.
 \begin{itemize}
 \item A \textbf{morphism} $ f : \FFF \to \GGG $ is a power series $ f \in R\sbr{\sbr{T}} $ such that $ f\br{0} = 0 $ satisfying $ f\br{F\br{X, Y}} = G\br{f\br{X}, f\br{Y}} $.
-\item $ \FFF \cong \GGG $ if there exists $ f : \FFF \to \GGG $ and $ g : \GGG \to \FFF $ morphisms such that $ f\br{g\br{X}} = g\br{f\br{X}} = X $.
+\item $ \FFF \cong \GGG $ if there exist $ f : \FFF \to \GGG $ and $ g : \GGG \to \FFF $ morphisms such that $ f\br{g\br{X}} = g\br{f\br{X}} = X $.
 \end{itemize}
 \end{definition*}
 
@@ -1297,8 +1282,17 @@ for some power series $ h $. By symmetry of $ Y $ and $ Z $ we see $ h\br{Z} = \
 \end{proof}
 
 \begin{notation*}
-Let $ \FFF $, such as $ \widehat{\GG_\a}, \widehat{\GG_\m}, \widehat{E} $, be a formal group, given by $ F \in R\sbr{\sbr{X, Y}} $. Suppose $ R $ is complete with respect to an ideal $ I $. For $ x, y \in I $ put $ x \oplus_\FFF y = F\br{x, y} \in I $. Then $ \FFF\br{I} = \br{I, \oplus_\FFF} $ is an abelian group. For example, $ \widehat{\GG_\a}\br{I} = \br{I, +} $ and $ \widehat{\GG_\m}\br{I} = \br{1 + I, \times} $, and by Lemma \ref{lem:8.2} $ \widehat{E}\br{I} \subset E\br{K} $, which explains the earlier notation.
+Let $ \FFF $, such as $ \widehat{\GG_\a}, \widehat{\GG_\m}, \widehat{E} $, be a formal group, given by $ F \in R\sbr{\sbr{X, Y}} $. Suppose $ R $ is complete with respect to an ideal $ I $. For $ x, y \in I $ put $ x \oplus_\FFF y = F\br{x, y} \in I $. Then $ \FFF\br{I} = \br{I, \oplus_\FFF} $ is an abelian group.
 \end{notation*}
+
+\begin{example*}
+\hfill
+\begin{itemize}
+\item $ \widehat{\GG_\a}\br{I} = \br{I, +} $.
+\item $ \widehat{\GG_\m}\br{I} = \br{1 + I, \times} $.
+\item By Lemma \ref{lem:8.2} $ \widehat{E}\br{I} \subset E\br{K} $, which explains the earlier notation.
+\end{itemize}
+\end{example*}
 
 \begin{corollary}
 \label{cor:8.5}
@@ -1320,10 +1314,10 @@ We have $ \sbr{1}\br{T} = T $ and $ \sbr{n}\br{T} = F\br{\sbr{n - 1}T, T} $ for 
 
 Let $ K $ be a field, complete with respect to a discrete valuation $ v : K^* \to \ZZ $. The \textbf{valuation ring}, or \textbf{ring of integers}, is
 $$ \OOO_K = \cbr{x \in K^* \st v\br{x} \ge 0} \cup \cbr{0}. $$
-with unit group $ \OOO_K^\times $ where $ v\br{x} = 0 $ and maximal ideal $ \pi\OOO_K $ where $ v\br{\pi} = 1 $. The residue field is $ k = \OOO_K / \pi\OOO_K $. We assume $ \ch K = 0 $ and $ \ch k = p $.
+with unit group $ \OOO_K^\times $ where $ v\br{x} = 0 $ and maximal ideal $ \pi\OOO_K $ where $ v\br{\pi} = 1 $. The residue field is $ \kappa = \OOO_K / \pi\OOO_K $. We assume $ \ch K = 0 $ and $ \ch \kappa = p $.
 
 \begin{example*}
-$ K = \QQ_p $, $ \OOO_K = \ZZ_p $, and $ k = \FF_p $.
+$ K = \QQ_p $, $ \OOO_K = \ZZ_p $, and $ \kappa = \FF_p $.
 \end{example*}
 
 \subsection{Integral Weierstrass equations}
@@ -1338,8 +1332,8 @@ A Weierstrass equation for $ E $ with coefficients $ a_1, \dots, a_6 \in K $ is 
 \hfill
 \begin{itemize}
 \item Putting $ x = u^2x' $ and $ y = u^3y' $ gives $ a_i = u^ia_i' $, so integral Weierstrass equations exist.
-\item Since $ a_1, \dots, a_6 \in \OOO_K $, $ \Delta \in \OOO_K $, so $ v\br{\Delta} \ge 0 $, so minimal Weierstrass equations exist.
-\item If $ \ch k \ne 2, 3 $ then there exists a minimal Weierstrass equation of the form $ y^2 = x^3 + ax + b $.
+\item If $ a_1, \dots, a_6 \in \OOO_K $, then $ \Delta \in \OOO_K $, so $ v\br{\Delta} \ge 0 $, so minimal Weierstrass equations exist.
+\item If $ \ch \kappa \ne 2, 3 $ then there exists a minimal Weierstrass equation of the form $ y^2 = x^3 + ax + b $.
 \end{itemize}
 \end{remark*}
 
@@ -1377,7 +1371,7 @@ $$ \dots \subset \FFF\br{\pi^2\OOO_K} \subset \FFF\br{\pi\OOO_K}. $$
 
 \pagebreak
 
-We show that $ \FFF\br{\pi^r\OOO_K} \cong \br{\OOO_K, +} $ for $ r $ sufficiently large and $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{k, +} $ for all $ r \ge 1 $.
+We show that $ \FFF\br{\pi^r\OOO_K} \cong \br{\OOO_K, +} $ for $ r $ sufficiently large and $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{\kappa, +} $ for all $ r \ge 1 $.
 
 \lecture{13}{Friday}{06/11/20}
 
@@ -1399,36 +1393,36 @@ This is always at least $ r $ and tends to infinity as $ n \to \infty $, so $ \e
 \end{proof}
 
 \begin{lemma}
-We have $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{k, +} $ for all $ r \ge 1 $.
+We have $ \FFF\br{\pi^r\OOO_K} / \FFF\br{\pi^{r + 1}\OOO_K} \cong \br{\kappa, +} $ for all $ r \ge 1 $.
 \end{lemma}
 
 \begin{proof}
 By definition of formal groups $ F\br{X, Y} = X + Y + XY\br{\dots} $. So if $ x, y \in \OOO_K $ then $ F\br{\pi^rx, \pi^ry} \equiv \pi^r\br{x + y} \mod \pi^{r + 1} $. Therefore
-$$ \function{\FFF\br{\pi^r\OOO_K}}{\br{k, +}}{\pi^rx}{x \mod \pi} $$
+$$ \function{\FFF\br{\pi^r\OOO_K}}{\br{\kappa, +}}{\pi^rx}{x \mod \pi} $$
 is a surjective group homomorphism, with kernel $ \FFF\br{\pi^{r + 1}\OOO_K} $.
 \end{proof}
 
 Thus for $ r > e / \br{p - 1} $,
 $$ \br{\OOO_K, +} \cong \FFF\br{\pi^r\OOO_K} \subset \dots \subset \FFF\br{\pi^2\OOO_K} \subset \FFF\br{\pi\OOO_K}, $$
-where the quotients are isomorphic to $ \br{k, +} $, so if $ \abs{k} < \infty $ then $ \FFF\br{\pi\OOO_K} $ has a subgroup of finite index isomorphic to $ \br{\OOO_K, +} $.
+where the quotients are isomorphic to $ \br{\kappa, +} $, so if $ \abs{\kappa} < \infty $ then $ \FFF\br{\pi\OOO_K} $ has a subgroup of finite index isomorphic to $ \br{\OOO_K, +} $.
 
 \subsection{Reduction modulo \texorpdfstring{$ \pi $}{p}}
 
 \begin{notation*}
 \textbf{Reduction modulo $ \pi $} is
-$$ \function{\OOO_K}{\OOO_K / \pi\OOO_K = k}{x}{\widetilde{x}}. $$
+$$ \function{\OOO_K}{\OOO_K / \pi\OOO_K = \kappa}{x}{\widetilde{x}}. $$
 \end{notation*}
 
 \begin{proposition}
-Let $ E / K $ be an elliptic curve. The reduction modulo $ \pi $ of any two minimal Weierstrass equations for $ E $ define isomorphic curves over $ k $.
+Let $ E / K $ be an elliptic curve. The reduction modulo $ \pi $ of any two minimal Weierstrass equations for $ E $ define isomorphic curves over $ \kappa $.
 \end{proposition}
 
 \begin{proof}
-Say Weierstrass equations are related by $ \sbr{u; r, s, t} $ for $ u \in K^* $ and $ r, s, t \in K $. Then $ \Delta_1 = u^{12}\Delta_2 $. Since both equations are minimal, $ v\br{\Delta_1} = v\br{\Delta_2} $, so $ u \in \OOO_K^\times $. By the transformation formulae for $ a_i $ and $ b_i $ and since $ \OOO_K $ is integrally closed, $ r, s, t \in \OOO_K $. The Weierstrass equations for the reduction modulo $ \pi $ are related by $ \sbr{\widetilde{u}; \widetilde{r}, \widetilde{s}, \widetilde{t}} $ for $ \widetilde{u} \in k^* $ and $ \widetilde{r}, \widetilde{s}, \widetilde{t} \in k $.
+Say Weierstrass equations are related by $ \sbr{u; r, s, t} $ for $ u \in K^* $ and $ r, s, t \in K $. Then $ \Delta_1 = u^{12}\Delta_2 $. Since both equations are minimal, $ v\br{\Delta_1} = v\br{\Delta_2} $, so $ u \in \OOO_K^\times $. By the transformation formulae for $ a_i $ and $ b_i $ and since $ \OOO_K $ is integrally closed, $ r, s, t \in \OOO_K $. The Weierstrass equations for the reduction modulo $ \pi $ are related by $ \sbr{\widetilde{u}; \widetilde{r}, \widetilde{s}, \widetilde{t}} $ for $ \widetilde{u} \in \kappa^* $ and $ \widetilde{r}, \widetilde{s}, \widetilde{t} \in \kappa $.
 \end{proof}
 
 \begin{definition*}
-The reduction $ \widetilde{E} / k $ of $ E / K $ is defined by the reduction of a minimal Weierstrass equation. Then $ E $ has \textbf{good reduction} if $ \widetilde{E} $ is nonsingular, and so an elliptic curve, otherwise it has \textbf{bad reduction}.
+The \textbf{reduction} $ \widetilde{E} / \kappa $ of $ E / K $ is defined by the reduction of a minimal Weierstrass equation. Then $ E $ has \textbf{good reduction} if $ \widetilde{E} $ is nonsingular, and so an elliptic curve, otherwise it has \textbf{bad reduction}.
 \end{definition*}
 
 For an integral Weierstrass equation
@@ -1441,10 +1435,10 @@ For an integral Weierstrass equation
 \pagebreak
 
 There is a well-defined map
-$$ \function{\PP^2\br{K}}{\PP^2\br{k}}{\br{x : y : z}}{\br{\widetilde{x} : \widetilde{y} : \widetilde{z}}}, $$
+$$ \function{\PP^2\br{K}}{\PP^2\br{\kappa}}{\br{x : y : z}}{\br{\widetilde{x} : \widetilde{y} : \widetilde{z}}}, $$
 choosing the representative of $ \br{x : y : z} $ with $ \min\br{v\br{x}, v\br{y}, v\br{z}} = 0 $. We restrict to give
-$$ \function{E\br{K}}{\widetilde{E}\br{k}}{P}{\widetilde{P}}. $$
-If $ P = \br{x, y} \in E\br{K} $ then by Lemma \ref{lem:9.1} either $ x, y \in \OOO_K $, so $ \widetilde{P} = \br{x, y} $, or $ v\br{x} = -2s $ and $ v\br{y} = -3s $, so $ P = \br{\pi^{3s}x : \pi^{3s}y : \pi^{3s}} $ and $ \widetilde{P} = \br{0 : 1 : 0} $. Thus
+$$ \function{E\br{K}}{\widetilde{E}\br{\kappa}}{P}{\widetilde{P}}. $$
+If $ P = \br{x, y} \in E\br{K} $ then by Lemma \ref{lem:9.1} either $ x, y \in \OOO_K $, so $ \widetilde{P} = \br{\widetilde{x}, \widetilde{y}} $, or $ v\br{x} = -2s $ and $ v\br{y} = -3s $, so $ P = \br{\pi^{3s}x : \pi^{3s}y : \pi^{3s}} $ and $ \widetilde{P} = \br{0 : 1 : 0} $. Thus
 $$ \widehat{E}\br{\pi\OOO_K} = E_1\br{K} = \cbr{P \in E\br{K} \st \widetilde{P} = \OOO}, $$
 the \textbf{kernel of reduction}. Let
 $$ \widetilde{E}_{\ns} =
@@ -1458,12 +1452,12 @@ The chord and tangent process still defines a group law on $ \widetilde{E}_{\ns}
 \item $ \widetilde{E}_{\ns} \cong \GG_\a $, an \textbf{additive reduction}, or
 \item $ \widetilde{E}_{\ns} \cong \GG_\m $, a \textbf{multiplicative reduction}.
 \end{itemize}
-The isomorphism is over $ k $, or possibly a quadratic extension of $ k $. For simplicity suppose $ \ch k \ne 2 $. Then $ \widetilde{E} $ is $ y^2 = f\br{x} $ for $ \deg f = 3 $, so $ \widetilde{E} $ is singular if and only if $ f $ has a repeated root.
+The isomorphism is over $ \kappa $, or possibly a quadratic extension of $ \kappa $. For simplicity suppose $ \ch \kappa \ne 2 $. Then $ \widetilde{E} $ is $ y^2 = f\br{x} $ for $ \deg f = 3 $, so $ \widetilde{E} $ is singular if and only if $ f $ has a repeated root.
 \begin{itemize}
 \item A double root gives a curve $ y^2 = x^2\br{x + 1} $ with a \textbf{node}, which leads to multiplicative reduction. See example sheet $ 3 $.
-\item A triple root gives a curve $ y^2 = x^3 $ with a \textbf{cusp}, which leads to additive reduction. We check
-$$ \bijection{\widetilde{E}_{\ns}}{\GG_\a}{\br{x, y}}{\dfrac{x}{y}}{\br{\dfrac{1}{t^2}, \dfrac{1}{t^3}}}{t} $$
-is a group homomorphism. Let $ P_1, P_2, P_3 $ lie on the line $ ax + by = 1 $. Write $ P_i = \br{x_i, y_i} $ and $ t_i = x_i / y_i $. Then $ x_i^3 = y_i^2 = y_i^2\br{ax_i + by_i} $, so $ t_1, t_2, t_3 $ are the roots of $ X^3 - aX - b = 0 $. Looking at the coefficient of $ X^2 $ gives $ t_1 + t_2 + t_3 = 0 $.
+\item A triple root gives a curve $ y^2 = x^3 $ with a \textbf{cusp}, which leads to additive reduction. Let
+$$ \bijection{\widetilde{E}_{\ns}}{\GG_\a}{\br{x, y}}{\dfrac{x}{y}}{\br{\dfrac{1}{t^2}, \dfrac{1}{t^3}}}{t}. $$
+We check this is a group homomorphism. Let $ P_1, P_2, P_3 $ lie on the line $ ax + by = 1 $. Write $ P_i = \br{x_i, y_i} $ and $ t_i = x_i / y_i $. Then $ x_i^3 = y_i^2 = y_i^2\br{ax_i + by_i} $, so $ t_1, t_2, t_3 $ are the roots of $ X^3 - aX - b = 0 $. Looking at the coefficient of $ X^2 $ gives $ t_1 + t_2 + t_3 = 0 $.
 \end{itemize}
 
 \subsection{The subgroup of nonsingular reduction}
@@ -1471,24 +1465,24 @@ is a group homomorphism. Let $ P_1, P_2, P_3 $ lie on the line $ ax + by = 1 $. 
 \lecture{14}{Monday}{09/11/20}
 
 \begin{definition*}
-$$ E_0\br{K} = \cbr{P \in E\br{K} \st \widetilde{P} \in \widetilde{E}_{\ns}\br{k}}. $$
+$$ E_0\br{K} = \cbr{P \in E\br{K} \st \widetilde{P} \in \widetilde{E}_{\ns}\br{\kappa}}. $$
 \end{definition*}
 
 \begin{proposition}
 \label{prop:9.5}
-$ E_0\br{K} $ is a subgroup of $ E\br{K} $, and reduction modulo $ \pi $ is a surjective group homomorphism $ E_0\br{K} \to \widetilde{E}_{\ns}\br{k} $.
+$ E_0\br{K} $ is a subgroup of $ E\br{K} $, and reduction modulo $ \pi $ is a surjective group homomorphism $ E_0\br{K} \to \widetilde{E}_{\ns}\br{\kappa} $.
 \end{proposition}
 
 \begin{proof}
 \hfill
 \begin{itemize}
-\item A line $ l $ in $ \PP^2 $ defined over $ K $ has equation $ aX + bY + cZ = 0 $ for $ a, b, c \in K $. We may assume $ \min\br{v\br{a}, v\br{b}, v\br{c}} = 0 $. Reduction modulo $ \pi $ gives the line $ \widetilde{l} $, $ \widetilde{a}X + \widetilde{b}Y + \widetilde{c}Z = 0 $. If $ P_1, P_2, P_3 \in E\br{K} $ with $ P_1 + P_2 + P_3 = \OOO $ then these points lie on a line $ l $, so $ \widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3} \in \widetilde{E}\br{k} $ lie on the line $ \widetilde{l} $. If $ \widetilde{P_1}, \widetilde{P_2} \in \widetilde{E}_{\ns}\br{k} $ then $ \widetilde{P_3} \in \widetilde{E}_{\ns}\br{k} $. So if $ P_1, P_2 \in E_0\br{K} $ then $ P_3 \in E_0\br{K} $ and $ \widetilde{P_1} + \widetilde{P_2} + \widetilde{P_3} = \OOO $. Check this still works if $ \#\cbr{\widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3}} < 3 $. \footnote{Exercise}
+\item A line $ l $ in $ \PP^2 $ defined over $ K $ has equation $ aX + bY + cZ = 0 $ for $ a, b, c \in K $. We may assume $ \min\br{v\br{a}, v\br{b}, v\br{c}} = 0 $. Reduction modulo $ \pi $ gives the line $ \widetilde{l} $, $ \widetilde{a}X + \widetilde{b}Y + \widetilde{c}Z = 0 $. If $ P_1, P_2, P_3 \in E\br{K} $ with $ P_1 + P_2 + P_3 = \OOO $ then these points lie on a line $ l $, so $ \widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3} \in \widetilde{E}\br{\kappa} $ lie on the line $ \widetilde{l} $. If $ \widetilde{P_1}, \widetilde{P_2} \in \widetilde{E}_{\ns}\br{\kappa} $ then $ \widetilde{P_3} \in \widetilde{E}_{\ns}\br{\kappa} $. So if $ P_1, P_2 \in E_0\br{K} $ then $ P_3 \in E_0\br{K} $ and $ \widetilde{P_1} + \widetilde{P_2} + \widetilde{P_3} = \OOO $. Check this still works if $ \#\cbr{\widetilde{P_1}, \widetilde{P_2}, \widetilde{P_3}} < 3 $. \footnote{Exercise}
 
 \pagebreak
 
 \item For surjectivity, let
 $$ f\br{x, y} = y^2 + a_1xy + a_3y - \br{x^3 + a_2x^2 + a_4x + a_6}. $$
-Let $ \widetilde{P} \in \widetilde{E}_{\ns}\br{k} \setminus \cbr{\OOO} $ say $ \widetilde{P} = \br{\widetilde{x_0}, \widetilde{y_0}} $ for some $ x_0, y_0 \in \OOO_K $. Since $ \widetilde{P} $ is nonsingular, either
+Let $ \widetilde{P} \in \widetilde{E}_{\ns}\br{\kappa} \setminus \cbr{\OOO} $ say $ \widetilde{P} = \br{\widetilde{x_0}, \widetilde{y_0}} $ for some $ x_0, y_0 \in \OOO_K $. Since $ \widetilde{P} $ is nonsingular, either
 \begin{enumerate}
 \item $ \tpd{f}{x}\br{x_0, y_0} \not\equiv 0 \mod \pi $, or
 \item $ \tpd{f}{y}\br{x_0, y_0} \not\equiv 0 \mod \pi $.
@@ -1504,13 +1498,13 @@ $$
 \begin{tikzcd}[column sep=small, row sep=tiny]
 E_r\br{K} \arrow[subset]{r} \arrow[cong]{d} & \dots \arrow[subset]{r} & E_2\br{K} \arrow[cong]{d} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E_1\br{K} \arrow[cong]{d} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E_0\br{K} & \subset \arrow[dash]{dd}{\cdot / \cdot} & E\br{K}, \\
 \br{\OOO_K, +} & & \widehat{E}\br{\pi^2\OOO_K} & & \widehat{E}\br{\pi\OOO_K} & & & & \\
-& & & \br{k, +} & & \widetilde{E}_{\ns}\br{k} & & ? &
+& & & \br{\kappa, +} & & \widetilde{E}_{\ns}\br{\kappa} & & ? &
 \end{tikzcd}.
 $$
 
 \begin{lemma}
 \label{lem:9.6}
-If $ \abs{k} < \infty $ then $ E_0\br{K} \subset E\br{K} $ has finite index.
+If $ \abs{\kappa} < \infty $ then $ E_0\br{K} \subset E\br{K} $ has finite index.
 \end{lemma}
 
 The proof is a compactness argument. See below.
@@ -1521,15 +1515,15 @@ If $ \sbr{K : \QQ_p} < \infty $ then $ E\br{K} $ contains a subgroup of finite i
 \end{theorem}
 
 \begin{proof}
-$ \abs{k} < \infty $, so this follows from the above.
+$ \abs{\kappa} < \infty $, so this follows from the above.
 \end{proof}
 
 \begin{lemma}
-If $ \abs{k} < \infty $ then $ \PP^n\br{K} $ is compact, with respect to the $ \pi $-adic topology.
+If $ \abs{\kappa} < \infty $ then $ \PP^n\br{K} $ is compact, with respect to the $ \pi $-adic topology.
 \end{lemma}
 
 \begin{proof}
-Since $ \abs{k} < \infty $, $ \OOO_K / \pi^r\OOO_K $ is finite for all $ r \ge 1 $, so
+Since $ \abs{\kappa} < \infty $, $ \OOO_K / \pi^r\OOO_K $ is finite for all $ r \ge 1 $, so
 $$ \OOO_K \xrightarrow{\sim} \varprojlim_r \OOO_K / \pi^r\OOO_K $$
 is compact. Then $ \PP^n\br{K} $ is the union of compact sets
 $$ \cbr{\br{a_0 : \dots : a_{i - 1} : 1 : a_{i + 1} : \dots : a_n} \st a_j \in \OOO_K}, $$
@@ -1557,7 +1551,7 @@ $$ \c_K\br{E} = \sbr{E\br{K} : E_0\br{K}}. $$
 
 \subsection{Unramified extensions of local fields}
 
-Let $ \sbr{K : \QQ_p} < \infty $ and let $ L / K $ be a finite extension with residue fields $ k' $ and $ k $. Let $ f = \sbr{k' : k} $. Then
+Let $ \sbr{K : \QQ_p} < \infty $ and let $ L / K $ be a finite extension with residue fields $ \kappa' $ and $ \kappa $. Let $ f = \sbr{\kappa' : \kappa} $. Then
 $$
 \begin{tikzcd}
 K^* \arrow[twoheadrightarrow]{r}{\v_K} \arrow[subset]{d} & \ZZ \arrow{d}{\cdot e} \\
@@ -1566,7 +1560,7 @@ L^* \arrow[twoheadrightarrow]{r}[swap]{\v_L} & \ZZ
 $$
 
 \begin{fact*}
-$ \sbr{L : K} = ef $. If $ L / K $ is Galois then there is a natural group homomorphism $ \Gal\br{L / K} \to \Gal\br{k' / k} $. This map is surjective with kernel of order $ e $.
+$ \sbr{L : K} = ef $. If $ L / K $ is Galois then there is a natural group homomorphism $ \Gal\br{L / K} \to \Gal\br{\kappa' / \kappa} $. This map is surjective with kernel of order $ e $.
 \end{fact*}
 
 \begin{definition*}
@@ -1576,7 +1570,7 @@ $ L / K $ is \textbf{unramified} if $ e = 1 $.
 \begin{fact*}
 For each integer $ m \ge 1 $
 \begin{itemize}
-\item $ k $ has a unique extension of degree $ m $, say $ k_m $,
+\item $ \kappa $ has a unique extension of degree $ m $, say $ \kappa_m $, and
 \item $ K $ has a unique unramified extension of degree $ m $, say $ K_m $.
 \end{itemize}
 These extensions are Galois with cyclic Galois group.
@@ -1602,12 +1596,12 @@ Let $ \sbr{K : \QQ_p} < \infty $. Suppose $ E / K $ has good reduction and $ p \
 
 \begin{proof}
 For each $ m \ge 1 $ there is a short exact sequence
-$$ 0 \to E_1\br{K_m} \to E\br{K_m} \to \widetilde{E}\br{k_m} \to 0. $$
+$$ 0 \to E_1\br{K_m} \to E\br{K_m} \to \widetilde{E}\br{\kappa_m} \to 0. $$
 Taking union over $ m \ge 1 $ gives a commutative diagram
 $$
 \begin{tikzcd}
-0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & E\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & \widetilde{E}\br{\overline{k}} \arrow{r} \arrow{d}{\cdot n} & 0 \\
-0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} & E\br{K^{\ur}} \arrow{r} & \widetilde{E}\br{\overline{k}} \arrow{r} & 0
+0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & E\br{K^{\ur}} \arrow{r} \arrow{d}{\cdot n} & \widetilde{E}\br{\overline{\kappa}} \arrow{r} \arrow{d}{\cdot n} & 0 \\
+0 \arrow{r} & E_1\br{K^{\ur}} \arrow{r} & E\br{K^{\ur}} \arrow{r} & \widetilde{E}\br{\overline{\kappa}} \arrow{r} & 0
 \end{tikzcd}.
 $$
 The left map is an isomorphism by Corollary \ref{cor:8.5}, noting that $ p \nmid n $, so $ n \in \OOO_K^\times $. Since $ K^{\ur} $ is not complete we must apply Corollary \ref{cor:8.5} over each $ K_m $. The right map is surjective by Theorem \ref{thm:2.8} with kernel isomorphic to $ \br{\ZZ / n\ZZ}^2 $ by Theorem \ref{thm:6.5}, noting that $ p \nmid n $. By the snake lemma,
@@ -1635,7 +1629,7 @@ Let $ \sbr{K : \QQ} < \infty $, and let $ E / K $ be an elliptic curve.
 \subsection{Primes of good and bad reduction}
 
 \begin{notation*}
-If $ \ppp $ is a prime of $ K $, that is of $ \OOO_K $, then $ K_\ppp $ is the $ \ppp $-adic completion of $ K $ and $ k_\ppp = \OOO_K / \ppp $.
+If $ \ppp $ is a prime of $ K $, that is of $ \OOO_K $, then $ K_\ppp $ is the $ \ppp $-adic completion of $ K $ and $ \kappa_\ppp = \OOO_K / \ppp $.
 \end{notation*}
 
 \begin{definition*}
@@ -1666,11 +1660,11 @@ Take any prime $ \ppp $. Then $ K \subset K_\ppp $, so $ E\br{K}_{\tors} \subset
 
 \begin{lemma}
 \label{lem:10.3}
-Let $ \ppp $ be a prime of good reduction with $ \ppp \nmid n $. Then reduction modulo $ \ppp $ gives an injective group homomorphism $ E\br{K}\sbr{n} \hookrightarrow \widetilde{E}\br{k_\ppp}\sbr{n} $.
+Let $ \ppp $ be a prime of good reduction with $ \ppp \nmid n $. Then reduction modulo $ \ppp $ gives an injective group homomorphism $ E\br{K}\sbr{n} \hookrightarrow \widetilde{E}\br{\kappa_\ppp}\sbr{n} $.
 \end{lemma}
 
 \begin{proof}
-By Proposition \ref{prop:9.5}, $ E\br{K_\ppp} \to \widetilde{E}\br{k_\ppp} $ is a group homomorphism with kernel $ E_1\br{K_\ppp} $. By Corollary \ref{cor:8.5} and $ \ppp \nmid n $, $ E_1\br{K_\ppp} $ has no $ n $-torsion.
+By Proposition \ref{prop:9.5}, $ E\br{K_\ppp} \to \widetilde{E}\br{\kappa_\ppp} $ is a group homomorphism with kernel $ E_1\br{K_\ppp} $. By Corollary \ref{cor:8.5} and $ \ppp \nmid n $, $ E_1\br{K_\ppp} $ has no $ n $-torsion.
 \end{proof}
 
 \begin{example*}
@@ -1699,10 +1693,10 @@ So $ \#E\br{\QQ}_{\tors} \mid 5 \cdot 2^a $ for some $ a \ge 0 $ and $ \#E\br{\Q
 
 \begin{example*}
 Let $ E_D $ be $ y^2 = x^3 - D^2x $ for $ D \in \ZZ $ a squarefree integer. Then $ \Delta = 2^6D^6 $, and $ E_D\br{\QQ}_{\tors} \supset \cbr{\OOO, \br{0, 0}, \br{\pm D, 0}} \cong \br{\ZZ / 2\ZZ}^2 $. Let $ f\br{x} = x^3 - D^2x $. If $ p \nmid 2D $ then
-$$ \#\widetilde{E_D}\br{\FF_p} = 1 + \sum_{x \in \FF_p^2} \br{\br{\dfrac{f\br{x}}{p}} + 1}. $$
+$$ \#\widetilde{E_D}\br{\FF_p} = 1 + \sum_{x \in \FF_p} \br{\br{\dfrac{f\br{x}}{p}} + 1}. $$
 If $ p \equiv 3 \mod 4 $ then since $ f\br{x} $ is an odd function
 $$ \br{\dfrac{f\br{-x}}{p}} = \br{\dfrac{-f\br{x}}{p}} = \br{\dfrac{-1}{p}}\br{\dfrac{f\br{x}}{p}} = -\br{\dfrac{f\br{x}}{p}}, $$
-so $ \#\widetilde{E_D}\br{\FF_p} = p + 1 $. Let $ m = \#E_D\br{\QQ}_{\tors} $. We have $ 4 \mid m \mid p + 1 $ for all sufficiently large primes $ p $ with $ p \equiv 3 \mod 4 $, where $ p \nmid 2D $ and $ p \nmid m $. So $ m = 4 $, since otherwise this contradicts Dirichlet's theorem on primes in arithmetic progressions, so $ E_D\br{\QQ}_{\tors} \cong \br{\ZZ / 2\ZZ}^2 $. Thus $ \rk E_D\br{\QQ} \ge 1 $ if and only if there exist $ x, y \in \QQ $ with $ y \ne 0 $ such that $ y^2 = x^3 - D^2x $, if and only if $ D $ is a congruent number.
+so $ \#\widetilde{E_D}\br{\FF_p} = p + 1 $. Let $ m = \#E_D\br{\QQ}_{\tors} $. We have $ 4 \mid m \mid p + 1 $ for all sufficiently large primes $ p $ with $ p \equiv 3 \mod 4 $, where $ p \nmid 2D $ and $ p \nmid m $. Then $ m = 4 $, since otherwise this contradicts Dirichlet's theorem on primes in arithmetic progressions, so $ E_D\br{\QQ}_{\tors} \cong \br{\ZZ / 2\ZZ}^2 $. Thus $ \rk E_D\br{\QQ} \ge 1 $ if and only if there exist $ x, y \in \QQ $ with $ y \ne 0 $ such that $ y^2 = x^3 - D^2x $, if and only if $ D $ is a congruent number.
 \end{example*}
 
 \pagebreak
@@ -1771,7 +1765,7 @@ $$ \Gal\br{L / K} \cong \Hom\br{\Delta, \mu_n}. $$
 
 \begin{proof}
 $ L / K $ is Galois since $ \mu_n \subset K $ and $ \ch K \nmid n $. Define the \textbf{Kummer pairing}
-$$ \function[\abr{,}]{\Gal\br{L, K} \times \Delta}{\mu_n}{\br{\sigma, x}}{\dfrac{\sigma\br{\sqrt[n]{x}}}{\sqrt[n]{x}}}. $$
+$$ \function[\abr{,}]{\Gal\br{L / K} \times \Delta}{\mu_n}{\br{\sigma, x}}{\dfrac{\sigma\br{\sqrt[n]{x}}}{\sqrt[n]{x}}}. $$
 \begin{itemize}
 \item Well-defined. If $ \alpha, \beta \in L $ with $ \alpha^n = \beta^n = x $, then $ \br{\alpha / \beta}^n = 1 $. Then $ \alpha / \beta \in \mu_n \subset K $, so $ \sigma\br{\alpha} / \alpha = \sigma\br{\beta} / \beta $.
 \item Bilinear, since
@@ -1799,14 +1793,16 @@ $$ \bijection{\cbr{\text{finite subgroups} \ \Delta \subset K^* / \br{K^*}^n}}{\
 \begin{proof}
 \hfill
 \begin{itemize}
-\item Let $ L / K $ be a finite abelian extension of exponent dividing $ n $. Let $ \Delta = \br{\br{L^*}^n \cap K^*} / \br{K^*}^n $. Then $ K\br{\sqrt[n]{\Delta}} \subset L $ and we aim to show equality. Let $ G = \Gal\br{L / K} $. The Kummer pairing gives an injection $ \Delta \hookrightarrow \Hom\br{G, \mu_n} $. Claim that this is a surjection. Given the claim $ \Delta \cong \Hom\br{G, \mu_n} $, so by Lemma \ref{lem:11.1} $ \sbr{K\br{\sqrt[n]{\Delta}} : K} = \abs{\Delta} = \abs{G} = \sbr{L : K} $. But $ K\br{\sqrt[n]{\Delta}} \subset L $, so $ L = K\br{\sqrt[n]{\Delta}} $. To prove the claim, let $ \chi : G \to \mu_n $ be a group homomorphism. Distinct automorphisms are linearly independent, so there exists $ a \in L $ such that $ y = \sum_{\tau \in G} \chi\br{\tau}^{-1}\tau\br{a} \ne 0 $. Let $ \sigma \in G $. Then
-\begin{equation}
-\label{eq:12}
-\sigma\br{y} = \sum_{\tau \in G} \chi\br{\tau}^{-1}\sigma\br{\tau\br{a}} = \sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}\sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}\sigma\br{a} = \chi\br{\sigma}y,
-\end{equation}
+\item Let $ L / K $ be a finite abelian extension of exponent dividing $ n $. Let $ \Delta = \br{\br{L^*}^n \cap K^*} / \br{K^*}^n $. Then $ K\br{\sqrt[n]{\Delta}} \subset L $ and we aim to show equality. Let $ G = \Gal\br{L / K} $. The Kummer pairing gives an injection $ \Delta \hookrightarrow \Hom\br{G, \mu_n} $. Claim that this is a surjection. Given the claim $ \Delta \cong \Hom\br{G, \mu_n} $, so by Lemma \ref{lem:11.1} $ \sbr{K\br{\sqrt[n]{\Delta}} : K} = \abs{\Delta} = \abs{G} = \sbr{L : K} $. But $ K\br{\sqrt[n]{\Delta}} \subset L $, so $ L = K\br{\sqrt[n]{\Delta}} $. To prove the claim, let $ \chi : G \to \mu_n $ be a group homomorphism. Distinct automorphisms are linearly independent, so there exists $ a \in L $ such that
+$$ y = \sum_{\tau \in G} \chi\br{\tau}^{-1}\tau\br{a} \ne 0. $$
 
 \pagebreak
 
+Let $ \sigma \in G $. Then
+\begin{equation}
+\label{eq:12}
+\sigma\br{y} = \sum_{\tau \in G} \chi\br{\tau}^{-1}\sigma\br{\tau\br{a}} = \sum_{\tau \in G} \chi\br{\sigma^{-1}\tau}^{-1}\tau\br{a} = \chi\br{\sigma}\sum_{\tau \in G} \chi\br{\tau}^{-1}\tau\br{a} = \chi\br{\sigma}y,
+\end{equation}
 so $ \sigma\br{y^n} = y^n $ for all $ \sigma \in G $. Let $ x = y^n $. Then $ x \in K^* \cap \br{L^*}^n $, that is $ x \in \Delta $. Also by $ \br{\ref{eq:12}} $, $ \chi : \sigma \mapsto \sigma\br{y} / y = \sigma\br{\sqrt[n]{x}} / \sqrt[n]{x} $, so
 $$ \function{\Delta}{\Hom\br{G, \mu_n}}{x}{\chi}. $$
 This proves the claim.
@@ -1814,7 +1810,7 @@ This proves the claim.
 \end{itemize}
 \end{proof}
 
-\subsection{Unramified Kummer extensions}
+\subsection{Unramified Kummer extensions of number fields}
 
 \lecture{17}{Monday}{16/11/20}
 
@@ -1842,8 +1838,8 @@ $ K\br{S, n} $ is finite.
 The map
 $$ \function{K\br{S, n}}{\br{\ZZ / n\ZZ}^{\abs{S}}}{x}{\br{\v_\ppp\br{x} \mod n}_{\ppp \in S}} $$
 is a group homomorphism with kernel $ K\br{\emptyset, n} $. Since $ \abs{S} < \infty $, it suffices to prove Lemma \ref{lem:11.4} with $ S = \emptyset $. If $ x \in K^* $ represents an element of $ K\br{\emptyset, n} $ then $ \abr{x} = \aaa^n $ for some ideal $ \aaa $. There is an exact sequence
-$$ 0 \to \OOO_K^\times / \br{\OOO_K^\times}^n \to K\br{\emptyset, n} \xrightarrow{x\br{K^*}^n \mapsto \sbr{\aaa}} \Cl_K\sbr{n} \to 0. $$
-Since $ \abs{\Cl_K} < \infty $ and $ \OOO_K^\times $ is finitely generated, by Dirichlet's unit theorem, $ K\br{\emptyset, n} $ is finite.
+$$ 0 \to \OOO_K^\times / \br{\OOO_K^\times}^n \to K\br{\emptyset, n} \xrightarrow{x\br{K^*}^n \mapsto \sbr{\aaa}} \Cl\br{K}\sbr{n} \to 0. $$
+Since $ \abs{\Cl\br{K}} < \infty $ and $ \OOO_K^\times $ is finitely generated, by Dirichlet's unit theorem, $ K\br{\emptyset, n} $ is finite.
 \end{proof}
 
 \pagebreak
@@ -1871,8 +1867,8 @@ Let $ K $ be a number field, let $ E / K $ be an elliptic curve, and let $ n \ge
 By Lemma \ref{lem:12.1}, we may replace $ K $ by a finite Galois extension. So without loss of generality $ \mu_n \subset K $ and $ E\sbr{n} \subset E\br{K} $. Let
 $$ S = \cbr{\ppp \mid n} \cup \cbr{\text{primes of bad reduction for} \ E / K}. $$
 For each $ P \in E\br{K} $ the extension $ K\br{\sbr{n}^{-1}P} / K $ is unramified outside $ S $, by Theorem \ref{thm:9.9}. Let $ Q \in \sbr{n}^{-1}P $. Since $ E\sbr{n} \subset E\br{K} $, $ K\br{Q} = K\br{\sbr{n}^{-1}P} $. This is a Galois extension of $ K $. Let
-$$ \function{\Gal\br{K\br{Q} / K}}{E\sbr{n} \cong \br{\ZZ / n\ZZ}^2}{\sigma}{\sigma\br{Q} - Q}. $$
-This is
+$$ \function{\Gal\br{K\br{Q} / K}}{E\sbr{n} \cong \br{\ZZ / n\ZZ}^2}{\sigma}{\sigma\br{Q} - Q}, $$
+which is
 \begin{itemize}
 \item a group homomorphism, since
 $$ \sigma\tau\br{Q} - Q = \sigma\br{\tau\br{Q} - Q} + \sigma\br{Q} - Q = \tau\br{Q} - Q + \sigma\br{Q} - Q, $$
@@ -1925,7 +1921,7 @@ where $ r $ is called the \textbf{rank}. There is no known algorithm proven to c
 
 For simplicity take $ K = \QQ $.
 
-\subsection{Naive heights on projective space}
+\subsection{Naive heights}
 
 Write $ P \in \PP^n\br{\QQ} $ as $ P = \br{a_0 : \dots : a_n} $ where $ a_0, \dots, a_n \in \ZZ $ such that $ \gcd\br{a_0, \dots, a_n} = 1 $.
 
@@ -1957,23 +1953,21 @@ Indeed running Euclid's algorithm on $ f_1\br{X, 1} $ and $ f_2\br{X, 1} $ gives
 $$ \sum_{j = 1}^2 g_{ij}\br{a_1, a_2}f_j\br{a_1, a_2} = \kappa a_i^{2d - 1}, \qquad i = 1, 2, $$
 so $ \gcd\br{f_1\br{a_1, a_2}, f_2\br{a_1, a_2}} $ divides $ \gcd\br{\kappa a_1^{2d - 1}, \kappa a_2^{2d - 1}} = \kappa $. But also
 $$ \abs{\kappa a_i^{2d - 1}} \le \max_{j = 1, 2} \abs{f_j\br{a_1, a_2}}\sum_{j = 1}^2 \abs{g_{ij}\br{a_1, a_2}} \le \kappa\H\br{F\br{P}}\gamma_i\H\br{P}^{d - 1}, $$
-where $ \gamma_i $ is the sum of absolute values of coefficients of $ g_{i1} $ and $ g_{i2} $. Then
-$$ \kappa\abs{a_i}^{2d - 1} \le \gamma_i\kappa\H\br{F\br{P}}\H\br{P}^{d - 1}, \qquad i = 1, 2, $$
-so
-$$ \H\br{P}^{2d - 1} \le \max\br{\gamma_1, \gamma_2}\H\br{F\br{P}}\H\br{P}^{d - 1}. $$
+where $ \gamma_i $ is the sum of absolute values of coefficients of $ g_{i1} $ and $ g_{i2} $, so
+$$ \kappa\abs{a_i}^{2d - 1} \le \gamma_i\kappa\H\br{F\br{P}}\H\br{P}^{d - 1}, \qquad i = 1, 2. $$
 Thus
+$$ \H\br{P}^{2d - 1} \le \max\br{\gamma_1, \gamma_2}\H\br{F\br{P}}\H\br{P}^{d - 1}, $$
+so
 $$ c_1\H\br{P}^d = \dfrac{1}{\max\br{\gamma_1, \gamma_2}}\H\br{P}^d \le \H\br{F\br{P}}. $$
 \end{itemize}
 \end{proof}
+
+\pagebreak
 
 \begin{notation*}
 For $ x \in \QQ $
 $$ \H\br{x} = \H\br{\br{x : 1}} = \max\br{\abs{u}, \abs{v}}, \qquad x = \dfrac{u}{v}, \qquad u, v \in \ZZ \ \text{coprime}. $$
 \end{notation*}
-
-\pagebreak
-
-\subsection{Naive heights on elliptic curves}
 
 \begin{definition*}
 The \textbf{height} is
@@ -2050,7 +2044,7 @@ Take the limit as $ m \to \infty $.
 \end{proof}
 
 \begin{corollary}
-For any $ B > 0 $, $ \#\cbr{P \in E\br{\QQ} \st \widehat{h}\br{P} \le B} $ is finite.
+For any $ B > 0 $, $ \#\cbr{P \in E\br{\QQ} \st \widehat{\h}\br{P} \le B} $ is finite.
 \end{corollary}
 
 \begin{proof}
@@ -2112,14 +2106,12 @@ Replacing $ P $ and $ Q $ by $ P + Q $ and $ P - Q $ and using $ \widehat{\h}\br
 
 \pagebreak
 
-\subsection{Heights on number fields}
-
 The \textbf{places} of a number field $ K $ are
 \begin{itemize}
-\item the finite places, or primes, $ \abs{x}_\ppp = c^{-\v_\ppp\br{x}} $ for some fixed $ c > 1 $, and
-\item the infinite places, or real and complex embeddings, $ \abs{x}_\sigma = \abs{\sigma\br{x}}^d $ for some fixed $ d > 0 $.
+\item the \textbf{finite places}, or primes, $ \abs{x}_\ppp = c^{-\v_\ppp\br{x}} $ for some fixed $ c > 1 $, and
+\item the \textbf{infinite places}, or real and complex embeddings, $ \abs{x}_\sigma = \abs{\sigma\br{x}}^d $ for some fixed $ d > 0 $.
 \end{itemize}
-For each place $ v $ we may chose a normalisation $ \abs{\cdot}_v $, that is make a choice of $ c $ and $ d $, such that
+For each place $ v $ we may choose a normalisation $ \abs{\cdot}_v $, that is make a choice of $ c $ and $ d $, such that
 $$ \prod_v \abs{\lambda}_v = 1, \qquad \lambda \in K^*, $$
 the \textbf{product formula}.
 
@@ -2139,9 +2131,9 @@ This can be used to give alternative proofs of Theorem \ref{thm:5.6} and Theorem
 
 \section{Dual isogenies and the Weil pairing}
 
-\subsection{Dual isogenies}
-
 Let $ K $ be a perfect field, and let $ E / K $ be an elliptic curve.
+
+\subsection{Dual isogenies}
 
 \begin{proposition}
 \label{prop:14.1}
@@ -2212,14 +2204,14 @@ adding up a formal sum using the group law.
 \end{definition*}
 
 Recall there is an isomorphism
-$$ \functions{E}{\Pic^0 E}{P}{\sbr{\br{P} - \br{\OOO_E}}}{\sum_P n_PP}{\sum_P n_P\br{P} - \br{\sum_P n_P}\br{\OOO_E}}, $$
+$$ \functions{E}{\Pic^0 E}{P}{\sbr{\br{P} - \br{\OOO_E}}}{\sum_P n_PP}{\sbr{\sum_P n_P\br{P} - \br{\sum_P n_P}\br{\OOO_E}}}, $$
 so $ \Sum D \mapsto \sbr{D} $ for all $ D \in \Div^0 E $.
 
 \begin{lemma}
 Let $ D \in \Div E $. Then $ D \sim 0 $ if and only if $ \deg D = 0 $ and $ \Sum D = \OOO_E $.
 \end{lemma}
 
-Let $ \phi : E \to E' $ be an isogeny of degree $ n $ with dual isogeny $ \widehat{\phi} : E' \to E $. Assume $ \ch K \ne n $, so $ \phi $ and $ \phi' $ are separable. We define the \textbf{Weil pairing}
+Let $ \phi : E \to E' $ be an isogeny of degree $ n $ with dual isogeny $ \widehat{\phi} : E' \to E $. Assume $ \ch K \nmid n $, so $ \phi $ and $ \widehat{\phi} $ are separable. We define the \textbf{Weil pairing}
 $$ \e_\phi : E\sbr{\phi} \times E'\sbr{\widehat{\phi}} \to \mu_n. $$
 Let $ T \in E'\sbr{\widehat{\phi}} $. Then $ nT = \OOO $. So there exists $ f \in \overline{K}\br{E'}^* $ such that
 $$ \div f = n\br{T} - n\br{\OOO}. $$
@@ -2363,7 +2355,9 @@ $$ \H^1\br{\Gal\br{L / K}, L^*} = 0. $$
 \end{theorem*}
 
 \begin{proof}
-Let $ G = \Gal\br{L / K} $. Let $ \br{a_\sigma}_{\sigma \in G} \in \Z^1\br{G, L^*} $. Distinct automorphisms are linearly independent, so there exists $ y \in L $ such that $ x = \sum_{\tau \in G} a_\tau^{-1}\tau\br{y} \ne 0 $. For $ \sigma \in G $, $ a_{\sigma\tau} = \sigma\br{a_\tau}a_\sigma $, so $ \sigma\br{a_\tau}^{-1} = a_\sigma a_{\sigma\tau}^{-1} $. Then
+Let $ G = \Gal\br{L / K} $. Let $ \br{a_\sigma}_{\sigma \in G} \in \Z^1\br{G, L^*} $. Distinct automorphisms are linearly independent, so there exists $ y \in L $ such that
+$$ x = \sum_{\tau \in G} a_\tau^{-1}\tau\br{y} \ne 0. $$
+For $ \sigma \in G $, $ a_{\sigma\tau} = \sigma\br{a_\tau}a_\sigma $, so $ \sigma\br{a_\tau}^{-1} = a_\sigma a_{\sigma\tau}^{-1} $. Then
 $$ \sigma\br{x} = \sum_{\tau \in G} \sigma\br{a_\tau}^{-1}\sigma\tau\br{y} = a_\sigma\sum_{\tau \in G} a_{\sigma\tau}^{-1}\sigma\tau\br{y} = a_\sigma x, $$
 so $ a_\sigma = \sigma\br{x} / x $. Thus $ \br{a_\sigma}_{\sigma \in G} \in \B^1\br{G, L^*} $, so $ \H^1\br{G, L^*} = 0 $.
 \end{proof}
@@ -2377,7 +2371,9 @@ Assume $ \ch K \nmid n $. There is an exact sequence of $ \Gal\br{\overline{K} /
 $$ 0 \to \mu_n \to \overline{K}^* \xrightarrow{x \mapsto x^n} \overline{K}^* \to 0. $$
 The long exact sequence is
 $$ K^* \xrightarrow{x \mapsto x^n} K^* \to \H^1\br{\Gal\br{\overline{K} / K}, \mu_n} \to \H^1\br{\Gal\br{\overline{K} / K}, \overline{K}^*} = 0, $$
-by Hilbert 90, so $ \H^1\br{\Gal\br{\overline{K} / K}, \mu_n} \cong K^* / \br{K^*}^n $. If $ \mu_n \subset K $ then
+by Hilbert 90, so
+$$ \H^1\br{\Gal\br{\overline{K} / K}, \mu_n} \cong K^* / \br{K^*}^n. $$
+If $ \mu_n \subset K $ then
 \begin{equation}
 \label{eq:16}
 \Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n} \cong K^* / \br{K^*}^n.
@@ -2386,10 +2382,18 @@ If $ L / K $ is a finite Galois extension then $ \pi : \Gal\br{\overline{K} / K}
 $$ \function{\Hom\br{\Gal\br{L / K}, \mu_n}}{\Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n}}{\chi}{\chi \circ \pi}. $$
 We claim that every finite subgroup $ \Xi $ of $ \Hom_{\cts}\br{\Gal\br{\overline{K} / K}, \mu_n} $ arises uniquely in this way for $ L / K $ a finite abelian extension of exponent dividing $ n $. So from $ \br{\ref{eq:16}} $ we recover Theorem \ref{thm:11.2}. To prove the claim, consider the pairing
 $$ \function{\Gal\br{\overline{K} / K} \times \Xi}{\mu_n}{\br{\sigma, \chi}}{\chi\br{\sigma}}. $$
-This is bilinear, has trivial right kernel, and left kernel is $ \bigcap_{\chi \in \Xi} \ker \chi \subset \Gal\br{\overline{K} / K} $, an open normal subgroup, so $ \bigcap_{\chi \in \Xi} \ker \chi = \Gal\br{\overline{K} / L} $ for some $ L / K $ finite Galois. We get a nondegenerate pairing $ \Gal\br{L / K} \times \Xi \to \mu_n $. In particular $ \Gal\br{L / K} \hookrightarrow \Hom\br{\Xi, \mu_n} $, so $ L / K $ is abelian of exponent dividing $ n $, and $ \Xi \hookrightarrow \Hom\br{\Gal\br{L / K}, \mu_n} $. This proves the claim.
+This is bilinear, has trivial right kernel, and left kernel is $ \bigcap_{\chi \in \Xi} \ker \chi \subset \Gal\br{\overline{K} / K} $, an open normal subgroup, so $ \bigcap_{\chi \in \Xi} \ker \chi = \Gal\br{\overline{K} / L} $ for some $ L / K $ finite Galois. We get a nondegenerate pairing
+$$ \Gal\br{L / K} \times \Xi \to \mu_n. $$
+In particular
+$$ \Gal\br{L / K} \hookrightarrow \Hom\br{\Xi, \mu_n}, $$
+so $ L / K $ is abelian of exponent dividing $ n $, and
+$$ \Xi \hookrightarrow \Hom\br{\Gal\br{L / K}, \mu_n}. $$
+This proves the claim.
+
+\pagebreak
 
 \begin{notation*}
-$ \H^1\br{K, -} $ means $ \H^1\br{\Gal\br{\overline{K}, K}, -} $.
+$ \H^1\br{K, -} $ means $ \H^1\br{\Gal\br{\overline{K} / K}, -} $.
 \end{notation*}
 
 \begin{lemma}
@@ -2403,12 +2407,10 @@ By Hilbert 90 it suffices to show the sequence
 $$ 0 \to \OOO_K^\times / \br{\OOO_K^\times}^n \xrightarrow{\alpha} K^* / \br{K^*}^n \xrightarrow{\beta} \br{K^{\ur}}^* / \br{\br{K^{\ur}}^*}^n $$
 is exact.
 \begin{itemize}[leftmargin=1in]
-\item[$ \im \alpha \subset \ker \beta $.] Let $ a \in \OOO_K^\times $. If $ f\br{x} = x^n - a \in \OOO_K\sbr{x} $ then $ \widetilde{f}\br{x} = x^n - \widetilde{a} \in k\sbr{x} $ has distinct roots in $ \overline{k} $, using $ p \nmid n $ here. Then $ K\br{\sqrt[n]{a}} / K $ is unramified, so $ a \in \br{\br{K^{\ur}}^*}^n $.
+\item[$ \im \alpha \subset \ker \beta $.] Let $ a \in \OOO_K^\times $. If $ f\br{x} = x^n - a \in \OOO_K\sbr{x} $ then $ \widetilde{f}\br{x} = x^n - \widetilde{a} \in \kappa\sbr{x} $ has distinct roots in $ \overline{\kappa} $, using $ p \nmid n $ here. Then $ K\br{\sqrt[n]{a}} / K $ is unramified, so $ a \in \br{\br{K^{\ur}}^*}^n $.
 \item[$ \ker \beta \subset \im \alpha $.] Let $ x\br{K^*}^n \in \ker \beta $. Write $ x = u\pi^r $ with $ u \in \OOO_K^\times $ and $ r \in \ZZ $. Since the discrete valuation in $ K $ extends to $ K^{\ur} $ we have $ r \equiv 0 \mod n $, so $ x\br{K^*}^n = u\br{K^*}^n $.
 \end{itemize}
 \end{proof}
-
-\pagebreak
 
 \subsection{The Selmer and Tate-Shafarevich groups}
 
@@ -2445,6 +2447,8 @@ Taking $ \phi = \sbr{n} $ gives
 $$ 0 \to E\br{K} / nE\br{K} \to \S^{\br{n}}\br{E / K} \to \Sha\br{E / K}\sbr{n} \to 0. $$
 Re-organising the proof of weak Mordell-Weil gives the following.
 
+\pagebreak
+
 \begin{theorem}
 $ \S^{\br{n}}\br{E / K} $ is finite.
 \end{theorem}
@@ -2459,9 +2463,6 @@ $$
 $$
 where $ \H^1\br{\Gal\br{L / K}, E\br{L}\sbr{n}} $ is finite. By extending our field we may assume $ E\sbr{n} \subset E\br{K} $, and hence $ \mu_n \subset K $, so $ E\sbr{n} \cong \mu_n \times \mu_n $ as a Galois module. By Hilbert 90,
 $$ \H^1\br{K, E\sbr{n}} \cong \H^1\br{K, \mu_n} \times \H^1\br{K, \mu_n} \cong K^* / \br{K^*}^n \times K^* / \br{K^*}^n. $$
-
-\pagebreak
-
 Let
 $$ S = \cbr{\text{primes of bad reduction for} \ E / K} \cup \cbr{v \mid n\infty}. $$
 Note that this is a finite set of places. Define the subgroup of $ \H^1\br{K, A} $ unramified outside $ S $ by
@@ -2513,9 +2514,9 @@ $$ \alpha\br{P} = f\br{P} \mod \br{K^*}^n, \qquad P \in E'\br{K} \setminus \cbr{
 \end{theorem}
 
 \begin{proof}
-Let $ Q \in \phi^{-1}\br{P} $. Then $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{Q} - Q \in E\sbr{\phi} \cong \mu_n $. For any $ X \in E $ not a zero or pole of $ g $, then taking $ X = Q $,
+Let $ Q \in \phi^{-1}\br{P} $. Then $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{Q} - Q \in E\sbr{\phi} \cong \mu_n $. For any $ X \in E $ not a zero or pole of $ g $,
 $$ \e_\phi\br{\sigma\br{Q} - Q, T} = \dfrac{g\br{\sigma\br{Q} - Q + X}}{g\br{X}} = \dfrac{g\br{\sigma\br{Q}}}{g\br{Q}} = \dfrac{\sigma\br{g\br{Q}}}{g\br{Q}} = \dfrac{\sigma\br{\sqrt[n]{f\br{P}}}}{\sqrt[n]{f\br{P}}}, $$
-noting that $ f\br{P} = g\br{Q}^n $. Then $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{\sqrt[n]{f\br{P}}} / \sqrt[n]{f\br{P}} $. But there is an isomorphism
+taking $ X = Q $, noting that $ f\br{P} = g\br{Q}^n $, so $ \delta\br{P} $ is represented by the cocycle $ \sigma \mapsto \sigma\br{\sqrt[n]{f\br{P}}} / \sqrt[n]{f\br{P}} $. But there is an isomorphism
 $$ \function{K^* / \br{K^*}^n}{\H^1\br{K, \mu_n}}{x}{\br{\sigma \mapsto \dfrac{\sigma\br{\sqrt[n]{x}}}{\sqrt[n]{x}}}}, $$
 so $ \alpha\br{P} = f\br{P} \mod \br{K^*}^n $.
 \end{proof}
@@ -2525,7 +2526,7 @@ so $ \alpha\br{P} = f\br{P} \mod \br{K^*}^n $.
 \lecture{23}{Monday}{30/11/20}
 
 Let $ E $ be $ y^2 = x\br{x^2 + ax + b} $ where $ b\br{a^2 - 4b} \ne 0 $, let $ E' $ be $ y^2 = x\br{x^2 + a'x + b'} $ where $ a' = -2a $ and $ b' = a^2 - 4b $, and let
-$$ \function[\phi]{E}{E'}{\br{x, y}}{\br{\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b}}{x^2}}}, \qquad \function[\widehat{\phi}]{E'}{E}{\br{x, y}}{\br{\dfrac{1}{4}\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b}}{8x^2}}}. $$
+$$ \function[\phi]{E}{E'}{\br{x, y}}{\br{\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b}}{x^2}}}, \qquad \function[\widehat{\phi}]{E'}{E}{\br{x, y}}{\br{\dfrac{1}{4}\br{\dfrac{y}{x}}^2, \dfrac{y\br{x^2 - b'}}{8x^2}}}. $$
 Then $ E\sbr{\phi} = \cbr{\OOO, T} $ where $ T = \br{0, 0} \in E\br{K} $ and $ E'\sbr{\widehat{\phi}} = \cbr{\OOO, T'} $ where $ T' = \br{0, 0} \in E'\br{K} $.
 
 \begin{proposition}
@@ -2596,7 +2597,7 @@ Now take $ K = \QQ $. Then
 $$
 \begin{tikzcd}[row sep=tiny]
 0 \arrow{r} & E'\br{\QQ} / \phi\br{E\br{\QQ}} \arrow{r}{\delta} \arrow{dr}[swap]{\alpha_{E'}} & \S^{\br{\phi}}\br{E / \QQ} \arrow{r} \arrow[subset]{d} & \Sha\br{E / \QQ}\sbr{\phi_*} \arrow{r} & 0 \\
-& & \QQ^* / \br{\QQ^*}^n & &
+& & \QQ^* / \br{\QQ^*}^2 & &
 \end{tikzcd},
 $$
 so
@@ -2624,14 +2625,14 @@ Thus $ \im \alpha_{E'} = \abr{2} \subset \QQ^* / \br{\QQ^*}^2 $. Thus $ \rk E\br
 \lecture{24}{Wednesday}{02/12/20}
 
 \begin{example*}
-Let $ E $ be $ y^2 = x^3 + px $ for $ p \equiv 5 \mod 8 $ prime. If $ b_1 = -1 $, then $ w^2 = -u^4 - pv^4 $ is insoluble over $ \RR $. Thus $ \im \alpha_E = \abr{p} \subset \QQ^* / \br{\QQ^*}^2 $. Let $ E' $ be $ y^2 = x^3 - 4px $. Then $ \im \alpha_{E'} \subset \abr{-1, 2, p} \subset \QQ^* / \br{\QQ^*}^2 $. Note that $ \alpha_{E'}\br{T'} = -4p\br{\QQ^*}^2 = -p\br{\QQ^*}^2 $.
+Let $ E $ be $ y^2 = x^3 + px $ for $ p $ prime such that $ p \equiv 5 \mod 8 $. If $ b_1 = -1 $, then $ w^2 = -u^4 - pv^4 $ is insoluble over $ \RR $. Thus $ \im \alpha_E = \abr{p} \subset \QQ^* / \br{\QQ^*}^2 $. Let $ E' $ be $ y^2 = x^3 - 4px $. Then $ \im \alpha_{E'} \subset \abr{-1, 2, p} \subset \QQ^* / \br{\QQ^*}^2 $. Note that $ \alpha_{E'}\br{T'} = -4p\br{\QQ^*}^2 = -p\br{\QQ^*}^2 $.
 \begin{itemize}
 \item If $ b_1 = 2 $, then $ w^2 = 2u^4 - 2pv^4 $. Suppose this is soluble. Without loss of generality $ u, v, w \in \ZZ $ such that $ \gcd\br{u, v} = 1 $. If $ p \mid u $ then $ p \mid w $ and then $ p \mid v $, a contradiction. Then $ w^2 \equiv 2u^4 \not\equiv 0 \mod p $, so $ \br{\tfrac{2}{p}} = 1 $, a contradiction since $ p \equiv 5 \mod 8 $.
 \item If $ b_1 = -2 $, then $ w^2 = -2u^4 + 2pv^4 $. Likewise this has no solution since $ \br{\tfrac{-2}{p}} = -1 $.
 \item If $ b_1 = p $, then $ w^2 = pu^4 - 4v^4 $.
 \begin{itemize}
-\item This is soluble over $ \QQ_p $ since $ \br{\tfrac{-1}{p}} = 1 $, so by Hensel's lemma $ -1 \in \br{\ZZ_p^*}^2 $.
-\item This is soluble over $ \QQ_2 $ since $ p - 4 \equiv 1 \mod 8 $, so by Hensel's lemma $ p - 4 \in \br{\ZZ_2^*}^2 $.
+\item This is soluble over $ \QQ_p $ since $ \br{\tfrac{-1}{p}} = 1 $, so by Hensel's lemma $ -1 \in \br{\ZZ_p^\times}^2 $.
+\item This is soluble over $ \QQ_2 $ since $ p - 4 \equiv 1 \mod 8 $, so by Hensel's lemma $ p - 4 \in \br{\ZZ_2^\times}^2 $.
 \item This is soluble over $ \RR $ since $ \sqrt{p} \in \RR $.
 \end{itemize}
 Over $ \QQ $,
@@ -2648,8 +2649,8 @@ $$
 Thus $ \im \alpha_{E'} \subset \abr{-1, p} \subset \QQ^* / \br{\QQ^*}^2 $, and
 $$ \rk E\br{\QQ} =
 \begin{cases}
-0 & \text{this is insoluble over} \ \QQ \\
-1 & \text{this is soluble over} \ \QQ
+0 & w^2 = pu^4 - 4v^4 \ \text{is insoluble over} \ \QQ \\
+1 & w^2 = pu^4 - 4v^4 \ \text{is soluble over} \ \QQ
 \end{cases}.
 $$
 The conjecture is that $ \rk E\br{\QQ} = 1 $ for all primes $ p \equiv 5 \mod 8 $.
@@ -2660,8 +2661,8 @@ Let $ E $ be $ y^2 = x^3 + 17x $. Then $ \im \alpha_E = \abr{17} \subset \QQ^* /
 $$ C\br{K} = \cbr{\br{u, v, w} \in K^3 \setminus \cbr{0} \st 2w^2 = u^4 - 17v^4} / \sim, $$
 where $ \br{u, v, w} \sim \br{\lambda u, \lambda v, \lambda^2 w} $ for all $ \lambda \in K^* $. Then
 \begin{itemize}
-\item $ C\br{\QQ_2} \ne \emptyset $ since $ 17 \in \br{\ZZ_2^*}^4 $,
-\item $ C\br{\QQ_{17}} \ne \emptyset $ since $ 2 \in \br{\ZZ_{17}^*}^2 $, and
+\item $ C\br{\QQ_2} \ne \emptyset $ since $ 17 \in \br{\ZZ_2^\times}^4 $,
+\item $ C\br{\QQ_{17}} \ne \emptyset $ since $ 2 \in \br{\ZZ_{17}^\times}^2 $, and
 \item $ C\br{\RR} \ne \emptyset $ since $ \sqrt{2} \in \RR $,
 \end{itemize}
 so $ C\br{\QQ_v} \ne \emptyset $ for all places $ v $ of $ \QQ $. Suppose $ \br{u, v, w} \in C\br{\QQ} $, without loss of generality $ u, v, w \in \ZZ $ such that $ \gcd\br{u, v} = 1 $ and $ w > 0 $. If $ 17 \mid w $ then $ 17 \mid u $ and then $ 17 \mid v $, a contradiction. So if $ p \mid w $ then $ p \ne 17 $ and $ \br{\tfrac{17}{p}} = 1 $ if $ p $ is odd, so $ \br{\tfrac{p}{17}} = \br{\tfrac{17}{p}} = 1 $, by quadratic reciprocity, but also $ \br{\tfrac{2}{17}} = 1 $. Thus $ \br{\tfrac{w}{17}} = 1 $. But $ 2w^2 \equiv u^4 \mod 17 $, so $ 2 \in \br{\FF_{17}^*}^4 = \cbr{\pm 1, \pm 4} $, a contradiction. Thus $ C\br{\QQ} = \emptyset $. That is, $ C $ is a counterexample to the Hasse principle. It represents a nontrivial element of $ \Sha\br{E / \QQ} $.

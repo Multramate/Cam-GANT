@@ -37,7 +37,9 @@ First set $ \PP^n\br{k} = \br{k^{n + 1} \setminus \cbr{0}} / k^* $ with \textbf{
 $$ \VV\br{I} = \cbr{z \in \PP^n \st \forall F \in I \ \text{homogeneous}, \ F\br{z} = 0}. $$
 If $ V = \VV\br{I} \subseteq \AA^n $, set
 $$ \II\br{V} = \cbr{f \in k\sbr{x_1, \dots, x_n} \st \forall x \in V, \ f\br{x} = 0}. $$
-Observe that $ \VV\br{\II\br{V}} = V $, by tautology, and $ \II\br{\VV\br{I}} \supseteq \sqrt{I} $, which is obvious. Recall that the \textbf{radical} $ \sqrt{I} $ of the ideal $ I $ is defined by $ f \in \sqrt{I} $ if and only if there exists $ m > 0 $ such that $ f^m \in I $. \textbf{Hilbert's Nullstellensatz} states that, noting $ k = \overline{k} $, $ \II\br{\VV\br{I}} = \sqrt{I} $. The \textbf{coordinate ring} is
+Observe that $ \VV\br{\II\br{V}} = V $, by tautology, and $ \II\br{\VV\br{I}} \supseteq \sqrt{I} $, which is obvious. Recall that the \textbf{radical} $ \sqrt{I} $ of the ideal $ I $ is defined by $ f \in \sqrt{I} $ if and only if there exists $ m > 0 $ such that $ f^m \in I $. \textbf{Hilbert's Nullstellensatz} states that, noting $ k = \overline{k} $,
+$$ \II\br{\VV\br{I}} = \sqrt{I}. $$
+The \textbf{coordinate ring} is
 $$ k\sbr{V} = k\sbr{x_1, \dots, x_n} / \II\br{V}. $$
 This may be regarded as the ring of polynomial functions on $ V $, and it is a finitely generated reduced $ k $-algebra. Recall that a \textbf{$ k $-algebra} is a commutative ring containing $ k $ as a subring. It is \textbf{finitely generated} if it is the quotient of a polynomial ring over $ k $, and \textbf{reduced} if $ a^m = 0 $ implies that $ a = 0 $.
 
@@ -49,7 +51,7 @@ A better question is what is wrong with varieties?
 \item Number theory? Diophantine equations. If $ I \subseteq \ZZ\sbr{x_1, \dots, x_n} $ is an ideal, have $ \VV\br{I} \subseteq \ZZ^n $. For example, $ x^n + y^n = z^n $.
 \item Why should we only consider radical, or prime, ideals? For example, a natural situation is
 $$ X_1 = \VV\br{x - y^2} \subseteq \AA^2, \qquad X_2 = \VV\br{x} \subseteq \AA^2. $$
-Then $ X_1 \cap X_2 = \VV\br{x - y^2, x} $. Note $ I = \abr{x - y^2, x} = \abr{x, y^2} $ is not a radical ideal, because $ y \notin I $ and $ y^2 \in I $ so $ y \not\in \sqrt{I} $. Recall the coordinate ring of $ X_i $ is $ k\sbr{X_i} = k\sbr{x, y} / I_i $. Then $ k\sbr{X_1 \cap X_2} = k\sbr{x, y} / \abr{x, y^2} \cong k\sbr{y} / \abr{y^2} $. So thinking of the coordinate ring of $ X_1 \cap X_2 $ as functions on $ X_1 \cap X_2 $, we have a function $ y $ whose square is zero, but is not itself zero.
+Then $ X_1 \cap X_2 = \VV\br{x - y^2, x} $. Note $ I = \abr{x - y^2, x} = \abr{x, y^2} $ is not a radical ideal, because $ y \notin I $ and $ y^2 \in I $ so $ y \in \sqrt{I} $. Recall the coordinate ring of $ X_i $ is $ k\sbr{X_i} = k\sbr{x, y} / I_i $ and $ k\sbr{X_1 \cap X_2} = k\sbr{x, y} / \abr{x, y^2} \cong k\sbr{y} / \abr{y^2} $. So thinking of the coordinate ring of $ X_1 \cap X_2 $ as functions on $ X_1 \cap X_2 $, we have a function $ y $ whose square is zero, but is not itself zero.
 \end{itemize}
 
 \pagebreak
@@ -69,7 +71,7 @@ This gives a tuple $ \br{a_1, \dots, a_n} \in \br{k'}^n $ with $ f\br{a_1, \dots
 \begin{example*}
 The $ \RR $-algebra homomorphism
 $$ \functions[\phi]{\RR\sbr{x, y} / \abr{x^2 + y^2 + 1}}{\CC}{x}{0}{y}{i} $$
-is surjective with kernel $ \abr{x, y^2 + 1} $, since $ \RR\sbr{y} / \abr{y^2 + 1} \cong \CC $. This is a maximal ideal but is not of the form $ \abr{x - a, y - b} $ for $ \br{a, b} \in \RR^2 $. If instead we considered the map
+is surjective with kernel $ \abr{x, y^2 + 1} $, so $ \RR\sbr{y} / \abr{y^2 + 1} \cong \CC $. This is a maximal ideal but is not of the form $ \abr{x - a, y - b} $ for $ \br{a, b} \in \RR^2 $. If instead we considered the map
 $$ \functions{\RR\sbr{x, y} / \abr{x^2 + y^2 + 1}}{\CC}{x}{0}{y}{-i}, $$
 we get the same kernel. That is, $ \br{0, i} $ and $ \br{0, -i} $ are solutions to $ x^2 + y^2 + 1 = 0 $, but they correspond to the same maximal ideal. In fact, this maximal ideal corresponds to a Galois orbit of $ \Gal\br{\CC / \RR} $ of solutions.
 \end{example*}
@@ -80,11 +82,11 @@ There are more exotic points by taking even bigger fields.
 
 \begin{example*}
 Let $ k\br{X} $ be the field of fractions of $ k\sbr{X} = \RR\sbr{x, y} / \abr{x^2 + y^2 + 1} $. There is an inclusion
-$$ \functions{k\sbr{X}}{k\br{X}}{f}{\dfrac{f}{1}}{\br{x, y}}{\br{x, y}}. $$
-The kernel of this map is zero. This gives a solution to the equation $ x^2 + y^2 + 1 = 0 $ with coordinates in the field $ k\br{X} $. This solution is $ \br{x, y} \in \AA^2\br{k\br{X}} $.
+$$ \functions{k\sbr{X}}{k\br{X}}{x}{\dfrac{x}{1}}{y}{\dfrac{y}{1}}. $$
+This gives a solution to the equation $ x^2 + y^2 + 1 = 0 $ with coordinates in the field $ k\br{X} $. This solution is $ \br{x / 1, y / 1} \in \AA^2\br{k\br{X}} $. The kernel of this map is zero. The moral is that once we start looking at solutions to equations over any field, then we get maps $ k\sbr{X} \to k' $ with kernel not necessarily maximal.
 \end{example*}
 
-The moral is that once we start looking at solutions to equation over any field, then we get maps $ k\sbr{X} \to k' $ with kernel not necessarily maximal. What about solutions over rings?
+What about solutions over rings?
 
 \pagebreak
 
@@ -101,9 +103,11 @@ Then $ f\br{r_1, \dots, r_n} = 0 $ for all $ f \in I $. This gives a lot of flex
 
 Take this to its logical conclusion. Let $ A $ be a ring, where all rings are commutative in this course. Given $ A $, we hope for some geometric object $ \Spec A $, the \textbf{spectrum} of $ A $. For a ring $ R $, the set of \textbf{$ R $-valued points} of $ X $ is
 $$ X\br{R} = \Hom_{\text{ring}}\br{A, R}. $$
-A morphism $ X = \Spec A \to Y = \Spec B $ should be the same thing as giving a morphism $ \phi : B \to A $. Define the category of \textbf{affine schemes} to be the opposite category to the category of rings. Define a \textbf{scheme} to be something which is locally isomorphic to an affine scheme. By analogy, a \textbf{manifold} is a topological space with an open cover $ \cbr{U_i} $ with each $ U_i $ homeomorphic to an open subset of $ \RR^n $. To make sense of the definition of schemes, we need a lot of language.
+A morphism $ X = \Spec A \to Y = \Spec B $ should be the same thing as giving a morphism $ \phi : B \to A $. Define the category of \textbf{affine schemes} to be the opposite category to the category of rings. Define a \textbf{scheme} to be something which is locally isomorphic to an affine scheme. By analogy, a \textbf{manifold} is a topological space with an open cover $ \cbr{U_i} $ with each $ U_i $ homeomorphic to an open subset of $ \RR^n $.
 
 \subsection{Spectrum of a ring}
+
+To make sense of the definition of schemes, we need a lot of language.
 
 \begin{definition*}
 Let $ A $ be a ring. Then
@@ -181,7 +185,7 @@ is commutative.
 \end{definition*}
 
 \begin{definition*}
-A presheaf $ \FFF $ is a \textbf{sheaf} if it satisfies the following additional axioms.
+A presheaf $ \FFF $ is a \textbf{sheaf} if it satisfies two additional axioms.
 \begin{enumerate}[label=S\arabic*.]
 \item If $ U \subseteq X $ is covered by an open cover $ \cbr{U_i} $ and $ s \in \FFF\br{U} $ satisfies $ \eval{s}_{U_i} = \rho_{UU_i}\br{s} = 0 $ for all $ i $, then $ s = 0 $.
 \item If $ U $ and $ \cbr{U_i} $ are as in S1 and $ s_i \in \FFF\br{U_i} $ such that $ \eval{s_i}_{U_i \cap U_j} = \eval{s_j}_{U_i \cap U_j} $ for all $ i $ and $ j $, then there exists $ s \in \FFF\br{U} $ with $ \eval{s}_{U_i} = s_i $ for all $ i $.
@@ -206,8 +210,6 @@ Exactness means
 \end{remark*}
 
 \pagebreak
-
-\subsection{Examples}
 
 \lecture{3}{Wednesday}{14/10/20}
 
@@ -268,7 +270,7 @@ Let $ f : \FFF \to \GGG $ be a morphism of sheaves. Then $ f $ is an isomorphism
 \hfill
 \begin{itemize}[leftmargin=0.5in]
 \item[$ \implies $] Obvious.
-\item[$ \impliedby $] Assume $ f_p $ is an isomorphism for all $ p \in X $. Need to show that $ f_U : \FFF\br{U} \to \GGG\br{U} $ is an isomorphism for all $ U \subseteq X $, as then we can define $ \br{f^{-1}}_U = \br{f_U}^{-1} $. Check that with this definition, $ \br{f^{-1}}_U $ is compatible with restriction maps, hence $ f^{-1} $ is a morphism of sheaves. \footnote{Exercise}
+\item[$ \impliedby $] Assume $ f_p $ is an isomorphism for all $ p \in X $. Need to show that $ f_U : \FFF\br{U} \to \GGG\br{U} $ is an isomorphism for all $ U \subseteq X $, as then we can define $ \br{f^{-1}}_U = \br{f_U}^{-1} $. \footnote{Exercise: check that with this definition, $ \br{f^{-1}}_U $ is compatible with restriction maps, hence $ f^{-1} $ is a morphism of sheaves}
 \begin{itemize}
 \item $ f_U $ is injective. Suppose $ s \in \FFF\br{U} $, and $ f_U\br{s} = 0 $. Then for all $ p \in U $, $ f_p\br{U, s} = \br{U, f_U\br{s}} = \br{U, 0} = 0 \in \GGG_p $. Since $ f_p $ is injective, $ \br{U, s} = 0 $ in $ \FFF_p $. That is, there exists a open neighbourhood $ V_p $ of $ p $ in $ U $ such that $ \eval{s}_{V_p} = 0 $. Since $ \cbr{V_p}_{p \in U} $ cover $ U $, we see by S1 that $ s = 0 $.
 \item $ f_U $ is surjective. Let $ t \in \GGG\br{U} $ and write $ t_p = \br{U, t} \in \GGG_p $. Since $ f_p $ is surjective, there exists $ s_p \in \FFF_p $ with $ f_p\br{s_p} = t_p $. That is, there exists $ V_p \subseteq U $ an open neighbourhood of $ p $, and a germ $ \br{V_p, s_p} $ such that $ \br{V_p, f_{V_p}\br{s_p}} \equiv \br{U, t} $. By shrinking $ V_p $ if necessary, we can assume that $ \eval{t}_{V_p} = f_{V_p}\br{s_p} $. Now on $ V_p \cap V_q $,
@@ -279,8 +281,6 @@ By S1, applied to $ f_U\br{s} - t $, we get $ f_U\br{s} = t $. Thus $ f_U $ is s
 \end{itemize}
 \end{itemize}
 \end{proof}
-
-\subsection{Sheafification}
 
 \begin{theorem}[Sheafification]
 Given a presheaf $ \FFF $, there exists a sheaf $ \FFF^+ $ and a morphism $ \theta : \FFF \to \FFF^+ $ satisfying the following universal property. For any sheaf $ \GGG $ and morphism $ \phi : \FFF \to \GGG $, there exists a unique morphism $ \phi^+ : \FFF^+ \to \GGG $ such that $ \phi^+ \circ \theta = \phi $, so
@@ -301,7 +301,7 @@ $$ \function[\theta_U]{\FFF\br{U}}{\FFF^+\br{U}}{s}{\br{p \mapsto \br{U, s} \in 
 \end{proof}
 
 \begin{exercise*}
-A recommendation is to do all exercises in Chapter II.$ 1 $ of Hartshorne.
+A recommendation is to do all exercises in Section II.$ 1 $ of Hartshorne.
 \end{exercise*}
 
 \pagebreak
@@ -311,24 +311,20 @@ A recommendation is to do all exercises in Chapter II.$ 1 $ of Hartshorne.
 \lecture{4}{Friday}{16/10/20}
 
 \begin{definition*}
-Let $ f : \FFF \to \GGG $ be a morphism of presheaves on a space $ X $. We define the following.
+Let $ f : \FFF \to \GGG $ be a morphism of presheaves on a space $ X $. We define the following. \footnote{Exercise: check that these are presheaves, that is restrictions work}
 \begin{itemize}
 \item The \textbf{presheaf kernel} of $ f $, $ \ker f $, is the presheaf given by $ \br{\ker f}\br{U} = \ker \br{f_U : \FFF\br{U} \to \GGG\br{U}} $.
-\item The \textbf{presheaf cokernel} $ \coker f $ is the presheaf given by $ \br{\coker f}\br{U} = \coker \br{f_U} = \GGG\br{U} / \im f_U $.
+\item The \textbf{presheaf cokernel} $ \coker f $ is the presheaf given by $ \br{\coker f}\br{U} = \coker f_U = \GGG\br{U} / \im f_U $.
 \item The \textbf{presheaf image} $ \im f $ is the presheaf given by $ \br{\im f}\br{U} = \im f_U $.
 \end{itemize}
 \end{definition*}
-
-\begin{exercise*}
-Check that these are presheaves. That is, restrictions work.
-\end{exercise*}
 
 \begin{remark}
 If $ f : \FFF \to \GGG $ is a morphism of sheaves, then $ \ker f $ is also a sheaf.
 \end{remark}
 
 \begin{proof}
-S1 is certainly satisfied. If $ s \in \br{\ker f}\br{U} \subseteq \FFF\br{U} $ satisfies $ \eval{s}_{U_i} = 0 $ for all $ U_i $ in a cover of $ U $ so $ s = 0 $ by S1 for $ \FFF $. Given $ s_i \in \br{\ker f}\br{U_i} $ with $ \cbr{U_i} $ an open cover of $ U $, and with $ \eval{s_i}_{U_i \cap U_j} = \eval{s_j}_{U_i \cap U_j} $, then there exists $ s \in \FFF\br{U} $ with $ \eval{s}_{U_i} = s_i $ by S2 for $ \FFF $. But $ f_U\br{s} = 0 $ since $ \eval{f_U\br{s}}_{U_i} = f_{U_i}\br{\eval{s}_{U_i}} = f_{U_i}\br{s_i} = 0 $ so by S1, $ f_U\br{s} = 0 $.
+S1 is certainly satisfied, since if $ s \in \br{\ker f}\br{U} \subseteq \FFF\br{U} $ satisfies $ \eval{s}_{U_i} = 0 $ for all $ U_i $ in a cover of $ U $ then $ s = 0 $ by S1 for $ \FFF $. Given $ s_i \in \br{\ker f}\br{U_i} $ with $ \cbr{U_i} $ an open cover of $ U $, and with $ \eval{s_i}_{U_i \cap U_j} = \eval{s_j}_{U_i \cap U_j} $, then there exists $ s \in \FFF\br{U} $ with $ \eval{s}_{U_i} = s_i $ by S2 for $ \FFF $. But $ f_U\br{s} = 0 $ since $ \eval{f_U\br{s}}_{U_i} = f_{U_i}\br{\eval{s}_{U_i}} = f_{U_i}\br{s_i} = 0 $ so by S1, $ f_U\br{s} = 0 $.
 \end{proof}
 
 \begin{example*}
@@ -345,17 +341,20 @@ Let $ f : \FFF \to \GGG $ be a morphism of sheaves.
 \item The \textbf{sheaf cokernel} is the sheaf associated to the presheaf cokernel of $ f $.
 \item The \textbf{sheaf image} is the sheaf associated to the presheaf image of $ f $.
 \end{itemize}
-\end{definition*}
-
 $ \FFF $ is a \textbf{subsheaf} of $ \GGG $ if we have inclusions $ \FFF\br{U} \subseteq \GGG\br{U} $ for all $ U $ compatible with restrictions.
+\end{definition*}
 
 \begin{exercise*}
 The sheaf image $ \im f $ is a subsheaf of $ \GGG $.
 \end{exercise*}
 
+\begin{definition*}
 We say $ f $ is \textbf{injective} if $ \ker f = 0 $. We say $ f $ is \textbf{surjective} if $ \im f = \GGG $. We say a sequence of morphisms of sheaves
 $$ \dots \to \FFF^{i - 1} \xrightarrow{f^i} \FFF^i \xrightarrow{f^{i + 1}} \FFF^{i + 1} \to \dots $$
-is \textbf{exact} if $ \ker f^{i + 1} = \im f^i $ for all $ i $. If $ \FFF' \subseteq \FFF $ is a subsheaf, we write $ \FFF / \FFF' $ for the sheaf associated to the presheaf $ U \mapsto \FFF\br{U} / \FFF'\br{U} $. That is, this is the cokernel of the inclusion $ \FFF' \hookrightarrow \FFF $. A warning is if $ f : \FFF \to \GGG $ is surjective, we do not necessarily have $ \FFF\br{U} \to \GGG\br{U} $ surjective for all $ U $.
+is \textbf{exact} if $ \ker f^{i + 1} = \im f^i $ for all $ i $. If $ \FFF' \subseteq \FFF $ is a subsheaf, we write $ \FFF / \FFF' $ for the sheaf associated to the presheaf $ U \mapsto \FFF\br{U} / \FFF'\br{U} $. That is, this is the cokernel of the inclusion $ \FFF' \hookrightarrow \FFF $.
+\end{definition*}
+
+A warning is if $ f : \FFF \to \GGG $ is surjective, we do not necessarily have $ \FFF\br{U} \to \GGG\br{U} $ surjective for all $ U $.
 
 \begin{lemma}
 Let $ f : \FFF \to \GGG $ be a morphism of sheaves. Then for all $ p \in X $,
@@ -405,22 +404,19 @@ Given $ f : \FFF \to \GGG $, in fact $ \GGG / \im f \cong \coker f $. \footnote{
 
 \lecture{5}{Monday}{19/10/20}
 
-Let $ f : X \to Y $ be a continuous map between topological spaces, $ \FFF $ a sheaf on $ X $, and $ \GGG $ a sheaf on $ Y $. Define $ f_*\FFF $ by, for $ U \subseteq Y $
-$$ \br{f_*\FFF}\br{U} = \FFF\br{f^{-1}\br{U}}. $$
-
-\begin{exercise*}
-Check $ f_*\FFF $ is a sheaf on $ Y $.
-\end{exercise*}
-
+Let $ f : X \to Y $ be a continuous map between topological spaces, $ \FFF $ a sheaf on $ X $, and $ \GGG $ a sheaf on $ Y $. Define $ f_*\FFF $ by \footnote{Exercise: check $ f_*\FFF $ is a sheaf on $ Y $}
+$$ \br{f_*\FFF}\br{U} = \FFF\br{f^{-1}\br{U}}, \qquad U \subseteq Y. $$
 Define $ f^{-1}\GGG $ to be the sheaf associated to the presheaf
 $$ U \subseteq X \mapsto \cbr{\br{V, s} \st V \supseteq f\br{U}, \ V \ \text{open}, \ s \in \GGG\br{V}} / \sim, $$
 where $ \br{V, s} \sim \br{V', s'} $ if there exists $ W \subseteq V \cap V' $ such that $ f\br{U} \subseteq W $, and $ \eval{s}_W = \eval{s'}_W $.
 
 \begin{example*}
-If $ f : \cbr{p} \to X $ is an inclusion of a point, then $ f^{-1}\GGG = \GGG_p $. This is a group but defines a sheaf on a one-point space. More generally, if $ \iota : Z \hookrightarrow X $ is an inclusion of a subset with induced topology, we often write
+If $ f : \cbr{p} \to X $ is an inclusion of a point, then $ f^{-1}\GGG = \GGG_p $. This is a group but defines a sheaf on a one-point space.
+\end{example*}
+
+More generally, if $ \iota : Z \hookrightarrow X $ is an inclusion of a subset with induced topology, we often write
 $$ \eval{\FFF}_Z = \iota^{-1}\FFF. $$
 If $ Z $ is open in $ X $, then this is easy, since if $ U \subseteq Z $ then $ \eval{\FFF}_Z\br{U} = \FFF\br{U} $.
-\end{example*}
 
 \begin{remark*}
 If $ s \in \FFF\br{U} $ we say $ s $ is a \textbf{section} of $ \FFF $ over $ U $. We often write
@@ -437,7 +433,7 @@ Want to construct a sheaf $ \OOO $ on $ \Spec A $, analogous to the sheaf of reg
 \subsection{Localisation of a ring}
 
 Importantly recall the following. Let $ A $ be a ring, where all rings are commutative with unity, and $ S \subseteq A $ be a multiplicatively closed subset. That is, $ 1 \in S $, and if $ s_1, s_2 \in S $ then $ s_1s_2 \in S $. We define a ring
-$$ S^{-1}A = \cbr{\br{a, s} \st a \in A, s \in S} / \sim, $$
+$$ S^{-1}A = \cbr{\br{a, s} \st a \in A, \ s \in S} / \sim, $$
 where $ \br{a, s} \sim \br{a', s'} $ if there exists $ s'' \in S $ such that $ s''\br{as' - a's} = 0 $. Then $ S^{-1}A $ is called the \textbf{localisation of $ A $ at $ S $}. Note that we write $ a / s $ for the equivalence class of $ \br{a, s} $. The usual equivalence relation on fractions is $ a / s = a' / s' $ if and only if $ as' = a's $. We need the extra possibility of killing $ as' - a's $ with $ s'' $ if $ A $ is not an integral domain.
 
 \begin{example*}
@@ -447,7 +443,7 @@ where $ \br{a, s} \sim \br{a', s'} $ if there exists $ s'' \in S $ such that $ s
 \item If $ \ppp \subseteq A $ is a prime ideal and $ S = A \setminus \ppp $, then
 \begin{itemize}
 \item $ 1 \in S $, and
-\item $ a, b \in S $ and $ ab \in \ppp $ is a contradiction by definition of prime ideals, so $ ab \in S $.
+\item if $ a, b \in S $, then $ ab \in \ppp $ is a contradiction by definition of prime ideals, so $ ab \in S $.
 \end{itemize}
 Then $ A_\ppp = S^{-1}A $ is the \textbf{localisation of $ A $ at $ \ppp $}. These will correspond to stalks.
 \end{itemize}
@@ -459,34 +455,40 @@ Let
 $$ \OOO\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} A_\ppp \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in A_\ppp, \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists a, f \in A, \ \forall \qqq \in V, \ f \notin \qqq, \ s\br{\qqq} = \dfrac{a}{f} \in A_\qqq \end{array}}. $$
 
 \begin{proposition}
-For any $ \ppp \in \Spec A $, $ \OOO_\ppp = A_\ppp $.
+For any $ \ppp \in \Spec A $,
+$$ \OOO_\ppp = A_\ppp. $$
 \end{proposition}
 
 \begin{proof}
 Have a map
 $$ \function{\OOO_\ppp}{A_\ppp}{\br{U, s}}{s\br{\ppp}}. $$
 \begin{itemize}
-\item Surjective. Any element of $ A_\ppp $ can be written as $ a / f $ for some $ a \in A $ and $ f \notin \ppp $. Then $ \DD\br{f} = \Spec A \setminus \VV\br{f} = \cbr{\ppp \in \Spec A \st f \notin \ppp} $, since $ \VV\br{f} = \cbr{\ppp \in \Spec A \st f \in \ppp} $. Now $ a / f $ defines an element of $ \OOO\br{\DD\br{f}} $ given by
+\item Surjective. Any element of $ A_\ppp $ can be written as $ a / f $ for some $ a \in A $ and $ f \notin \ppp $. Then
+$$ \DD\br{f} = \Spec A \setminus \VV\br{f} = \cbr{\ppp \in \Spec A \st f \notin \ppp}, $$
+since $ \VV\br{f} = \cbr{\ppp \in \Spec A \st f \in \ppp} $. Now $ a / f $ defines an element of $ \OOO\br{\DD\br{f}} $ given by
 $$ \function[s]{\DD\br{f}}{A_\qqq}{\qqq}{\dfrac{a}{f}}, $$
 and in particular, $ s\br{\ppp} = a / f \in A_\ppp $.
+
+\pagebreak
+
 \item Injective. Let $ \ppp \in U \subseteq \Spec A $ and $ s \in \OOO\br{U} $ with $ s\br{\ppp} = 0 $ in $ A_\ppp $. Want to show $ \br{U, s} = 0 $ in $ \OOO_\ppp $. By shrinking $ U $ if necessary, we can assume that $ s $ is given by $ a, f \in A $ with $ s\br{\qqq} = a / f $ for all $ \qqq \in U $. In particular $ f \notin \qqq $ for all $ \qqq \in U $. Thus $ a / f = 0 / 1 $ in $ A_\ppp $ so there exists $ h \in A \setminus \ppp $ such that $ 0 = h \cdot \br{a \cdot 1 - f \cdot 0} = h \cdot a $ in $ A $. Now let $ V = U \cap \DD\br{h} $. Then $ \br{V, \eval{s}_V} = 0 $, since for $ \qqq \in V $, $ \eval{s}_V\br{\qqq} = s\br{\qqq} = a / f \in A_\qqq $ and $ h \cdot a = 0 $, and $ h \in A \setminus \qqq $ so $ h \cdot a = 0 $ implies $ a / f = 0 / 1 $ in $ A_\qqq $. Thus $ \br{U, s} = 0 $ in $ \OOO_\ppp $.
 \end{itemize}
 \end{proof}
 
-\pagebreak
-
 \begin{proposition}
-For any $ f \in A $, $ \OOO\br{\DD\br{f}} = A_f $.
+For any $ f \in A $,
+$$ \OOO\br{\DD\br{f}} = A_f. $$
 \end{proposition}
 
 In particular, as $ \Spec A = \DD\br{1} $, the \textbf{global sections} of $ \OOO $ is $ \OOO\br{\Spec A} = A_1 = A $.
 
 \begin{proof}
-Let
-$$ \function[\psi]{A_f}{\OOO\br{\DD\br{f}}}{\dfrac{a}{f^n}}{\br{\ppp \in \DD\br{f} \mapsto \dfrac{a}{f^n} \in A_\ppp}}, $$
-since $ f \notin \ppp $ implies that $ f^n \notin \ppp $ for all $ n \ge 0 $.
+Since $ f \notin \ppp $ implies that $ f^n \notin \ppp $ for all $ n \ge 0 $, let
+$$ \function[\psi]{A_f}{\OOO\br{\DD\br{f}}}{\dfrac{a}{f^n}}{\br{\ppp \in \DD\br{f} \mapsto \dfrac{a}{f^n} \in A_\ppp}}. $$
 \begin{itemize}
-\item Injective. If $ \psi\br{a / f^n} = 0 $, then for all $ \ppp \in \DD\br{f} $, $ a / f^n = 0 $ in $ A_\ppp $. That is, there exists $ h \in A \setminus \ppp $ such that $ h \cdot a = 0 $ in $ A $. Let $ I = \cbr{g \in A \st g \cdot a = 0} $, the \textbf{annihilator} of $ a $. So $ h \in I $ and $ h \notin \ppp $, so $ I \not\subseteq \ppp $. This is true for all $ \ppp \in \DD\br{f} $, so $ \VV\br{I} \cap \DD\br{f} = \emptyset $. Thus $ f \in \bigcap_{\ppp \in \VV\br{I}} \ppp = \sqrt{I} $, the radical, so $ f^m \in I $ for some $ m > 0 $. Thus $ f^m \cdot a = 0 $, so $ a / f^n = 0 $ in $ A_f $. Thus $ \psi $ is injective.
+\item Injective. If $ \psi\br{a / f^n} = 0 $, then for all $ \ppp \in \DD\br{f} $, $ a / f^n = 0 $ in $ A_\ppp $. That is, there exists $ h \in A \setminus \ppp $ such that $ h \cdot a = 0 $ in $ A $. Let
+$$ I = \cbr{g \in A \st g \cdot a = 0}, $$
+the \textbf{annihilator} of $ a $. So $ h \in I $ and $ h \notin \ppp $, so $ I \not\subseteq \ppp $. This is true for all $ \ppp \in \DD\br{f} $, so $ \VV\br{I} \cap \DD\br{f} = \emptyset $. Thus $ f \in \bigcap_{\ppp \in \VV\br{I}} \ppp = \sqrt{I} $, the radical, so $ f^m \in I $ for some $ m > 0 $. Thus $ f^m \cdot a = 0 $, so $ a / f^n = 0 $ in $ A_f $. Thus $ \psi $ is injective.
 
 \lecture{6}{Wednesday}{21/10/20}
 
@@ -498,13 +500,15 @@ since $ f \notin \ppp $ implies that $ f^n \notin \ppp $ for all $ n \ge 0 $.
 & \iff \qquad f \in \sqrt{\sum_i \abr{h_i}}
 \qquad \iff \qquad \exists n, \ f^n \in \sum_i \abr{h_i},
 \end{align*}
-we can write $ f^n = \sum_{i \in I} b_ih_i $ for some finite index set $ I $. Thus reversing this argument, $ \DD\br{f} \subseteq \bigcup_{i \in I} \DD\br{h_i} $. We now pass to this finite subcover $ \cbr{\DD\br{h_i}} $. On $ \DD\br{h_i} \cap \DD\br{h_j} = \DD\br{h_ih_j} $, note $ a_i / h_i $ and $ a_j / h_j $ both represent $ s $, so by injectivity shown in the last lecture, $ a_ih_j / h_ih_j = a_i / h_i = a_j / h_j = a_jh_i / h_ih_j $ in $ A_{h_ih_j} $. Thus for some $ n $, $ \br{h_ih_j}^n\br{h_ja_i - h_ia_j} = 0 $ in $ A $. We can pick an $ n $ sufficiently large to work for all pairs $ i $ and $ j $. Rewriting, $ h_j^{n + 1}\br{h_i^na_i} - h_i^{n + 1}\br{h_ja_j} = 0 $. Replace each $ h_i $ by $ h_i^{n + 1} $ and $ a_i $ by $ h_i^na_i $, since $ a_i / h_i = a_ih_i^n / h_i^{n + 1} $. Thus we can assume that $ s $ is still represented on $ \DD\br{h_i} $ by $ a_i / h_i $ but also for each $ i $ and $ j $ have $ h_ia_j = h_ja_i $. Note $ f^n = \sum_ib_ih_i $ for $ b_i \in A $, since $ \cbr{\DD\br{h_i}} $ cover $ \DD\br{f} $. Let $ a = \sum_i b_ia_i $. Then for any $ j $, $ h_ja = \sum_i b_ia_ih_j = \sum_i b_ia_jh_i = f^na_j $. Thus $ a / f^n = a_j / h_j $ on $ \DD\br{h_j} $. Thus $ \psi\br{a / f^n} = s $, so $ \psi $ is surjective.
+we can write $ f^n = \sum_{i \in I} b_ih_i $ for some finite index set $ I $. Thus reversing this argument, $ \DD\br{f} \subseteq \bigcup_{i \in I} \DD\br{h_i} $. We now pass to this finite subcover $ \cbr{\DD\br{h_i}} $. On $ \DD\br{h_i} \cap \DD\br{h_j} = \DD\br{h_ih_j} $, note $ a_i / h_i $ and $ a_j / h_j $ both represent $ s $, so by injectivity shown in the last lecture, $ a_ih_j / h_ih_j = a_i / h_i = a_j / h_j = a_jh_i / h_ih_j $ in $ A_{h_ih_j} $. Thus for some $ n $, $ \br{h_ih_j}^n\br{h_ja_i - h_ia_j} = 0 $ in $ A $. We can pick an $ n $ sufficiently large to work for all pairs $ i $ and $ j $. Rewriting, $ h_j^{n + 1}\br{h_i^na_i} - h_i^{n + 1}\br{h_j^na_j} = 0 $. Replace each $ h_i $ by $ h_i^{n + 1} $ and $ a_i $ by $ h_i^na_i $, since $ a_i / h_i = a_ih_i^n / h_i^{n + 1} $. Thus we can assume that $ s $ is still represented on $ \DD\br{h_i} $ by $ a_i / h_i $ but also for each $ i $ and $ j $ have $ h_ia_j = h_ja_i $. Note $ f^n = \sum_ib_ih_i $ for $ b_i \in A $, since $ \cbr{\DD\br{h_i}} $ cover $ \DD\br{f} $. Let $ a = \sum_i b_ia_i $. Then for any $ j $, $ h_ja = \sum_i b_ia_ih_j = \sum_i b_ia_jh_i = f^na_j $. Thus $ a / f^n = a_j / h_j $ on $ \DD\br{h_j} $. Thus $ \psi\br{a / f^n} = s $, so $ \psi $ is surjective.
 \end{itemize}
 \end{proof}
 
 We now have a topological space $ \Spec A $ equipped with a sheaf of rings $ \OOO $.
 
-\subsection{Ringed spaces}
+\pagebreak
+
+\subsection{Affine schemes}
 
 \begin{definition*}
 A \textbf{ringed space} is a pair $ \br{X, \OOO_X} $ where
@@ -514,12 +518,10 @@ A \textbf{ringed space} is a pair $ \br{X, \OOO_X} $ where
 \end{itemize}
 A \textbf{morphism of ringed spaces} $ f : \br{X, \OOO_X} \to \br{Y, \OOO_Y} $ is the following data.
 \begin{itemize}
-\item $ f : X \to Y $ a continuous map.
-\item $ f^\# : \OOO_Y \to f_*\OOO_X $ a morphism of sheaves of rings. That is, for each $ U \subseteq Y $ open, we have a ring homomorphism $ f_U^\# : \OOO_Y\br{U} \to \br{f_*\OOO_X}\br{U} = \OOO_X\br{f^{-1}\br{U}} $.
+\item A continuous map $ f : X \to Y $.
+\item A morphism of sheaves of rings $ f^\# : \OOO_Y \to f_*\OOO_X $. That is, for each $ U \subseteq Y $ open, we have a ring homomorphism $ f_U^\# : \OOO_Y\br{U} \to \br{f_*\OOO_X}\br{U} = \OOO_X\br{f^{-1}\br{U}} $.
 \end{itemize}
 \end{definition*}
-
-\pagebreak
 
 \begin{example*}
 \hfill
@@ -531,28 +533,23 @@ $$ \function[f_U^\#]{\OOO_Y\br{U}}{\OOO_X\br{f^{-1}\br{U}}}{\phi}{\phi \circ f}.
 \end{itemize}
 \end{example*}
 
-A ring is \textbf{local} if it has a unique maximal ideal.
+A ring is \textbf{local} if it has a unique maximal ideal. A ring homomorphism $ \phi : \br{A, \mmm_A} \to \br{B, \mmm_B} $ is \textbf{local} if $ \phi^{-1}\br{\mmm_B} = \mmm_A $, where $ \mmm_A $ is the maximal ideal of $ A $. Note that $ \phi\br{A \setminus \mmm_A} = \phi\br{A^*} \subseteq B^* = B \setminus \mmm_B $, where $ A^* $ is the set of invertible elements of $ A $. Thus $ \phi^{-1}\br{\mmm_B} \subseteq \mmm_A $ always.
 
 \begin{definition*}
-A \textbf{locally ringed space} $ \br{X, \OOO_X} $ is a ringed space such that $ \OOO_{X, p} $ is a local ring for all $ p \in X $. A \textbf{morphism $ f : \br{X, \OOO_X} \to \br{Y, \OOO_Y} $ of locally ringed spaces} is a morphism of ringed spaces such that the induced homomorphism $ f_p^\# : \OOO_{Y, f\br{p}} \to \OOO_{X, p} $ is a \textbf{local homomorphism} for all $ p \in X $.
-\begin{itemize}
-\item The map is defined by \footnote{Exercise: check well-defined}
-$$ \function[f_p^\#]{\OOO_{Y, f\br{p}}}{\OOO_{X, p}}{\br{U, s}}{\br{f^{-1}\br{U}, f_U^\#\br{s}}}. $$
-\item A ring homomorphism $ \phi : \br{A, \mmm_A} \to \br{B, \mmm_B} $ is \textbf{local} if $ \phi^{-1}\br{\mmm_B} = \mmm_A $, where $ \mmm_A $ is the maximal ideal of $ A $. Note that $ \phi\br{A \setminus \mmm_A} = \phi\br{A^*} \subseteq B^* = B \setminus \mmm_B $, where $ A^* $ is the set of invertible elements of $ A $. Thus $ \phi^{-1}\br{\mmm_B} \subseteq \mmm_A $ always.
-\end{itemize}
+A \textbf{locally ringed space} $ \br{X, \OOO_X} $ is a ringed space such that $ \OOO_{X, p} $ is a local ring for all $ p \in X $. A \textbf{morphism $ f : \br{X, \OOO_X} \to \br{Y, \OOO_Y} $ of locally ringed spaces} is a morphism of ringed spaces such that the induced homomorphism \footnote{Exercise: check well-defined}
+$$ \function[f_p^\#]{\OOO_{Y, f\br{p}}}{\OOO_{X, p}}{\br{U, s}}{\br{f^{-1}\br{U}, f_U^\#\br{s}}} $$
+is a local homomorphism for all $ p \in X $.
 \end{definition*}
 
 \begin{example*}
 In the case of varieties, $ \OOO_{X, p} $ has a unique maximal ideal
-$$ \cbr{\br{U, f} \in \OOO_X\br{U} \st f\br{p} = 0} / \sim. $$
+$$ \cbr{\br{U, f} \in \OOO_{X, p} \st f\br{p} = 0} / \sim. $$
 If $ f\br{p} \ne 0 $, then $ f $ is nowhere vanishing on some neighbourhood of $ p $, so after shrinking $ U $, we can invert $ f $. The local homomorphism condition just follows from the pull-back $ \phi \circ f $ of a function $ \phi $ vanishing at $ f\br{p} $ vanishes at $ p $.
 \end{example*}
 
-\subsection{Affine schemes}
-
 \lecture{7}{Friday}{23/10/20}
 
-The key example $ \br{\Spec A, \OOO} $ is a locally ringed space, which we call an affine scheme.
+The key example $ \br{\Spec A, \OOO_{\Spec A}} $ is a locally ringed space, which we call an affine scheme.
 
 \begin{theorem}
 The category of affine schemes with locally ringed morphisms is equivalent to the opposite category of rings.
@@ -563,6 +560,8 @@ Need to show that
 \item if $ \phi : A \to B $ is a ring homomorphism, we obtain an induced morphism $ \br{f, f^\#} : \br{\Spec B, \OOO_{\Spec B}} \to \br{\Spec A, \OOO_{\Spec A}} $, and
 \item any morphism of affine schemes as locally ringed spaces arises in this way.
 \end{enumerate}
+
+\pagebreak
 
 \begin{proof}
 \hfill
@@ -575,22 +574,16 @@ f^{-1}\br{\VV\br{I}}
 & = f^{-1}\br{\cbr{\ppp \in \Spec A \st \ppp \supseteq I}}
 = \cbr{\qqq \in \Spec B \st f\br{\qqq} \supseteq I} \\
 & = \cbr{\qqq \in \Spec B \st \phi^{-1}\br{\qqq} \supseteq I}
-= \cbr{\qqq \in \Spec B \st \qqq \supseteq \phi\br{I}} = \VV\br{\phi\br{I}}.
+= \cbr{\qqq \in \Spec B \st \qqq \supseteq \phi\br{I}}
+= \VV\br{\phi\br{I}}.
 \end{align*}
-
-\pagebreak
-
 We need to construct $ f^\# : \OOO_{\Spec A} \to f_*\OOO_{\Spec B} $. For $ \ppp \in \Spec B $, we obtain a natural homomorphism
 $$ \function[\phi_\ppp]{A_{\phi^{-1}\br{\ppp}}}{B_\ppp}{\dfrac{a}{s}}{\dfrac{\phi\br{a}}{\phi\br{s}}}. $$
-Note $ \phi_\ppp $ is a local homomorphism, since the maximal ideal $ \ppp B_\ppp $ of $ B_\ppp $ is generated by the image of $ \ppp $ under the map
-$$ \function{B}{B_\ppp}{b}{\dfrac{b}{1}}, $$
-and the maximal ideal $ \phi^{-1}\br{\ppp}A_{\phi^{-1}\br{\ppp}} $ of $ A_{\phi^{-1}\br{\ppp}} $ is generated by the image of $ \phi^{-1}\br{\ppp} $ under the map
-$$ \function{A}{A_{\phi^{-1}\br{\ppp}}}{a}{\dfrac{a}{1}}, $$
-so have a commutative diagram
+Note $ \phi_\ppp $ is a local homomorphism, since the maximal ideal $ \ppp B_\ppp $ of $ B_\ppp $ is generated by the image of $ \ppp $ under the map $ B \to B_\ppp $, and the maximal ideal $ \phi^{-1}\br{\ppp}A_{\phi^{-1}\br{\ppp}} $ of $ A_{\phi^{-1}\br{\ppp}} $ is generated by the image of $ \phi^{-1}\br{\ppp} $ under the map $ A \to A_{\phi^{-1}\br{\ppp}} $, so have a commutative diagram
 $$
 \begin{tikzcd}
 \phi^{-1}\br{\ppp} \arrow[subset]{r} & A \arrow{r}{\phi} \arrow{d} & B \arrow{d} & \ppp \arrow[subset]{l} \\
-f\br{\ppp}A_{f\br{\ppp}} \arrow[subset]{r} & A_{\phi^{-1}\br{\ppp}} \arrow{r}[swap]{\phi_\ppp} & B_\ppp & \ppp B_\ppp \arrow[subset]{l}
+\phi^{-1}\br{\ppp}A_{\phi^{-1}\br{\ppp}} \arrow[subset]{r} & A_{\phi^{-1}\br{\ppp}} \arrow{r}[swap]{\phi_\ppp} & B_\ppp & \ppp B_\ppp \arrow[subset]{l}
 \end{tikzcd},
 $$
 thus $ \phi_\ppp^{-1}\br{\ppp B_\ppp} =\phi^{-1}\br{\ppp}A_{\phi^{-1}\br{\ppp}} $. Given $ V \subseteq \Spec A $ open, we may define
@@ -598,14 +591,7 @@ $$ \function[f_V^\#]{\OOO_{\Spec A}\br{V}}{\OOO_{\Spec B}\br{f^{-1}\br{V}}}{\br{
 Note that we need to check the local coherence part of the definition of $ \OOO $. That is, if $ s $ is locally given by $ a / h $, then $ f_V^\#\br{s} $ is locally given by $ \phi\br{a} / \phi\br{h} $. This gives the desired map $ f^\# : \OOO_{\Spec A} \to f_*\OOO_{\Spec B} $, and the induced map on stalks $ f_\ppp^\# : \OOO_{\Spec A, f\br{\ppp}} \to \OOO_{\Spec B, \ppp} $ agrees with $ \phi_\ppp : A_{\phi^{-1}\br{\ppp}} \to B_\ppp $, by construction. Hence $ \br{f, f^\#} $ is a morphism of locally ringed spaces.
 \item Now suppose given a morphism $ \br{f, f^\#} : \Spec B \to \Spec A $ of locally ringed spaces. Take
 $$ \phi = f_{\Spec A}^\# : \Gamma\br{\Spec A, \OOO_{\Spec A}} = A \to \Gamma\br{\Spec B, \OOO_{\Spec B}} = B. $$
-We need to show $ \phi $ gives rise to $ \br{f, f^\#} $. We have $ f_\ppp^\# : \OOO_{\Spec A, f\br{\ppp}} = A_{f\br{\ppp}} \to \OOO_{\Spec B, \ppp} = B_\ppp $ a local homomorphism. This is compatible with the corresponding map on global sections. That is,
-$$
-\begin{tikzcd}
-\Gamma\br{\Spec A, \OOO_{\Spec A}} \arrow{r}{f_{\Spec A}^\#} \arrow{d} & \Gamma\br{\Spec B, \OOO_{\Spec B}} \arrow{d} \\
-\OOO_{\Spec A, f\br{\ppp}} \arrow{r}[swap]{f_\ppp^\#} & \OOO_{\Spec B, \ppp}
-\end{tikzcd}
-$$
-is commutative. That is, we have a commutative diagram
+We need to show $ \phi $ gives rise to $ \br{f, f^\#} $. We have $ f_\ppp^\# : \OOO_{\Spec A, f\br{\ppp}} = A_{f\br{\ppp}} \to \OOO_{\Spec B, \ppp} = B_\ppp $ a local homomorphism. This is compatible with the corresponding map on global sections. That is, we have a commutative diagram
 $$
 \begin{tikzcd}
 f\br{\ppp} \arrow[subset]{r} & A \arrow{r}{\phi} \arrow{d} & B \arrow{d} & \ppp \arrow[subset]{l} \\
@@ -622,35 +608,48 @@ Demanding $ \br{f, f^\#} $ was a morphism of locally ringed spaces was crucial t
 
 \pagebreak
 
+\subsection{Schemes}
+
 \begin{definition*}
 An \textbf{affine scheme} is a locally ringed space isomorphic, in the category of locally ringed spaces, to $ \br{\Spec A, \OOO_{\Spec A}} $ for some ring $ A $. A \textbf{scheme} is a locally ringed space $ \br{X, \OOO_X} $ with an open cover $ \cbr{\br{U_i, \eval{\OOO_X}_{U_i}}} $ with each $ \br{U_i, \eval{\OOO_X}_{U_i}} $ an affine scheme, where $ \eval{\OOO_X}_{U_i}\br{V} = \OOO_X\br{V} $ for $ V \subseteq U_i $ open. A \textbf{morphism of schemes} is a morphism of locally ringed spaces.
 \end{definition*}
 
+Let $ k $ be a field. Then $ \Spec k = \br{\cbr{0}, k} $. What does giving a morphism $ f : \Spec k \to X $ to a scheme mean? First, this selects a point $ x \in X $, the image of $ f $. Second, we get a local ring homomorphism $ f_x^\# : \OOO_{X, x} \to k_0 = k $. That is, $ \br{f_x^\#}^{-1}\br{0} = \mmm_x \subseteq \OOO_{X, x} $, the maximal ideal of $ \OOO_{X, x} $. Thus we get a factorisation
+$$ f_x^\# : \OOO_{X, x} \to \OOO_{X, x} / \mmm_x \to k, $$
+where $ \OOO_{X, x} / \mmm_x $ is a field, written as $ \kappa\br{x} $, called the \textbf{residue field} of $ X $ at $ x $. Thus $ f $ induces an inclusion $ \kappa\br{x} \hookrightarrow k $. Conversely, given such an inclusion $ \iota : \kappa\br{x} \hookrightarrow k $ of fields, we get a scheme morphism by defining $ f\br{0} = x $, and
+$$ \function[f^\#]{\OOO_X}{f_*k}{s}{\iota\br{s\br{x} + \mmm_x}}. $$
+The moral is that giving a morphism $ f : \Spec k \to X $ is equivalent to giving a point $ x \in X $ and an inclusion $ \iota : \kappa\br{x} \to k $.
+
 \begin{example*}
-Let $ k $ be a field. Then $ \Spec k = \br{\cbr{0}, k} $.
-\begin{itemize}
-\item What does giving a morphism $ f : \Spec k \to X $ to a scheme mean? First, this selects a point $ x \in X $, the image of $ f $. Second, we get a local ring homomorphism $ f_x^\# : \OOO_{X, x} \to \OOO_{\Spec k, \cbr{0}} = k $. That is, $ \br{f_x^\#}^{-1}\br{0} = \mmm_x \subseteq \OOO_{X, x} $, the maximal ideal of $ \OOO_{X, x} $. Thus we get a factorisation $ f_x^\# : \OOO_{X, x} \to \OOO_{X, x} / \mmm_x \to k $, where $ \OOO_{X, x} / \mmm_x $ is a field, written as $ \kappa\br{x} $, called the \textbf{residue field} of $ X $ at $ x $. Thus $ f $ induces an inclusion $ \kappa\br{x} \hookrightarrow k $. Conversely, given such an inclusion $ \iota : \kappa\br{x} \hookrightarrow k $ of fields, we get a scheme morphism by defining $ f\br{0} = x $, and
-$$ \function[f^\#]{\OOO_X}{f_*k}{s}{\iota\br{s\br{x}}}, \qquad s\br{x} \in \OOO_{X, x}. $$
-The moral is that giving a morphism $ f : \Spec k \to X $ is equivalent to giving a point $ x \in X $ and an inclusion $ \iota : \kappa\br{x} \to k $. Note that if $ X = \Spec A $, giving $ \Spec k \to \Spec A $ is equivalent to giving a homomorphism $ A \to k $, which we viewed at the beginning of the course as a $ k $-valued point on $ \Spec A $.
+Note that if $ X = \Spec A $, giving $ \Spec k \to \Spec A $ is equivalent to giving a homomorphism $ A \to k $, which we viewed at the beginning of the course as a $ k $-valued point on $ \Spec A $.
+\end{example*}
 
 \lecture{8}{Monday}{26/10/20}
 
-\item What does giving $ f : X \to \Spec k $ mean? No information in the continuous map, but need also a map $ f^\# : k \to f_*\OOO_X $, that is a map $ k \to \Gamma\br{\Spec k, f_*\OOO_X} = \Gamma\br{X, \OOO_X} $. That is, $ \Gamma\br{X, \OOO_X} $ carries a $ k $-algebra structure. Note this induces $ k $-algebra structures on $ \OOO_X\br{U} $ for all $ U $ via the composition $ k \to \OOO_X\br{X} \to \OOO_X\br{U} $ and similarly all stalks $ \OOO_{X, p} $ are also $ k $-algebras. We say $ X $ is a \textbf{scheme defined over $ k $}. For example, in affine varieties, consider $ A = k\sbr{x_1, \dots, x_n} / I $ with $ I = \sqrt{I} $. Then $ \Spec A $ is our replacement for $ \VV\br{I} \subseteq \AA_k^n $, viewing $ \Spec A $ as a scheme over $ k $. If $ k \subseteq k' $ is a field extension, a \textbf{$ k' $-valued point} of $ X / k $ is a commutative diagram
+What does giving $ f : X \to \Spec k $ mean? No information in the continuous map, but need also a map $ f^\# : k \to f_*\OOO_X $, that is a map
+$$ k \to \Gamma\br{\Spec k, f_*\OOO_X} = \Gamma\br{X, \OOO_X}. $$
+That is, $ \Gamma\br{X, \OOO_X} $ carries a $ k $-algebra structure. Note this induces $ k $-algebra structures on $ \OOO_X\br{U} $ for all $ U $ via the composition with restriction $ k \to \OOO_X\br{X} \to \OOO_X\br{U} $ and similarly all stalks $ \OOO_{X, p} $ are also $ k $-algebras. We say $ X $ is a \textbf{scheme defined over $ k $}.
+
+\begin{example*}
+In affine varieties, consider $ A = k\sbr{x_1, \dots, x_n} / I $ with $ I = \sqrt{I} $. Then $ \Spec A $ is our replacement for $ \VV\br{I} \subseteq \AA_k^n $, viewing $ \Spec A $ as a scheme over $ k $.
+\end{example*}
+
+If $ k \subseteq k' $ is a field extension, a \textbf{$ k' $-valued point} of $ X / k $ is a commutative diagram
 $$
 \begin{tikzcd}
 \Spec k' \arrow{rr} \arrow{dr} & & X \arrow{dl} \\
 & \Spec k &
+\end{tikzcd}
+\qquad \iff \qquad
+\begin{tikzcd}
+k' & & \Gamma\br{X, \OOO_X} \arrow{ll} \\
+& k \arrow{ul} \arrow{ur} &
 \end{tikzcd}.
 $$
 We write $ X\br{k'} $ for the set of such morphisms.
-\end{itemize}
-\end{example*}
 
 \begin{remark*}
-It is rare in algebraic geometry to work with schemes alone, but rather always working over a base scheme.
-\end{remark*}
-
-Fix a base scheme $ S $. Define $ \Sch / S $ to be the category whose objects are morphisms $ T \to S $ and morphisms are commutative diagrams
+It is rare in algebraic geometry to work with schemes alone, but rather always working over a base scheme. Fix a base scheme $ S $. Define $ \Sch / S $ to be the category whose objects are morphisms $ T \to S $ and morphisms are commutative diagrams
 $$
 \begin{tikzcd}
 T \arrow{rr} \arrow{dr} & & T' \arrow{dl} \\
@@ -665,13 +664,16 @@ T \arrow{rr} \arrow{dr} & & X \arrow{dl} \\
 \end{tikzcd},
 $$
 and we write $ X\br{T} $ for the set of $ T $-valued points. The \textbf{Yoneda philosophy} is that $ X\br{T} $ for all $ T $ determines $ X $.
+\end{remark*}
 
 \pagebreak
 
 \begin{example*}
-Fix a field $ k $, and let $ D = \Spec k\sbr{t} / \abr{t^2} = \br{\cbr{\abr{t}}, k\sbr{t} / \abr{t^2}} $. Then $ t $ does not make sense as $ k $-valued function anymore, as $ t^2 = 0 $. Let $ X $ be any scheme over $ k $. What is $ X\br{D} $? Given $ f : D \to X $ a morphism of schemes over $ k $, we get a point $ x \in X $ as the image of $ f $ and a local homomorphism
-$$ \function[f_x^\#]{\OOO_{X, x}}{k\sbr{t} / \abr{t^2}}{\mmm_x}{\abr{t}}. $$
-Note that $ \mmm_x^2 $ maps to zero, hence we get a $ k $-linear map $ \mmm_x / \mmm_x^2 \to \abr{t} \cong k $ as a $ k $-vector space. We also have a composed surjective $ k $-algebra homomorphism $ \OOO_{X, x} \to k\sbr{t} / \abr{t} \cong k $ with kernel $ \mmm_x $, and hence we have $ \kappa\br{x} = \OOO_{X, x} / \mmm_x \cong k $. So we get
+Fix a field $ k $, and let $ D = \Spec k\sbr{t} / \abr{t^2} = \br{\cbr{\abr{t}}, k\sbr{t} / \abr{t^2}} $. Then $ t $ does not make sense as a $ k $-valued function anymore, as $ t^2 = 0 $. Let $ X $ be any scheme over $ k $. What is $ X\br{D} $? Given $ f : D \to X $ a morphism of schemes over $ k $, we get a point $ x \in X $ as the image of $ f $ and a local homomorphism $ f_x^\# : \OOO_{X, x} \to k\sbr{t} / \abr{t^2} $ such that $ \mmm_x \to \abr{t} $. Note that $ \mmm_x^2 $ maps to zero, hence we get a $ k $-linear map of $ k $-vector spaces
+$$ \mmm_x / \mmm_x^2 \to \abr{t} \cong k, $$
+We also have a composed surjective $ k $-algebra homomorphism $ \OOO_{X, x} \to k\sbr{t} / \abr{t} \cong k $ with kernel $ \mmm_x $, and hence we have
+$$ \kappa\br{x} = \OOO_{X, x} / \mmm_x \cong k. $$
+So we get
 \begin{itemize}
 \item a $ k $-valued point $ x $ with residue field $ k $, and
 \item a $ k $-vector space map $ \mmm_x / \mmm_x^2 \to k $, that is an element of $ \br{\mmm_x / \mmm_x^2}^* $, the dual vector space.
@@ -679,11 +681,13 @@ Note that $ \mmm_x^2 $ maps to zero, hence we get a $ k $-linear map $ \mmm_x / 
 Then $ \br{\mmm_x / \mmm_x^2}^* $ is called the \textbf{Zariski tangent space} to $ X $ at $ x $. Think of $ D $ as a point plus an arrow.
 \end{example*}
 
+\textbf{Glued schemes} are a special case of a question on example sheet $ 1 $. Suppose given two schemes $ X_1 $ and $ X_2 $ and open subsets $ U_i \subseteq X_i $. Recall $ U_i $ is also a locally ringed space $ \br{U_i, \eval{\OOO_{X_i}}_{U_i}} $, and in fact $ U_i $ is then a scheme. Given an isomorphism $ f : U_1 \xrightarrow{\sim} U_2 $, can glue $ X_1 $ and $ X_2 $ along $ U_1 $ and $ U_2 $ to get a scheme $ X $ with an open cover $ \cbr{X_1, X_2} $, so $ X = X_1 \sqcup X_2 / \sim $ such that $ x_1 \in U_1 \sim x_2 \in U_2 $ if $ f\br{x_1} = x_2 $, and need to define $ \OOO_X $.
+
 \begin{example*}
-\textbf{Glued schemes} are a special case of a question on example sheet $ 1 $. Suppose given two schemes $ X_1 $ and $ X_2 $ and open subsets $ U_i \subseteq X_i $. Recall $ U_i $ is also a locally ringed space $ \br{U_i, \eval{\OOO_{X_i}}_{U_i}} $, and in fact $ U_i $ is then a scheme. Given an isomorphism $ f : U_1 \xrightarrow{\sim} U_2 $, can glue $ X_1 $ and $ X_2 $ along $ U_1 $ and $ U_2 $ to get a scheme $ X $ with an open cover $ \cbr{X_1, X_2} $, so $ X = X_1 \sqcup X_2 / \sim $ such that $ x_1 \in U_1 \sim x_2 \in U_2 $ if $ f\br{x_1} = x_2 $, and need to define $ \OOO_X $. Now take $ \AA_k^n = \Spec k\sbr{x_1, \dots, x_n} $, so $ \AA_k^1 = \Spec k\sbr{x} $. Take $ X_1 = X_2 = \AA_k^1 $.
+Now take $ \AA_k^n = \Spec k\sbr{x_1, \dots, x_n} $, so $ \AA_k^1 = \Spec k\sbr{x} $. Take $ X_1 = X_2 = \AA_k^1 $.
 \begin{itemize}
 \item Glue $ U_1 = \AA^1 \setminus \cbr{0} = \DD\br{x} \subseteq X_1 $ and $ U_2 = \AA^1 \setminus \cbr{0} = \DD\br{x} \subseteq X_2 $ via the identity map. This is the affine line with doubled origin.
-\item Could instead glue $ U_1 $ and $ U_2 $ via the map given by $ x \mapsto x^{-1} $, where $ U_1 = \Spec k\sbr{x}_x = U_2 $ and
+\item Could instead glue $ U_1 $ and $ U_2 $ via the map given by $ x \mapsto x^{-1} $, so $ U_1 = \Spec k\sbr{x}_x = U_2 $ and
 $$ \function{k\sbr{x}_x}{k\sbr{x}_x}{x}{x^{-1}} $$
 induces an isomorphism $ U_1 \to U_2 $. When we glue, we get the projective line over $ k $, $ \PP_k^1 $.
 \end{itemize}
@@ -693,7 +697,7 @@ induces an isomorphism $ U_1 \to U_2 $. When we glue, we get the projective line
 
 Let $ S $ be a graded ring. That is,
 $$ S = \bigoplus_{d \ge 0} S_d, $$
-with $ S_d $ an abelian group, and product law satisfies $ S_d \cdot S_{d'} \subseteq S_{d + d'} $.
+with $ S_d $ an abelian group, and the product law satisfies $ S_d \cdot S_{d'} \subseteq S_{d + d'} $.
 
 \begin{example*}
 $ S = k\sbr{x_0, \dots, x_n} $, and $ S_d $ is the space of polynomials which are \textbf{homogeneous} of degree $ d $. That is, spanned by monomials of degree $ d $.
@@ -710,27 +714,23 @@ $ I \subseteq S $ is a \textbf{homogeneous ideal} if $ I $ is generated by its h
 \begin{definition*}
 Let
 $$ \Proj S = \cbr{\ppp \in \Spec S \st \ppp \ \text{is homogeneous}, \ \ppp \not\supseteq S_+}. $$
-For $ I \subseteq S $ a homogeneous ideal, set
+For $ I \subseteq S $ a homogeneous ideal, set \footnote{Exercise: check the $ \VV\br{I} $ form the closed sets of a topology on $ \Proj S $}
 $$ \VV\br{I} = \cbr{\ppp \in \Proj S \st \ppp \supseteq I}. $$
 \end{definition*}
-
-\begin{exercise*}
-Check the $ \VV\br{I} $ form the closed sets of a topology on $ \Proj S $.
-\end{exercise*}
 
 \pagebreak
 
 \lecture{9}{Wednesday}{28/10/20}
 
 \begin{notation*}
-For $ \ppp \in \Proj S $, let
-$$ T = \cbr{f \in S \setminus \ppp \st f \ \text{is homogeneous}}. $$
-Then $ T $ is a multiplicatively closed subset of $ S $, and let $ S_{\br{\ppp}} \subseteq T^{-1}S $ be the subring of elements of degree zero. That is, written in the form $ s / s' $ with $ s \in S $ homogeneous and $ s' \in T $ with $ \deg s = \deg s' $. For $ f \in S $ homogeneous, we write $ S_{\br{f}} \subseteq S_f $ for the subset of elements of degree zero.
+For $ \ppp \in \Proj S $, let $ T = \cbr{f \in S \setminus \ppp \st f \ \text{is homogeneous}} $. Then $ T $ is a multiplicatively closed subset of $ S $, and let $ S_{\br{\ppp}} \subseteq T^{-1}S $ be the subring of elements of degree zero. That is, written in the form $ s / s' $ with $ s \in S $ homogeneous and $ s' \in T $ with $ \deg s = \deg s' $. For $ f \in S $ homogeneous, we write $ S_{\br{f}} \subseteq S_f $ for the subset of elements of degree zero.
 \end{notation*}
 
 Can now define a sheaf $ \OOO $ on $ \Proj S $. For $ U \subseteq \Proj S $ open, set
 $$ \OOO\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} S_{\br{\ppp}} \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in S_{\br{\ppp}}, \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists a, f \in S, \ \forall \qqq \in V, \ f \notin \qqq, \ s\br{\qqq} = \dfrac{a}{f} \in S_{\br{\qqq}} \end{array}}, $$
-where $ a $ and $ f $ are homogeneous of the same degree. As before, $ \OOO_\ppp = S_{\br{\ppp}} $. \footnote{Exercise: check} Is the locally ringed space $ \br{\Proj S, \OOO} $ a scheme?
+where $ a $ and $ f $ are homogeneous of the same degree. As before, \footnote{Exercise: check}
+$$ \OOO_\ppp = S_{\br{\ppp}}. $$
+Is the locally ringed space $ \br{\Proj S, \OOO} $ a scheme?
 
 \begin{notation*}
 If $ f \in S $ is homogeneous, then we write
@@ -739,7 +739,9 @@ which is an open set and $ \DD_+\br{f} = \Proj S \setminus \VV\br{f} $.
 \end{notation*}
 
 \begin{proposition}
-$ \br{\DD_+\br{f}, \eval{\OOO}_{\DD_+\br{f}}} \cong \Spec S_{\br{f}} $ as locally ringed spaces. Further, the open sets $ \DD_+\br{f} $ for $ f \in S_+ $ cover $ \Proj S $. Hence $ \br{\Proj S, \OOO} $ is a scheme.
+As locally ringed spaces,
+$$ \br{\DD_+\br{f}, \eval{\OOO}_{\DD_+\br{f}}} \cong \Spec S_{\br{f}}. $$
+Further, the open sets $ \DD_+\br{f} $ for $ f \in S_+ $ cover $ \Proj S $. Hence $ \br{\Proj S, \OOO} $ is a scheme.
 \end{proposition}
 
 \begin{proof}
@@ -754,7 +756,7 @@ $$ \PP_A^n = \Proj A\sbr{x_0, \dots, x_n}. $$
 \begin{example*}
 If $ k $ is an algebraically closed field, consider $ \PP_k^1 = \Proj k\sbr{x_0, x_1} $. The \textbf{closed points}, that is points $ \ppp $ such that $ \cbr{\ppp} $ is closed, correspond to maximal elements of $ \Proj S $. \footnote{Exercise: check} These maximal elements are ideals of the form $ \abr{ax_0 - bx_1} $. The only maximal homogeneous ideal of $ k\sbr{x_0, x_1} $ is $ \abr{x_0, x_1} = S_+ $, since any maximal ideal is of the form $ \abr{x_0 - a_0, x_1 - a_1} $. The other prime ideals of $ k\sbr{x_0, x_1} $ are principal. That is, of the form $ \abr{f} $ with $ f $ irreducible or $ f = 0 $. For $ \abr{f} $ to be homogeneous, $ f $ must be homogeneous. Any such polynomial splits into linear factors, all homogeneous, so in order for $ f $ to be irreducible it must be linear. Note we have a one-to-one correspondence between
 $$ \function{\cbr{\abr{ax_0 - bx_1} \st a, b \in k \ \text{not both zero}}}{\br{k^2 \setminus \cbr{\br{0, 0}}} / k^*}{\abr{ax_0 - bx_1}}{\br{b : a}}, $$
-where $ k^* $ acts by $ \br{a, b} \mapsto \br{\lambda a, \lambda b} $ for $ \lambda \in k^* $. The conclusion is that the closed points of $ \PP_k^1 $ are in one-to-one correspondence with points of $ \br{k^2 \setminus \cbr{\br{0, 0}}} / k^* $. More generally, the closed points of $ \PP_k^n $ are in one-to-one correspondence with points of $ \br{k^{n + 1} \setminus \cbr{0}} / k^* $. Can see this by making use of the open cover $ \cbr{\DD_+\br{x_i} \st 0 \le i \le n} $, \footnote{Exercise: good exercise} which is an open cover since $ \ppp \notin \DD_+\br{x_i} $ for any $ i $ implies that $ x_i \in \ppp $ for all $ i $, so $ S_+ \subseteq \ppp $ and so $ \ppp \notin \Proj S $.
+where $ k^* $ acts by $ \br{a, b} \mapsto \br{\lambda a, \lambda b} $ for $ \lambda \in k^* $. The conclusion is that the closed points of $ \PP_k^1 $ are in one-to-one correspondence with points of $ \br{k^2 \setminus \cbr{\br{0, 0}}} / k^* $. More generally, the closed points of $ \PP_k^n $ are in one-to-one correspondence with points of $ \br{k^{n + 1} \setminus \cbr{0}} / k^* $. Can see this by making use of the open cover $ \cbr{\DD_+\br{x_i} \st 0 \le i \le n} $, \footnote{Exercise: good exercise} since $ \ppp \notin \DD_+\br{x_i} $ for any $ i $ implies that $ x_i \in \ppp $ for all $ i $, so $ S_+ \subseteq \ppp $, thus $ \ppp \notin \Proj S $.
 \end{example*}
 
 \begin{example*}
@@ -769,8 +771,8 @@ so $ \Spec S_{\br{x_2}} $ is a quadric cone with a singular point. Similarly, $ 
 Let $ M = \ZZ^n $ and $ M_\RR = M \otimes_\ZZ \RR = \RR^n $. Let $ \Delta \subseteq M_\RR $ be a compact convex lattice polytope. That is, there exists a finite set $ V \subseteq M $ such that $ \Delta $ is the convex hull of $ V $, that is the smallest convex set containing $ V $. Let
 $$ \C\br{\Delta} = \cbr{\br{m, r} \in M_\RR \oplus \RR \st m \in r\Delta, \ r \ge 0} \subseteq M_\RR \oplus \RR. $$
 Here $ r\Delta = \cbr{rm \st m \in \Delta} $. This is the \textbf{cone over $ \Delta $}. Let
-$$ S = k\sbr{\C\br{\Delta} \cap \br{M \oplus \ZZ}} = \bigoplus_{P \in \C\br{\Delta} \cap \br{M \oplus \ZZ}} kz^P, $$
-with multiplication given by $ z^Pz^{P'} = z^{P + P'} $, since $ \C\br{\Delta} \cap \br{M \oplus \ZZ} $ is a monoid. That is, it is closed under addition and contains zero. This makes $ S $ into a ring, and it is graded by $ \deg Z^{\br{m, r}} = r $. Define $ \PP_\Delta = \Proj S $. This is called a \textbf{projective toric variety}.
+$$ S = k\sbr{\C\br{\Delta} \cap \br{M \oplus \ZZ}} = \bigoplus_{P \in \C\br{\Delta} \cap \br{M \oplus \ZZ}} kz^P. $$
+Then $ \C\br{\Delta} \cap \br{M \oplus \ZZ} $ is a monoid, that is it is closed under addition and contains zero, and $ S $ has multiplication given by $ z^Pz^{P'} = z^{P + P'} $. This makes $ S $ into a ring, and it is graded by $ \deg Z^{\br{m, r}} = r $. Define $ \PP_\Delta = \Proj S $. This is called a \textbf{projective toric variety}.
 \begin{itemize}
 \item Let $ \Delta $ be the convex hull of $ \cbr{0, e_1, \dots, e_n} $ with $ e_1, \dots, e_n $ the standard basis of $ M = \ZZ^n $. Check that $ S = k\sbr{x_0, \dots, x_n} $ with standard grading $ x_0 = z^{\br{0, 1}} $ and $ x_i = z^{\br{e_i, 1}} $. \footnote{Exercise} So $ \PP_\Delta = \PP_k^n $.
 \item Let $ n = 2 $, and let $ \Delta $ be the convex hull of $ \cbr{\br{0, 0}, \br{1, 0}, \br{0, 1}, \br{1, 1}} $. In $ S $, the degree $ d $ monomials are $ \cbr{z^{\br{a, b, d}} \st 0 \le a \le d, \ 0 \le b \le d} $. Any of these can be written as a product of monomials of degree one. That is, the monomials $ x = z^{\br{0, 0, 1}} $, $ y = z^{\br{1, 0, 1}} $, $ w = z^{\br{0, 1, 1}} $, and $ t = z^{\br{1, 1, 1}} $. Thus $ S = k\sbr{x, y, w, t} / \abr{xt - yw} $. So $ \Proj S $ can be thought of as a quadric surface in $ \PP_k^3 $.
@@ -838,10 +840,10 @@ Let $ \CCC $ be a category. Write $ \h_X $ for the contravariant functor
 $$ \functions[\h_X]{\CCC}{\Set}{Y}{\Hom\br{Y, X}}{f : Y \to Z}{\br{\phi \in \Hom\br{Z, X} \mapsto \phi \circ f \in \Hom\br{Y, X}}}. $$
 \end{definition*}
 
-Recall that a \textbf{natural transformation} between contravariant functors $ F, G : \CCC \to \DDD $, written as $ T : \CCC \to \DDD $, consists of the data $ T\br{X} : F\br{X} \to G\br{X} $ for all $ X \in \Ob \CCC $ such that for all $ f : X \to Y $ in $ \CCC $
+Recall that a \textbf{natural transformation} between contravariant functors $ F, G : \CCC \to \DDD $, written as $ \TTT : \CCC \to \DDD $, consists of the data $ \TTT\br{X} : F\br{X} \to G\br{X} $ for all $ X \in \Obj \CCC $ such that for all $ f : X \to Y $ in $ \CCC $
 $$
 \begin{tikzcd}
-F\br{X} \arrow{d}[swap]{T\br{X}} & F\br{Y} \arrow{l}[swap]{F\br{f}} \arrow{d}{T\br{Y}} \\
+F\br{X} \arrow{d}[swap]{\TTT\br{X}} & F\br{Y} \arrow{l}[swap]{F\br{f}} \arrow{d}{\TTT\br{Y}} \\
 G\br{X} & G\br{Y} \arrow{l}{G\br{f}}
 \end{tikzcd}
 $$
@@ -852,9 +854,10 @@ The set of natural transformations between $ \h_X : \CCC \to \Set $ and $ G : \C
 \end{lemma}
 
 \begin{proof}
-Given $ \eta \in G\br{X} $, we need to define a map
-$$ \function{\h_X\br{Y} = \Hom\br{Y, X}}{G\br{Y}}{f}{G\br{f}\br{\eta}}, $$
-for all objects $ Y \in \CCC $. Check that this defines a natural transformation $ \h_X \to G $. \footnote{Exercise} Conversely, given $ T : \h_X \to G $ a natural transformation, take $ \eta = T\br{X}\br{\id_X} $. Check that these two maps are inverse to each other. \footnote{Exercise}
+Given $ \eta \in G\br{X} $, we need to define a map \footnote{Exercise: check that this defines a natural transformation $ \h_X \to G $}
+$$ \function{\h_X\br{Y} = \Hom\br{Y, X}}{G\br{Y}}{f}{G\br{f}\br{\eta}}, \qquad Y \in \Obj \CCC. $$
+Conversely, given $ \TTT : \h_X \to G $ a natural transformation, take \footnote{Exercise: check that these two maps are inverse to each other}
+$$ \eta = \TTT\br{X}\br{\id_X}. $$
 \end{proof}
 
 \pagebreak
@@ -864,7 +867,7 @@ The set of natural transformations $ \h_X \to \h_Y $ is $ \h_Y\br{X} = \Hom\br{X
 \end{corollary}
 
 \begin{definition*}
-A contravariant functor $ F : \CCC \to \Set $ is said to be \textbf{representable} if $ F \cong \h_X $ for some $ X \in \Ob \CCC $.
+A contravariant functor $ F : \CCC \to \Set $ is said to be \textbf{representable} if $ F \cong \h_X $ for some $ X \in \Obj \CCC $.
 \end{definition*}
 
 Lots of questions in algebraic geometry are about representability of functors. Redefining, the fibre product in a category $ \CCC $ is an object which represents the functor
@@ -921,7 +924,7 @@ C & & \\
 & A \arrow[bend left=30]{uul}{p_1'} \arrow{u}{p_1} & R \arrow{u}[swap]{g} \arrow{l}{f}
 \end{tikzcd},
 $$
-where $ p_1\br{a} = a \otimes 1 $ and $ p_2\br{b} = 1 \otimes b $. Here $ h $ is defined by $ h\br{a \otimes b} = p_1'\br{a}p_2'\br{b} $. Check well-defined. \footnote{Exercise} Thus $ \Spec A \otimes_R B $ is $ \Spec A \times_{\Spec R} \Spec B $ in the category of affine schemes.
+where $ p_1\br{a} = a \otimes 1 $ and $ p_2\br{b} = 1 \otimes b $. Here $ h $ is defined by $ h\br{a \otimes b} = p_1'\br{a}p_2'\br{b} $. \footnote{Exercise: check well-defined} Thus $ \Spec A \otimes_R B $ is $ \Spec A \times_{\Spec R} \Spec B $ in the category of affine schemes.
 
 \pagebreak
 
@@ -946,13 +949,13 @@ and $ h : A \otimes_R B \to \Gamma\br{T, \OOO_T} $ induces a map $ T \to \Spec A
 \item If $ X, Y \to S $ are given and $ U \subseteq X $ is open, suppose that $ X \times_S Y $ exists, with projections $ p_1 : X \times_S Y \to X $ and $ p_2 : X \times_S Y \to Y $. Then $ p_1^{-1}\br{U} $ is $ U \times_S Y $. By commutativity of the diagram
 $$
 \begin{tikzcd}
-T \arrow[dashed]{dr}[swap]{\exists! h} \arrow{drr}{\exists !h'} \arrow[bend left=30]{drrr} \arrow[bend right=30]{ddr} & & & \\
+T \arrow[dashed]{dr}[swap]{\exists !h} \arrow{drr}{\exists !h'} \arrow[bend left=30]{drrr} \arrow[bend right=30]{ddr} & & & \\
 & p_1^{-1}\br{U} \arrow[hookrightarrow]{r} \arrow{d} & X \times_S Y \arrow{r} \arrow{d} & Y \arrow{d} \\
 & U \arrow[hookrightarrow]{r} & X \arrow{r} & S
 \end{tikzcd},
 $$
 the image of $ h' $ must be contained in $ p_1^{-1}\br{U} $. Thus $ h' $ factors through $ p_1^{-1}\br{U} \hookrightarrow X \times_S Y $ giving the unique map $ h $, so the universal property holds for $ p_1^{-1}\br{U} $.
-\item Suppose $ \cbr{X_i} $ is an open cover of $ X $ and $ X_i \times_S Y $ exists for each $ i $. Then $ X \times_S Y $ exists. Let $ X_{ij} = X_i \cap X_j $, and let $ U_{ij} = p_1^{-1}\br{X_{ij}} \subseteq X_i \times_S Y $. By step $ 3 $, $ U_{ij} = X_{ij} \times_S Y $. By the universal property of fibre products there exists a unique isomorphism $ \phi_{ij} : U_{ij} \to U_{ji} $. Check these gluing maps $ \phi_{ij} $ satisfy the requirements of question $ 14 $ on example sheet $ 1 $. \footnote{Exercise: check} Thus we can glue the $ X_i \times_S Y $ via $ \phi_{ij} $'s to get a scheme $ X \times_S Y $, but need to check it satisfies the fibre product axioms. So suppose given
+\item Suppose $ \cbr{X_i} $ is an open cover of $ X $ and $ X_i \times_S Y $ exists for each $ i $. Then $ X \times_S Y $ exists. Let $ X_{ij} = X_i \cap X_j $, and let $ U_{ij} = p_1^{-1}\br{X_{ij}} \subseteq X_i \times_S Y $. By step $ 3 $, $ U_{ij} = X_{ij} \times_S Y $. By the universal property of fibre products there exists a unique isomorphism $ \phi_{ij} : U_{ij} \to U_{ji} $. \footnote{Exercise: check these gluing maps $ \phi_{ij} $ satisfy the requirements of question $ 14 $ on example sheet $ 1 $} Thus we can glue the $ X_i \times_S Y $ via $ \phi_{ij} $'s to get a scheme $ X \times_S Y $, but need to check it satisfies the fibre product axioms. So suppose given
 $$
 \begin{tikzcd}
 T \arrow[bend left=30]{drr}{p_2'} \arrow[bend right=30]{ddr}[swap]{p_1'} & & \\
@@ -993,7 +996,8 @@ If $ a \ne 0 $ and $ \ch k \ne 2 $, we obtain either $ X_y $ consists of two dis
 \begin{remark*}
 \hfill
 \begin{itemize}
-\item In general, it is hard to calculate fibre products, since $ X \times_S Y $ is not the set-theoretic fibre product in general. For example, $ \AA_k^1 \times_{\Spec k} \AA_k^1 = \Spec k\sbr{x} \otimes_k k\sbr{y} = \Spec k\sbr{x, y} = \AA_k^2 $.
+\item In general, it is hard to calculate fibre products, since $ X \times_S Y $ is not the set-theoretic fibre product in general. For example,
+$$ \AA_k^1 \times_{\Spec k} \AA_k^1 = \Spec k\sbr{x} \otimes_k k\sbr{y} = \Spec k\sbr{x, y} = \AA_k^2. $$
 \item If we are interested only in varieties, such as schemes over a field $ k $, the usual product of varieties $ X \times Y $ corresponds to $ X \times_{\Spec k} Y $. More generally, if we are working in the category $ \Sch / S $, the natural product is $ X \times_S Y $.
 \item Given schemes $ S $ and $ T $ with a morphism $ T \to S $, we get a functor
 $$ \function{\Sch / S}{\Sch / T}{\br{X \to S}}{\br{X \times_S T \to T}}. $$
@@ -1017,7 +1021,7 @@ where $ I = \abr{x^n - y^n - z^n} $.
 
 \subsection{Brief discussion of other properties}
 
-See example sheet $ 2 $ for more details or your favourite algebraic geometry text.
+See example sheet $ 2 $ for more details or your favourite algebraic geometry text, such as Hartshorne Section II.$ 3 $ and Section II.$ 4 $.
 
 \begin{definition*}
 A scheme $ X $ is \textbf{integral} if for every $ U \subseteq X $ open, $ \OOO_X\br{U} $ is an integral domain.
@@ -1045,7 +1049,7 @@ $ X $ is integral if and only if $ X $ is reduced and irreducible.
 \end{theorem}
 
 \begin{definition*}
-Let $ X $ be a scheme. It is \textbf{locally Noetherian} if there exists a cover $ \cbr{U_i} $ of $ X $ with $ U_i = \Spec A_i $ affine and $ A_i $ Noetherian. Then $ X $ is \textbf{Noetherian} if the cover may be taken to be finite.
+Let $ X $ be a scheme. It is \textbf{locally Noetherian} if there exists a cover $ \cbr{U_i} $ of $ X $ with $ U_i = \Spec A_i $ affine and $ A_i $ Noetherian. It is \textbf{Noetherian} if the cover may be taken to be finite.
 \end{definition*}
 
 \begin{example*}
@@ -1122,7 +1126,7 @@ A morphism $ f : X \to Y $ is \textbf{proper} if it is separated, of finite type
 \begin{itemize}
 \item $ \PP_k^n = \Proj k\sbr{x_0, \dots, x_n} \to \Spec k $ is proper.
 \item $ \AA_k^1 \to \Spec k $ is not proper. Consider the base-change by $ \AA_k^1 \to \Spec k $. Let
-$$ \function[p_2]{\AA_k^1 \times_{\Spec k} \AA_k^1 = \AA_k^2 = \Spec k\sbr{x} \otimes_k k\sbr{y} = \Spec k\sbr{x, y}}{\AA_k^1 = \Spec k\sbr{t}}{\br{x, y}}{y}. $$
+$$ \function[p_2]{\AA_k^1 \times_{\Spec k} \AA_k^1 = \AA_k^2 = \Spec k\sbr{x} \otimes_k k\sbr{y} = \Spec k\sbr{x, y}}{\AA_k^1 = \Spec k\sbr{t}}{y}{t}. $$
 This is not a closed map. For example, $ p_2\br{\VV\br{xy - 1}} = \DD\br{t} $, which is open and not closed.
 \end{itemize}
 \end{example*}
@@ -1154,10 +1158,12 @@ The idea is to go from the notion of an $ A $-module $ M $ to the notion of an $
 Let $ \br{X, \OOO_X} $ be a ringed space. A \textbf{sheaf of $ \OOO_X $-modules} is a sheaf of abelian groups $ \FFF $ on $ X $ such that for each $ U \subseteq X $, $ \FFF\br{U} $ has the structure of an $ \OOO_X\br{U} $-module, compatible with restriction. That is, if $ s \in \OOO_X\br{U} $ and $ m \in \FFF\br{U} $, then $ \eval{s}_V \cdot \eval{m}_V = \eval{\br{s \cdot m}}_V $ for $ V \subseteq U $. A \textbf{morphism of sheaves of $ \OOO_X $-modules} $ \phi : \FFF \to \GGG $ is a morphism of sheaves of abelian groups such that for all $ U \subseteq X $, $ \phi_U : \FFF\br{U} \to \GGG\br{U} $ is a homomorphism of $ \OOO_X\br{U} $-modules.
 \begin{itemize}
 \item Kernels, cokernels, and images of morphisms of sheaves of $ \OOO_X $-modules are sheaves of $ \OOO_X $-modules.
-\item $ \Hom_{\OOO_X}\br{\FFF, \GGG} $ denotes the group of $ \OOO_X $-module homomorphisms $ \cbr{\phi : \FFF \to \GGG} $. This is an $ \OOO_X\br{X} $-module. Then $ U \mapsto \Hom_{\OOO_U}\br{\eval{\FFF}_U, \eval{\GGG}_U} $, which is an $ \OOO_X\br{U} $-module, is a sheaf of $ \OOO_X $-modules, written $ \HOM_{\OOO_X}\br{\FFF, \GGG} $, the \textbf{sheaf hom}.
+\item $ \Hom_{\OOO_X}\br{\FFF, \GGG} $ denotes the group of $ \OOO_X $-module homomorphisms $ \cbr{\phi : \FFF \to \GGG} $. This is an $ \OOO_X\br{X} $-module. Then the \textbf{sheaf hom}
+$$ U \mapsto \Hom_{\OOO_U}\br{\eval{\FFF}_U, \eval{\GGG}_U}, $$
+where $ \Hom_{\OOO_U}\br{\eval{\FFF}_U, \eval{\GGG}_U} $ is an $ \OOO_X\br{U} $-module, is a sheaf of $ \OOO_X $-modules, written $ \HOM_{\OOO_X}\br{\FFF, \GGG} $.
 \item If $ \FFF $ and $ \GGG $ are $ \OOO_X $-modules, we denote by $ F \otimes_{\OOO_X} \GGG $ the sheaf associated to the presheaf
 $$ U \mapsto \FFF\br{U} \otimes_{\OOO_X\br{U}} \GGG\br{U}. $$
-\item Push-forwards and pull-backs. For modules, let $ \phi : A \to B $ be a homomorphism of rings, let $ M $ be a $ B $-module, and let $ N $ be an $ A $-module. Then $ M $ is also an $ A $-module such that
+\item Push-forwards and pull-backs. Let $ \phi : A \to B $ be a homomorphism of rings, let $ M $ be a $ B $-module, and let $ N $ be an $ A $-module. Then $ M $ is also an $ A $-module such that
 $$ a \cdot m = \phi\br{a} \cdot m, \qquad a \in A, \qquad m \in M, $$
 and $ B \otimes_A N $ is a $ B $-module via
 $$ b \cdot \br{b' \otimes n} = bb' \otimes n, \qquad b \in B, \qquad b' \otimes n \in B \otimes_A N. $$
@@ -1171,20 +1177,46 @@ This is a sheaf of $ \OOO_X $-modules.
 \end{itemize}
 \end{definition*}
 
-If $ S \subseteq A $ is a multiplicatively closed subset, then
-$$ S^{-1}M = \cbr{\dfrac{m}{a} \st a \in S, \ m \in M} / \sim, $$
-where $ m / a \sim m / a' $ if and only if there exists $ b \in S $ such that $ b\br{ma' - m'a} = 0 $. Also, $ S^{-1}M = M \otimes_A S^{-1}A $.
+\subsection{Locally free and coherent sheaves}
+
+\begin{definition*}
+A sheaf of $ \OOO_X $-modules $ \FFF $ is \textbf{free} if it is isomorphic to $ \bigoplus_{i \in I} \OOO_X $ for some index set $ I $. If $ \#I = r < \infty $, then we say $ \FFF $ has \textbf{rank} $ r $. A sheaf $ \FFF $ is \textbf{locally free} of rank $ r $ if there exists an open cover $ \cbr{U_i} $ on $ X $ such that $ \eval{\FFF}_{U_i} $ is free of rank $ r $ for each $ i $. Then $ \FFF $ is a \textbf{line bundle} if it is rank one. Often more generally, one might refer to a rank $ r $ locally free sheaf as a rank $ r $ \textbf{vector bundle}.
+\end{definition*}
+
+\begin{remark*}
+One way to define the notion of a vector bundle over a $ k $-scheme $ X $ as another scheme $ E $ with a morphism $ \pi : E \to X $ whose fibres are $ \AA^r $, and there exists an open cover $ \cbr{U_i} $ such that $ \pi^{-1}\br{U_i} \cong U_i \times \AA^r $, and other conditions. We get a sheaf
+$$ \EEE\br{U} = \cbr{s : U \to \pi^{-1}\br{U} \st \pi \circ s = \id_U}. $$
+This gives a locally free sheaf on $ X $. See somewhere in Hartshorne Section II.5 exercises.
+\end{remark*}
+
+\pagebreak
 
 \begin{example*}
-Let $ X = \Spec A $ be an affine scheme, and let $ M $ be an $ A $-module. For $ \ppp \in \Spec A $, we have the localisation $ M_\ppp = M \otimes_A A_\ppp $. Define a sheaf $ \widetilde{M} $ on $ \Spec A $ by
-$$ \widetilde{M}\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} M_\ppp \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in M_\ppp, \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists m \in M, \ \exists s \in A, \ \forall \qqq \in V, \ s \notin \qqq, \ s\br{\qqq} = \dfrac{m}{s} \end{array}}. $$
+Let $ E = X \times \AA^1 $. Then
+$$ \EEE\br{U} = \OOO_X\br{U}. $$
+Giving a morphism $ s : U \to U \times_{\Spec k} \AA_k^1 $ whose composition with $ \pi_1 : U \times_{\Spec k} \AA_k^1 \to U $ is the identity is the same as giving a morphism $ f : U \to \AA_k^1 $, since
+$$
+\begin{tikzcd}
+U \arrow[dashed]{dr}{s} \arrow[bend left=30]{drr}{f} \arrow[bend right=30]{ddr}[swap]{\id_U} & & \\
+& U \times_{\Spec k} \AA_k^1 \arrow{r} \arrow{d}[swap]{\pi_1} & \AA_k^1 \arrow{d} \\
+& U \arrow{r} & \Spec k
+\end{tikzcd}.
+$$
+Giving $ U \to \AA_k^1 $ is the same thing as giving a $ k $-algebra homomorphism
+$$ \function{k\sbr{x}}{\OOO_X\br{U}}{x}{\phi}. $$
+The set of such homomorphisms is $ \OOO_X\br{U} $.
 \end{example*}
+
+\lecture{14}{Monday}{09/11/20}
+
+If $ S \subseteq A $ is a multiplicatively closed subset, then
+$$ S^{-1}M = \cbr{\dfrac{m}{a} \st a \in S, \ m \in M} / \sim, $$
+where $ m / a \sim m / a' $ if and only if there exists $ b \in S $ such that $ b\br{ma' - m'a} = 0 $. Also, $ S^{-1}M = M \otimes_A S^{-1}A $. Let $ X = \Spec A $ be an affine scheme, and let $ M $ be an $ A $-module. For $ \ppp \in \Spec A $, we have the localisation $ M_\ppp = M \otimes_A A_\ppp $. Define a sheaf $ \widetilde{M} $ on $ \Spec A $ by
+$$ \widetilde{M}\br{U} = \cbr{s : U \to \bigsqcup_{\ppp \in U} M_\ppp \st \begin{array}{l} \forall \ppp \in U, \ s\br{\ppp} \in M_\ppp, \\ \forall \ppp \in U, \ \exists \ppp \in V \subseteq U \ \text{open}, \ \exists m \in M, \ \exists s \in A, \ \forall \qqq \in V, \ s \notin \qqq, \ s\br{\qqq} = \dfrac{m}{s} \end{array}}. $$
 
 \begin{example*}
 $ \widetilde{A} = \OOO_{\Spec A} $.
 \end{example*}
-
-\pagebreak
 
 \begin{proposition}
 \hfill
@@ -1199,34 +1231,6 @@ $ \widetilde{A} = \OOO_{\Spec A} $.
 Exactly as the corresponding statements for $ \OOO_{\Spec A} $.
 \end{proof}
 
-\subsection{Locally free and coherent modules}
-
-\begin{definition*}
-A sheaf of $ \OOO_X $-modules is \textbf{free} if it is isomorphic to $ \bigoplus_{i \in I} \OOO_X $ for some index set $ I $. If $ \#I = r < \infty $, then we say $ \FFF $ has \textbf{rank} $ r $. A sheaf $ \FFF $ is \textbf{locally free} of rank $ r $ if there exists an open cover $ \cbr{U_i} $ on $ X $ such that $ \eval{\FFF}_{U_i} $ is free of rank $ r $ for each $ i $. Then $ \FFF $ is a \textbf{line bundle} if it is rank one. Often more generally, one might refer to a rank $ r $ locally free sheaf as a rank $ r $ \textbf{vector bundle}.
-\end{definition*}
-
-\lecture{14}{Monday}{09/11/20}
-
-\begin{remark*}
-One way to define the notion of a vector bundle over a $ k $-scheme $ X $ as another scheme $ E $ with a morphism $ \pi : E \to X $ whose fibres are $ \AA^r $, and there exists an open cover $ \cbr{U_i} $ such that $ \pi^{-1}\br{U_i} \cong U_i \times \AA^r $, and other conditions. We get a sheaf
-$$ \EEE\br{U} = \cbr{s : U \to \pi^{-1}\br{U} \st \pi \circ s = \id_U}. $$
-This gives a locally free sheaf on $ X $. See somewhere in Hartshorne Section II.5 exercises.
-\end{remark*}
-
-\begin{example*}
-Let $ E = X \times \AA^1 $. Then $ \EEE\br{U} = \OOO_X\br{U} $. Giving a morphism $ s : U \to U \times_{\Spec k} \AA_k^1 $ whose composition with $ \pi_1 : U \times_{\Spec k} \AA_k^1 \to U $ is the identity is the same as giving a morphism $ f : U \to \AA_k^1 $, since
-$$
-\begin{tikzcd}
-U \arrow[dashed]{dr}{s} \arrow[bend left=30]{drr}{f} \arrow[bend right=30]{ddr}[swap]{\id_U} & & \\
-& U \times_{\Spec k} \AA_k^1 \arrow{r} \arrow{d}[swap]{\pi_1} & \AA_k^1 \arrow{d} \\
-& U \arrow{r} & \Spec k
-\end{tikzcd}.
-$$
-Giving $ U \to \AA_k^1 $ is the same thing as giving a $ k $-algebra homomorphism
-$$ \function{k\sbr{x}}{\OOO_X\br{U}}{x}{\phi}. $$
-The set of such homomorphisms is $ \OOO_X\br{U} $.
-\end{example*}
-
 \begin{definition*}
 Let $ X $ be a scheme and $ \FFF $ a sheaf of $ \OOO_X $-modules on $ X $. We say $ \FFF $ is \textbf{quasi-coherent} if $ X $ can be covered with affines $ U_i = \Spec A_i $ such that $ \eval{\FFF}_{U_i} \cong \widetilde{M_i} $ for some $ A_i $-module $ M_i $. We say $ \FFF $ is \textbf{coherent} if each $ M_i $ can be taken to be finitely generated.
 \end{definition*}
@@ -1235,7 +1239,7 @@ Let $ X $ be a scheme and $ \FFF $ a sheaf of $ \OOO_X $-modules on $ X $. We sa
 A locally free sheaf is always quasi-coherent and coherent if of finite rank. If $ U \subseteq X $ satisfies $ \eval{\FFF}_U = \bigoplus_{i \in I} \OOO_U $, then $ \eval{\FFF}_U = \widetilde{\bigoplus_{i \in I} A} $ for $ U = \Spec A $.
 \end{example*}
 
-Kernels, cokernels, images, tensor products, and hom sheaves of quasi-coherent sheaves of $ \OOO_X $-modules are quasi-coherent. This follows since those operations commute with $ \widetilde{\cdot} $, such as
+Kernels, cokernels, images, tensor products, and hom sheaves of quasi-coherent sheaves of $ \OOO_X $-modules are quasi-coherent. This follows since these operations commute with $ \widetilde{\cdot} $, such as
 $$ \ker \br{\widetilde{M_1} \to \widetilde{M_2}} = \widetilde{\ker \br{M_1 \to M_2}}, \quad \widetilde{M_1} \otimes_{\OOO_X} \widetilde{M_2} = \widetilde{M_1 \otimes_A M_2}, \quad \HOM_{\OOO_X}\br{\widetilde{M_1}, \widetilde{M_2}} = \widetilde{\Hom_A\br{M_1, M_2}}. $$
 
 \pagebreak
@@ -1261,27 +1265,28 @@ If $ \LLL_1 $ and $ \LLL_2 $ are line bundles on $ X $, with a common trivialisi
 \item The transition functions of $ \LLL_1 \otimes_{\OOO_X} \LLL_2 $ are $ g_{ij}h_{ij} $. Note if $ \cdot g : A \to A $ and $ \cdot h : A \to A $ are given, then these two homomorphisms induce the homomorphism $ \cdot g \otimes \cdot h : A \otimes_A A \to A \otimes_A A $, which is $ \cdot gh : A \to A $.
 \item Set $ \LLL_1^\vee \cong \HOM_{\OOO_X}\br{\LLL_1, \OOO_X} $. This is also a line bundle because on $ U_i $, $ \eval{\LLL_1}_{U_i} \cong \OOO_{U_i} $, and since $ \Hom_A\br{A, A} = A $, $ \HOM_{\OOO_{U_i}}\br{\OOO_{U_i}, \OOO_{U_i}} = \OOO_{U_i} $. The transition maps are given by $ g_{ij}^{-1} $, since $ \cdot g_{ij} : \eval{\OOO_{U_i}}_{U_i \cap U_j} \to \eval{\OOO_{U_j}}_{U_i \cap U_j} $ has dual $ \cdot \br{g_{ij}^\intercal}^{-1} = \cdot g_{ij}^{-1} : \eval{\OOO_{U_i}}_{U_i \cap U_j} \to \eval{\OOO_{U_j}}_{U_i \cap U_j} $.
 \end{itemize}
-Note that $ \LLL_1^\vee \otimes_{\OOO_X} \LLL_1 $ has transition maps $ g_{ij}^{-1}g_{ij} = 1 $. Thus
-$$ \LLL_1^\vee \otimes_{\OOO_X} \LLL_1 \cong \OOO_X. $$
+Note that $ \LLL_1^\vee \otimes_{\OOO_X} \LLL_1 $ has transition maps $ g_{ij}^{-1}g_{ij} = 1 $. Thus $ \LLL_1^\vee \otimes_{\OOO_X} \LLL_1 \cong \OOO_X $.
 
 \begin{definition*}
-Let $ X $ be a scheme. Define $ \Pic X $, the \textbf{Picard group} of $ X $, to be the set of isomorphism classes of line bundles on $ X $. This is a group with product law
+Let $ X $ be a scheme. Define $ \Pic X $, the \textbf{Picard group} of $ X $, to be the set of isomorphism classes of line bundles on $ X $. This is a group with product law and inverse
 $$ \LLL_1 \cdot \LLL_2 = \LLL_1 \otimes_{\OOO_X} \LLL_2, \qquad \LLL^{-1} = \LLL^\vee = \HOM\br{\LLL, \OOO_X}. $$
 \end{definition*}
 
+Why are line bundles important?
+
 \subsection{Morphisms to projective space}
 
-Why are line bundles important? Fix a base scheme $ \Spec k $. Let $ \PP_k^n = \Proj k\sbr{x_1, \dots, x_n} $. Denote by $ \Sch / k $ the category of schemes over $ k $. Let $ F $ be the functor
-$$ \function{\Sch / k}{\Set}{T}{\cbr{\text{surjections} \ \OOO_T^{\oplus \br{n + 1}} \twoheadrightarrow \LLL \ \text{for} \ \LLL \ \text{a line bundle on} \ T} / \cong}, $$
-where $ \phi_1 : \OOO_T^{\oplus \br{n + 1}} \to \LLL $, and $ \phi_2 : \OOO_T^{\oplus \br{n + 1}} \to \LLL_2 $ are isomorphic if there exists an isomorphism $ f : \LLL_1 \to \LLL_2 $ of $ \OOO_X $-modules making
+Fix a base scheme $ \Spec k $. Then $ \PP_k^n = \Proj k\sbr{x_1, \dots, x_n} $. Denote by $ \Sch / k $ the category of schemes over $ k $. Let $ F $ be the functor
+$$ \function{\Sch / k}{\Set}{X}{\cbr{\text{surjections} \ \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL \ \text{for} \ \LLL \ \text{a line bundle on} \ X} / \cong}, $$
+where $ \phi_1 : \OOO_X^{\oplus \br{n + 1}} \to \LLL_1 $ and $ \phi_2 : \OOO_X^{\oplus \br{n + 1}} \to \LLL_2 $ are isomorphic if there exists an isomorphism $ f : \LLL_1 \to \LLL_2 $ of $ \OOO_X $-modules making
 $$
 \begin{tikzcd}
 \LLL_1 \arrow{rr}{f} & & \LLL_2 \\
-& \OOO_T^{\oplus \br{n + 1}} \arrow{ul}{\phi_1} \arrow{ur}[swap]{\phi_2} &
+& \OOO_X^{\oplus \br{n + 1}} \arrow{ul}{\phi_1} \arrow{ur}[swap]{\phi_2} &
 \end{tikzcd}
 $$
-commute. Given $ f : T_1 \to T_2 $ a morphism in $ \Sch / k $, we get a map of $ \Set $
-$$ \function{F\br{T_2}}{F\br{T_1}}{\br{\phi : \OOO_{T_1}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL}}{\br{f^*\phi : f^*\OOO_{T_2}^{\oplus \br{n + 1}} = \OOO_{T_1}^{\oplus \br{n + 1}} \twoheadrightarrow f^*\LLL}}. $$
+commute. Given $ f : X_1 \to X_2 $ a morphism in $ \Sch / k $, we get a map in $ \Set $
+$$ \function{F\br{X_2}}{F\br{X_1}}{\br{\phi : \OOO_{X_2}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL}}{\br{f^*\phi : f^*\OOO_{X_2}^{\oplus \br{n + 1}} = \OOO_{X_1}^{\oplus \br{n + 1}} \twoheadrightarrow f^*\LLL}}. $$
 This is a surjection by right exactness of tensor products.
 
 \pagebreak
@@ -1291,71 +1296,76 @@ $ F $ is represented by $ \PP_k^n $. That is, $ F \cong \h_{\PP_k^n} $.
 \end{theorem}
 
 \begin{remark*}
-This is an example of a \textbf{Quot scheme}, which is a scheme which represents a functor of the form $ T \mapsto \cbr{\OOO_T^{\oplus k} \twoheadrightarrow \EEE} $, where $ \EEE $ is a coherent sheaf satisfying some properties.
+This is an example of a \textbf{Quot scheme}, which is a scheme which represents a functor of the form $ X \mapsto \cbr{\OOO_X^{\oplus k} \twoheadrightarrow \EEE} $, where $ \EEE $ is a coherent sheaf satisfying some properties.
 \end{remark*}
 
 \lecture{15}{Wednesday}{11/11/20}
 
-\begin{proof}
-If the statement holds, then there is a \textbf{universal object}. That is, an element of $ F\br{\PP^n} $ corresponding to the identity $ \id_{\PP^n} \in \h_{\PP^n}\br{\PP^n} $, that is a surjective map $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $. Further, following the proof of Yoneda's lemma, given $ f : X \to \PP^n $ and $ T : \h_{\PP^n} \to F $ the natural transformation giving the natural isomorphism of functors, we get a commutative diagram
+If the statement holds, then there is a \textbf{universal object}. That is, an element of $ F\br{\PP^n} $ corresponding to the identity $ \id_{\PP^n} \in \h_{\PP^n}\br{\PP^n} $, that is a surjective map $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $. Further, following the proof of Yoneda's lemma, given $ f : X \to \PP^n $ and $ \TTT : \h_{\PP^n} \to F $ the natural transformation giving the natural isomorphism of functors, we get a commutative diagram
 $$
 \begin{tikzcd}
-\id_{\PP^n} \in \h_{\PP^n}\br{\PP^n} \arrow{r}{T\br{\PP^n}} \arrow{d}[swap]{\h_{\PP^n}\br{f}} & F\br{\PP^n} \ni \br{\OOO_{\PP^n}^{\oplus \br{n + 1}} \xrightarrow{\phi} \LLL} \arrow{d}{F\br{f}} \\
-f \in \h_{\PP^n}\br{X} \arrow{r}[swap]{T\br{X}} & F\br{X} \ni \br{\OOO_X^{\oplus \br{n + 1}} \xrightarrow{f^*\phi} f^*\LLL}
+\id_{\PP^n} \in \h_{\PP^n}\br{\PP^n} \arrow{r}{\TTT\br{\PP^n}} \arrow{d}[swap]{\h_{\PP^n}\br{f}} & F\br{\PP^n} \ni \br{\OOO_{\PP^n}^{\oplus \br{n + 1}} \xrightarrow{\phi} \LLL} \arrow{d}{F\br{f}} \\
+f \in \h_{\PP^n}\br{X} \arrow{r}[swap]{\TTT\br{X}} & F\br{X} \ni \br{\OOO_X^{\oplus \br{n + 1}} \xrightarrow{f^*\phi} f^*\LLL}
 \end{tikzcd}.
 $$
-That is, the element $ T\br{X}\br{f} $ is precisely $ f^*\phi : \OOO_X^{\oplus \br{n + 1}} \to f^*\LLL $. So the representing scheme $ \PP^n $ comes with the universal object $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $. So we will construct the universal object. The line bundle we construct has a name, $ \OOO_{\PP^n}\br{1} $.
+That is, the element $ \TTT\br{X}\br{f} $ is precisely $ f^*\phi : \OOO_X^{\oplus \br{n + 1}} \to f^*\LLL $. So the representing scheme $ \PP^n $ comes with the universal object $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $. So we will construct the universal object. The line bundle we construct has a name, $ \OOO_{\PP^n}\br{1} $.
 \begin{itemize}
-\item If $ S = k\sbr{x_0, \dots, x_n} $, then $ \PP^n = \Proj S $ has an open cover
-$$ \UUU = \cbr{\DD_+\br{x_i} \st 0 \le i \le n}, \qquad \DD_+\br{x_i} = \cbr{\ppp \in \Proj S \st x_i \in \ppp}. $$
+\item Let $ S = k\sbr{x_0, \dots, x_n} $. Then $ \PP^n = \Proj S $ has an open cover
+$$ \UUU = \cbr{\DD_+\br{x_i} \st 0 \le i \le n}, \qquad \DD_+\br{x_i} = \cbr{\ppp \in \Proj S \st x_i \notin \ppp}. $$
 We will take $ \UUU $ to be a trivialising cover for $ \OOO_{\PP^n}\br{1} $, with the transition map given by
 $$ g_{ij} = \dfrac{x_i}{x_j} = \dfrac{x_i^2}{x_ix_j} \in \OOO_{\PP^n}^*\br{\DD_+\br{x_i} \cap \DD_+\br{x_j}} = \OOO_{\PP^n}^*\br{\DD_+\br{x_ix_j}} = S_{\br{x_ix_j}}^*, $$
-so $ g_{ji} = x_j / x_i = x_j^2 / x_ix_j $ and $ g_{ij}g_{jk} = \br{x_i / x_j}\br{x_j / x_k} = x_i / x_k = g_{ik} $. Have a morphism defined in $ \DD_+\br{x_i} $ by
-$$ \function{\OOO_{\PP^n}^{\oplus \br{n + 1}}}{\OOO_{\PP^n}\br{1}}{e_j}{\dfrac{x_j}{x_i}}, \qquad e_j = \br{0, \dots, 0, 1, 0, \dots, 0}, $$
-using the trivialisation of $ \OOO_{\PP^n}\br{1} $ on $ \DD_+\br{x_i} $. That is, we have an isomorphism $ \eval{\OOO_{\PP^n}\br{1}}_{\DD_+\br{x_i}} \cong \OOO_{\DD_+\br{x_i}} \ni x_j / x_i $. Well-defined globally, since
+so $ g_{ji} = x_j / x_i = x_j^2 / x_ix_j $ and $ g_{ij}g_{jk} = \br{x_i / x_j}\br{x_j / x_k} = x_i / x_k = g_{ik} $.
+\item Have a morphism defined by
+$$ \function{\Gamma\br{\DD_+\br{x_i}, \OOO_{\PP^n}^{\oplus \br{n + 1}}}}{\Gamma\br{\DD_+\br{x_i}, \OOO_{\PP^n}\br{1}}}{e_j}{\dfrac{x_j}{x_i}}, \qquad e_j = \br{0, \dots, 0, 1, 0, \dots, 0}, $$
+using the trivialisation of $ \OOO_{\PP^n}\br{1} $ on $ \DD_+\br{x_i} $. That is, we have an isomorphism $ \eval{\OOO_{\PP^n}\br{1}}_{\DD_+\br{x_i}} \cong \OOO_{\DD_+\br{x_i}} $. Well-defined globally, since
 $$
 \begin{tikzcd}
-& \eval{\OOO_{\PP^n}^{\oplus \br{n + 1}}}_{\DD_+\br{x_ix_k}} \arrow{dl}[swap]{e_j \mapsto \tfrac{x_j}{x_i}} \arrow{dr}{e_j \mapsto \tfrac{x_j}{x_k}} & \\
+& \eval{\OOO_{\PP^n}^{\oplus \br{n + 1}}}_{\DD_+\br{x_ix_k}} \arrow{dl}[swap]{\tfrac{x_j}{x_i} \mapsfrom e_j} \arrow{dr}{e_j \mapsto \tfrac{x_j}{x_k}} & \\
 \eval{\OOO_{\DD_+\br{x_i}}}_{\DD_+\br{x_ix_k}} \arrow{rr}[swap]{\cdot g_{ik}} & & \eval{\OOO_{\DD_+\br{x_k}}}_{\DD_+\br{x_ix_k}}
 \end{tikzcd},
 $$
-but $ g_{ik}\br{x_j / x_i} = \br{x_i / x_k}\br{x_j / x_i} = x_j / x_k $. Note in particular each $ e_j $ maps to a global section of $ \OOO_{\PP^n}\br{1} $. We now have a morphism $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \to \OOO_{\PP^n}\br{1} $, and need to check surjective. On $ \DD_+\br{x_i} $, $ e_i \mapsto x_i / x_i = 1 \in \Gamma\br{\DD_+\br{x_i}, \OOO_{\PP^n}} = S_{\br{x_i}} $ so in particular, looking at sections over $ \DD_+\br{x_i} $, we get a homomorphism of $ S_{\br{x_i}} $-modules
+but $ g_{ik}\br{x_j / x_i} = \br{x_i / x_k}\br{x_j / x_i} = x_j / x_k $. Note in particular each $ e_j $ maps to a global section of $ \OOO_{\PP^n}\br{1} $. We now have a morphism $ \OOO_{\PP^n}^{\oplus \br{n + 1}} \to \OOO_{\PP^n}\br{1} $, and need to check surjective. On $ \DD_+\br{x_i} $,
+$$ \function{\Gamma\br{\DD_+\br{x_i}, \OOO_{\PP^n}^{\oplus \br{n + 1}}}}{\Gamma\br{\DD_+\br{x_i}, \OOO_{\PP^n}} = S_{\br{x_i}}}{e_i}{\dfrac{x_i}{x_i} = 1}, $$
+so in particular, looking at sections over $ \DD_+\br{x_i} $, we get a homomorphism of $ S_{\br{x_i}} $-modules
 $$ \function{S_{\br{x_i}}^{\oplus \br{n + 1}}}{S_{\br{x_i}}}{e_i}{1}, $$
-so clearly a surjective map of modules. Thus $ \br{\psi : \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \OOO_{\PP^n}\br{1}} \in F\br{\PP^n} $.
+so clearly a surjective map of modules.
+\end{itemize}
+Thus $ \br{\psi : \OOO_{\PP^n}^{\oplus \br{n + 1}} \twoheadrightarrow \OOO_{\PP^n}\br{1}} \in F\br{\PP^n} $.
 
 \pagebreak
 
-\item It remains to show that given $ X $ and $ \br{\phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL} \in F\br{X} $, we need that there exists a unique morphism $ f : X \to \PP^n $ such that
+\begin{proof}
+Given $ X $ and $ \br{\phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL} \in F\br{X} $, we need that there exists a unique morphism $ f : X \to \PP^n $ such that
 $$ \br{\phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL} \cong \br{f^*\psi : \OOO_X^{\oplus \br{n + 1}} \to f^*\OOO_{\PP^n}\br{1}}. $$
 Indeed, this will give the natural transformation $ F \to \h_{\PP^n} $, and the inverse natural transformation $ \h_{\PP^n} \to F $ is given by pull-back. That is, $ f : X \to \PP^n $ gives $ f^*\psi : \OOO_X^{\oplus \br{n + 1}} \to f^*\OOO_{\PP^n}\br{1} $.
 \begin{itemize}
 \item Let $ \phi\br{e_i} = s_i \in \Gamma\br{X, \LLL} $. Define
-$$ Z_i = \cbr{x \in X \st \br{s_i}_x \in \mmm_x\LLL_x}, \qquad \mmm_x \subseteq \OOO_{X, x}. $$
-Claim that this is a closed set. This can be checked on an open cover $ \cbr{U_i} $, since $ Z \subseteq X $ is closed if and only if $ Z \cap U_i $ is closed in $ U_i $ for all $ i $. Thus we may use a trivialising affine cover $ \cbr{U_i} $ of $ X $. So we reduce to the case that $ X = \Spec A $ and $ \LLL \cong \OOO_{\Spec A} $, so $ \Gamma\br{X, \LLL} \cong A $ so $ s_i \in A $ induces $ \br{s_i}_\ppp = s_i / 1 \in A_\ppp $. Now $ s_i / 1 \in \mmm_\ppp A_\ppp $ if and only if $ s_i $ lies in the inverse image $ \ppp $ of $ \mmm_\ppp A_\ppp $ under the localisation map $ A \to A_\ppp $. Thus $ Z_i = \VV\br{s_i} $, a closed set. Let
+$$ Z_i = \cbr{x \in X \st \br{s_i}_x \in \mmm_x\LLL_x}, \qquad \mmm_x \subseteq \OOO_{X, x}, $$
+where $ \br{s_i}_x $ is the germ of $ s_i $ at $ x $. Claim that this is a closed set. This can be checked on an open cover $ \cbr{U_i} $, since $ Z \subseteq X $ is closed if and only if $ Z \cap U_i $ is closed in $ U_i $ for all $ i $. Thus we may use a trivialising affine cover $ \cbr{U_i} $ of $ X $. So we reduce to the case that $ X = \Spec A $ and $ \LLL \cong \OOO_{\Spec A} $, so $ \Gamma\br{X, \LLL} \cong A $ so $ s_i \in A $ induces $ \br{s_i}_\ppp = s_i / 1 \in A_\ppp $. Now $ s_i / 1 \in \mmm_\ppp A_\ppp $ if and only if $ s_i $ lies in the inverse image $ \ppp $ of $ \mmm_\ppp A_\ppp $ under the localisation map $ A \to A_\ppp $. Thus $ Z_i = \VV\br{s_i} $, a closed set. Let
 $$ U_i = X \setminus Z_i. $$
 Then there is an isomorphism \footnote{Exercise: check on stalks}
 $$ \bijection{\OOO_{U_i}}{\eval{\LLL}_{U_i}}{1}{s_i}{\dfrac{s}{s_i}}{s}. $$
-Interpret $ s / s_i $ as the element of $ \OOO_{U_i} $ such that $ \br{s / s_i}s_i = s $.
 
 \lecture{16}{Friday}{13/11/20}
 
-\item We may now define a morphism $ f_i : U_i = X \setminus Z_i \to \DD_+\br{x_i} = \Spec S_{\br{x_i}} $ by giving a homomorphism by
+Interpret $ s / s_i $ as the element of $ \OOO_{U_i} $ such that $ \br{s / s_i}s_i = s $. We may now define a morphism
+$$ f_i : U_i = X \setminus Z_i \to \DD_+\br{x_i} = \Spec S_{\br{x_i}}, $$
+by giving a homomorphism
 $$ \function[f_i^\#]{S_{\br{x_i}} = k\sbr{\dfrac{x_0}{x_i}, \dots, \dfrac{x_n}{x_i}}}{\Gamma\br{U_i, \OOO_X}}{\dfrac{x_j}{x_i}}{\dfrac{s_j}{s_i}}, $$
 defining $ f_i^\# $ as a $ k $-algebra homomorphism. To get a morphism $ f : X \to \PP^n $ such that $ \eval{f}_{U_i} = f_i $, we need to check $ \eval{f_i}_{U_i \cap U_j} = \eval{f_j}_{U_i \cap U_j} $. Check that
-$$ \functions[\eval{f_i^\#}_{U_i \cap U_j}]{\Gamma\br{\DD_+\br{x_i} \cap \DD_+\br{x_j}, \OOO_{\PP^n}} = S_{\br{x_ix_j}}}{\Gamma\br{U_i \cap U_j, \OOO_X}}{\dfrac{x_k}{x_i}}{\dfrac{s_k}{s_i}}{\dfrac{x_k}{x_j} = \dfrac{\tfrac{x_k}{x_i}}{\tfrac{x_j}{x_i}}}{\dfrac{\tfrac{s_k}{s_i}}{\tfrac{s_j}{s_i}} = \dfrac{s_k}{s_j}}, $$
-$$ \functions[\eval{f_j^\#}_{U_i \cap U_j}]{\Gamma\br{\DD_+\br{x_i} \cap \DD_+\br{x_j}, \OOO_{\PP^n}} = S_{\br{x_ix_j}}}{\Gamma\br{U_i \cap U_j, \OOO_X}}{\dfrac{x_k}{x_j}}{\dfrac{s_k}{s_j}}{\dfrac{x_k}{x_i} = \dfrac{\tfrac{x_k}{x_j}}{\tfrac{x_i}{x_j}}}{\dfrac{\tfrac{s_k}{s_j}}{\tfrac{s_i}{s_j}} = \dfrac{s_k}{s_i}}. $$
-So $ \eval{f_i^\#}_{U_i \cap U_j} = \eval{f_j^\#}_{U_i \cap U_j} $, so $ \eval{f_i}_{U_i \cap U_j} = \eval{f_j}_{U_i \cap U_j} $, so the morphisms glue to give $ f : X \to \PP^n $. Further, $ f^*\OOO_{\PP^n}\br{1} \cong \LLL $, because the transition maps $ g_{ij} = x_i / x_j $ of $ \OOO_{\PP^n}\br{1} $ pull back under $ f^\# $ to $ s_i / s_j $, which are the transition maps for $ \LLL $ using trivialisations for $ \eval{\LLL}_{U_i} $ which we used above.
+$$ \functions[\br{f_i^\#}_{U_i \cap U_j}]{\Gamma\br{\DD_+\br{x_i} \cap \DD_+\br{x_j}, \OOO_{\PP^n}} = S_{\br{x_ix_j}}}{\Gamma\br{U_i \cap U_j, \OOO_X}}{\dfrac{x_k}{x_i}}{\dfrac{s_k}{s_i}}{\dfrac{x_k}{x_j} = \dfrac{\tfrac{x_k}{x_i}}{\tfrac{x_j}{x_i}}}{\dfrac{\tfrac{s_k}{s_i}}{\tfrac{s_j}{s_i}} = \dfrac{s_k}{s_j}}, $$
+$$ \functions[\br{f_j^\#}_{U_i \cap U_j}]{\Gamma\br{\DD_+\br{x_i} \cap \DD_+\br{x_j}, \OOO_{\PP^n}} = S_{\br{x_ix_j}}}{\Gamma\br{U_i \cap U_j, \OOO_X}}{\dfrac{x_k}{x_j}}{\dfrac{s_k}{s_j}}{\dfrac{x_k}{x_i} = \dfrac{\tfrac{x_k}{x_j}}{\tfrac{x_i}{x_j}}}{\dfrac{\tfrac{s_k}{s_j}}{\tfrac{s_i}{s_j}} = \dfrac{s_k}{s_i}}. $$
+So $ \br{f_i^\#}_{U_i \cap U_j} = \br{f_j^\#}_{U_i \cap U_j} $, so $ \eval{f_i}_{U_i \cap U_j} = \eval{f_j}_{U_i \cap U_j} $, so the morphisms glue to give $ f : X \to \PP^n $. Further, $ f^*\OOO_{\PP^n}\br{1} \cong \LLL $, because the transition maps $ g_{ij} = x_i / x_j $ of $ \OOO_{\PP^n}\br{1} $ pull back under $ f^\# $ to $ s_i / s_j $, which are the transition maps for $ \LLL $ using trivialisations for $ \eval{\LLL}_{U_i} $ which we used above.
 
 \pagebreak
 
-\item For uniqueness, suppose given a surjection $ \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $ and a morphism $ g : X \to \PP^n $ such that
-$$ g^*\br{\OOO_{\PP^n}^{\oplus \br{n + 1}} \to \OOO_{\PP^n}\br{1}} \cong \br{\phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL}. $$
+\item For uniqueness, suppose given a surjection $ \phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $ and a morphism $ g : X \to \PP^n $ such that
+$$ \br{g^*\phi : \OOO_X^{\oplus \br{n + 1}} \to g^*\OOO_{\PP^n}\br{1}} \cong \br{\phi : \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL}. $$
 We may think of $ \phi $ as given by $ n + 1 $ sections $ s_0, \dots, s_n \in \Gamma\br{X, \LLL} $ with $ s_i = \phi\br{e_i} $. Similarly the universal object on $ \PP^n $ is given by sections $ x_i \in \Gamma\br{\PP^n, \OOO_{\PP^n}\br{1}} $. Note by the construction of the universal object, the section $ x_j $ is given on $ \DD_+\br{x_i} $ by $ x_j / x_i \in S_{\br{x_i}} $. If $ f : X \to Y $ and $ \FFF $ is a sheaf of $ \OOO_Y $-modules, then $ s \in \Gamma\br{Y, \FFF} $ induces a section $ \br{Y, s} $ in $ \Gamma\br{X, f^{-1}\FFF} $, and hence a section
-$$ f^*s = \br{Y, s} \otimes 1 \in \Gamma\br{X, f^{-1}\FFF \otimes_{f^{-1}\OOO_X} \OOO_X} = \Gamma\br{X, f^*\FFF}. $$
+$$ f^*s = \br{Y, s} \otimes 1 \in \Gamma\br{X, f^{-1}\FFF \otimes_{f^{-1}\OOO_Y} \OOO_X} = \Gamma\br{X, f^*\FFF}. $$
 In particular, pull-back of the section $ x_i \in \Gamma\br{\PP^n, \OOO_{\PP^n}\br{1}} $ is $ s_i $. That is, $ g^*x_i = s_i $. In particular, $ \br{s_i}_x \in \mmm_x\LLL_x $ for some $ x \in X $ if and only if $ \br{x_i}_{g\br{x}} \in \mmm_{g\br{x}}\OOO_{\PP^n}\br{1}_{g\br{x}} $. Thus $ U_i = \cbr{x \in X \st \br{s_i}_x \notin \mmm_x\LLL_x} $ satisfies $ U_i = g^{-1}\br{\DD_+\br{x_i}} $. So we have $ g_i = \eval{g}_{U_i} : U_i \to \DD_+\br{x_i} $ and it is enough to show $ g_i = f_i $, where $ f_i $ was constructed previously from $ \OOO_X^{\oplus \br{n + 1}} \twoheadrightarrow \LLL $. So it is enough to check $ g_i^\# = f_i^\# $, and
 $$ g_i^\#\br{\dfrac{x_j}{x_i}} = \dfrac{g^*x_j}{g^*x_i} = \dfrac{s_j}{s_i} = f_i^\#\br{\dfrac{x_j}{x_i}}. $$
 Hence uniqueness.
-\end{itemize}
 \end{itemize}
 \end{proof}
 
@@ -1378,7 +1388,7 @@ $$ \function{X}{\PP^n}{p}{\br{s_0\br{p}, \dots, s_n\br{p}}}. $$
 
 Weil divisors are codimension one subvarieties and Cartier divisors are subschemes defined by a single equation.
 
-\subsection{Weil divisors}
+\subsection{Dimension}
 
 Recall the following.
 
@@ -1395,7 +1405,7 @@ The \textbf{Krull dimension} of a ring $ A $ is $ \dim A = \dim \Spec A $, which
 \end{definition*}
 
 \begin{definition*}
-If $ Z \subseteq X $ is an irreducible closed subset, then $ \codim\br{Z, X} $ is the length $ n $ of the longest chain $ Z = Z_0 \subsetneq \dots \subseteq Z_n $ of irreducible closed subsets.
+If $ Z \subseteq X $ is an irreducible closed subset, then the \textbf{codimension} $ \codim\br{Z, X} $ is the length $ n $ of the longest chain $ Z = Z_0 \subsetneq \dots \subsetneq Z_n $ of irreducible closed subsets.
 \end{definition*}
 
 \begin{remark*}
@@ -1404,9 +1414,13 @@ Intuition on dimension may be faulty, even for Noetherian affine schemes. Howeve
 \label{eq:1}
 \Ht \ppp + \dim B / \ppp = \dim B.
 \end{equation}
-Here $ \Ht \ppp $ is the length $ n $ of the longest chain of primes $ \ppp_0 \subsetneq \dots \subsetneq \ppp_n = \ppp $. Write $ \dim B / \ppp = \dim \VV\br{\ppp} $ and $ \Ht \ppp = \codim\br{\VV\br{\ppp}, \Spec B} $, so we have from $ \br{\ref{eq:1}} $ that
+Here the \textbf{height} $ \Ht \ppp $ is the length $ n $ of the longest chain of primes $ \ppp_0 \subsetneq \dots \subsetneq \ppp_n = \ppp $. Note $ \dim B / \ppp = \dim \VV\br{\ppp} $ and $ \Ht \ppp = \codim\br{\VV\br{\ppp}, \Spec B} $, so we have from $ \br{\ref{eq:1}} $ that
 $$ \codim\br{\VV\br{\ppp}, \Spec B} + \dim \VV\br{\ppp} = \dim \Spec B. $$
-This implies that if $ X $ is a variety over $ k $, so integral and finite type over $ k $, and $ Z \subseteq X $ an irreducible closed subset, that $ \dim Z + \codim\br{Z, X} = \dim X $. Also if $ \eta \in Z \subseteq X $ is the generic point of $ Z $, then $ \dim \OOO_{X, \eta} = \codim\br{Z, X} $, by example sheet $ 3 $.
+This implies that if $ X $ is a variety over $ k $, so integral and finite type over $ k $, and $ Z \subseteq X $ an irreducible closed subset, that
+$$ \dim Z + \codim\br{Z, X} = \dim X. $$
+Also if $ \eta \in Z \subseteq X $ is the generic point of $ Z $, then
+$$ \dim \OOO_{X, \eta} = \codim\br{Z, X}, $$
+by example sheet $ 3 $.
 \end{remark*}
 
 \begin{proposition}
@@ -1417,9 +1431,13 @@ If $ X $ is a Noetherian scheme, then $ X $ is a Noetherian topological space, t
 Exercise. \footnote{Exercise}
 \end{proof}
 
+\subsection{Class group of Weil divisors}
+
 \begin{assumption}
 \label{ass}
-$ X $ is a Noetherian integral scheme over $ \Spec k $ which is \textbf{regular in codimension one}. That is, whenever a local ring $ \OOO_{X, x} $ is of dimension one, it is \textbf{regular}, that is $ \dim_{\OOO_{X, x} / \mmm_x} \mmm_x / \mmm_x^2 = \dim \OOO_{X, x} $. That is, the dimension of the Zariski tangent space to $ X $ at $ x $ coincides with $ \dim \OOO_{X, x} $.
+$ X $ is a Noetherian integral scheme over $ \Spec k $ which is \textbf{regular in codimension one}. That is, whenever a local ring $ \OOO_{X, x} $ is of dimension one, it is \textbf{regular}, that is
+$$ \dim_{\OOO_{X, x} / \mmm_x} \mmm_x / \mmm_x^2 = \dim \OOO_{X, x}. $$
+That is, the dimension of the Zariski tangent space to $ X $ at $ x $ coincides with $ \dim \OOO_{X, x} $.
 \end{assumption}
 
 \lecture{17}{Monday}{16/11/20}
@@ -1432,6 +1450,8 @@ Regularity measures non-singularity, so we tend to say a scheme $ X $ all of who
 If $ X $ is a non-singular curve then $ X $ is regular in codimension one, but $ y^2 = x^2\br{x - 1} $ is not regular at the origin since the Zariski tangent space at the origin is two-dimensional.
 \end{example*}
 
+\pagebreak
+
 \begin{remark*}
 Standard commutative algebra fact in Atiyah-Macdonald. A regular Noetherian local domain $ A $ of dimension one is a \textbf{discrete valuation ring}. That is, if $ K $ is the field of fractions of $ A $, then there is a group homomorphism $ \nu : K^* \to \ZZ $, where $ K^* $ is the multiplicative group of $ K $, such that
 $$ A = \cbr{x \in K^* \st \nu\br{x} \ge 0} \cup \cbr{0}, $$
@@ -1441,13 +1461,10 @@ Note that after rescaling $ \nu $ so that $ \nu\br{\mmm \setminus \mmm^2} = 1 $,
 \end{remark*}
 
 \begin{definition*}
-Assume Assumption \ref{ass} holds. Then a \textbf{prime divisor} on $ X $ is a closed subvariety, that is an irreducible and reduced, equivalently integral, closed subscheme of $ X $, of codimension one. Let $ \Div X $ be the free abelian group generated by prime divisors.
+Assume Assumption \ref{ass} holds. Then a \textbf{prime divisor} on $ X $ is a closed subvariety, that is an irreducible and reduced, equivalently integral, closed subscheme of $ X $, of codimension one. Let $ \Div X $ be the free abelian group generated by prime divisors. Let $ \K\br{X} $ be the function field of $ X $. See example sheet $ 2 $, question $ 7 $. Note $ \K\br{X} $ is the field of fractions of $ A $ whenever $ \Spec A \subseteq X $ is an open affine subset. For $ Y \subseteq X $ a prime divisor, let $ \eta \in Y $ be its generic point. Then $ \dim \OOO_{X, \eta} = 1 $, as follows from $ \codim\br{Y, X} = 1 $, and hence have valuation $ \nu_Y : \K\br{X}^* \to \ZZ $, where $ \K\br{X} $ is the field of fractions of $ \OOO_{X, \eta} $, such that
+$$ \OOO_{X, \eta} = \cbr{f \in \K\br{X}^* \st \nu_Y\br{f} \ge 0} \cup \cbr{0}. $$
 \end{definition*}
 
-\pagebreak
-
-Let $ \K\br{X} $ be the function field of $ X $. See example sheet $ 2 $, question $ 7 $. Note $ \K\br{X} $ is the field of fractions of $ A $ whenever $ \Spec A \subseteq X $ is an open affine subset. For $ Y \subseteq X $ a prime divisor, let $ \eta \in Y $ be its generic point. Then $ \dim \OOO_{X, \eta} = 1 $, as follows from $ \codim\br{Y, X} = 1 $, and hence have valuation $ \nu_Y : \K\br{X}^* \to \ZZ $, where $ \K\br{X} $ is the field of fractions of $ \OOO_{X, \eta} $, such that
-$$ \OOO_{X, \eta} = \cbr{f \in \K\br{X}^* \st \nu_Y\br{f} \ge 0} \cup \cbr{0}. $$
 May assume $ \nu_Y\br{\mmm_\eta \setminus \mmm_\eta^2} = 1 $.
 
 \begin{example*}
@@ -1455,15 +1472,15 @@ Let $ X = \AA_k^1 = \Spec k\sbr{x} $, and let $ \ppp = \abr{x - a} \subseteq k\s
 $$ \OOO_{X, \ppp} = \cbr{\dfrac{f}{g} \in \K\br{X}^* \st \nu_\ppp\br{\dfrac{f}{g}} \ge 0} \cup \cbr{0}. $$
 \end{example*}
 
-\subsection{Class group of Weil divisors}
-
 \begin{lemma}
 \label{lem:primedivisor}
 With $ X $ satisfying Assumption \ref{ass}, if $ f \in \K\br{X}^* $, then $ \nu_Y\br{f} = 0 $ for all but a finite number of prime divisors $ Y $.
 \end{lemma}
 
 \begin{proof}
-We can find an open affine subset $ U = \Spec A $ of $ X $ such that $ f \in \Gamma\br{U, \OOO_X} $. For example, first pass to an open affine $ \Spec B $ on which we can write $ f = a / s $ for $ a \in B $ and $ s \ne 0 $, and then $ f \in B_s $, so we may take $ U = \DD\br{s} \subseteq \Spec B $. Then $ Z = X \setminus U $ is a proper closed subset of $ X $. Since $ X $ is Noetherian, so is $ Z $ as a topological space and hence decomposes into a finite union of irreducible closed subsets. Thus $ Z $ contains only a finite number of prime divisors. So enough to check the statement on $ U $, since any other prime divisor intersects $ U $, and its generic point $ \eta $ is contained in $ U $, since if $ \eta \notin U $ then $ \overline{\cbr{\eta}} \cap U = \emptyset $ as $ U $ is open. Thus we may assume $ X = \Spec A $ is affine and $ f \in A $. Thus $ \nu_Y\br{f} \ge 0 $ for all $ Y $ prime divisors in $ X $ and $ \nu_Y\br{f} > 0 $ if and only if $ f / 1 \in \mmm_\eta \subseteq \OOO_{X, \eta} $ where $ \eta $ is the generic point of $ Y $, if and only if $ f \in \ppp $ where $ \ppp \subseteq A $ is the prime ideal corresponding to $ \eta $, if and only if $ \ppp \in \VV\br{f} $, if and only if $ Y \subseteq \VV\br{f} $. Note $ \VV\br{f} $ is a proper closed subset of $ X $ since $ f \ne 0 $. Thus $ \VV\br{f} $ decomposes into a finite number of irreducible components, none of which are $ X $, and hence at most a finite number of prime divisors contained in $ \VV\br{f} $.
+We can find an open affine subset $ U = \Spec A $ of $ X $ such that $ f \in \Gamma\br{U, \OOO_X} $. For example, first pass to an open affine $ \Spec B $ on which we can write $ f = a / s $ for $ a \in B $ and $ s \ne 0 $, and then $ f \in B_s $, so we may take $ U = \DD\br{s} \subseteq \Spec B $. Then $ Z = X \setminus U $ is a proper closed subset of $ X $. Since $ X $ is Noetherian, so is $ Z $ as a topological space and hence decomposes into a finite union of irreducible closed subsets. Thus $ Z $ contains only a finite number of prime divisors. So enough to check the statement on $ U $, since any other prime divisor intersects $ U $, and its generic point $ \eta $ is contained in $ U $, since if $ \eta \notin U $ then $ \overline{\cbr{\eta}} \cap U = \emptyset $ as $ U $ is open. Thus we may assume $ X = \Spec A $ is affine and $ f \in A $. Thus $ \nu_Y\br{f} \ge 0 $ for all $ Y $ prime divisors in $ X $ and
+$$ \nu_Y\br{f} > 0 \quad \iff \quad \dfrac{f}{1} \in \mmm_{\eta'} \subseteq \OOO_{X, \eta'} \quad \iff \quad f \in \ppp \quad \iff \quad \ppp \in \VV\br{f} \quad \iff \quad Y \subseteq \VV\br{f}, $$
+where $ \eta' $ is the generic point of $ Y $ and $ \ppp \subseteq A $ is the prime ideal corresponding to $ \eta' $. Note $ \VV\br{f} $ is a proper closed subset of $ X $ since $ f \ne 0 $. Thus $ \VV\br{f} $ decomposes into a finite number of irreducible components, none of which are $ X $, and hence at most a finite number of prime divisors contained in $ \VV\br{f} $.
 \end{proof}
 
 \begin{definition*}
@@ -1475,8 +1492,12 @@ By Lemma \ref{lem:primedivisor}, this makes sense. Note
 $$ \function{\K\br{X}^*}{\Div X}{f}{\br{f}} $$
 is a group homomorphism as $ \nu_Y $ is.
 
+\pagebreak
+
 \begin{definition*}
-The \textbf{class group} of $ X $, written as $ \Cl X $, is the cokernel of the homomorphism $ \K\br{X}^* \to \Div X $. Two divisors $ D, D' \in \Div X $ are \textbf{linearly equivalent} if there exists $ f \in \K\br{X}^* $ such that $ \br{f} = D - D' $. We write $ D \sim D' $. If $ D \sim 0 $, that is $ D = \br{f} $ for some $ f $, we say $ D $ is a \textbf{principal divisor}. So $ \Cl X $ is the group of divisors modulo linear equivalence.
+The \textbf{class group} of $ X $, written as $ \Cl X $, is the cokernel of the homomorphism
+$$ \function{\K\br{X}^*}{\Div X}{f}{\br{f}}. $$
+Two divisors $ D, D' \in \Div X $ are \textbf{linearly equivalent} if there exists $ f \in \K\br{X}^* $ such that $ \br{f} = D - D' $. We write $ D \sim D' $. If $ D \sim 0 $, that is $ D = \br{f} $ for some $ f $, we say $ D $ is a \textbf{principal divisor}. So $ \Cl X $ is the group of divisors modulo linear equivalence.
 \end{definition*}
 
 \begin{remark*}
@@ -1492,8 +1513,6 @@ $$ A = \bigcap_{\Ht \ppp = 1, \ \ppp \subseteq A \ \text{prime}} A_\ppp \subsete
 \begin{proof}
 Matsumura, Commutative algebra, Theorem $ 38 $, Page $ 124 $.
 \end{proof}
-
-\pagebreak
 
 \begin{theorem}
 Let $ A $ be a Noetherian integral domain. Then $ A $ is a UFD if and only if $ X = \Spec A $ is normal, that is $ A $ is integrally closed in its field of fractions, and $ \Cl X = 0 $.
@@ -1521,17 +1540,20 @@ $$ \ZZ \xrightarrow{1 \mapsto \sbr{Z}} \Cl X \to \Cl U \to 0. $$
 \end{enumerate}
 \end{proposition}
 
+\pagebreak
+
 \begin{proof}
 \hfill
 \begin{enumerate}
-\item $ Y $ being a prime divisor of $ X $ implies $ Y \cap U $ is either a prime divisor of $ U $ or is empty. If $ f \in \K\br{X}^* $, and $ \br{f} = \sum_i n_iY_i $, then the image of $ \br{f} $ is $ \sum_i n_i\br{Y_i \cap U} $, and this coincides with $ \br{\eval{f}_U} $. The main point is $ \K\br{X} = \K\br{U} $. Thus $ \Cl X \to \Cl U $ is well-defined. Surjective since if $ Y \subseteq U $ is a prime divisor, then $ \overline{Y} \subseteq X $ is a prime divisor of $ X $ with $ Y = \overline{Y} \cap U $.
+\item $ Y $ being a prime divisor of $ X $ implies $ Y \cap U $ is either a prime divisor of $ U $ or is empty. If $ f \in \K\br{X}^* $, and $ \br{f} = \sum_i n_iY_i $, then the image of $ \br{f} $ is $ \sum_i n_i\br{Y_i \cap U} $, and this coincides with $ \br{\eval{f}_U} $. The main point is that $ \K\br{X} = \K\br{U} $. Thus $ \Cl X \to \Cl U $ is well-defined. Surjective since if $ Y \subseteq U $ is a prime divisor, then $ \overline{Y} \subseteq X $ is a prime divisor of $ X $ with $ Y = \overline{Y} \cap U $.
 \item $ \Div X $ and $ \Cl X $ only depend on codimension one subvarieties, so obvious.
 \item $ \ker \br{\Cl X \to \Cl U} $ consists only of divisors supported on $ Z $. If $ Z $ is irreducible of codimension one, there is precisely one such prime divisor, so $ \ker \br{\Cl X \to \Cl U} $ is generated by $ \sbr{Z} $.
 \end{enumerate}
 \end{proof}
 
 \begin{proposition}
-$ \Cl \PP_k^n \cong \ZZ $, generated by the class of a hyperplane $ H = \VV\br{x_i} $.
+$$ \Cl \PP_k^n \cong \ZZ, $$
+generated by the class of a hyperplane $ H = \VV\br{x_i} $.
 \end{proposition}
 
 \begin{proof}
@@ -1539,9 +1561,6 @@ As $ \PP^n \setminus H = \DD_+\br{x_i} \cong \AA_k^n = \Spec k\sbr{x_1, \dots, x
 $$ \ZZ \xrightarrow{1 \mapsto \sbr{H}} \Cl \PP^n \to \Cl \AA^n = 0. $$
 Thus $ \Cl \PP^n $ is generated by $ \sbr{H} $. Now
 $$ \K\br{\PP^n} = k\sbr{x_0, \dots, x_n}_{\abr{0}} = \cbr{\dfrac{f}{g} \st f, g \in k\sbr{x_0, \dots, x_n} \ \text{are homogeneous of the same degree}, \ g \ne 0} / \sim. $$
-
-\pagebreak
-
 Thus if $ dH \sim 0 $, we would need a rational function $ f / g $ such that $ \br{f / g} = dH $, and this is only possible if $ d = 0 $. More precisely, $ \br{f / g} = Y_1 - Y_2 $ where $ Y_1 $ and $ Y_2 $ are sums of hypersurfaces with the same total degree.
 \end{proof}
 
@@ -1562,22 +1581,24 @@ If $ X $ is integral, then $ \S\br{U} \subseteq \Gamma\br{U, \OOO_X} $ consists 
 \end{example*}
 
 \begin{definition*}
-Let $ \KKK_X^* \subseteq \KKK_X $ be the sheaf of invertible elements of $ \KKK_X $. Then there is an inclusion $ \OOO_X^* \hookrightarrow \KKK_X^* $. \footnote{Exercise: check at presheaf level, that is check $ \Gamma\br{U, \OOO_X^*} \to \S\br{U}^{-1}\Gamma\br{U, \OOO_X} $ is injective} A \textbf{Cartier divisor} on $ X $ is a global section of $ \KKK_X^* / \OOO_X^* $. A Cartier divisor is \textbf{principal} if it is in the image of the natural map $ \Gamma\br{X, \KKK_X^*} \to \Gamma\br{X, \KKK_X^* / \OOO_X^*} $. Two divisors are \textbf{linearly equivalent} if their difference is principal. Note additive language for divisors. We write $ \Ca\Cl X $, the \textbf{Cartier class group} of $ X $, to be the Cartier divisors modulo principal divisors. That is, $ \Ca\Cl X = \coker \br{\Gamma\br{X, \KKK_X^*} \to \Gamma\br{X, \KKK_X^* / \OOO_X^*}} $.
+Let $ \KKK_X^* \subseteq \KKK_X $ be the sheaf of invertible elements of $ \KKK_X $. Then there is an inclusion $ \OOO_X^* \hookrightarrow \KKK_X^* $. \footnote{Exercise: check at presheaf level, that is check $ \Gamma\br{U, \OOO_X^*} \to \S\br{U}^{-1}\Gamma\br{U, \OOO_X} $ is injective} A \textbf{Cartier divisor} on $ X $ is a global section of $ \KKK_X^* / \OOO_X^* $. A Cartier divisor is \textbf{principal} if it is in the image of the natural map $ \Gamma\br{X, \KKK_X^*} \to \Gamma\br{X, \KKK_X^* / \OOO_X^*} $. Two divisors are \textbf{linearly equivalent} if their difference is principal. Note additive language for divisors. We write $ \Ca\Cl X $, the \textbf{Cartier class group} of $ X $, to be the Cartier divisors modulo principal divisors. That is,
+$$ \Ca\Cl X = \coker \br{\Gamma\br{X, \KKK_X^*} \to \Gamma\br{X, \KKK_X^* / \OOO_X^*}}. $$
 \end{definition*}
 
 \begin{remark*}
 Note that an element of $ \Gamma\br{X, \KKK_X^* / \OOO_X^*} $ can be represented by $ \cbr{\br{U_i, f_i}} $ where $ \cbr{U_i} $ is some open cover of $ X $ and $ f_i \in \Gamma\br{U_i, \KKK_X^*} $ and on $ U_i \cap U_j $, we have $ \eval{f_i}_{U_i \cap U_j} / \eval{f_j}_{U_i \cap U_j} \in \Gamma\br{U_i \cap U_j, \OOO_X^*} $.
 \end{remark*}
 
-\begin{proposition}
-Let $ X $ satisfy Assumption \ref{ass}. Then there exists a homomorphism $ \Gamma\br{X, \KKK_X^* / \OOO_X^*} \to \Div X $ descending to $ \Ca\Cl X \to \Cl X $.
-\end{proposition}
+Let $ X $ satisfy Assumption \ref{ass}. Then there exists a homomorphism
+$$ \Gamma\br{X, \KKK_X^* / \OOO_X^*} \to \Div X, $$
+descending to
+$$ \Ca\Cl X \to \Cl X. $$
 
-\begin{proof}
+\pagebreak
+
 Indeed, given $ \cbr{\br{U_i, f_i}} $ as in the remark, and $ Y $ a prime divisor on $ X $, associate a coefficient $ n_Y $ to $ Y $ by choosing some $ U_i $ such that $ Y \cap U_i \ne \emptyset $, and setting $ n_Y = \nu_Y\br{f_i} $. This is well-defined. If $ Y \cap U_j \ne \emptyset $, then $ Y \cap U_i \cap U_j \ne \emptyset $, as $ U_i \cap Y $ is dense in $ Y $, being irreducible. Then
 $$ \nu_Y\br{f_j} = \nu_Y\br{f_i\br{\dfrac{f_j}{f_i}}} = \nu_Y\br{f_i} + \nu_Y\br{\dfrac{f_j}{f_i}} = \nu_Y\br{f_i}, $$
-since $ f_j / f_i $ is invertible on $ U_i \cap U_j $, hence has no zeros or poles. Now take the Cartier divisor $ \cbr{\br{U_i, f_i}} $ to $ \sum_Y n_YY $. You should check this is independent of the choice of representative $ \cbr{\br{U_i, f_i}} $. \footnote{Exercise} Note also we can always assume the cover $ \cbr{U_i} $ is finite since $ X $ is Noetherian by Assumption \ref{ass} and hence is quasi-compact. Note also a principal divisor coming from $ f \in \Gamma\br{X, \KKK_X^*} $ is represented by $ \br{X, f} $. Then this is mapped to $ \br{f} $ by construction.
-\end{proof}
+since $ f_j / f_i $ is invertible on $ U_i \cap U_j $, hence has no zeros or poles. Now take the Cartier divisor $ \cbr{\br{U_i, f_i}} $ to $ \sum_Y n_YY $. You should check this is independent of the choice of representative $ \cbr{\br{U_i, f_i}} $. Note also we can always assume the cover $ \cbr{U_i} $ is finite since $ X $ is Noetherian by Assumption \ref{ass} and hence is quasi-compact. Note also a principal divisor coming from $ f \in \Gamma\br{X, \KKK_X^*} $ is represented by $ \br{X, f} $. Then this is mapped to $ \br{f} $ by construction.
 
 \begin{proposition}
 If $ X $ satisfies Assumption \ref{ass}, and all local rings of $ X $ are UFD's, then the above map $ \Gamma\br{X, \KKK_X^* / \OOO_X^*} \to \Div X $ is an isomorphism.
@@ -1596,10 +1617,7 @@ If all local rings of $ X $ are UFD's, we say $ X $ is \textbf{locally factorial
 \begin{proof}
 Need to define the inverse map $ \Div X \to \Gamma\br{X, \KKK_X^* / \OOO_X^*} $. Let $ x \in X $ be any point. Then we get a morphism $ \Spec \OOO_{X, x} \to X $. For example, if $ x \in \Spec A \subseteq X $ is open affine, $ \OOO_{X, x} = A_\ppp $ where $ \ppp $ corresponds to $ x $ and then $ A \to A_\ppp $ induces the morphism $ \Spec \OOO_{X, x} \to \Spec A \hookrightarrow X $. A prime divisor on $ X $ pulls back to a prime divisor on $ \Spec \OOO_{X, x} $ by taking inverse images. More precisely, given $ Y \subseteq X $ a prime divisor, if $ x \notin Y $ then pull-back is empty, otherwise $ \Spec A \cap Y $ is non-empty and is of the form $ \VV\br{\qqq} $ for $ \qqq \subseteq A $ a prime ideal with $ \qqq \subseteq \ppp $. Then $ \qqq $ corresponds to a prime ideal $ \qqq A_\ppp $ of $ A_\ppp $, hence a prime divisor $ \VV\br{\qqq A_\ppp} $ of $ \Spec A_\ppp $. This gives a map
 $$ \function{\Div X}{\Div \Spec \OOO_{X, x}}{D}{D_x}. $$
-
-\pagebreak
-
-Since $ \OOO_{X, x} $ is a UFD, $ D_x $ is a principal divisor on $ \Spec \OOO_{X, x} $. That is, $ D_x = \br{f_x} $ for $ f_x \in \K\br{X}^* $, on $ \Spec \OOO_{X, x} $. Thus $ D $ and $ \br{f_x} $ on $ X $ differ only in prime divisors which do not contain $ x $. Thus if $ U_x $ is the complement of the union of prime divisors of $ X $ at which $ D $ and $ \br{f_x} $ have different coefficients, then $ \eval{D}_{U_x} = \eval{\br{f_x}}_{U_x} $. Do this for every point $ x $, and then represent a Cartier divisor by $ \cbr{\br{U_x, f_x}} $. On $ U_x \cap U_y $, $ \br{f_x} $ and $ \br{f_y} $ agree, as both agree with $ \eval{D}_{U_x \cap U_y} $, so $ \br{f_x / f_y} = 0 $ on $ U_x \cap U_y $, so $ f_x / f_y $ is invertible in $ \OOO_{X, \ppp} $ for all $ \ppp \in U_x \cap U_y $ points of height one. That is, generic points of prime divisors. If we cover $ U_x \cap U_y $ with open affines $ \Spec A $, this says that $ f_x / f_y \in A_\ppp^* $ for all $ \ppp \subseteq A $ primes of height one. Now since all $ A_\qqq $'s are UFD's, for all $ \qqq \subseteq A $ primes, $ A_\qqq $ is integrally closed. Thus $ A $ is integrally closed, see for example Atiyah-Macdonald, Proposition 5.13. Thus $ A = \bigcap_{\ppp \subseteq A, \ \Ht \ppp = 1} A_\ppp $, so $ f_x / f_y \in A^* $, so $ f_x / f_y \in \Gamma\br{U_i \cap U_j, \OOO_X^*} $. Thus $ \cbr{\br{U_x, f_x}} $ represents a section of $ \KKK_X^* / \OOO_X^* $. That is, a Cartier divisor. This gives the inverse map.
+Since $ \OOO_{X, x} $ is a UFD, $ D_x $ is a principal divisor on $ \Spec \OOO_{X, x} $. That is, $ D_x = \br{f_x} $ for $ f_x \in \K\br{X}^* $, on $ \Spec \OOO_{X, x} $. Thus $ D $ and $ \br{f_x} $ on $ X $ differ only in prime divisors which do not contain $ x $. Thus if $ U_x $ is the complement of the union of prime divisors of $ X $ at which $ D $ and $ \br{f_x} $ have different coefficients, then $ \eval{D}_{U_x} = \eval{\br{f_x}}_{U_x} $. Do this for every point $ x $, and then represent a Cartier divisor by $ \cbr{\br{U_x, f_x}} $. On $ U_x \cap U_y $, $ \br{f_x} $ and $ \br{f_y} $ agree, as both agree with $ \eval{D}_{U_x \cap U_y} $, so $ \br{f_x / f_y} = 0 $ on $ U_x \cap U_y $, so $ f_x / f_y $ is invertible in $ \OOO_{X, \ppp} $ for all $ \ppp \in U_x \cap U_y $ points of height one. That is, generic points of prime divisors. If we cover $ U_x \cap U_y $ with open affines $ \Spec A $, this says that $ f_x / f_y \in A_\ppp^* $ for all $ \ppp \subseteq A $ primes of height one. Now since all $ A_\qqq $'s are UFD's, for all $ \qqq \subseteq A $ prime, $ A_\qqq $ is integrally closed. Thus $ A $ is integrally closed, see for example Atiyah-Macdonald, Proposition 5.13. Thus $ A = \bigcap_{\ppp \subseteq A, \ \Ht \ppp = 1} A_\ppp $, so $ f_x / f_y \in A^* $, so $ f_x / f_y \in \Gamma\br{U_x \cap U_y, \OOO_X^*} $. Thus $ \cbr{\br{U_x, f_x}} $ represents a section of $ \KKK_X^* / \OOO_X^* $. That is, a Cartier divisor. This gives the inverse map.
 \end{proof}
 
 \subsection{Correspondence between Cartier divisors and line bundles}
@@ -1611,14 +1629,17 @@ Let $ D $ be a Cartier divisor on $ X $ represented by $ \cbr{\br{U_i, f_i}} $. 
 Note that as $ f_i / f_j $ is invertible on $ U_i \cap U_j $, $ f_i^{-1} $ and $ f_j^{-1} $ generate the same $ \OOO_{U_i \cap U_j} $-module. This is a line bundle.
 
 \begin{remark*}
-The transition maps are
+The transition maps are $ g_{ij} = f_j / f_i $, since
 $$
 \begin{tikzcd}
 & \eval{\OOO_X\br{D}}_{U_i \cap U_j} & \\
 \eval{\OOO_X}_{U_i \cap U_j} \arrow{ur}{1 \mapsto f_i^{-1}} \arrow{rr}[swap]{1 \mapsto \tfrac{f_j}{f_i}} & & \eval{\OOO_X}_{U_i \cap U_j} \arrow{ul}[swap]{f_j^{-1} \mapsfrom 1}
-\end{tikzcd},
+\end{tikzcd}.
 $$
-so $ g_{ij} = f_j / f_i $ are the transition maps. Consequently, if $ D_1 $ and $ D_2 $ are Cartier divisors, represented by $ \cbr{\br{U_i, f_i}} $ and $ \cbr{\br{U_i, g_i}} $, then $ D_1 - D_2 $ is represented by $ \cbr{\br{U_i, f_i / g_i}} $ and the transition maps for $ \OOO_X\br{D_1 - D_2} $ are $ \br{f_j / g_j} / \br{f_i / g_i} = \br{f_j / f_i} / \br{g_j / g_i} $, which are also the transition maps for $ \OOO_X\br{D_1} \otimes \OOO_X\br{D_2}^\vee $. Thus
+
+\pagebreak
+
+Consequently, if $ D_1 $ and $ D_2 $ are Cartier divisors, represented by $ \cbr{\br{U_i, f_i}} $ and $ \cbr{\br{U_i, g_i}} $, then $ D_1 - D_2 $ is represented by $ \cbr{\br{U_i, f_i / g_i}} $ and the transition maps for $ \OOO_X\br{D_1 - D_2} $ are $ \br{f_j / g_j} / \br{f_i / g_i} = \br{f_j / f_i} / \br{g_j / g_i} $, which are also the transition maps for $ \OOO_X\br{D_1} \otimes \OOO_X\br{D_2}^\vee $. Thus
 $$ \OOO_X\br{D_1 - D_2} \cong \OOO_X\br{D_1} \otimes \OOO_X\br{D_2}^\vee, $$
 so we obtain a group homomorphism
 $$ \function{\Gamma\br{X, \KKK_X^* / \OOO_X^*}}{\Pic X}{D}{\OOO_X\br{D}}. $$
@@ -1646,10 +1667,9 @@ If $ X $ is integral, then this homomorphism is an isomorphism.
 \begin{proof}
 Need to show every line bundle on $ X $ is isomorphic to a subsheaf of $ \KKK_X $, which is in this case the constant sheaf $ U \mapsto \K\br{X} $. Once this is shown, a trivialisation on a cover $ U_i $ leads to rational functions given by the isomorphism
 $$ \function{\OOO_{U_i}}{\eval{\LLL}_{U_i} \subseteq \eval{\KKK_X}_{U_i}}{1}{f_i}, $$
-
-\pagebreak
-
-and then $ D = \cbr{\br{U_i, f_i^{-1}}} $ satisfies $ \LLL \cong \OOO_X\br{D} $. So let $ \LLL $ be a line bundle on $ X $, and consider $ \LLL \otimes_{\OOO_X} \KKK_X $. On any open $ U $ with $ \eval{\LLL}_U \cong \OOO_U $, we have $ \eval{\br{\LLL \otimes_{\OOO_X} \KKK_X}}_U \cong \OOO_U \otimes_{\OOO_U} \eval{\KKK_X}_U \cong \eval{\KKK_X}_U $. This is the constant sheaf $ V \subseteq U \mapsto \K\br{X} $. Then $ \FFF = \LLL \otimes_{\OOO_X} \KKK_X $ is also the constant sheaf $ V \mapsto \K\br{X} $. Indeed if $ V $ is any non-empty open subset and $ \cbr{U_i} $ is a trivialising cover of $ \LLL $, then $ \FFF\br{V \cap U_i} $ can be identified with $ \K\br{X} $ canonically, as we can identify $ \FFF_\eta $ with $ \K\br{X} $ where $ \eta $ is the generic point of $ X $. Then the sheaf gluing axioms tell us that $ \FFF\br{V} \cong \K\br{X} $. Thus $ \LLL \otimes_{\OOO_X} \KKK_X \cong \KKK_X $ and we have a natural map
+and then $ D = \cbr{\br{U_i, f_i^{-1}}} $ satisfies $ \LLL \cong \OOO_X\br{D} $. So let $ \LLL $ be a line bundle on $ X $, and consider $ \LLL \otimes_{\OOO_X} \KKK_X $. On any open $ U $ with $ \eval{\LLL}_U \cong \OOO_U $, we have
+$$ \eval{\br{\LLL \otimes_{\OOO_X} \KKK_X}}_U \cong \OOO_U \otimes_{\OOO_U} \eval{\KKK_X}_U \cong \eval{\KKK_X}_U. $$
+This is the constant sheaf $ V \subseteq U \mapsto \K\br{X} $. Then $ \FFF = \LLL \otimes_{\OOO_X} \KKK_X $ is also the constant sheaf $ V \mapsto \K\br{X} $. Indeed if $ V $ is any non-empty open subset and $ \cbr{U_i} $ is a trivialising cover of $ \LLL $, then $ \FFF\br{V \cap U_i} $ can be identified with $ \K\br{X} $ canonically, as we can identify $ \FFF_\eta $ with $ \K\br{X} $ where $ \eta $ is the generic point of $ X $. Then the sheaf gluing axioms tell us that $ \FFF\br{V} \cong \K\br{X} $. Thus $ \LLL \otimes_{\OOO_X} \KKK_X \cong \KKK_X $ and we have a natural map
 $$ \function{\LLL}{\LLL \otimes_{\OOO_X} \KKK_X}{s}{s \otimes 1}, $$
 thus exhibiting $ \LLL $ as a subsheaf of $ \KKK_X $.
 \end{proof}
@@ -1657,10 +1677,14 @@ thus exhibiting $ \LLL $ as a subsheaf of $ \KKK_X $.
 \subsection{Effective divisors}
 
 \begin{definition*}
-A Weil divisor $ \sum_i a_iY_i $ is \textbf{effective} if $ a_i \ge 0 $ for all $ i $. A Cartier divisor $ \cbr{\br{U_i, f_i}} $ is \textbf{effective} if $ f_i \in \OOO_X\br{U_i} $ for all $ i $. If $ \LLL $ is a line bundle, $ s \in \Gamma\br{X, \LLL} $, and $ \cbr{U_i} $ is a trivialising cover for $ \LLL $, with trivialisations $ \phi_i : \eval{\LLL}_{U_i} \to \OOO_{U_i} $, we obtain a Cartier divisor
+A Weil divisor $ \sum_i a_iY_i $ is \textbf{effective} if $ a_i \ge 0 $ for all $ i $. A Cartier divisor $ \cbr{\br{U_i, f_i}} $ is \textbf{effective} if $ f_i \in \OOO_X\br{U_i} $ for all $ i $.
+\end{definition*}
+
+If $ \LLL $ is a line bundle, $ s \in \Gamma\br{X, \LLL} $, and $ \cbr{U_i} $ is a trivialising cover for $ \LLL $, with trivialisations $ \phi_i : \eval{\LLL}_{U_i} \to \OOO_{U_i} $, we obtain a Cartier divisor
 $$ \br{s}_0 = \cbr{\br{U_i, \phi_i\br{s}}}, \qquad \phi_i\br{s} \in \OOO_X\br{U_i}, $$
 the \textbf{divisor of zeros} of $ s $, necessarily effective.
-\end{definition*}
+
+\pagebreak
 
 \lecture{20}{Monday}{23/11/20}
 
@@ -1705,10 +1729,10 @@ so $ D = \br{s}_0 = \cbr{\br{U_i, ff_i}} = D_0 + \br{f} $, since $ \br{f} = \cbr
 \end{enumerate}
 \end{proof}
 
-\pagebreak
-
 \begin{example*}
-$ \PP_k^n $ satisfies all the hypotheses of Theorem \ref{thm:effectivedivisor}. We have isomorphisms $ \ZZ \cong \Cl \PP^n \cong \Ca\Cl \PP^n \cong \Pic \PP^n $, since $ \PP_k^n $ is non-singular, that is all local rings are regular. The generator of $ \Cl \PP^n $ is $ H $, a hyperplane, and not so hard to see that $ \OOO_{\PP^n}\br{H} = \OOO_{\PP^n}\br{1} $ constructed previously. \footnote{Exercise: check} So $ \Pic \PP^n $ is generated by $ \OOO_{\PP^n}\br{1} $. Define
+$ \PP_k^n $ satisfies all the hypotheses of Theorem \ref{thm:effectivedivisor}. We have isomorphisms
+$$ \ZZ \cong \Cl \PP^n \cong \Ca\Cl \PP^n \cong \Pic \PP^n, $$
+since $ \PP_k^n $ is non-singular, that is all local rings are regular. The generator of $ \Cl \PP^n $ is $ H $, a hyperplane, and not so hard to see that $ \OOO_{\PP^n}\br{H} = \OOO_{\PP^n}\br{1} $ constructed previously. \footnote{Exercise: check} So $ \Pic \PP^n $ is generated by $ \OOO_{\PP^n}\br{1} $. Define
 $$ \OOO_{\PP^n}\br{d} =
 \begin{cases}
 \OOO_{\PP^n}\br{1}^{\otimes d} & d > 0 \\
@@ -1716,31 +1740,33 @@ $$ \OOO_{\PP^n}\br{d} =
 \OOO_{\PP^n} & d = 0
 \end{cases},
 $$
-which is isomorphic to $ \OOO_{\PP^n}\br{dH} $. We will see that $ \Gamma\br{\PP^n, \OOO_{\PP^n}\br{d}} \cong S_d $ where $ S = k\sbr{x_0, \dots, x_n} = \bigoplus_d S_d $ for $ S_d $ the degree $ d $ piece. Check that if $ f \in S_d $ is a homogeneous polynomial of degree $ d $ and $ f = \prod_{i = 1}^n f_i^{d_i} $ its prime factorisation, then $ \br{f}_0 = \sum_i d_i\VV\br{f_i} $. \footnote{Exercise}
+which is isomorphic to $ \OOO_{\PP^n}\br{dH} $. We will see that $ \Gamma\br{\PP^n, \OOO_{\PP^n}\br{d}} \cong S_d $ where $ S = k\sbr{x_0, \dots, x_n} = \bigoplus_d S_d $ and $ S_d $ is the degree $ d $ piece. Check that if $ f \in S_d $ is a homogeneous polynomial of degree $ d $ and $ f = \prod_{i = 1}^n f_i^{d_i} $ its prime factorisation, then $ \br{f}_0 = \sum_i d_i\VV\br{f_i} $. \footnote{Exercise}
 \end{example*}
+
+\pagebreak
 
 \subsection{Dictionary between line bundles and linear systems}
 
-Let $ X $ be an integral subscheme of $ \PP^n $ such that $ k = \overline{k} $.
+Let $ X $ be an integral subscheme of $ \PP_k^n $ such that $ k = \overline{k} $.
 \begin{center}
 \begin{tabular}{p{0.47\textwidth}|p{0.47\textwidth}}
-\begin{center} A line bundle $ \LLL $. \end{center} & \begin{center} A divisor $ D \in \Ca\Cl X $ such that $ \LLL \cong \OOO_X\br{D} $. \end{center} \\
+\begin{center} Line bundles \end{center} & \begin{center} Linear systems \end{center} \\
 \hline
+\begin{center} A line bundle $ \LLL \in \Pic X $. \end{center} & \begin{center} A Cartier divisor $ D \in \Ca\Cl X $ such that $ \LLL \cong \OOO_X\br{D} $. \end{center} \\
 \begin{center} A section $ s \in \Gamma\br{X, \LLL} $ such that $ s \ne 0 $. \end{center} & \begin{center} An effective divisor $ \br{s}_0 \sim D $. \end{center} \\
-\hline
-\begin{center} A projectivisation $ \PP\br{\Gamma\br{X, \LLL}} = \br{\Gamma\br{X, \LLL} \setminus \cbr{0}} / k^* $. \end{center} & \begin{center} A \textbf{complete linear system} $ \abs{D} = \cbr{D' \ \text{effective}, \ D' \sim D} $. \end{center} \\
-\hline
-\begin{center} Sections $ s_0, \dots, s_n \in \Gamma\br{X, \LLL} $ define a morphism $$ \begin{array}{rcl} \OOO_X^{\oplus \br{n + 1}} & \longrightarrow & \LLL \\ e_i & \longmapsto & s_i \end{array}. $$ If this map is surjective, we say $ \LLL $ is \textbf{generated by global sections} and we obtain a morphism $ X \to \PP_k^n $. \end{center} & \begin{center} A linear subspace $ \DDD \subseteq \abs{D} $ is called a \textbf{linear system}. Think of this as the linear subspace of $ \abs{D} $ spanned by $ \br{s_0}_0, \dots, \br{s_n}_0 $. We say $ \DDD $ is \textbf{base-point-free} if for all $ x \in X $, there exists $ D' \in \DDD $ such that $ x \notin \supp D' $, where if $ D' = \sum_i a_iY_i $ with $ a_i > 0 $ then $ \supp D' = \bigcup_i Y_i $. In this case $ \DDD $ gives a morphism $ \phi : X \to \PP^n $. Note that if $ \DDD $ is determined by $ s_0, \dots, s_n $ then $ \DDD $ is base-point-free if and only if $ s_0, \dots, s_n $ generate $ \LLL = \OOO_X\br{D} $. Also pull-backs of hyperplanes in $ \PP^n $ give elements of $ \DDD $. \end{center} \\
-\hline
+\begin{center} A projectivisation $$ \PP\br{\Gamma\br{X, \LLL}} = \br{\Gamma\br{X, \LLL} \setminus \cbr{0}} / k^*. $$ \end{center} & \begin{center} A \textbf{complete linear system} $$ \abs{D} = \cbr{D' \ \text{effective}, \ D' \sim D}. $$ \end{center} \\
+\begin{center} Sections $ s_0, \dots, s_n \in \Gamma\br{X, \LLL} $ define a morphism $$ \begin{array}{rcl} \OOO_X^{\oplus \br{n + 1}} & \longrightarrow & \LLL \\ e_i & \longmapsto & s_i \end{array}. $$ \end{center} & \begin{center} A linear subspace $ \DDD \subseteq \abs{D} $ is called a \textbf{linear system}. Think of this as the linear subspace of $ \abs{D} $ spanned by $ \br{s_0}_0, \dots, \br{s_n}_0 $. \end{center} \\
+\begin{center} If this map is surjective, we say $ \LLL $ is \textbf{generated by global sections} and we obtain a morphism $ X \to \PP_k^n $. \end{center} & \begin{center} We say $ \DDD $ is \textbf{base-point-free} if for all $ x \in X $, there exists $ D' \in \DDD $ such that $ x \notin \supp D' $, where if $ D' = \sum_i a_iY_i $ with $ a_i > 0 $ then $ \supp D' = \bigcup_i Y_i $. In this case $ \DDD $ gives a morphism $ \phi : X \to \PP_k^n $. Note that if $ \DDD $ is determined by $ s_0, \dots, s_n $ then $ \DDD $ is base-point-free if and only if $ s_0, \dots, s_n $ generate $ \LLL = \OOO_X\br{D} $. Also pull-backs of hyperplanes in $ \PP_k^n $ give elements of $ \DDD $. \end{center} \\
 \begin{center} If sections of $ \LLL $ induce a closed immersion in some $ \PP_k^n $, we say $ \LLL $ is \textbf{very ample}. \end{center} & \begin{center} If $ \abs{D} $ induces a closed immersion, we say $ D $ is \textbf{very ample}. \end{center} \\
-\hline
 \begin{center} $ \LLL $ is \textbf{ample} if $ \LLL^{\otimes n} $ is very ample for some $ n > 0 $. \end{center} & \begin{center} $ D $ is \textbf{ample} if $ nD $ is very ample for some $ n > 0 $. \end{center}
 \end{tabular}
 \end{center}
 
 \begin{remark*}
-There exists a good geometric criterion for very ampleness. See example sheets. There exist numerical criteria for ampleness. It is useful to control the size of $ \Gamma\br{X, \LLL} $.
+There exists a good geometric criterion for very ampleness. See example sheets. There exist numerical criteria for ampleness.
 \end{remark*}
+
+It is useful to control the size of $ \Gamma\br{X, \LLL} $.
 
 \pagebreak
 
@@ -1790,7 +1816,7 @@ an \textbf{injective resolution} of $ A $.
 \subsection{Sheaf cohomology}
 
 We then get injective resolutions in the category of sheaves of abelian groups. If $ \FFF $ is a sheaf on $ X $, then have an inclusion
-$$ 0 \to \FFF_x \to I_x, \qquad x \in X, $$
+$$ 0 \to \FFF_x \xrightarrow{f_x} I_x, \qquad x \in X, $$
 with $ I_x $ injective. Then define
 $$ \III = \prod_{x \in X} \br{\iota_x}_*I_x, $$
 where $ \iota_x : \cbr{x} \hookrightarrow X $. That is,
@@ -1803,7 +1829,7 @@ $$ \function{\FFF\br{U}}{\III\br{U}}{s}{\br{f_x\br{U, s}}_{x \in U}}, $$
 and $ \III $ is an injective object in the category of sheaves of abelian groups. This allows the construction of injective resolutions
 $$ 0 \to \FFF \to \III^0 \xrightarrow{d^0} \III^1 \xrightarrow{d^1} \dots. $$
 Then define
-$$ \H^i\br{X, \FFF} = \ker \br{d^1 : \Gamma\br{X, \III^i} \to \Gamma\br{X, \III^{i + 1}}} / \im \br{d^{i - 1} : \Gamma\br{X, \III^{i - 1}} \to \Gamma\br{X, \III^i}}. $$
+$$ \H^i\br{X, \FFF} = \ker \br{d^i : \Gamma\br{X, \III^i} \to \Gamma\br{X, \III^{i + 1}}} / \im \br{d^{i - 1} : \Gamma\br{X, \III^{i - 1}} \to \Gamma\br{X, \III^i}}. $$
 That is, this is the cohomology of the chain complex
 $$ \Gamma\br{X, \III^0} \to \Gamma\br{X, \III^1} \to \dots. $$
 
@@ -1850,7 +1876,7 @@ Hartshorne, Chapter III, Theorem 2.7.
 
 \subsection{\texorpdfstring{$\check{\text{C}}$ech}{Cech} cohomology}
 
-How do we calculate cohomology in practice? Let $ X $ be a topological space, $ \FFF $ a sheaf of abelian groups on $ X $, and $ \UUU = \cbr{U_i}_{i \in I} $ an open cover of $ X $. Choose a well-ordering on $ I $, and write $ U_{i_1 \dots i_p} = U_{i_0} \cap \dots \cap U_{i_p} $. Define the group of \textbf{$\check{\text{C}}$ech $ p $-cochains} to be
+How do we calculate cohomology in practice? Let $ X $ be a topological space, $ \FFF $ a sheaf of abelian groups on $ X $, and $ \UUU = \cbr{U_i}_{i \in I} $ an open cover of $ X $. Choose a well-ordering on $ I $, and write $ U_{i_0 \dots i_p} = U_{i_0} \cap \dots \cap U_{i_p} $. Define the group of \textbf{$\check{\text{C}}$ech $ p $-cochains} to be
 $$ \vC^p\br{\UUU, \FFF} = \prod_{i_0 < \dots < i_p} \FFF\br{U_{i_0 \dots i_p}}. $$
 Write $ \alpha \in \vC^p\br{\UUU, \FFF} $ as $ \alpha = \br{\alpha_{i_0 \dots i_p}}_{i_0 < \dots < i_p} $. Define the \textbf{$\check{\text{C}}$ech coboundary} by
 $$ \function[\d]{\vC^p\br{\UUU, \FFF}}{\vC^{p + 1}\br{\UUU, \FFF}}{\alpha}{\br{\sum_{k = 0}^{p + 1} \br{-1}^k\eval{\alpha_{i_0 \dots \widehat{i_k} \dots i_{p + 1}}}_{U_{i_0 \dots i_{p + 1}}}}_{i_0 < \dots < i_{p + 1}}}. $$
@@ -1867,15 +1893,15 @@ $$ \vH^p\br{\UUU, \FFF} = \H^p\br{\vC^\bullet\br{\UUU, \FFF}} = \ker \br{\d : \v
 \begin{itemize}
 \item Let $ X = \S^1 $ with the usual topology, and let $ \FFF = \underline{\ZZ} $ be the constant sheaf. That is, the sheaf associated to the presheaf $ U \mapsto \ZZ $, so
 $$ \FFF\br{U} = \cbr{\phi : U \to \ZZ \st \phi \ \text{locally constant}}. $$
-Take as an open cover $ U $ and $ V $ connected such that $ U \cap V $ has two connected components. Then
+Take as an open cover $ U $ and $ V $ connected with $ U \cap V $ disconnected. Then
 $$ \vC^0\br{\UUU, \FFF} = \Gamma\br{U, \FFF} \times \Gamma\br{V, \FFF} = \ZZ \times \ZZ, \qquad \vC^1\br{\UUU, \FFF} = \Gamma\br{U \cap V, \FFF} = \ZZ^2, $$
 and
 $$ \function[\d]{\vC^0\br{\UUU, \FFF}}{\vC^1\br{\UUU, \FFF}}{\br{a, b}}{\br{b - a, b - a}}, $$
-so $ \vH^0\br{\UUU, \FFF} = \ker \d \cong \ZZ $ and $ \vH^1\br{\UUU, \FFF} = \coker \d \cong \ZZ $. Note that this agrees with the regular cohomology of $ \S^1 $. In this case, this also agrees with $ \H^i\br{\S^1, \FFF} $.
-\item Let $ \FFF = \OOO_{\PP^1}\br{-2} $ for $ \PP^1 = \Proj k\sbr{x_0, x_1} $. Then $ \OOO_{\PP^1}\br{1} $ had transition map from $ U_0 = \DD_+\br{x_0} $ to $ U_1 = \DD_+\br{x_1} $ given by $ x_0 / x_1 $. Thus $ \OOO_{\PP^1}\br{-2} $ has transition map $ x_1^2 / x_0^2 $. Taking $ \UUU = \cbr{U_0, U_1} $, we get
+so $ \vH^0\br{\UUU, \FFF} = \ker \d \cong \ZZ $ and $ \vH^1\br{\UUU, \FFF} = \coker \d \cong \ZZ $. Note that this agrees with the singular cohomology of $ \S^1 $. In this case, this also agrees with $ \H^i\br{\S^1, \FFF} $.
+\item Let $ \FFF = \OOO_{\PP^1}\br{-2} $ and $ \PP^1 = \Proj k\sbr{x_0, x_1} $. Then $ \OOO_{\PP^1}\br{1} $ had transition map from $ U_0 = \DD_+\br{x_0} $ to $ U_1 = \DD_+\br{x_1} $ given by $ x_0 / x_1 $. Thus $ \OOO_{\PP^1}\br{-2} $ has transition map $ x_1^2 / x_0^2 $. Taking $ \UUU = \cbr{U_0, U_1} $, we get
 $$ \vC^0\br{\UUU, \FFF} = \Gamma\br{U_0, \OOO_{\PP^1}\br{-2}} \times \Gamma\br{U_1, \OOO_{\PP^1}\br{-2}} = k\sbr{\dfrac{x_1}{x_0}} \times k\sbr{\dfrac{x_0}{x_1}}, $$
 and
-$$ \vC^1\br{\UUU, \FFF} = \Gamma\br{U_0 \cap U_1, \OOO_{\PP^1}\br{-2}} = k\sbr{\dfrac{x_1}{x_0}}_{\tfrac{x_1}{x_0}} = k\sbr{\dfrac{x_1}{x_0}, \dfrac{x_0}{x_1}}, $$
+$$ \vC^1\br{\UUU, \FFF} = \Gamma\br{U_0 \cap U_1, \OOO_{\PP^1}\br{-2}} = k\sbr{\dfrac{x_0}{x_1}}_{\tfrac{x_0}{x_1}} = k\sbr{\dfrac{x_1}{x_0}, \dfrac{x_0}{x_1}}, $$
 using the same trivialisation on $ U_0 \cap U_1 $ which we used on $ U_1 $. Then
 $$ \d\br{f, g} = g - f\dfrac{x_1^2}{x_0^2}. $$
 Then $ \ker \d = 0 $ and $ \coker \d $ is one-dimensional, generated by $ x_1 / x_0 $. So $ \vH^0\br{\UUU, \OOO_{\PP^1}\br{-2}} = 0 $ and $ \vH^1\br{\UUU, \OOO_{\PP^1}\br{-2}} = k $.
@@ -1896,10 +1922,10 @@ If $ X \to S $ is a separated morphism with $ S $ affine, then any open affine c
 
 \subsection{Calculation of cohomology of projective space}
 
-Fix a field $ k $ and $ X = \PP_k^r $. We saw every line bundle on $ \PP_k^r $ is of the form $ \OOO_{\PP^r}\br{m} = \OOO_X\br{m} = \OOO_X\br{mH} $ for some $ m \in \ZZ $.
+Fix a field $ k $ and $ X = \PP_k^r $. We saw every line bundle on $ \PP_k^r $ is of the form $ \OOO_{\PP_k^r}\br{m} = \OOO_{\PP_k^r}\br{mH} $ for some $ m \in \ZZ $.
 
 \begin{definition*}
-A \textbf{perfect pairing} is a bilinear map $ \abr{,} : V \times W \to k $ with $ V $ and $ W $ two $ k $-vector spaces such that the map
+A \textbf{perfect pairing} is a bilinear map $ \abr{,} : V \times W \to k $ with $ k $-vector spaces $ V $ and $ W $ such that the map
 $$ \function{V}{W^*}{v}{\abr{v, \cdot}} $$
 is an isomorphism.
 \end{definition*}
@@ -1908,11 +1934,11 @@ is an isomorphism.
 Let $ S = k\sbr{x_0, \dots, x_r} $. Then
 \begin{enumerate}
 \item there is an isomorphism of graded $ S $-modules
-$$ S \cong \bigoplus_{n \in \ZZ} \H^0\br{X, \OOO_X\br{n}}, $$
-\item $ \H^i\br{X, \OOO_X\br{n}} = 0 $ for $ 0 < i < r $,
-\item $ \H^r\br{X, \OOO_X\br{-r - 1}} \cong k $, and
+$$ S \cong \bigoplus_{n \in \ZZ} \H^0\br{\PP^r, \OOO_{\PP^r}\br{n}}, $$
+\item $ \H^i\br{\PP^r, \OOO_{\PP^r}\br{n}} = 0 $ for $ 0 < i < r $,
+\item $ \H^r\br{\PP^r, \OOO_{\PP^r}\br{-r - 1}} \cong k $, and
 \item there is a perfect pairing
-$$ \H^0\br{X, \OOO_X\br{n}} \times \H^r\br{X, \OOO_X\br{-n - r - 1}} \to \H^r\br{X, \OOO_X\br{-r - 1}} = k, $$
+$$ \H^0\br{\PP^r, \OOO_{\PP^r}\br{n}} \times \H^r\br{\PP^r, \OOO_{\PP^r}\br{-n - r - 1}} \to \H^r\br{\PP^r, \OOO_{\PP^r}\br{-r - 1}} = k, $$
 of finite-dimensional $ k $-vector spaces for all $ n \in \ZZ $.
 \end{enumerate}
 \end{theorem}
@@ -1920,39 +1946,38 @@ of finite-dimensional $ k $-vector spaces for all $ n \in \ZZ $.
 \begin{proof}
 Will calculate using \Cech cohomology using the standard affine cover
 $$ \UUU = \cbr{U_i = \DD_+\br{x_i} \st 0 \le i \le r}, $$
-by calculating cohomology of $ \FFF = \bigoplus_{n \in \ZZ} \OOO_X\br{n} $ as \Cech cohomology respects direct sums. The key point is to recall the transition map for $ \OOO_X\br{1} $ from $ U_i $ to $ U_j $ is $ x_i / x_j $, and so the transition maps for $ \OOO_X\br{m} $ are $ x_i^m / x_j^m $. For $ I \subseteq \cbr{0, \dots, r} $, we have $ U_I = \bigcap_{i \in I} \DD_+\br{x_i} = \DD_+\br{x_I} $ where $ x_I = \prod_{i \in I} x_i $. Thus $ \Gamma\br{U_I, \OOO_{\PP^r}} \cong S_{\br{x_I}} $. We will identify $ \Gamma\br{U_I, \OOO_X\br{m}} $ with the $ k $-vector subspace of $ S_{\br{x_I}} $ spanned by Laurent monomials of degree $ m $. That is, monomials of the form $ x_0^{a_0} \dots x_r^{a_r} $ with $ \sum_i a_i = m $ and if $ a_i < 0 $ then $ i \in I $. Given such a monomial $ M $, then using the trivialisation on $ U_i $, we will identify the section of $ \OOO_X\br{m} $ defined by $ M $ with $ M / x_i^m \in \Gamma\br{U_I, \OOO_{\PP^r}} $, with $ i \in I $. If $ i, j \in I $, then note $ \br{M / x_i^m}\br{x_i^m / x_j^m} = M / x_j^m $. Thus we have a canonical identification of $ \Gamma\br{U_I, \OOO_X\br{m}} $ with the space spanned by Laurent monomials of degree $ m $. Thus $ \Gamma\br{U_I, \FFF} $ can be identified with $ S_{\br{x_I}} $. So now have a \Cech complex $ \vC^\bullet\br{\UUU, \FFF} $
-$$ \prod_{0 \le i_0 \le r} S_{\br{x_{i_0}}} \xrightarrow{\d^0} \dots \xrightarrow{\d^{r - 1}} S_{\br{x_0 \dots x_r}}. $$
+by calculating cohomology of $ \FFF = \bigoplus_{n \in \ZZ} \OOO_{\PP^r}\br{n} $ as \Cech cohomology respects direct sums. The key point is to recall the transition map for $ \OOO_{\PP^r}\br{1} $ from $ U_i $ to $ U_j $ is $ x_i / x_j $, and so the transition maps for $ \OOO_{\PP^r}\br{m} $ are $ x_i^m / x_j^m $. For $ I \subseteq \cbr{0, \dots, r} $, we have $ U_I = \bigcap_{i \in I} \DD_+\br{x_i} = \DD_+\br{x_I} $ where $ x_I = \prod_{i \in I} x_i $. Thus $ \Gamma\br{U_I, \OOO_{\PP^r}} \cong S_{\br{x_I}} $. We will identify $ \Gamma\br{U_I, \OOO_{\PP^r}\br{m}} $ with the $ k $-vector subspace of $ S_{x_I} $ spanned by Laurent monomials of degree $ m $. That is, monomials of the form $ x_0^{a_0} \dots x_r^{a_r} $ with $ \sum_i a_i = m $ and if $ a_i < 0 $ then $ i \in I $. Given such a monomial $ M $, then using the trivialisation on $ U_i $, we will identify the section of $ \OOO_{\PP^r}\br{m} $ defined by $ M $ with $ M / x_i^m \in \Gamma\br{U_I, \OOO_{\PP^r}} $, with $ i \in I $. If $ i, j \in I $, then note $ \br{M / x_i^m}\br{x_i^m / x_j^m} = M / x_j^m $. Thus we have a canonical identification of $ \Gamma\br{U_I, \OOO_{\PP^r}\br{m}} $ with the space spanned by Laurent monomials of degree $ m $. Thus $ \Gamma\br{U_I, \FFF} $ can be identified with $ S_{x_I} $. So now have a \Cech complex $ \vC^\bullet\br{\UUU, \FFF} $
+$$ \prod_{0 \le i_0 \le r} S_{x_{i_0}} \xrightarrow{\d^0} \dots \xrightarrow{\d^{r - 1}} S_{x_0 \dots x_r}. $$
 \begin{itemize}
-\item[$ 1 $.] Note $ \H^0\br{X, \FFF} = \ker \d^0 $. Note also all modules in the \Cech complex are $ S $-submodules of $ S_{\br{x_0 \dots x_r}} $, and
+\item[$ 1 $.] Note $ \H^0\br{\PP^r, \FFF} = \ker \d^0 $. Note also all modules in the \Cech complex are $ S $-submodules of $ S_{x_0 \dots x_r} $, and
 $$ \d^0\br{\br{f_i}_{0 \le i \le r}} = \br{f_j - f_i}_{0 \le i < j \le r}. $$
-Thus if $ \br{f_i}_{0 \le i \le r} \in \ker \d^0 $, we actually have $ f_i = f_j $ for all $ i $ and $ j $. Thus $ f_i, f_j \in S $ since otherwise $ f_i $ involves a negative power of $ x_i $, which cannot occur in $ f_j $, or vice versa. Thus $ f_i = f $ for all $ i $ with $ f \in S $, so $ \ker \d^0 \cong S $. Thus $ \H^0\br{X, \FFF} \cong S $, preserving degrees. That is, $ \H^0\br{X, \OOO_X\br{m}} = S_m $.
+Thus if $ \br{f_i}_{0 \le i \le r} \in \ker \d^0 $, we actually have $ f_i = f_j $ for all $ i $ and $ j $. Thus $ f_i, f_j \in S $ since otherwise $ f_i $ involves a negative power of $ x_i $, which cannot occur in $ f_j $, or vice versa. Thus $ f_i = f $ for all $ i $ with $ f \in S $, so $ \ker \d^0 \cong S $. Thus $ \H^0\br{\PP^r, \FFF} \cong S $, preserving degrees. That is, $ \H^0\br{\PP^r, \OOO_{\PP^r}\br{m}} = S_m $.
 \item[$ 3 $.] Now consider
-$$ \d^{r - 1} : \prod_{0 \le k \le r} S_{\br{x_0 \dots \widehat{x_k} \dots x_r}} \to S_{\br{x_0 \dots x_r}}. $$
-Note $ S_{\br{x_0 \dots x_r}} $ is the $ k $-vector space with basis $ \prod_{i = 0}^r x_i^{a_i} $ for $ a_i \in \ZZ $ and $ \im \d^{r - 1} $ is spanned by monomials of the form $ \prod_{i = 0}^r x_i^{a_i} $ with at least one $ a_i \ge 0 $. Thus the basis for $ \coker \d^{r - 1} $ is
+$$ \d^{r - 1} : \prod_{0 \le k \le r} S_{x_0 \dots \widehat{x_k} \dots x_r} \to S_{x_0 \dots x_r}. $$
+Note $ S_{x_0 \dots x_r} $ is the $ k $-vector space with basis $ \prod_{i = 0}^r x_i^{a_i} $ for $ a_i \in \ZZ $ and $ \im \d^{r - 1} $ is spanned by monomials of the form $ \prod_{i = 0}^r x_i^{a_i} $ with at least one $ a_i \ge 0 $. Thus the basis for $ \coker \d^{r - 1} $ is
 $$ \cbr{\prod_{i = 0}^r x_i^{a_i} \st \forall i, \ a_i \le -1}. $$
-In particular, $ \H^r\br{X, \OOO_X\br{-r - 1}} $ is generated by $ x_0^{-1} \dots x_r^{-1} $. Thus $ \H^r\br{X, \OOO_X\br{-r - 1}} \cong k $.
+In particular, $ \H^r\br{\PP^r, \OOO_{\PP^r}\br{-r - 1}} $ is generated by $ x_0^{-1} \dots x_r^{-1} $. Thus $ \H^r\br{\PP^r, \OOO_{\PP^r}\br{-r - 1}} \cong k $.
 
 \pagebreak
 
-\item[$ 4 $.] Note $ \H^0\br{X, \OOO_X\br{n}} = 0 $ for $ n < 0 $ as $ S_n = 0 $ for $ n < 0 $, and $ \H^r\br{X, \OOO_X\br{-n - r - 1}} = 0 $ for $ n < 0 $ as there are no monomials with only negative exponents of degree more than $ -r - 1 $. Thus nothing to check in this case. If $ n \ge 0 $, we have a basis
+\item[$ 4 $.] Note $ \H^0\br{\PP^r, \OOO_{\PP^r}\br{n}} = 0 $ for $ n < 0 $ as $ S_n = 0 $ for $ n < 0 $, and $ \H^r\br{\PP^r, \OOO_{\PP^r}\br{-n - r - 1}} = 0 $ for $ n < 0 $ as there are no monomials with only negative exponents of degree more than $ -r - 1 $. Thus nothing to check in this case. If $ n \ge 0 $, we have a basis
 $$ \cbr{\prod_i x_i^{m_i} \st \sum_i m_i = n, \ m_i \ge 0} $$
-for $ \H^0\br{X, \OOO_X\br{n}} $ and a basis
+for $ \H^0\br{\PP^r, \OOO_{\PP^r}\br{n}} $ and a basis
 $$ \cbr{\prod_i x_i^{l_i} \st \sum_i l_i = -n - r - 1, \ l_i \le -1} $$
-for $ \H^r\br{X, \OOO_X\br{-n - r - 1}} $. The perfect pairing is given by
+for $ \H^r\br{\PP^r, \OOO_{\PP^r}\br{-n - r - 1}} $. The perfect pairing is given by
 $$ \br{x_0^{m_0} \cdot \dots \cdot x_r^{m_r}} \cdot \br{x_0^{l_0} \cdot \dots \cdot x_r^{l_r}} = x_0^{m_0 + l_0} \cdot \dots \cdot x_r^{m_r + l_r}, $$
-interpreting as zero if any $ m_i + l_i \ge 0 $. This gives a pairing
-$$ \H^0\br{X, \OOO_X\br{n}} \times \H^r\br{X, \OOO_X\br{-n - r - 1}} \to \H^r\br{X, \OOO_X\br{-r - 1}} = k \cdot \br{x_0 \dots x_r}^{-1}. $$
-It is easy to check it is a perfect pairing. \footnote{Exercise}
+interpreting as zero if any $ m_i + l_i \ge 0 $. This gives a pairing \footnote{Exercise: easy to check perfect pairing}
+$$ \H^0\br{\PP^r, \OOO_{\PP^r}\br{n}} \times \H^r\br{\PP^r, \OOO_{\PP^r}\br{-n - r - 1}} \to \H^r\br{\PP^r, \OOO_{\PP^r}\br{-r - 1}} = k \cdot \br{x_0 \dots x_r}^{-1}. $$
 
 \lecture{23}{Monday}{30/11/20}
 
-\item[$ 2 $.] It remains to show $ \H^i\br{X, \OOO_X\br{n}} = 0 $ for $ 0 < i < r $, by induction on $ r $. The base case $ r = 1 $ has nothing to show. For the induction step, if we localise $ \vC^\bullet\br{\UUU, \FFF} $ at $ x_r $ as graded $ S $-modules, we get a \Cech complex which calculates the cohomology groups $ \H^i\br{U_r, \eval{\FFF}_{U_r}} $, by calculating using the \Cech cover $ \UUU' = \cbr{U_i \cap U_r \st 0 \le i \le r} $. But $ U_r \cong \AA_k^r $, and \Cech cohomology can also be calculated via the cover $ \cbr{U_r} $, so $ \H^i\br{U_r, \eval{\FFF}_{U_r}} = 0 $ for all $ i > 0 $. Note that this implies that if $ \FFF $ is in general a quasi-coherent sheaf on an affine scheme $ X $, then $ \H^i\br{X, \FFF} = 0 $ for all $ i > 0 $. Now localising at $ x_r $ is an exact functor, so $ \H^i\br{\vC^\bullet\br{\UUU, \FFF}_{x_r}} = \H^i\br{\vC^\bullet\br{\UUU, \FFF}}_{x_r} $, so thus $ \H^i\br{X, \FFF}_{x_r} = \H^i\br{U_r, \eval{\FFF}_{U_r}} = 0 $ for all $ i > 0 $. For this to be the case, every element of $ \H^i\br{X, \FFF} $ must be annihilated by some power of $ x_r $. Now let $ H = \VV\br{x_r} \subseteq \PP^r $. Thinking of this as a closed subscheme, $ H = \Proj S / \abr{x_r} = \Proj k\sbr{x_0, \dots, x_{r - 1}} = \PP^{r - 1} $. Have a surjective map $ \OOO_{\PP^r} \twoheadrightarrow \iota_*\OOO_H $ where $ \iota : H \to \PP^r $ is the inclusion. Because $ H $ is defined locally by a single equation, the kernel of $ \OOO_{\PP^r} \twoheadrightarrow \iota_*\OOO_H $ is a line bundle. Note this kernel is the ideal sheaf corresponding to $ H $. On $ U_i = \Spec S_{\br{x_i}} $, this kernel is generated by $ x_r / x_i $ and hence the transition maps for the ideal sheaf $ \III_{H / X} $ are
+\item[$ 2 $.] It remains to show $ \H^i\br{\PP^r, \OOO_{\PP^r}\br{n}} = 0 $ for $ 0 < i < r $, by induction on $ r $. For the base case $ r = 1 $, nothing to show. For the induction step, if we localise $ \vC^\bullet\br{\UUU, \FFF} $ at $ x_r $ as graded $ S $-modules, we get a \Cech complex which calculates the cohomology groups $ \H^i\br{U_r, \eval{\FFF}_{U_r}} $, by calculating using the \Cech cover $ \UUU' = \cbr{U_i \cap U_r \st 0 \le i \le r} $. But $ U_r \cong \AA_k^r $, and \Cech cohomology can also be calculated via the cover $ \cbr{U_r} $, so $ \H^i\br{U_r, \eval{\FFF}_{U_r}} = 0 $ for all $ i > 0 $. Note that this implies that if $ \FFF $ is in general a quasi-coherent sheaf on an affine scheme $ X $, then $ \H^i\br{X, \FFF} = 0 $ for all $ i > 0 $. Now localising at $ x_r $ is an exact functor, so $ \H^i\br{\vC^\bullet\br{\UUU, \FFF}_{x_r}} = \H^i\br{\vC^\bullet\br{\UUU, \FFF}}_{x_r} $, so thus $ \H^i\br{\PP^r, \FFF}_{x_r} = \H^i\br{U_r, \eval{\FFF}_{U_r}} = 0 $ for all $ i > 0 $. For this to be the case, every element of $ \H^i\br{\PP^r, \FFF} $ must be annihilated by some power of $ x_r $. Now let $ H = \VV\br{x_r} \subseteq \PP^r $. Thinking of this as a closed subscheme, $ H = \Proj S / \abr{x_r} = \Proj k\sbr{x_0, \dots, x_{r - 1}} = \PP^{r - 1} $. Have a surjective map $ \OOO_{\PP^r} \twoheadrightarrow \iota_*\OOO_H $ where $ \iota : H \to \PP^r $ is the inclusion. Because $ H $ is defined locally by a single equation, the kernel of $ \OOO_{\PP^r} \twoheadrightarrow \iota_*\OOO_H $ is a line bundle. Note this kernel is the ideal sheaf corresponding to $ H $. On $ U_i = \Spec S_{\br{x_i}} $, this kernel is generated by $ x_r / x_i $ and hence the transition maps for the ideal sheaf $ \III_{H / \PP^r} $ are
 $$
 \begin{tikzcd}
-\eval{\OOO_{U_i}}_{U_i \cap U_j} \arrow{r}{\tfrac{x_r}{x_i}} \arrow[bend right=30]{rr}[swap]{\tfrac{x_r}{x_i} \cdot \tfrac{x_j}{x_r} = \tfrac{x_j}{x_i}} & \eval{\III_{H / X}}_{U_i \cap U_j} & \eval{\OOO_{U_j}}_{U_i \cap U_j} \arrow{l}[swap]{\tfrac{x_r}{x_j}}
+\eval{\OOO_{U_i}}_{U_i \cap U_j} \arrow{r}{\tfrac{x_r}{x_i}} \arrow[bend right=30]{rr}[swap]{\tfrac{x_r}{x_i} \cdot \tfrac{x_j}{x_r} = \tfrac{x_j}{x_i}} & \eval{\III_{H / \PP^r}}_{U_i \cap U_j} & \eval{\OOO_{U_j}}_{U_i \cap U_j} \arrow{l}[swap]{\tfrac{x_r}{x_j}}
 \end{tikzcd}.
 $$
-Thus $ \III_{H / X} \cong \OOO_{\PP^r}\br{-1} \cong \OOO_{\PP^r}\br{-H} $. The upshot is that we have an exact sequence
+Thus $ \III_{H / \PP^r} \cong \OOO_{\PP^r}\br{-1} \cong \OOO_{\PP^r}\br{-H} $. The upshot is that we have an exact sequence
 $$ 0 \to \OOO_{\PP^r}\br{-1} \xrightarrow{\cdot x_r} \OOO_{\PP^r} \to \iota_*\OOO_H \to 0. $$
 Multiplication by $ x_r $ makes sense, since on $ U_i $, it means multiplying by $ x_r / x_i $, recalling that $ x_r $ corresponds to the section $ x_r / x_i $ of $ \OOO_{\PP^r}\br{1} $ on $ U_i $. We can tensor the exact sequence with $ \OOO_{\PP^r}\br{n} $. Still exact, so
 $$ 0 \to \OOO_{\PP^r}\br{n - 1} \xrightarrow{\cdot x_r} \OOO_{\PP^r}\br{n} \to \iota_*\br{\OOO_H\br{n}} \to 0. $$
@@ -1962,8 +1987,8 @@ $$ 0 \to \OOO_{\PP^r}\br{n - 1} \xrightarrow{\cdot x_r} \OOO_{\PP^r}\br{n} \to \
 \pagebreak
 
 Summing over all $ n $,
-$$ 0 \to \FFF\br{-1} \to \FFF \to \FFF_H \to 0, \qquad \FFF\br{-1} = \FFF \otimes \OOO_{\PP^r}\br{-1}, \qquad \FFF_H = \bigoplus_{n \in \ZZ} \OOO_H\br{n}. $$
-Induction hypothesis implies that $ \H^i\br{\PP^r, \FFF_H} = 0 $ for $ 0 < i < r - 1 $. Note $ \H^i\br{\PP^r, \FFF_H} = \H^i\br{H, \FFF_H} $, as the \Cech complexes calculating them are the same. That is, if use $ \UUU = \cbr{U_i} $ or $ \UUU_H = \cbr{U_i \cap H} $. This is a general fact, where if $ \iota : Y \to X $ is a closed immersion and $ \FFF $ is a sheaf on $ Y $, then $ \H^p\br{X, \iota_*\FFF} = \H^p\br{Y, \FFF} $.
+$$ 0 \to \FFF\br{-1} \to \FFF \to \FFF_H \to 0, \qquad \FFF\br{-1} = \FFF \otimes_{\OOO_{\PP^r}} \OOO_{\PP^r}\br{-1}, \qquad \FFF_H = \bigoplus_{n \in \ZZ} \OOO_H\br{n}. $$
+Induction hypothesis implies that $ \H^i\br{\PP^r, \FFF_H} = 0 $ for $ 0 < i < r - 1 $. Note $ \H^i\br{\PP^r, \FFF_H} = \H^i\br{H, \FFF_H} $, as the \Cech complexes calculating them are the same, that is using $ \UUU = \cbr{U_i} $ or $ \UUU_H = \cbr{U_i \cap H} $. This is a general fact, where if $ \iota : Y \to X $ is a closed immersion and $ \FFF $ is a sheaf on $ Y $, then $ \H^p\br{X, \iota_*\FFF} = \H^p\br{Y, \FFF} $.
 \begin{itemize}
 \item So if $ 1 < i < r - 1 $, get a piece of the long exact cohomology sequence
 $$ 0 = \H^{i - 1}\br{\PP^r, \FFF_H} \to \H^i\br{\PP^r, \FFF\br{-1}} \xrightarrow{\cdot x_r} \H^i\br{\PP^r, \FFF} \to \H^i\br{\PP^r, \FFF_H} = 0. $$
@@ -2001,10 +2026,11 @@ In general, given an effective Cartier divisor $ D = \cbr{\br{U_i, f_i}} $ for $
 \subsection{Normal and conormal bundles}
 
 Let $ X $ be a scheme and $ \iota : Z \hookrightarrow X $ a closed immersion. Then have
-$$ \III_{Z / X} = \ker \br{\iota^* : \OOO_X \to \iota_*\OOO_Z}. $$
-We saw on the example sheet that $ \III_Z $ is a coherent sheaf of $ \OOO_X $-modules if $ X $ is Noetherian. We define the \textbf{conormal sheaf} of $ Z $ in $ X $ to be
+$$ \III_{Z / X} = \ker \br{\iota^\# : \OOO_X \to \iota_*\OOO_Z}. $$
+We saw on the example sheet that $ \III_Z $ is a coherent sheaf of $ \OOO_X $-modules if $ X $ is Noetherian. We define the \textbf{conormal bundle} of $ Z $ in $ X $ to be
 $$ \N_{Z / X}^\vee = \III_Z / \III_Z^2 \subseteq \OOO_X / \III_Z^2. $$
-Here $ \III_Z^2 $ is the sheaf associated to the presheaf $ U \mapsto \III_Z\br{U}^2 \subseteq \OOO_X\br{U} $.
+Here $ \III_Z^2 $ is the sheaf associated to the presheaf
+$$ U \mapsto \III_Z\br{U}^2 \subseteq \OOO_X\br{U}. $$
 
 \begin{fact*}
 Suppose $ X $ and $ Z $ are non-singular. That is, all local rings of $ X $ and $ Z $ are regular. Then $ \N_{Z / X}^\vee $ is a locally free sheaf of rank $ \codim\br{Z, X} $.
@@ -2014,8 +2040,6 @@ In this case we define the \textbf{normal bundle} of $ Z $ in $ X $ to be
 $$ \N_{Z / X} = \HOM_{\OOO_Z}\br{\N_{Z / X}^\vee, \OOO_Z}. $$
 Here we are using that $ \N_{Z / X}^\vee $ is a sheaf of $ \OOO_Z = \OOO_X / \III_Z $-modules.
 
-\subsection{Sheaf of differentials}
-
 \begin{definition*}
 Suppose $ f : X \to Y $ is a separated morphism, so that $ \Delta : X \to X \times_Y X $ is a closed immersion. Then the \textbf{sheaf of differentials} is the sheaf
 $$ \Omega_{X / Y} = \Delta^*\N_{X / X \times_Y X}^\vee. $$
@@ -2023,7 +2047,7 @@ $$ \Omega_{X / Y} = \Delta^*\N_{X / X \times_Y X}^\vee. $$
 
 \lecture{24}{Wednesday}{02/12/20}
 
-Let $ B $ be an $ A $-algebra, let $ X = \Spec B $ and $ Y = \Spec A $, and $ M $ a $ B $-module. An \textbf{$ A $-derivation} $ d : B \to M $ is a map such that
+Let $ B $ be an $ A $-algebra, so $ X = \Spec B $ and $ Y = \Spec A $, and $ M $ a $ B $-module. An \textbf{$ A $-derivation} $ d : B \to M $ is a map such that
 \begin{itemize}
 \item $ d\br{b + b'} = d\br{b} + d\br{b'} $ for all $ b, b' \in B $,
 \item $ d\br{bb'} = bd\br{b'} + b'd\br{b} $ for all $ b, b' \in B $, and
@@ -2055,10 +2079,10 @@ $$ \function[d]{B}{I / I^2}{b}{1 \otimes b - b \otimes 1}. $$
 With this $ d $, $ I / I^2 = \Omega_{B / A} $ satisfies the universal property.
 \end{remark*}
 
-Note if $ X = \Spec B $ and $ Y = \Spec A $, then $ \phi $ induces the diagonal morphism $ \Delta : X \to X \times_Y X $ and $ \widetilde{I} = \III_{X / X \times_Y X} $. Then $ \Delta^*\N_{X / X \times_Y X}^\vee $ coincides with $ \widetilde{I / I^2} $, viewing $ I / I^2 $ as a $ B $-module.
+Note if $ X = \Spec B $ and $ Y = \Spec A $, then $ Y $ induces the diagonal morphism $ \Delta : X \to X \times_Y X $ and $ \widetilde{I} = \III_{X / X \times_Y X} $. Then $ \Delta^*\N_{X / X \times_Y X}^\vee $ coincides with $ \widetilde{I / I^2} $, viewing $ I / I^2 $ as a $ B $-module. If $ Y = \Spec k $ and $ X $ is a non-singular connected variety, then so is $ X \times_k X $ and $ \codim\br{\Delta\br{X}, X \times_k X} = \dim X $. So $ \Omega_{X / \Spec k} = \Omega_X $ is a locally free sheaf of rank $ \dim X $.
 
 \begin{example*}
-If $ Y = \Spec k $ and $ X $ is a non-singular connected variety, then so is $ X \times_k X $ and $ \dim X = \codim\br{\Delta\br{X}, X \times_k X} $. So $ \Omega_{X / \Spec k} = \Omega_X $ is a locally free sheaf of rank $ \dim X $. For example, if $ X = \AA_k^n $, then
+If $ X = \AA_k^n $, then
 $$ \Omega_X = \bigoplus_{i = 1}^n \OOO_X\d x_i. $$
 Think that $ \Omega_X $ is the cotangent bundle and $ \TTT_X = \HOM_{\OOO_X}\br{\Omega_X, \OOO_X} $ is the tangent bundle.
 \end{example*}
@@ -2066,13 +2090,15 @@ Think that $ \Omega_X $ is the cotangent bundle and $ \TTT_X = \HOM_{\OOO_X}\br{
 \begin{definition*}
 If $ X $ is as above, we define the \textbf{canonical bundle} of $ X $ to be
 $$ \omega_X = \ext^{\dim X}\Omega_X. $$
-This is the sheaf associated to the presheaf $ U \mapsto \ext^{\dim X}\Omega_X\br{U} $ as an $ \OOO_X\br{U} $-module. Alternatively if one takes a trivialising cover $ \cbr{U_i} $ for $ \Omega_X $, with transition matrices $ g_{ij} \in \GL_n\br{\Gamma\br{U_i \cap U_j, \OOO_X}} $, then the transition functions for $ \omega_X $ are $ \det g_{ij} $. Then $ \omega_X $ is a line bundle, and we call its corresponding Cartier divisor class as $ \KKK_X $, the \textbf{canonical divisor} of $ X $.
+This is the sheaf associated to the presheaf $ U \mapsto \ext^{\dim X}\Omega_X\br{U} $ as an $ \OOO_X\br{U} $-module. Alternatively if one takes a trivialising cover $ \cbr{U_i} $ for $ \Omega_X $, with transition matrices $ g_{ij} \in \GL_n \Gamma\br{U_i \cap U_j, \OOO_X} $, then the transition functions for $ \omega_X $ are $ \det g_{ij} $. Then $ \omega_X $ is a line bundle, and we call its corresponding Cartier divisor class as $ \KKK_X $, the \textbf{canonical divisor} of $ X $.
 \end{definition*}
+
+\subsection{Serre duality and Riemann-Roch}
 
 \begin{theorem}[Serre duality]
 Let $ X $ be a non-singular projective variety over $ \Spec k $ of dimension $ n $. Then for any locally free sheaf $ \FFF $ on $ X $ of finite rank, there is a natural isomorphism
 $$ \H^i\br{X, \FFF^\vee \otimes \omega_X} \to \H^{n - i}\br{X, \FFF}^\vee, $$
-where $ \FFF^\vee $ is the dual sheaf $ \HOM_{\OOO_X}\br{\FFF, \OOO_X} $.
+where $ \FFF^\vee $ is the dual sheaf $ \HOM_{\OOO_X}\br{\FFF, \OOO_X} $ and $ \H^{n - i}\br{X, \FFF}^\vee $ is the dual vector space.
 \end{theorem}
 
 The proof is mostly homological algebra, but ultimately reduces to the calculation of $ \H^i\br{\PP^r, \OOO_{\PP^r}\br{n}} $. In fact, for $ \PP^r $,
@@ -2111,19 +2137,18 @@ $$ \g = \dim_k \H^1\br{X, \OOO_X}. $$
 
 \begin{theorem}[Riemann-Roch for curves]
 For $ D \in \Div X $,
-$$ \dim \H^0\br{X, \OOO_X\br{D}} - \dim \H^0\br{X, \omega_X \otimes \OOO_X\br{-D}} = \deg D + 1 - \g. $$
+\begin{equation}
+\label{eq:2}
+\dim \H^0\br{X, \OOO_X\br{D}} - \dim \H^0\br{X, \omega_X \otimes \OOO_X\br{-D}} = \deg D + 1 - \g.
+\end{equation}
 \end{theorem}
 
 \begin{proof}
 By Serre duality,
-\begin{align*}
-\dim \H^0\br{X, \OOO_X\br{D}} - \dim \H^0\br{X, \omega_X \otimes \OOO_X\br{-D}}
-& = \dim \H^0\br{X, \OOO_X\br{D}} - \dim \H^1\br{X, \OOO_X\br{D}} \\
-& = \chi\br{\OOO_X\br{D}} \\
-& = \chi\br{\OOO_X} + \deg D \\
-& = \dim \H^0\br{X, \OOO_X} - \dim \H^1\br{X, \OOO_X} + \deg D \\
-& = 1 - \g + \deg D.
-\end{align*}
+$$ \chi\br{\OOO_X\br{D}} = \dim \H^0\br{X, \OOO_X\br{D}} - \dim \H^0\br{X, \omega_X \otimes \OOO_X\br{-D}}. $$
+This is the left hand side of $ \br{\ref{eq:2}} $. But
+$$ \chi\br{\OOO_X\br{D}} = \chi\br{\OOO_X} + \deg D = \dim \H^0\br{X, \OOO_X} - \dim \H^1\br{X, \OOO_X} + \deg D = 1 - \g + \deg D, $$
+giving the right hand side of $ \br{\ref{eq:2}} $.
 \end{proof}
 
 \lecture{25}{Friday}{04/12/20}
@@ -2135,8 +2160,7 @@ By Serre duality,
 $$ \deg \KKK_X = 2\g - 2. $$
 \item If $ \deg D < 0 $, then
 $$ \H^0\br{X, \OOO_X\br{D}} = 0. $$
-Indeed linear equivalence must preserve degree. A silly way of seeing this is that the left hand side of Riemann-Roch is independent of the representative for $ D $. Thus $ \abs{D} $ is empty, thus $ \H^0\br{X, \OOO_X\br{D}} = 0 $.
-\item Now if $ \deg D > 2\g - 2 $, then $ \H^0\br{X, \OOO_X\br{-D} \otimes \omega_X} = 0 $ since $ \deg \br{\KKK_X - D} = 2\g - 2 - \deg D < 0 $. Thus Riemann-Roch says
+Indeed linear equivalence must preserve degree. A silly way of seeing this is that the left hand side of Riemann-Roch is independent of the representative for $ D $. Thus $ \abs{D} $ is empty, thus $ \H^0\br{X, \OOO_X\br{D}} = 0 $. Now if $ \deg D > 2\g - 2 $, then $ \H^0\br{X, \OOO_X\br{-D} \otimes \omega_X} = 0 $ since $ \deg \br{\KKK_X - D} = 2\g - 2 - \deg D < 0 $. Thus Riemann-Roch says
 $$ \dim \H^0\br{X, \OOO_X\br{D}} = \deg D + 1 - \g. $$
 \item A linear system $ \abs{D} $ on a curve is base-point-free if
 $$ \dim \H^0\br{X, \OOO_X\br{D - P}} = \dim \H^0\br{X, \OOO_X\br{D}} - 1, $$
@@ -2164,7 +2188,7 @@ The most interesting range of divisors is $ 0 \le \deg D \le 2\g - 2 $.
 \item Let $ \g = 0 $. Then if $ \deg D = 1 $, then $ D $ is very ample. For example, the linear system $ \abs{P} $ for $ P \in X $ induces an embedding $ f : X \to \PP^1 $, hence $ X \cong \PP^1 $.
 \item Let $ \g = 1 $. Fix $ P_0 \in X $. Then $ \abs{3P_0} $ is very ample and of dimension two, so we get an embedding $ f : X \hookrightarrow \PP^2 $. This embeds $ X $ as a degree three plane curve. This comes from the fact that $ f^*\OOO_{\PP^2}\br{1} = \OOO_X\br{3P_0} $, which is of degree three. Think about divisors of degree zero on $ X $. Claim that if $ D \in \Div X $ with $ \deg D = 0 $, then $ D \sim P - P_0 $ for some $ P \in X $, which is unique. Consider $ D + P_0 $. We then have by Riemann-Roch $ \dim \H^0\br{X, \OOO_X\br{D + P_0}} = \deg \br{D + P_0} + 1 - \g = 1 + 1 - 1 = 1 $, so there exists a unique effective divisor $ P $ such that $ D + P_0 \sim P $. Note $ \deg P = 1 $, so $ P $ is just a point. Thus $ D \sim P - P_0 $, which also shows $ P $ is unique. Hence we have an exact sequence
 $$ 0 \to \Cl^0 X \to \Cl X \xrightarrow{\deg} \ZZ \to 0, $$
-where $ \Cl^0 X $ is the linear equivalence classes of degree zero divisors. So there is a bijection between $ \Cl^0 X $ and the closed points of $ X $, since $ k = \overline{k} $. So $ \Cl^0 X $ acquires the structure of a variety. That is, it is the set of closed points of the scheme $ X $. More generally, for $ X $ a curve of genus $ g $, the group $ \Cl^0 X $ forms the closed points of a $ g $-dimensional variety called an \textbf{abelian variety} $ A $. That is, it has a group structure compatible with the variety structure, that is morphisms $ m : A \times A \to A $ for multiplication and $ i : A \to A $ for inversion.
+where $ \Cl^0 X $ is the linear equivalence classes of degree zero divisors. So there is a bijection between $ \Cl^0 X $ and the closed points of $ X $, since $ k = \overline{k} $. So $ \Cl^0 X $ acquires the structure of a variety. That is, it is the set of closed points of the scheme $ X $. More generally, for $ X $ a curve of genus $ g $, the group $ \Cl^0 X $ forms the closed points of a $ g $-dimensional variety called an \textbf{abelian variety} $ A $. That is, it has a group structure compatible with the variety structure. That is, morphisms $ m : A \times A \to A $ for multiplication and $ i : A \to A $ for inversion.
 \end{itemize}
 \end{example*}
 
@@ -2198,7 +2222,7 @@ $$ \function[\phi]{\widetilde{Y}}{Y}{E}{y}, $$
 where $ \phi^{-1}\br{Y \setminus \cbr{y}} \cong Y \setminus \cbr{y} $ and $ \phi^{-1}\br{\cbr{y}} = E \cong \PP^{n - 1} $ if $ \dim Y = n $.
 
 \begin{remark*}
-There exists a more general notion of blowing up a sheaf of ideals. In this case we take ideal sheaf of $ y \in Y $.
+There exists a more general notion of blowing up a sheaf of ideals. In this case we take the ideal sheaf of $ y \in Y $.
 \end{remark*}
 
 Let $ X $ be a non-singular projective surface and $ \pi : \widetilde{X} \to X $ the blowup of a point $ p \in X $. Then

@@ -632,7 +632,7 @@ $$
 so inductively, it suffices to treat the case $ n = 1 $. So consider a circle $ \S^1 = A \cup B $ where $ p, q \in A \cap B $. Our former Mayer-Vietoris computation of $ \H_\bullet\br{\S^1} $ gave
 $$
 \begin{tikzcd}[row sep=tiny]
-0 \arrow{r} & \H_1\br{\S^1} \arrow{r} & \H_0\br{p \sqcup q} \arrow{r} \arrow[cong]{d} & \H_0\br{A} \oplus \H_0\br{B} \arrow[cong]{d} \\
+0 \arrow{r} & \H_1\br{\S^1} \arrow{r} & \H_0\br{\cbr{p} \sqcup \cbr{q}} \arrow{r} \arrow[cong]{d} & \H_0\br{A} \oplus \H_0\br{B} \arrow[cong]{d} \\
 & & \ZZ \oplus \ZZ \arrow[dashed]{r}[swap]{\alpha} & \ZZ \oplus \ZZ
 \end{tikzcd},
 $$
@@ -2653,7 +2653,7 @@ So if $ \H^d\br{X} $ has no $ 2 $-torsion, $ \e_E = 0 $.
 
 Let $ E \to X $ be a vector bundle of rank $ d $. Suppose $ E $ admits an inner product, such as if $ X $ is compact Hausdorff. The \textbf{sphere bundle} is
 $$ \S\br{E} = \cbr{e \in E \st \abr{e, e} = 1}. $$
-Note $ \S\br{E} \hookrightarrow E^\# = E \setminus \cbr{\text{zero-section}} $ is a homotopy equivalence, so $ \S\br{E} $ is independent of the inner product $ \abr{,} $ up to homotopy equivalence. The map $ \S\br{E} \to X $ is a fibre bundle with fibre $ S^{d - 1} $. In general a \textbf{fibre bundle} $ p : Z \to X $ with fibre $ F $ is a map such that for all $ x \in X $ there exists an open $ x \in U \subseteq X $ and local trivialisations
+Note $ \S\br{E} \hookrightarrow E^\# = E \setminus \cbr{\text{zero-section}} $ is a homotopy equivalence, so $ \S\br{E} $ is independent of the inner product $ \abr{,} $ up to homotopy equivalence. The map $ \S\br{E} \to X $ is a fibre bundle with fibre $ \S^{d - 1} $. In general a \textbf{fibre bundle} $ p : Z \to X $ with fibre $ F $ is a map such that for all $ x \in X $ there exists an open $ x \in U \subseteq X $ and local trivialisations
 $$
 \begin{tikzcd}
 p^{-1}\br{U} \arrow{rr}{\psi} \arrow{dr}[swap]{p} & & U \times F \arrow{dl}{\pi_1} \\
@@ -2697,7 +2697,7 @@ $$ \dots \to \H^i\br{X} \xrightarrow{\cdot \e_E} \H^{i + d}\br{X} \to \H^{i + d}
 where $ d = \rk E $.
 \end{definition*}
 
-The latter map is sometimes called called integration over the fibre.
+The latter map is sometimes called integration over the fibre.
 
 \begin{remark*}
 Recall relative cup-product is $ \H^i\br{X, A} \oplus \H^i\br{X} \to \H^{i + j}\br{X, A} $. For any pair $ \br{X, A} $, the long exact sequence
@@ -3564,7 +3564,8 @@ Let $ M $ be a closed $ \FF $-oriented smooth manifold. Let $ f : M \to M $ be s
 \sum_{x \in \Fix f} \sign x
 = \L\br{f}
 & = \STr \br{f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF}} \\
-& = \sum_{k \ge 0} \br{-1}^k\Tr \br{f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF}} \in \FF,
+& = \sum_{k \ge 0} \br{-1}^k\Tr \br{f^* : \H^\bullet\br{M; \FF} \to \H^\bullet\br{M; \FF}}
+\in \FF,
 \end{align*}
 the \textbf{Lefschetz number}.
 \end{corollary}

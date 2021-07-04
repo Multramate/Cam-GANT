@@ -287,14 +287,6 @@ Let $ G $ be a group. The \textbf{profinite completion} of $ G $ is the limit of
 \item if $ N_1 \subseteq N_2 $, then $ \phi_{N_1N_2} \circ p_{N_1} = p_{N_2} $, and
 \item if $ Z $ is a group, with $ q_N : Z \to G / N $ such that $ \phi_{N_1N_2} \circ q_{N_1} = q_{N_2} $, there exists a unique $ f : Z \to \widehat{G} $ such that $ p_N \circ f = q_N $ for all $ N $.
 \end{itemize}
-Thus
-$$
-\begin{tikzcd}
-& Z \arrow[dashed]{d}{\exists !f} \arrow[bend right=30]{ddl} \arrow[bend left=30]{ddr} & \\
-& \widehat{G} \arrow{dl} \arrow{dr} & \\
-G / N_1 \arrow{rr} & & G / N_2
-\end{tikzcd}.
-$$
 In particular, $ Z = G $ works, so there is a unique morphism $ \iota_G : G \to \widehat{G} $, the \textbf{canonical morphism}, such that the diagrams commute.
 \end{definition}
 
@@ -314,17 +306,8 @@ $$ \varprojlim_j G_j = \cbr{\br{g_j}_{j \in J} \in \prod_{j \in J} G_j \st \fora
 \begin{proof}
 This is a group. We have $ p_j : \varprojlim_j G_j \to G_j $, restricted from $ \prod_{j \in J} G_j \to G_j $. Take a cone $ Z $ on the system. Define
 $$ \function[f]{Z}{\varprojlim_j G_j}{z}{\br{q_j\br{z}}_{j \in J}}. $$
-Then $ \phi_{ij}\br{q_i\br{z}} = q_j\br{z} $, so
-$$
-\begin{tikzcd}
-& Z \arrow[dashed]{d}{\exists !f} \arrow[bend right=30]{ddl}[swap]{q_i} \arrow[bend left=30]{ddr}{q_j} & \\
-& \displaystyle\varprojlim_j G_j \arrow{dl}[swap]{p_i} \arrow{dr}{p_j} & \\
-G_i \arrow{rr} & & G_j
-\end{tikzcd}.
-$$
+Then $ \phi_{ij}\br{q_i\br{z}} = q_j\br{z} $, so $ p_j \circ f = q_j $.
 \end{proof}
-
-\pagebreak
 
 \lecture{3}{Tuesday}{26/01/21}
 
@@ -345,9 +328,12 @@ Let $ \br{X_j}_{j \in J} $ be an inverse system of non-empty finite sets. Then $
 \end{proposition}
 
 \begin{proof}
-Use the finite intersection property. Let $ I_1 \subseteq J $ be a finite subset. Define
-$$ Y_{I_1} = \cbr{\br{x_j} \in \prod_j X_j \st \forall i, j \in I_1, \ \forall i \le j, \ \phi_{ij}\br{x_i} = x_j} \subseteq \prod_j X_j, $$
-a closed subset of the product. Since $ J $ is an inverse system and $ I_1 $ is finite, there exists $ k \in J $ such that $ k \le i $ for all $ i \in I_1 $. Choose $ x_k \in X_k \ne \emptyset $. Define $ x_j = \phi_{kj}\br{x_k} $ for all $ j \ge k $. Choose $ x_j $ arbitrarily elsewhere. This gives $ x = \br{x_j} \in \prod_{j \in J} X_j $, which lies in $ Y_{I_1} $, since if $ i, j \in I_1 $ such that $ i \le j $ then
+Use the finite intersection property. Let $ I_1 \subseteq J $ be a finite subset. Define a closed subset
+$$ Y_{I_1} = \cbr{\br{x_j} \in \prod_j X_j \st \forall i, j \in I_1, \ \forall i \le j, \ \phi_{ij}\br{x_i} = x_j} \subseteq \prod_j X_j. $$
+
+\pagebreak
+
+Since $ J $ is an inverse system and $ I_1 $ is finite, there exists $ k \in J $ such that $ k \le i $ for all $ i \in I_1 $. Choose $ x_k \in X_k \ne \emptyset $. Define $ x_j = \phi_{kj}\br{x_k} $ for all $ j \ge k $. Choose $ x_j $ arbitrarily elsewhere. This gives $ x = \br{x_j} \in \prod_{j \in J} X_j $, which lies in $ Y_{I_1} $, since if $ i, j \in I_1 $ such that $ i \le j $ then
 $$ x_j = \phi_{kj}\br{x_k} = \phi_{ij}\br{\phi_{ki}\br{x_k}} = \phi_{ij}\br{x_i}. $$
 So $ Y_{I_1} $ is non-empty. Then $ Y_{I_1} \cap \dots \cap Y_{I_n} \supseteq Y_{I_1 \cup \dots \cup I_n} \ne \emptyset $. By the finite intersection property, since $ \prod_j X_j $ is compact, $ \bigcap_{I_1} Y_{I_1} = \varprojlim_j X_j $ is non-empty.
 \end{proof}
@@ -388,8 +374,6 @@ For a subgroup $ H \le G $ of index $ n $, we get a homomorphism $ G \to \Sym n 
 If $ G $ is finitely generated, the inverse system $ \NNN = \cbr{N \triangleleft_\f G} $ is countable.
 \end{corollary}
 
-\pagebreak
-
 \begin{proposition}
 Let $ G $ be a profinite group. Then $ G $ is a \textbf{topological group}, so
 $$ \function[\m]{G \times G}{G}{\br{g, h}}{gh}, \qquad \function[\i]{G}{G}{g}{g^{-1}} $$
@@ -410,6 +394,8 @@ Let $ H $ be a topological group and $ G = \varprojlim_j G_j $ be an inverse lim
 \begin{proof}
 $ f : H \to G \le \prod_j G_j $. This is continuous if and only if all $ f_j $ are continuous, by definition of the product topology.
 \end{proof}
+
+\pagebreak
 
 \begin{proposition}
 Let $ f : H \to G_j $ be a homomorphism from a topological group to a finite group, with the discrete topology. Then $ f $ is continuous if and only if $ \ker f $ is open in $ H $.
@@ -462,8 +448,6 @@ Let $ Y $ be a compact topological space and let $ f : Y \to G $ be a continuous
 $ p_j\br{f\br{Y}} = p_j\br{G} $ if and only if $ f\br{Y} $ is dense, if and only if $ f\br{Y} = G $, since $ f\br{Y} $ is closed.
 \end{proof}
 
-\pagebreak
-
 \begin{proposition}
 \label{prop:1.2.32}
 Let $ G $ be a profinite group and $ X \subseteq G $ be a subset. Then the closure of $ X $ is
@@ -481,6 +465,8 @@ Let $ G $ be a profinite group and let $ \UUU $ be a collection of open normal s
 $$ G \cong \varprojlim_{U \in \UUU} G / U, $$
 as topological groups, where $ G / U $ are finite groups.
 \end{proposition}
+
+\pagebreak
 
 \begin{proof}
 The quotient maps $ G \twoheadrightarrow G / U $ are a cone on the inverse system, so we get a well-defined homomorphism $ f : G \to \varprojlim_U G / U $. Then
@@ -520,8 +506,6 @@ $$ g_{j_2} = \phi_{ij_2}\br{h_i} = \phi_{j_1j_2}\br{\phi_{ij_1}\br{h_i}} = \phi_
 Finally, $ f\br{g} = h $, since $ g_i = \phi_{ii}\br{h_i} = h_i $ for all $ i \in I $.
 \end{itemize}
 \end{proof}
-
-\pagebreak
 
 \begin{definition}
 An inverse system of groups is \textbf{surjective} if all transition maps are surjective.
@@ -669,7 +653,7 @@ Elements of $ \iota\br{\ZZ} $ are not zero divisors in $ \widehat{\ZZ} $.
 For a commutative ring $ R $, we have
 $$ \Mat_{N \times M} R = \cbr{N \times M \ \text{matrices with elements in} \ R}. $$
 If $ N = M $, we have a ring structure, where addition and multiplication are given by the usual formula. There exists a determinant function $ \det : \Mat_{N \times N} R \to R $. Then
-$$ \ZZ_p^{NM} \cong \Mat_{N \times M} \ZZ_p = \varprojlim_{n \in \NN} \Mat_{N \times M} \ZZ / p^n\ZZ. $$
+$$ \ZZ_p^{NM} \cong \Mat_{N \times M} \ZZ_p = \varprojlim_{n \in \NN} \Mat_{N \times M} \br{\ZZ / p^n\ZZ}. $$
 By continuity of ring operations on $ \ZZ_p $, addition and multiplication on matrices are continuous, and $ \det : \Mat_{N \times N} \ZZ_p \to \ZZ_p $ is continuous. Since $ \ZZ_p $ is an integral domain, it has a field of fractions $ \QQ_p $, so you can do linear algebra over $ \QQ_p $. A matrix over $ \QQ_p $ has an inverse over $ \QQ_p $ if and only if its determinant is non-zero, and a matrix over $ \ZZ_p $ has an inverse over $ \ZZ_p $ if and only if its determinant and its inverse are in $ \ZZ_p^\times $. Define
 $$ \GL_N \ZZ_p = \cbr{A \in \Mat_{N \times N} \ZZ_p \st \det A \in \ZZ_p^\times}, \qquad \SL_N \ZZ_p = \cbr{A \in \Mat_{N \times N} \ZZ_p \st \det A = 1}. $$
 Both are profinite groups.
@@ -683,7 +667,7 @@ $$ \GL_N \ZZ_p = \varprojlim_n \GL_N \br{\ZZ / p^n\ZZ}, \qquad \SL_N \ZZ_p = \va
 The diagrams
 $$
 \begin{tikzcd}
-\Mat_{N \times N} \ZZ_p \arrow{r} \arrow{d}[swap]{\det} & \Mat_{N \times N} \ZZ / p^n\ZZ \arrow{d}{\det} \\
+\Mat_{N \times N} \ZZ_p \arrow{r} \arrow{d}[swap]{\det} & \Mat_{N \times N} \br{\ZZ / p^n\ZZ} \arrow{d}{\det} \\
 \ZZ_p \arrow{r} & \ZZ / p^n\ZZ
 \end{tikzcd}
 $$
@@ -749,7 +733,7 @@ Let $ G $ be a profinite group and $ N $ a closed normal subgroup. Then $ G / N 
 \end{proposition}
 
 \begin{proof}
-Take $ G = \varprojlim_j G_j $ for $ \br{G_j} $ a surjective inverse system. Let $ N_j = p_j\br{N} \triangleleft G_j = p_j\br{G} $. Recall $ N = \varprojlim_j N_j $. Define $ Q_j = G_j / N_j $. Since $ \phi_{ij}\br{N_i} \le N_j $, we get quotient homomorphisms $ \psi_{ij} : Q_i \to Q_j $, which are transition maps for the $ Q_j $. Set $ Q = \varprojlim_j Q_j $. The map $ \prod_h G_j \to \prod_j Q_j $ is continuous, so there is a continuous surjective group homomorphism $ f : G \to Q $. The kernel of this map is $ N $, since $ f\br{g} = 1 $ if and only if $ q_j\br{f\br{g}} = 1 $ for all $ j $, if and only if $ g_j \in N_j $ for all $ j $, if and only if $ g \in \varprojlim_j N_j = N $. By the first isomorphism theorem for groups,
+Take $ G = \varprojlim_j G_j $ for $ \br{G_j} $ a surjective inverse system. Let $ N_j = p_j\br{N} \triangleleft G_j = p_j\br{G} $. Recall $ N = \varprojlim_j N_j $. Define $ Q_j = G_j / N_j $. Since $ \phi_{ij}\br{N_i} \le N_j $, we get quotient homomorphisms $ \psi_{ij} : Q_i \to Q_j $, which are transition maps for the $ Q_j $. Set $ Q = \varprojlim_j Q_j $. The map $ \prod_j G_j \to \prod_j Q_j $ is continuous, so there is a continuous surjective group homomorphism $ f : G \to Q $. The kernel of this map is $ N $, since $ f\br{g} = 1 $ if and only if $ q_j\br{f\br{g}} = 1 $ for all $ j $, if and only if $ g_j \in N_j $ for all $ j $, if and only if $ g \in \varprojlim_j N_j = N $. By the first isomorphism theorem for groups,
 $$
 \begin{tikzcd}
 G \arrow{d} \arrow{dr} & \\
@@ -923,7 +907,7 @@ $$ N_G\br{\underline{y}} = \abs{\cbr{\text{generating vectors} \ \underline{x} \
 where $ \underline{y} \in H^d $ is a generating vector of $ H $, is independent of $ \underline{y} $. Want to show $ N_G\br{\underline{z}} > 0 $, and $ G $ has some generating vector $ \underline{x'} \in G^d $ so $ N_G\br{\underline{z}} = N_G\br{f\br{\underline{x'}}} > 0 $. Let $ \underline{y} \in H^d $ be a generating vector. Let
 $$ \CCC = \cbr{\text{$ d $-generator proper subgroups of} \ G}. $$
 Every $ \underline{x} \in G^d $ such that $ f\br{\underline{x}} = \underline{y} $ either generates $ G $ or generates some $ C \in \CCC $. Therefore
-$$ N_G\br{\underline{y}} + \sum_{C \in \CCC} N_C\br{\underline{y}} = \abs{\cbr{\underline{x} : f\br{\underline{x}} = \underline{y}}} = \abs{\ker f}^d. $$
+$$ N_G\br{\underline{y}} + \sum_{C \in \CCC} N_C\br{\underline{y}} = \abs{\cbr{\underline{x} \st f\br{\underline{x}} = \underline{y}}} = \abs{\ker f}^d. $$
 Thus $ N_G\br{\underline{y}} = \abs{\ker f}^d - \sum_{C \in \CCC} N_C\br{\underline{y}} $, which is independent of $ \underline{y} $ by induction.
 \end{proof}
 
@@ -932,7 +916,7 @@ Let $ f : G \to H $ be a continuous surjective homomorphism of profinite groups.
 \end{theorem}
 
 \begin{proof}
-By Proposition \ref{prop:1.3.7} and Proposition \ref{prop:2.4.11} we may assume and write $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{j \in H} H_j $, surjective inverse systems of finite groups, with a morphism of inverse systems $ \br{f_j} : \br{G_j} \to \br{H_j} $ such that $ f = \varprojlim_j f_j $. It is forced that $ f_j $ is surjective, since
+By Proposition \ref{prop:1.3.7} and Proposition \ref{prop:2.4.11} we may assume and write $ G = \varprojlim_{j \in J} G_j $ and $ H = \varprojlim_{j \in J} H_j $, surjective inverse systems of finite groups, with a morphism of inverse systems $ \br{f_j} : \br{G_j} \to \br{H_j} $ such that $ f = \varprojlim_j f_j $. It is forced that $ f_j $ is surjective, since
 $$
 \begin{tikzcd}
 G \arrow[twoheadrightarrow]{r}{f} \arrow[twoheadrightarrow]{d}[swap]{p_j^G} & H \arrow[twoheadrightarrow]{d}{p_j^H} \\
@@ -1056,7 +1040,7 @@ These linear groups have as subgroups many important groups, such as free groups
 Let $ \Gamma $ be a finitely generated subgroup of $ \GL_N K $ where $ K $ is a field. Then $ \Gamma $ is residually finite.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 The entries of a generating set of $ \Gamma $ generate a finitely generated subring $ R $ of $ K $. Commutative algebra says that $ R $ has many maximal ideals $ \ppp \subseteq R $, such that $ R / \ppp $ is a finite field. Use maps $ \GL_N R \to \GL_N \br{R / \ppp} $ to show residual finiteness.
 \end{proof}
 
@@ -1087,7 +1071,7 @@ Let $ G $ and $ H $ be topologically finitely generated profinite groups. Suppos
 Topologically finitely generated is necessary since $ \br{\ZZ / 2\ZZ}^\NN \not\cong \br{\ZZ / 2\ZZ}^\RR $. Continuous is not actually necessary by a hard theorem by Nikolov and Segal.
 
 \begin{proof}
-Let $ G_n $ be the intersection of all open subgroups of $ G $ of index at most $ n $. Similarly, $ H_n $. By Example \ref{eg:2.5.9}, $ G = \varprojlim_n G / G_n $ and $ H = \varprojlim_n H / H_n $. By assumption there exists $ V \triangleleft_\o H $, such that $ G / G_n \cong H / V $. The intersection of index at most $ n $ subgroups of $ G / G_n $ is trivial, and the intersection of index at most $ n $ subgroups of $ H / V $ is trivial. Taking preimages, there exist index at most $ n $ open subgroups of $ H $ whose intersection is contained in $ V $. Then $ H_n \le V $, so $ \abs{G / G_n} = \abs{H / V} \le \abs{H / H_n} $. By symmetry, $ \abs{G / G_n} \ge \abs{H / H_n} $, so equality holds and $ V = H_n $. So $ G / G_n \cong H / H_n $ for all $ n $. We want a morphism of inverse systems, so commuting diagrams
+Let $ G_n $ be the intersection of all open subgroups of $ G $ of index at most $ n $. Similarly, $ H_n $. By Example \ref{eg:2.5.9}, $ G = \varprojlim_n G / G_n $ and $ H = \varprojlim_n H / H_n $. By assumption there exists $ V \triangleleft_\o H $, such that $ G / G_n \cong H / V $. The intersection of index at most $ n $ subgroups of $ G / G_n $ is trivial, so the intersection of index at most $ n $ subgroups of $ H / V $ is trivial. Taking preimages, there exist index at most $ n $ open subgroups of $ H $ whose intersection is contained in $ V $. Then $ H_n \le V $, so $ \abs{G / G_n} = \abs{H / V} \le \abs{H / H_n} $. By symmetry, $ \abs{G / G_n} \ge \abs{H / H_n} $, so equality holds and $ V = H_n $. So $ G / G_n \cong H / H_n $ for all $ n $. We want a morphism of inverse systems, so commuting diagrams
 $$
 \begin{tikzcd}
 G / G_n \arrow{r} \arrow{d} & H / H_n \arrow{d} \\
@@ -1138,7 +1122,7 @@ G \arrow[twoheadrightarrow]{rr} \arrow[twoheadrightarrow]{dr} & & G / \sbr{G, G}
 & A &
 \end{tikzcd}.
 $$
-It remains to show, if $ A $ and $ A' $ are finitely generated abelian groups with $ \widehat{A} \cong \widehat{A'} $ then $ A \cong A' $. By the classification, $ A = \ZZ^r \times T $ and $ A' \cong \ZZ^s \times T' $ for $ r, s \in \NN $ and $ T $ and $ T' $ finite. We can see $ r $ and $ T $ from finite quotients, since
+It remains to show, if $ A $ and $ A' $ are finitely generated abelian groups with $ \widehat{A} \cong \widehat{A'} $ then $ A \cong A' $. By the classification, $ A = \ZZ^r \times T $ and $ A' \cong \ZZ^s \times T' $ for $ r, s \in \NN $ and $ T $ and $ T' $ finite. We can see $ r $ and $ T $ from finite quotients, so
 $$ r = \max \cbr{k \st \forall n, \ A \twoheadrightarrow \br{\ZZ / n\ZZ}^k} = \max \cbr{k \st \forall n, \ A' \twoheadrightarrow \br{\ZZ / n\ZZ}^k} = s. $$
 Having found $ r $, $ T $ is the largest finite group such that $ A \twoheadrightarrow \br{\ZZ / n\ZZ}^r \times T $ for all $ n $, which is $ T' $.
 \end{proof}
@@ -1214,7 +1198,7 @@ By the Nielsen-Schreier theorem, $ \F_{2g} $ has an index two subgroup, which is
 \begin{remark}
 \hfill
 \begin{itemize}
-\item Residually finite is not actually necessary, by replacing $ G_1 $ by $ G_1 / \ker \iota_{G_1} $ for $ \iota : G_1 \to \widehat{G_1} $.
+\item Residually finite is not actually necessary, by replacing $ G_1 $ by $ G_1 / \ker \iota_{G_1} $ for $ \iota_{G_1} : G_1 \to \widehat{G_1} $.
 \item $ \phi $ and $ \psi $ do not depend on any homomorphism $ G_1 \to G_2 $.
 \end{itemize}
 \end{remark}
@@ -1249,7 +1233,7 @@ Then $ H $ fixes the coset $ 1H $. By continuity of the action, $ \overline{H} $
 \item Let $ \cbr{g_i} $ be a set of coset representatives. We know that the $ g_i\overline{H} $ cover $ \widehat{G} $. They are distinct cosets, since if $ g_i\overline{H} = g_j\overline{H} $, then $ g_i^{-1}g_j \in \overline{H} \cap G = H $. So $ g_iH = g_jH $, so $ g_i = g_j $, so $ \sbr{\widehat{G} : \overline{H}} = \sbr{G : H} $. Also, there is a natural bijection of coset spaces $ G / H \to \widehat{G} / \overline{H} $.
 \item If $ \overline{K} \triangleleft \overline{H} $ then $ K = \overline{K} \cap G \triangleleft \overline{H} \cap G = H $. Conversely, if $ K \triangleleft H $, consider the action of $ \overline{H} $ on $ \Sym \br{\overline{H} / \overline{K}} = \Sym \br{H / K} \le \Sym \br{G / K} $. Then $ K \triangleleft H $ if and only if $ K $ acts trivially on $ H / K $, since $ k \cdot hK = hK $ if and only if $ h^{-1}kh \in K $. By continuity of the action, $ \overline{K} $ acts trivially, so $ \overline{K} \triangleleft \overline{H} $.
 \item If $ K \triangleleft H $, we already have our bijection $ H / K \to \overline{H} / \overline{K} $, and this is an isomorphism of groups.
-\item $ \overline{H} $ maps onto all finite quotients $ H / K $ in a natural way, so we get a continuous homomorphism $ \overline{H} \to \widehat{H} $. This is surjective because $ H $ is dense in $ \widehat{H} $. For injectivity, if $ h \in \overline{H} \setminus \cbr{1} $, then there is $ U \triangleleft_\o \widehat{G} $ such that $ h \notin U $, and the map
+\item $ \overline{H} $ maps onto all finite quotients $ H / K $ in a natural way, so we get a continuous homomorphism $ \overline{H} \to \widehat{H} $. This is surjective because $ H $ is dense in $ \widehat{H} $. For injectivity, if $ h \in \overline{H} \setminus \cbr{1} $, then there is $ U \triangleleft_\o \widehat{H} $ such that $ h \notin U $, and the map
 $$
 \begin{tikzcd}
 \overline{H} \arrow{rr} \arrow{dr} & & H / \br{U \cap H} \\
@@ -1359,7 +1343,7 @@ This is true for infinitely generated free groups. If $ F = \abr{a_i}_{i \in I} 
 
 Residual finiteness if and only if $ \iota : G \hookrightarrow \widehat{G} $. Residual $ p $-finiteness, stronger than residual finiteness, is $ \iota : G \hookrightarrow \widehat{G_{\br{p}}} $, if and only if for all $ g \in G \setminus \cbr{1} $, there exists $ \phi : G \to Q $ where $ \abs{Q} = p^m $ such that $ \phi\br{g} \ne 1 $.
 
-\begin{proof}[Proof 1]
+\begin{proof}[Proof 1 (non-examinable)]
 Let $ p $ be a prime. Let $ X $ be a wedge of $ k $ circles, and $ F = \pi_1\br{X} $. Construct $ F_n \triangleleft F $ inductively, by
 $$ F_1 = F, \qquad F_{n + 1} = \bigcap \cbr{\ker f \st f : F_n \to \ZZ / p\ZZ} = \ker \br{F_n \to \prod_f \ZZ / p\ZZ}. $$
 
@@ -1625,7 +1609,7 @@ Folding $ Y $ gives a new graph $ Y' $ such that the image of $ \pi_1\br{Y} \to 
 \begin{example}
 Let $ F = \abr{a, b} $, and let $ S = \cbr{a^3, ab^2aba^{-1}, ab^{-1}ab^3} $. Folding,
 $$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \fill (0, 0) circle (0.1);
 \fill (-0.5, -1) circle (0.05);
 \fill (0.5, -1) circle (0.05);
@@ -1655,9 +1639,7 @@ $$
 \draw (2, 0.5) to node{\rotatebox{30}{$ < $}} node[below]{$ b $} (1, 0);
 \draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
 \end{tikzpicture}
-$$
-$$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \draw (-3, 0) node{$ \implies $};
 \fill (0, 0) circle (0.1);
 \fill (-1, 0) circle (0.05);
@@ -1682,9 +1664,7 @@ $$
 \draw (1.5, 1) to node{\rotatebox{60}{$ < $}} node[right]{$ b $} (1, 0);
 \draw (1, 0) to node{$ < $} node[below]{$ b $} (0, 0);
 \end{tikzpicture}
-$$
-$$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \draw (-3, 0) node{$ \implies $};
 \fill (0, 0) circle (0.1);
 \fill (-1, 0) circle (0.05);
@@ -1710,7 +1690,7 @@ $$
 $$
 Now can add edges to make a covering
 $$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \fill (0, 0) circle (0.1) node[below right]{$ 1 $};
 \fill (-1, 0) circle (0.05) node[below left]{$ 7 $};
 \fill (-0.5, -1) circle (0.05) node[below]{$ 9 $};
@@ -1745,14 +1725,12 @@ $$ \functions[\phi]{F}{\Sym 9}{a}{\br{179}\br{234}\br{5}\br{6}\br{8}}{b}{\br{145
 Then $ \phi\br{\abr{S}} \le \Stab 1 $ and $ \phi\br{a} \notin \Stab 1 $, so $ \phi\br{\abr{S}} \ne \phi\br{F} $. Thus $ \abr{S} \ne F $. The other case is that folding gives a one-vertex graph, then $ \abr{S} $ is generated by some standard generators of $ F $.
 \end{example}
 
-\pagebreak
-
 What if we want to know if a specific $ y $ lies in $ \abr{S} $? Add $ y $ into the starting graph as a line.
 
 \begin{example}
 Let $ y = a^{-1}ba $. Fold
 $$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \fill (0, 0) circle (0.1);
 \fill (-0.5, -1) circle (0.05);
 \fill (0.5, -1) circle (0.05);
@@ -1791,7 +1769,7 @@ $$
 $$
 and make a covering space
 $$
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}
 \fill (0, 0) circle (0.1) node[below right]{$ 1 $};
 \fill (-1, 0) circle (0.05) node[below left]{$ 7 $};
 \fill (-0.5, -1) circle (0.05) node[below]{$ 9 $};
@@ -1892,7 +1870,7 @@ where $ \H_1\br{G, \FF_p} = G_{\ab} / pG_{\ab} $ is a vector space $ \FF_p^{\d\b
 \end{proposition}
 
 \begin{proof}
-On example sheet $ 3 $.
+On example sheet $ 2 $.
 \end{proof}
 
 \pagebreak
@@ -1965,8 +1943,8 @@ $ f\br{\sbr{g_1, g_2}g_3^p} = \sbr{f\br{g_1}, f\br{g_2}}f\br{g_3}^p \in \Phi\br{
 \lecture{15}{Tuesday}{23/02/21}
 
 \begin{definition}
-The \textbf{lower central series} of a group $ G $ to be the sequence $ G_n = \gamma_n\br{G} $ defined by
-$$ G_1 = G, \qquad G_{n + 1} = \sbr{G, G_n}, \qquad G_{n + 1} \le G_n. $$
+The \textbf{lower central series} of a group $ G $ is the sequence $ G_n = \gamma_n\br{G} $ defined by
+$$ \gamma_1\br{G} = G, \qquad \gamma_{n + 1}\br{G} = \sbr{G, \gamma_n\br{G}}, \qquad \gamma_{n + 1}\br{G} \le \gamma_n\br{G}. $$
 Then $ G $ is \textbf{nilpotent of class $ c $} if $ \gamma_{c + 1}\br{G} = 1 $ but $ \gamma_c\br{G} \ne 1 $.
 \end{definition}
 
@@ -2124,7 +2102,7 @@ $$ f\br{r + p^ka} \equiv f\br{r} + p^kaf'\br{r} \mod p^{k + 1}. $$
 \end{lemma}
 
 \begin{proof}
-It suffices to do $ f\br{x} = x^r $. Then
+It suffices to do $ f\br{x} = x^n $. Then
 $$ \br{r + p^ka}^n = r^n + nr^{n - 1}p^ka + \sum_{i = 2}^n \binom{n}{i}p^{ki}a^ir^{n - i}, $$
 and $ p^{k + 1} \mid p^{2k} \mid p^{ki} $.
 \end{proof}
@@ -2135,7 +2113,7 @@ Construct $ r_k $ for $ k \ge K $, such that $ f\br{r_k} \equiv 0 \mod p^k $ and
 \item $ r_K $ is given.
 \item If $ r_k $ is constructed, consider $ r_k + p^ka $ for $ 0 \le a \le p - 1 $. We have $ f\br{r_k} = b_kp^k $ for some $ b_k \in \ZZ_p $. Now
 $$ f\br{r_k + p^ka} \equiv f\br{r_k} + p^kaf'\br{r_k} \equiv p^k\br{b_k + af'\br{r_k}} \mod p^{k + 1}. $$
-Can solve $ b_k + af'\br{r_k} \equiv 0 \mod p $ since $ f'\br{r_k} \equiv f'\br{r} \not\equiv 0 \mod 0 $ is invertible modulo $ p $. So set $ a_k $ such that $ b_k + af'\br{r_k} \equiv 0 \mod p $ and set $ r_{k + 1} = r_k + p^ka_k $.
+Can solve $ b_k + af'\br{r_k} \equiv 0 \mod p $ since $ f'\br{r_k} \equiv f'\br{r} \not\equiv 0 \mod p $ is invertible modulo $ p $. So set $ a_k $ such that $ b_k + a_kf'\br{r_k} \equiv 0 \mod p $ and set $ r_{k + 1} = r_k + p^ka_k $.
 \end{itemize}
 \end{proof}
 
@@ -2188,19 +2166,19 @@ $$ \br{\I + p^kA}^p = \I + p^{k + 1}A + p^{k + 2}E_1. $$
 \end{itemize}
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[non-examinable]
 $$ \Phi\br{\GL_N^{\br{k}} \ZZ_p} = \GL_N^{\br{k + 1}} \ZZ_p, \qquad \GL_N^{\br{k}} \ZZ_p / \GL_N^{\br{k + 1}} \ZZ_p \cong \FF_p^{N^2}, $$
 a \textbf{uniform pro-$ p $ group}, with isomorphisms
 $$ \function{\GL_N^{\br{k}} \ZZ_p / \GL_N^{\br{k + 1}} \ZZ_p}{\GL_N^{\br{k + 1}} \ZZ_p / \GL_N^{\br{k + 2}} \ZZ_p}{x}{x^p}. $$
 \end{proposition}
 
-\begin{theorem}
+\begin{theorem}[non-examinable]
 Let $ H $ be any closed subgroup of $ \GL_N^{\br{1}} \ZZ_p $. Then $ \d\br{H} \le N^2 $.
 \end{theorem}
 
 Compare to a free group as a subgroup of $ \SL_2 \ZZ $.
 
-\begin{theorem}
+\begin{theorem}[non-examinable]
 If $ G $ is a pro-$ p $ group, such that $ \d\br{H} \le R $ for all $ H \le_\c G $, then
 $$ G / \ZZ_p^a \hookrightarrow \GL_R \ZZ_p \times F, $$
 where $ F $ is finite.
@@ -2483,7 +2461,7 @@ is exact. Then there exists $ \delta_n : \H_{n + 1}\br{C_\bullet} \to \H_n\br{A_
 $$ \dots \to \H_{n + 1}\br{C_\bullet} \xrightarrow{\delta_n} \H_n\br{A_\bullet} \xrightarrow{\br{f_*}_n} \H_n\br{B_\bullet} \xrightarrow{\br{g_*}_n} \H_n\br{C_\bullet} \to \dots. $$
 \end{lemma}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 See algebraic topology.
 \end{proof}
 
@@ -2520,7 +2498,7 @@ Then $ \br{\alpha_*}_n\br{\psi} = \phi $, and $ \psi $ is $ G $-linear follows f
 The definition of $ \H^n\br{G, M} $ is independent of the choice of projective resolution.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 Take two projective resolutions $ \br{F_n, d_n} $ and $ \br{F_n', d_n'} $ of $ \ZZ $ by $ G $-modules. Suppose we construct chain maps
 \begin{itemize}
 \item $ f_n : F_n \to F_n' $ such that $ f_{n - 1} \circ d_n = d_n' \circ f_n $,
@@ -2570,7 +2548,7 @@ $$
 
 \begin{definition}
 Let
-$$ G^{\br{n}} = \cbr{\sbr{g_1 \mid \dots \mid g_n} : g_1, \dots, g_n \in G}, \qquad G^{\br{0}} = \cbr{\sbr{}}. $$
+$$ G^{\br{n}} = \cbr{\sbr{g_1 \mid \dots \mid g_n} \st g_1, \dots, g_n \in G}, \qquad G^{\br{0}} = \cbr{\sbr{}}. $$
 The \textbf{bar resolution} is $ \F_n = \ZZ G\cbr{G^{\br{n}}} $, the free module with basis $ G^{\br{n}} $, with
 $$ \function[\d_n]{\F_n}{\F_{n - 1}}{\sbr{g_1 \mid \dots \mid g_n}}{
 \begin{array}{rl}
@@ -2593,7 +2571,7 @@ This is a chain complex, so $ \d_{n - 1} \circ \d_n = 0 $.
 The bar resolution is exact.
 \end{proposition}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 Forget the $ G $-action. Then $ \F_n $ is free abelian on the set $ G \times G^{\br{n}} = \cbr{g\sbr{g_1 \mid \dots \mid g_n}} $. Define abelian group homomorphisms
 $$ \function[s_n]{\F_n}{\F_{n + 1}}{g\sbr{g_1 \mid \dots \mid g_n}}{\sbr{g \mid g_1 \mid \dots \mid g_{n + 1}}}. $$
 By a calculation, $ \d_{n + 1} \circ s_n + s_{n - 1} \circ \d_n = \id_{\F_n} $. If $ x \in \ker \d_n $, then
@@ -2701,14 +2679,14 @@ We want $ g \cdot \d^n\br{\phi} = \d^n\br{g \cdot \phi} $, which holds by direct
 since $ \phi\br{1 \cdot 1} = 1\phi\br{1} + \phi\br{1} $ so $ \phi\br{1} = 0 $ and $ 0 = \phi\br{1} = \phi\br{\eta\eta^{-1}} = \eta\phi\br{\eta^{-1}} + \phi\br{\eta} $.
 \end{proof}
 
-The useful case is $ n = 1 $. If $ \phi : H \to M $ is a crossed homomorphism $ \br{g \cdot \phi}\br{h} = g\phi\br{g^{-1}hg} $. If $ M $ is trivial, this reads $ \br{g \cdot \phi}\br{h} = \phi\br{g^{-1}hg} $ so the homomorphism $ \phi $ is $ G $-invariant.
+The useful case is $ n = 1 $. If $ \phi : H \to M $ is a crossed homomorphism $ \br{g \cdot \phi}\br{h} = g\phi\br{g^{-1}hg} $. If $ M $ is trivial, this reads $ \br{g \cdot \phi}\br{h} = \phi\br{g^{-1}hg} $ so the homomorphism $ \phi $ is \textbf{$ G $-invariant}.
 
 \begin{theorem}[Five-term inflation-restriction exact sequence]
-Let $ H \triangleleft G $ and $ Q = G / H $ and let $ M $ be a $ G $-module. There is exact sequence
+Let $ H \triangleleft G $ and $ Q = G / H $ and let $ M $ be a $ G $-module. There is an exact sequence
 $$ 0 \to \H^1\br{Q, M^H} \to \H^1\br{G, M} \to \H^1\br{H, M}^Q \to \H^2\br{Q, M^H} \to \H^2\br{G, M}. $$
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 Just define the maps.
 \begin{itemize}
 \item \textbf{Restriction maps}
@@ -2736,13 +2714,13 @@ There is an exact sequence
 $$ \Hom\br{F, A} \to \Hom\br{R, A}^F \to \H^2\br{Q, A} \to 0. $$
 \end{proof}
 
-If $ Q = \abr{x_1, \dots, x_d \st r_1, \dots, r_m} $ is a presentation, then $ F = \abr{x_1, \dots, x_d} $ is free and $ R = \abr{\abr{r_1, \dots, r_m}} $ is a normal subgroup generated by $ r_i $. Then $ \d\br{\H^1\br{Q, \ZZ}} = \d\br{\Hom\br{Q, \ZZ}} \le d $. An $ F $-invariant homomorphism $ R \to \ZZ $ is determined by images of $ r_i $, so $ \d\br{\H^2\br{Q, \ZZ}} \le m $.
+If $ Q = \abr{x_1, \dots, x_d \st r_1, \dots, r_m} $ is a presentation, then $ F = \abr{x_1, \dots, x_d} $ is free and $ R = \abr{\abr{r_1, \dots, r_m}} $ is the normal subgroup generated by $ r_i $. Then $ \d\br{\H^1\br{Q, \ZZ}} = \d\br{\Hom\br{Q, \ZZ}} \le d $. An $ F $-invariant homomorphism $ R \to \ZZ $ is determined by images of $ r_i $, so $ \d\br{\H^2\br{Q, \ZZ}} \le m $.
 
 \begin{example}
 Let $ Q = \ZZ / 3\ZZ $ and let $ Q $ act on $ M = \ZZ^2 $ via the order three matrix $ A = \twobytwosmall{-1}{1}{-1}{0} $. Consider the short exact sequence of groups
 $$
 \begin{tikzcd}[row sep=tiny]
-1 \arrow{r} & H \arrow{r} \arrow[cong]{d} & G \arrow{r} \arrow[cong]{d} & Q \arrow{r} \arrow[cong]{d} & 1 \\
+1 \arrow{r} & H \arrow{r}{\cdot 3} \arrow[cong]{d} & G \arrow{r} \arrow[cong]{d} & Q \arrow{r} \arrow[cong]{d} & 1 \\
 & \ZZ & \ZZ & \ZZ / 3\ZZ &
 \end{tikzcd}.
 $$
@@ -3076,16 +3054,16 @@ Suppose there exists $ N \ge 1 $ such that $ \H^N\br{G, M} = 0 $ for all finite 
 
 Proof for abstract groups, then apply course convention.
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
 We show $ \H^{N + 1}\br{G, M} = 0 $ for all $ M $, then induct. Consider the \textbf{coinduced module}
 $$ \Coind_G^K M = \Hom_K\br{\ZZ G, M}, \qquad K \le G. $$
-By Shapiro's lemma,
+By \textbf{Shapiro's lemma},
 $$ \H^n\br{G, \Coind_G^K M} = \H^n\br{K, M}, $$
 since $ \Hom_G\br{F, \Coind_G^K M} \cong \Hom_K\br{F, M} $ for $ F $ a $ G $-module. Consider $ K = 1 $. Consider
-$$ \function[\alpha]{M}{\Coind_G^1 M}{m}{\br{x \mapsto xm}}, \qquad x \in \ZZ G, $$
+$$ \function[\alpha]{M}{\Coind_G^1 M}{m}{\br{x \mapsto xm}}, $$
 which is injective and $ G $-linear. So there exists a short exact sequence of modules
 $$ 0 \to M \xrightarrow{\alpha} \Coind_G^1 M \to M' \to 0, $$
-which gives a long exact sequence
+where $ M' $ is the quotient, which gives a long exact sequence
 $$
 \begin{tikzcd}[row sep=tiny]
 \H^n\br{G, \Coind_G^1 M} \arrow{r} \arrow[cong]{d} & \H^n\br{G, M'} \arrow{r}{\sim} & \H^{n + 1}\br{G, M} \arrow{r} & \H^{n + 1}\br{G, \Coind_G^1 M} \arrow[cong]{d} \\
@@ -3122,7 +3100,13 @@ $$ f_2^* : \H^2\br{G', \FF_p} \to \H^2\br{G, \FF_p} $$
 is injective. Then $ f $ is an isomorphism.
 \end{theorem}
 
-If $ G = \Gamma $ and $ G' = \Gamma' $ are finitely generated abstract groups, then $ f $ yields an isomorphism of pro-$ p $ completions $ \widehat{\Gamma_{\br{p}}} \to \widehat{\Gamma_{\br{p}}'} $.
+\begin{corollary}
+Let $ f : \Gamma \to \Gamma' $ be a homomorphism of finitely generated abstract groups. Assume that
+$$ f_1^* : \H^1\br{\Gamma', \FF_p} \to \H^1\br{\Gamma, \FF_p} $$
+is an isomorphism and
+$$ f_2^* : \H^2\br{\Gamma', \FF_p} \to \H^2\br{\Gamma, \FF_p} $$
+is injective. Then $ f $ yields an isomorphism of pro-$ p $ completions $ \widehat{\Gamma_{\br{p}}} \to \widehat{\Gamma_{\br{p}}'} $.
+\end{corollary}
 
 \pagebreak
 
@@ -3131,18 +3115,24 @@ Let $ G $ be a topologically finitely generated pro-$ p $ group of cohomological
 \end{corollary}
 
 \begin{proof}
-If $ \d\br{G} = d $, there is a surjection $ f : F \twoheadrightarrow G $ where $ F $ is free of rank $ d $. Then $ F $ gives an isomorphism $ f_* : F / \Phi\br{F} \xrightarrow{\sim} G / \Phi\br{G} \cong \FF_p^d $. Since $ \H^1\br{G, \FF_p} = \Hom\br{G, \FF_p} = \Hom\br{G / \Phi\br{G}, \FF_p} $, the dual spaces are
+If $ \d\br{G} = d $, there is a surjection $ f : F \twoheadrightarrow G $ where $ F $ is free of rank $ d $. Then $ F $ gives an isomorphism $ f_* : F / \Phi\br{F} \xrightarrow{\sim} G / \Phi\br{G} \cong \FF_p^d $. Since
+$$ \H^1\br{G, \FF_p} = \Hom\br{G, \FF_p} = \Hom\br{G / \Phi\br{G}, \FF_p}, $$
+the dual spaces are
 $$ f_1^* : \Hom\br{G / \Phi\br{G}, \FF_p} = \H^1\br{G, \FF_p} \xrightarrow{\sim} \Hom\br{F / \Phi\br{F}, \FF_p} = \H^1\br{F, \FF_p}, $$
-and $ f_2^* : \H^2\br{G, \FF_p} = 0 \to \H^2\br{F, \FF_p} $ is an injection. Thus $ f $ is an isomorphism.
+and
+$$ f_2^* : \H^2\br{G, \FF_p} = 0 \to \H^2\br{F, \FF_p} $$
+is an injection. Thus $ f $ is an isomorphism.
 \end{proof}
 
 \lecture{24}{Tuesday}{16/03/21}
 
-\begin{proof}[Proof of Theorem \ref{thm:5.4.20}]
-Let $ G_n = \gamma_n^{\br{p}}\br{G} $ be the lower central $ p $-series, where $ G_1 = G $ and $ G_{n + 1} = \overline{\sbr{G, G_n}G_n^p} $, which are open in $ G $. Since $ f\br{G_n} \le G_n' $, $ f_n : G / G_n \to G' / G_n' $. We show all $ f_n $ are isomorphisms, so $ f = \varprojlim_n f_n $ is an isomorphism, by induction.
+\begin{proof}[Proof of Theorem \ref{thm:5.4.20} (non-examinable)]
+Let $ G_n = \gamma_n^{\br{p}}\br{G} $ be the lower central $ p $-series, where $ G_1 = G $ and $ G_{n + 1} = \overline{\sbr{G, G_n}G_n^p} $, which are open in $ G $. Since $ f\br{G_n} \le G_n' $, there are $ f_n : G / G_n \to G' / G_n' $. We show all $ f_n $ are isomorphisms, so $ f = \varprojlim_n f_n $ is an isomorphism, by induction.
 \begin{itemize}
 \item $ n = 1 $ is trivial.
-\item Consider $ G_n / G_{n + 1} $, which is a finite-dimensional vector space over $ \FF_p $. Then $ f $ induces an isomorphism $ G_n / G_{n + 1} \to G_n' / G_{n + 1}' $ if and only if $ f^* : \Hom\br{G_n' / G_{n + 1}', \FF_p} \to \Hom\br{G_n / G_{n + 1}, \FF_p} $ is an isomorphism. A continuous homomorphism $ \phi : G_n \to \FF_p $ factors through $ G_{n + 1} $ if and only if $ \phi\br{\sbr{g, g_n}} = 0 $ for all $ g \in G $ and $ g_n \in G_n $, if and only if $ \phi\br{g_n} = \phi\br{g^{-1}g_ng} $, that is $ \phi $ is $ G $-invariant. Then $ \Hom\br{G_n / G_{n + 1}, \FF_p} \cong \Hom\br{G_n, \FF_p}^G = \H^1\br{G_n, \FF_p}^G $. For the short exact sequence
+\item Consider $ G_n / G_{n + 1} $, which is a finite-dimensional vector space over $ \FF_p $. Then $ f $ induces an isomorphism $ G_n / G_{n + 1} \to G_n' / G_{n + 1}' $ if and only if $ f^* : \Hom\br{G_n' / G_{n + 1}', \FF_p} \to \Hom\br{G_n / G_{n + 1}, \FF_p} $ is an isomorphism. A continuous homomorphism $ \phi : G_n \to \FF_p $ factors through $ G_{n + 1} $ if and only if $ \phi\br{\sbr{g, g_n}} = 0 $ for all $ g \in G $ and $ g_n \in G_n $, if and only if $ \phi\br{g_n} = \phi\br{g^{-1}g_ng} $, that is $ \phi $ is $ G $-invariant, so
+$$ \Hom\br{G_n / G_{n + 1}, \FF_p} \cong \Hom\br{G_n, \FF_p}^G = \H^1\br{G_n, \FF_p}^G. $$
+For the short exact sequence
 $$ 1 \to G_n \to G \to G / G_n \to 1, $$
 we have a five-term exact sequence
 $$
@@ -3165,7 +3155,7 @@ By the five lemma, $ G / G_{n + 1} \xrightarrow{\sim} G' / G_{n + 1}' $.
 \begin{example}
 Let $ \Gamma = \abr{x_1, x_2 \st x_1x_2x_1^{-1}x_2^{-1}x_1} $. By Example \ref{eg:5.3.5}, $ \H^2\br{\Gamma, \FF_p} = 0 $. Then $ \Gamma_{\ab} \cong \ZZ $, generated by $ x_2 $, and $ \H^1\br{\Gamma, \FF_p} \cong \FF_p $, generated by $ \br{x_1, x_2} \mapsto \br{0, 1} $. Let
 $$ \function[f]{\ZZ}{\Gamma}{1}{x_2}. $$
-Since $ f_1^* : \H^1\br{\Gamma, \FF_p} \to \H^1\br{\ZZ, \FF_p} $ is an isomorphism and $ f_2^* : \H^2\br{\Gamma, \FF_p} \to \H^2\br{\ZZ, \FF_p} $ is an injection, $ \widehat{\Gamma_{\br{p}}} \cong \ZZ_p $.
+Then $ f_1^* : \H^1\br{\Gamma, \FF_p} \to \H^1\br{\ZZ, \FF_p} $ is an isomorphism and $ f_2^* : \H^2\br{\Gamma, \FF_p} \to \H^2\br{\ZZ, \FF_p} $ is an injection, so $ \widehat{\Gamma_{\br{p}}} \cong \ZZ_p $.
 \end{example}
 
 \pagebreak
@@ -3177,13 +3167,11 @@ Let $ X $ be a finite set and $ F $ the free pro-$ p $ group on the set $ X $. L
 \end{definition}
 
 \begin{lemma}
-Let $ F' \subseteq \widehat{F_{\br{p}}} = F $ be the free abstract group on $ X $, and $ R \subseteq F' $. Let $ \Gamma = \abr{X \st R} $ be an abstract group, and let $ G = \fbr{X \st R}_p $. Then $ G = \widehat{F_{\br{p}}} $.
+Let $ F' \subseteq \widehat{F_{\br{p}}} = F $ be the free abstract group on $ X $, and $ R \subseteq F' $. Let $ \Gamma = \abr{X \st R} $ be an abstract group, and let $ G = \fbr{X \st R}_p $. Then $ G = \widehat{\Gamma_{\br{p}}} $.
 \end{lemma}
 
 \begin{proof}
-Since $ F' \xrightarrow{\subseteq} F $ such that $ \abr{\abr{R}} \to \overline{\abr{\abr{R}}} $,
-$$ F' / \abr{\abr{R}} \to \widehat{\abr{X \st R}_{\br{p}}} \twoheadrightarrow \fbr{X \st R}_{\br{p}}. $$
-There exists $ F \to \widehat{\abr{X \st R}_{\br{p}}} $ sending $ X \to X $ such that $ R \to 1 $, so $ \fbr{X \st R}_{\br{p}} \to \widehat{\abr{X \st R}_{\br{p}}} $ is a surjection. By the Hopf property, surjections are isomorphisms.
+Since $ F' \xrightarrow{\subseteq} F $ such that $ \abr{\abr{R}} \to \overline{\abr{\abr{R}}} $, $ F' / \abr{\abr{R}} \to \widehat{\Gamma_{\br{p}}} \twoheadrightarrow G $. There exists $ F \to \widehat{\Gamma_{\br{p}}} $ sending $ X \to X $ such that $ R \to 1 $, so $ G \twoheadrightarrow \widehat{\Gamma_{\br{p}}} $. By the Hopf property, surjections are isomorphisms.
 \end{proof}
 
 How many generators does a pro-$ p $ group need? Since
@@ -3204,13 +3192,13 @@ $$ \abs{X} - \r_X = \dim_{\FF_p} \H^1\br{G, \FF_p} - \dim_{\FF_p} \H^2\br{G, \FF
 \end{itemize}
 \end{remark}
 
-\begin{lemma}
+\begin{lemma}[Non-examinable]
 \label{lem:5.4.32}
 Let $ F $ be a pro-$ p $ group and $ N \triangleleft_\c F $. Then there exists $ R \subseteq F $ of size $ r $ such that $ N = \overline{\abr{\abr{R}}} $ if and only if $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} \le r $.
 \end{lemma}
 
 \begin{proof}
-If $ N = \overline{\abr{\abr{R}}} $, then any $ \phi $ is determined by $ \phi\br{r} $ for $ r \in R $, so there is an injection $ \H^1\br{N, \FF_p}^{F / N} \hookrightarrow \FF_p^{\abs{R}} $, so $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} \le \abs{R} $. Suppose $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} = r $, so there exists $ R \subseteq N $ such that an $ F $-invariant $ \phi : N \to \FF_p $ vanishes if and only if $ \phi $ vanishes on $ R $. Let $ N' = \overline{\abr{\abr{R}}} \subseteq N $. Suppose $ N' \ne N $. Then $ N'\Phi\br{N} \ne N $, so $ M = N / N'\Phi\br{N} $ is a non-trivial abelian pro-$ p $ group, and $ F $ acts by conjugation. So \footnote{Exercise: pure topology} there exists an $ F $-invariant $ M \twoheadrightarrow \FF_p $, since the only simple $ F $-module is $ \FF_p $, a contradiction.
+If $ N = \overline{\abr{\abr{R}}} $, then any $ \phi $ is determined by $ \phi\br{r} $ for $ r \in R $. Then there is an injection $ \H^1\br{N, \FF_p}^{F / N} \hookrightarrow \FF_p^{\abs{R}} $, so $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} \le \abs{R} $. Suppose $ \dim_{\FF_p} \H^1\br{N, \FF_p}^{F / N} = r $, so there exists $ R \subseteq N $ such that an $ F $-invariant $ \phi : N \to \FF_p $ vanishes if and only if $ \phi $ vanishes on $ R $. Let $ N' = \overline{\abr{\abr{R}}} \subseteq N $. Suppose $ N' \ne N $. Then $ N'\Phi\br{N} \ne N $, so $ M = N / N'\Phi\br{N} $ is a non-trivial abelian pro-$ p $ group, and $ F $ acts by conjugation. So \footnote{Exercise: pure topology} there exists an $ F $-invariant $ M \twoheadrightarrow \FF_p $, since the only simple $ F $-module is $ \FF_p $, a contradiction.
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{thm:5.4.28}]
