@@ -1,6 +1,6 @@
 \def\module{Profinite Groups and Group Cohomology}
 \def\lecturer{Dr Gareth Wilkes}
-\def\term{Lent 2020}
+\def\term{Lent 2021}
 \def\cover{}
 \def\syllabus{}
 \def\thm{subsection}
@@ -1068,7 +1068,7 @@ so $ \overline{\iota\br{\Delta}} $ is closed, and finite index, if and only if o
 Let $ G $ and $ H $ be topologically finitely generated profinite groups. Suppose the sets of isomorphism types of continuous finite quotients of $ G $ and $ H $ are equal. Then $ G $ and $ H $ are isomorphic profinite groups.
 \end{theorem}
 
-Topologically finitely generated is necessary since $ \br{\ZZ / 2\ZZ}^\NN \not\cong \br{\ZZ / 2\ZZ}^\RR $. Continuous is not actually necessary by a hard theorem by Nikolov and Segal.
+Topologically finitely generated is necessary since $ \br{\ZZ / 2\ZZ}^\NN \ncong \br{\ZZ / 2\ZZ}^\RR $. Continuous is not actually necessary by a hard theorem by Nikolov and Segal.
 
 \begin{proof}
 Let $ G_n $ be the intersection of all open subgroups of $ G $ of index at most $ n $. Similarly, $ H_n $. By Example \ref{eg:2.5.9}, $ G = \varprojlim_n G / G_n $ and $ H = \varprojlim_n H / H_n $. By assumption there exists $ V \triangleleft_\o H $, such that $ G / G_n \cong H / V $. The intersection of index at most $ n $ subgroups of $ G / G_n $ is trivial, so the intersection of index at most $ n $ subgroups of $ H / V $ is trivial. Taking preimages, there exist index at most $ n $ open subgroups of $ H $ whose intersection is contained in $ V $. Then $ H_n \le V $, so $ \abs{G / G_n} = \abs{H / V} \le \abs{H / H_n} $. By symmetry, $ \abs{G / G_n} \ge \abs{H / H_n} $, so equality holds and $ V = H_n $. So $ G / G_n \cong H / H_n $ for all $ n $. We want a morphism of inverse systems, so commuting diagrams
@@ -1177,7 +1177,7 @@ From earlier, if $ \widehat{F} \cong \widehat{F'} $ then $ \ZZ^{\rk F} = F_{\ab}
 
 How about surface groups? If $ \S_g $ is the fundamental group of an orientable surface of genus $ g $, then
 $$ \S_g = \abr{a_1, b_1, \dots, a_g, b_g \st \sbr{a_1, b_1} \dots \sbr{a_g, b_g} = 1}. $$
-Then the abelianisation of $ \S_g $ is $ \ZZ^{2g} $. Hence $ \widehat{\S_g} \not\cong \widehat{\F_r} $, unless possibly $ r = 2g $.
+Then the abelianisation of $ \S_g $ is $ \ZZ^{2g} $. Hence $ \widehat{\S_g} \ncong \widehat{\F_r} $, unless possibly $ r = 2g $.
 
 \begin{theorem}[Basic correspondence]
 Let $ G_1 $ and $ G_2 $ be finitely generated residually finite groups, and suppose $ \phi : \widehat{G_1} \cong \widehat{G_2} $. Then there is a bijection
@@ -1191,7 +1191,7 @@ such that, if $ K \le_\f H \le_\f G_1 $, then
 \end{itemize}
 \end{theorem}
 
-By the Nielsen-Schreier theorem, $ \F_{2g} $ has an index two subgroup, which is free of rank $ 4g - 1 $, so has abelianisation odd rank. Any finite index subgroup of a surface group is a surface group, so it has even rank abelianisation, contradicting the basic correspondence, so $ \widehat{\F_{2g}} \not\cong \widehat{\S_g} $.
+By the Nielsen-Schreier theorem, $ \F_{2g} $ has an index two subgroup, which is free of rank $ 4g - 1 $, so has abelianisation odd rank. Any finite index subgroup of a surface group is a surface group, so it has even rank abelianisation, contradicting the basic correspondence, so $ \widehat{\F_{2g}} \ncong \widehat{\S_g} $.
 
 \lecture{11}{Saturday}{13/02/21}
 
@@ -1306,7 +1306,7 @@ $$
 \end{proof}
 
 \begin{corollary}
-$ \widehat{\S_g} \not\cong \widehat{\F_{2g}} $.
+$ \widehat{\S_g} \ncong \widehat{\F_{2g}} $.
 \end{corollary}
 
 \begin{proof}

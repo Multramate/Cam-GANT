@@ -833,7 +833,7 @@ Claim that $ \OOO_L $ is the integral closure of $ \OOO_K $ inside $ L $.
 Thus $ \OOO_K^{\Int L} = \OOO_L $ and proves the claim. Now we prove $ 3 $. Let $ x, y \in L $. Without loss of generality assume $ \abs{x}_L \le \abs{y}_L $, then $ \abs{x / y}_L \le 1 $, so $ x / y \in \OOO_L $. Since $ 1 \in \OOO_L $ and $ \OOO_K^{\Int L} = \OOO_L $, we have $ 1 + x / y \in \OOO_L $ and hence $ \abs{1 + x / y}_L \le 1 $, so $ \abs{x + y}_L \le \abs{y}_L = \max\br{\abs{y}_L, \abs{x}_L} $. Thus $ 3 $ is satisfied.
 \end{enumerate}
 To check $ \abs{\cdot}_L $ extends $ \abs{\cdot} $ use $ \N_{L / K}\br{x} = x^n $ for $ x \in K $. If $ \abs{\cdot}_L' $ is another absolute value on $ L $ extending $ \abs{\cdot} $, then note that $ \abs{\cdot}_L $ and $ \abs{\cdot}_L' $ are norms on $ L $. By Theorem \ref{thm:6.5}, $ \abs{\cdot}_L' $ and $ \abs{\cdot}_L $ induce the same topology on $ L $, so $ \abs{\cdot}_L' = \abs{\cdot}_L^c $ for some $ c > 0 $. Since $ \abs{\cdot}_L' $ extends $ \abs{\cdot} $, we have $ c = 1 $.
-\item Since $ \abs{\cdot}_L $ defines a norm on $ K $, Theorem \ref{thm:6.5} implies $ L $ is complete with respect to $ \abs{\cdot}_L $.
+\item Since $ \abs{\cdot}_L $ defines a norm on $ L $, Theorem \ref{thm:6.5} implies $ L $ is complete with respect to $ \abs{\cdot}_L $.
 \end{enumerate}
 \end{proof}
 
@@ -1238,7 +1238,7 @@ Since $ x \mapsto \abs{\sigma\br{x}}_L $ is also another absolute value on $ L $
 \end{proof}
 
 \begin{lemma}[Krasner's lemma]
-Let $ \br{K, \abs{\cdot}} $ a complete discretely valued field. Let $ f\br{X} \in K\sbr{X} $ be a separable irreducible polynomial with roots $ \alpha_1, \dots, \alpha_n \in K^{\sep} $, a separable closure of $ K $. Suppose $ \beta \in \overline{K} $ with $ \abs{\beta - \alpha_1} < \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $. Then $ \alpha_1 \in K\br{\beta} $.
+Let $ \br{K, \abs{\cdot}} $ be a complete discretely valued field. Let $ f\br{X} \in K\sbr{X} $ be a separable irreducible polynomial with roots $ \alpha_1, \dots, \alpha_n \in K^{\sep} $, a separable closure of $ K $. Suppose $ \beta \in \overline{K} $ with $ \abs{\beta - \alpha_1} < \abs{\beta - \alpha_i} $ for $ i = 2, \dots, n $. Then $ \alpha_1 \in K\br{\beta} $.
 \end{lemma}
 
 \begin{proof}
